@@ -1,6 +1,10 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Checkpointing
 
-> Automatically track and rewind Claude's edits to quickly recover from unwanted changes.
+> Track, rewind, and summarize Claude's edits and conversation to manage session state.
 
 Claude Code automatically tracks Claude's file edits as you work, allowing you to quickly undo changes and rewind to previous states if anything gets off track.
 
@@ -16,21 +20,48 @@ Claude Code tracks all changes made by its file editing tools:
 * Checkpoints persist across sessions, so you can access them in resumed conversations
 * Automatically cleaned up along with sessions after 30 days (configurable)
 
-### Rewinding changes
+### Rewind and summarize
 
-Press `Esc` twice (`Esc` + `Esc`) or use the `/rewind` command to open up the rewind menu. You can choose to restore:
+Run `/rewind`, or press `Esc` twice when the prompt input is empty, to open the rewind menu.
 
-* **Conversation only**: Rewind to a user message while keeping code changes
-* **Code only**: Revert file changes while keeping the conversation
-* **Both code and conversation**: Restore both to a prior point in the session
+<Note>
+  If the prompt input contains text, double `Esc` clears it instead of opening the menu. The cleared text is saved to your input history, so press `Up` to recall it after you finish in the rewind menu.
+</Note>
+
+The rewind menu lists each prompt you sent during the session. Select the point you want to act on, then choose an action:
+
+* **Restore code and conversation**: revert both code and conversation to that point
+* **Restore conversation**: rewind to that message while keeping current code
+* **Restore code**: revert file changes while keeping the conversation
+* **Summarize from here**: compress the conversation from this point forward into a summary, freeing context window space
+* **Summarize up to here**: compress the conversation before this point into a summary, keeping later messages intact
+* **Never mind**: return to the message list without making changes
+
+After restoring the conversation or choosing Summarize from here, the original prompt from the selected message is restored into the input field so you can re-send or edit it.
+
+Choosing Summarize up to here leaves you at the end of the conversation with the input empty.
+
+#### Restore vs. summarize
+
+The restore options revert state: they undo code changes, conversation history, or both. The summarize options compress part of the conversation into an AI-generated summary without changing files on disk:
+
+* **Summarize from here**: messages before the selected message stay intact. The selected message and everything after it are replaced with a summary. Use this to discard a side discussion while keeping early context in full detail.
+* **Summarize up to here**: messages before the selected message are replaced with a summary. The selected message and everything after it stay intact, and you remain at the end of the conversation. Use this to compress early setup discussion while keeping recent work in full detail.
+
+In both cases the original messages are preserved in the session transcript, so Claude can reference the details if needed. You can type optional instructions to guide what the summary focuses on. This is similar to `/compact`, but targeted: instead of summarizing the entire conversation, you choose which side of the selected message to compress.
+
+<Note>
+  Summarize keeps you in the same session and compresses context. If you want to branch off and try a different approach while preserving the original session intact, use [fork](/en/sessions#branch-a-session) instead (`claude --continue --fork-session`).
+</Note>
 
 ## Common use cases
 
 Checkpoints are particularly useful when:
 
-* **Exploring alternatives**: Try different implementation approaches without losing your starting point
-* **Recovering from mistakes**: Quickly undo changes that introduced bugs or broke functionality
-* **Iterating on features**: Experiment with variations knowing you can revert to working states
+* **Exploring alternatives**: try different implementation approaches without losing your starting point
+* **Recovering from mistakes**: quickly undo changes that introduced bugs or broke functionality
+* **Iterating on features**: experiment with variations knowing you can revert to working states
+* **Freeing context space**: summarize a verbose debugging session from the midpoint forward, keeping your initial instructions intact
 
 ## Limitations
 
@@ -38,7 +69,7 @@ Checkpoints are particularly useful when:
 
 Checkpointing does not track files modified by bash commands. For example, if Claude Code runs:
 
-```bash  theme={null}
+```bash theme={null}
 rm file.txt
 mv old.txt new.txt
 cp source.txt dest.txt
@@ -61,10 +92,5 @@ Checkpoints are designed for quick, session-level recovery. For permanent versio
 ## See also
 
 * [Interactive mode](/en/interactive-mode) - Keyboard shortcuts and session controls
-* [Slash commands](/en/slash-commands) - Accessing checkpoints using `/rewind`
+* [Commands](/en/commands) - Accessing checkpoints using `/rewind`
 * [CLI reference](/en/cli-reference) - Command-line options
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

@@ -1,4 +1,4 @@
-## Create
+## Create a Message Batch
 
 **post** `/v1/messages/batches`
 
@@ -20,7 +20,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
     Must be unique for each request within the Message Batch.
 
-  - `params: object { max_tokens, messages, model, 11 more }`
+  - `params: object { max_tokens, messages, model, 15 more }`
 
     Messages API creation parameters for the individual request.
 
@@ -31,6 +31,8 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
       The maximum number of tokens to generate before stopping.
 
       Note that our models may stop _before_ reaching this maximum. This parameter only specifies the absolute maximum number of tokens to generate.
+
+      Set to `0` to populate the [prompt cache](https://docs.claude.com/en/docs/build-with-claude/prompt-caching#pre-warming-the-cache) without generating a response.
 
       Different models have different maximum values for this parameter.  See [models](https://docs.claude.com/en/docs/models-overview) for details.
 
@@ -87,11 +89,11 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
       - `content: string or array of ContentBlockParam`
 
-        - `UnionMember0 = string`
+        - `string`
 
-        - `UnionMember1 = array of ContentBlockParam`
+        - `array of ContentBlockParam`
 
-          - `TextBlockParam = object { text, type, cache_control, citations }`
+          - `TextBlockParam object { text, type, cache_control, citations }`
 
             - `text: string`
 
@@ -124,7 +126,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `citations: optional array of TextCitationParam`
 
-              - `CitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
+              - `CitationCharLocationParam object { cited_text, document_index, document_title, 3 more }`
 
                 - `cited_text: string`
 
@@ -140,7 +142,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `"char_location"`
 
-              - `CitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
+              - `CitationPageLocationParam object { cited_text, document_index, document_title, 3 more }`
 
                 - `cited_text: string`
 
@@ -156,9 +158,13 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `"page_location"`
 
-              - `CitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
+              - `CitationContentBlockLocationParam object { cited_text, document_index, document_title, 3 more }`
 
                 - `cited_text: string`
+
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
 
                 - `document_index: number`
 
@@ -166,13 +172,19 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `end_block_index: number`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `start_block_index: number`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `type: "content_block_location"`
 
                   - `"content_block_location"`
 
-              - `CitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
+              - `CitationWebSearchResultLocationParam object { cited_text, encrypted_index, title, 2 more }`
 
                 - `cited_text: string`
 
@@ -186,17 +198,31 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `url: string`
 
-              - `CitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
+              - `CitationSearchResultLocationParam object { cited_text, end_block_index, search_result_index, 4 more }`
 
                 - `cited_text: string`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `end_block_index: number`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `search_result_index: number`
+
+                  0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                  Counted separately from `document_index`; server-side web search results are not included in this count.
 
                 - `source: string`
 
                 - `start_block_index: number`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `title: string`
 
@@ -204,11 +230,11 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `"search_result_location"`
 
-          - `ImageBlockParam = object { source, type, cache_control }`
+          - `ImageBlockParam object { source, type, cache_control }`
 
             - `source: Base64ImageSource or URLImageSource`
 
-              - `Base64ImageSource = object { data, media_type, type }`
+              - `Base64ImageSource object { data, media_type, type }`
 
                 - `data: string`
 
@@ -226,7 +252,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `"base64"`
 
-              - `URLImageSource = object { type, url }`
+              - `URLImageSource object { type, url }`
 
                 - `type: "url"`
 
@@ -242,30 +268,11 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               Create a cache control breakpoint at this content block.
 
-              - `type: "ephemeral"`
-
-                - `"ephemeral"`
-
-              - `ttl: optional "5m" or "1h"`
-
-                The time-to-live for the cache control breakpoint.
-
-                This may be one the following values:
-
-                - `5m`: 5 minutes
-                - `1h`: 1 hour
-
-                Defaults to `5m`.
-
-                - `"5m"`
-
-                - `"1h"`
-
-          - `DocumentBlockParam = object { source, type, cache_control, 3 more }`
+          - `DocumentBlockParam object { source, type, cache_control, 3 more }`
 
             - `source: Base64PDFSource or PlainTextSource or ContentBlockSource or URLPDFSource`
 
-              - `Base64PDFSource = object { data, media_type, type }`
+              - `Base64PDFSource object { data, media_type, type }`
 
                 - `data: string`
 
@@ -277,7 +284,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `"base64"`
 
-              - `PlainTextSource = object { data, media_type, type }`
+              - `PlainTextSource object { data, media_type, type }`
 
                 - `data: string`
 
@@ -289,189 +296,23 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `"text"`
 
-              - `ContentBlockSource = object { content, type }`
+              - `ContentBlockSource object { content, type }`
 
                 - `content: string or array of ContentBlockSourceContent`
 
-                  - `UnionMember0 = string`
+                  - `string`
 
                   - `ContentBlockSourceContent = array of ContentBlockSourceContent`
 
-                    - `TextBlockParam = object { text, type, cache_control, citations }`
+                    - `TextBlockParam object { text, type, cache_control, citations }`
 
-                      - `text: string`
-
-                      - `type: "text"`
-
-                        - `"text"`
-
-                      - `cache_control: optional CacheControlEphemeral`
-
-                        Create a cache control breakpoint at this content block.
-
-                        - `type: "ephemeral"`
-
-                          - `"ephemeral"`
-
-                        - `ttl: optional "5m" or "1h"`
-
-                          The time-to-live for the cache control breakpoint.
-
-                          This may be one the following values:
-
-                          - `5m`: 5 minutes
-                          - `1h`: 1 hour
-
-                          Defaults to `5m`.
-
-                          - `"5m"`
-
-                          - `"1h"`
-
-                      - `citations: optional array of TextCitationParam`
-
-                        - `CitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                          - `cited_text: string`
-
-                          - `document_index: number`
-
-                          - `document_title: string`
-
-                          - `end_char_index: number`
-
-                          - `start_char_index: number`
-
-                          - `type: "char_location"`
-
-                            - `"char_location"`
-
-                        - `CitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                          - `cited_text: string`
-
-                          - `document_index: number`
-
-                          - `document_title: string`
-
-                          - `end_page_number: number`
-
-                          - `start_page_number: number`
-
-                          - `type: "page_location"`
-
-                            - `"page_location"`
-
-                        - `CitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                          - `cited_text: string`
-
-                          - `document_index: number`
-
-                          - `document_title: string`
-
-                          - `end_block_index: number`
-
-                          - `start_block_index: number`
-
-                          - `type: "content_block_location"`
-
-                            - `"content_block_location"`
-
-                        - `CitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                          - `cited_text: string`
-
-                          - `encrypted_index: string`
-
-                          - `title: string`
-
-                          - `type: "web_search_result_location"`
-
-                            - `"web_search_result_location"`
-
-                          - `url: string`
-
-                        - `CitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                          - `cited_text: string`
-
-                          - `end_block_index: number`
-
-                          - `search_result_index: number`
-
-                          - `source: string`
-
-                          - `start_block_index: number`
-
-                          - `title: string`
-
-                          - `type: "search_result_location"`
-
-                            - `"search_result_location"`
-
-                    - `ImageBlockParam = object { source, type, cache_control }`
-
-                      - `source: Base64ImageSource or URLImageSource`
-
-                        - `Base64ImageSource = object { data, media_type, type }`
-
-                          - `data: string`
-
-                          - `media_type: "image/jpeg" or "image/png" or "image/gif" or "image/webp"`
-
-                            - `"image/jpeg"`
-
-                            - `"image/png"`
-
-                            - `"image/gif"`
-
-                            - `"image/webp"`
-
-                          - `type: "base64"`
-
-                            - `"base64"`
-
-                        - `URLImageSource = object { type, url }`
-
-                          - `type: "url"`
-
-                            - `"url"`
-
-                          - `url: string`
-
-                      - `type: "image"`
-
-                        - `"image"`
-
-                      - `cache_control: optional CacheControlEphemeral`
-
-                        Create a cache control breakpoint at this content block.
-
-                        - `type: "ephemeral"`
-
-                          - `"ephemeral"`
-
-                        - `ttl: optional "5m" or "1h"`
-
-                          The time-to-live for the cache control breakpoint.
-
-                          This may be one the following values:
-
-                          - `5m`: 5 minutes
-                          - `1h`: 1 hour
-
-                          Defaults to `5m`.
-
-                          - `"5m"`
-
-                          - `"1h"`
+                    - `ImageBlockParam object { source, type, cache_control }`
 
                 - `type: "content"`
 
                   - `"content"`
 
-              - `URLPDFSource = object { type, url }`
+              - `URLPDFSource object { type, url }`
 
                 - `type: "url"`
 
@@ -487,25 +328,6 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               Create a cache control breakpoint at this content block.
 
-              - `type: "ephemeral"`
-
-                - `"ephemeral"`
-
-              - `ttl: optional "5m" or "1h"`
-
-                The time-to-live for the cache control breakpoint.
-
-                This may be one the following values:
-
-                - `5m`: 5 minutes
-                - `1h`: 1 hour
-
-                Defaults to `5m`.
-
-                - `"5m"`
-
-                - `"1h"`
-
             - `citations: optional CitationsConfigParam`
 
               - `enabled: optional boolean`
@@ -514,7 +336,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `title: optional string`
 
-          - `SearchResultBlockParam = object { content, source, title, 3 more }`
+          - `SearchResultBlockParam object { content, source, title, 3 more }`
 
             - `content: array of TextBlockParam`
 
@@ -522,112 +344,11 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `type: "text"`
 
-                - `"text"`
-
               - `cache_control: optional CacheControlEphemeral`
 
                 Create a cache control breakpoint at this content block.
 
-                - `type: "ephemeral"`
-
-                  - `"ephemeral"`
-
-                - `ttl: optional "5m" or "1h"`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `"5m"`
-
-                  - `"1h"`
-
               - `citations: optional array of TextCitationParam`
-
-                - `CitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                  - `cited_text: string`
-
-                  - `document_index: number`
-
-                  - `document_title: string`
-
-                  - `end_char_index: number`
-
-                  - `start_char_index: number`
-
-                  - `type: "char_location"`
-
-                    - `"char_location"`
-
-                - `CitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                  - `cited_text: string`
-
-                  - `document_index: number`
-
-                  - `document_title: string`
-
-                  - `end_page_number: number`
-
-                  - `start_page_number: number`
-
-                  - `type: "page_location"`
-
-                    - `"page_location"`
-
-                - `CitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                  - `cited_text: string`
-
-                  - `document_index: number`
-
-                  - `document_title: string`
-
-                  - `end_block_index: number`
-
-                  - `start_block_index: number`
-
-                  - `type: "content_block_location"`
-
-                    - `"content_block_location"`
-
-                - `CitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                  - `cited_text: string`
-
-                  - `encrypted_index: string`
-
-                  - `title: string`
-
-                  - `type: "web_search_result_location"`
-
-                    - `"web_search_result_location"`
-
-                  - `url: string`
-
-                - `CitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                  - `cited_text: string`
-
-                  - `end_block_index: number`
-
-                  - `search_result_index: number`
-
-                  - `source: string`
-
-                  - `start_block_index: number`
-
-                  - `title: string`
-
-                  - `type: "search_result_location"`
-
-                    - `"search_result_location"`
 
             - `source: string`
 
@@ -641,30 +362,9 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               Create a cache control breakpoint at this content block.
 
-              - `type: "ephemeral"`
-
-                - `"ephemeral"`
-
-              - `ttl: optional "5m" or "1h"`
-
-                The time-to-live for the cache control breakpoint.
-
-                This may be one the following values:
-
-                - `5m`: 5 minutes
-                - `1h`: 1 hour
-
-                Defaults to `5m`.
-
-                - `"5m"`
-
-                - `"1h"`
-
             - `citations: optional CitationsConfigParam`
 
-              - `enabled: optional boolean`
-
-          - `ThinkingBlockParam = object { signature, thinking, type }`
+          - `ThinkingBlockParam object { signature, thinking, type }`
 
             - `signature: string`
 
@@ -674,7 +374,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"thinking"`
 
-          - `RedactedThinkingBlockParam = object { data, type }`
+          - `RedactedThinkingBlockParam object { data, type }`
 
             - `data: string`
 
@@ -682,7 +382,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"redacted_thinking"`
 
-          - `ToolUseBlockParam = object { id, input, name, 2 more }`
+          - `ToolUseBlockParam object { id, input, name, 3 more }`
 
             - `id: string`
 
@@ -698,26 +398,37 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               Create a cache control breakpoint at this content block.
 
-              - `type: "ephemeral"`
+            - `caller: optional DirectCaller or ServerToolCaller or ServerToolCaller20260120`
 
-                - `"ephemeral"`
+              Tool invocation directly from the model.
 
-              - `ttl: optional "5m" or "1h"`
+              - `DirectCaller object { type }`
 
-                The time-to-live for the cache control breakpoint.
+                Tool invocation directly from the model.
 
-                This may be one the following values:
+                - `type: "direct"`
 
-                - `5m`: 5 minutes
-                - `1h`: 1 hour
+                  - `"direct"`
 
-                Defaults to `5m`.
+              - `ServerToolCaller object { tool_id, type }`
 
-                - `"5m"`
+                Tool invocation generated by a server-side tool.
 
-                - `"1h"`
+                - `tool_id: string`
 
-          - `ToolResultBlockParam = object { tool_use_id, type, cache_control, 2 more }`
+                - `type: "code_execution_20250825"`
+
+                  - `"code_execution_20250825"`
+
+              - `ServerToolCaller20260120 object { tool_id, type }`
+
+                - `tool_id: string`
+
+                - `type: "code_execution_20260120"`
+
+                  - `"code_execution_20260120"`
+
+          - `ToolResultBlockParam object { tool_use_id, type, cache_control, 2 more }`
 
             - `tool_use_id: string`
 
@@ -729,615 +440,57 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               Create a cache control breakpoint at this content block.
 
-              - `type: "ephemeral"`
+            - `content: optional string or array of TextBlockParam or ImageBlockParam or SearchResultBlockParam or 2 more`
 
-                - `"ephemeral"`
+              - `string`
 
-              - `ttl: optional "5m" or "1h"`
+              - `array of TextBlockParam or ImageBlockParam or SearchResultBlockParam or 2 more`
 
-                The time-to-live for the cache control breakpoint.
+                - `TextBlockParam object { text, type, cache_control, citations }`
 
-                This may be one the following values:
+                - `ImageBlockParam object { source, type, cache_control }`
 
-                - `5m`: 5 minutes
-                - `1h`: 1 hour
+                - `SearchResultBlockParam object { content, source, title, 3 more }`
 
-                Defaults to `5m`.
+                - `DocumentBlockParam object { source, type, cache_control, 3 more }`
 
-                - `"5m"`
+                - `ToolReferenceBlockParam object { tool_name, type, cache_control }`
 
-                - `"1h"`
+                  Tool reference block that can be included in tool_result content.
 
-            - `content: optional string or array of TextBlockParam or ImageBlockParam or SearchResultBlockParam or DocumentBlockParam`
+                  - `tool_name: string`
 
-              - `UnionMember0 = string`
+                  - `type: "tool_reference"`
 
-              - `UnionMember1 = array of TextBlockParam or ImageBlockParam or SearchResultBlockParam or DocumentBlockParam`
-
-                - `TextBlockParam = object { text, type, cache_control, citations }`
-
-                  - `text: string`
-
-                  - `type: "text"`
-
-                    - `"text"`
+                    - `"tool_reference"`
 
                   - `cache_control: optional CacheControlEphemeral`
 
                     Create a cache control breakpoint at this content block.
-
-                    - `type: "ephemeral"`
-
-                      - `"ephemeral"`
-
-                    - `ttl: optional "5m" or "1h"`
-
-                      The time-to-live for the cache control breakpoint.
-
-                      This may be one the following values:
-
-                      - `5m`: 5 minutes
-                      - `1h`: 1 hour
-
-                      Defaults to `5m`.
-
-                      - `"5m"`
-
-                      - `"1h"`
-
-                  - `citations: optional array of TextCitationParam`
-
-                    - `CitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                      - `cited_text: string`
-
-                      - `document_index: number`
-
-                      - `document_title: string`
-
-                      - `end_char_index: number`
-
-                      - `start_char_index: number`
-
-                      - `type: "char_location"`
-
-                        - `"char_location"`
-
-                    - `CitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                      - `cited_text: string`
-
-                      - `document_index: number`
-
-                      - `document_title: string`
-
-                      - `end_page_number: number`
-
-                      - `start_page_number: number`
-
-                      - `type: "page_location"`
-
-                        - `"page_location"`
-
-                    - `CitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                      - `cited_text: string`
-
-                      - `document_index: number`
-
-                      - `document_title: string`
-
-                      - `end_block_index: number`
-
-                      - `start_block_index: number`
-
-                      - `type: "content_block_location"`
-
-                        - `"content_block_location"`
-
-                    - `CitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                      - `cited_text: string`
-
-                      - `encrypted_index: string`
-
-                      - `title: string`
-
-                      - `type: "web_search_result_location"`
-
-                        - `"web_search_result_location"`
-
-                      - `url: string`
-
-                    - `CitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                      - `cited_text: string`
-
-                      - `end_block_index: number`
-
-                      - `search_result_index: number`
-
-                      - `source: string`
-
-                      - `start_block_index: number`
-
-                      - `title: string`
-
-                      - `type: "search_result_location"`
-
-                        - `"search_result_location"`
-
-                - `ImageBlockParam = object { source, type, cache_control }`
-
-                  - `source: Base64ImageSource or URLImageSource`
-
-                    - `Base64ImageSource = object { data, media_type, type }`
-
-                      - `data: string`
-
-                      - `media_type: "image/jpeg" or "image/png" or "image/gif" or "image/webp"`
-
-                        - `"image/jpeg"`
-
-                        - `"image/png"`
-
-                        - `"image/gif"`
-
-                        - `"image/webp"`
-
-                      - `type: "base64"`
-
-                        - `"base64"`
-
-                    - `URLImageSource = object { type, url }`
-
-                      - `type: "url"`
-
-                        - `"url"`
-
-                      - `url: string`
-
-                  - `type: "image"`
-
-                    - `"image"`
-
-                  - `cache_control: optional CacheControlEphemeral`
-
-                    Create a cache control breakpoint at this content block.
-
-                    - `type: "ephemeral"`
-
-                      - `"ephemeral"`
-
-                    - `ttl: optional "5m" or "1h"`
-
-                      The time-to-live for the cache control breakpoint.
-
-                      This may be one the following values:
-
-                      - `5m`: 5 minutes
-                      - `1h`: 1 hour
-
-                      Defaults to `5m`.
-
-                      - `"5m"`
-
-                      - `"1h"`
-
-                - `SearchResultBlockParam = object { content, source, title, 3 more }`
-
-                  - `content: array of TextBlockParam`
-
-                    - `text: string`
-
-                    - `type: "text"`
-
-                      - `"text"`
-
-                    - `cache_control: optional CacheControlEphemeral`
-
-                      Create a cache control breakpoint at this content block.
-
-                      - `type: "ephemeral"`
-
-                        - `"ephemeral"`
-
-                      - `ttl: optional "5m" or "1h"`
-
-                        The time-to-live for the cache control breakpoint.
-
-                        This may be one the following values:
-
-                        - `5m`: 5 minutes
-                        - `1h`: 1 hour
-
-                        Defaults to `5m`.
-
-                        - `"5m"`
-
-                        - `"1h"`
-
-                    - `citations: optional array of TextCitationParam`
-
-                      - `CitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                        - `cited_text: string`
-
-                        - `document_index: number`
-
-                        - `document_title: string`
-
-                        - `end_char_index: number`
-
-                        - `start_char_index: number`
-
-                        - `type: "char_location"`
-
-                          - `"char_location"`
-
-                      - `CitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                        - `cited_text: string`
-
-                        - `document_index: number`
-
-                        - `document_title: string`
-
-                        - `end_page_number: number`
-
-                        - `start_page_number: number`
-
-                        - `type: "page_location"`
-
-                          - `"page_location"`
-
-                      - `CitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                        - `cited_text: string`
-
-                        - `document_index: number`
-
-                        - `document_title: string`
-
-                        - `end_block_index: number`
-
-                        - `start_block_index: number`
-
-                        - `type: "content_block_location"`
-
-                          - `"content_block_location"`
-
-                      - `CitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                        - `cited_text: string`
-
-                        - `encrypted_index: string`
-
-                        - `title: string`
-
-                        - `type: "web_search_result_location"`
-
-                          - `"web_search_result_location"`
-
-                        - `url: string`
-
-                      - `CitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                        - `cited_text: string`
-
-                        - `end_block_index: number`
-
-                        - `search_result_index: number`
-
-                        - `source: string`
-
-                        - `start_block_index: number`
-
-                        - `title: string`
-
-                        - `type: "search_result_location"`
-
-                          - `"search_result_location"`
-
-                  - `source: string`
-
-                  - `title: string`
-
-                  - `type: "search_result"`
-
-                    - `"search_result"`
-
-                  - `cache_control: optional CacheControlEphemeral`
-
-                    Create a cache control breakpoint at this content block.
-
-                    - `type: "ephemeral"`
-
-                      - `"ephemeral"`
-
-                    - `ttl: optional "5m" or "1h"`
-
-                      The time-to-live for the cache control breakpoint.
-
-                      This may be one the following values:
-
-                      - `5m`: 5 minutes
-                      - `1h`: 1 hour
-
-                      Defaults to `5m`.
-
-                      - `"5m"`
-
-                      - `"1h"`
-
-                  - `citations: optional CitationsConfigParam`
-
-                    - `enabled: optional boolean`
-
-                - `DocumentBlockParam = object { source, type, cache_control, 3 more }`
-
-                  - `source: Base64PDFSource or PlainTextSource or ContentBlockSource or URLPDFSource`
-
-                    - `Base64PDFSource = object { data, media_type, type }`
-
-                      - `data: string`
-
-                      - `media_type: "application/pdf"`
-
-                        - `"application/pdf"`
-
-                      - `type: "base64"`
-
-                        - `"base64"`
-
-                    - `PlainTextSource = object { data, media_type, type }`
-
-                      - `data: string`
-
-                      - `media_type: "text/plain"`
-
-                        - `"text/plain"`
-
-                      - `type: "text"`
-
-                        - `"text"`
-
-                    - `ContentBlockSource = object { content, type }`
-
-                      - `content: string or array of ContentBlockSourceContent`
-
-                        - `UnionMember0 = string`
-
-                        - `ContentBlockSourceContent = array of ContentBlockSourceContent`
-
-                          - `TextBlockParam = object { text, type, cache_control, citations }`
-
-                            - `text: string`
-
-                            - `type: "text"`
-
-                              - `"text"`
-
-                            - `cache_control: optional CacheControlEphemeral`
-
-                              Create a cache control breakpoint at this content block.
-
-                              - `type: "ephemeral"`
-
-                                - `"ephemeral"`
-
-                              - `ttl: optional "5m" or "1h"`
-
-                                The time-to-live for the cache control breakpoint.
-
-                                This may be one the following values:
-
-                                - `5m`: 5 minutes
-                                - `1h`: 1 hour
-
-                                Defaults to `5m`.
-
-                                - `"5m"`
-
-                                - `"1h"`
-
-                            - `citations: optional array of TextCitationParam`
-
-                              - `CitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                                - `cited_text: string`
-
-                                - `document_index: number`
-
-                                - `document_title: string`
-
-                                - `end_char_index: number`
-
-                                - `start_char_index: number`
-
-                                - `type: "char_location"`
-
-                                  - `"char_location"`
-
-                              - `CitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                                - `cited_text: string`
-
-                                - `document_index: number`
-
-                                - `document_title: string`
-
-                                - `end_page_number: number`
-
-                                - `start_page_number: number`
-
-                                - `type: "page_location"`
-
-                                  - `"page_location"`
-
-                              - `CitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                                - `cited_text: string`
-
-                                - `document_index: number`
-
-                                - `document_title: string`
-
-                                - `end_block_index: number`
-
-                                - `start_block_index: number`
-
-                                - `type: "content_block_location"`
-
-                                  - `"content_block_location"`
-
-                              - `CitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                                - `cited_text: string`
-
-                                - `encrypted_index: string`
-
-                                - `title: string`
-
-                                - `type: "web_search_result_location"`
-
-                                  - `"web_search_result_location"`
-
-                                - `url: string`
-
-                              - `CitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                                - `cited_text: string`
-
-                                - `end_block_index: number`
-
-                                - `search_result_index: number`
-
-                                - `source: string`
-
-                                - `start_block_index: number`
-
-                                - `title: string`
-
-                                - `type: "search_result_location"`
-
-                                  - `"search_result_location"`
-
-                          - `ImageBlockParam = object { source, type, cache_control }`
-
-                            - `source: Base64ImageSource or URLImageSource`
-
-                              - `Base64ImageSource = object { data, media_type, type }`
-
-                                - `data: string`
-
-                                - `media_type: "image/jpeg" or "image/png" or "image/gif" or "image/webp"`
-
-                                  - `"image/jpeg"`
-
-                                  - `"image/png"`
-
-                                  - `"image/gif"`
-
-                                  - `"image/webp"`
-
-                                - `type: "base64"`
-
-                                  - `"base64"`
-
-                              - `URLImageSource = object { type, url }`
-
-                                - `type: "url"`
-
-                                  - `"url"`
-
-                                - `url: string`
-
-                            - `type: "image"`
-
-                              - `"image"`
-
-                            - `cache_control: optional CacheControlEphemeral`
-
-                              Create a cache control breakpoint at this content block.
-
-                              - `type: "ephemeral"`
-
-                                - `"ephemeral"`
-
-                              - `ttl: optional "5m" or "1h"`
-
-                                The time-to-live for the cache control breakpoint.
-
-                                This may be one the following values:
-
-                                - `5m`: 5 minutes
-                                - `1h`: 1 hour
-
-                                Defaults to `5m`.
-
-                                - `"5m"`
-
-                                - `"1h"`
-
-                      - `type: "content"`
-
-                        - `"content"`
-
-                    - `URLPDFSource = object { type, url }`
-
-                      - `type: "url"`
-
-                        - `"url"`
-
-                      - `url: string`
-
-                  - `type: "document"`
-
-                    - `"document"`
-
-                  - `cache_control: optional CacheControlEphemeral`
-
-                    Create a cache control breakpoint at this content block.
-
-                    - `type: "ephemeral"`
-
-                      - `"ephemeral"`
-
-                    - `ttl: optional "5m" or "1h"`
-
-                      The time-to-live for the cache control breakpoint.
-
-                      This may be one the following values:
-
-                      - `5m`: 5 minutes
-                      - `1h`: 1 hour
-
-                      Defaults to `5m`.
-
-                      - `"5m"`
-
-                      - `"1h"`
-
-                  - `citations: optional CitationsConfigParam`
-
-                    - `enabled: optional boolean`
-
-                  - `context: optional string`
-
-                  - `title: optional string`
 
             - `is_error: optional boolean`
 
-          - `ServerToolUseBlockParam = object { id, input, name, 2 more }`
+          - `ServerToolUseBlockParam object { id, input, name, 3 more }`
 
             - `id: string`
 
             - `input: map[unknown]`
 
-            - `name: "web_search"`
+            - `name: "web_search" or "web_fetch" or "code_execution" or 4 more`
 
               - `"web_search"`
+
+              - `"web_fetch"`
+
+              - `"code_execution"`
+
+              - `"bash_code_execution"`
+
+              - `"text_editor_code_execution"`
+
+              - `"tool_search_tool_regex"`
+
+              - `"tool_search_tool_bm25"`
 
             - `type: "server_tool_use"`
 
@@ -1347,26 +500,21 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               Create a cache control breakpoint at this content block.
 
-              - `type: "ephemeral"`
+            - `caller: optional DirectCaller or ServerToolCaller or ServerToolCaller20260120`
 
-                - `"ephemeral"`
+              Tool invocation directly from the model.
 
-              - `ttl: optional "5m" or "1h"`
+              - `DirectCaller object { type }`
 
-                The time-to-live for the cache control breakpoint.
+                Tool invocation directly from the model.
 
-                This may be one the following values:
+              - `ServerToolCaller object { tool_id, type }`
 
-                - `5m`: 5 minutes
-                - `1h`: 1 hour
+                Tool invocation generated by a server-side tool.
 
-                Defaults to `5m`.
+              - `ServerToolCaller20260120 object { tool_id, type }`
 
-                - `"5m"`
-
-                - `"1h"`
-
-          - `WebSearchToolResultBlockParam = object { content, tool_use_id, type, cache_control }`
+          - `WebSearchToolResultBlockParam object { content, tool_use_id, type, 2 more }`
 
             - `content: WebSearchToolResultBlockParamContent`
 
@@ -1384,9 +532,9 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `page_age: optional string`
 
-              - `WebSearchToolRequestError = object { error_code, type }`
+              - `WebSearchToolRequestError object { error_code, type }`
 
-                - `error_code: "invalid_tool_input" or "unavailable" or "max_uses_exceeded" or 2 more`
+                - `error_code: WebSearchToolResultErrorCode`
 
                   - `"invalid_tool_input"`
 
@@ -1397,6 +545,8 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
                   - `"too_many_requests"`
 
                   - `"query_too_long"`
+
+                  - `"request_too_large"`
 
                 - `type: "web_search_tool_result_error"`
 
@@ -1412,30 +562,393 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               Create a cache control breakpoint at this content block.
 
-              - `type: "ephemeral"`
+            - `caller: optional DirectCaller or ServerToolCaller or ServerToolCaller20260120`
 
-                - `"ephemeral"`
+              Tool invocation directly from the model.
 
-              - `ttl: optional "5m" or "1h"`
+              - `DirectCaller object { type }`
 
-                The time-to-live for the cache control breakpoint.
+                Tool invocation directly from the model.
 
-                This may be one the following values:
+              - `ServerToolCaller object { tool_id, type }`
 
-                - `5m`: 5 minutes
-                - `1h`: 1 hour
+                Tool invocation generated by a server-side tool.
 
-                Defaults to `5m`.
+              - `ServerToolCaller20260120 object { tool_id, type }`
 
-                - `"5m"`
+          - `WebFetchToolResultBlockParam object { content, tool_use_id, type, 2 more }`
 
-                - `"1h"`
+            - `content: WebFetchToolResultErrorBlockParam or WebFetchBlockParam`
 
-      - `role: "user" or "assistant"`
+              - `WebFetchToolResultErrorBlockParam object { error_code, type }`
+
+                - `error_code: WebFetchToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"url_too_long"`
+
+                  - `"url_not_allowed"`
+
+                  - `"url_not_in_prior_context"`
+
+                  - `"url_not_accessible"`
+
+                  - `"unsupported_content_type"`
+
+                  - `"too_many_requests"`
+
+                  - `"max_uses_exceeded"`
+
+                  - `"unavailable"`
+
+                - `type: "web_fetch_tool_result_error"`
+
+                  - `"web_fetch_tool_result_error"`
+
+              - `WebFetchBlockParam object { content, type, url, retrieved_at }`
+
+                - `content: DocumentBlockParam`
+
+                - `type: "web_fetch_result"`
+
+                  - `"web_fetch_result"`
+
+                - `url: string`
+
+                  Fetched content URL
+
+                - `retrieved_at: optional string`
+
+                  ISO 8601 timestamp when the content was retrieved
+
+            - `tool_use_id: string`
+
+            - `type: "web_fetch_tool_result"`
+
+              - `"web_fetch_tool_result"`
+
+            - `cache_control: optional CacheControlEphemeral`
+
+              Create a cache control breakpoint at this content block.
+
+            - `caller: optional DirectCaller or ServerToolCaller or ServerToolCaller20260120`
+
+              Tool invocation directly from the model.
+
+              - `DirectCaller object { type }`
+
+                Tool invocation directly from the model.
+
+              - `ServerToolCaller object { tool_id, type }`
+
+                Tool invocation generated by a server-side tool.
+
+              - `ServerToolCaller20260120 object { tool_id, type }`
+
+          - `CodeExecutionToolResultBlockParam object { content, tool_use_id, type, cache_control }`
+
+            - `content: CodeExecutionToolResultBlockParamContent`
+
+              Code execution result with encrypted stdout for PFC + web_search results.
+
+              - `CodeExecutionToolResultErrorParam object { error_code, type }`
+
+                - `error_code: CodeExecutionToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"unavailable"`
+
+                  - `"too_many_requests"`
+
+                  - `"execution_time_exceeded"`
+
+                - `type: "code_execution_tool_result_error"`
+
+                  - `"code_execution_tool_result_error"`
+
+              - `CodeExecutionResultBlockParam object { content, return_code, stderr, 2 more }`
+
+                - `content: array of CodeExecutionOutputBlockParam`
+
+                  - `file_id: string`
+
+                  - `type: "code_execution_output"`
+
+                    - `"code_execution_output"`
+
+                - `return_code: number`
+
+                - `stderr: string`
+
+                - `stdout: string`
+
+                - `type: "code_execution_result"`
+
+                  - `"code_execution_result"`
+
+              - `EncryptedCodeExecutionResultBlockParam object { content, encrypted_stdout, return_code, 2 more }`
+
+                Code execution result with encrypted stdout for PFC + web_search results.
+
+                - `content: array of CodeExecutionOutputBlockParam`
+
+                  - `file_id: string`
+
+                  - `type: "code_execution_output"`
+
+                - `encrypted_stdout: string`
+
+                - `return_code: number`
+
+                - `stderr: string`
+
+                - `type: "encrypted_code_execution_result"`
+
+                  - `"encrypted_code_execution_result"`
+
+            - `tool_use_id: string`
+
+            - `type: "code_execution_tool_result"`
+
+              - `"code_execution_tool_result"`
+
+            - `cache_control: optional CacheControlEphemeral`
+
+              Create a cache control breakpoint at this content block.
+
+          - `BashCodeExecutionToolResultBlockParam object { content, tool_use_id, type, cache_control }`
+
+            - `content: BashCodeExecutionToolResultErrorParam or BashCodeExecutionResultBlockParam`
+
+              - `BashCodeExecutionToolResultErrorParam object { error_code, type }`
+
+                - `error_code: BashCodeExecutionToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"unavailable"`
+
+                  - `"too_many_requests"`
+
+                  - `"execution_time_exceeded"`
+
+                  - `"output_file_too_large"`
+
+                - `type: "bash_code_execution_tool_result_error"`
+
+                  - `"bash_code_execution_tool_result_error"`
+
+              - `BashCodeExecutionResultBlockParam object { content, return_code, stderr, 2 more }`
+
+                - `content: array of BashCodeExecutionOutputBlockParam`
+
+                  - `file_id: string`
+
+                  - `type: "bash_code_execution_output"`
+
+                    - `"bash_code_execution_output"`
+
+                - `return_code: number`
+
+                - `stderr: string`
+
+                - `stdout: string`
+
+                - `type: "bash_code_execution_result"`
+
+                  - `"bash_code_execution_result"`
+
+            - `tool_use_id: string`
+
+            - `type: "bash_code_execution_tool_result"`
+
+              - `"bash_code_execution_tool_result"`
+
+            - `cache_control: optional CacheControlEphemeral`
+
+              Create a cache control breakpoint at this content block.
+
+          - `TextEditorCodeExecutionToolResultBlockParam object { content, tool_use_id, type, cache_control }`
+
+            - `content: TextEditorCodeExecutionToolResultErrorParam or TextEditorCodeExecutionViewResultBlockParam or TextEditorCodeExecutionCreateResultBlockParam or TextEditorCodeExecutionStrReplaceResultBlockParam`
+
+              - `TextEditorCodeExecutionToolResultErrorParam object { error_code, type, error_message }`
+
+                - `error_code: TextEditorCodeExecutionToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"unavailable"`
+
+                  - `"too_many_requests"`
+
+                  - `"execution_time_exceeded"`
+
+                  - `"file_not_found"`
+
+                - `type: "text_editor_code_execution_tool_result_error"`
+
+                  - `"text_editor_code_execution_tool_result_error"`
+
+                - `error_message: optional string`
+
+              - `TextEditorCodeExecutionViewResultBlockParam object { content, file_type, type, 3 more }`
+
+                - `content: string`
+
+                - `file_type: "text" or "image" or "pdf"`
+
+                  - `"text"`
+
+                  - `"image"`
+
+                  - `"pdf"`
+
+                - `type: "text_editor_code_execution_view_result"`
+
+                  - `"text_editor_code_execution_view_result"`
+
+                - `num_lines: optional number`
+
+                - `start_line: optional number`
+
+                - `total_lines: optional number`
+
+              - `TextEditorCodeExecutionCreateResultBlockParam object { is_file_update, type }`
+
+                - `is_file_update: boolean`
+
+                - `type: "text_editor_code_execution_create_result"`
+
+                  - `"text_editor_code_execution_create_result"`
+
+              - `TextEditorCodeExecutionStrReplaceResultBlockParam object { type, lines, new_lines, 3 more }`
+
+                - `type: "text_editor_code_execution_str_replace_result"`
+
+                  - `"text_editor_code_execution_str_replace_result"`
+
+                - `lines: optional array of string`
+
+                - `new_lines: optional number`
+
+                - `new_start: optional number`
+
+                - `old_lines: optional number`
+
+                - `old_start: optional number`
+
+            - `tool_use_id: string`
+
+            - `type: "text_editor_code_execution_tool_result"`
+
+              - `"text_editor_code_execution_tool_result"`
+
+            - `cache_control: optional CacheControlEphemeral`
+
+              Create a cache control breakpoint at this content block.
+
+          - `ToolSearchToolResultBlockParam object { content, tool_use_id, type, cache_control }`
+
+            - `content: ToolSearchToolResultErrorParam or ToolSearchToolSearchResultBlockParam`
+
+              - `ToolSearchToolResultErrorParam object { error_code, type, error_message }`
+
+                - `error_code: ToolSearchToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"unavailable"`
+
+                  - `"too_many_requests"`
+
+                  - `"execution_time_exceeded"`
+
+                - `type: "tool_search_tool_result_error"`
+
+                  - `"tool_search_tool_result_error"`
+
+                - `error_message: optional string`
+
+              - `ToolSearchToolSearchResultBlockParam object { tool_references, type }`
+
+                - `tool_references: array of ToolReferenceBlockParam`
+
+                  - `tool_name: string`
+
+                  - `type: "tool_reference"`
+
+                  - `cache_control: optional CacheControlEphemeral`
+
+                    Create a cache control breakpoint at this content block.
+
+                - `type: "tool_search_tool_search_result"`
+
+                  - `"tool_search_tool_search_result"`
+
+            - `tool_use_id: string`
+
+            - `type: "tool_search_tool_result"`
+
+              - `"tool_search_tool_result"`
+
+            - `cache_control: optional CacheControlEphemeral`
+
+              Create a cache control breakpoint at this content block.
+
+          - `ContainerUploadBlockParam object { file_id, type, cache_control }`
+
+            A content block that represents a file to be uploaded to the container
+            Files uploaded via this block will be available in the container's input directory.
+
+            - `file_id: string`
+
+            - `type: "container_upload"`
+
+              - `"container_upload"`
+
+            - `cache_control: optional CacheControlEphemeral`
+
+              Create a cache control breakpoint at this content block.
+
+          - `MidConversationSystemBlockParam object { content, type, cache_control }`
+
+            System instructions that appear mid-conversation.
+
+            Use this block to provide or update system-level instructions at a specific
+            point in the conversation, rather than only via the top-level `system` parameter.
+
+            - `content: array of TextBlockParam`
+
+              System instruction text blocks.
+
+              - `text: string`
+
+              - `type: "text"`
+
+              - `cache_control: optional CacheControlEphemeral`
+
+                Create a cache control breakpoint at this content block.
+
+              - `citations: optional array of TextCitationParam`
+
+            - `type: "mid_conv_system"`
+
+              - `"mid_conv_system"`
+
+            - `cache_control: optional CacheControlEphemeral`
+
+              Create a cache control breakpoint at this content block.
+
+      - `role: "user" or "assistant" or "system"`
 
         - `"user"`
 
         - `"assistant"`
+
+        - `"system"`
 
     - `model: Model`
 
@@ -1443,93 +956,105 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `UnionMember0 = "claude-opus-4-5-20251101" or "claude-opus-4-5" or "claude-3-7-sonnet-latest" or 17 more`
+      - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 17 more`
 
         The model that will complete your prompt.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-opus-4-5-20251101"`
+        - `"claude-fable-5"`
 
-          Premium model combining maximum intelligence with practical performance
+          Next generation of intelligence for the hardest knowledge work and coding problems
+
+        - `"claude-mythos-5"`
+
+          Most capable model for cybersecurity and biology research
+
+        - `"claude-opus-4-8"`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `"claude-opus-4-7"`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `"claude-mythos-preview"`
+
+          New class of intelligence, strongest in coding and cybersecurity
+
+        - `"claude-opus-4-6"`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `"claude-sonnet-4-6"`
+
+          Best combination of speed and intelligence
+
+        - `"claude-haiku-4-5"`
+
+          Fastest model with near-frontier intelligence
+
+        - `"claude-haiku-4-5-20251001"`
+
+          Fastest model with near-frontier intelligence
 
         - `"claude-opus-4-5"`
 
           Premium model combining maximum intelligence with practical performance
 
-        - `"claude-3-7-sonnet-latest"`
+        - `"claude-opus-4-5-20251101"`
 
-          High-performance model with early extended thinking
+          Premium model combining maximum intelligence with practical performance
 
-        - `"claude-3-7-sonnet-20250219"`
+        - `"claude-sonnet-4-5"`
 
-          High-performance model with early extended thinking
+          High-performance model for agents and coding
 
-        - `"claude-3-5-haiku-latest"`
+        - `"claude-sonnet-4-5-20250929"`
 
-          Fastest and most compact model for near-instant responsiveness
+          High-performance model for agents and coding
 
-        - `"claude-3-5-haiku-20241022"`
+        - `"claude-opus-4-1"`
 
-          Our fastest model
+          Exceptional model for specialized complex tasks
 
-        - `"claude-haiku-4-5"`
+        - `"claude-opus-4-1-20250805"`
 
-          Hybrid model, capable of near-instant responses and extended thinking
+          Exceptional model for specialized complex tasks
 
-        - `"claude-haiku-4-5-20251001"`
+        - `"claude-opus-4-0"`
 
-          Hybrid model, capable of near-instant responses and extended thinking
+          Powerful model for complex tasks
 
-        - `"claude-sonnet-4-20250514"`
+        - `"claude-opus-4-20250514"`
 
-          High-performance model with extended thinking
+          Powerful model for complex tasks
 
         - `"claude-sonnet-4-0"`
 
           High-performance model with extended thinking
 
-        - `"claude-4-sonnet-20250514"`
+        - `"claude-sonnet-4-20250514"`
 
           High-performance model with extended thinking
 
-        - `"claude-sonnet-4-5"`
-
-          Our best model for real-world agents and coding
-
-        - `"claude-sonnet-4-5-20250929"`
-
-          Our best model for real-world agents and coding
-
-        - `"claude-opus-4-0"`
-
-          Our most capable model
-
-        - `"claude-opus-4-20250514"`
-
-          Our most capable model
-
-        - `"claude-4-opus-20250514"`
-
-          Our most capable model
-
-        - `"claude-opus-4-1-20250805"`
-
-          Our most capable model
-
-        - `"claude-3-opus-latest"`
-
-          Excels at writing and complex tasks
-
-        - `"claude-3-opus-20240229"`
-
-          Excels at writing and complex tasks
-
         - `"claude-3-haiku-20240307"`
 
-          Our previous most fast and cost-effective
+          Fast and cost-effective model
 
-      - `UnionMember1 = string`
+      - `string`
+
+    - `cache_control: optional CacheControlEphemeral`
+
+      Top-level cache control automatically applies a cache_control marker to the last cacheable block in the request.
+
+    - `container: optional string`
+
+      Container identifier for reuse across requests.
+
+    - `inference_geo: optional string`
+
+      Specifies the geographic region for inference processing. If not specified, the workspace's `default_inference_geo` is used.
 
     - `metadata: optional Metadata`
 
@@ -1540,6 +1065,36 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
         An external identifier for the user who is associated with the request.
 
         This should be a uuid, hash value, or other opaque identifier. Anthropic may use this id to help detect abuse. Do not include any identifying information such as name, email address, or phone number.
+
+    - `output_config: optional OutputConfig`
+
+      Configuration options for the model's output, such as the output format.
+
+      - `effort: optional "low" or "medium" or "high" or 2 more`
+
+        All possible effort levels.
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+        - `"xhigh"`
+
+        - `"max"`
+
+      - `format: optional JSONOutputFormat`
+
+        A schema to specify Claude's output format in responses. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
+
+        - `schema: map[unknown]`
+
+          The JSON schema of the format
+
+        - `type: "json_schema"`
+
+          - `"json_schema"`
 
     - `service_tier: optional "auto" or "standard_only"`
 
@@ -1571,120 +1126,19 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
       A system prompt is a way of providing context and instructions to Claude, such as specifying a particular goal or role. See our [guide to system prompts](https://docs.claude.com/en/docs/system-prompts).
 
-      - `UnionMember0 = string`
+      - `string`
 
-      - `UnionMember1 = array of TextBlockParam`
+      - `array of TextBlockParam`
 
         - `text: string`
 
         - `type: "text"`
 
-          - `"text"`
-
         - `cache_control: optional CacheControlEphemeral`
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
         - `citations: optional array of TextCitationParam`
-
-          - `CitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-            - `cited_text: string`
-
-            - `document_index: number`
-
-            - `document_title: string`
-
-            - `end_char_index: number`
-
-            - `start_char_index: number`
-
-            - `type: "char_location"`
-
-              - `"char_location"`
-
-          - `CitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-            - `cited_text: string`
-
-            - `document_index: number`
-
-            - `document_title: string`
-
-            - `end_page_number: number`
-
-            - `start_page_number: number`
-
-            - `type: "page_location"`
-
-              - `"page_location"`
-
-          - `CitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-            - `cited_text: string`
-
-            - `document_index: number`
-
-            - `document_title: string`
-
-            - `end_block_index: number`
-
-            - `start_block_index: number`
-
-            - `type: "content_block_location"`
-
-              - `"content_block_location"`
-
-          - `CitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-            - `cited_text: string`
-
-            - `encrypted_index: string`
-
-            - `title: string`
-
-            - `type: "web_search_result_location"`
-
-              - `"web_search_result_location"`
-
-            - `url: string`
-
-          - `CitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-            - `cited_text: string`
-
-            - `end_block_index: number`
-
-            - `search_result_index: number`
-
-            - `source: string`
-
-            - `start_block_index: number`
-
-            - `title: string`
-
-            - `type: "search_result_location"`
-
-              - `"search_result_location"`
 
     - `temperature: optional number`
 
@@ -1702,7 +1156,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
       See [extended thinking](https://docs.claude.com/en/docs/build-with-claude/extended-thinking) for details.
 
-      - `ThinkingConfigEnabled = object { budget_tokens, type }`
+      - `ThinkingConfigEnabled object { budget_tokens, type, display }`
 
         - `budget_tokens: number`
 
@@ -1716,17 +1170,39 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `"enabled"`
 
-      - `ThinkingConfigDisabled = object { type }`
+        - `display: optional "summarized" or "omitted"`
+
+          Controls how thinking content appears in the response. When set to `summarized`, thinking is returned normally. When set to `omitted`, thinking content is redacted but a signature is returned for multi-turn continuity. Defaults to `summarized`.
+
+          - `"summarized"`
+
+          - `"omitted"`
+
+      - `ThinkingConfigDisabled object { type }`
 
         - `type: "disabled"`
 
           - `"disabled"`
 
+      - `ThinkingConfigAdaptive object { type, display }`
+
+        - `type: "adaptive"`
+
+          - `"adaptive"`
+
+        - `display: optional "summarized" or "omitted"`
+
+          Controls how thinking content appears in the response. When set to `summarized`, thinking is returned normally. When set to `omitted`, thinking content is redacted but a signature is returned for multi-turn continuity. Defaults to `summarized`.
+
+          - `"summarized"`
+
+          - `"omitted"`
+
     - `tool_choice: optional ToolChoice`
 
       How the model should use the provided tools. The model can use a specific tool, any available tool, decide by itself, or not use tools at all.
 
-      - `ToolChoiceAuto = object { type, disable_parallel_tool_use }`
+      - `ToolChoiceAuto object { type, disable_parallel_tool_use }`
 
         The model will automatically decide whether to use tools.
 
@@ -1740,7 +1216,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           Defaults to `false`. If set to `true`, the model will output at most one tool use.
 
-      - `ToolChoiceAny = object { type, disable_parallel_tool_use }`
+      - `ToolChoiceAny object { type, disable_parallel_tool_use }`
 
         The model will use any available tools.
 
@@ -1754,7 +1230,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           Defaults to `false`. If set to `true`, the model will output exactly one tool use.
 
-      - `ToolChoiceTool = object { name, type, disable_parallel_tool_use }`
+      - `ToolChoiceTool object { name, type, disable_parallel_tool_use }`
 
         The model will use the specified tool with `tool_choice.name`.
 
@@ -1772,7 +1248,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           Defaults to `false`. If set to `true`, the model will output exactly one tool use.
 
-      - `ToolChoiceNone = object { type }`
+      - `ToolChoiceNone object { type }`
 
         The model will not be allowed to use tools.
 
@@ -1844,7 +1320,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
       See our [guide](https://docs.claude.com/en/docs/tool-use) for more details.
 
-      - `Tool = object { input_schema, name, cache_control, 2 more }`
+      - `Tool object { input_schema, name, allowed_callers, 7 more }`
 
         - `input_schema: object { type, properties, required }`
 
@@ -1866,28 +1342,21 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           This is how the tool will be called by the model and in `tool_use` blocks.
 
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
         - `cache_control: optional CacheControlEphemeral`
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
+        - `defer_loading: optional boolean`
 
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
         - `description: optional string`
 
@@ -1895,11 +1364,21 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           Tool descriptions should be as detailed as possible. The more information that the model has about what the tool is and how to use it, the better it will perform. You can use natural language descriptions to reinforce important aspects of the tool input JSON schema.
 
+        - `eager_input_streaming: optional boolean`
+
+          Enable eager input streaming for this tool. When true, tool input parameters will be streamed incrementally as they are generated, and types will be inferred on-the-fly rather than buffering the full JSON output. When false, streaming is disabled for this tool even if the fine-grained-tool-streaming beta is active. When null (default), uses the default behavior based on beta headers.
+
+        - `input_examples: optional array of map[unknown]`
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
         - `type: optional "custom"`
 
           - `"custom"`
 
-      - `ToolBash20250124 = object { name, type, cache_control }`
+      - `ToolBash20250124 object { name, type, allowed_callers, 4 more }`
 
         - `name: "bash"`
 
@@ -1913,30 +1392,169 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `"bash_20250124"`
 
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
         - `cache_control: optional CacheControlEphemeral`
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
+        - `defer_loading: optional boolean`
 
-            - `"ephemeral"`
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-          - `ttl: optional "5m" or "1h"`
+        - `input_examples: optional array of map[unknown]`
 
-            The time-to-live for the cache control breakpoint.
+        - `strict: optional boolean`
 
-            This may be one the following values:
+          When true, guarantees schema validation on tool names and inputs
 
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
+      - `CodeExecutionTool20250522 object { name, type, allowed_callers, 3 more }`
 
-            Defaults to `5m`.
+        - `name: "code_execution"`
 
-            - `"5m"`
+          Name of the tool.
 
-            - `"1h"`
+          This is how the tool will be called by the model and in `tool_use` blocks.
 
-      - `ToolTextEditor20250124 = object { name, type, cache_control }`
+          - `"code_execution"`
+
+        - `type: "code_execution_20250522"`
+
+          - `"code_execution_20250522"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+      - `CodeExecutionTool20250825 object { name, type, allowed_callers, 3 more }`
+
+        - `name: "code_execution"`
+
+          Name of the tool.
+
+          This is how the tool will be called by the model and in `tool_use` blocks.
+
+          - `"code_execution"`
+
+        - `type: "code_execution_20250825"`
+
+          - `"code_execution_20250825"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+      - `CodeExecutionTool20260120 object { name, type, allowed_callers, 3 more }`
+
+        Code execution tool with REPL state persistence (daemon mode + gVisor checkpoint).
+
+        - `name: "code_execution"`
+
+          Name of the tool.
+
+          This is how the tool will be called by the model and in `tool_use` blocks.
+
+          - `"code_execution"`
+
+        - `type: "code_execution_20260120"`
+
+          - `"code_execution_20260120"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+      - `MemoryTool20250818 object { name, type, allowed_callers, 4 more }`
+
+        - `name: "memory"`
+
+          Name of the tool.
+
+          This is how the tool will be called by the model and in `tool_use` blocks.
+
+          - `"memory"`
+
+        - `type: "memory_20250818"`
+
+          - `"memory_20250818"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `input_examples: optional array of map[unknown]`
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+      - `ToolTextEditor20250124 object { name, type, allowed_callers, 4 more }`
 
         - `name: "str_replace_editor"`
 
@@ -1950,30 +1568,29 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `"text_editor_20250124"`
 
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
         - `cache_control: optional CacheControlEphemeral`
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
+        - `defer_loading: optional boolean`
 
-            - `"ephemeral"`
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-          - `ttl: optional "5m" or "1h"`
+        - `input_examples: optional array of map[unknown]`
 
-            The time-to-live for the cache control breakpoint.
+        - `strict: optional boolean`
 
-            This may be one the following values:
+          When true, guarantees schema validation on tool names and inputs
 
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-      - `ToolTextEditor20250429 = object { name, type, cache_control }`
+      - `ToolTextEditor20250429 object { name, type, allowed_callers, 4 more }`
 
         - `name: "str_replace_based_edit_tool"`
 
@@ -1987,30 +1604,29 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `"text_editor_20250429"`
 
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
         - `cache_control: optional CacheControlEphemeral`
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
+        - `defer_loading: optional boolean`
 
-            - `"ephemeral"`
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-          - `ttl: optional "5m" or "1h"`
+        - `input_examples: optional array of map[unknown]`
 
-            The time-to-live for the cache control breakpoint.
+        - `strict: optional boolean`
 
-            This may be one the following values:
+          When true, guarantees schema validation on tool names and inputs
 
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-      - `ToolTextEditor20250728 = object { name, type, cache_control, max_characters }`
+      - `ToolTextEditor20250728 object { name, type, allowed_callers, 5 more }`
 
         - `name: "str_replace_based_edit_tool"`
 
@@ -2024,34 +1640,33 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `"text_editor_20250728"`
 
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
         - `cache_control: optional CacheControlEphemeral`
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
+        - `defer_loading: optional boolean`
 
-            - `"ephemeral"`
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
+        - `input_examples: optional array of map[unknown]`
 
         - `max_characters: optional number`
 
           Maximum number of characters to display when viewing a file. If not specified, defaults to displaying the full file.
 
-      - `WebSearchTool20250305 = object { name, type, allowed_domains, 4 more }`
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+      - `WebSearchTool20250305 object { name, type, allowed_callers, 7 more }`
 
         - `name: "web_search"`
 
@@ -2065,6 +1680,14 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `"web_search_20250305"`
 
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
         - `allowed_domains: optional array of string`
 
           If provided, only these domains will be included in results. Cannot be used alongside `blocked_domains`.
@@ -2077,30 +1700,19 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
+        - `defer_loading: optional boolean`
 
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
         - `max_uses: optional number`
 
           Maximum number of times the tool can be used in the API request.
 
-        - `user_location: optional object { type, city, country, 2 more }`
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+        - `user_location: optional UserLocation`
 
           Parameters for the user's location. Used to provide more relevant search results.
 
@@ -2124,25 +1736,315 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             The [IANA timezone](https://nodatime.org/TimeZones) of the user.
 
+      - `WebFetchTool20250910 object { name, type, allowed_callers, 8 more }`
+
+        - `name: "web_fetch"`
+
+          Name of the tool.
+
+          This is how the tool will be called by the model and in `tool_use` blocks.
+
+          - `"web_fetch"`
+
+        - `type: "web_fetch_20250910"`
+
+          - `"web_fetch_20250910"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `allowed_domains: optional array of string`
+
+          List of domains to allow fetching from
+
+        - `blocked_domains: optional array of string`
+
+          List of domains to block fetching from
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `citations: optional CitationsConfigParam`
+
+          Citations configuration for fetched documents. Citations are disabled by default.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `max_content_tokens: optional number`
+
+          Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+        - `max_uses: optional number`
+
+          Maximum number of times the tool can be used in the API request.
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+      - `WebSearchTool20260209 object { name, type, allowed_callers, 7 more }`
+
+        - `name: "web_search"`
+
+          Name of the tool.
+
+          This is how the tool will be called by the model and in `tool_use` blocks.
+
+          - `"web_search"`
+
+        - `type: "web_search_20260209"`
+
+          - `"web_search_20260209"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `allowed_domains: optional array of string`
+
+          If provided, only these domains will be included in results. Cannot be used alongside `blocked_domains`.
+
+        - `blocked_domains: optional array of string`
+
+          If provided, these domains will never appear in results. Cannot be used alongside `allowed_domains`.
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `max_uses: optional number`
+
+          Maximum number of times the tool can be used in the API request.
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+        - `user_location: optional UserLocation`
+
+          Parameters for the user's location. Used to provide more relevant search results.
+
+      - `WebFetchTool20260209 object { name, type, allowed_callers, 8 more }`
+
+        - `name: "web_fetch"`
+
+          Name of the tool.
+
+          This is how the tool will be called by the model and in `tool_use` blocks.
+
+          - `"web_fetch"`
+
+        - `type: "web_fetch_20260209"`
+
+          - `"web_fetch_20260209"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `allowed_domains: optional array of string`
+
+          List of domains to allow fetching from
+
+        - `blocked_domains: optional array of string`
+
+          List of domains to block fetching from
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `citations: optional CitationsConfigParam`
+
+          Citations configuration for fetched documents. Citations are disabled by default.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `max_content_tokens: optional number`
+
+          Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+        - `max_uses: optional number`
+
+          Maximum number of times the tool can be used in the API request.
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+      - `WebFetchTool20260309 object { name, type, allowed_callers, 9 more }`
+
+        Web fetch tool with use_cache parameter for bypassing cached content.
+
+        - `name: "web_fetch"`
+
+          Name of the tool.
+
+          This is how the tool will be called by the model and in `tool_use` blocks.
+
+          - `"web_fetch"`
+
+        - `type: "web_fetch_20260309"`
+
+          - `"web_fetch_20260309"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `allowed_domains: optional array of string`
+
+          List of domains to allow fetching from
+
+        - `blocked_domains: optional array of string`
+
+          List of domains to block fetching from
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `citations: optional CitationsConfigParam`
+
+          Citations configuration for fetched documents. Citations are disabled by default.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `max_content_tokens: optional number`
+
+          Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+        - `max_uses: optional number`
+
+          Maximum number of times the tool can be used in the API request.
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+        - `use_cache: optional boolean`
+
+          Whether to use cached content. Set to false to bypass the cache and fetch fresh content. Only set to false when the user explicitly requests fresh content or when fetching rapidly-changing sources.
+
+      - `ToolSearchToolBm25_20251119 object { name, type, allowed_callers, 3 more }`
+
+        - `name: "tool_search_tool_bm25"`
+
+          Name of the tool.
+
+          This is how the tool will be called by the model and in `tool_use` blocks.
+
+          - `"tool_search_tool_bm25"`
+
+        - `type: "tool_search_tool_bm25_20251119" or "tool_search_tool_bm25"`
+
+          - `"tool_search_tool_bm25_20251119"`
+
+          - `"tool_search_tool_bm25"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
+      - `ToolSearchToolRegex20251119 object { name, type, allowed_callers, 3 more }`
+
+        - `name: "tool_search_tool_regex"`
+
+          Name of the tool.
+
+          This is how the tool will be called by the model and in `tool_use` blocks.
+
+          - `"tool_search_tool_regex"`
+
+        - `type: "tool_search_tool_regex_20251119" or "tool_search_tool_regex"`
+
+          - `"tool_search_tool_regex_20251119"`
+
+          - `"tool_search_tool_regex"`
+
+        - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+          - `"direct"`
+
+          - `"code_execution_20250825"`
+
+          - `"code_execution_20260120"`
+
+        - `cache_control: optional CacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+        - `defer_loading: optional boolean`
+
+          If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+        - `strict: optional boolean`
+
+          When true, guarantees schema validation on tool names and inputs
+
     - `top_k: optional number`
 
       Only sample from the top K options for each subsequent token.
 
       Used to remove "long tail" low probability responses. [Learn more technical details here](https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277).
 
-      Recommended for advanced use cases only. You usually only need to use `temperature`.
+      Recommended for advanced use cases only.
 
     - `top_p: optional number`
 
       Use nucleus sampling.
 
-      In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`. You should either alter `temperature` or `top_p`, but not both.
+      In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`.
 
-      Recommended for advanced use cases only. You usually only need to use `temperature`.
+      Recommended for advanced use cases only.
 
 ### Returns
 
-- `MessageBatch = object { id, archived_at, cancel_initiated_at, 7 more }`
+- `MessageBatch object { id, archived_at, cancel_initiated_at, 7 more }`
 
   - `id: string`
 
@@ -2249,9 +2151,32 @@ curl https://api.anthropic.com/v1/messages/batches \
                     "role": "user"
                   }
                 ],
-                "model": "claude-sonnet-4-5-20250929"
+                "model": "claude-opus-4-6"
               }
             }
           ]
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+  "archived_at": "2024-08-20T18:37:24.100435Z",
+  "cancel_initiated_at": "2024-08-20T18:37:24.100435Z",
+  "created_at": "2024-08-20T18:37:24.100435Z",
+  "ended_at": "2024-08-20T18:37:24.100435Z",
+  "expires_at": "2024-08-20T18:37:24.100435Z",
+  "processing_status": "in_progress",
+  "request_counts": {
+    "canceled": 10,
+    "errored": 30,
+    "expired": 10,
+    "processing": 100,
+    "succeeded": 50
+  },
+  "results_url": "https://api.anthropic.com/v1/messages/batches/msgbatch_013Zva2CMHLNnXjNJJKqJ2EF/results",
+  "type": "message_batch"
+}
 ```

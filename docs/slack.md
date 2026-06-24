@@ -1,10 +1,18 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude Code in Slack
 
 > Delegate coding tasks directly from your Slack workspace
 
+<Note>
+  Claude Code in Slack is being replaced by [Claude Tag](https://claude.com/docs/claude-tag/overview) for Team and Enterprise workspaces. Claude Tag runs @Claude as your organization's shared identity with admin-configured access, under the same Slack app, so there is nothing to reinstall and existing setups continue to work during the transition. To switch a workspace, see [Migrate from the earlier Claude in Slack](https://claude.com/docs/claude-tag/admins/migrate-from-earlier).
+</Note>
+
 Claude Code in Slack brings the power of Claude Code directly into your Slack workspace. When you mention `@Claude` with a coding task, Claude automatically detects the intent and creates a Claude Code session on the web, allowing you to delegate development work without leaving your team conversations.
 
-This integration is built on the existing Claude for Slack app but adds intelligent routing to Claude Code on the web for coding-related requests.
+This integration is built on the existing Claude for Slack app but adds intelligent routing to Claude Code on the web for coding-related requests. Each session runs under your own Claude account, using your connected repositories and your plan limits.
 
 ## Use cases
 
@@ -17,12 +25,12 @@ This integration is built on the existing Claude for Slack app but adds intellig
 
 Before using Claude Code in Slack, ensure you have the following:
 
-| Requirement            | Details                                                                        |
-| :--------------------- | :----------------------------------------------------------------------------- |
-| Claude Plan            | Pro, Max, Team, or Enterprise with Claude Code access (premium seats)          |
-| Claude Code on the web | Access to [Claude Code on the web](/en/claude-code-on-the-web) must be enabled |
-| GitHub Account         | Connected to Claude Code on the web with at least one repository authenticated |
-| Slack Authentication   | Your Slack account linked to your Claude account via the Claude app            |
+| Requirement            | Details                                                                                           |
+| :--------------------- | :------------------------------------------------------------------------------------------------ |
+| Claude Plan            | Pro, Max, Team, or Enterprise with Claude Code access (premium seats or Chat + Claude Code seats) |
+| Claude Code on the web | Access to [Claude Code on the web](/en/claude-code-on-the-web) must be enabled                    |
+| GitHub Account         | Connected to Claude Code on the web with at least one repository authenticated                    |
+| Slack Authentication   | Your Slack account linked to your Claude account via the Claude app                               |
 
 ## Setting up Claude Code in Slack
 
@@ -59,6 +67,10 @@ Before using Claude Code in Slack, ensure you have the following:
     <Note>
       In Code + Chat mode, if Claude routes a message to Chat but you wanted a coding session, you can click "Retry as Code" to create a Claude Code session instead. Similarly, if it's routed to Code but you wanted a Chat session, you can choose that option in that thread.
     </Note>
+  </Step>
+
+  <Step title="Add Claude to channels">
+    Claude is not automatically added to any channels after installation. To use Claude in a channel, invite it by typing `/invite @Claude` in that channel. Claude can only respond to @mentions in channels where it has been added.
   </Step>
 </Steps>
 
@@ -123,15 +135,36 @@ Claude automatically selects a repository based on context from your Slack conve
 | Repository Access    | Users can only access repositories they've personally connected |
 | Session History      | Sessions appear in your Claude Code history on claude.ai/code   |
 
-### Workspace admin permissions
+### Workspace-level access
 
-Slack workspace administrators control whether the Claude app can be installed in the workspace. Individual users then authenticate with their own Claude accounts to use the integration.
+Slack workspace administrators control whether the Claude app is available in their workspace:
+
+| Control                      | Description                                                                                                       |
+| :--------------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| App installation             | Workspace admins decide whether to install the Claude app from the Slack App Marketplace                          |
+| Enterprise Grid distribution | For Enterprise Grid organizations, organization admins can control which workspaces have access to the Claude app |
+| App removal                  | Removing the app from a workspace immediately revokes access for all users in that workspace                      |
+
+### Channel-based access control
+
+Claude is not automatically added to any channels after installation. Users must explicitly invite Claude to channels where they want to use it:
+
+* **Invite required**: Type `/invite @Claude` in any channel to add Claude to that channel
+* **Channel membership controls access**: Claude can only respond to @mentions in channels where it has been added
+* **Access gating through channels**: Admins can control who uses Claude Code by managing which channels Claude is invited to and who has access to those channels
+* **Private channel support**: Claude works in both public and private channels, giving teams flexibility in controlling visibility
+
+This channel-based model allows teams to restrict Claude Code usage to specific channels, providing an additional layer of access control beyond workspace-level permissions.
 
 ## What's accessible where
 
 **In Slack**: You'll see status updates, completion summaries, and action buttons. The full transcript is preserved and always accessible.
 
 **On the web**: The complete Claude Code session with full conversation history, all code changes, file operations, and the ability to continue the session or create pull requests.
+
+For Enterprise and Team accounts, sessions created from Claude in Slack are
+automatically visible to the organization. See [Claude Code on the Web sharing](/en/claude-code-on-the-web#share-sessions)
+for more details.
 
 ## Best practices
 
@@ -149,6 +182,10 @@ Slack workspace administrators control whether the Claude app can be installed i
 **Use the web directly when**: You need to upload files, want real-time interaction during development, or are working on longer, more complex tasks.
 
 ## Troubleshooting
+
+### "Claude Code is not enabled for your account"
+
+This error means your Claude account has no cloud environment yet, not that an admin needs to enable anything. Sign in at [claude.ai/code](https://claude.ai/code) once with the same account you connected to Slack. The first visit creates your default cloud environment, and the error clears on your next mention. Each user must do this individually.
 
 ### Sessions not starting
 
@@ -196,6 +233,10 @@ Slack workspace administrators control whether the Claude app can be installed i
     General Claude for Slack documentation
   </Card>
 
+  <Card title="Claude Tag" icon="users" href="https://claude.com/docs/claude-tag/overview">
+    Organization-managed @Claude in Slack with admin-configured access
+  </Card>
+
   <Card title="Slack App Marketplace" icon="store" href="https://slack.com/marketplace/A08SF47R6P4">
     Install the Claude app from the Slack Marketplace
   </Card>
@@ -204,8 +245,3 @@ Slack workspace administrators control whether the Claude app can be installed i
     Get additional support
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

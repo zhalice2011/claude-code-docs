@@ -1,4 +1,4 @@
-## Delete
+## Remove User
 
 **delete** `/v1/organizations/users/{user_id}`
 
@@ -29,5 +29,15 @@ Remove User
 ```http
 curl https://api.anthropic.com/v1/organizations/users/$USER_ID \
     -X DELETE \
-    -H "X-Api-Key: $ANTHROPIC_ADMIN_API_KEY"
+    -H 'anthropic-version: 2023-06-01' \
+    -H "Authorization: Bearer $ANTHROPIC_OAUTH_TOKEN"
+```
+
+#### Response
+
+```json
+{
+  "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+  "type": "user_deleted"
+}
 ```

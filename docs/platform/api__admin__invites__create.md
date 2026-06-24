@@ -1,4 +1,4 @@
-## Create
+## Create Invite
 
 **post** `/v1/organizations/invites`
 
@@ -24,7 +24,7 @@ Create Invite
 
 ### Returns
 
-- `Invite = object { id, email, expires_at, 4 more }`
+- `Invite object { id, email, expires_at, 4 more }`
 
   - `id: string`
 
@@ -81,9 +81,24 @@ Create Invite
 ```http
 curl https://api.anthropic.com/v1/organizations/invites \
     -H 'Content-Type: application/json' \
-    -H "X-Api-Key: $ANTHROPIC_ADMIN_API_KEY" \
+    -H 'anthropic-version: 2023-06-01' \
+    -H "Authorization: Bearer $ANTHROPIC_OAUTH_TOKEN" \
     -d '{
           "email": "user@emaildomain.com",
           "role": "user"
         }'
+```
+
+#### Response
+
+```json
+{
+  "id": "invite_015gWxCN9Hfg2QhZwTK7Mdeu",
+  "email": "user@emaildomain.com",
+  "expires_at": "2024-11-20T23:58:27.427722Z",
+  "invited_at": "2024-10-30T23:58:27.427722Z",
+  "role": "user",
+  "status": "pending",
+  "type": "invite"
+}
 ```

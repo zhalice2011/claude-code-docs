@@ -1,4 +1,4 @@
-## Retrieve
+## Get a Model
 
 `client.Models.Get(ctx, modelID, query) (*ModelInfo, error)`
 
@@ -62,6 +62,24 @@ The Models API response can be used to determine information about a specific mo
 
       - `const AnthropicBetaSkills2025_10_02 AnthropicBeta = "skills-2025-10-02"`
 
+      - `const AnthropicBetaFastMode2026_02_01 AnthropicBeta = "fast-mode-2026-02-01"`
+
+      - `const AnthropicBetaOutput300k2026_03_24 AnthropicBeta = "output-300k-2026-03-24"`
+
+      - `const AnthropicBetaUserProfiles2026_03_24 AnthropicBeta = "user-profiles-2026-03-24"`
+
+      - `const AnthropicBetaAdvisorTool2026_03_01 AnthropicBeta = "advisor-tool-2026-03-01"`
+
+      - `const AnthropicBetaManagedAgents2026_04_01 AnthropicBeta = "managed-agents-2026-04-01"`
+
+      - `const AnthropicBetaCacheDiagnosis2026_04_07 AnthropicBeta = "cache-diagnosis-2026-04-07"`
+
+      - `const AnthropicBetaThinkingTokenCount2026_05_13 AnthropicBeta = "thinking-token-count-2026-05-13"`
+
+      - `const AnthropicBetaServerSideFallback2026_06_01 AnthropicBeta = "server-side-fallback-2026-06-01"`
+
+      - `const AnthropicBetaFallbackCredit2026_06_01 AnthropicBeta = "fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `type ModelInfo struct{…}`
@@ -70,6 +88,106 @@ The Models API response can be used to determine information about a specific mo
 
     Unique model identifier.
 
+  - `Capabilities ModelCapabilities`
+
+    Model capability information.
+
+    - `Batch CapabilitySupport`
+
+      Whether the model supports the Batch API.
+
+      - `Supported bool`
+
+        Whether this capability is supported by the model.
+
+    - `Citations CapabilitySupport`
+
+      Whether the model supports citation generation.
+
+    - `CodeExecution CapabilitySupport`
+
+      Whether the model supports code execution tools.
+
+    - `ContextManagement ContextManagementCapability`
+
+      Context management support and available strategies.
+
+      - `ClearThinking20251015 CapabilitySupport`
+
+        Indicates whether a capability is supported.
+
+      - `ClearToolUses20250919 CapabilitySupport`
+
+        Indicates whether a capability is supported.
+
+      - `Compact20260112 CapabilitySupport`
+
+        Indicates whether a capability is supported.
+
+      - `Supported bool`
+
+        Whether this capability is supported by the model.
+
+    - `Effort EffortCapability`
+
+      Effort (reasoning_effort) support and available levels.
+
+      - `High CapabilitySupport`
+
+        Whether the model supports high effort level.
+
+      - `Low CapabilitySupport`
+
+        Whether the model supports low effort level.
+
+      - `Max CapabilitySupport`
+
+        Whether the model supports max effort level.
+
+      - `Medium CapabilitySupport`
+
+        Whether the model supports medium effort level.
+
+      - `Supported bool`
+
+        Whether this capability is supported by the model.
+
+      - `Xhigh CapabilitySupport`
+
+        Indicates whether a capability is supported.
+
+    - `ImageInput CapabilitySupport`
+
+      Whether the model accepts image content blocks.
+
+    - `PDFInput CapabilitySupport`
+
+      Whether the model accepts PDF content blocks.
+
+    - `StructuredOutputs CapabilitySupport`
+
+      Whether the model supports structured output / JSON mode / strict tool schemas.
+
+    - `Thinking ThinkingCapability`
+
+      Thinking capability and supported type configurations.
+
+      - `Supported bool`
+
+        Whether this capability is supported by the model.
+
+      - `Types ThinkingTypes`
+
+        Supported thinking type configurations.
+
+        - `Adaptive CapabilitySupport`
+
+          Whether the model supports thinking with type 'adaptive' (auto).
+
+        - `Enabled CapabilitySupport`
+
+          Whether the model supports thinking with type 'enabled'.
+
   - `CreatedAt Time`
 
     RFC 3339 datetime string representing the time at which the model was released. May be set to an epoch value if the release date is unknown.
@@ -77,6 +195,14 @@ The Models API response can be used to determine information about a specific mo
   - `DisplayName string`
 
     A human-readable name for the model.
+
+  - `MaxInputTokens int64`
+
+    Maximum input context window size in tokens for this model.
+
+  - `MaxTokens int64`
+
+    Maximum value for the `max_tokens` parameter when using this model.
 
   - `Type Model`
 
@@ -114,5 +240,79 @@ func main() {
     panic(err.Error())
   }
   fmt.Printf("%+v\n", modelInfo.ID)
+}
+```
+
+#### Response
+
+```json
+{
+  "id": "claude-opus-4-6",
+  "capabilities": {
+    "batch": {
+      "supported": true
+    },
+    "citations": {
+      "supported": true
+    },
+    "code_execution": {
+      "supported": true
+    },
+    "context_management": {
+      "clear_thinking_20251015": {
+        "supported": true
+      },
+      "clear_tool_uses_20250919": {
+        "supported": true
+      },
+      "compact_20260112": {
+        "supported": true
+      },
+      "supported": true
+    },
+    "effort": {
+      "high": {
+        "supported": true
+      },
+      "low": {
+        "supported": true
+      },
+      "max": {
+        "supported": true
+      },
+      "medium": {
+        "supported": true
+      },
+      "supported": true,
+      "xhigh": {
+        "supported": true
+      }
+    },
+    "image_input": {
+      "supported": true
+    },
+    "pdf_input": {
+      "supported": true
+    },
+    "structured_outputs": {
+      "supported": true
+    },
+    "thinking": {
+      "supported": true,
+      "types": {
+        "adaptive": {
+          "supported": true
+        },
+        "enabled": {
+          "supported": true
+        }
+      }
+    }
+  },
+  "created_at": "2026-02-04T00:00:00Z",
+  "display_name": "Claude Opus 4.6",
+  "max_input_tokens": 0,
+  "max_tokens": 0,
+  "type": "model"
 }
 ```

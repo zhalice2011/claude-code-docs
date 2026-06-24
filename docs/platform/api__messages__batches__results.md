@@ -1,4 +1,4 @@
-## Results
+## Retrieve Message Batch results
 
 **get** `/v1/messages/batches/{message_batch_id}/results`
 
@@ -16,7 +16,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
 ### Returns
 
-- `MessageBatchIndividualResponse = object { custom_id, result }`
+- `MessageBatchIndividualResponse object { custom_id, result }`
 
   This is a single line in the response `.jsonl` file and does not represent the response as a whole.
 
@@ -32,7 +32,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
     Contains a Message output if processing was successful, an error response if processing failed, or the reason why processing was not attempted, such as cancellation or expiration.
 
-    - `MessageBatchSucceededResult = object { message, type }`
+    - `MessageBatchSucceededResult object { message, type }`
 
       - `message: Message`
 
@@ -41,6 +41,18 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
           Unique object identifier.
 
           The format and length of IDs may change over time.
+
+        - `container: Container`
+
+          Information about the container used in the request (for the code execution tool)
+
+          - `id: string`
+
+            Identifier for the container used in this request
+
+          - `expires_at: string`
+
+            The time at which the container will expire.
 
         - `content: array of ContentBlock`
 
@@ -71,7 +83,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
           [{"type": "text", "text": "B)"}]
           ```
 
-          - `TextBlock = object { citations, text, type }`
+          - `TextBlock object { citations, text, type }`
 
             - `citations: array of TextCitation`
 
@@ -79,7 +91,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               The type of citation returned will depend on the type of document being cited. Citing a PDF results in `page_location`, plain text results in `char_location`, and content document results in `content_block_location`.
 
-              - `CitationCharLocation = object { cited_text, document_index, document_title, 4 more }`
+              - `CitationCharLocation object { cited_text, document_index, document_title, 4 more }`
 
                 - `cited_text: string`
 
@@ -97,7 +109,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `"char_location"`
 
-              - `CitationPageLocation = object { cited_text, document_index, document_title, 4 more }`
+              - `CitationPageLocation object { cited_text, document_index, document_title, 4 more }`
 
                 - `cited_text: string`
 
@@ -115,9 +127,13 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `"page_location"`
 
-              - `CitationContentBlockLocation = object { cited_text, document_index, document_title, 4 more }`
+              - `CitationContentBlockLocation object { cited_text, document_index, document_title, 4 more }`
 
                 - `cited_text: string`
+
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
 
                 - `document_index: number`
 
@@ -125,15 +141,21 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `end_block_index: number`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `file_id: string`
 
                 - `start_block_index: number`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `type: "content_block_location"`
 
                   - `"content_block_location"`
 
-              - `CitationsWebSearchResultLocation = object { cited_text, encrypted_index, title, 2 more }`
+              - `CitationsWebSearchResultLocation object { cited_text, encrypted_index, title, 2 more }`
 
                 - `cited_text: string`
 
@@ -147,17 +169,31 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `url: string`
 
-              - `CitationsSearchResultLocation = object { cited_text, end_block_index, search_result_index, 4 more }`
+              - `CitationsSearchResultLocation object { cited_text, end_block_index, search_result_index, 4 more }`
 
                 - `cited_text: string`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `end_block_index: number`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `search_result_index: number`
+
+                  0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                  Counted separately from `document_index`; server-side web search results are not included in this count.
 
                 - `source: string`
 
                 - `start_block_index: number`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `title: string`
 
@@ -171,7 +207,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"text"`
 
-          - `ThinkingBlock = object { signature, thinking, type }`
+          - `ThinkingBlock object { signature, thinking, type }`
 
             - `signature: string`
 
@@ -181,7 +217,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"thinking"`
 
-          - `RedactedThinkingBlock = object { data, type }`
+          - `RedactedThinkingBlock object { data, type }`
 
             - `data: string`
 
@@ -189,9 +225,39 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"redacted_thinking"`
 
-          - `ToolUseBlock = object { id, input, name, type }`
+          - `ToolUseBlock object { id, caller, input, 2 more }`
 
             - `id: string`
+
+            - `caller: DirectCaller or ServerToolCaller or ServerToolCaller20260120`
+
+              Tool invocation directly from the model.
+
+              - `DirectCaller object { type }`
+
+                Tool invocation directly from the model.
+
+                - `type: "direct"`
+
+                  - `"direct"`
+
+              - `ServerToolCaller object { tool_id, type }`
+
+                Tool invocation generated by a server-side tool.
+
+                - `tool_id: string`
+
+                - `type: "code_execution_20250825"`
+
+                  - `"code_execution_20250825"`
+
+              - `ServerToolCaller20260120 object { tool_id, type }`
+
+                - `tool_id: string`
+
+                - `type: "code_execution_20260120"`
+
+                  - `"code_execution_20260120"`
 
             - `input: map[unknown]`
 
@@ -201,27 +267,67 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"tool_use"`
 
-          - `ServerToolUseBlock = object { id, input, name, type }`
+          - `ServerToolUseBlock object { id, caller, input, 2 more }`
 
             - `id: string`
 
+            - `caller: DirectCaller or ServerToolCaller or ServerToolCaller20260120`
+
+              Tool invocation directly from the model.
+
+              - `DirectCaller object { type }`
+
+                Tool invocation directly from the model.
+
+              - `ServerToolCaller object { tool_id, type }`
+
+                Tool invocation generated by a server-side tool.
+
+              - `ServerToolCaller20260120 object { tool_id, type }`
+
             - `input: map[unknown]`
 
-            - `name: "web_search"`
+            - `name: "web_search" or "web_fetch" or "code_execution" or 4 more`
 
               - `"web_search"`
+
+              - `"web_fetch"`
+
+              - `"code_execution"`
+
+              - `"bash_code_execution"`
+
+              - `"text_editor_code_execution"`
+
+              - `"tool_search_tool_regex"`
+
+              - `"tool_search_tool_bm25"`
 
             - `type: "server_tool_use"`
 
               - `"server_tool_use"`
 
-          - `WebSearchToolResultBlock = object { content, tool_use_id, type }`
+          - `WebSearchToolResultBlock object { caller, content, tool_use_id, type }`
+
+            - `caller: DirectCaller or ServerToolCaller or ServerToolCaller20260120`
+
+              Tool invocation directly from the model.
+
+              - `DirectCaller object { type }`
+
+                Tool invocation directly from the model.
+
+              - `ServerToolCaller object { tool_id, type }`
+
+                Tool invocation generated by a server-side tool.
+
+              - `ServerToolCaller20260120 object { tool_id, type }`
 
             - `content: WebSearchToolResultBlockContent`
 
-              - `WebSearchToolResultError = object { error_code, type }`
+              - `WebSearchToolResultError object { error_code, type }`
 
-                - `error_code: "invalid_tool_input" or "unavailable" or "max_uses_exceeded" or 2 more`
+                - `error_code: WebSearchToolResultErrorCode`
 
                   - `"invalid_tool_input"`
 
@@ -233,11 +339,13 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `"query_too_long"`
 
+                  - `"request_too_large"`
+
                 - `type: "web_search_tool_result_error"`
 
                   - `"web_search_tool_result_error"`
 
-              - `UnionMember1 = array of WebSearchResultBlock`
+              - `array of WebSearchResultBlock`
 
                 - `encrypted_content: string`
 
@@ -257,99 +365,449 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"web_search_tool_result"`
 
+          - `WebFetchToolResultBlock object { caller, content, tool_use_id, type }`
+
+            - `caller: DirectCaller or ServerToolCaller or ServerToolCaller20260120`
+
+              Tool invocation directly from the model.
+
+              - `DirectCaller object { type }`
+
+                Tool invocation directly from the model.
+
+              - `ServerToolCaller object { tool_id, type }`
+
+                Tool invocation generated by a server-side tool.
+
+              - `ServerToolCaller20260120 object { tool_id, type }`
+
+            - `content: WebFetchToolResultErrorBlock or WebFetchBlock`
+
+              - `WebFetchToolResultErrorBlock object { error_code, type }`
+
+                - `error_code: WebFetchToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"url_too_long"`
+
+                  - `"url_not_allowed"`
+
+                  - `"url_not_in_prior_context"`
+
+                  - `"url_not_accessible"`
+
+                  - `"unsupported_content_type"`
+
+                  - `"too_many_requests"`
+
+                  - `"max_uses_exceeded"`
+
+                  - `"unavailable"`
+
+                - `type: "web_fetch_tool_result_error"`
+
+                  - `"web_fetch_tool_result_error"`
+
+              - `WebFetchBlock object { content, retrieved_at, type, url }`
+
+                - `content: DocumentBlock`
+
+                  - `citations: CitationsConfig`
+
+                    Citation configuration for the document
+
+                    - `enabled: boolean`
+
+                  - `source: Base64PDFSource or PlainTextSource`
+
+                    - `Base64PDFSource object { data, media_type, type }`
+
+                      - `data: string`
+
+                      - `media_type: "application/pdf"`
+
+                        - `"application/pdf"`
+
+                      - `type: "base64"`
+
+                        - `"base64"`
+
+                    - `PlainTextSource object { data, media_type, type }`
+
+                      - `data: string`
+
+                      - `media_type: "text/plain"`
+
+                        - `"text/plain"`
+
+                      - `type: "text"`
+
+                        - `"text"`
+
+                  - `title: string`
+
+                    The title of the document
+
+                  - `type: "document"`
+
+                    - `"document"`
+
+                - `retrieved_at: string`
+
+                  ISO 8601 timestamp when the content was retrieved
+
+                - `type: "web_fetch_result"`
+
+                  - `"web_fetch_result"`
+
+                - `url: string`
+
+                  Fetched content URL
+
+            - `tool_use_id: string`
+
+            - `type: "web_fetch_tool_result"`
+
+              - `"web_fetch_tool_result"`
+
+          - `CodeExecutionToolResultBlock object { content, tool_use_id, type }`
+
+            - `content: CodeExecutionToolResultBlockContent`
+
+              Code execution result with encrypted stdout for PFC + web_search results.
+
+              - `CodeExecutionToolResultError object { error_code, type }`
+
+                - `error_code: CodeExecutionToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"unavailable"`
+
+                  - `"too_many_requests"`
+
+                  - `"execution_time_exceeded"`
+
+                - `type: "code_execution_tool_result_error"`
+
+                  - `"code_execution_tool_result_error"`
+
+              - `CodeExecutionResultBlock object { content, return_code, stderr, 2 more }`
+
+                - `content: array of CodeExecutionOutputBlock`
+
+                  - `file_id: string`
+
+                  - `type: "code_execution_output"`
+
+                    - `"code_execution_output"`
+
+                - `return_code: number`
+
+                - `stderr: string`
+
+                - `stdout: string`
+
+                - `type: "code_execution_result"`
+
+                  - `"code_execution_result"`
+
+              - `EncryptedCodeExecutionResultBlock object { content, encrypted_stdout, return_code, 2 more }`
+
+                Code execution result with encrypted stdout for PFC + web_search results.
+
+                - `content: array of CodeExecutionOutputBlock`
+
+                  - `file_id: string`
+
+                  - `type: "code_execution_output"`
+
+                - `encrypted_stdout: string`
+
+                - `return_code: number`
+
+                - `stderr: string`
+
+                - `type: "encrypted_code_execution_result"`
+
+                  - `"encrypted_code_execution_result"`
+
+            - `tool_use_id: string`
+
+            - `type: "code_execution_tool_result"`
+
+              - `"code_execution_tool_result"`
+
+          - `BashCodeExecutionToolResultBlock object { content, tool_use_id, type }`
+
+            - `content: BashCodeExecutionToolResultError or BashCodeExecutionResultBlock`
+
+              - `BashCodeExecutionToolResultError object { error_code, type }`
+
+                - `error_code: BashCodeExecutionToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"unavailable"`
+
+                  - `"too_many_requests"`
+
+                  - `"execution_time_exceeded"`
+
+                  - `"output_file_too_large"`
+
+                - `type: "bash_code_execution_tool_result_error"`
+
+                  - `"bash_code_execution_tool_result_error"`
+
+              - `BashCodeExecutionResultBlock object { content, return_code, stderr, 2 more }`
+
+                - `content: array of BashCodeExecutionOutputBlock`
+
+                  - `file_id: string`
+
+                  - `type: "bash_code_execution_output"`
+
+                    - `"bash_code_execution_output"`
+
+                - `return_code: number`
+
+                - `stderr: string`
+
+                - `stdout: string`
+
+                - `type: "bash_code_execution_result"`
+
+                  - `"bash_code_execution_result"`
+
+            - `tool_use_id: string`
+
+            - `type: "bash_code_execution_tool_result"`
+
+              - `"bash_code_execution_tool_result"`
+
+          - `TextEditorCodeExecutionToolResultBlock object { content, tool_use_id, type }`
+
+            - `content: TextEditorCodeExecutionToolResultError or TextEditorCodeExecutionViewResultBlock or TextEditorCodeExecutionCreateResultBlock or TextEditorCodeExecutionStrReplaceResultBlock`
+
+              - `TextEditorCodeExecutionToolResultError object { error_code, error_message, type }`
+
+                - `error_code: TextEditorCodeExecutionToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"unavailable"`
+
+                  - `"too_many_requests"`
+
+                  - `"execution_time_exceeded"`
+
+                  - `"file_not_found"`
+
+                - `error_message: string`
+
+                - `type: "text_editor_code_execution_tool_result_error"`
+
+                  - `"text_editor_code_execution_tool_result_error"`
+
+              - `TextEditorCodeExecutionViewResultBlock object { content, file_type, num_lines, 3 more }`
+
+                - `content: string`
+
+                - `file_type: "text" or "image" or "pdf"`
+
+                  - `"text"`
+
+                  - `"image"`
+
+                  - `"pdf"`
+
+                - `num_lines: number`
+
+                - `start_line: number`
+
+                - `total_lines: number`
+
+                - `type: "text_editor_code_execution_view_result"`
+
+                  - `"text_editor_code_execution_view_result"`
+
+              - `TextEditorCodeExecutionCreateResultBlock object { is_file_update, type }`
+
+                - `is_file_update: boolean`
+
+                - `type: "text_editor_code_execution_create_result"`
+
+                  - `"text_editor_code_execution_create_result"`
+
+              - `TextEditorCodeExecutionStrReplaceResultBlock object { lines, new_lines, new_start, 3 more }`
+
+                - `lines: array of string`
+
+                - `new_lines: number`
+
+                - `new_start: number`
+
+                - `old_lines: number`
+
+                - `old_start: number`
+
+                - `type: "text_editor_code_execution_str_replace_result"`
+
+                  - `"text_editor_code_execution_str_replace_result"`
+
+            - `tool_use_id: string`
+
+            - `type: "text_editor_code_execution_tool_result"`
+
+              - `"text_editor_code_execution_tool_result"`
+
+          - `ToolSearchToolResultBlock object { content, tool_use_id, type }`
+
+            - `content: ToolSearchToolResultError or ToolSearchToolSearchResultBlock`
+
+              - `ToolSearchToolResultError object { error_code, error_message, type }`
+
+                - `error_code: ToolSearchToolResultErrorCode`
+
+                  - `"invalid_tool_input"`
+
+                  - `"unavailable"`
+
+                  - `"too_many_requests"`
+
+                  - `"execution_time_exceeded"`
+
+                - `error_message: string`
+
+                - `type: "tool_search_tool_result_error"`
+
+                  - `"tool_search_tool_result_error"`
+
+              - `ToolSearchToolSearchResultBlock object { tool_references, type }`
+
+                - `tool_references: array of ToolReferenceBlock`
+
+                  - `tool_name: string`
+
+                  - `type: "tool_reference"`
+
+                    - `"tool_reference"`
+
+                - `type: "tool_search_tool_search_result"`
+
+                  - `"tool_search_tool_search_result"`
+
+            - `tool_use_id: string`
+
+            - `type: "tool_search_tool_result"`
+
+              - `"tool_search_tool_result"`
+
+          - `ContainerUploadBlock object { file_id, type }`
+
+            Response model for a file uploaded to the container.
+
+            - `file_id: string`
+
+            - `type: "container_upload"`
+
+              - `"container_upload"`
+
         - `model: Model`
 
           The model that will complete your prompt.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `UnionMember0 = "claude-opus-4-5-20251101" or "claude-opus-4-5" or "claude-3-7-sonnet-latest" or 17 more`
+          - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 17 more`
 
             The model that will complete your prompt.
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-            - `"claude-opus-4-5-20251101"`
+            - `"claude-fable-5"`
 
-              Premium model combining maximum intelligence with practical performance
+              Next generation of intelligence for the hardest knowledge work and coding problems
+
+            - `"claude-mythos-5"`
+
+              Most capable model for cybersecurity and biology research
+
+            - `"claude-opus-4-8"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `"claude-opus-4-7"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `"claude-mythos-preview"`
+
+              New class of intelligence, strongest in coding and cybersecurity
+
+            - `"claude-opus-4-6"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `"claude-sonnet-4-6"`
+
+              Best combination of speed and intelligence
+
+            - `"claude-haiku-4-5"`
+
+              Fastest model with near-frontier intelligence
+
+            - `"claude-haiku-4-5-20251001"`
+
+              Fastest model with near-frontier intelligence
 
             - `"claude-opus-4-5"`
 
               Premium model combining maximum intelligence with practical performance
 
-            - `"claude-3-7-sonnet-latest"`
+            - `"claude-opus-4-5-20251101"`
 
-              High-performance model with early extended thinking
+              Premium model combining maximum intelligence with practical performance
 
-            - `"claude-3-7-sonnet-20250219"`
+            - `"claude-sonnet-4-5"`
 
-              High-performance model with early extended thinking
+              High-performance model for agents and coding
 
-            - `"claude-3-5-haiku-latest"`
+            - `"claude-sonnet-4-5-20250929"`
 
-              Fastest and most compact model for near-instant responsiveness
+              High-performance model for agents and coding
 
-            - `"claude-3-5-haiku-20241022"`
+            - `"claude-opus-4-1"`
 
-              Our fastest model
+              Exceptional model for specialized complex tasks
 
-            - `"claude-haiku-4-5"`
+            - `"claude-opus-4-1-20250805"`
 
-              Hybrid model, capable of near-instant responses and extended thinking
+              Exceptional model for specialized complex tasks
 
-            - `"claude-haiku-4-5-20251001"`
+            - `"claude-opus-4-0"`
 
-              Hybrid model, capable of near-instant responses and extended thinking
+              Powerful model for complex tasks
 
-            - `"claude-sonnet-4-20250514"`
+            - `"claude-opus-4-20250514"`
 
-              High-performance model with extended thinking
+              Powerful model for complex tasks
 
             - `"claude-sonnet-4-0"`
 
               High-performance model with extended thinking
 
-            - `"claude-4-sonnet-20250514"`
+            - `"claude-sonnet-4-20250514"`
 
               High-performance model with extended thinking
 
-            - `"claude-sonnet-4-5"`
-
-              Our best model for real-world agents and coding
-
-            - `"claude-sonnet-4-5-20250929"`
-
-              Our best model for real-world agents and coding
-
-            - `"claude-opus-4-0"`
-
-              Our most capable model
-
-            - `"claude-opus-4-20250514"`
-
-              Our most capable model
-
-            - `"claude-4-opus-20250514"`
-
-              Our most capable model
-
-            - `"claude-opus-4-1-20250805"`
-
-              Our most capable model
-
-            - `"claude-3-opus-latest"`
-
-              Excels at writing and complex tasks
-
-            - `"claude-3-opus-20240229"`
-
-              Excels at writing and complex tasks
-
             - `"claude-3-haiku-20240307"`
 
-              Our previous most fast and cost-effective
+              Fast and cost-effective model
 
-          - `UnionMember1 = string`
+          - `string`
 
         - `role: "assistant"`
 
@@ -358,6 +816,32 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
           This will always be `"assistant"`.
 
           - `"assistant"`
+
+        - `stop_details: RefusalStopDetails`
+
+          Structured information about a refusal.
+
+          - `category: "cyber" or "bio" or "reasoning_extraction"`
+
+            The policy category that triggered the refusal.
+
+            `null` when the refusal doesn't map to a named category.
+
+            - `"cyber"`
+
+            - `"bio"`
+
+            - `"reasoning_extraction"`
+
+          - `explanation: string`
+
+            Human-readable explanation of the refusal.
+
+            This text is not guaranteed to be stable. `null` when no explanation is available for the category.
+
+          - `type: "refusal"`
+
+            - `"refusal"`
 
         - `stop_reason: StopReason`
 
@@ -432,6 +916,10 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             The number of input tokens read from the cache.
 
+          - `inference_geo: string`
+
+            The geographic region where inference was performed for this request.
+
           - `input_tokens: number`
 
             The number of input tokens which were used.
@@ -440,9 +928,33 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             The number of output tokens which were used.
 
+          - `output_tokens_details: OutputTokensDetails`
+
+            Breakdown of output tokens by category.
+
+            `output_tokens` remains the inclusive, authoritative total used for billing.
+            This object provides a read-only decomposition for observability — for example,
+            how many of the billed output tokens were spent on internal reasoning that may
+            have been summarized before being returned to you.
+
+            - `thinking_tokens: number`
+
+              Number of output tokens the model generated as internal reasoning, including
+              the thinking-block delimiter tokens.
+
+              Reflects the raw reasoning the model produced, not the (possibly shorter)
+              summarized thinking text returned in the response body. Computed by
+              re-tokenizing the raw reasoning text, so it may differ from the model's exact
+              generation count by a small number of tokens. Always ≤ `output_tokens`;
+              `output_tokens - thinking_tokens` approximates the non-reasoning output.
+
           - `server_tool_use: ServerToolUsage`
 
             The number of server tool requests.
+
+            - `web_fetch_requests: number`
+
+              The number of web fetch tool requests.
 
             - `web_search_requests: number`
 
@@ -462,13 +974,13 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
         - `"succeeded"`
 
-    - `MessageBatchErroredResult = object { error, type }`
+    - `MessageBatchErroredResult object { error, type }`
 
       - `error: ErrorResponse`
 
         - `error: ErrorObject`
 
-          - `InvalidRequestError = object { message, type }`
+          - `InvalidRequestError object { message, type }`
 
             - `message: string`
 
@@ -476,7 +988,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"invalid_request_error"`
 
-          - `AuthenticationError = object { message, type }`
+          - `AuthenticationError object { message, type }`
 
             - `message: string`
 
@@ -484,7 +996,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"authentication_error"`
 
-          - `BillingError = object { message, type }`
+          - `BillingError object { message, type }`
 
             - `message: string`
 
@@ -492,7 +1004,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"billing_error"`
 
-          - `PermissionError = object { message, type }`
+          - `PermissionError object { message, type }`
 
             - `message: string`
 
@@ -500,7 +1012,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"permission_error"`
 
-          - `NotFoundError = object { message, type }`
+          - `NotFoundError object { message, type }`
 
             - `message: string`
 
@@ -508,7 +1020,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"not_found_error"`
 
-          - `RateLimitError = object { message, type }`
+          - `RateLimitError object { message, type }`
 
             - `message: string`
 
@@ -516,7 +1028,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"rate_limit_error"`
 
-          - `GatewayTimeoutError = object { message, type }`
+          - `GatewayTimeoutError object { message, type }`
 
             - `message: string`
 
@@ -524,7 +1036,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"timeout_error"`
 
-          - `APIErrorObject = object { message, type }`
+          - `APIErrorObject object { message, type }`
 
             - `message: string`
 
@@ -532,7 +1044,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `"api_error"`
 
-          - `OverloadedError = object { message, type }`
+          - `OverloadedError object { message, type }`
 
             - `message: string`
 
@@ -550,13 +1062,13 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
         - `"errored"`
 
-    - `MessageBatchCanceledResult = object { type }`
+    - `MessageBatchCanceledResult object { type }`
 
       - `type: "canceled"`
 
         - `"canceled"`
 
-    - `MessageBatchExpiredResult = object { type }`
+    - `MessageBatchExpiredResult object { type }`
 
       - `type: "expired"`
 

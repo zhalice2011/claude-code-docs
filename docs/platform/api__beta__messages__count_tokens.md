@@ -1,4 +1,4 @@
-## Count Tokens
+## Count tokens in a Message
 
 **post** `/v1/messages/count_tokens`
 
@@ -14,9 +14,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
   Optional header to specify the beta version(s) you want to use.
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = "message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 16 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 25 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -55,6 +55,24 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
     - `"model-context-window-exceeded-2025-08-26"`
 
     - `"skills-2025-10-02"`
+
+    - `"fast-mode-2026-02-01"`
+
+    - `"output-300k-2026-03-24"`
+
+    - `"user-profiles-2026-03-24"`
+
+    - `"advisor-tool-2026-03-01"`
+
+    - `"managed-agents-2026-04-01"`
+
+    - `"cache-diagnosis-2026-04-07"`
+
+    - `"thinking-token-count-2026-05-13"`
+
+    - `"server-side-fallback-2026-06-01"`
+
+    - `"fallback-credit-2026-06-01"`
 
 ### Body Parameters
 
@@ -111,11 +129,11 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
   - `content: string or array of BetaContentBlockParam`
 
-    - `UnionMember0 = string`
+    - `string`
 
-    - `UnionMember1 = array of BetaContentBlockParam`
+    - `array of BetaContentBlockParam`
 
-      - `BetaTextBlockParam = object { text, type, cache_control, citations }`
+      - `BetaTextBlockParam object { text, type, cache_control, citations }`
 
         - `text: string`
 
@@ -148,7 +166,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
         - `citations: optional array of BetaTextCitationParam`
 
-          - `BetaCitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
+          - `BetaCitationCharLocationParam object { cited_text, document_index, document_title, 3 more }`
 
             - `cited_text: string`
 
@@ -164,7 +182,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"char_location"`
 
-          - `BetaCitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
+          - `BetaCitationPageLocationParam object { cited_text, document_index, document_title, 3 more }`
 
             - `cited_text: string`
 
@@ -180,9 +198,13 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"page_location"`
 
-          - `BetaCitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
+          - `BetaCitationContentBlockLocationParam object { cited_text, document_index, document_title, 3 more }`
 
             - `cited_text: string`
+
+              The full text of the cited block range, concatenated.
+
+              Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
 
             - `document_index: number`
 
@@ -190,13 +212,19 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
             - `end_block_index: number`
 
+              Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+              Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
             - `start_block_index: number`
+
+              0-based index of the first cited block in the source's `content` array.
 
             - `type: "content_block_location"`
 
               - `"content_block_location"`
 
-          - `BetaCitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
+          - `BetaCitationWebSearchResultLocationParam object { cited_text, encrypted_index, title, 2 more }`
 
             - `cited_text: string`
 
@@ -210,17 +238,31 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
             - `url: string`
 
-          - `BetaCitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
+          - `BetaCitationSearchResultLocationParam object { cited_text, end_block_index, search_result_index, 4 more }`
 
             - `cited_text: string`
 
+              The full text of the cited block range, concatenated.
+
+              Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
             - `end_block_index: number`
 
+              Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+              Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
             - `search_result_index: number`
+
+              0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+              Counted separately from `document_index`; server-side web search results are not included in this count.
 
             - `source: string`
 
             - `start_block_index: number`
+
+              0-based index of the first cited block in the source's `content` array.
 
             - `title: string`
 
@@ -228,11 +270,11 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"search_result_location"`
 
-      - `BetaImageBlockParam = object { source, type, cache_control }`
+      - `BetaImageBlockParam object { source, type, cache_control }`
 
         - `source: BetaBase64ImageSource or BetaURLImageSource or BetaFileImageSource`
 
-          - `BetaBase64ImageSource = object { data, media_type, type }`
+          - `BetaBase64ImageSource object { data, media_type, type }`
 
             - `data: string`
 
@@ -250,7 +292,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"base64"`
 
-          - `BetaURLImageSource = object { type, url }`
+          - `BetaURLImageSource object { type, url }`
 
             - `type: "url"`
 
@@ -258,7 +300,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
             - `url: string`
 
-          - `BetaFileImageSource = object { file_id, type }`
+          - `BetaFileImageSource object { file_id, type }`
 
             - `file_id: string`
 
@@ -274,30 +316,11 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-      - `BetaRequestDocumentBlock = object { source, type, cache_control, 3 more }`
+      - `BetaRequestDocumentBlock object { source, type, cache_control, 3 more }`
 
         - `source: BetaBase64PDFSource or BetaPlainTextSource or BetaContentBlockSource or 2 more`
 
-          - `BetaBase64PDFSource = object { data, media_type, type }`
+          - `BetaBase64PDFSource object { data, media_type, type }`
 
             - `data: string`
 
@@ -309,7 +332,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"base64"`
 
-          - `BetaPlainTextSource = object { data, media_type, type }`
+          - `BetaPlainTextSource object { data, media_type, type }`
 
             - `data: string`
 
@@ -321,197 +344,23 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"text"`
 
-          - `BetaContentBlockSource = object { content, type }`
+          - `BetaContentBlockSource object { content, type }`
 
             - `content: string or array of BetaContentBlockSourceContent`
 
-              - `UnionMember0 = string`
+              - `string`
 
               - `BetaContentBlockSourceContent = array of BetaContentBlockSourceContent`
 
-                - `BetaTextBlockParam = object { text, type, cache_control, citations }`
+                - `BetaTextBlockParam object { text, type, cache_control, citations }`
 
-                  - `text: string`
-
-                  - `type: "text"`
-
-                    - `"text"`
-
-                  - `cache_control: optional BetaCacheControlEphemeral`
-
-                    Create a cache control breakpoint at this content block.
-
-                    - `type: "ephemeral"`
-
-                      - `"ephemeral"`
-
-                    - `ttl: optional "5m" or "1h"`
-
-                      The time-to-live for the cache control breakpoint.
-
-                      This may be one the following values:
-
-                      - `5m`: 5 minutes
-                      - `1h`: 1 hour
-
-                      Defaults to `5m`.
-
-                      - `"5m"`
-
-                      - `"1h"`
-
-                  - `citations: optional array of BetaTextCitationParam`
-
-                    - `BetaCitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                      - `cited_text: string`
-
-                      - `document_index: number`
-
-                      - `document_title: string`
-
-                      - `end_char_index: number`
-
-                      - `start_char_index: number`
-
-                      - `type: "char_location"`
-
-                        - `"char_location"`
-
-                    - `BetaCitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                      - `cited_text: string`
-
-                      - `document_index: number`
-
-                      - `document_title: string`
-
-                      - `end_page_number: number`
-
-                      - `start_page_number: number`
-
-                      - `type: "page_location"`
-
-                        - `"page_location"`
-
-                    - `BetaCitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                      - `cited_text: string`
-
-                      - `document_index: number`
-
-                      - `document_title: string`
-
-                      - `end_block_index: number`
-
-                      - `start_block_index: number`
-
-                      - `type: "content_block_location"`
-
-                        - `"content_block_location"`
-
-                    - `BetaCitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                      - `cited_text: string`
-
-                      - `encrypted_index: string`
-
-                      - `title: string`
-
-                      - `type: "web_search_result_location"`
-
-                        - `"web_search_result_location"`
-
-                      - `url: string`
-
-                    - `BetaCitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                      - `cited_text: string`
-
-                      - `end_block_index: number`
-
-                      - `search_result_index: number`
-
-                      - `source: string`
-
-                      - `start_block_index: number`
-
-                      - `title: string`
-
-                      - `type: "search_result_location"`
-
-                        - `"search_result_location"`
-
-                - `BetaImageBlockParam = object { source, type, cache_control }`
-
-                  - `source: BetaBase64ImageSource or BetaURLImageSource or BetaFileImageSource`
-
-                    - `BetaBase64ImageSource = object { data, media_type, type }`
-
-                      - `data: string`
-
-                      - `media_type: "image/jpeg" or "image/png" or "image/gif" or "image/webp"`
-
-                        - `"image/jpeg"`
-
-                        - `"image/png"`
-
-                        - `"image/gif"`
-
-                        - `"image/webp"`
-
-                      - `type: "base64"`
-
-                        - `"base64"`
-
-                    - `BetaURLImageSource = object { type, url }`
-
-                      - `type: "url"`
-
-                        - `"url"`
-
-                      - `url: string`
-
-                    - `BetaFileImageSource = object { file_id, type }`
-
-                      - `file_id: string`
-
-                      - `type: "file"`
-
-                        - `"file"`
-
-                  - `type: "image"`
-
-                    - `"image"`
-
-                  - `cache_control: optional BetaCacheControlEphemeral`
-
-                    Create a cache control breakpoint at this content block.
-
-                    - `type: "ephemeral"`
-
-                      - `"ephemeral"`
-
-                    - `ttl: optional "5m" or "1h"`
-
-                      The time-to-live for the cache control breakpoint.
-
-                      This may be one the following values:
-
-                      - `5m`: 5 minutes
-                      - `1h`: 1 hour
-
-                      Defaults to `5m`.
-
-                      - `"5m"`
-
-                      - `"1h"`
+                - `BetaImageBlockParam object { source, type, cache_control }`
 
             - `type: "content"`
 
               - `"content"`
 
-          - `BetaURLPDFSource = object { type, url }`
+          - `BetaURLPDFSource object { type, url }`
 
             - `type: "url"`
 
@@ -519,7 +368,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
             - `url: string`
 
-          - `BetaFileDocumentSource = object { file_id, type }`
+          - `BetaFileDocumentSource object { file_id, type }`
 
             - `file_id: string`
 
@@ -535,25 +384,6 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
         - `citations: optional BetaCitationsConfigParam`
 
           - `enabled: optional boolean`
@@ -562,7 +392,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
         - `title: optional string`
 
-      - `BetaSearchResultBlockParam = object { content, source, title, 3 more }`
+      - `BetaSearchResultBlockParam object { content, source, title, 3 more }`
 
         - `content: array of BetaTextBlockParam`
 
@@ -570,112 +400,11 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           - `type: "text"`
 
-            - `"text"`
-
           - `cache_control: optional BetaCacheControlEphemeral`
 
             Create a cache control breakpoint at this content block.
 
-            - `type: "ephemeral"`
-
-              - `"ephemeral"`
-
-            - `ttl: optional "5m" or "1h"`
-
-              The time-to-live for the cache control breakpoint.
-
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `"5m"`
-
-              - `"1h"`
-
           - `citations: optional array of BetaTextCitationParam`
-
-            - `BetaCitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-              - `cited_text: string`
-
-              - `document_index: number`
-
-              - `document_title: string`
-
-              - `end_char_index: number`
-
-              - `start_char_index: number`
-
-              - `type: "char_location"`
-
-                - `"char_location"`
-
-            - `BetaCitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-              - `cited_text: string`
-
-              - `document_index: number`
-
-              - `document_title: string`
-
-              - `end_page_number: number`
-
-              - `start_page_number: number`
-
-              - `type: "page_location"`
-
-                - `"page_location"`
-
-            - `BetaCitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-              - `cited_text: string`
-
-              - `document_index: number`
-
-              - `document_title: string`
-
-              - `end_block_index: number`
-
-              - `start_block_index: number`
-
-              - `type: "content_block_location"`
-
-                - `"content_block_location"`
-
-            - `BetaCitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-              - `cited_text: string`
-
-              - `encrypted_index: string`
-
-              - `title: string`
-
-              - `type: "web_search_result_location"`
-
-                - `"web_search_result_location"`
-
-              - `url: string`
-
-            - `BetaCitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-              - `cited_text: string`
-
-              - `end_block_index: number`
-
-              - `search_result_index: number`
-
-              - `source: string`
-
-              - `start_block_index: number`
-
-              - `title: string`
-
-              - `type: "search_result_location"`
-
-                - `"search_result_location"`
 
         - `source: string`
 
@@ -689,30 +418,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
         - `citations: optional BetaCitationsConfigParam`
 
-          - `enabled: optional boolean`
-
-      - `BetaThinkingBlockParam = object { signature, thinking, type }`
+      - `BetaThinkingBlockParam object { signature, thinking, type }`
 
         - `signature: string`
 
@@ -722,7 +430,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           - `"thinking"`
 
-      - `BetaRedactedThinkingBlockParam = object { data, type }`
+      - `BetaRedactedThinkingBlockParam object { data, type }`
 
         - `data: string`
 
@@ -730,7 +438,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           - `"redacted_thinking"`
 
-      - `BetaToolUseBlockParam = object { id, input, name, 3 more }`
+      - `BetaToolUseBlockParam object { id, input, name, 3 more }`
 
         - `id: string`
 
@@ -746,30 +454,11 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-        - `caller: optional BetaDirectCaller or BetaServerToolCaller`
+        - `caller: optional BetaDirectCaller or BetaServerToolCaller or BetaServerToolCaller20260120`
 
           Tool invocation directly from the model.
 
-          - `BetaDirectCaller = object { type }`
+          - `BetaDirectCaller object { type }`
 
             Tool invocation directly from the model.
 
@@ -777,7 +466,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"direct"`
 
-          - `BetaServerToolCaller = object { tool_id, type }`
+          - `BetaServerToolCaller object { tool_id, type }`
 
             Tool invocation generated by a server-side tool.
 
@@ -787,7 +476,15 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"code_execution_20250825"`
 
-      - `BetaToolResultBlockParam = object { tool_use_id, type, cache_control, 2 more }`
+          - `BetaServerToolCaller20260120 object { tool_id, type }`
+
+            - `tool_id: string`
+
+            - `type: "code_execution_20260120"`
+
+              - `"code_execution_20260120"`
+
+      - `BetaToolResultBlockParam object { tool_use_id, type, cache_control, 2 more }`
 
         - `tool_use_id: string`
 
@@ -799,629 +496,21 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
         - `content: optional string or array of BetaTextBlockParam or BetaImageBlockParam or BetaSearchResultBlockParam or 2 more`
 
-          - `UnionMember0 = string`
+          - `string`
 
-          - `UnionMember1 = array of BetaTextBlockParam or BetaImageBlockParam or BetaSearchResultBlockParam or 2 more`
+          - `array of BetaTextBlockParam or BetaImageBlockParam or BetaSearchResultBlockParam or 2 more`
 
-            - `BetaTextBlockParam = object { text, type, cache_control, citations }`
+            - `BetaTextBlockParam object { text, type, cache_control, citations }`
 
-              - `text: string`
+            - `BetaImageBlockParam object { source, type, cache_control }`
 
-              - `type: "text"`
+            - `BetaSearchResultBlockParam object { content, source, title, 3 more }`
 
-                - `"text"`
+            - `BetaRequestDocumentBlock object { source, type, cache_control, 3 more }`
 
-              - `cache_control: optional BetaCacheControlEphemeral`
-
-                Create a cache control breakpoint at this content block.
-
-                - `type: "ephemeral"`
-
-                  - `"ephemeral"`
-
-                - `ttl: optional "5m" or "1h"`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `"5m"`
-
-                  - `"1h"`
-
-              - `citations: optional array of BetaTextCitationParam`
-
-                - `BetaCitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                  - `cited_text: string`
-
-                  - `document_index: number`
-
-                  - `document_title: string`
-
-                  - `end_char_index: number`
-
-                  - `start_char_index: number`
-
-                  - `type: "char_location"`
-
-                    - `"char_location"`
-
-                - `BetaCitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                  - `cited_text: string`
-
-                  - `document_index: number`
-
-                  - `document_title: string`
-
-                  - `end_page_number: number`
-
-                  - `start_page_number: number`
-
-                  - `type: "page_location"`
-
-                    - `"page_location"`
-
-                - `BetaCitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                  - `cited_text: string`
-
-                  - `document_index: number`
-
-                  - `document_title: string`
-
-                  - `end_block_index: number`
-
-                  - `start_block_index: number`
-
-                  - `type: "content_block_location"`
-
-                    - `"content_block_location"`
-
-                - `BetaCitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                  - `cited_text: string`
-
-                  - `encrypted_index: string`
-
-                  - `title: string`
-
-                  - `type: "web_search_result_location"`
-
-                    - `"web_search_result_location"`
-
-                  - `url: string`
-
-                - `BetaCitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                  - `cited_text: string`
-
-                  - `end_block_index: number`
-
-                  - `search_result_index: number`
-
-                  - `source: string`
-
-                  - `start_block_index: number`
-
-                  - `title: string`
-
-                  - `type: "search_result_location"`
-
-                    - `"search_result_location"`
-
-            - `BetaImageBlockParam = object { source, type, cache_control }`
-
-              - `source: BetaBase64ImageSource or BetaURLImageSource or BetaFileImageSource`
-
-                - `BetaBase64ImageSource = object { data, media_type, type }`
-
-                  - `data: string`
-
-                  - `media_type: "image/jpeg" or "image/png" or "image/gif" or "image/webp"`
-
-                    - `"image/jpeg"`
-
-                    - `"image/png"`
-
-                    - `"image/gif"`
-
-                    - `"image/webp"`
-
-                  - `type: "base64"`
-
-                    - `"base64"`
-
-                - `BetaURLImageSource = object { type, url }`
-
-                  - `type: "url"`
-
-                    - `"url"`
-
-                  - `url: string`
-
-                - `BetaFileImageSource = object { file_id, type }`
-
-                  - `file_id: string`
-
-                  - `type: "file"`
-
-                    - `"file"`
-
-              - `type: "image"`
-
-                - `"image"`
-
-              - `cache_control: optional BetaCacheControlEphemeral`
-
-                Create a cache control breakpoint at this content block.
-
-                - `type: "ephemeral"`
-
-                  - `"ephemeral"`
-
-                - `ttl: optional "5m" or "1h"`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `"5m"`
-
-                  - `"1h"`
-
-            - `BetaSearchResultBlockParam = object { content, source, title, 3 more }`
-
-              - `content: array of BetaTextBlockParam`
-
-                - `text: string`
-
-                - `type: "text"`
-
-                  - `"text"`
-
-                - `cache_control: optional BetaCacheControlEphemeral`
-
-                  Create a cache control breakpoint at this content block.
-
-                  - `type: "ephemeral"`
-
-                    - `"ephemeral"`
-
-                  - `ttl: optional "5m" or "1h"`
-
-                    The time-to-live for the cache control breakpoint.
-
-                    This may be one the following values:
-
-                    - `5m`: 5 minutes
-                    - `1h`: 1 hour
-
-                    Defaults to `5m`.
-
-                    - `"5m"`
-
-                    - `"1h"`
-
-                - `citations: optional array of BetaTextCitationParam`
-
-                  - `BetaCitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                    - `cited_text: string`
-
-                    - `document_index: number`
-
-                    - `document_title: string`
-
-                    - `end_char_index: number`
-
-                    - `start_char_index: number`
-
-                    - `type: "char_location"`
-
-                      - `"char_location"`
-
-                  - `BetaCitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                    - `cited_text: string`
-
-                    - `document_index: number`
-
-                    - `document_title: string`
-
-                    - `end_page_number: number`
-
-                    - `start_page_number: number`
-
-                    - `type: "page_location"`
-
-                      - `"page_location"`
-
-                  - `BetaCitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                    - `cited_text: string`
-
-                    - `document_index: number`
-
-                    - `document_title: string`
-
-                    - `end_block_index: number`
-
-                    - `start_block_index: number`
-
-                    - `type: "content_block_location"`
-
-                      - `"content_block_location"`
-
-                  - `BetaCitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                    - `cited_text: string`
-
-                    - `encrypted_index: string`
-
-                    - `title: string`
-
-                    - `type: "web_search_result_location"`
-
-                      - `"web_search_result_location"`
-
-                    - `url: string`
-
-                  - `BetaCitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                    - `cited_text: string`
-
-                    - `end_block_index: number`
-
-                    - `search_result_index: number`
-
-                    - `source: string`
-
-                    - `start_block_index: number`
-
-                    - `title: string`
-
-                    - `type: "search_result_location"`
-
-                      - `"search_result_location"`
-
-              - `source: string`
-
-              - `title: string`
-
-              - `type: "search_result"`
-
-                - `"search_result"`
-
-              - `cache_control: optional BetaCacheControlEphemeral`
-
-                Create a cache control breakpoint at this content block.
-
-                - `type: "ephemeral"`
-
-                  - `"ephemeral"`
-
-                - `ttl: optional "5m" or "1h"`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `"5m"`
-
-                  - `"1h"`
-
-              - `citations: optional BetaCitationsConfigParam`
-
-                - `enabled: optional boolean`
-
-            - `BetaRequestDocumentBlock = object { source, type, cache_control, 3 more }`
-
-              - `source: BetaBase64PDFSource or BetaPlainTextSource or BetaContentBlockSource or 2 more`
-
-                - `BetaBase64PDFSource = object { data, media_type, type }`
-
-                  - `data: string`
-
-                  - `media_type: "application/pdf"`
-
-                    - `"application/pdf"`
-
-                  - `type: "base64"`
-
-                    - `"base64"`
-
-                - `BetaPlainTextSource = object { data, media_type, type }`
-
-                  - `data: string`
-
-                  - `media_type: "text/plain"`
-
-                    - `"text/plain"`
-
-                  - `type: "text"`
-
-                    - `"text"`
-
-                - `BetaContentBlockSource = object { content, type }`
-
-                  - `content: string or array of BetaContentBlockSourceContent`
-
-                    - `UnionMember0 = string`
-
-                    - `BetaContentBlockSourceContent = array of BetaContentBlockSourceContent`
-
-                      - `BetaTextBlockParam = object { text, type, cache_control, citations }`
-
-                        - `text: string`
-
-                        - `type: "text"`
-
-                          - `"text"`
-
-                        - `cache_control: optional BetaCacheControlEphemeral`
-
-                          Create a cache control breakpoint at this content block.
-
-                          - `type: "ephemeral"`
-
-                            - `"ephemeral"`
-
-                          - `ttl: optional "5m" or "1h"`
-
-                            The time-to-live for the cache control breakpoint.
-
-                            This may be one the following values:
-
-                            - `5m`: 5 minutes
-                            - `1h`: 1 hour
-
-                            Defaults to `5m`.
-
-                            - `"5m"`
-
-                            - `"1h"`
-
-                        - `citations: optional array of BetaTextCitationParam`
-
-                          - `BetaCitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                            - `cited_text: string`
-
-                            - `document_index: number`
-
-                            - `document_title: string`
-
-                            - `end_char_index: number`
-
-                            - `start_char_index: number`
-
-                            - `type: "char_location"`
-
-                              - `"char_location"`
-
-                          - `BetaCitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                            - `cited_text: string`
-
-                            - `document_index: number`
-
-                            - `document_title: string`
-
-                            - `end_page_number: number`
-
-                            - `start_page_number: number`
-
-                            - `type: "page_location"`
-
-                              - `"page_location"`
-
-                          - `BetaCitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                            - `cited_text: string`
-
-                            - `document_index: number`
-
-                            - `document_title: string`
-
-                            - `end_block_index: number`
-
-                            - `start_block_index: number`
-
-                            - `type: "content_block_location"`
-
-                              - `"content_block_location"`
-
-                          - `BetaCitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                            - `cited_text: string`
-
-                            - `encrypted_index: string`
-
-                            - `title: string`
-
-                            - `type: "web_search_result_location"`
-
-                              - `"web_search_result_location"`
-
-                            - `url: string`
-
-                          - `BetaCitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                            - `cited_text: string`
-
-                            - `end_block_index: number`
-
-                            - `search_result_index: number`
-
-                            - `source: string`
-
-                            - `start_block_index: number`
-
-                            - `title: string`
-
-                            - `type: "search_result_location"`
-
-                              - `"search_result_location"`
-
-                      - `BetaImageBlockParam = object { source, type, cache_control }`
-
-                        - `source: BetaBase64ImageSource or BetaURLImageSource or BetaFileImageSource`
-
-                          - `BetaBase64ImageSource = object { data, media_type, type }`
-
-                            - `data: string`
-
-                            - `media_type: "image/jpeg" or "image/png" or "image/gif" or "image/webp"`
-
-                              - `"image/jpeg"`
-
-                              - `"image/png"`
-
-                              - `"image/gif"`
-
-                              - `"image/webp"`
-
-                            - `type: "base64"`
-
-                              - `"base64"`
-
-                          - `BetaURLImageSource = object { type, url }`
-
-                            - `type: "url"`
-
-                              - `"url"`
-
-                            - `url: string`
-
-                          - `BetaFileImageSource = object { file_id, type }`
-
-                            - `file_id: string`
-
-                            - `type: "file"`
-
-                              - `"file"`
-
-                        - `type: "image"`
-
-                          - `"image"`
-
-                        - `cache_control: optional BetaCacheControlEphemeral`
-
-                          Create a cache control breakpoint at this content block.
-
-                          - `type: "ephemeral"`
-
-                            - `"ephemeral"`
-
-                          - `ttl: optional "5m" or "1h"`
-
-                            The time-to-live for the cache control breakpoint.
-
-                            This may be one the following values:
-
-                            - `5m`: 5 minutes
-                            - `1h`: 1 hour
-
-                            Defaults to `5m`.
-
-                            - `"5m"`
-
-                            - `"1h"`
-
-                  - `type: "content"`
-
-                    - `"content"`
-
-                - `BetaURLPDFSource = object { type, url }`
-
-                  - `type: "url"`
-
-                    - `"url"`
-
-                  - `url: string`
-
-                - `BetaFileDocumentSource = object { file_id, type }`
-
-                  - `file_id: string`
-
-                  - `type: "file"`
-
-                    - `"file"`
-
-              - `type: "document"`
-
-                - `"document"`
-
-              - `cache_control: optional BetaCacheControlEphemeral`
-
-                Create a cache control breakpoint at this content block.
-
-                - `type: "ephemeral"`
-
-                  - `"ephemeral"`
-
-                - `ttl: optional "5m" or "1h"`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `"5m"`
-
-                  - `"1h"`
-
-              - `citations: optional BetaCitationsConfigParam`
-
-                - `enabled: optional boolean`
-
-              - `context: optional string`
-
-              - `title: optional string`
-
-            - `BetaToolReferenceBlockParam = object { tool_name, type, cache_control }`
+            - `BetaToolReferenceBlockParam object { tool_name, type, cache_control }`
 
               Tool reference block that can be included in tool_result content.
 
@@ -1435,34 +524,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
                 Create a cache control breakpoint at this content block.
 
-                - `type: "ephemeral"`
-
-                  - `"ephemeral"`
-
-                - `ttl: optional "5m" or "1h"`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `"5m"`
-
-                  - `"1h"`
-
         - `is_error: optional boolean`
 
-      - `BetaServerToolUseBlockParam = object { id, input, name, 3 more }`
+      - `BetaServerToolUseBlockParam object { id, input, name, 3 more }`
 
         - `id: string`
 
         - `input: map[unknown]`
 
-        - `name: "web_search" or "web_fetch" or "code_execution" or 4 more`
+        - `name: "advisor" or "web_search" or "web_fetch" or 5 more`
+
+          - `"advisor"`
 
           - `"web_search"`
 
@@ -1486,48 +558,21 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-        - `caller: optional BetaDirectCaller or BetaServerToolCaller`
+        - `caller: optional BetaDirectCaller or BetaServerToolCaller or BetaServerToolCaller20260120`
 
           Tool invocation directly from the model.
 
-          - `BetaDirectCaller = object { type }`
+          - `BetaDirectCaller object { type }`
 
             Tool invocation directly from the model.
 
-            - `type: "direct"`
-
-              - `"direct"`
-
-          - `BetaServerToolCaller = object { tool_id, type }`
+          - `BetaServerToolCaller object { tool_id, type }`
 
             Tool invocation generated by a server-side tool.
 
-            - `tool_id: string`
+          - `BetaServerToolCaller20260120 object { tool_id, type }`
 
-            - `type: "code_execution_20250825"`
-
-              - `"code_execution_20250825"`
-
-      - `BetaWebSearchToolResultBlockParam = object { content, tool_use_id, type, cache_control }`
+      - `BetaWebSearchToolResultBlockParam object { content, tool_use_id, type, 2 more }`
 
         - `content: BetaWebSearchToolResultBlockParamContent`
 
@@ -1545,7 +590,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
             - `page_age: optional string`
 
-          - `BetaWebSearchToolRequestError = object { error_code, type }`
+          - `BetaWebSearchToolRequestError object { error_code, type }`
 
             - `error_code: BetaWebSearchToolResultErrorCode`
 
@@ -1558,6 +603,8 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
               - `"too_many_requests"`
 
               - `"query_too_long"`
+
+              - `"request_too_large"`
 
             - `type: "web_search_tool_result_error"`
 
@@ -1573,30 +620,25 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
+        - `caller: optional BetaDirectCaller or BetaServerToolCaller or BetaServerToolCaller20260120`
 
-            - `"ephemeral"`
+          Tool invocation directly from the model.
 
-          - `ttl: optional "5m" or "1h"`
+          - `BetaDirectCaller object { type }`
 
-            The time-to-live for the cache control breakpoint.
+            Tool invocation directly from the model.
 
-            This may be one the following values:
+          - `BetaServerToolCaller object { tool_id, type }`
 
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
+            Tool invocation generated by a server-side tool.
 
-            Defaults to `5m`.
+          - `BetaServerToolCaller20260120 object { tool_id, type }`
 
-            - `"5m"`
-
-            - `"1h"`
-
-      - `BetaWebFetchToolResultBlockParam = object { content, tool_use_id, type, cache_control }`
+      - `BetaWebFetchToolResultBlockParam object { content, tool_use_id, type, 2 more }`
 
         - `content: BetaWebFetchToolResultErrorBlockParam or BetaWebFetchBlockParam`
 
-          - `BetaWebFetchToolResultErrorBlockParam = object { error_code, type }`
+          - `BetaWebFetchToolResultErrorBlockParam object { error_code, type }`
 
             - `error_code: BetaWebFetchToolResultErrorCode`
 
@@ -1605,6 +647,8 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
               - `"url_too_long"`
 
               - `"url_not_allowed"`
+
+              - `"url_not_in_prior_context"`
 
               - `"url_not_accessible"`
 
@@ -1620,276 +664,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"web_fetch_tool_result_error"`
 
-          - `BetaWebFetchBlockParam = object { content, type, url, retrieved_at }`
+          - `BetaWebFetchBlockParam object { content, type, url, retrieved_at }`
 
             - `content: BetaRequestDocumentBlock`
-
-              - `source: BetaBase64PDFSource or BetaPlainTextSource or BetaContentBlockSource or 2 more`
-
-                - `BetaBase64PDFSource = object { data, media_type, type }`
-
-                  - `data: string`
-
-                  - `media_type: "application/pdf"`
-
-                    - `"application/pdf"`
-
-                  - `type: "base64"`
-
-                    - `"base64"`
-
-                - `BetaPlainTextSource = object { data, media_type, type }`
-
-                  - `data: string`
-
-                  - `media_type: "text/plain"`
-
-                    - `"text/plain"`
-
-                  - `type: "text"`
-
-                    - `"text"`
-
-                - `BetaContentBlockSource = object { content, type }`
-
-                  - `content: string or array of BetaContentBlockSourceContent`
-
-                    - `UnionMember0 = string`
-
-                    - `BetaContentBlockSourceContent = array of BetaContentBlockSourceContent`
-
-                      - `BetaTextBlockParam = object { text, type, cache_control, citations }`
-
-                        - `text: string`
-
-                        - `type: "text"`
-
-                          - `"text"`
-
-                        - `cache_control: optional BetaCacheControlEphemeral`
-
-                          Create a cache control breakpoint at this content block.
-
-                          - `type: "ephemeral"`
-
-                            - `"ephemeral"`
-
-                          - `ttl: optional "5m" or "1h"`
-
-                            The time-to-live for the cache control breakpoint.
-
-                            This may be one the following values:
-
-                            - `5m`: 5 minutes
-                            - `1h`: 1 hour
-
-                            Defaults to `5m`.
-
-                            - `"5m"`
-
-                            - `"1h"`
-
-                        - `citations: optional array of BetaTextCitationParam`
-
-                          - `BetaCitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                            - `cited_text: string`
-
-                            - `document_index: number`
-
-                            - `document_title: string`
-
-                            - `end_char_index: number`
-
-                            - `start_char_index: number`
-
-                            - `type: "char_location"`
-
-                              - `"char_location"`
-
-                          - `BetaCitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                            - `cited_text: string`
-
-                            - `document_index: number`
-
-                            - `document_title: string`
-
-                            - `end_page_number: number`
-
-                            - `start_page_number: number`
-
-                            - `type: "page_location"`
-
-                              - `"page_location"`
-
-                          - `BetaCitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                            - `cited_text: string`
-
-                            - `document_index: number`
-
-                            - `document_title: string`
-
-                            - `end_block_index: number`
-
-                            - `start_block_index: number`
-
-                            - `type: "content_block_location"`
-
-                              - `"content_block_location"`
-
-                          - `BetaCitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                            - `cited_text: string`
-
-                            - `encrypted_index: string`
-
-                            - `title: string`
-
-                            - `type: "web_search_result_location"`
-
-                              - `"web_search_result_location"`
-
-                            - `url: string`
-
-                          - `BetaCitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                            - `cited_text: string`
-
-                            - `end_block_index: number`
-
-                            - `search_result_index: number`
-
-                            - `source: string`
-
-                            - `start_block_index: number`
-
-                            - `title: string`
-
-                            - `type: "search_result_location"`
-
-                              - `"search_result_location"`
-
-                      - `BetaImageBlockParam = object { source, type, cache_control }`
-
-                        - `source: BetaBase64ImageSource or BetaURLImageSource or BetaFileImageSource`
-
-                          - `BetaBase64ImageSource = object { data, media_type, type }`
-
-                            - `data: string`
-
-                            - `media_type: "image/jpeg" or "image/png" or "image/gif" or "image/webp"`
-
-                              - `"image/jpeg"`
-
-                              - `"image/png"`
-
-                              - `"image/gif"`
-
-                              - `"image/webp"`
-
-                            - `type: "base64"`
-
-                              - `"base64"`
-
-                          - `BetaURLImageSource = object { type, url }`
-
-                            - `type: "url"`
-
-                              - `"url"`
-
-                            - `url: string`
-
-                          - `BetaFileImageSource = object { file_id, type }`
-
-                            - `file_id: string`
-
-                            - `type: "file"`
-
-                              - `"file"`
-
-                        - `type: "image"`
-
-                          - `"image"`
-
-                        - `cache_control: optional BetaCacheControlEphemeral`
-
-                          Create a cache control breakpoint at this content block.
-
-                          - `type: "ephemeral"`
-
-                            - `"ephemeral"`
-
-                          - `ttl: optional "5m" or "1h"`
-
-                            The time-to-live for the cache control breakpoint.
-
-                            This may be one the following values:
-
-                            - `5m`: 5 minutes
-                            - `1h`: 1 hour
-
-                            Defaults to `5m`.
-
-                            - `"5m"`
-
-                            - `"1h"`
-
-                  - `type: "content"`
-
-                    - `"content"`
-
-                - `BetaURLPDFSource = object { type, url }`
-
-                  - `type: "url"`
-
-                    - `"url"`
-
-                  - `url: string`
-
-                - `BetaFileDocumentSource = object { file_id, type }`
-
-                  - `file_id: string`
-
-                  - `type: "file"`
-
-                    - `"file"`
-
-              - `type: "document"`
-
-                - `"document"`
-
-              - `cache_control: optional BetaCacheControlEphemeral`
-
-                Create a cache control breakpoint at this content block.
-
-                - `type: "ephemeral"`
-
-                  - `"ephemeral"`
-
-                - `ttl: optional "5m" or "1h"`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `"5m"`
-
-                  - `"1h"`
-
-              - `citations: optional BetaCitationsConfigParam`
-
-                - `enabled: optional boolean`
-
-              - `context: optional string`
-
-              - `title: optional string`
 
             - `type: "web_fetch_result"`
 
@@ -1913,30 +690,85 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
+        - `caller: optional BetaDirectCaller or BetaServerToolCaller or BetaServerToolCaller20260120`
 
-            - `"ephemeral"`
+          Tool invocation directly from the model.
 
-          - `ttl: optional "5m" or "1h"`
+          - `BetaDirectCaller object { type }`
 
-            The time-to-live for the cache control breakpoint.
+            Tool invocation directly from the model.
 
-            This may be one the following values:
+          - `BetaServerToolCaller object { tool_id, type }`
 
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
+            Tool invocation generated by a server-side tool.
 
-            Defaults to `5m`.
+          - `BetaServerToolCaller20260120 object { tool_id, type }`
 
-            - `"5m"`
+      - `BetaAdvisorToolResultBlockParam object { content, tool_use_id, type, cache_control }`
 
-            - `"1h"`
+        - `content: BetaAdvisorToolResultErrorParam or BetaAdvisorResultBlockParam or BetaAdvisorRedactedResultBlockParam`
 
-      - `BetaCodeExecutionToolResultBlockParam = object { content, tool_use_id, type, cache_control }`
+          - `BetaAdvisorToolResultErrorParam object { error_code, type }`
+
+            - `error_code: "max_uses_exceeded" or "prompt_too_long" or "too_many_requests" or 4 more`
+
+              - `"max_uses_exceeded"`
+
+              - `"prompt_too_long"`
+
+              - `"too_many_requests"`
+
+              - `"overloaded"`
+
+              - `"unavailable"`
+
+              - `"execution_time_exceeded"`
+
+              - `"model_not_found"`
+
+            - `type: "advisor_tool_result_error"`
+
+              - `"advisor_tool_result_error"`
+
+          - `BetaAdvisorResultBlockParam object { text, type, stop_reason }`
+
+            - `text: string`
+
+            - `type: "advisor_result"`
+
+              - `"advisor_result"`
+
+            - `stop_reason: optional string`
+
+          - `BetaAdvisorRedactedResultBlockParam object { encrypted_content, type, stop_reason }`
+
+            - `encrypted_content: string`
+
+              Opaque blob produced by a prior response; must be round-tripped verbatim.
+
+            - `type: "advisor_redacted_result"`
+
+              - `"advisor_redacted_result"`
+
+            - `stop_reason: optional string`
+
+        - `tool_use_id: string`
+
+        - `type: "advisor_tool_result"`
+
+          - `"advisor_tool_result"`
+
+        - `cache_control: optional BetaCacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+      - `BetaCodeExecutionToolResultBlockParam object { content, tool_use_id, type, cache_control }`
 
         - `content: BetaCodeExecutionToolResultBlockParamContent`
 
-          - `BetaCodeExecutionToolResultErrorParam = object { error_code, type }`
+          Code execution result with encrypted stdout for PFC + web_search results.
+
+          - `BetaCodeExecutionToolResultErrorParam object { error_code, type }`
 
             - `error_code: BetaCodeExecutionToolResultErrorCode`
 
@@ -1952,7 +784,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"code_execution_tool_result_error"`
 
-          - `BetaCodeExecutionResultBlockParam = object { content, return_code, stderr, 2 more }`
+          - `BetaCodeExecutionResultBlockParam object { content, return_code, stderr, 2 more }`
 
             - `content: array of BetaCodeExecutionOutputBlockParam`
 
@@ -1972,6 +804,26 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"code_execution_result"`
 
+          - `BetaEncryptedCodeExecutionResultBlockParam object { content, encrypted_stdout, return_code, 2 more }`
+
+            Code execution result with encrypted stdout for PFC + web_search results.
+
+            - `content: array of BetaCodeExecutionOutputBlockParam`
+
+              - `file_id: string`
+
+              - `type: "code_execution_output"`
+
+            - `encrypted_stdout: string`
+
+            - `return_code: number`
+
+            - `stderr: string`
+
+            - `type: "encrypted_code_execution_result"`
+
+              - `"encrypted_code_execution_result"`
+
         - `tool_use_id: string`
 
         - `type: "code_execution_tool_result"`
@@ -1982,30 +834,11 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-      - `BetaBashCodeExecutionToolResultBlockParam = object { content, tool_use_id, type, cache_control }`
+      - `BetaBashCodeExecutionToolResultBlockParam object { content, tool_use_id, type, cache_control }`
 
         - `content: BetaBashCodeExecutionToolResultErrorParam or BetaBashCodeExecutionResultBlockParam`
 
-          - `BetaBashCodeExecutionToolResultErrorParam = object { error_code, type }`
+          - `BetaBashCodeExecutionToolResultErrorParam object { error_code, type }`
 
             - `error_code: "invalid_tool_input" or "unavailable" or "too_many_requests" or 2 more`
 
@@ -2023,7 +856,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"bash_code_execution_tool_result_error"`
 
-          - `BetaBashCodeExecutionResultBlockParam = object { content, return_code, stderr, 2 more }`
+          - `BetaBashCodeExecutionResultBlockParam object { content, return_code, stderr, 2 more }`
 
             - `content: array of BetaBashCodeExecutionOutputBlockParam`
 
@@ -2053,30 +886,11 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-      - `BetaTextEditorCodeExecutionToolResultBlockParam = object { content, tool_use_id, type, cache_control }`
+      - `BetaTextEditorCodeExecutionToolResultBlockParam object { content, tool_use_id, type, cache_control }`
 
         - `content: BetaTextEditorCodeExecutionToolResultErrorParam or BetaTextEditorCodeExecutionViewResultBlockParam or BetaTextEditorCodeExecutionCreateResultBlockParam or BetaTextEditorCodeExecutionStrReplaceResultBlockParam`
 
-          - `BetaTextEditorCodeExecutionToolResultErrorParam = object { error_code, type, error_message }`
+          - `BetaTextEditorCodeExecutionToolResultErrorParam object { error_code, type, error_message }`
 
             - `error_code: "invalid_tool_input" or "unavailable" or "too_many_requests" or 2 more`
 
@@ -2096,7 +910,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
             - `error_message: optional string`
 
-          - `BetaTextEditorCodeExecutionViewResultBlockParam = object { content, file_type, type, 3 more }`
+          - `BetaTextEditorCodeExecutionViewResultBlockParam object { content, file_type, type, 3 more }`
 
             - `content: string`
 
@@ -2118,7 +932,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
             - `total_lines: optional number`
 
-          - `BetaTextEditorCodeExecutionCreateResultBlockParam = object { is_file_update, type }`
+          - `BetaTextEditorCodeExecutionCreateResultBlockParam object { is_file_update, type }`
 
             - `is_file_update: boolean`
 
@@ -2126,7 +940,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"text_editor_code_execution_create_result"`
 
-          - `BetaTextEditorCodeExecutionStrReplaceResultBlockParam = object { type, lines, new_lines, 3 more }`
+          - `BetaTextEditorCodeExecutionStrReplaceResultBlockParam object { type, lines, new_lines, 3 more }`
 
             - `type: "text_editor_code_execution_str_replace_result"`
 
@@ -2152,30 +966,11 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-      - `BetaToolSearchToolResultBlockParam = object { content, tool_use_id, type, cache_control }`
+      - `BetaToolSearchToolResultBlockParam object { content, tool_use_id, type, cache_control }`
 
         - `content: BetaToolSearchToolResultErrorParam or BetaToolSearchToolSearchResultBlockParam`
 
-          - `BetaToolSearchToolResultErrorParam = object { error_code, type }`
+          - `BetaToolSearchToolResultErrorParam object { error_code, type, error_message }`
 
             - `error_code: "invalid_tool_input" or "unavailable" or "too_many_requests" or "execution_time_exceeded"`
 
@@ -2191,7 +986,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `"tool_search_tool_result_error"`
 
-          - `BetaToolSearchToolSearchResultBlockParam = object { tool_references, type }`
+            - `error_message: optional string`
+
+          - `BetaToolSearchToolSearchResultBlockParam object { tool_references, type }`
 
             - `tool_references: array of BetaToolReferenceBlockParam`
 
@@ -2199,30 +996,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
               - `type: "tool_reference"`
 
-                - `"tool_reference"`
-
               - `cache_control: optional BetaCacheControlEphemeral`
 
                 Create a cache control breakpoint at this content block.
-
-                - `type: "ephemeral"`
-
-                  - `"ephemeral"`
-
-                - `ttl: optional "5m" or "1h"`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `"5m"`
-
-                  - `"1h"`
 
             - `type: "tool_search_tool_search_result"`
 
@@ -2238,26 +1014,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-      - `BetaMCPToolUseBlockParam = object { id, input, name, 3 more }`
+      - `BetaMCPToolUseBlockParam object { id, input, name, 3 more }`
 
         - `id: string`
 
@@ -2277,26 +1034,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
-      - `BetaRequestMCPToolResultBlockParam = object { tool_use_id, type, cache_control, 2 more }`
+      - `BetaRequestMCPToolResultBlockParam object { tool_use_id, type, cache_control, 2 more }`
 
         - `tool_use_id: string`
 
@@ -2308,28 +1046,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
-
-            - `"ephemeral"`
-
-          - `ttl: optional "5m" or "1h"`
-
-            The time-to-live for the cache control breakpoint.
-
-            This may be one the following values:
-
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
-
-            Defaults to `5m`.
-
-            - `"5m"`
-
-            - `"1h"`
-
         - `content: optional string or array of BetaTextBlockParam`
 
-          - `UnionMember0 = string`
+          - `string`
 
           - `BetaMCPToolResultBlockParamContent = array of BetaTextBlockParam`
 
@@ -2337,116 +1056,15 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
             - `type: "text"`
 
-              - `"text"`
-
             - `cache_control: optional BetaCacheControlEphemeral`
 
               Create a cache control breakpoint at this content block.
 
-              - `type: "ephemeral"`
-
-                - `"ephemeral"`
-
-              - `ttl: optional "5m" or "1h"`
-
-                The time-to-live for the cache control breakpoint.
-
-                This may be one the following values:
-
-                - `5m`: 5 minutes
-                - `1h`: 1 hour
-
-                Defaults to `5m`.
-
-                - `"5m"`
-
-                - `"1h"`
-
             - `citations: optional array of BetaTextCitationParam`
-
-              - `BetaCitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                - `cited_text: string`
-
-                - `document_index: number`
-
-                - `document_title: string`
-
-                - `end_char_index: number`
-
-                - `start_char_index: number`
-
-                - `type: "char_location"`
-
-                  - `"char_location"`
-
-              - `BetaCitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                - `cited_text: string`
-
-                - `document_index: number`
-
-                - `document_title: string`
-
-                - `end_page_number: number`
-
-                - `start_page_number: number`
-
-                - `type: "page_location"`
-
-                  - `"page_location"`
-
-              - `BetaCitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-                - `cited_text: string`
-
-                - `document_index: number`
-
-                - `document_title: string`
-
-                - `end_block_index: number`
-
-                - `start_block_index: number`
-
-                - `type: "content_block_location"`
-
-                  - `"content_block_location"`
-
-              - `BetaCitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-                - `cited_text: string`
-
-                - `encrypted_index: string`
-
-                - `title: string`
-
-                - `type: "web_search_result_location"`
-
-                  - `"web_search_result_location"`
-
-                - `url: string`
-
-              - `BetaCitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-                - `cited_text: string`
-
-                - `end_block_index: number`
-
-                - `search_result_index: number`
-
-                - `source: string`
-
-                - `start_block_index: number`
-
-                - `title: string`
-
-                - `type: "search_result_location"`
-
-                  - `"search_result_location"`
 
         - `is_error: optional boolean`
 
-      - `BetaContainerUploadBlockParam = object { file_id, type, cache_control }`
+      - `BetaContainerUploadBlockParam object { file_id, type, cache_control }`
 
         A content block that represents a file to be uploaded to the container
         Files uploaded via this block will be available in the container's input directory.
@@ -2461,30 +1079,192 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           Create a cache control breakpoint at this content block.
 
-          - `type: "ephemeral"`
+      - `BetaCompactionBlockParam object { type, cache_control, content, encrypted_content }`
 
-            - `"ephemeral"`
+        A compaction block containing summary of previous context.
 
-          - `ttl: optional "5m" or "1h"`
+        Users should round-trip these blocks from responses to subsequent requests
+        to maintain context across compaction boundaries.
 
-            The time-to-live for the cache control breakpoint.
+        When content is None, the block represents a failed compaction. The server
+        treats these as no-ops. Empty string content is not allowed.
 
-            This may be one the following values:
+        - `type: "compaction"`
 
-            - `5m`: 5 minutes
-            - `1h`: 1 hour
+          - `"compaction"`
 
-            Defaults to `5m`.
+        - `cache_control: optional BetaCacheControlEphemeral`
 
-            - `"5m"`
+          Create a cache control breakpoint at this content block.
 
-            - `"1h"`
+        - `content: optional string`
 
-  - `role: "user" or "assistant"`
+          Summary of previously compacted content, or null if compaction failed
+
+        - `encrypted_content: optional string`
+
+          Opaque metadata from prior compaction, to be round-tripped verbatim
+
+      - `BetaMidConversationSystemBlockParam object { content, type, cache_control }`
+
+        System instructions that appear mid-conversation.
+
+        Use this block to provide or update system-level instructions at a specific
+        point in the conversation, rather than only via the top-level `system` parameter.
+
+        - `content: array of BetaTextBlockParam`
+
+          System instruction text blocks.
+
+          - `text: string`
+
+          - `type: "text"`
+
+          - `cache_control: optional BetaCacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `citations: optional array of BetaTextCitationParam`
+
+        - `type: "mid_conv_system"`
+
+          - `"mid_conv_system"`
+
+        - `cache_control: optional BetaCacheControlEphemeral`
+
+          Create a cache control breakpoint at this content block.
+
+      - `BetaFallbackBlockParam object { from, to, type }`
+
+        A `fallback` block echoed back from a prior response.
+
+        Accepted in `messages[].content` and never rendered into the prompt,
+        not validated against the request's `fallbacks` chain or top-level
+        `model`, and stripped before the sticky-routing cache key is computed.
+
+        Callers should echo the assistant turn verbatim — block included. The
+        block's position is load-bearing for thinking verification: the thinking
+        runs on either side of a fallback hop carry independently-rooted
+        verification hash chains, and this block is the only record of where one
+        chain ends and the next begins. When thinking runs flank the boundary,
+        omitting the block merges the runs into one contiguous span whose hashes
+        cannot verify (the request is rejected), and moving it into the middle of
+        a single run splits that run's chain and is likewise rejected; between
+        non-thinking blocks the block's placement has no verification effect.
+
+        - `from: BetaFallbackInfoParam`
+
+          Identifies one hop of a fallback transition.
+
+          - `model: Model`
+
+            The model that will complete your prompt.
+
+            See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+            - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 17 more`
+
+              The model that will complete your prompt.
+
+              See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+              - `"claude-fable-5"`
+
+                Next generation of intelligence for the hardest knowledge work and coding problems
+
+              - `"claude-mythos-5"`
+
+                Most capable model for cybersecurity and biology research
+
+              - `"claude-opus-4-8"`
+
+                Frontier intelligence for long-running agents and coding
+
+              - `"claude-opus-4-7"`
+
+                Frontier intelligence for long-running agents and coding
+
+              - `"claude-mythos-preview"`
+
+                New class of intelligence, strongest in coding and cybersecurity
+
+              - `"claude-opus-4-6"`
+
+                Frontier intelligence for long-running agents and coding
+
+              - `"claude-sonnet-4-6"`
+
+                Best combination of speed and intelligence
+
+              - `"claude-haiku-4-5"`
+
+                Fastest model with near-frontier intelligence
+
+              - `"claude-haiku-4-5-20251001"`
+
+                Fastest model with near-frontier intelligence
+
+              - `"claude-opus-4-5"`
+
+                Premium model combining maximum intelligence with practical performance
+
+              - `"claude-opus-4-5-20251101"`
+
+                Premium model combining maximum intelligence with practical performance
+
+              - `"claude-sonnet-4-5"`
+
+                High-performance model for agents and coding
+
+              - `"claude-sonnet-4-5-20250929"`
+
+                High-performance model for agents and coding
+
+              - `"claude-opus-4-1"`
+
+                Exceptional model for specialized complex tasks
+
+              - `"claude-opus-4-1-20250805"`
+
+                Exceptional model for specialized complex tasks
+
+              - `"claude-opus-4-0"`
+
+                Powerful model for complex tasks
+
+              - `"claude-opus-4-20250514"`
+
+                Powerful model for complex tasks
+
+              - `"claude-sonnet-4-0"`
+
+                High-performance model with extended thinking
+
+              - `"claude-sonnet-4-20250514"`
+
+                High-performance model with extended thinking
+
+              - `"claude-3-haiku-20240307"`
+
+                Fast and cost-effective model
+
+            - `string`
+
+        - `to: BetaFallbackInfoParam`
+
+          Identifies one hop of a fallback transition.
+
+        - `type: "fallback"`
+
+          - `"fallback"`
+
+  - `role: "user" or "assistant" or "system"`
 
     - `"user"`
 
     - `"assistant"`
+
+    - `"system"`
 
 - `model: Model`
 
@@ -2492,93 +1272,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-  - `UnionMember0 = "claude-opus-4-5-20251101" or "claude-opus-4-5" or "claude-3-7-sonnet-latest" or 17 more`
+- `cache_control: optional BetaCacheControlEphemeral`
 
-    The model that will complete your prompt.
-
-    See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
-
-    - `"claude-opus-4-5-20251101"`
-
-      Premium model combining maximum intelligence with practical performance
-
-    - `"claude-opus-4-5"`
-
-      Premium model combining maximum intelligence with practical performance
-
-    - `"claude-3-7-sonnet-latest"`
-
-      High-performance model with early extended thinking
-
-    - `"claude-3-7-sonnet-20250219"`
-
-      High-performance model with early extended thinking
-
-    - `"claude-3-5-haiku-latest"`
-
-      Fastest and most compact model for near-instant responsiveness
-
-    - `"claude-3-5-haiku-20241022"`
-
-      Our fastest model
-
-    - `"claude-haiku-4-5"`
-
-      Hybrid model, capable of near-instant responses and extended thinking
-
-    - `"claude-haiku-4-5-20251001"`
-
-      Hybrid model, capable of near-instant responses and extended thinking
-
-    - `"claude-sonnet-4-20250514"`
-
-      High-performance model with extended thinking
-
-    - `"claude-sonnet-4-0"`
-
-      High-performance model with extended thinking
-
-    - `"claude-4-sonnet-20250514"`
-
-      High-performance model with extended thinking
-
-    - `"claude-sonnet-4-5"`
-
-      Our best model for real-world agents and coding
-
-    - `"claude-sonnet-4-5-20250929"`
-
-      Our best model for real-world agents and coding
-
-    - `"claude-opus-4-0"`
-
-      Our most capable model
-
-    - `"claude-opus-4-20250514"`
-
-      Our most capable model
-
-    - `"claude-4-opus-20250514"`
-
-      Our most capable model
-
-    - `"claude-opus-4-1-20250805"`
-
-      Our most capable model
-
-    - `"claude-3-opus-latest"`
-
-      Excels at writing and complex tasks
-
-    - `"claude-3-opus-20240229"`
-
-      Excels at writing and complex tasks
-
-    - `"claude-3-haiku-20240307"`
-
-      Our previous most fast and cost-effective
-
-  - `UnionMember1 = string`
+  Top-level cache control automatically applies a cache_control marker to the last cacheable block in the request.
 
 - `context_management: optional BetaContextManagementConfig`
 
@@ -2586,11 +1282,11 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
   This allows you to control how Claude manages context across multiple requests, such as whether to clear function results or not.
 
-  - `edits: optional array of BetaClearToolUses20250919Edit or BetaClearThinking20251015Edit`
+  - `edits: optional array of BetaClearToolUses20250919Edit or BetaClearThinking20251015Edit or BetaCompact20260112Edit`
 
     List of context management edits to apply
 
-    - `BetaClearToolUses20250919Edit = object { type, clear_at_least, clear_tool_inputs, 3 more }`
+    - `BetaClearToolUses20250919Edit object { type, clear_at_least, clear_tool_inputs, 3 more }`
 
       - `type: "clear_tool_uses_20250919"`
 
@@ -2610,9 +1306,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
         Whether to clear all tool inputs (bool) or specific tool inputs to clear (list)
 
-        - `UnionMember0 = boolean`
+        - `boolean`
 
-        - `UnionMember1 = array of string`
+        - `array of string`
 
       - `exclude_tools: optional array of string`
 
@@ -2632,7 +1328,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
         Condition that triggers the context management strategy
 
-        - `BetaInputTokensTrigger = object { type, value }`
+        - `BetaInputTokensTrigger object { type, value }`
 
           - `type: "input_tokens"`
 
@@ -2640,7 +1336,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           - `value: number`
 
-        - `BetaToolUsesTrigger = object { type, value }`
+        - `BetaToolUsesTrigger object { type, value }`
 
           - `type: "tool_uses"`
 
@@ -2648,7 +1344,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           - `value: number`
 
-    - `BetaClearThinking20251015Edit = object { type, keep }`
+    - `BetaClearThinking20251015Edit object { type, keep }`
 
       - `type: "clear_thinking_20251015"`
 
@@ -2658,7 +1354,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
         Number of most recent assistant turns to keep thinking blocks for. Older turns will have their thinking blocks removed.
 
-        - `BetaThinkingTurns = object { type, value }`
+        - `BetaThinkingTurns object { type, value }`
 
           - `type: "thinking_turns"`
 
@@ -2666,15 +1362,35 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
           - `value: number`
 
-        - `BetaAllThinkingTurns = object { type }`
+        - `BetaAllThinkingTurns object { type }`
 
           - `type: "all"`
 
             - `"all"`
 
-        - `UnionMember2 = "all"`
+        - `"all"`
 
           - `"all"`
+
+    - `BetaCompact20260112Edit object { type, instructions, pause_after_compaction, trigger }`
+
+      Automatically compact older context when reaching the configured trigger threshold.
+
+      - `type: "compact_20260112"`
+
+        - `"compact_20260112"`
+
+      - `instructions: optional string`
+
+        Additional instructions for summarization.
+
+      - `pause_after_compaction: optional boolean`
+
+        Whether to pause after compaction and return the compaction block to the user.
+
+      - `trigger: optional BetaInputTokensTrigger`
+
+        When to trigger compaction. Defaults to 150000 input tokens.
 
 - `mcp_servers: optional array of BetaRequestMCPServerURLDefinition`
 
@@ -2698,9 +1414,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
 - `output_config: optional BetaOutputConfig`
 
-  Configuration options for the model's output. Controls aspects like how much effort the model puts into its response.
+  Configuration options for the model's output, such as the output format.
 
-  - `effort: optional "low" or "medium" or "high"`
+  - `effort: optional "low" or "medium" or "high" or 2 more`
 
     All possible effort levels.
 
@@ -2710,17 +1426,53 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `"high"`
 
+    - `"xhigh"`
+
+    - `"max"`
+
+  - `format: optional BetaJSONOutputFormat`
+
+    A schema to specify Claude's output format in responses. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
+
+    - `schema: map[unknown]`
+
+      The JSON schema of the format
+
+    - `type: "json_schema"`
+
+      - `"json_schema"`
+
+  - `task_budget: optional BetaTokenTaskBudget`
+
+    User-configurable total token budget across contexts.
+
+    - `total: number`
+
+      Total token budget across all contexts in the session.
+
+    - `type: "tokens"`
+
+      The budget type. Currently only 'tokens' is supported.
+
+      - `"tokens"`
+
+    - `remaining: optional number`
+
+      Remaining tokens in the budget. Use this to track usage across contexts when implementing compaction client-side. Defaults to total if not provided.
+
 - `output_format: optional BetaJSONOutputFormat`
 
-  A schema to specify Claude's output format in responses.
+  Deprecated: Use `output_config.format` instead. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
 
-  - `schema: map[unknown]`
+  A schema to specify Claude's output format in responses. This parameter will be removed in a future release.
 
-    The JSON schema of the format
+- `speed: optional "standard" or "fast"`
 
-  - `type: "json_schema"`
+  The inference speed mode for this request. `"fast"` enables high output-tokens-per-second inference.
 
-    - `"json_schema"`
+  - `"standard"`
+
+  - `"fast"`
 
 - `system: optional string or array of BetaTextBlockParam`
 
@@ -2728,120 +1480,19 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
   A system prompt is a way of providing context and instructions to Claude, such as specifying a particular goal or role. See our [guide to system prompts](https://docs.claude.com/en/docs/system-prompts).
 
-  - `UnionMember0 = string`
+  - `string`
 
-  - `UnionMember1 = array of BetaTextBlockParam`
+  - `array of BetaTextBlockParam`
 
     - `text: string`
 
     - `type: "text"`
 
-      - `"text"`
-
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
 
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
-
     - `citations: optional array of BetaTextCitationParam`
-
-      - `BetaCitationCharLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-        - `cited_text: string`
-
-        - `document_index: number`
-
-        - `document_title: string`
-
-        - `end_char_index: number`
-
-        - `start_char_index: number`
-
-        - `type: "char_location"`
-
-          - `"char_location"`
-
-      - `BetaCitationPageLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-        - `cited_text: string`
-
-        - `document_index: number`
-
-        - `document_title: string`
-
-        - `end_page_number: number`
-
-        - `start_page_number: number`
-
-        - `type: "page_location"`
-
-          - `"page_location"`
-
-      - `BetaCitationContentBlockLocationParam = object { cited_text, document_index, document_title, 3 more }`
-
-        - `cited_text: string`
-
-        - `document_index: number`
-
-        - `document_title: string`
-
-        - `end_block_index: number`
-
-        - `start_block_index: number`
-
-        - `type: "content_block_location"`
-
-          - `"content_block_location"`
-
-      - `BetaCitationWebSearchResultLocationParam = object { cited_text, encrypted_index, title, 2 more }`
-
-        - `cited_text: string`
-
-        - `encrypted_index: string`
-
-        - `title: string`
-
-        - `type: "web_search_result_location"`
-
-          - `"web_search_result_location"`
-
-        - `url: string`
-
-      - `BetaCitationSearchResultLocationParam = object { cited_text, end_block_index, search_result_index, 4 more }`
-
-        - `cited_text: string`
-
-        - `end_block_index: number`
-
-        - `search_result_index: number`
-
-        - `source: string`
-
-        - `start_block_index: number`
-
-        - `title: string`
-
-        - `type: "search_result_location"`
-
-          - `"search_result_location"`
 
 - `thinking: optional BetaThinkingConfigParam`
 
@@ -2851,7 +1502,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
   See [extended thinking](https://docs.claude.com/en/docs/build-with-claude/extended-thinking) for details.
 
-  - `BetaThinkingConfigEnabled = object { budget_tokens, type }`
+  - `BetaThinkingConfigEnabled object { budget_tokens, type, display }`
 
     - `budget_tokens: number`
 
@@ -2865,17 +1516,39 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"enabled"`
 
-  - `BetaThinkingConfigDisabled = object { type }`
+    - `display: optional "summarized" or "omitted"`
+
+      Controls how thinking content appears in the response. When set to `summarized`, thinking is returned normally. When set to `omitted`, thinking content is redacted but a signature is returned for multi-turn continuity. Defaults to `summarized`.
+
+      - `"summarized"`
+
+      - `"omitted"`
+
+  - `BetaThinkingConfigDisabled object { type }`
 
     - `type: "disabled"`
 
       - `"disabled"`
 
+  - `BetaThinkingConfigAdaptive object { type, display }`
+
+    - `type: "adaptive"`
+
+      - `"adaptive"`
+
+    - `display: optional "summarized" or "omitted"`
+
+      Controls how thinking content appears in the response. When set to `summarized`, thinking is returned normally. When set to `omitted`, thinking content is redacted but a signature is returned for multi-turn continuity. Defaults to `summarized`.
+
+      - `"summarized"`
+
+      - `"omitted"`
+
 - `tool_choice: optional BetaToolChoice`
 
   How the model should use the provided tools. The model can use a specific tool, any available tool, decide by itself, or not use tools at all.
 
-  - `BetaToolChoiceAuto = object { type, disable_parallel_tool_use }`
+  - `BetaToolChoiceAuto object { type, disable_parallel_tool_use }`
 
     The model will automatically decide whether to use tools.
 
@@ -2889,7 +1562,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       Defaults to `false`. If set to `true`, the model will output at most one tool use.
 
-  - `BetaToolChoiceAny = object { type, disable_parallel_tool_use }`
+  - `BetaToolChoiceAny object { type, disable_parallel_tool_use }`
 
     The model will use any available tools.
 
@@ -2903,7 +1576,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       Defaults to `false`. If set to `true`, the model will output exactly one tool use.
 
-  - `BetaToolChoiceTool = object { name, type, disable_parallel_tool_use }`
+  - `BetaToolChoiceTool object { name, type, disable_parallel_tool_use }`
 
     The model will use the specified tool with `tool_choice.name`.
 
@@ -2921,7 +1594,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       Defaults to `false`. If set to `true`, the model will output exactly one tool use.
 
-  - `BetaToolChoiceNone = object { type }`
+  - `BetaToolChoiceNone object { type }`
 
     The model will not be allowed to use tools.
 
@@ -2929,7 +1602,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"none"`
 
-- `tools: optional array of BetaTool or BetaToolBash20241022 or BetaToolBash20250124 or 15 more`
+- `tools: optional array of BetaTool or BetaToolBash20241022 or BetaToolBash20250124 or 20 more`
 
   Definitions of tools that the model may use.
 
@@ -2993,7 +1666,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
   See our [guide](https://docs.claude.com/en/docs/tool-use) for more details.
 
-  - `BetaTool = object { input_schema, name, allowed_callers, 6 more }`
+  - `BetaTool object { input_schema, name, allowed_callers, 7 more }`
 
     - `input_schema: object { type, properties, required }`
 
@@ -3015,34 +1688,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       This is how the tool will be called by the model and in `tool_use` blocks.
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3054,15 +1710,21 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       Tool descriptions should be as detailed as possible. The more information that the model has about what the tool is and how to use it, the better it will perform. You can use natural language descriptions to reinforce important aspects of the tool input JSON schema.
 
+    - `eager_input_streaming: optional boolean`
+
+      Enable eager input streaming for this tool. When true, tool input parameters will be streamed incrementally as they are generated, and types will be inferred on-the-fly rather than buffering the full JSON output. When false, streaming is disabled for this tool even if the fine-grained-tool-streaming beta is active. When null (default), uses the default behavior based on beta headers.
+
     - `input_examples: optional array of map[unknown]`
 
     - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
 
     - `type: optional "custom"`
 
       - `"custom"`
 
-  - `BetaToolBash20241022 = object { name, type, allowed_callers, 4 more }`
+  - `BetaToolBash20241022 object { name, type, allowed_callers, 4 more }`
 
     - `name: "bash"`
 
@@ -3076,34 +1738,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"bash_20241022"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3113,7 +1758,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolBash20250124 = object { name, type, allowed_callers, 4 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolBash20250124 object { name, type, allowed_callers, 4 more }`
 
     - `name: "bash"`
 
@@ -3127,34 +1774,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"bash_20250124"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3164,7 +1794,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaCodeExecutionTool20250522 = object { name, type, allowed_callers, 3 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaCodeExecutionTool20250522 object { name, type, allowed_callers, 3 more }`
 
     - `name: "code_execution"`
 
@@ -3178,34 +1810,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"code_execution_20250522"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3213,7 +1828,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaCodeExecutionTool20250825 = object { name, type, allowed_callers, 3 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaCodeExecutionTool20250825 object { name, type, allowed_callers, 3 more }`
 
     - `name: "code_execution"`
 
@@ -3227,34 +1844,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"code_execution_20250825"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3262,7 +1862,45 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolComputerUse20241022 = object { display_height_px, display_width_px, name, 7 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaCodeExecutionTool20260120 object { name, type, allowed_callers, 3 more }`
+
+    Code execution tool with REPL state persistence (daemon mode + gVisor checkpoint).
+
+    - `name: "code_execution"`
+
+      Name of the tool.
+
+      This is how the tool will be called by the model and in `tool_use` blocks.
+
+      - `"code_execution"`
+
+    - `type: "code_execution_20260120"`
+
+      - `"code_execution_20260120"`
+
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+      - `"direct"`
+
+      - `"code_execution_20250825"`
+
+      - `"code_execution_20260120"`
+
+    - `cache_control: optional BetaCacheControlEphemeral`
+
+      Create a cache control breakpoint at this content block.
+
+    - `defer_loading: optional boolean`
+
+      If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolComputerUse20241022 object { display_height_px, display_width_px, name, 7 more }`
 
     - `display_height_px: number`
 
@@ -3284,34 +1922,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"computer_20241022"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3325,7 +1946,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaMemoryTool20250818 = object { name, type, allowed_callers, 4 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaMemoryTool20250818 object { name, type, allowed_callers, 4 more }`
 
     - `name: "memory"`
 
@@ -3339,34 +1962,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"memory_20250818"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3376,7 +1982,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolComputerUse20250124 = object { display_height_px, display_width_px, name, 7 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolComputerUse20250124 object { display_height_px, display_width_px, name, 7 more }`
 
     - `display_height_px: number`
 
@@ -3398,34 +2006,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"computer_20250124"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3439,7 +2030,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolTextEditor20241022 = object { name, type, allowed_callers, 4 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolTextEditor20241022 object { name, type, allowed_callers, 4 more }`
 
     - `name: "str_replace_editor"`
 
@@ -3453,34 +2046,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"text_editor_20241022"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3490,7 +2066,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolComputerUse20251124 = object { display_height_px, display_width_px, name, 8 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolComputerUse20251124 object { display_height_px, display_width_px, name, 8 more }`
 
     - `display_height_px: number`
 
@@ -3512,34 +2090,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"computer_20251124"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3557,7 +2118,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolTextEditor20250124 = object { name, type, allowed_callers, 4 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolTextEditor20250124 object { name, type, allowed_callers, 4 more }`
 
     - `name: "str_replace_editor"`
 
@@ -3571,34 +2134,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"text_editor_20250124"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3608,7 +2154,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolTextEditor20250429 = object { name, type, allowed_callers, 4 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolTextEditor20250429 object { name, type, allowed_callers, 4 more }`
 
     - `name: "str_replace_based_edit_tool"`
 
@@ -3622,34 +2170,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"text_editor_20250429"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3659,7 +2190,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolTextEditor20250728 = object { name, type, allowed_callers, 5 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolTextEditor20250728 object { name, type, allowed_callers, 5 more }`
 
     - `name: "str_replace_based_edit_tool"`
 
@@ -3673,34 +2206,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"text_editor_20250728"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3714,7 +2230,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaWebSearchTool20250305 = object { name, type, allowed_callers, 7 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaWebSearchTool20250305 object { name, type, allowed_callers, 7 more }`
 
     - `name: "web_search"`
 
@@ -3728,11 +2246,13 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"web_search_20250305"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
+
+      - `"code_execution_20260120"`
 
     - `allowed_domains: optional array of string`
 
@@ -3746,25 +2266,6 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       Create a cache control breakpoint at this content block.
 
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
-
     - `defer_loading: optional boolean`
 
       If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
@@ -3775,7 +2276,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-    - `user_location: optional object { type, city, country, 2 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+    - `user_location: optional BetaUserLocation`
 
       Parameters for the user's location. Used to provide more relevant search results.
 
@@ -3799,7 +2302,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
         The [IANA timezone](https://nodatime.org/TimeZones) of the user.
 
-  - `BetaWebFetchTool20250910 = object { name, type, allowed_callers, 8 more }`
+  - `BetaWebFetchTool20250910 object { name, type, allowed_callers, 8 more }`
 
     - `name: "web_fetch"`
 
@@ -3813,11 +2316,13 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"web_fetch_20250910"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
+
+      - `"code_execution_20260120"`
 
     - `allowed_domains: optional array of string`
 
@@ -3831,30 +2336,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       Create a cache control breakpoint at this content block.
 
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
-
     - `citations: optional BetaCitationsConfigParam`
 
       Citations configuration for fetched documents. Citations are disabled by default.
-
-      - `enabled: optional boolean`
 
     - `defer_loading: optional boolean`
 
@@ -3870,7 +2354,225 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolSearchToolBm25_20251119 = object { name, type, allowed_callers, 3 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaWebSearchTool20260209 object { name, type, allowed_callers, 7 more }`
+
+    - `name: "web_search"`
+
+      Name of the tool.
+
+      This is how the tool will be called by the model and in `tool_use` blocks.
+
+      - `"web_search"`
+
+    - `type: "web_search_20260209"`
+
+      - `"web_search_20260209"`
+
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+      - `"direct"`
+
+      - `"code_execution_20250825"`
+
+      - `"code_execution_20260120"`
+
+    - `allowed_domains: optional array of string`
+
+      If provided, only these domains will be included in results. Cannot be used alongside `blocked_domains`.
+
+    - `blocked_domains: optional array of string`
+
+      If provided, these domains will never appear in results. Cannot be used alongside `allowed_domains`.
+
+    - `cache_control: optional BetaCacheControlEphemeral`
+
+      Create a cache control breakpoint at this content block.
+
+    - `defer_loading: optional boolean`
+
+      If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+    - `max_uses: optional number`
+
+      Maximum number of times the tool can be used in the API request.
+
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
+    - `user_location: optional BetaUserLocation`
+
+      Parameters for the user's location. Used to provide more relevant search results.
+
+  - `BetaWebFetchTool20260209 object { name, type, allowed_callers, 8 more }`
+
+    - `name: "web_fetch"`
+
+      Name of the tool.
+
+      This is how the tool will be called by the model and in `tool_use` blocks.
+
+      - `"web_fetch"`
+
+    - `type: "web_fetch_20260209"`
+
+      - `"web_fetch_20260209"`
+
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+      - `"direct"`
+
+      - `"code_execution_20250825"`
+
+      - `"code_execution_20260120"`
+
+    - `allowed_domains: optional array of string`
+
+      List of domains to allow fetching from
+
+    - `blocked_domains: optional array of string`
+
+      List of domains to block fetching from
+
+    - `cache_control: optional BetaCacheControlEphemeral`
+
+      Create a cache control breakpoint at this content block.
+
+    - `citations: optional BetaCitationsConfigParam`
+
+      Citations configuration for fetched documents. Citations are disabled by default.
+
+    - `defer_loading: optional boolean`
+
+      If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+    - `max_content_tokens: optional number`
+
+      Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+    - `max_uses: optional number`
+
+      Maximum number of times the tool can be used in the API request.
+
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaWebFetchTool20260309 object { name, type, allowed_callers, 9 more }`
+
+    Web fetch tool with use_cache parameter for bypassing cached content.
+
+    - `name: "web_fetch"`
+
+      Name of the tool.
+
+      This is how the tool will be called by the model and in `tool_use` blocks.
+
+      - `"web_fetch"`
+
+    - `type: "web_fetch_20260309"`
+
+      - `"web_fetch_20260309"`
+
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+      - `"direct"`
+
+      - `"code_execution_20250825"`
+
+      - `"code_execution_20260120"`
+
+    - `allowed_domains: optional array of string`
+
+      List of domains to allow fetching from
+
+    - `blocked_domains: optional array of string`
+
+      List of domains to block fetching from
+
+    - `cache_control: optional BetaCacheControlEphemeral`
+
+      Create a cache control breakpoint at this content block.
+
+    - `citations: optional BetaCitationsConfigParam`
+
+      Citations configuration for fetched documents. Citations are disabled by default.
+
+    - `defer_loading: optional boolean`
+
+      If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+    - `max_content_tokens: optional number`
+
+      Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+    - `max_uses: optional number`
+
+      Maximum number of times the tool can be used in the API request.
+
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
+    - `use_cache: optional boolean`
+
+      Whether to use cached content. Set to false to bypass the cache and fetch fresh content. Only set to false when the user explicitly requests fresh content or when fetching rapidly-changing sources.
+
+  - `BetaAdvisorTool20260301 object { model, name, type, 7 more }`
+
+    - `model: Model`
+
+      The model that will complete your prompt.
+
+      See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+    - `name: "advisor"`
+
+      Name of the tool.
+
+      This is how the tool will be called by the model and in `tool_use` blocks.
+
+      - `"advisor"`
+
+    - `type: "advisor_20260301"`
+
+      - `"advisor_20260301"`
+
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
+
+      - `"direct"`
+
+      - `"code_execution_20250825"`
+
+      - `"code_execution_20260120"`
+
+    - `cache_control: optional BetaCacheControlEphemeral`
+
+      Create a cache control breakpoint at this content block.
+
+    - `caching: optional BetaCacheControlEphemeral`
+
+      Caching for the advisor's own prompt. When set, each advisor call writes a cache entry at the given TTL so subsequent calls in the same conversation read the stable prefix. When omitted, the advisor prompt is not cached.
+
+    - `defer_loading: optional boolean`
+
+      If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+    - `max_tokens: optional number`
+
+      Bounds the advisor's total output (thinking + text) per call. When the advisor hits this cap, the returned advisor_result or advisor_redacted_result block carries stop_reason='max_tokens', and a truncation note is appended to the advice text the worker model sees (inside the encrypted blob in redacted mode). When set, the server also emits a remaining-tokens budget block in the advisor's prompt so the advisor self-shapes toward the cap. When omitted, the advisor model's default output cap applies and no budget block is emitted.
+
+    - `max_uses: optional number`
+
+      Maximum number of times the tool can be used in the API request.
+
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolSearchToolBm25_20251119 object { name, type, allowed_callers, 3 more }`
 
     - `name: "tool_search_tool_bm25"`
 
@@ -3886,34 +2588,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"tool_search_tool_bm25"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3921,7 +2606,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaToolSearchToolRegex20251119 = object { name, type, allowed_callers, 3 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaToolSearchToolRegex20251119 object { name, type, allowed_callers, 3 more }`
 
     - `name: "tool_search_tool_regex"`
 
@@ -3937,34 +2624,17 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
       - `"tool_search_tool_regex"`
 
-    - `allowed_callers: optional array of "direct" or "code_execution_20250825"`
+    - `allowed_callers: optional array of "direct" or "code_execution_20250825" or "code_execution_20260120"`
 
       - `"direct"`
 
       - `"code_execution_20250825"`
 
+      - `"code_execution_20260120"`
+
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `defer_loading: optional boolean`
 
@@ -3972,7 +2642,9 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
     - `strict: optional boolean`
 
-  - `BetaMCPToolset = object { mcp_server_name, type, cache_control, 2 more }`
+      When true, guarantees schema validation on tool names and inputs
+
+  - `BetaMCPToolset object { mcp_server_name, type, cache_control, 2 more }`
 
     Configuration for a group of tools from an MCP server.
 
@@ -3990,25 +2662,6 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
     - `cache_control: optional BetaCacheControlEphemeral`
 
       Create a cache control breakpoint at this content block.
-
-      - `type: "ephemeral"`
-
-        - `"ephemeral"`
-
-      - `ttl: optional "5m" or "1h"`
-
-        The time-to-live for the cache control breakpoint.
-
-        This may be one the following values:
-
-        - `5m`: 5 minutes
-        - `1h`: 1 hour
-
-        Defaults to `5m`.
-
-        - `"5m"`
-
-        - `"1h"`
 
     - `configs: optional map[BetaMCPToolConfig]`
 
@@ -4028,7 +2681,7 @@ Learn more about token counting in our [user guide](https://docs.claude.com/en/d
 
 ### Returns
 
-- `BetaMessageTokensCount = object { context_management, input_tokens }`
+- `BetaMessageTokensCount object { context_management, input_tokens }`
 
   - `context_management: BetaCountTokensContextManagementResponse`
 
@@ -4049,13 +2702,48 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
     -H 'Content-Type: application/json' \
     -H 'anthropic-version: 2023-06-01' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY" \
-    -d '{
-          "messages": [
+    -d "{
+          \"messages\": [
             {
-              "content": "string",
-              "role": "user"
+              \"content\": \"Hello, world\",
+              \"role\": \"user\"
             }
           ],
-          "model": "claude-opus-4-5-20251101"
-        }'
+          \"model\": \"claude-opus-4-6\",
+          \"system\": [
+            {
+              \"text\": \"Today's date is 2024-06-01.\",
+              \"type\": \"text\"
+            }
+          ],
+          \"thinking\": {
+            \"type\": \"adaptive\"
+          },
+          \"tools\": [
+            {
+              \"input_schema\": {
+                \"type\": \"object\",
+                \"properties\": {
+                  \"location\": \"bar\",
+                  \"unit\": \"bar\"
+                },
+                \"required\": [
+                  \"location\"
+                ]
+              },
+              \"name\": \"name\"
+            }
+          ]
+        }"
+```
+
+#### Response
+
+```json
+{
+  "context_management": {
+    "original_input_tokens": 0
+  },
+  "input_tokens": 2095
+}
 ```

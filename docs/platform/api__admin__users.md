@@ -1,6 +1,6 @@
 # Users
 
-## Retrieve
+## Get User
 
 **get** `/v1/organizations/users/{user_id}`
 
@@ -14,7 +14,7 @@ Get User
 
 ### Returns
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   - `id: string`
 
@@ -58,10 +58,24 @@ Get User
 
 ```http
 curl https://api.anthropic.com/v1/organizations/users/$USER_ID \
-    -H "X-Api-Key: $ANTHROPIC_ADMIN_API_KEY"
+    -H 'anthropic-version: 2023-06-01' \
+    -H "Authorization: Bearer $ANTHROPIC_OAUTH_TOKEN"
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+  "added_at": "2024-10-30T23:58:27.427722Z",
+  "email": "user@emaildomain.com",
+  "name": "Jane Doe",
+  "role": "user",
+  "type": "user"
+}
+```
+
+## List Users
 
 **get** `/v1/organizations/users`
 
@@ -145,10 +159,31 @@ List Users
 
 ```http
 curl https://api.anthropic.com/v1/organizations/users \
-    -H "X-Api-Key: $ANTHROPIC_ADMIN_API_KEY"
+    -H 'anthropic-version: 2023-06-01' \
+    -H "Authorization: Bearer $ANTHROPIC_OAUTH_TOKEN"
 ```
 
-## Update
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+      "added_at": "2024-10-30T23:58:27.427722Z",
+      "email": "user@emaildomain.com",
+      "name": "Jane Doe",
+      "role": "user",
+      "type": "user"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id"
+}
+```
+
+## Update User
 
 **post** `/v1/organizations/users/{user_id}`
 
@@ -176,7 +211,7 @@ Update User
 
 ### Returns
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   - `id: string`
 
@@ -221,13 +256,27 @@ Update User
 ```http
 curl https://api.anthropic.com/v1/organizations/users/$USER_ID \
     -H 'Content-Type: application/json' \
-    -H "X-Api-Key: $ANTHROPIC_ADMIN_API_KEY" \
+    -H 'anthropic-version: 2023-06-01' \
+    -H "Authorization: Bearer $ANTHROPIC_OAUTH_TOKEN" \
     -d '{
           "role": "user"
         }'
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+  "added_at": "2024-10-30T23:58:27.427722Z",
+  "email": "user@emaildomain.com",
+  "name": "Jane Doe",
+  "role": "user",
+  "type": "user"
+}
+```
+
+## Remove User
 
 **delete** `/v1/organizations/users/{user_id}`
 
@@ -258,14 +307,24 @@ Remove User
 ```http
 curl https://api.anthropic.com/v1/organizations/users/$USER_ID \
     -X DELETE \
-    -H "X-Api-Key: $ANTHROPIC_ADMIN_API_KEY"
+    -H 'anthropic-version: 2023-06-01' \
+    -H "Authorization: Bearer $ANTHROPIC_OAUTH_TOKEN"
+```
+
+#### Response
+
+```json
+{
+  "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+  "type": "user_deleted"
+}
 ```
 
 ## Domain Types
 
 ### User
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   - `id: string`
 
@@ -304,3 +363,19 @@ curl https://api.anthropic.com/v1/organizations/users/$USER_ID \
     For Users, this is always `"user"`.
 
     - `"user"`
+
+### User Delete Response
+
+- `UserDeleteResponse object { id, type }`
+
+  - `id: string`
+
+    ID of the User.
+
+  - `type: "user_deleted"`
+
+    Deleted object type.
+
+    For Users, this is always `"user_deleted"`.
+
+    - `"user_deleted"`

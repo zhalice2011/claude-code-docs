@@ -1,4 +1,4 @@
-## Retrieve
+## Get a Model
 
 `BetaModelInfo beta().models().retrieve(ModelRetrieveParamsparams = ModelRetrieveParams.none(), RequestOptionsrequestOptions = RequestOptions.none())`
 
@@ -58,6 +58,24 @@ The Models API response can be used to determine information about a specific mo
 
     - `SKILLS_2025_10_02("skills-2025-10-02")`
 
+    - `FAST_MODE_2026_02_01("fast-mode-2026-02-01")`
+
+    - `OUTPUT_300K_2026_03_24("output-300k-2026-03-24")`
+
+    - `USER_PROFILES_2026_03_24("user-profiles-2026-03-24")`
+
+    - `ADVISOR_TOOL_2026_03_01("advisor-tool-2026-03-01")`
+
+    - `MANAGED_AGENTS_2026_04_01("managed-agents-2026-04-01")`
+
+    - `CACHE_DIAGNOSIS_2026_04_07("cache-diagnosis-2026-04-07")`
+
+    - `THINKING_TOKEN_COUNT_2026_05_13("thinking-token-count-2026-05-13")`
+
+    - `SERVER_SIDE_FALLBACK_2026_06_01("server-side-fallback-2026-06-01")`
+
+    - `FALLBACK_CREDIT_2026_06_01("fallback-credit-2026-06-01")`
+
 ### Returns
 
 - `class BetaModelInfo:`
@@ -66,6 +84,110 @@ The Models API response can be used to determine information about a specific mo
 
     Unique model identifier.
 
+  - `Optional<List<String>> allowedFallbackModels`
+
+    Model IDs this model accepts as `fallbacks[i].model` on the Messages API. An empty list means the `fallbacks` parameter is not supported for this model as primary.
+
+  - `Optional<BetaModelCapabilities> capabilities`
+
+    Model capability information.
+
+    - `BetaCapabilitySupport batch`
+
+      Whether the model supports the Batch API.
+
+      - `boolean supported`
+
+        Whether this capability is supported by the model.
+
+    - `BetaCapabilitySupport citations`
+
+      Whether the model supports citation generation.
+
+    - `BetaCapabilitySupport codeExecution`
+
+      Whether the model supports code execution tools.
+
+    - `BetaContextManagementCapability contextManagement`
+
+      Context management support and available strategies.
+
+      - `Optional<BetaCapabilitySupport> clearThinking20251015`
+
+        Indicates whether a capability is supported.
+
+      - `Optional<BetaCapabilitySupport> clearToolUses20250919`
+
+        Indicates whether a capability is supported.
+
+      - `Optional<BetaCapabilitySupport> compact20260112`
+
+        Indicates whether a capability is supported.
+
+      - `boolean supported`
+
+        Whether this capability is supported by the model.
+
+    - `BetaEffortCapability effort`
+
+      Effort (reasoning_effort) support and available levels.
+
+      - `BetaCapabilitySupport high`
+
+        Whether the model supports high effort level.
+
+      - `BetaCapabilitySupport low`
+
+        Whether the model supports low effort level.
+
+      - `BetaCapabilitySupport max`
+
+        Whether the model supports max effort level.
+
+      - `BetaCapabilitySupport medium`
+
+        Whether the model supports medium effort level.
+
+      - `boolean supported`
+
+        Whether this capability is supported by the model.
+
+      - `Optional<BetaCapabilitySupport> xhigh`
+
+        Indicates whether a capability is supported.
+
+    - `BetaCapabilitySupport imageInput`
+
+      Whether the model accepts image content blocks.
+
+    - `BetaCapabilitySupport pdfInput`
+
+      Whether the model accepts PDF content blocks.
+
+    - `BetaCapabilitySupport structuredOutputs`
+
+      Whether the model supports structured output / JSON mode / strict tool schemas.
+
+    - `BetaThinkingCapability thinking`
+
+      Thinking capability and supported type configurations.
+
+      - `boolean supported`
+
+        Whether this capability is supported by the model.
+
+      - `BetaThinkingTypes types`
+
+        Supported thinking type configurations.
+
+        - `BetaCapabilitySupport adaptive`
+
+          Whether the model supports thinking with type 'adaptive' (auto).
+
+        - `BetaCapabilitySupport enabled`
+
+          Whether the model supports thinking with type 'enabled'.
+
   - `LocalDateTime createdAt`
 
     RFC 3339 datetime string representing the time at which the model was released. May be set to an epoch value if the release date is unknown.
@@ -73,6 +195,14 @@ The Models API response can be used to determine information about a specific mo
   - `String displayName`
 
     A human-readable name for the model.
+
+  - `Optional<Long> maxInputTokens`
+
+    Maximum input context window size in tokens for this model.
+
+  - `Optional<Long> maxTokens`
+
+    Maximum value for the `max_tokens` parameter when using this model.
 
   - `JsonValue; type "model"constant`
 
@@ -100,5 +230,82 @@ public final class Main {
 
         BetaModelInfo betaModelInfo = client.beta().models().retrieve("model_id");
     }
+}
+```
+
+#### Response
+
+```json
+{
+  "id": "claude-opus-4-6",
+  "allowed_fallback_models": [
+    "string"
+  ],
+  "capabilities": {
+    "batch": {
+      "supported": true
+    },
+    "citations": {
+      "supported": true
+    },
+    "code_execution": {
+      "supported": true
+    },
+    "context_management": {
+      "clear_thinking_20251015": {
+        "supported": true
+      },
+      "clear_tool_uses_20250919": {
+        "supported": true
+      },
+      "compact_20260112": {
+        "supported": true
+      },
+      "supported": true
+    },
+    "effort": {
+      "high": {
+        "supported": true
+      },
+      "low": {
+        "supported": true
+      },
+      "max": {
+        "supported": true
+      },
+      "medium": {
+        "supported": true
+      },
+      "supported": true,
+      "xhigh": {
+        "supported": true
+      }
+    },
+    "image_input": {
+      "supported": true
+    },
+    "pdf_input": {
+      "supported": true
+    },
+    "structured_outputs": {
+      "supported": true
+    },
+    "thinking": {
+      "supported": true,
+      "types": {
+        "adaptive": {
+          "supported": true
+        },
+        "enabled": {
+          "supported": true
+        }
+      }
+    }
+  },
+  "created_at": "2026-02-04T00:00:00Z",
+  "display_name": "Claude Opus 4.6",
+  "max_input_tokens": 0,
+  "max_tokens": 0,
+  "type": "model"
 }
 ```

@@ -1,6 +1,6 @@
 # Batches
 
-## Create
+## Create a Message Batch
 
 `MessageBatch messages().batches().create(BatchCreateParamsparams, RequestOptionsrequestOptions = RequestOptions.none())`
 
@@ -37,6 +37,8 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
         The maximum number of tokens to generate before stopping.
 
         Note that our models may stop _before_ reaching this maximum. This parameter only specifies the absolute maximum number of tokens to generate.
+
+        Set to `0` to populate the [prompt cache](https://docs.claude.com/en/docs/build-with-claude/prompt-caching#pre-warming-the-cache) without generating a response.
 
         Different models have different maximum values for this parameter.  See [models](https://docs.claude.com/en/docs/models-overview) for details.
 
@@ -166,13 +168,23 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `String citedText`
 
+                    The full text of the cited block range, concatenated.
+
+                    Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                   - `long documentIndex`
 
                   - `Optional<String> documentTitle`
 
                   - `long endBlockIndex`
 
+                    Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                    Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                   - `long startBlockIndex`
+
+                    0-based index of the first cited block in the source's `content` array.
 
                   - `JsonValue; type "content_block_location"constant`
 
@@ -196,13 +208,27 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `String citedText`
 
+                    The full text of the cited block range, concatenated.
+
+                    Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                   - `long endBlockIndex`
 
+                    Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                    Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                   - `long searchResultIndex`
+
+                    0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                    Counted separately from `document_index`; server-side web search results are not included in this count.
 
                   - `String source`
 
                   - `long startBlockIndex`
+
+                    0-based index of the first cited block in the source's `content` array.
 
                   - `Optional<String> title`
 
@@ -248,25 +274,6 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `JsonValue; type "ephemeral"constant`
-
-                  - `EPHEMERAL("ephemeral")`
-
-                - `Optional<Ttl> ttl`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `TTL_5M("5m")`
-
-                  - `TTL_1H("1h")`
-
             - `class DocumentBlockParam:`
 
               - `Source source`
@@ -305,173 +312,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                       - `class TextBlockParam:`
 
-                        - `String text`
-
-                        - `JsonValue; type "text"constant`
-
-                          - `TEXT("text")`
-
-                        - `Optional<CacheControlEphemeral> cacheControl`
-
-                          Create a cache control breakpoint at this content block.
-
-                          - `JsonValue; type "ephemeral"constant`
-
-                            - `EPHEMERAL("ephemeral")`
-
-                          - `Optional<Ttl> ttl`
-
-                            The time-to-live for the cache control breakpoint.
-
-                            This may be one the following values:
-
-                            - `5m`: 5 minutes
-                            - `1h`: 1 hour
-
-                            Defaults to `5m`.
-
-                            - `TTL_5M("5m")`
-
-                            - `TTL_1H("1h")`
-
-                        - `Optional<List<TextCitationParam>> citations`
-
-                          - `class CitationCharLocationParam:`
-
-                            - `String citedText`
-
-                            - `long documentIndex`
-
-                            - `Optional<String> documentTitle`
-
-                            - `long endCharIndex`
-
-                            - `long startCharIndex`
-
-                            - `JsonValue; type "char_location"constant`
-
-                              - `CHAR_LOCATION("char_location")`
-
-                          - `class CitationPageLocationParam:`
-
-                            - `String citedText`
-
-                            - `long documentIndex`
-
-                            - `Optional<String> documentTitle`
-
-                            - `long endPageNumber`
-
-                            - `long startPageNumber`
-
-                            - `JsonValue; type "page_location"constant`
-
-                              - `PAGE_LOCATION("page_location")`
-
-                          - `class CitationContentBlockLocationParam:`
-
-                            - `String citedText`
-
-                            - `long documentIndex`
-
-                            - `Optional<String> documentTitle`
-
-                            - `long endBlockIndex`
-
-                            - `long startBlockIndex`
-
-                            - `JsonValue; type "content_block_location"constant`
-
-                              - `CONTENT_BLOCK_LOCATION("content_block_location")`
-
-                          - `class CitationWebSearchResultLocationParam:`
-
-                            - `String citedText`
-
-                            - `String encryptedIndex`
-
-                            - `Optional<String> title`
-
-                            - `JsonValue; type "web_search_result_location"constant`
-
-                              - `WEB_SEARCH_RESULT_LOCATION("web_search_result_location")`
-
-                            - `String url`
-
-                          - `class CitationSearchResultLocationParam:`
-
-                            - `String citedText`
-
-                            - `long endBlockIndex`
-
-                            - `long searchResultIndex`
-
-                            - `String source`
-
-                            - `long startBlockIndex`
-
-                            - `Optional<String> title`
-
-                            - `JsonValue; type "search_result_location"constant`
-
-                              - `SEARCH_RESULT_LOCATION("search_result_location")`
-
                       - `class ImageBlockParam:`
-
-                        - `Source source`
-
-                          - `class Base64ImageSource:`
-
-                            - `String data`
-
-                            - `MediaType mediaType`
-
-                              - `IMAGE_JPEG("image/jpeg")`
-
-                              - `IMAGE_PNG("image/png")`
-
-                              - `IMAGE_GIF("image/gif")`
-
-                              - `IMAGE_WEBP("image/webp")`
-
-                            - `JsonValue; type "base64"constant`
-
-                              - `BASE64("base64")`
-
-                          - `class UrlImageSource:`
-
-                            - `JsonValue; type "url"constant`
-
-                              - `URL("url")`
-
-                            - `String url`
-
-                        - `JsonValue; type "image"constant`
-
-                          - `IMAGE("image")`
-
-                        - `Optional<CacheControlEphemeral> cacheControl`
-
-                          Create a cache control breakpoint at this content block.
-
-                          - `JsonValue; type "ephemeral"constant`
-
-                            - `EPHEMERAL("ephemeral")`
-
-                          - `Optional<Ttl> ttl`
-
-                            The time-to-live for the cache control breakpoint.
-
-                            This may be one the following values:
-
-                            - `5m`: 5 minutes
-                            - `1h`: 1 hour
-
-                            Defaults to `5m`.
-
-                            - `TTL_5M("5m")`
-
-                            - `TTL_1H("1h")`
 
                   - `JsonValue; type "content"constant`
 
@@ -493,25 +334,6 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `JsonValue; type "ephemeral"constant`
-
-                  - `EPHEMERAL("ephemeral")`
-
-                - `Optional<Ttl> ttl`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `TTL_5M("5m")`
-
-                  - `TTL_1H("1h")`
-
               - `Optional<CitationsConfigParam> citations`
 
                 - `Optional<Boolean> enabled`
@@ -528,112 +350,11 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `JsonValue; type "text"constant`
 
-                  - `TEXT("text")`
-
                 - `Optional<CacheControlEphemeral> cacheControl`
 
                   Create a cache control breakpoint at this content block.
 
-                  - `JsonValue; type "ephemeral"constant`
-
-                    - `EPHEMERAL("ephemeral")`
-
-                  - `Optional<Ttl> ttl`
-
-                    The time-to-live for the cache control breakpoint.
-
-                    This may be one the following values:
-
-                    - `5m`: 5 minutes
-                    - `1h`: 1 hour
-
-                    Defaults to `5m`.
-
-                    - `TTL_5M("5m")`
-
-                    - `TTL_1H("1h")`
-
                 - `Optional<List<TextCitationParam>> citations`
-
-                  - `class CitationCharLocationParam:`
-
-                    - `String citedText`
-
-                    - `long documentIndex`
-
-                    - `Optional<String> documentTitle`
-
-                    - `long endCharIndex`
-
-                    - `long startCharIndex`
-
-                    - `JsonValue; type "char_location"constant`
-
-                      - `CHAR_LOCATION("char_location")`
-
-                  - `class CitationPageLocationParam:`
-
-                    - `String citedText`
-
-                    - `long documentIndex`
-
-                    - `Optional<String> documentTitle`
-
-                    - `long endPageNumber`
-
-                    - `long startPageNumber`
-
-                    - `JsonValue; type "page_location"constant`
-
-                      - `PAGE_LOCATION("page_location")`
-
-                  - `class CitationContentBlockLocationParam:`
-
-                    - `String citedText`
-
-                    - `long documentIndex`
-
-                    - `Optional<String> documentTitle`
-
-                    - `long endBlockIndex`
-
-                    - `long startBlockIndex`
-
-                    - `JsonValue; type "content_block_location"constant`
-
-                      - `CONTENT_BLOCK_LOCATION("content_block_location")`
-
-                  - `class CitationWebSearchResultLocationParam:`
-
-                    - `String citedText`
-
-                    - `String encryptedIndex`
-
-                    - `Optional<String> title`
-
-                    - `JsonValue; type "web_search_result_location"constant`
-
-                      - `WEB_SEARCH_RESULT_LOCATION("web_search_result_location")`
-
-                    - `String url`
-
-                  - `class CitationSearchResultLocationParam:`
-
-                    - `String citedText`
-
-                    - `long endBlockIndex`
-
-                    - `long searchResultIndex`
-
-                    - `String source`
-
-                    - `long startBlockIndex`
-
-                    - `Optional<String> title`
-
-                    - `JsonValue; type "search_result_location"constant`
-
-                      - `SEARCH_RESULT_LOCATION("search_result_location")`
 
               - `String source`
 
@@ -647,28 +368,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `JsonValue; type "ephemeral"constant`
-
-                  - `EPHEMERAL("ephemeral")`
-
-                - `Optional<Ttl> ttl`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `TTL_5M("5m")`
-
-                  - `TTL_1H("1h")`
-
               - `Optional<CitationsConfigParam> citations`
-
-                - `Optional<Boolean> enabled`
 
             - `class ThinkingBlockParam:`
 
@@ -704,24 +404,35 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `JsonValue; type "ephemeral"constant`
+              - `Optional<Caller> caller`
 
-                  - `EPHEMERAL("ephemeral")`
+                Tool invocation directly from the model.
 
-                - `Optional<Ttl> ttl`
+                - `class DirectCaller:`
 
-                  The time-to-live for the cache control breakpoint.
+                  Tool invocation directly from the model.
 
-                  This may be one the following values:
+                  - `JsonValue; type "direct"constant`
 
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
+                    - `DIRECT("direct")`
 
-                  Defaults to `5m`.
+                - `class ServerToolCaller:`
 
-                  - `TTL_5M("5m")`
+                  Tool invocation generated by a server-side tool.
 
-                  - `TTL_1H("1h")`
+                  - `String toolId`
+
+                  - `JsonValue; type "code_execution_20250825"constant`
+
+                    - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+                - `class ServerToolCaller20260120:`
+
+                  - `String toolId`
+
+                  - `JsonValue; type "code_execution_20260120"constant`
+
+                    - `CODE_EXECUTION_20260120("code_execution_20260120")`
 
             - `class ToolResultBlockParam:`
 
@@ -735,25 +446,6 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `JsonValue; type "ephemeral"constant`
-
-                  - `EPHEMERAL("ephemeral")`
-
-                - `Optional<Ttl> ttl`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `TTL_5M("5m")`
-
-                  - `TTL_1H("1h")`
-
               - `Optional<Content> content`
 
                 - `String`
@@ -762,576 +454,25 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `class TextBlockParam:`
 
-                    - `String text`
-
-                    - `JsonValue; type "text"constant`
-
-                      - `TEXT("text")`
-
-                    - `Optional<CacheControlEphemeral> cacheControl`
-
-                      Create a cache control breakpoint at this content block.
-
-                      - `JsonValue; type "ephemeral"constant`
-
-                        - `EPHEMERAL("ephemeral")`
-
-                      - `Optional<Ttl> ttl`
-
-                        The time-to-live for the cache control breakpoint.
-
-                        This may be one the following values:
-
-                        - `5m`: 5 minutes
-                        - `1h`: 1 hour
-
-                        Defaults to `5m`.
-
-                        - `TTL_5M("5m")`
-
-                        - `TTL_1H("1h")`
-
-                    - `Optional<List<TextCitationParam>> citations`
-
-                      - `class CitationCharLocationParam:`
-
-                        - `String citedText`
-
-                        - `long documentIndex`
-
-                        - `Optional<String> documentTitle`
-
-                        - `long endCharIndex`
-
-                        - `long startCharIndex`
-
-                        - `JsonValue; type "char_location"constant`
-
-                          - `CHAR_LOCATION("char_location")`
-
-                      - `class CitationPageLocationParam:`
-
-                        - `String citedText`
-
-                        - `long documentIndex`
-
-                        - `Optional<String> documentTitle`
-
-                        - `long endPageNumber`
-
-                        - `long startPageNumber`
-
-                        - `JsonValue; type "page_location"constant`
-
-                          - `PAGE_LOCATION("page_location")`
-
-                      - `class CitationContentBlockLocationParam:`
-
-                        - `String citedText`
-
-                        - `long documentIndex`
-
-                        - `Optional<String> documentTitle`
-
-                        - `long endBlockIndex`
-
-                        - `long startBlockIndex`
-
-                        - `JsonValue; type "content_block_location"constant`
-
-                          - `CONTENT_BLOCK_LOCATION("content_block_location")`
-
-                      - `class CitationWebSearchResultLocationParam:`
-
-                        - `String citedText`
-
-                        - `String encryptedIndex`
-
-                        - `Optional<String> title`
-
-                        - `JsonValue; type "web_search_result_location"constant`
-
-                          - `WEB_SEARCH_RESULT_LOCATION("web_search_result_location")`
-
-                        - `String url`
-
-                      - `class CitationSearchResultLocationParam:`
-
-                        - `String citedText`
-
-                        - `long endBlockIndex`
-
-                        - `long searchResultIndex`
-
-                        - `String source`
-
-                        - `long startBlockIndex`
-
-                        - `Optional<String> title`
-
-                        - `JsonValue; type "search_result_location"constant`
-
-                          - `SEARCH_RESULT_LOCATION("search_result_location")`
-
                   - `class ImageBlockParam:`
-
-                    - `Source source`
-
-                      - `class Base64ImageSource:`
-
-                        - `String data`
-
-                        - `MediaType mediaType`
-
-                          - `IMAGE_JPEG("image/jpeg")`
-
-                          - `IMAGE_PNG("image/png")`
-
-                          - `IMAGE_GIF("image/gif")`
-
-                          - `IMAGE_WEBP("image/webp")`
-
-                        - `JsonValue; type "base64"constant`
-
-                          - `BASE64("base64")`
-
-                      - `class UrlImageSource:`
-
-                        - `JsonValue; type "url"constant`
-
-                          - `URL("url")`
-
-                        - `String url`
-
-                    - `JsonValue; type "image"constant`
-
-                      - `IMAGE("image")`
-
-                    - `Optional<CacheControlEphemeral> cacheControl`
-
-                      Create a cache control breakpoint at this content block.
-
-                      - `JsonValue; type "ephemeral"constant`
-
-                        - `EPHEMERAL("ephemeral")`
-
-                      - `Optional<Ttl> ttl`
-
-                        The time-to-live for the cache control breakpoint.
-
-                        This may be one the following values:
-
-                        - `5m`: 5 minutes
-                        - `1h`: 1 hour
-
-                        Defaults to `5m`.
-
-                        - `TTL_5M("5m")`
-
-                        - `TTL_1H("1h")`
 
                   - `class SearchResultBlockParam:`
 
-                    - `List<TextBlockParam> content`
-
-                      - `String text`
-
-                      - `JsonValue; type "text"constant`
-
-                        - `TEXT("text")`
-
-                      - `Optional<CacheControlEphemeral> cacheControl`
-
-                        Create a cache control breakpoint at this content block.
-
-                        - `JsonValue; type "ephemeral"constant`
-
-                          - `EPHEMERAL("ephemeral")`
-
-                        - `Optional<Ttl> ttl`
-
-                          The time-to-live for the cache control breakpoint.
-
-                          This may be one the following values:
-
-                          - `5m`: 5 minutes
-                          - `1h`: 1 hour
-
-                          Defaults to `5m`.
-
-                          - `TTL_5M("5m")`
-
-                          - `TTL_1H("1h")`
-
-                      - `Optional<List<TextCitationParam>> citations`
-
-                        - `class CitationCharLocationParam:`
-
-                          - `String citedText`
-
-                          - `long documentIndex`
-
-                          - `Optional<String> documentTitle`
-
-                          - `long endCharIndex`
-
-                          - `long startCharIndex`
-
-                          - `JsonValue; type "char_location"constant`
-
-                            - `CHAR_LOCATION("char_location")`
-
-                        - `class CitationPageLocationParam:`
-
-                          - `String citedText`
-
-                          - `long documentIndex`
-
-                          - `Optional<String> documentTitle`
-
-                          - `long endPageNumber`
-
-                          - `long startPageNumber`
-
-                          - `JsonValue; type "page_location"constant`
-
-                            - `PAGE_LOCATION("page_location")`
-
-                        - `class CitationContentBlockLocationParam:`
-
-                          - `String citedText`
-
-                          - `long documentIndex`
-
-                          - `Optional<String> documentTitle`
-
-                          - `long endBlockIndex`
-
-                          - `long startBlockIndex`
-
-                          - `JsonValue; type "content_block_location"constant`
-
-                            - `CONTENT_BLOCK_LOCATION("content_block_location")`
-
-                        - `class CitationWebSearchResultLocationParam:`
-
-                          - `String citedText`
-
-                          - `String encryptedIndex`
-
-                          - `Optional<String> title`
-
-                          - `JsonValue; type "web_search_result_location"constant`
-
-                            - `WEB_SEARCH_RESULT_LOCATION("web_search_result_location")`
-
-                          - `String url`
-
-                        - `class CitationSearchResultLocationParam:`
-
-                          - `String citedText`
-
-                          - `long endBlockIndex`
-
-                          - `long searchResultIndex`
-
-                          - `String source`
-
-                          - `long startBlockIndex`
-
-                          - `Optional<String> title`
-
-                          - `JsonValue; type "search_result_location"constant`
-
-                            - `SEARCH_RESULT_LOCATION("search_result_location")`
-
-                    - `String source`
-
-                    - `String title`
-
-                    - `JsonValue; type "search_result"constant`
-
-                      - `SEARCH_RESULT("search_result")`
-
-                    - `Optional<CacheControlEphemeral> cacheControl`
-
-                      Create a cache control breakpoint at this content block.
-
-                      - `JsonValue; type "ephemeral"constant`
-
-                        - `EPHEMERAL("ephemeral")`
-
-                      - `Optional<Ttl> ttl`
-
-                        The time-to-live for the cache control breakpoint.
-
-                        This may be one the following values:
-
-                        - `5m`: 5 minutes
-                        - `1h`: 1 hour
-
-                        Defaults to `5m`.
-
-                        - `TTL_5M("5m")`
-
-                        - `TTL_1H("1h")`
-
-                    - `Optional<CitationsConfigParam> citations`
-
-                      - `Optional<Boolean> enabled`
-
                   - `class DocumentBlockParam:`
 
-                    - `Source source`
+                  - `class ToolReferenceBlockParam:`
 
-                      - `class Base64PdfSource:`
+                    Tool reference block that can be included in tool_result content.
 
-                        - `String data`
+                    - `String toolName`
 
-                        - `JsonValue; mediaType "application/pdf"constant`
+                    - `JsonValue; type "tool_reference"constant`
 
-                          - `APPLICATION_PDF("application/pdf")`
-
-                        - `JsonValue; type "base64"constant`
-
-                          - `BASE64("base64")`
-
-                      - `class PlainTextSource:`
-
-                        - `String data`
-
-                        - `JsonValue; mediaType "text/plain"constant`
-
-                          - `TEXT_PLAIN("text/plain")`
-
-                        - `JsonValue; type "text"constant`
-
-                          - `TEXT("text")`
-
-                      - `class ContentBlockSource:`
-
-                        - `Content content`
-
-                          - `String`
-
-                          - `List<ContentBlockSourceContent>`
-
-                            - `class TextBlockParam:`
-
-                              - `String text`
-
-                              - `JsonValue; type "text"constant`
-
-                                - `TEXT("text")`
-
-                              - `Optional<CacheControlEphemeral> cacheControl`
-
-                                Create a cache control breakpoint at this content block.
-
-                                - `JsonValue; type "ephemeral"constant`
-
-                                  - `EPHEMERAL("ephemeral")`
-
-                                - `Optional<Ttl> ttl`
-
-                                  The time-to-live for the cache control breakpoint.
-
-                                  This may be one the following values:
-
-                                  - `5m`: 5 minutes
-                                  - `1h`: 1 hour
-
-                                  Defaults to `5m`.
-
-                                  - `TTL_5M("5m")`
-
-                                  - `TTL_1H("1h")`
-
-                              - `Optional<List<TextCitationParam>> citations`
-
-                                - `class CitationCharLocationParam:`
-
-                                  - `String citedText`
-
-                                  - `long documentIndex`
-
-                                  - `Optional<String> documentTitle`
-
-                                  - `long endCharIndex`
-
-                                  - `long startCharIndex`
-
-                                  - `JsonValue; type "char_location"constant`
-
-                                    - `CHAR_LOCATION("char_location")`
-
-                                - `class CitationPageLocationParam:`
-
-                                  - `String citedText`
-
-                                  - `long documentIndex`
-
-                                  - `Optional<String> documentTitle`
-
-                                  - `long endPageNumber`
-
-                                  - `long startPageNumber`
-
-                                  - `JsonValue; type "page_location"constant`
-
-                                    - `PAGE_LOCATION("page_location")`
-
-                                - `class CitationContentBlockLocationParam:`
-
-                                  - `String citedText`
-
-                                  - `long documentIndex`
-
-                                  - `Optional<String> documentTitle`
-
-                                  - `long endBlockIndex`
-
-                                  - `long startBlockIndex`
-
-                                  - `JsonValue; type "content_block_location"constant`
-
-                                    - `CONTENT_BLOCK_LOCATION("content_block_location")`
-
-                                - `class CitationWebSearchResultLocationParam:`
-
-                                  - `String citedText`
-
-                                  - `String encryptedIndex`
-
-                                  - `Optional<String> title`
-
-                                  - `JsonValue; type "web_search_result_location"constant`
-
-                                    - `WEB_SEARCH_RESULT_LOCATION("web_search_result_location")`
-
-                                  - `String url`
-
-                                - `class CitationSearchResultLocationParam:`
-
-                                  - `String citedText`
-
-                                  - `long endBlockIndex`
-
-                                  - `long searchResultIndex`
-
-                                  - `String source`
-
-                                  - `long startBlockIndex`
-
-                                  - `Optional<String> title`
-
-                                  - `JsonValue; type "search_result_location"constant`
-
-                                    - `SEARCH_RESULT_LOCATION("search_result_location")`
-
-                            - `class ImageBlockParam:`
-
-                              - `Source source`
-
-                                - `class Base64ImageSource:`
-
-                                  - `String data`
-
-                                  - `MediaType mediaType`
-
-                                    - `IMAGE_JPEG("image/jpeg")`
-
-                                    - `IMAGE_PNG("image/png")`
-
-                                    - `IMAGE_GIF("image/gif")`
-
-                                    - `IMAGE_WEBP("image/webp")`
-
-                                  - `JsonValue; type "base64"constant`
-
-                                    - `BASE64("base64")`
-
-                                - `class UrlImageSource:`
-
-                                  - `JsonValue; type "url"constant`
-
-                                    - `URL("url")`
-
-                                  - `String url`
-
-                              - `JsonValue; type "image"constant`
-
-                                - `IMAGE("image")`
-
-                              - `Optional<CacheControlEphemeral> cacheControl`
-
-                                Create a cache control breakpoint at this content block.
-
-                                - `JsonValue; type "ephemeral"constant`
-
-                                  - `EPHEMERAL("ephemeral")`
-
-                                - `Optional<Ttl> ttl`
-
-                                  The time-to-live for the cache control breakpoint.
-
-                                  This may be one the following values:
-
-                                  - `5m`: 5 minutes
-                                  - `1h`: 1 hour
-
-                                  Defaults to `5m`.
-
-                                  - `TTL_5M("5m")`
-
-                                  - `TTL_1H("1h")`
-
-                        - `JsonValue; type "content"constant`
-
-                          - `CONTENT("content")`
-
-                      - `class UrlPdfSource:`
-
-                        - `JsonValue; type "url"constant`
-
-                          - `URL("url")`
-
-                        - `String url`
-
-                    - `JsonValue; type "document"constant`
-
-                      - `DOCUMENT("document")`
+                      - `TOOL_REFERENCE("tool_reference")`
 
                     - `Optional<CacheControlEphemeral> cacheControl`
 
                       Create a cache control breakpoint at this content block.
-
-                      - `JsonValue; type "ephemeral"constant`
-
-                        - `EPHEMERAL("ephemeral")`
-
-                      - `Optional<Ttl> ttl`
-
-                        The time-to-live for the cache control breakpoint.
-
-                        This may be one the following values:
-
-                        - `5m`: 5 minutes
-                        - `1h`: 1 hour
-
-                        Defaults to `5m`.
-
-                        - `TTL_5M("5m")`
-
-                        - `TTL_1H("1h")`
-
-                    - `Optional<CitationsConfigParam> citations`
-
-                      - `Optional<Boolean> enabled`
-
-                    - `Optional<String> context`
-
-                    - `Optional<String> title`
 
               - `Optional<Boolean> isError`
 
@@ -1341,9 +482,21 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `Input input`
 
-              - `JsonValue; name "web_search"constant`
+              - `Name name`
 
                 - `WEB_SEARCH("web_search")`
+
+                - `WEB_FETCH("web_fetch")`
+
+                - `CODE_EXECUTION("code_execution")`
+
+                - `BASH_CODE_EXECUTION("bash_code_execution")`
+
+                - `TEXT_EDITOR_CODE_EXECUTION("text_editor_code_execution")`
+
+                - `TOOL_SEARCH_TOOL_REGEX("tool_search_tool_regex")`
+
+                - `TOOL_SEARCH_TOOL_BM25("tool_search_tool_bm25")`
 
               - `JsonValue; type "server_tool_use"constant`
 
@@ -1353,24 +506,19 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `JsonValue; type "ephemeral"constant`
+              - `Optional<Caller> caller`
 
-                  - `EPHEMERAL("ephemeral")`
+                Tool invocation directly from the model.
 
-                - `Optional<Ttl> ttl`
+                - `class DirectCaller:`
 
-                  The time-to-live for the cache control breakpoint.
+                  Tool invocation directly from the model.
 
-                  This may be one the following values:
+                - `class ServerToolCaller:`
 
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
+                  Tool invocation generated by a server-side tool.
 
-                  Defaults to `5m`.
-
-                  - `TTL_5M("5m")`
-
-                  - `TTL_1H("1h")`
+                - `class ServerToolCaller20260120:`
 
             - `class WebSearchToolResultBlockParam:`
 
@@ -1392,7 +540,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `class WebSearchToolRequestError:`
 
-                  - `ErrorCode errorCode`
+                  - `WebSearchToolResultErrorCode errorCode`
 
                     - `INVALID_TOOL_INPUT("invalid_tool_input")`
 
@@ -1403,6 +551,8 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
                     - `TOO_MANY_REQUESTS("too_many_requests")`
 
                     - `QUERY_TOO_LONG("query_too_long")`
+
+                    - `REQUEST_TOO_LARGE("request_too_large")`
 
                   - `JsonValue; type "web_search_tool_result_error"constant`
 
@@ -1418,24 +568,385 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `JsonValue; type "ephemeral"constant`
+              - `Optional<Caller> caller`
 
-                  - `EPHEMERAL("ephemeral")`
+                Tool invocation directly from the model.
 
-                - `Optional<Ttl> ttl`
+                - `class DirectCaller:`
 
-                  The time-to-live for the cache control breakpoint.
+                  Tool invocation directly from the model.
 
-                  This may be one the following values:
+                - `class ServerToolCaller:`
 
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
+                  Tool invocation generated by a server-side tool.
 
-                  Defaults to `5m`.
+                - `class ServerToolCaller20260120:`
 
-                  - `TTL_5M("5m")`
+            - `class WebFetchToolResultBlockParam:`
 
-                  - `TTL_1H("1h")`
+              - `Content content`
+
+                - `class WebFetchToolResultErrorBlockParam:`
+
+                  - `WebFetchToolResultErrorCode errorCode`
+
+                    - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                    - `URL_TOO_LONG("url_too_long")`
+
+                    - `URL_NOT_ALLOWED("url_not_allowed")`
+
+                    - `URL_NOT_IN_PRIOR_CONTEXT("url_not_in_prior_context")`
+
+                    - `URL_NOT_ACCESSIBLE("url_not_accessible")`
+
+                    - `UNSUPPORTED_CONTENT_TYPE("unsupported_content_type")`
+
+                    - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                    - `MAX_USES_EXCEEDED("max_uses_exceeded")`
+
+                    - `UNAVAILABLE("unavailable")`
+
+                  - `JsonValue; type "web_fetch_tool_result_error"constant`
+
+                    - `WEB_FETCH_TOOL_RESULT_ERROR("web_fetch_tool_result_error")`
+
+                - `class WebFetchBlockParam:`
+
+                  - `DocumentBlockParam content`
+
+                  - `JsonValue; type "web_fetch_result"constant`
+
+                    - `WEB_FETCH_RESULT("web_fetch_result")`
+
+                  - `String url`
+
+                    Fetched content URL
+
+                  - `Optional<String> retrievedAt`
+
+                    ISO 8601 timestamp when the content was retrieved
+
+              - `String toolUseId`
+
+              - `JsonValue; type "web_fetch_tool_result"constant`
+
+                - `WEB_FETCH_TOOL_RESULT("web_fetch_tool_result")`
+
+              - `Optional<CacheControlEphemeral> cacheControl`
+
+                Create a cache control breakpoint at this content block.
+
+              - `Optional<Caller> caller`
+
+                Tool invocation directly from the model.
+
+                - `class DirectCaller:`
+
+                  Tool invocation directly from the model.
+
+                - `class ServerToolCaller:`
+
+                  Tool invocation generated by a server-side tool.
+
+                - `class ServerToolCaller20260120:`
+
+            - `class CodeExecutionToolResultBlockParam:`
+
+              - `CodeExecutionToolResultBlockParamContent content`
+
+                Code execution result with encrypted stdout for PFC + web_search results.
+
+                - `class CodeExecutionToolResultErrorParam:`
+
+                  - `CodeExecutionToolResultErrorCode errorCode`
+
+                    - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                    - `UNAVAILABLE("unavailable")`
+
+                    - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                    - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                  - `JsonValue; type "code_execution_tool_result_error"constant`
+
+                    - `CODE_EXECUTION_TOOL_RESULT_ERROR("code_execution_tool_result_error")`
+
+                - `class CodeExecutionResultBlockParam:`
+
+                  - `List<CodeExecutionOutputBlockParam> content`
+
+                    - `String fileId`
+
+                    - `JsonValue; type "code_execution_output"constant`
+
+                      - `CODE_EXECUTION_OUTPUT("code_execution_output")`
+
+                  - `long returnCode`
+
+                  - `String stderr`
+
+                  - `String stdout`
+
+                  - `JsonValue; type "code_execution_result"constant`
+
+                    - `CODE_EXECUTION_RESULT("code_execution_result")`
+
+                - `class EncryptedCodeExecutionResultBlockParam:`
+
+                  Code execution result with encrypted stdout for PFC + web_search results.
+
+                  - `List<CodeExecutionOutputBlockParam> content`
+
+                    - `String fileId`
+
+                    - `JsonValue; type "code_execution_output"constant`
+
+                  - `String encryptedStdout`
+
+                  - `long returnCode`
+
+                  - `String stderr`
+
+                  - `JsonValue; type "encrypted_code_execution_result"constant`
+
+                    - `ENCRYPTED_CODE_EXECUTION_RESULT("encrypted_code_execution_result")`
+
+              - `String toolUseId`
+
+              - `JsonValue; type "code_execution_tool_result"constant`
+
+                - `CODE_EXECUTION_TOOL_RESULT("code_execution_tool_result")`
+
+              - `Optional<CacheControlEphemeral> cacheControl`
+
+                Create a cache control breakpoint at this content block.
+
+            - `class BashCodeExecutionToolResultBlockParam:`
+
+              - `Content content`
+
+                - `class BashCodeExecutionToolResultErrorParam:`
+
+                  - `BashCodeExecutionToolResultErrorCode errorCode`
+
+                    - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                    - `UNAVAILABLE("unavailable")`
+
+                    - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                    - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                    - `OUTPUT_FILE_TOO_LARGE("output_file_too_large")`
+
+                  - `JsonValue; type "bash_code_execution_tool_result_error"constant`
+
+                    - `BASH_CODE_EXECUTION_TOOL_RESULT_ERROR("bash_code_execution_tool_result_error")`
+
+                - `class BashCodeExecutionResultBlockParam:`
+
+                  - `List<BashCodeExecutionOutputBlockParam> content`
+
+                    - `String fileId`
+
+                    - `JsonValue; type "bash_code_execution_output"constant`
+
+                      - `BASH_CODE_EXECUTION_OUTPUT("bash_code_execution_output")`
+
+                  - `long returnCode`
+
+                  - `String stderr`
+
+                  - `String stdout`
+
+                  - `JsonValue; type "bash_code_execution_result"constant`
+
+                    - `BASH_CODE_EXECUTION_RESULT("bash_code_execution_result")`
+
+              - `String toolUseId`
+
+              - `JsonValue; type "bash_code_execution_tool_result"constant`
+
+                - `BASH_CODE_EXECUTION_TOOL_RESULT("bash_code_execution_tool_result")`
+
+              - `Optional<CacheControlEphemeral> cacheControl`
+
+                Create a cache control breakpoint at this content block.
+
+            - `class TextEditorCodeExecutionToolResultBlockParam:`
+
+              - `Content content`
+
+                - `class TextEditorCodeExecutionToolResultErrorParam:`
+
+                  - `TextEditorCodeExecutionToolResultErrorCode errorCode`
+
+                    - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                    - `UNAVAILABLE("unavailable")`
+
+                    - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                    - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                    - `FILE_NOT_FOUND("file_not_found")`
+
+                  - `JsonValue; type "text_editor_code_execution_tool_result_error"constant`
+
+                    - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT_ERROR("text_editor_code_execution_tool_result_error")`
+
+                  - `Optional<String> errorMessage`
+
+                - `class TextEditorCodeExecutionViewResultBlockParam:`
+
+                  - `String content`
+
+                  - `FileType fileType`
+
+                    - `TEXT("text")`
+
+                    - `IMAGE("image")`
+
+                    - `PDF("pdf")`
+
+                  - `JsonValue; type "text_editor_code_execution_view_result"constant`
+
+                    - `TEXT_EDITOR_CODE_EXECUTION_VIEW_RESULT("text_editor_code_execution_view_result")`
+
+                  - `Optional<Long> numLines`
+
+                  - `Optional<Long> startLine`
+
+                  - `Optional<Long> totalLines`
+
+                - `class TextEditorCodeExecutionCreateResultBlockParam:`
+
+                  - `boolean isFileUpdate`
+
+                  - `JsonValue; type "text_editor_code_execution_create_result"constant`
+
+                    - `TEXT_EDITOR_CODE_EXECUTION_CREATE_RESULT("text_editor_code_execution_create_result")`
+
+                - `class TextEditorCodeExecutionStrReplaceResultBlockParam:`
+
+                  - `JsonValue; type "text_editor_code_execution_str_replace_result"constant`
+
+                    - `TEXT_EDITOR_CODE_EXECUTION_STR_REPLACE_RESULT("text_editor_code_execution_str_replace_result")`
+
+                  - `Optional<List<String>> lines`
+
+                  - `Optional<Long> newLines`
+
+                  - `Optional<Long> newStart`
+
+                  - `Optional<Long> oldLines`
+
+                  - `Optional<Long> oldStart`
+
+              - `String toolUseId`
+
+              - `JsonValue; type "text_editor_code_execution_tool_result"constant`
+
+                - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT("text_editor_code_execution_tool_result")`
+
+              - `Optional<CacheControlEphemeral> cacheControl`
+
+                Create a cache control breakpoint at this content block.
+
+            - `class ToolSearchToolResultBlockParam:`
+
+              - `Content content`
+
+                - `class ToolSearchToolResultErrorParam:`
+
+                  - `ToolSearchToolResultErrorCode errorCode`
+
+                    - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                    - `UNAVAILABLE("unavailable")`
+
+                    - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                    - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                  - `JsonValue; type "tool_search_tool_result_error"constant`
+
+                    - `TOOL_SEARCH_TOOL_RESULT_ERROR("tool_search_tool_result_error")`
+
+                  - `Optional<String> errorMessage`
+
+                - `class ToolSearchToolSearchResultBlockParam:`
+
+                  - `List<ToolReferenceBlockParam> toolReferences`
+
+                    - `String toolName`
+
+                    - `JsonValue; type "tool_reference"constant`
+
+                    - `Optional<CacheControlEphemeral> cacheControl`
+
+                      Create a cache control breakpoint at this content block.
+
+                  - `JsonValue; type "tool_search_tool_search_result"constant`
+
+                    - `TOOL_SEARCH_TOOL_SEARCH_RESULT("tool_search_tool_search_result")`
+
+              - `String toolUseId`
+
+              - `JsonValue; type "tool_search_tool_result"constant`
+
+                - `TOOL_SEARCH_TOOL_RESULT("tool_search_tool_result")`
+
+              - `Optional<CacheControlEphemeral> cacheControl`
+
+                Create a cache control breakpoint at this content block.
+
+            - `class ContainerUploadBlockParam:`
+
+              A content block that represents a file to be uploaded to the container
+              Files uploaded via this block will be available in the container's input directory.
+
+              - `String fileId`
+
+              - `JsonValue; type "container_upload"constant`
+
+                - `CONTAINER_UPLOAD("container_upload")`
+
+              - `Optional<CacheControlEphemeral> cacheControl`
+
+                Create a cache control breakpoint at this content block.
+
+            - `class MidConversationSystemBlockParam:`
+
+              System instructions that appear mid-conversation.
+
+              Use this block to provide or update system-level instructions at a specific
+              point in the conversation, rather than only via the top-level `system` parameter.
+
+              - `List<TextBlockParam> content`
+
+                System instruction text blocks.
+
+                - `String text`
+
+                - `JsonValue; type "text"constant`
+
+                - `Optional<CacheControlEphemeral> cacheControl`
+
+                  Create a cache control breakpoint at this content block.
+
+                - `Optional<List<TextCitationParam>> citations`
+
+              - `JsonValue; type "mid_conv_system"constant`
+
+                - `MID_CONV_SYSTEM("mid_conv_system")`
+
+              - `Optional<CacheControlEphemeral> cacheControl`
+
+                Create a cache control breakpoint at this content block.
 
         - `Role role`
 
@@ -1443,91 +954,105 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `ASSISTANT("assistant")`
 
+          - `SYSTEM("system")`
+
       - `Model model`
 
         The model that will complete your prompt.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
+        - `CLAUDE_FABLE_5("claude-fable-5")`
 
-          Premium model combining maximum intelligence with practical performance
+          Next generation of intelligence for the hardest knowledge work and coding problems
+
+        - `CLAUDE_MYTHOS_5("claude-mythos-5")`
+
+          Most capable model for cybersecurity and biology research
+
+        - `CLAUDE_OPUS_4_8("claude-opus-4-8")`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `CLAUDE_OPUS_4_7("claude-opus-4-7")`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `CLAUDE_MYTHOS_PREVIEW("claude-mythos-preview")`
+
+          New class of intelligence, strongest in coding and cybersecurity
+
+        - `CLAUDE_OPUS_4_6("claude-opus-4-6")`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `CLAUDE_SONNET_4_6("claude-sonnet-4-6")`
+
+          Best combination of speed and intelligence
+
+        - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+
+          Fastest model with near-frontier intelligence
+
+        - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+
+          Fastest model with near-frontier intelligence
 
         - `CLAUDE_OPUS_4_5("claude-opus-4-5")`
 
           Premium model combining maximum intelligence with practical performance
 
-        - `CLAUDE_3_7_SONNET_LATEST("claude-3-7-sonnet-latest")`
+        - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
 
-          High-performance model with early extended thinking
+          Premium model combining maximum intelligence with practical performance
 
-        - `CLAUDE_3_7_SONNET_20250219("claude-3-7-sonnet-20250219")`
+        - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
 
-          High-performance model with early extended thinking
+          High-performance model for agents and coding
 
-        - `CLAUDE_3_5_HAIKU_LATEST("claude-3-5-haiku-latest")`
+        - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
 
-          Fastest and most compact model for near-instant responsiveness
+          High-performance model for agents and coding
 
-        - `CLAUDE_3_5_HAIKU_20241022("claude-3-5-haiku-20241022")`
+        - `CLAUDE_OPUS_4_1("claude-opus-4-1")`
 
-          Our fastest model
+          Exceptional model for specialized complex tasks
 
-        - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+        - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
 
-          Hybrid model, capable of near-instant responses and extended thinking
+          Exceptional model for specialized complex tasks
 
-        - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+        - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
 
-          Hybrid model, capable of near-instant responses and extended thinking
+          Powerful model for complex tasks
 
-        - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
+        - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
 
-          High-performance model with extended thinking
+          Powerful model for complex tasks
 
         - `CLAUDE_SONNET_4_0("claude-sonnet-4-0")`
 
           High-performance model with extended thinking
 
-        - `CLAUDE_4_SONNET_20250514("claude-4-sonnet-20250514")`
+        - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
 
           High-performance model with extended thinking
 
-        - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
-
-          Our best model for real-world agents and coding
-
-        - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
-
-          Our best model for real-world agents and coding
-
-        - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
-
-          Our most capable model
-
-        - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
-
-          Our most capable model
-
-        - `CLAUDE_4_OPUS_20250514("claude-4-opus-20250514")`
-
-          Our most capable model
-
-        - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
-
-          Our most capable model
-
-        - `CLAUDE_3_OPUS_LATEST("claude-3-opus-latest")`
-
-          Excels at writing and complex tasks
-
-        - `CLAUDE_3_OPUS_20240229("claude-3-opus-20240229")`
-
-          Excels at writing and complex tasks
-
         - `CLAUDE_3_HAIKU_20240307("claude-3-haiku-20240307")`
 
-          Our previous most fast and cost-effective
+          Fast and cost-effective model
+
+      - `Optional<CacheControlEphemeral> cacheControl`
+
+        Top-level cache control automatically applies a cache_control marker to the last cacheable block in the request.
+
+      - `Optional<String> container`
+
+        Container identifier for reuse across requests.
+
+      - `Optional<String> inferenceGeo`
+
+        Specifies the geographic region for inference processing. If not specified, the workspace's `default_inference_geo` is used.
 
       - `Optional<Metadata> metadata`
 
@@ -1538,6 +1063,36 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
           An external identifier for the user who is associated with the request.
 
           This should be a uuid, hash value, or other opaque identifier. Anthropic may use this id to help detect abuse. Do not include any identifying information such as name, email address, or phone number.
+
+      - `Optional<OutputConfig> outputConfig`
+
+        Configuration options for the model's output, such as the output format.
+
+        - `Optional<Effort> effort`
+
+          All possible effort levels.
+
+          - `LOW("low")`
+
+          - `MEDIUM("medium")`
+
+          - `HIGH("high")`
+
+          - `XHIGH("xhigh")`
+
+          - `MAX("max")`
+
+        - `Optional<JsonOutputFormat> format`
+
+          A schema to specify Claude's output format in responses. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
+
+          - `Schema schema`
+
+            The JSON schema of the format
+
+          - `JsonValue; type "json_schema"constant`
+
+            - `JSON_SCHEMA("json_schema")`
 
       - `Optional<ServiceTier> serviceTier`
 
@@ -1577,112 +1132,11 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `JsonValue; type "text"constant`
 
-            - `TEXT("text")`
-
           - `Optional<CacheControlEphemeral> cacheControl`
 
             Create a cache control breakpoint at this content block.
 
-            - `JsonValue; type "ephemeral"constant`
-
-              - `EPHEMERAL("ephemeral")`
-
-            - `Optional<Ttl> ttl`
-
-              The time-to-live for the cache control breakpoint.
-
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `TTL_5M("5m")`
-
-              - `TTL_1H("1h")`
-
           - `Optional<List<TextCitationParam>> citations`
-
-            - `class CitationCharLocationParam:`
-
-              - `String citedText`
-
-              - `long documentIndex`
-
-              - `Optional<String> documentTitle`
-
-              - `long endCharIndex`
-
-              - `long startCharIndex`
-
-              - `JsonValue; type "char_location"constant`
-
-                - `CHAR_LOCATION("char_location")`
-
-            - `class CitationPageLocationParam:`
-
-              - `String citedText`
-
-              - `long documentIndex`
-
-              - `Optional<String> documentTitle`
-
-              - `long endPageNumber`
-
-              - `long startPageNumber`
-
-              - `JsonValue; type "page_location"constant`
-
-                - `PAGE_LOCATION("page_location")`
-
-            - `class CitationContentBlockLocationParam:`
-
-              - `String citedText`
-
-              - `long documentIndex`
-
-              - `Optional<String> documentTitle`
-
-              - `long endBlockIndex`
-
-              - `long startBlockIndex`
-
-              - `JsonValue; type "content_block_location"constant`
-
-                - `CONTENT_BLOCK_LOCATION("content_block_location")`
-
-            - `class CitationWebSearchResultLocationParam:`
-
-              - `String citedText`
-
-              - `String encryptedIndex`
-
-              - `Optional<String> title`
-
-              - `JsonValue; type "web_search_result_location"constant`
-
-                - `WEB_SEARCH_RESULT_LOCATION("web_search_result_location")`
-
-              - `String url`
-
-            - `class CitationSearchResultLocationParam:`
-
-              - `String citedText`
-
-              - `long endBlockIndex`
-
-              - `long searchResultIndex`
-
-              - `String source`
-
-              - `long startBlockIndex`
-
-              - `Optional<String> title`
-
-              - `JsonValue; type "search_result_location"constant`
-
-                - `SEARCH_RESULT_LOCATION("search_result_location")`
 
       - `Optional<Double> temperature`
 
@@ -1714,11 +1168,33 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `ENABLED("enabled")`
 
+          - `Optional<Display> display`
+
+            Controls how thinking content appears in the response. When set to `summarized`, thinking is returned normally. When set to `omitted`, thinking content is redacted but a signature is returned for multi-turn continuity. Defaults to `summarized`.
+
+            - `SUMMARIZED("summarized")`
+
+            - `OMITTED("omitted")`
+
         - `class ThinkingConfigDisabled:`
 
           - `JsonValue; type "disabled"constant`
 
             - `DISABLED("disabled")`
+
+        - `class ThinkingConfigAdaptive:`
+
+          - `JsonValue; type "adaptive"constant`
+
+            - `ADAPTIVE("adaptive")`
+
+          - `Optional<Display> display`
+
+            Controls how thinking content appears in the response. When set to `summarized`, thinking is returned normally. When set to `omitted`, thinking content is redacted but a signature is returned for multi-turn continuity. Defaults to `summarized`.
+
+            - `SUMMARIZED("summarized")`
+
+            - `OMITTED("omitted")`
 
       - `Optional<ToolChoice> toolChoice`
 
@@ -1864,34 +1340,37 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             This is how the tool will be called by the model and in `tool_use` blocks.
 
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
           - `Optional<CacheControlEphemeral> cacheControl`
 
             Create a cache control breakpoint at this content block.
 
-            - `JsonValue; type "ephemeral"constant`
+          - `Optional<Boolean> deferLoading`
 
-              - `EPHEMERAL("ephemeral")`
-
-            - `Optional<Ttl> ttl`
-
-              The time-to-live for the cache control breakpoint.
-
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `TTL_5M("5m")`
-
-              - `TTL_1H("1h")`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
           - `Optional<String> description`
 
             Description of what this tool does.
 
             Tool descriptions should be as detailed as possible. The more information that the model has about what the tool is and how to use it, the better it will perform. You can use natural language descriptions to reinforce important aspects of the tool input JSON schema.
+
+          - `Optional<Boolean> eagerInputStreaming`
+
+            Enable eager input streaming for this tool. When true, tool input parameters will be streamed incrementally as they are generated, and types will be inferred on-the-fly rather than buffering the full JSON output. When false, streaming is disabled for this tool even if the fine-grained-tool-streaming beta is active. When null (default), uses the default behavior based on beta headers.
+
+          - `Optional<List<InputExample>> inputExamples`
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
 
           - `Optional<Type> type`
 
@@ -1911,28 +1390,167 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `BASH_20250124("bash_20250124")`
 
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
           - `Optional<CacheControlEphemeral> cacheControl`
 
             Create a cache control breakpoint at this content block.
 
-            - `JsonValue; type "ephemeral"constant`
+          - `Optional<Boolean> deferLoading`
 
-              - `EPHEMERAL("ephemeral")`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-            - `Optional<Ttl> ttl`
+          - `Optional<List<InputExample>> inputExamples`
 
-              The time-to-live for the cache control breakpoint.
+          - `Optional<Boolean> strict`
 
-              This may be one the following values:
+            When true, guarantees schema validation on tool names and inputs
 
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
+        - `class CodeExecutionTool20250522:`
 
-              Defaults to `5m`.
+          - `JsonValue; name "code_execution"constant`
 
-              - `TTL_5M("5m")`
+            Name of the tool.
 
-              - `TTL_1H("1h")`
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `CODE_EXECUTION("code_execution")`
+
+          - `JsonValue; type "code_execution_20250522"constant`
+
+            - `CODE_EXECUTION_20250522("code_execution_20250522")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `class CodeExecutionTool20250825:`
+
+          - `JsonValue; name "code_execution"constant`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `CODE_EXECUTION("code_execution")`
+
+          - `JsonValue; type "code_execution_20250825"constant`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `class CodeExecutionTool20260120:`
+
+          Code execution tool with REPL state persistence (daemon mode + gVisor checkpoint).
+
+          - `JsonValue; name "code_execution"constant`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `CODE_EXECUTION("code_execution")`
+
+          - `JsonValue; type "code_execution_20260120"constant`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `class MemoryTool20250818:`
+
+          - `JsonValue; name "memory"constant`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `MEMORY("memory")`
+
+          - `JsonValue; type "memory_20250818"constant`
+
+            - `MEMORY_20250818("memory_20250818")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<List<InputExample>> inputExamples`
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
 
         - `class ToolTextEditor20250124:`
 
@@ -1948,28 +1566,27 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `TEXT_EDITOR_20250124("text_editor_20250124")`
 
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
           - `Optional<CacheControlEphemeral> cacheControl`
 
             Create a cache control breakpoint at this content block.
 
-            - `JsonValue; type "ephemeral"constant`
+          - `Optional<Boolean> deferLoading`
 
-              - `EPHEMERAL("ephemeral")`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-            - `Optional<Ttl> ttl`
+          - `Optional<List<InputExample>> inputExamples`
 
-              The time-to-live for the cache control breakpoint.
+          - `Optional<Boolean> strict`
 
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `TTL_5M("5m")`
-
-              - `TTL_1H("1h")`
+            When true, guarantees schema validation on tool names and inputs
 
         - `class ToolTextEditor20250429:`
 
@@ -1985,28 +1602,27 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `TEXT_EDITOR_20250429("text_editor_20250429")`
 
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
           - `Optional<CacheControlEphemeral> cacheControl`
 
             Create a cache control breakpoint at this content block.
 
-            - `JsonValue; type "ephemeral"constant`
+          - `Optional<Boolean> deferLoading`
 
-              - `EPHEMERAL("ephemeral")`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-            - `Optional<Ttl> ttl`
+          - `Optional<List<InputExample>> inputExamples`
 
-              The time-to-live for the cache control breakpoint.
+          - `Optional<Boolean> strict`
 
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `TTL_5M("5m")`
-
-              - `TTL_1H("1h")`
+            When true, guarantees schema validation on tool names and inputs
 
         - `class ToolTextEditor20250728:`
 
@@ -2022,32 +1638,31 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `TEXT_EDITOR_20250728("text_editor_20250728")`
 
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
           - `Optional<CacheControlEphemeral> cacheControl`
 
             Create a cache control breakpoint at this content block.
 
-            - `JsonValue; type "ephemeral"constant`
+          - `Optional<Boolean> deferLoading`
 
-              - `EPHEMERAL("ephemeral")`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-            - `Optional<Ttl> ttl`
-
-              The time-to-live for the cache control breakpoint.
-
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `TTL_5M("5m")`
-
-              - `TTL_1H("1h")`
+          - `Optional<List<InputExample>> inputExamples`
 
           - `Optional<Long> maxCharacters`
 
             Maximum number of characters to display when viewing a file. If not specified, defaults to displaying the full file.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
 
         - `class WebSearchTool20250305:`
 
@@ -2063,6 +1678,14 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `WEB_SEARCH_20250305("web_search_20250305")`
 
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
           - `Optional<List<String>> allowedDomains`
 
             If provided, only these domains will be included in results. Cannot be used alongside `blocked_domains`.
@@ -2075,28 +1698,17 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             Create a cache control breakpoint at this content block.
 
-            - `JsonValue; type "ephemeral"constant`
+          - `Optional<Boolean> deferLoading`
 
-              - `EPHEMERAL("ephemeral")`
-
-            - `Optional<Ttl> ttl`
-
-              The time-to-live for the cache control breakpoint.
-
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `TTL_5M("5m")`
-
-              - `TTL_1H("1h")`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
           - `Optional<Long> maxUses`
 
             Maximum number of times the tool can be used in the API request.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
 
           - `Optional<UserLocation> userLocation`
 
@@ -2122,21 +1734,311 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               The [IANA timezone](https://nodatime.org/TimeZones) of the user.
 
+        - `class WebFetchTool20250910:`
+
+          - `JsonValue; name "web_fetch"constant`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `WEB_FETCH("web_fetch")`
+
+          - `JsonValue; type "web_fetch_20250910"constant`
+
+            - `WEB_FETCH_20250910("web_fetch_20250910")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<List<String>> allowedDomains`
+
+            List of domains to allow fetching from
+
+          - `Optional<List<String>> blockedDomains`
+
+            List of domains to block fetching from
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<CitationsConfigParam> citations`
+
+            Citations configuration for fetched documents. Citations are disabled by default.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<Long> maxContentTokens`
+
+            Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+          - `Optional<Long> maxUses`
+
+            Maximum number of times the tool can be used in the API request.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `class WebSearchTool20260209:`
+
+          - `JsonValue; name "web_search"constant`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `WEB_SEARCH("web_search")`
+
+          - `JsonValue; type "web_search_20260209"constant`
+
+            - `WEB_SEARCH_20260209("web_search_20260209")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<List<String>> allowedDomains`
+
+            If provided, only these domains will be included in results. Cannot be used alongside `blocked_domains`.
+
+          - `Optional<List<String>> blockedDomains`
+
+            If provided, these domains will never appear in results. Cannot be used alongside `allowed_domains`.
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<Long> maxUses`
+
+            Maximum number of times the tool can be used in the API request.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
+
+          - `Optional<UserLocation> userLocation`
+
+            Parameters for the user's location. Used to provide more relevant search results.
+
+        - `class WebFetchTool20260209:`
+
+          - `JsonValue; name "web_fetch"constant`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `WEB_FETCH("web_fetch")`
+
+          - `JsonValue; type "web_fetch_20260209"constant`
+
+            - `WEB_FETCH_20260209("web_fetch_20260209")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<List<String>> allowedDomains`
+
+            List of domains to allow fetching from
+
+          - `Optional<List<String>> blockedDomains`
+
+            List of domains to block fetching from
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<CitationsConfigParam> citations`
+
+            Citations configuration for fetched documents. Citations are disabled by default.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<Long> maxContentTokens`
+
+            Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+          - `Optional<Long> maxUses`
+
+            Maximum number of times the tool can be used in the API request.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `class WebFetchTool20260309:`
+
+          Web fetch tool with use_cache parameter for bypassing cached content.
+
+          - `JsonValue; name "web_fetch"constant`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `WEB_FETCH("web_fetch")`
+
+          - `JsonValue; type "web_fetch_20260309"constant`
+
+            - `WEB_FETCH_20260309("web_fetch_20260309")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<List<String>> allowedDomains`
+
+            List of domains to allow fetching from
+
+          - `Optional<List<String>> blockedDomains`
+
+            List of domains to block fetching from
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<CitationsConfigParam> citations`
+
+            Citations configuration for fetched documents. Citations are disabled by default.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<Long> maxContentTokens`
+
+            Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+          - `Optional<Long> maxUses`
+
+            Maximum number of times the tool can be used in the API request.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
+
+          - `Optional<Boolean> useCache`
+
+            Whether to use cached content. Set to false to bypass the cache and fetch fresh content. Only set to false when the user explicitly requests fresh content or when fetching rapidly-changing sources.
+
+        - `class ToolSearchToolBm25_20251119:`
+
+          - `JsonValue; name "tool_search_tool_bm25"constant`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `TOOL_SEARCH_TOOL_BM25("tool_search_tool_bm25")`
+
+          - `Type type`
+
+            - `TOOL_SEARCH_TOOL_BM25_20251119("tool_search_tool_bm25_20251119")`
+
+            - `TOOL_SEARCH_TOOL_BM25("tool_search_tool_bm25")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `class ToolSearchToolRegex20251119:`
+
+          - `JsonValue; name "tool_search_tool_regex"constant`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `TOOL_SEARCH_TOOL_REGEX("tool_search_tool_regex")`
+
+          - `Type type`
+
+            - `TOOL_SEARCH_TOOL_REGEX_20251119("tool_search_tool_regex_20251119")`
+
+            - `TOOL_SEARCH_TOOL_REGEX("tool_search_tool_regex")`
+
+          - `Optional<List<AllowedCaller>> allowedCallers`
+
+            - `DIRECT("direct")`
+
+            - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
+          - `Optional<CacheControlEphemeral> cacheControl`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Optional<Boolean> deferLoading`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Optional<Boolean> strict`
+
+            When true, guarantees schema validation on tool names and inputs
+
       - `Optional<Long> topK`
 
         Only sample from the top K options for each subsequent token.
 
         Used to remove "long tail" low probability responses. [Learn more technical details here](https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277).
 
-        Recommended for advanced use cases only. You usually only need to use `temperature`.
+        Recommended for advanced use cases only.
 
       - `Optional<Double> topP`
 
         Use nucleus sampling.
 
-        In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`. You should either alter `temperature` or `top_p`, but not both.
+        In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`.
 
-        Recommended for advanced use cases only. You usually only need to use `temperature`.
+        Recommended for advanced use cases only.
 
 ### Returns
 
@@ -2251,7 +2153,7 @@ public final class Main {
                 .params(BatchCreateParams.Request.Params.builder()
                     .maxTokens(1024L)
                     .addUserMessage("Hello, world")
-                    .model(Model.CLAUDE_OPUS_4_5_20251101)
+                    .model(Model.CLAUDE_OPUS_4_6)
                     .build())
                 .build())
             .build();
@@ -2260,7 +2162,30 @@ public final class Main {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+  "archived_at": "2024-08-20T18:37:24.100435Z",
+  "cancel_initiated_at": "2024-08-20T18:37:24.100435Z",
+  "created_at": "2024-08-20T18:37:24.100435Z",
+  "ended_at": "2024-08-20T18:37:24.100435Z",
+  "expires_at": "2024-08-20T18:37:24.100435Z",
+  "processing_status": "in_progress",
+  "request_counts": {
+    "canceled": 10,
+    "errored": 30,
+    "expired": 10,
+    "processing": 100,
+    "succeeded": 50
+  },
+  "results_url": "https://api.anthropic.com/v1/messages/batches/msgbatch_013Zva2CMHLNnXjNJJKqJ2EF/results",
+  "type": "message_batch"
+}
+```
+
+## Retrieve a Message Batch
 
 `MessageBatch messages().batches().retrieve(BatchRetrieveParamsparams = BatchRetrieveParams.none(), RequestOptionsrequestOptions = RequestOptions.none())`
 
@@ -2389,7 +2314,30 @@ public final class Main {
 }
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+  "archived_at": "2024-08-20T18:37:24.100435Z",
+  "cancel_initiated_at": "2024-08-20T18:37:24.100435Z",
+  "created_at": "2024-08-20T18:37:24.100435Z",
+  "ended_at": "2024-08-20T18:37:24.100435Z",
+  "expires_at": "2024-08-20T18:37:24.100435Z",
+  "processing_status": "in_progress",
+  "request_counts": {
+    "canceled": 10,
+    "errored": 30,
+    "expired": 10,
+    "processing": 100,
+    "succeeded": 50
+  },
+  "results_url": "https://api.anthropic.com/v1/messages/batches/msgbatch_013Zva2CMHLNnXjNJJKqJ2EF/results",
+  "type": "message_batch"
+}
+```
+
+## List Message Batches
 
 `BatchListPage messages().batches().list(BatchListParamsparams = BatchListParams.none(), RequestOptionsrequestOptions = RequestOptions.none())`
 
@@ -2528,7 +2476,37 @@ public final class Main {
 }
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+      "archived_at": "2024-08-20T18:37:24.100435Z",
+      "cancel_initiated_at": "2024-08-20T18:37:24.100435Z",
+      "created_at": "2024-08-20T18:37:24.100435Z",
+      "ended_at": "2024-08-20T18:37:24.100435Z",
+      "expires_at": "2024-08-20T18:37:24.100435Z",
+      "processing_status": "in_progress",
+      "request_counts": {
+        "canceled": 10,
+        "errored": 30,
+        "expired": 10,
+        "processing": 100,
+        "succeeded": 50
+      },
+      "results_url": "https://api.anthropic.com/v1/messages/batches/msgbatch_013Zva2CMHLNnXjNJJKqJ2EF/results",
+      "type": "message_batch"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id"
+}
+```
+
+## Cancel a Message Batch
 
 `MessageBatch messages().batches().cancel(BatchCancelParamsparams = BatchCancelParams.none(), RequestOptionsrequestOptions = RequestOptions.none())`
 
@@ -2659,7 +2637,30 @@ public final class Main {
 }
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+  "archived_at": "2024-08-20T18:37:24.100435Z",
+  "cancel_initiated_at": "2024-08-20T18:37:24.100435Z",
+  "created_at": "2024-08-20T18:37:24.100435Z",
+  "ended_at": "2024-08-20T18:37:24.100435Z",
+  "expires_at": "2024-08-20T18:37:24.100435Z",
+  "processing_status": "in_progress",
+  "request_counts": {
+    "canceled": 10,
+    "errored": 30,
+    "expired": 10,
+    "processing": 100,
+    "succeeded": 50
+  },
+  "results_url": "https://api.anthropic.com/v1/messages/batches/msgbatch_013Zva2CMHLNnXjNJJKqJ2EF/results",
+  "type": "message_batch"
+}
+```
+
+## Delete a Message Batch
 
 `DeletedMessageBatch messages().batches().delete(BatchDeleteParamsparams = BatchDeleteParams.none(), RequestOptionsrequestOptions = RequestOptions.none())`
 
@@ -2716,7 +2717,16 @@ public final class Main {
 }
 ```
 
-## Results
+#### Response
+
+```json
+{
+  "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+  "type": "message_batch_deleted"
+}
+```
+
+## Retrieve Message Batch results
 
 `MessageBatchIndividualResponse messages().batches().resultsStreaming(BatchResultsParamsparams = BatchResultsParams.none(), RequestOptionsrequestOptions = RequestOptions.none())`
 
@@ -2763,6 +2773,18 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
           Unique object identifier.
 
           The format and length of IDs may change over time.
+
+        - `Optional<Container> container`
+
+          Information about the container used in the request (for the code execution tool)
+
+          - `String id`
+
+            Identifier for the container used in this request
+
+          - `LocalDateTime expiresAt`
+
+            The time at which the container will expire.
 
         - `List<ContentBlock> content`
 
@@ -2841,15 +2863,25 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `String citedText`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `long documentIndex`
 
                 - `Optional<String> documentTitle`
 
                 - `long endBlockIndex`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `Optional<String> fileId`
 
                 - `long startBlockIndex`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `JsonValue; type "content_block_location"constant`
 
@@ -2873,13 +2905,27 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `String citedText`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `long endBlockIndex`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `long searchResultIndex`
+
+                  0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                  Counted separately from `document_index`; server-side web search results are not included in this count.
 
                 - `String source`
 
                 - `long startBlockIndex`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `Optional<String> title`
 
@@ -2915,6 +2961,36 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `String id`
 
+            - `Caller caller`
+
+              Tool invocation directly from the model.
+
+              - `class DirectCaller:`
+
+                Tool invocation directly from the model.
+
+                - `JsonValue; type "direct"constant`
+
+                  - `DIRECT("direct")`
+
+              - `class ServerToolCaller:`
+
+                Tool invocation generated by a server-side tool.
+
+                - `String toolId`
+
+                - `JsonValue; type "code_execution_20250825"constant`
+
+                  - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+              - `class ServerToolCaller20260120:`
+
+                - `String toolId`
+
+                - `JsonValue; type "code_execution_20260120"constant`
+
+                  - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
             - `Input input`
 
             - `String name`
@@ -2927,11 +3003,37 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `String id`
 
+            - `Caller caller`
+
+              Tool invocation directly from the model.
+
+              - `class DirectCaller:`
+
+                Tool invocation directly from the model.
+
+              - `class ServerToolCaller:`
+
+                Tool invocation generated by a server-side tool.
+
+              - `class ServerToolCaller20260120:`
+
             - `Input input`
 
-            - `JsonValue; name "web_search"constant`
+            - `Name name`
 
               - `WEB_SEARCH("web_search")`
+
+              - `WEB_FETCH("web_fetch")`
+
+              - `CODE_EXECUTION("code_execution")`
+
+              - `BASH_CODE_EXECUTION("bash_code_execution")`
+
+              - `TEXT_EDITOR_CODE_EXECUTION("text_editor_code_execution")`
+
+              - `TOOL_SEARCH_TOOL_REGEX("tool_search_tool_regex")`
+
+              - `TOOL_SEARCH_TOOL_BM25("tool_search_tool_bm25")`
 
             - `JsonValue; type "server_tool_use"constant`
 
@@ -2939,11 +3041,25 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `class WebSearchToolResultBlock:`
 
+            - `Caller caller`
+
+              Tool invocation directly from the model.
+
+              - `class DirectCaller:`
+
+                Tool invocation directly from the model.
+
+              - `class ServerToolCaller:`
+
+                Tool invocation generated by a server-side tool.
+
+              - `class ServerToolCaller20260120:`
+
             - `WebSearchToolResultBlockContent content`
 
               - `class WebSearchToolResultError:`
 
-                - `ErrorCode errorCode`
+                - `WebSearchToolResultErrorCode errorCode`
 
                   - `INVALID_TOOL_INPUT("invalid_tool_input")`
 
@@ -2954,6 +3070,8 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
                   - `TOO_MANY_REQUESTS("too_many_requests")`
 
                   - `QUERY_TOO_LONG("query_too_long")`
+
+                  - `REQUEST_TOO_LARGE("request_too_large")`
 
                 - `JsonValue; type "web_search_tool_result_error"constant`
 
@@ -2979,91 +3097,441 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `WEB_SEARCH_TOOL_RESULT("web_search_tool_result")`
 
+          - `class WebFetchToolResultBlock:`
+
+            - `Caller caller`
+
+              Tool invocation directly from the model.
+
+              - `class DirectCaller:`
+
+                Tool invocation directly from the model.
+
+              - `class ServerToolCaller:`
+
+                Tool invocation generated by a server-side tool.
+
+              - `class ServerToolCaller20260120:`
+
+            - `Content content`
+
+              - `class WebFetchToolResultErrorBlock:`
+
+                - `WebFetchToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `URL_TOO_LONG("url_too_long")`
+
+                  - `URL_NOT_ALLOWED("url_not_allowed")`
+
+                  - `URL_NOT_IN_PRIOR_CONTEXT("url_not_in_prior_context")`
+
+                  - `URL_NOT_ACCESSIBLE("url_not_accessible")`
+
+                  - `UNSUPPORTED_CONTENT_TYPE("unsupported_content_type")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `MAX_USES_EXCEEDED("max_uses_exceeded")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                - `JsonValue; type "web_fetch_tool_result_error"constant`
+
+                  - `WEB_FETCH_TOOL_RESULT_ERROR("web_fetch_tool_result_error")`
+
+              - `class WebFetchBlock:`
+
+                - `DocumentBlock content`
+
+                  - `Optional<CitationsConfig> citations`
+
+                    Citation configuration for the document
+
+                    - `boolean enabled`
+
+                  - `Source source`
+
+                    - `class Base64PdfSource:`
+
+                      - `String data`
+
+                      - `JsonValue; mediaType "application/pdf"constant`
+
+                        - `APPLICATION_PDF("application/pdf")`
+
+                      - `JsonValue; type "base64"constant`
+
+                        - `BASE64("base64")`
+
+                    - `class PlainTextSource:`
+
+                      - `String data`
+
+                      - `JsonValue; mediaType "text/plain"constant`
+
+                        - `TEXT_PLAIN("text/plain")`
+
+                      - `JsonValue; type "text"constant`
+
+                        - `TEXT("text")`
+
+                  - `Optional<String> title`
+
+                    The title of the document
+
+                  - `JsonValue; type "document"constant`
+
+                    - `DOCUMENT("document")`
+
+                - `Optional<String> retrievedAt`
+
+                  ISO 8601 timestamp when the content was retrieved
+
+                - `JsonValue; type "web_fetch_result"constant`
+
+                  - `WEB_FETCH_RESULT("web_fetch_result")`
+
+                - `String url`
+
+                  Fetched content URL
+
+            - `String toolUseId`
+
+            - `JsonValue; type "web_fetch_tool_result"constant`
+
+              - `WEB_FETCH_TOOL_RESULT("web_fetch_tool_result")`
+
+          - `class CodeExecutionToolResultBlock:`
+
+            - `CodeExecutionToolResultBlockContent content`
+
+              Code execution result with encrypted stdout for PFC + web_search results.
+
+              - `class CodeExecutionToolResultError:`
+
+                - `CodeExecutionToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                - `JsonValue; type "code_execution_tool_result_error"constant`
+
+                  - `CODE_EXECUTION_TOOL_RESULT_ERROR("code_execution_tool_result_error")`
+
+              - `class CodeExecutionResultBlock:`
+
+                - `List<CodeExecutionOutputBlock> content`
+
+                  - `String fileId`
+
+                  - `JsonValue; type "code_execution_output"constant`
+
+                    - `CODE_EXECUTION_OUTPUT("code_execution_output")`
+
+                - `long returnCode`
+
+                - `String stderr`
+
+                - `String stdout`
+
+                - `JsonValue; type "code_execution_result"constant`
+
+                  - `CODE_EXECUTION_RESULT("code_execution_result")`
+
+              - `class EncryptedCodeExecutionResultBlock:`
+
+                Code execution result with encrypted stdout for PFC + web_search results.
+
+                - `List<CodeExecutionOutputBlock> content`
+
+                  - `String fileId`
+
+                  - `JsonValue; type "code_execution_output"constant`
+
+                - `String encryptedStdout`
+
+                - `long returnCode`
+
+                - `String stderr`
+
+                - `JsonValue; type "encrypted_code_execution_result"constant`
+
+                  - `ENCRYPTED_CODE_EXECUTION_RESULT("encrypted_code_execution_result")`
+
+            - `String toolUseId`
+
+            - `JsonValue; type "code_execution_tool_result"constant`
+
+              - `CODE_EXECUTION_TOOL_RESULT("code_execution_tool_result")`
+
+          - `class BashCodeExecutionToolResultBlock:`
+
+            - `Content content`
+
+              - `class BashCodeExecutionToolResultError:`
+
+                - `BashCodeExecutionToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                  - `OUTPUT_FILE_TOO_LARGE("output_file_too_large")`
+
+                - `JsonValue; type "bash_code_execution_tool_result_error"constant`
+
+                  - `BASH_CODE_EXECUTION_TOOL_RESULT_ERROR("bash_code_execution_tool_result_error")`
+
+              - `class BashCodeExecutionResultBlock:`
+
+                - `List<BashCodeExecutionOutputBlock> content`
+
+                  - `String fileId`
+
+                  - `JsonValue; type "bash_code_execution_output"constant`
+
+                    - `BASH_CODE_EXECUTION_OUTPUT("bash_code_execution_output")`
+
+                - `long returnCode`
+
+                - `String stderr`
+
+                - `String stdout`
+
+                - `JsonValue; type "bash_code_execution_result"constant`
+
+                  - `BASH_CODE_EXECUTION_RESULT("bash_code_execution_result")`
+
+            - `String toolUseId`
+
+            - `JsonValue; type "bash_code_execution_tool_result"constant`
+
+              - `BASH_CODE_EXECUTION_TOOL_RESULT("bash_code_execution_tool_result")`
+
+          - `class TextEditorCodeExecutionToolResultBlock:`
+
+            - `Content content`
+
+              - `class TextEditorCodeExecutionToolResultError:`
+
+                - `TextEditorCodeExecutionToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                  - `FILE_NOT_FOUND("file_not_found")`
+
+                - `Optional<String> errorMessage`
+
+                - `JsonValue; type "text_editor_code_execution_tool_result_error"constant`
+
+                  - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT_ERROR("text_editor_code_execution_tool_result_error")`
+
+              - `class TextEditorCodeExecutionViewResultBlock:`
+
+                - `String content`
+
+                - `FileType fileType`
+
+                  - `TEXT("text")`
+
+                  - `IMAGE("image")`
+
+                  - `PDF("pdf")`
+
+                - `Optional<Long> numLines`
+
+                - `Optional<Long> startLine`
+
+                - `Optional<Long> totalLines`
+
+                - `JsonValue; type "text_editor_code_execution_view_result"constant`
+
+                  - `TEXT_EDITOR_CODE_EXECUTION_VIEW_RESULT("text_editor_code_execution_view_result")`
+
+              - `class TextEditorCodeExecutionCreateResultBlock:`
+
+                - `boolean isFileUpdate`
+
+                - `JsonValue; type "text_editor_code_execution_create_result"constant`
+
+                  - `TEXT_EDITOR_CODE_EXECUTION_CREATE_RESULT("text_editor_code_execution_create_result")`
+
+              - `class TextEditorCodeExecutionStrReplaceResultBlock:`
+
+                - `Optional<List<String>> lines`
+
+                - `Optional<Long> newLines`
+
+                - `Optional<Long> newStart`
+
+                - `Optional<Long> oldLines`
+
+                - `Optional<Long> oldStart`
+
+                - `JsonValue; type "text_editor_code_execution_str_replace_result"constant`
+
+                  - `TEXT_EDITOR_CODE_EXECUTION_STR_REPLACE_RESULT("text_editor_code_execution_str_replace_result")`
+
+            - `String toolUseId`
+
+            - `JsonValue; type "text_editor_code_execution_tool_result"constant`
+
+              - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT("text_editor_code_execution_tool_result")`
+
+          - `class ToolSearchToolResultBlock:`
+
+            - `Content content`
+
+              - `class ToolSearchToolResultError:`
+
+                - `ToolSearchToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                - `Optional<String> errorMessage`
+
+                - `JsonValue; type "tool_search_tool_result_error"constant`
+
+                  - `TOOL_SEARCH_TOOL_RESULT_ERROR("tool_search_tool_result_error")`
+
+              - `class ToolSearchToolSearchResultBlock:`
+
+                - `List<ToolReferenceBlock> toolReferences`
+
+                  - `String toolName`
+
+                  - `JsonValue; type "tool_reference"constant`
+
+                    - `TOOL_REFERENCE("tool_reference")`
+
+                - `JsonValue; type "tool_search_tool_search_result"constant`
+
+                  - `TOOL_SEARCH_TOOL_SEARCH_RESULT("tool_search_tool_search_result")`
+
+            - `String toolUseId`
+
+            - `JsonValue; type "tool_search_tool_result"constant`
+
+              - `TOOL_SEARCH_TOOL_RESULT("tool_search_tool_result")`
+
+          - `class ContainerUploadBlock:`
+
+            Response model for a file uploaded to the container.
+
+            - `String fileId`
+
+            - `JsonValue; type "container_upload"constant`
+
+              - `CONTAINER_UPLOAD("container_upload")`
+
         - `Model model`
 
           The model that will complete your prompt.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
+          - `CLAUDE_FABLE_5("claude-fable-5")`
 
-            Premium model combining maximum intelligence with practical performance
+            Next generation of intelligence for the hardest knowledge work and coding problems
+
+          - `CLAUDE_MYTHOS_5("claude-mythos-5")`
+
+            Most capable model for cybersecurity and biology research
+
+          - `CLAUDE_OPUS_4_8("claude-opus-4-8")`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `CLAUDE_OPUS_4_7("claude-opus-4-7")`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `CLAUDE_MYTHOS_PREVIEW("claude-mythos-preview")`
+
+            New class of intelligence, strongest in coding and cybersecurity
+
+          - `CLAUDE_OPUS_4_6("claude-opus-4-6")`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `CLAUDE_SONNET_4_6("claude-sonnet-4-6")`
+
+            Best combination of speed and intelligence
+
+          - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+
+            Fastest model with near-frontier intelligence
+
+          - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+
+            Fastest model with near-frontier intelligence
 
           - `CLAUDE_OPUS_4_5("claude-opus-4-5")`
 
             Premium model combining maximum intelligence with practical performance
 
-          - `CLAUDE_3_7_SONNET_LATEST("claude-3-7-sonnet-latest")`
+          - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
 
-            High-performance model with early extended thinking
+            Premium model combining maximum intelligence with practical performance
 
-          - `CLAUDE_3_7_SONNET_20250219("claude-3-7-sonnet-20250219")`
+          - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
 
-            High-performance model with early extended thinking
+            High-performance model for agents and coding
 
-          - `CLAUDE_3_5_HAIKU_LATEST("claude-3-5-haiku-latest")`
+          - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
 
-            Fastest and most compact model for near-instant responsiveness
+            High-performance model for agents and coding
 
-          - `CLAUDE_3_5_HAIKU_20241022("claude-3-5-haiku-20241022")`
+          - `CLAUDE_OPUS_4_1("claude-opus-4-1")`
 
-            Our fastest model
+            Exceptional model for specialized complex tasks
 
-          - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+          - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
 
-            Hybrid model, capable of near-instant responses and extended thinking
+            Exceptional model for specialized complex tasks
 
-          - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+          - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
 
-            Hybrid model, capable of near-instant responses and extended thinking
+            Powerful model for complex tasks
 
-          - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
+          - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
 
-            High-performance model with extended thinking
+            Powerful model for complex tasks
 
           - `CLAUDE_SONNET_4_0("claude-sonnet-4-0")`
 
             High-performance model with extended thinking
 
-          - `CLAUDE_4_SONNET_20250514("claude-4-sonnet-20250514")`
+          - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
 
             High-performance model with extended thinking
 
-          - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
-
-            Our best model for real-world agents and coding
-
-          - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
-
-            Our best model for real-world agents and coding
-
-          - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
-
-            Our most capable model
-
-          - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
-
-            Our most capable model
-
-          - `CLAUDE_4_OPUS_20250514("claude-4-opus-20250514")`
-
-            Our most capable model
-
-          - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
-
-            Our most capable model
-
-          - `CLAUDE_3_OPUS_LATEST("claude-3-opus-latest")`
-
-            Excels at writing and complex tasks
-
-          - `CLAUDE_3_OPUS_20240229("claude-3-opus-20240229")`
-
-            Excels at writing and complex tasks
-
           - `CLAUDE_3_HAIKU_20240307("claude-3-haiku-20240307")`
 
-            Our previous most fast and cost-effective
+            Fast and cost-effective model
 
         - `JsonValue; role "assistant"constant`
 
@@ -3072,6 +3540,32 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
           This will always be `"assistant"`.
 
           - `ASSISTANT("assistant")`
+
+        - `Optional<RefusalStopDetails> stopDetails`
+
+          Structured information about a refusal.
+
+          - `Optional<Category> category`
+
+            The policy category that triggered the refusal.
+
+            `null` when the refusal doesn't map to a named category.
+
+            - `CYBER("cyber")`
+
+            - `BIO("bio")`
+
+            - `REASONING_EXTRACTION("reasoning_extraction")`
+
+          - `Optional<String> explanation`
+
+            Human-readable explanation of the refusal.
+
+            This text is not guaranteed to be stable. `null` when no explanation is available for the category.
+
+          - `JsonValue; type "refusal"constant`
+
+            - `REFUSAL("refusal")`
 
         - `Optional<StopReason> stopReason`
 
@@ -3146,6 +3640,10 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             The number of input tokens read from the cache.
 
+          - `Optional<String> inferenceGeo`
+
+            The geographic region where inference was performed for this request.
+
           - `long inputTokens`
 
             The number of input tokens which were used.
@@ -3154,9 +3652,33 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             The number of output tokens which were used.
 
+          - `Optional<OutputTokensDetails> outputTokensDetails`
+
+            Breakdown of output tokens by category.
+
+            `output_tokens` remains the inclusive, authoritative total used for billing.
+            This object provides a read-only decomposition for observability — for example,
+            how many of the billed output tokens were spent on internal reasoning that may
+            have been summarized before being returned to you.
+
+            - `long thinkingTokens`
+
+              Number of output tokens the model generated as internal reasoning, including
+              the thinking-block delimiter tokens.
+
+              Reflects the raw reasoning the model produced, not the (possibly shorter)
+              summarized thinking text returned in the response body. Computed by
+              re-tokenizing the raw reasoning text, so it may differ from the model's exact
+              generation count by a small number of tokens. Always ≤ `output_tokens`;
+              `output_tokens - thinking_tokens` approximates the non-reasoning output.
+
           - `Optional<ServerToolUsage> serverToolUse`
 
             The number of server tool requests.
+
+            - `long webFetchRequests`
+
+              The number of web fetch tool requests.
 
             - `long webSearchRequests`
 
@@ -3540,6 +4062,18 @@ public final class Main {
 
           The format and length of IDs may change over time.
 
+        - `Optional<Container> container`
+
+          Information about the container used in the request (for the code execution tool)
+
+          - `String id`
+
+            Identifier for the container used in this request
+
+          - `LocalDateTime expiresAt`
+
+            The time at which the container will expire.
+
         - `List<ContentBlock> content`
 
           Content generated by the model.
@@ -3617,15 +4151,25 @@ public final class Main {
 
                 - `String citedText`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `long documentIndex`
 
                 - `Optional<String> documentTitle`
 
                 - `long endBlockIndex`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `Optional<String> fileId`
 
                 - `long startBlockIndex`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `JsonValue; type "content_block_location"constant`
 
@@ -3649,13 +4193,27 @@ public final class Main {
 
                 - `String citedText`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `long endBlockIndex`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `long searchResultIndex`
+
+                  0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                  Counted separately from `document_index`; server-side web search results are not included in this count.
 
                 - `String source`
 
                 - `long startBlockIndex`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `Optional<String> title`
 
@@ -3691,6 +4249,36 @@ public final class Main {
 
             - `String id`
 
+            - `Caller caller`
+
+              Tool invocation directly from the model.
+
+              - `class DirectCaller:`
+
+                Tool invocation directly from the model.
+
+                - `JsonValue; type "direct"constant`
+
+                  - `DIRECT("direct")`
+
+              - `class ServerToolCaller:`
+
+                Tool invocation generated by a server-side tool.
+
+                - `String toolId`
+
+                - `JsonValue; type "code_execution_20250825"constant`
+
+                  - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+              - `class ServerToolCaller20260120:`
+
+                - `String toolId`
+
+                - `JsonValue; type "code_execution_20260120"constant`
+
+                  - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
             - `Input input`
 
             - `String name`
@@ -3703,11 +4291,37 @@ public final class Main {
 
             - `String id`
 
+            - `Caller caller`
+
+              Tool invocation directly from the model.
+
+              - `class DirectCaller:`
+
+                Tool invocation directly from the model.
+
+              - `class ServerToolCaller:`
+
+                Tool invocation generated by a server-side tool.
+
+              - `class ServerToolCaller20260120:`
+
             - `Input input`
 
-            - `JsonValue; name "web_search"constant`
+            - `Name name`
 
               - `WEB_SEARCH("web_search")`
+
+              - `WEB_FETCH("web_fetch")`
+
+              - `CODE_EXECUTION("code_execution")`
+
+              - `BASH_CODE_EXECUTION("bash_code_execution")`
+
+              - `TEXT_EDITOR_CODE_EXECUTION("text_editor_code_execution")`
+
+              - `TOOL_SEARCH_TOOL_REGEX("tool_search_tool_regex")`
+
+              - `TOOL_SEARCH_TOOL_BM25("tool_search_tool_bm25")`
 
             - `JsonValue; type "server_tool_use"constant`
 
@@ -3715,11 +4329,25 @@ public final class Main {
 
           - `class WebSearchToolResultBlock:`
 
+            - `Caller caller`
+
+              Tool invocation directly from the model.
+
+              - `class DirectCaller:`
+
+                Tool invocation directly from the model.
+
+              - `class ServerToolCaller:`
+
+                Tool invocation generated by a server-side tool.
+
+              - `class ServerToolCaller20260120:`
+
             - `WebSearchToolResultBlockContent content`
 
               - `class WebSearchToolResultError:`
 
-                - `ErrorCode errorCode`
+                - `WebSearchToolResultErrorCode errorCode`
 
                   - `INVALID_TOOL_INPUT("invalid_tool_input")`
 
@@ -3730,6 +4358,8 @@ public final class Main {
                   - `TOO_MANY_REQUESTS("too_many_requests")`
 
                   - `QUERY_TOO_LONG("query_too_long")`
+
+                  - `REQUEST_TOO_LARGE("request_too_large")`
 
                 - `JsonValue; type "web_search_tool_result_error"constant`
 
@@ -3755,91 +4385,441 @@ public final class Main {
 
               - `WEB_SEARCH_TOOL_RESULT("web_search_tool_result")`
 
+          - `class WebFetchToolResultBlock:`
+
+            - `Caller caller`
+
+              Tool invocation directly from the model.
+
+              - `class DirectCaller:`
+
+                Tool invocation directly from the model.
+
+              - `class ServerToolCaller:`
+
+                Tool invocation generated by a server-side tool.
+
+              - `class ServerToolCaller20260120:`
+
+            - `Content content`
+
+              - `class WebFetchToolResultErrorBlock:`
+
+                - `WebFetchToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `URL_TOO_LONG("url_too_long")`
+
+                  - `URL_NOT_ALLOWED("url_not_allowed")`
+
+                  - `URL_NOT_IN_PRIOR_CONTEXT("url_not_in_prior_context")`
+
+                  - `URL_NOT_ACCESSIBLE("url_not_accessible")`
+
+                  - `UNSUPPORTED_CONTENT_TYPE("unsupported_content_type")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `MAX_USES_EXCEEDED("max_uses_exceeded")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                - `JsonValue; type "web_fetch_tool_result_error"constant`
+
+                  - `WEB_FETCH_TOOL_RESULT_ERROR("web_fetch_tool_result_error")`
+
+              - `class WebFetchBlock:`
+
+                - `DocumentBlock content`
+
+                  - `Optional<CitationsConfig> citations`
+
+                    Citation configuration for the document
+
+                    - `boolean enabled`
+
+                  - `Source source`
+
+                    - `class Base64PdfSource:`
+
+                      - `String data`
+
+                      - `JsonValue; mediaType "application/pdf"constant`
+
+                        - `APPLICATION_PDF("application/pdf")`
+
+                      - `JsonValue; type "base64"constant`
+
+                        - `BASE64("base64")`
+
+                    - `class PlainTextSource:`
+
+                      - `String data`
+
+                      - `JsonValue; mediaType "text/plain"constant`
+
+                        - `TEXT_PLAIN("text/plain")`
+
+                      - `JsonValue; type "text"constant`
+
+                        - `TEXT("text")`
+
+                  - `Optional<String> title`
+
+                    The title of the document
+
+                  - `JsonValue; type "document"constant`
+
+                    - `DOCUMENT("document")`
+
+                - `Optional<String> retrievedAt`
+
+                  ISO 8601 timestamp when the content was retrieved
+
+                - `JsonValue; type "web_fetch_result"constant`
+
+                  - `WEB_FETCH_RESULT("web_fetch_result")`
+
+                - `String url`
+
+                  Fetched content URL
+
+            - `String toolUseId`
+
+            - `JsonValue; type "web_fetch_tool_result"constant`
+
+              - `WEB_FETCH_TOOL_RESULT("web_fetch_tool_result")`
+
+          - `class CodeExecutionToolResultBlock:`
+
+            - `CodeExecutionToolResultBlockContent content`
+
+              Code execution result with encrypted stdout for PFC + web_search results.
+
+              - `class CodeExecutionToolResultError:`
+
+                - `CodeExecutionToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                - `JsonValue; type "code_execution_tool_result_error"constant`
+
+                  - `CODE_EXECUTION_TOOL_RESULT_ERROR("code_execution_tool_result_error")`
+
+              - `class CodeExecutionResultBlock:`
+
+                - `List<CodeExecutionOutputBlock> content`
+
+                  - `String fileId`
+
+                  - `JsonValue; type "code_execution_output"constant`
+
+                    - `CODE_EXECUTION_OUTPUT("code_execution_output")`
+
+                - `long returnCode`
+
+                - `String stderr`
+
+                - `String stdout`
+
+                - `JsonValue; type "code_execution_result"constant`
+
+                  - `CODE_EXECUTION_RESULT("code_execution_result")`
+
+              - `class EncryptedCodeExecutionResultBlock:`
+
+                Code execution result with encrypted stdout for PFC + web_search results.
+
+                - `List<CodeExecutionOutputBlock> content`
+
+                  - `String fileId`
+
+                  - `JsonValue; type "code_execution_output"constant`
+
+                - `String encryptedStdout`
+
+                - `long returnCode`
+
+                - `String stderr`
+
+                - `JsonValue; type "encrypted_code_execution_result"constant`
+
+                  - `ENCRYPTED_CODE_EXECUTION_RESULT("encrypted_code_execution_result")`
+
+            - `String toolUseId`
+
+            - `JsonValue; type "code_execution_tool_result"constant`
+
+              - `CODE_EXECUTION_TOOL_RESULT("code_execution_tool_result")`
+
+          - `class BashCodeExecutionToolResultBlock:`
+
+            - `Content content`
+
+              - `class BashCodeExecutionToolResultError:`
+
+                - `BashCodeExecutionToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                  - `OUTPUT_FILE_TOO_LARGE("output_file_too_large")`
+
+                - `JsonValue; type "bash_code_execution_tool_result_error"constant`
+
+                  - `BASH_CODE_EXECUTION_TOOL_RESULT_ERROR("bash_code_execution_tool_result_error")`
+
+              - `class BashCodeExecutionResultBlock:`
+
+                - `List<BashCodeExecutionOutputBlock> content`
+
+                  - `String fileId`
+
+                  - `JsonValue; type "bash_code_execution_output"constant`
+
+                    - `BASH_CODE_EXECUTION_OUTPUT("bash_code_execution_output")`
+
+                - `long returnCode`
+
+                - `String stderr`
+
+                - `String stdout`
+
+                - `JsonValue; type "bash_code_execution_result"constant`
+
+                  - `BASH_CODE_EXECUTION_RESULT("bash_code_execution_result")`
+
+            - `String toolUseId`
+
+            - `JsonValue; type "bash_code_execution_tool_result"constant`
+
+              - `BASH_CODE_EXECUTION_TOOL_RESULT("bash_code_execution_tool_result")`
+
+          - `class TextEditorCodeExecutionToolResultBlock:`
+
+            - `Content content`
+
+              - `class TextEditorCodeExecutionToolResultError:`
+
+                - `TextEditorCodeExecutionToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                  - `FILE_NOT_FOUND("file_not_found")`
+
+                - `Optional<String> errorMessage`
+
+                - `JsonValue; type "text_editor_code_execution_tool_result_error"constant`
+
+                  - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT_ERROR("text_editor_code_execution_tool_result_error")`
+
+              - `class TextEditorCodeExecutionViewResultBlock:`
+
+                - `String content`
+
+                - `FileType fileType`
+
+                  - `TEXT("text")`
+
+                  - `IMAGE("image")`
+
+                  - `PDF("pdf")`
+
+                - `Optional<Long> numLines`
+
+                - `Optional<Long> startLine`
+
+                - `Optional<Long> totalLines`
+
+                - `JsonValue; type "text_editor_code_execution_view_result"constant`
+
+                  - `TEXT_EDITOR_CODE_EXECUTION_VIEW_RESULT("text_editor_code_execution_view_result")`
+
+              - `class TextEditorCodeExecutionCreateResultBlock:`
+
+                - `boolean isFileUpdate`
+
+                - `JsonValue; type "text_editor_code_execution_create_result"constant`
+
+                  - `TEXT_EDITOR_CODE_EXECUTION_CREATE_RESULT("text_editor_code_execution_create_result")`
+
+              - `class TextEditorCodeExecutionStrReplaceResultBlock:`
+
+                - `Optional<List<String>> lines`
+
+                - `Optional<Long> newLines`
+
+                - `Optional<Long> newStart`
+
+                - `Optional<Long> oldLines`
+
+                - `Optional<Long> oldStart`
+
+                - `JsonValue; type "text_editor_code_execution_str_replace_result"constant`
+
+                  - `TEXT_EDITOR_CODE_EXECUTION_STR_REPLACE_RESULT("text_editor_code_execution_str_replace_result")`
+
+            - `String toolUseId`
+
+            - `JsonValue; type "text_editor_code_execution_tool_result"constant`
+
+              - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT("text_editor_code_execution_tool_result")`
+
+          - `class ToolSearchToolResultBlock:`
+
+            - `Content content`
+
+              - `class ToolSearchToolResultError:`
+
+                - `ToolSearchToolResultErrorCode errorCode`
+
+                  - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                  - `UNAVAILABLE("unavailable")`
+
+                  - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                  - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                - `Optional<String> errorMessage`
+
+                - `JsonValue; type "tool_search_tool_result_error"constant`
+
+                  - `TOOL_SEARCH_TOOL_RESULT_ERROR("tool_search_tool_result_error")`
+
+              - `class ToolSearchToolSearchResultBlock:`
+
+                - `List<ToolReferenceBlock> toolReferences`
+
+                  - `String toolName`
+
+                  - `JsonValue; type "tool_reference"constant`
+
+                    - `TOOL_REFERENCE("tool_reference")`
+
+                - `JsonValue; type "tool_search_tool_search_result"constant`
+
+                  - `TOOL_SEARCH_TOOL_SEARCH_RESULT("tool_search_tool_search_result")`
+
+            - `String toolUseId`
+
+            - `JsonValue; type "tool_search_tool_result"constant`
+
+              - `TOOL_SEARCH_TOOL_RESULT("tool_search_tool_result")`
+
+          - `class ContainerUploadBlock:`
+
+            Response model for a file uploaded to the container.
+
+            - `String fileId`
+
+            - `JsonValue; type "container_upload"constant`
+
+              - `CONTAINER_UPLOAD("container_upload")`
+
         - `Model model`
 
           The model that will complete your prompt.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
+          - `CLAUDE_FABLE_5("claude-fable-5")`
 
-            Premium model combining maximum intelligence with practical performance
+            Next generation of intelligence for the hardest knowledge work and coding problems
+
+          - `CLAUDE_MYTHOS_5("claude-mythos-5")`
+
+            Most capable model for cybersecurity and biology research
+
+          - `CLAUDE_OPUS_4_8("claude-opus-4-8")`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `CLAUDE_OPUS_4_7("claude-opus-4-7")`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `CLAUDE_MYTHOS_PREVIEW("claude-mythos-preview")`
+
+            New class of intelligence, strongest in coding and cybersecurity
+
+          - `CLAUDE_OPUS_4_6("claude-opus-4-6")`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `CLAUDE_SONNET_4_6("claude-sonnet-4-6")`
+
+            Best combination of speed and intelligence
+
+          - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+
+            Fastest model with near-frontier intelligence
+
+          - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+
+            Fastest model with near-frontier intelligence
 
           - `CLAUDE_OPUS_4_5("claude-opus-4-5")`
 
             Premium model combining maximum intelligence with practical performance
 
-          - `CLAUDE_3_7_SONNET_LATEST("claude-3-7-sonnet-latest")`
+          - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
 
-            High-performance model with early extended thinking
+            Premium model combining maximum intelligence with practical performance
 
-          - `CLAUDE_3_7_SONNET_20250219("claude-3-7-sonnet-20250219")`
+          - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
 
-            High-performance model with early extended thinking
+            High-performance model for agents and coding
 
-          - `CLAUDE_3_5_HAIKU_LATEST("claude-3-5-haiku-latest")`
+          - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
 
-            Fastest and most compact model for near-instant responsiveness
+            High-performance model for agents and coding
 
-          - `CLAUDE_3_5_HAIKU_20241022("claude-3-5-haiku-20241022")`
+          - `CLAUDE_OPUS_4_1("claude-opus-4-1")`
 
-            Our fastest model
+            Exceptional model for specialized complex tasks
 
-          - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+          - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
 
-            Hybrid model, capable of near-instant responses and extended thinking
+            Exceptional model for specialized complex tasks
 
-          - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+          - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
 
-            Hybrid model, capable of near-instant responses and extended thinking
+            Powerful model for complex tasks
 
-          - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
+          - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
 
-            High-performance model with extended thinking
+            Powerful model for complex tasks
 
           - `CLAUDE_SONNET_4_0("claude-sonnet-4-0")`
 
             High-performance model with extended thinking
 
-          - `CLAUDE_4_SONNET_20250514("claude-4-sonnet-20250514")`
+          - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
 
             High-performance model with extended thinking
 
-          - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
-
-            Our best model for real-world agents and coding
-
-          - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
-
-            Our best model for real-world agents and coding
-
-          - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
-
-            Our most capable model
-
-          - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
-
-            Our most capable model
-
-          - `CLAUDE_4_OPUS_20250514("claude-4-opus-20250514")`
-
-            Our most capable model
-
-          - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
-
-            Our most capable model
-
-          - `CLAUDE_3_OPUS_LATEST("claude-3-opus-latest")`
-
-            Excels at writing and complex tasks
-
-          - `CLAUDE_3_OPUS_20240229("claude-3-opus-20240229")`
-
-            Excels at writing and complex tasks
-
           - `CLAUDE_3_HAIKU_20240307("claude-3-haiku-20240307")`
 
-            Our previous most fast and cost-effective
+            Fast and cost-effective model
 
         - `JsonValue; role "assistant"constant`
 
@@ -3848,6 +4828,32 @@ public final class Main {
           This will always be `"assistant"`.
 
           - `ASSISTANT("assistant")`
+
+        - `Optional<RefusalStopDetails> stopDetails`
+
+          Structured information about a refusal.
+
+          - `Optional<Category> category`
+
+            The policy category that triggered the refusal.
+
+            `null` when the refusal doesn't map to a named category.
+
+            - `CYBER("cyber")`
+
+            - `BIO("bio")`
+
+            - `REASONING_EXTRACTION("reasoning_extraction")`
+
+          - `Optional<String> explanation`
+
+            Human-readable explanation of the refusal.
+
+            This text is not guaranteed to be stable. `null` when no explanation is available for the category.
+
+          - `JsonValue; type "refusal"constant`
+
+            - `REFUSAL("refusal")`
 
         - `Optional<StopReason> stopReason`
 
@@ -3922,6 +4928,10 @@ public final class Main {
 
             The number of input tokens read from the cache.
 
+          - `Optional<String> inferenceGeo`
+
+            The geographic region where inference was performed for this request.
+
           - `long inputTokens`
 
             The number of input tokens which were used.
@@ -3930,9 +4940,33 @@ public final class Main {
 
             The number of output tokens which were used.
 
+          - `Optional<OutputTokensDetails> outputTokensDetails`
+
+            Breakdown of output tokens by category.
+
+            `output_tokens` remains the inclusive, authoritative total used for billing.
+            This object provides a read-only decomposition for observability — for example,
+            how many of the billed output tokens were spent on internal reasoning that may
+            have been summarized before being returned to you.
+
+            - `long thinkingTokens`
+
+              Number of output tokens the model generated as internal reasoning, including
+              the thinking-block delimiter tokens.
+
+              Reflects the raw reasoning the model produced, not the (possibly shorter)
+              summarized thinking text returned in the response body. Computed by
+              re-tokenizing the raw reasoning text, so it may differ from the model's exact
+              generation count by a small number of tokens. Always ≤ `output_tokens`;
+              `output_tokens - thinking_tokens` approximates the non-reasoning output.
+
           - `Optional<ServerToolUsage> serverToolUse`
 
             The number of server tool requests.
+
+            - `long webFetchRequests`
+
+              The number of web fetch tool requests.
 
             - `long webSearchRequests`
 
@@ -4102,6 +5136,18 @@ public final class Main {
 
         The format and length of IDs may change over time.
 
+      - `Optional<Container> container`
+
+        Information about the container used in the request (for the code execution tool)
+
+        - `String id`
+
+          Identifier for the container used in this request
+
+        - `LocalDateTime expiresAt`
+
+          The time at which the container will expire.
+
       - `List<ContentBlock> content`
 
         Content generated by the model.
@@ -4179,15 +5225,25 @@ public final class Main {
 
               - `String citedText`
 
+                The full text of the cited block range, concatenated.
+
+                Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
               - `long documentIndex`
 
               - `Optional<String> documentTitle`
 
               - `long endBlockIndex`
 
+                Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
               - `Optional<String> fileId`
 
               - `long startBlockIndex`
+
+                0-based index of the first cited block in the source's `content` array.
 
               - `JsonValue; type "content_block_location"constant`
 
@@ -4211,13 +5267,27 @@ public final class Main {
 
               - `String citedText`
 
+                The full text of the cited block range, concatenated.
+
+                Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
               - `long endBlockIndex`
 
+                Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
               - `long searchResultIndex`
+
+                0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                Counted separately from `document_index`; server-side web search results are not included in this count.
 
               - `String source`
 
               - `long startBlockIndex`
+
+                0-based index of the first cited block in the source's `content` array.
 
               - `Optional<String> title`
 
@@ -4253,6 +5323,36 @@ public final class Main {
 
           - `String id`
 
+          - `Caller caller`
+
+            Tool invocation directly from the model.
+
+            - `class DirectCaller:`
+
+              Tool invocation directly from the model.
+
+              - `JsonValue; type "direct"constant`
+
+                - `DIRECT("direct")`
+
+            - `class ServerToolCaller:`
+
+              Tool invocation generated by a server-side tool.
+
+              - `String toolId`
+
+              - `JsonValue; type "code_execution_20250825"constant`
+
+                - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+            - `class ServerToolCaller20260120:`
+
+              - `String toolId`
+
+              - `JsonValue; type "code_execution_20260120"constant`
+
+                - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
           - `Input input`
 
           - `String name`
@@ -4265,11 +5365,37 @@ public final class Main {
 
           - `String id`
 
+          - `Caller caller`
+
+            Tool invocation directly from the model.
+
+            - `class DirectCaller:`
+
+              Tool invocation directly from the model.
+
+            - `class ServerToolCaller:`
+
+              Tool invocation generated by a server-side tool.
+
+            - `class ServerToolCaller20260120:`
+
           - `Input input`
 
-          - `JsonValue; name "web_search"constant`
+          - `Name name`
 
             - `WEB_SEARCH("web_search")`
+
+            - `WEB_FETCH("web_fetch")`
+
+            - `CODE_EXECUTION("code_execution")`
+
+            - `BASH_CODE_EXECUTION("bash_code_execution")`
+
+            - `TEXT_EDITOR_CODE_EXECUTION("text_editor_code_execution")`
+
+            - `TOOL_SEARCH_TOOL_REGEX("tool_search_tool_regex")`
+
+            - `TOOL_SEARCH_TOOL_BM25("tool_search_tool_bm25")`
 
           - `JsonValue; type "server_tool_use"constant`
 
@@ -4277,11 +5403,25 @@ public final class Main {
 
         - `class WebSearchToolResultBlock:`
 
+          - `Caller caller`
+
+            Tool invocation directly from the model.
+
+            - `class DirectCaller:`
+
+              Tool invocation directly from the model.
+
+            - `class ServerToolCaller:`
+
+              Tool invocation generated by a server-side tool.
+
+            - `class ServerToolCaller20260120:`
+
           - `WebSearchToolResultBlockContent content`
 
             - `class WebSearchToolResultError:`
 
-              - `ErrorCode errorCode`
+              - `WebSearchToolResultErrorCode errorCode`
 
                 - `INVALID_TOOL_INPUT("invalid_tool_input")`
 
@@ -4292,6 +5432,8 @@ public final class Main {
                 - `TOO_MANY_REQUESTS("too_many_requests")`
 
                 - `QUERY_TOO_LONG("query_too_long")`
+
+                - `REQUEST_TOO_LARGE("request_too_large")`
 
               - `JsonValue; type "web_search_tool_result_error"constant`
 
@@ -4317,91 +5459,441 @@ public final class Main {
 
             - `WEB_SEARCH_TOOL_RESULT("web_search_tool_result")`
 
+        - `class WebFetchToolResultBlock:`
+
+          - `Caller caller`
+
+            Tool invocation directly from the model.
+
+            - `class DirectCaller:`
+
+              Tool invocation directly from the model.
+
+            - `class ServerToolCaller:`
+
+              Tool invocation generated by a server-side tool.
+
+            - `class ServerToolCaller20260120:`
+
+          - `Content content`
+
+            - `class WebFetchToolResultErrorBlock:`
+
+              - `WebFetchToolResultErrorCode errorCode`
+
+                - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                - `URL_TOO_LONG("url_too_long")`
+
+                - `URL_NOT_ALLOWED("url_not_allowed")`
+
+                - `URL_NOT_IN_PRIOR_CONTEXT("url_not_in_prior_context")`
+
+                - `URL_NOT_ACCESSIBLE("url_not_accessible")`
+
+                - `UNSUPPORTED_CONTENT_TYPE("unsupported_content_type")`
+
+                - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                - `MAX_USES_EXCEEDED("max_uses_exceeded")`
+
+                - `UNAVAILABLE("unavailable")`
+
+              - `JsonValue; type "web_fetch_tool_result_error"constant`
+
+                - `WEB_FETCH_TOOL_RESULT_ERROR("web_fetch_tool_result_error")`
+
+            - `class WebFetchBlock:`
+
+              - `DocumentBlock content`
+
+                - `Optional<CitationsConfig> citations`
+
+                  Citation configuration for the document
+
+                  - `boolean enabled`
+
+                - `Source source`
+
+                  - `class Base64PdfSource:`
+
+                    - `String data`
+
+                    - `JsonValue; mediaType "application/pdf"constant`
+
+                      - `APPLICATION_PDF("application/pdf")`
+
+                    - `JsonValue; type "base64"constant`
+
+                      - `BASE64("base64")`
+
+                  - `class PlainTextSource:`
+
+                    - `String data`
+
+                    - `JsonValue; mediaType "text/plain"constant`
+
+                      - `TEXT_PLAIN("text/plain")`
+
+                    - `JsonValue; type "text"constant`
+
+                      - `TEXT("text")`
+
+                - `Optional<String> title`
+
+                  The title of the document
+
+                - `JsonValue; type "document"constant`
+
+                  - `DOCUMENT("document")`
+
+              - `Optional<String> retrievedAt`
+
+                ISO 8601 timestamp when the content was retrieved
+
+              - `JsonValue; type "web_fetch_result"constant`
+
+                - `WEB_FETCH_RESULT("web_fetch_result")`
+
+              - `String url`
+
+                Fetched content URL
+
+          - `String toolUseId`
+
+          - `JsonValue; type "web_fetch_tool_result"constant`
+
+            - `WEB_FETCH_TOOL_RESULT("web_fetch_tool_result")`
+
+        - `class CodeExecutionToolResultBlock:`
+
+          - `CodeExecutionToolResultBlockContent content`
+
+            Code execution result with encrypted stdout for PFC + web_search results.
+
+            - `class CodeExecutionToolResultError:`
+
+              - `CodeExecutionToolResultErrorCode errorCode`
+
+                - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                - `UNAVAILABLE("unavailable")`
+
+                - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+              - `JsonValue; type "code_execution_tool_result_error"constant`
+
+                - `CODE_EXECUTION_TOOL_RESULT_ERROR("code_execution_tool_result_error")`
+
+            - `class CodeExecutionResultBlock:`
+
+              - `List<CodeExecutionOutputBlock> content`
+
+                - `String fileId`
+
+                - `JsonValue; type "code_execution_output"constant`
+
+                  - `CODE_EXECUTION_OUTPUT("code_execution_output")`
+
+              - `long returnCode`
+
+              - `String stderr`
+
+              - `String stdout`
+
+              - `JsonValue; type "code_execution_result"constant`
+
+                - `CODE_EXECUTION_RESULT("code_execution_result")`
+
+            - `class EncryptedCodeExecutionResultBlock:`
+
+              Code execution result with encrypted stdout for PFC + web_search results.
+
+              - `List<CodeExecutionOutputBlock> content`
+
+                - `String fileId`
+
+                - `JsonValue; type "code_execution_output"constant`
+
+              - `String encryptedStdout`
+
+              - `long returnCode`
+
+              - `String stderr`
+
+              - `JsonValue; type "encrypted_code_execution_result"constant`
+
+                - `ENCRYPTED_CODE_EXECUTION_RESULT("encrypted_code_execution_result")`
+
+          - `String toolUseId`
+
+          - `JsonValue; type "code_execution_tool_result"constant`
+
+            - `CODE_EXECUTION_TOOL_RESULT("code_execution_tool_result")`
+
+        - `class BashCodeExecutionToolResultBlock:`
+
+          - `Content content`
+
+            - `class BashCodeExecutionToolResultError:`
+
+              - `BashCodeExecutionToolResultErrorCode errorCode`
+
+                - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                - `UNAVAILABLE("unavailable")`
+
+                - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                - `OUTPUT_FILE_TOO_LARGE("output_file_too_large")`
+
+              - `JsonValue; type "bash_code_execution_tool_result_error"constant`
+
+                - `BASH_CODE_EXECUTION_TOOL_RESULT_ERROR("bash_code_execution_tool_result_error")`
+
+            - `class BashCodeExecutionResultBlock:`
+
+              - `List<BashCodeExecutionOutputBlock> content`
+
+                - `String fileId`
+
+                - `JsonValue; type "bash_code_execution_output"constant`
+
+                  - `BASH_CODE_EXECUTION_OUTPUT("bash_code_execution_output")`
+
+              - `long returnCode`
+
+              - `String stderr`
+
+              - `String stdout`
+
+              - `JsonValue; type "bash_code_execution_result"constant`
+
+                - `BASH_CODE_EXECUTION_RESULT("bash_code_execution_result")`
+
+          - `String toolUseId`
+
+          - `JsonValue; type "bash_code_execution_tool_result"constant`
+
+            - `BASH_CODE_EXECUTION_TOOL_RESULT("bash_code_execution_tool_result")`
+
+        - `class TextEditorCodeExecutionToolResultBlock:`
+
+          - `Content content`
+
+            - `class TextEditorCodeExecutionToolResultError:`
+
+              - `TextEditorCodeExecutionToolResultErrorCode errorCode`
+
+                - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                - `UNAVAILABLE("unavailable")`
+
+                - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+                - `FILE_NOT_FOUND("file_not_found")`
+
+              - `Optional<String> errorMessage`
+
+              - `JsonValue; type "text_editor_code_execution_tool_result_error"constant`
+
+                - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT_ERROR("text_editor_code_execution_tool_result_error")`
+
+            - `class TextEditorCodeExecutionViewResultBlock:`
+
+              - `String content`
+
+              - `FileType fileType`
+
+                - `TEXT("text")`
+
+                - `IMAGE("image")`
+
+                - `PDF("pdf")`
+
+              - `Optional<Long> numLines`
+
+              - `Optional<Long> startLine`
+
+              - `Optional<Long> totalLines`
+
+              - `JsonValue; type "text_editor_code_execution_view_result"constant`
+
+                - `TEXT_EDITOR_CODE_EXECUTION_VIEW_RESULT("text_editor_code_execution_view_result")`
+
+            - `class TextEditorCodeExecutionCreateResultBlock:`
+
+              - `boolean isFileUpdate`
+
+              - `JsonValue; type "text_editor_code_execution_create_result"constant`
+
+                - `TEXT_EDITOR_CODE_EXECUTION_CREATE_RESULT("text_editor_code_execution_create_result")`
+
+            - `class TextEditorCodeExecutionStrReplaceResultBlock:`
+
+              - `Optional<List<String>> lines`
+
+              - `Optional<Long> newLines`
+
+              - `Optional<Long> newStart`
+
+              - `Optional<Long> oldLines`
+
+              - `Optional<Long> oldStart`
+
+              - `JsonValue; type "text_editor_code_execution_str_replace_result"constant`
+
+                - `TEXT_EDITOR_CODE_EXECUTION_STR_REPLACE_RESULT("text_editor_code_execution_str_replace_result")`
+
+          - `String toolUseId`
+
+          - `JsonValue; type "text_editor_code_execution_tool_result"constant`
+
+            - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT("text_editor_code_execution_tool_result")`
+
+        - `class ToolSearchToolResultBlock:`
+
+          - `Content content`
+
+            - `class ToolSearchToolResultError:`
+
+              - `ToolSearchToolResultErrorCode errorCode`
+
+                - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+                - `UNAVAILABLE("unavailable")`
+
+                - `TOO_MANY_REQUESTS("too_many_requests")`
+
+                - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+              - `Optional<String> errorMessage`
+
+              - `JsonValue; type "tool_search_tool_result_error"constant`
+
+                - `TOOL_SEARCH_TOOL_RESULT_ERROR("tool_search_tool_result_error")`
+
+            - `class ToolSearchToolSearchResultBlock:`
+
+              - `List<ToolReferenceBlock> toolReferences`
+
+                - `String toolName`
+
+                - `JsonValue; type "tool_reference"constant`
+
+                  - `TOOL_REFERENCE("tool_reference")`
+
+              - `JsonValue; type "tool_search_tool_search_result"constant`
+
+                - `TOOL_SEARCH_TOOL_SEARCH_RESULT("tool_search_tool_search_result")`
+
+          - `String toolUseId`
+
+          - `JsonValue; type "tool_search_tool_result"constant`
+
+            - `TOOL_SEARCH_TOOL_RESULT("tool_search_tool_result")`
+
+        - `class ContainerUploadBlock:`
+
+          Response model for a file uploaded to the container.
+
+          - `String fileId`
+
+          - `JsonValue; type "container_upload"constant`
+
+            - `CONTAINER_UPLOAD("container_upload")`
+
       - `Model model`
 
         The model that will complete your prompt.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
+        - `CLAUDE_FABLE_5("claude-fable-5")`
 
-          Premium model combining maximum intelligence with practical performance
+          Next generation of intelligence for the hardest knowledge work and coding problems
+
+        - `CLAUDE_MYTHOS_5("claude-mythos-5")`
+
+          Most capable model for cybersecurity and biology research
+
+        - `CLAUDE_OPUS_4_8("claude-opus-4-8")`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `CLAUDE_OPUS_4_7("claude-opus-4-7")`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `CLAUDE_MYTHOS_PREVIEW("claude-mythos-preview")`
+
+          New class of intelligence, strongest in coding and cybersecurity
+
+        - `CLAUDE_OPUS_4_6("claude-opus-4-6")`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `CLAUDE_SONNET_4_6("claude-sonnet-4-6")`
+
+          Best combination of speed and intelligence
+
+        - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+
+          Fastest model with near-frontier intelligence
+
+        - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+
+          Fastest model with near-frontier intelligence
 
         - `CLAUDE_OPUS_4_5("claude-opus-4-5")`
 
           Premium model combining maximum intelligence with practical performance
 
-        - `CLAUDE_3_7_SONNET_LATEST("claude-3-7-sonnet-latest")`
+        - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
 
-          High-performance model with early extended thinking
+          Premium model combining maximum intelligence with practical performance
 
-        - `CLAUDE_3_7_SONNET_20250219("claude-3-7-sonnet-20250219")`
+        - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
 
-          High-performance model with early extended thinking
+          High-performance model for agents and coding
 
-        - `CLAUDE_3_5_HAIKU_LATEST("claude-3-5-haiku-latest")`
+        - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
 
-          Fastest and most compact model for near-instant responsiveness
+          High-performance model for agents and coding
 
-        - `CLAUDE_3_5_HAIKU_20241022("claude-3-5-haiku-20241022")`
+        - `CLAUDE_OPUS_4_1("claude-opus-4-1")`
 
-          Our fastest model
+          Exceptional model for specialized complex tasks
 
-        - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+        - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
 
-          Hybrid model, capable of near-instant responses and extended thinking
+          Exceptional model for specialized complex tasks
 
-        - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+        - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
 
-          Hybrid model, capable of near-instant responses and extended thinking
+          Powerful model for complex tasks
 
-        - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
+        - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
 
-          High-performance model with extended thinking
+          Powerful model for complex tasks
 
         - `CLAUDE_SONNET_4_0("claude-sonnet-4-0")`
 
           High-performance model with extended thinking
 
-        - `CLAUDE_4_SONNET_20250514("claude-4-sonnet-20250514")`
+        - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
 
           High-performance model with extended thinking
 
-        - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
-
-          Our best model for real-world agents and coding
-
-        - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
-
-          Our best model for real-world agents and coding
-
-        - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
-
-          Our most capable model
-
-        - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
-
-          Our most capable model
-
-        - `CLAUDE_4_OPUS_20250514("claude-4-opus-20250514")`
-
-          Our most capable model
-
-        - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
-
-          Our most capable model
-
-        - `CLAUDE_3_OPUS_LATEST("claude-3-opus-latest")`
-
-          Excels at writing and complex tasks
-
-        - `CLAUDE_3_OPUS_20240229("claude-3-opus-20240229")`
-
-          Excels at writing and complex tasks
-
         - `CLAUDE_3_HAIKU_20240307("claude-3-haiku-20240307")`
 
-          Our previous most fast and cost-effective
+          Fast and cost-effective model
 
       - `JsonValue; role "assistant"constant`
 
@@ -4410,6 +5902,32 @@ public final class Main {
         This will always be `"assistant"`.
 
         - `ASSISTANT("assistant")`
+
+      - `Optional<RefusalStopDetails> stopDetails`
+
+        Structured information about a refusal.
+
+        - `Optional<Category> category`
+
+          The policy category that triggered the refusal.
+
+          `null` when the refusal doesn't map to a named category.
+
+          - `CYBER("cyber")`
+
+          - `BIO("bio")`
+
+          - `REASONING_EXTRACTION("reasoning_extraction")`
+
+        - `Optional<String> explanation`
+
+          Human-readable explanation of the refusal.
+
+          This text is not guaranteed to be stable. `null` when no explanation is available for the category.
+
+        - `JsonValue; type "refusal"constant`
+
+          - `REFUSAL("refusal")`
 
       - `Optional<StopReason> stopReason`
 
@@ -4484,6 +6002,10 @@ public final class Main {
 
           The number of input tokens read from the cache.
 
+        - `Optional<String> inferenceGeo`
+
+          The geographic region where inference was performed for this request.
+
         - `long inputTokens`
 
           The number of input tokens which were used.
@@ -4492,9 +6014,33 @@ public final class Main {
 
           The number of output tokens which were used.
 
+        - `Optional<OutputTokensDetails> outputTokensDetails`
+
+          Breakdown of output tokens by category.
+
+          `output_tokens` remains the inclusive, authoritative total used for billing.
+          This object provides a read-only decomposition for observability — for example,
+          how many of the billed output tokens were spent on internal reasoning that may
+          have been summarized before being returned to you.
+
+          - `long thinkingTokens`
+
+            Number of output tokens the model generated as internal reasoning, including
+            the thinking-block delimiter tokens.
+
+            Reflects the raw reasoning the model produced, not the (possibly shorter)
+            summarized thinking text returned in the response body. Computed by
+            re-tokenizing the raw reasoning text, so it may differ from the model's exact
+            generation count by a small number of tokens. Always ≤ `output_tokens`;
+            `output_tokens - thinking_tokens` approximates the non-reasoning output.
+
         - `Optional<ServerToolUsage> serverToolUse`
 
           The number of server tool requests.
+
+          - `long webFetchRequests`
+
+            The number of web fetch tool requests.
 
           - `long webSearchRequests`
 
@@ -4626,6 +6172,18 @@ public final class Main {
 
       The format and length of IDs may change over time.
 
+    - `Optional<Container> container`
+
+      Information about the container used in the request (for the code execution tool)
+
+      - `String id`
+
+        Identifier for the container used in this request
+
+      - `LocalDateTime expiresAt`
+
+        The time at which the container will expire.
+
     - `List<ContentBlock> content`
 
       Content generated by the model.
@@ -4703,15 +6261,25 @@ public final class Main {
 
             - `String citedText`
 
+              The full text of the cited block range, concatenated.
+
+              Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
             - `long documentIndex`
 
             - `Optional<String> documentTitle`
 
             - `long endBlockIndex`
 
+              Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+              Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
             - `Optional<String> fileId`
 
             - `long startBlockIndex`
+
+              0-based index of the first cited block in the source's `content` array.
 
             - `JsonValue; type "content_block_location"constant`
 
@@ -4735,13 +6303,27 @@ public final class Main {
 
             - `String citedText`
 
+              The full text of the cited block range, concatenated.
+
+              Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
             - `long endBlockIndex`
 
+              Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+              Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
             - `long searchResultIndex`
+
+              0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+              Counted separately from `document_index`; server-side web search results are not included in this count.
 
             - `String source`
 
             - `long startBlockIndex`
+
+              0-based index of the first cited block in the source's `content` array.
 
             - `Optional<String> title`
 
@@ -4777,6 +6359,36 @@ public final class Main {
 
         - `String id`
 
+        - `Caller caller`
+
+          Tool invocation directly from the model.
+
+          - `class DirectCaller:`
+
+            Tool invocation directly from the model.
+
+            - `JsonValue; type "direct"constant`
+
+              - `DIRECT("direct")`
+
+          - `class ServerToolCaller:`
+
+            Tool invocation generated by a server-side tool.
+
+            - `String toolId`
+
+            - `JsonValue; type "code_execution_20250825"constant`
+
+              - `CODE_EXECUTION_20250825("code_execution_20250825")`
+
+          - `class ServerToolCaller20260120:`
+
+            - `String toolId`
+
+            - `JsonValue; type "code_execution_20260120"constant`
+
+              - `CODE_EXECUTION_20260120("code_execution_20260120")`
+
         - `Input input`
 
         - `String name`
@@ -4789,11 +6401,37 @@ public final class Main {
 
         - `String id`
 
+        - `Caller caller`
+
+          Tool invocation directly from the model.
+
+          - `class DirectCaller:`
+
+            Tool invocation directly from the model.
+
+          - `class ServerToolCaller:`
+
+            Tool invocation generated by a server-side tool.
+
+          - `class ServerToolCaller20260120:`
+
         - `Input input`
 
-        - `JsonValue; name "web_search"constant`
+        - `Name name`
 
           - `WEB_SEARCH("web_search")`
+
+          - `WEB_FETCH("web_fetch")`
+
+          - `CODE_EXECUTION("code_execution")`
+
+          - `BASH_CODE_EXECUTION("bash_code_execution")`
+
+          - `TEXT_EDITOR_CODE_EXECUTION("text_editor_code_execution")`
+
+          - `TOOL_SEARCH_TOOL_REGEX("tool_search_tool_regex")`
+
+          - `TOOL_SEARCH_TOOL_BM25("tool_search_tool_bm25")`
 
         - `JsonValue; type "server_tool_use"constant`
 
@@ -4801,11 +6439,25 @@ public final class Main {
 
       - `class WebSearchToolResultBlock:`
 
+        - `Caller caller`
+
+          Tool invocation directly from the model.
+
+          - `class DirectCaller:`
+
+            Tool invocation directly from the model.
+
+          - `class ServerToolCaller:`
+
+            Tool invocation generated by a server-side tool.
+
+          - `class ServerToolCaller20260120:`
+
         - `WebSearchToolResultBlockContent content`
 
           - `class WebSearchToolResultError:`
 
-            - `ErrorCode errorCode`
+            - `WebSearchToolResultErrorCode errorCode`
 
               - `INVALID_TOOL_INPUT("invalid_tool_input")`
 
@@ -4816,6 +6468,8 @@ public final class Main {
               - `TOO_MANY_REQUESTS("too_many_requests")`
 
               - `QUERY_TOO_LONG("query_too_long")`
+
+              - `REQUEST_TOO_LARGE("request_too_large")`
 
             - `JsonValue; type "web_search_tool_result_error"constant`
 
@@ -4841,91 +6495,441 @@ public final class Main {
 
           - `WEB_SEARCH_TOOL_RESULT("web_search_tool_result")`
 
+      - `class WebFetchToolResultBlock:`
+
+        - `Caller caller`
+
+          Tool invocation directly from the model.
+
+          - `class DirectCaller:`
+
+            Tool invocation directly from the model.
+
+          - `class ServerToolCaller:`
+
+            Tool invocation generated by a server-side tool.
+
+          - `class ServerToolCaller20260120:`
+
+        - `Content content`
+
+          - `class WebFetchToolResultErrorBlock:`
+
+            - `WebFetchToolResultErrorCode errorCode`
+
+              - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+              - `URL_TOO_LONG("url_too_long")`
+
+              - `URL_NOT_ALLOWED("url_not_allowed")`
+
+              - `URL_NOT_IN_PRIOR_CONTEXT("url_not_in_prior_context")`
+
+              - `URL_NOT_ACCESSIBLE("url_not_accessible")`
+
+              - `UNSUPPORTED_CONTENT_TYPE("unsupported_content_type")`
+
+              - `TOO_MANY_REQUESTS("too_many_requests")`
+
+              - `MAX_USES_EXCEEDED("max_uses_exceeded")`
+
+              - `UNAVAILABLE("unavailable")`
+
+            - `JsonValue; type "web_fetch_tool_result_error"constant`
+
+              - `WEB_FETCH_TOOL_RESULT_ERROR("web_fetch_tool_result_error")`
+
+          - `class WebFetchBlock:`
+
+            - `DocumentBlock content`
+
+              - `Optional<CitationsConfig> citations`
+
+                Citation configuration for the document
+
+                - `boolean enabled`
+
+              - `Source source`
+
+                - `class Base64PdfSource:`
+
+                  - `String data`
+
+                  - `JsonValue; mediaType "application/pdf"constant`
+
+                    - `APPLICATION_PDF("application/pdf")`
+
+                  - `JsonValue; type "base64"constant`
+
+                    - `BASE64("base64")`
+
+                - `class PlainTextSource:`
+
+                  - `String data`
+
+                  - `JsonValue; mediaType "text/plain"constant`
+
+                    - `TEXT_PLAIN("text/plain")`
+
+                  - `JsonValue; type "text"constant`
+
+                    - `TEXT("text")`
+
+              - `Optional<String> title`
+
+                The title of the document
+
+              - `JsonValue; type "document"constant`
+
+                - `DOCUMENT("document")`
+
+            - `Optional<String> retrievedAt`
+
+              ISO 8601 timestamp when the content was retrieved
+
+            - `JsonValue; type "web_fetch_result"constant`
+
+              - `WEB_FETCH_RESULT("web_fetch_result")`
+
+            - `String url`
+
+              Fetched content URL
+
+        - `String toolUseId`
+
+        - `JsonValue; type "web_fetch_tool_result"constant`
+
+          - `WEB_FETCH_TOOL_RESULT("web_fetch_tool_result")`
+
+      - `class CodeExecutionToolResultBlock:`
+
+        - `CodeExecutionToolResultBlockContent content`
+
+          Code execution result with encrypted stdout for PFC + web_search results.
+
+          - `class CodeExecutionToolResultError:`
+
+            - `CodeExecutionToolResultErrorCode errorCode`
+
+              - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+              - `UNAVAILABLE("unavailable")`
+
+              - `TOO_MANY_REQUESTS("too_many_requests")`
+
+              - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+            - `JsonValue; type "code_execution_tool_result_error"constant`
+
+              - `CODE_EXECUTION_TOOL_RESULT_ERROR("code_execution_tool_result_error")`
+
+          - `class CodeExecutionResultBlock:`
+
+            - `List<CodeExecutionOutputBlock> content`
+
+              - `String fileId`
+
+              - `JsonValue; type "code_execution_output"constant`
+
+                - `CODE_EXECUTION_OUTPUT("code_execution_output")`
+
+            - `long returnCode`
+
+            - `String stderr`
+
+            - `String stdout`
+
+            - `JsonValue; type "code_execution_result"constant`
+
+              - `CODE_EXECUTION_RESULT("code_execution_result")`
+
+          - `class EncryptedCodeExecutionResultBlock:`
+
+            Code execution result with encrypted stdout for PFC + web_search results.
+
+            - `List<CodeExecutionOutputBlock> content`
+
+              - `String fileId`
+
+              - `JsonValue; type "code_execution_output"constant`
+
+            - `String encryptedStdout`
+
+            - `long returnCode`
+
+            - `String stderr`
+
+            - `JsonValue; type "encrypted_code_execution_result"constant`
+
+              - `ENCRYPTED_CODE_EXECUTION_RESULT("encrypted_code_execution_result")`
+
+        - `String toolUseId`
+
+        - `JsonValue; type "code_execution_tool_result"constant`
+
+          - `CODE_EXECUTION_TOOL_RESULT("code_execution_tool_result")`
+
+      - `class BashCodeExecutionToolResultBlock:`
+
+        - `Content content`
+
+          - `class BashCodeExecutionToolResultError:`
+
+            - `BashCodeExecutionToolResultErrorCode errorCode`
+
+              - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+              - `UNAVAILABLE("unavailable")`
+
+              - `TOO_MANY_REQUESTS("too_many_requests")`
+
+              - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+              - `OUTPUT_FILE_TOO_LARGE("output_file_too_large")`
+
+            - `JsonValue; type "bash_code_execution_tool_result_error"constant`
+
+              - `BASH_CODE_EXECUTION_TOOL_RESULT_ERROR("bash_code_execution_tool_result_error")`
+
+          - `class BashCodeExecutionResultBlock:`
+
+            - `List<BashCodeExecutionOutputBlock> content`
+
+              - `String fileId`
+
+              - `JsonValue; type "bash_code_execution_output"constant`
+
+                - `BASH_CODE_EXECUTION_OUTPUT("bash_code_execution_output")`
+
+            - `long returnCode`
+
+            - `String stderr`
+
+            - `String stdout`
+
+            - `JsonValue; type "bash_code_execution_result"constant`
+
+              - `BASH_CODE_EXECUTION_RESULT("bash_code_execution_result")`
+
+        - `String toolUseId`
+
+        - `JsonValue; type "bash_code_execution_tool_result"constant`
+
+          - `BASH_CODE_EXECUTION_TOOL_RESULT("bash_code_execution_tool_result")`
+
+      - `class TextEditorCodeExecutionToolResultBlock:`
+
+        - `Content content`
+
+          - `class TextEditorCodeExecutionToolResultError:`
+
+            - `TextEditorCodeExecutionToolResultErrorCode errorCode`
+
+              - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+              - `UNAVAILABLE("unavailable")`
+
+              - `TOO_MANY_REQUESTS("too_many_requests")`
+
+              - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+              - `FILE_NOT_FOUND("file_not_found")`
+
+            - `Optional<String> errorMessage`
+
+            - `JsonValue; type "text_editor_code_execution_tool_result_error"constant`
+
+              - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT_ERROR("text_editor_code_execution_tool_result_error")`
+
+          - `class TextEditorCodeExecutionViewResultBlock:`
+
+            - `String content`
+
+            - `FileType fileType`
+
+              - `TEXT("text")`
+
+              - `IMAGE("image")`
+
+              - `PDF("pdf")`
+
+            - `Optional<Long> numLines`
+
+            - `Optional<Long> startLine`
+
+            - `Optional<Long> totalLines`
+
+            - `JsonValue; type "text_editor_code_execution_view_result"constant`
+
+              - `TEXT_EDITOR_CODE_EXECUTION_VIEW_RESULT("text_editor_code_execution_view_result")`
+
+          - `class TextEditorCodeExecutionCreateResultBlock:`
+
+            - `boolean isFileUpdate`
+
+            - `JsonValue; type "text_editor_code_execution_create_result"constant`
+
+              - `TEXT_EDITOR_CODE_EXECUTION_CREATE_RESULT("text_editor_code_execution_create_result")`
+
+          - `class TextEditorCodeExecutionStrReplaceResultBlock:`
+
+            - `Optional<List<String>> lines`
+
+            - `Optional<Long> newLines`
+
+            - `Optional<Long> newStart`
+
+            - `Optional<Long> oldLines`
+
+            - `Optional<Long> oldStart`
+
+            - `JsonValue; type "text_editor_code_execution_str_replace_result"constant`
+
+              - `TEXT_EDITOR_CODE_EXECUTION_STR_REPLACE_RESULT("text_editor_code_execution_str_replace_result")`
+
+        - `String toolUseId`
+
+        - `JsonValue; type "text_editor_code_execution_tool_result"constant`
+
+          - `TEXT_EDITOR_CODE_EXECUTION_TOOL_RESULT("text_editor_code_execution_tool_result")`
+
+      - `class ToolSearchToolResultBlock:`
+
+        - `Content content`
+
+          - `class ToolSearchToolResultError:`
+
+            - `ToolSearchToolResultErrorCode errorCode`
+
+              - `INVALID_TOOL_INPUT("invalid_tool_input")`
+
+              - `UNAVAILABLE("unavailable")`
+
+              - `TOO_MANY_REQUESTS("too_many_requests")`
+
+              - `EXECUTION_TIME_EXCEEDED("execution_time_exceeded")`
+
+            - `Optional<String> errorMessage`
+
+            - `JsonValue; type "tool_search_tool_result_error"constant`
+
+              - `TOOL_SEARCH_TOOL_RESULT_ERROR("tool_search_tool_result_error")`
+
+          - `class ToolSearchToolSearchResultBlock:`
+
+            - `List<ToolReferenceBlock> toolReferences`
+
+              - `String toolName`
+
+              - `JsonValue; type "tool_reference"constant`
+
+                - `TOOL_REFERENCE("tool_reference")`
+
+            - `JsonValue; type "tool_search_tool_search_result"constant`
+
+              - `TOOL_SEARCH_TOOL_SEARCH_RESULT("tool_search_tool_search_result")`
+
+        - `String toolUseId`
+
+        - `JsonValue; type "tool_search_tool_result"constant`
+
+          - `TOOL_SEARCH_TOOL_RESULT("tool_search_tool_result")`
+
+      - `class ContainerUploadBlock:`
+
+        Response model for a file uploaded to the container.
+
+        - `String fileId`
+
+        - `JsonValue; type "container_upload"constant`
+
+          - `CONTAINER_UPLOAD("container_upload")`
+
     - `Model model`
 
       The model that will complete your prompt.
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
+      - `CLAUDE_FABLE_5("claude-fable-5")`
 
-        Premium model combining maximum intelligence with practical performance
+        Next generation of intelligence for the hardest knowledge work and coding problems
+
+      - `CLAUDE_MYTHOS_5("claude-mythos-5")`
+
+        Most capable model for cybersecurity and biology research
+
+      - `CLAUDE_OPUS_4_8("claude-opus-4-8")`
+
+        Frontier intelligence for long-running agents and coding
+
+      - `CLAUDE_OPUS_4_7("claude-opus-4-7")`
+
+        Frontier intelligence for long-running agents and coding
+
+      - `CLAUDE_MYTHOS_PREVIEW("claude-mythos-preview")`
+
+        New class of intelligence, strongest in coding and cybersecurity
+
+      - `CLAUDE_OPUS_4_6("claude-opus-4-6")`
+
+        Frontier intelligence for long-running agents and coding
+
+      - `CLAUDE_SONNET_4_6("claude-sonnet-4-6")`
+
+        Best combination of speed and intelligence
+
+      - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+
+        Fastest model with near-frontier intelligence
+
+      - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+
+        Fastest model with near-frontier intelligence
 
       - `CLAUDE_OPUS_4_5("claude-opus-4-5")`
 
         Premium model combining maximum intelligence with practical performance
 
-      - `CLAUDE_3_7_SONNET_LATEST("claude-3-7-sonnet-latest")`
+      - `CLAUDE_OPUS_4_5_20251101("claude-opus-4-5-20251101")`
 
-        High-performance model with early extended thinking
+        Premium model combining maximum intelligence with practical performance
 
-      - `CLAUDE_3_7_SONNET_20250219("claude-3-7-sonnet-20250219")`
+      - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
 
-        High-performance model with early extended thinking
+        High-performance model for agents and coding
 
-      - `CLAUDE_3_5_HAIKU_LATEST("claude-3-5-haiku-latest")`
+      - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
 
-        Fastest and most compact model for near-instant responsiveness
+        High-performance model for agents and coding
 
-      - `CLAUDE_3_5_HAIKU_20241022("claude-3-5-haiku-20241022")`
+      - `CLAUDE_OPUS_4_1("claude-opus-4-1")`
 
-        Our fastest model
+        Exceptional model for specialized complex tasks
 
-      - `CLAUDE_HAIKU_4_5("claude-haiku-4-5")`
+      - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
 
-        Hybrid model, capable of near-instant responses and extended thinking
+        Exceptional model for specialized complex tasks
 
-      - `CLAUDE_HAIKU_4_5_20251001("claude-haiku-4-5-20251001")`
+      - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
 
-        Hybrid model, capable of near-instant responses and extended thinking
+        Powerful model for complex tasks
 
-      - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
+      - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
 
-        High-performance model with extended thinking
+        Powerful model for complex tasks
 
       - `CLAUDE_SONNET_4_0("claude-sonnet-4-0")`
 
         High-performance model with extended thinking
 
-      - `CLAUDE_4_SONNET_20250514("claude-4-sonnet-20250514")`
+      - `CLAUDE_SONNET_4_20250514("claude-sonnet-4-20250514")`
 
         High-performance model with extended thinking
 
-      - `CLAUDE_SONNET_4_5("claude-sonnet-4-5")`
-
-        Our best model for real-world agents and coding
-
-      - `CLAUDE_SONNET_4_5_20250929("claude-sonnet-4-5-20250929")`
-
-        Our best model for real-world agents and coding
-
-      - `CLAUDE_OPUS_4_0("claude-opus-4-0")`
-
-        Our most capable model
-
-      - `CLAUDE_OPUS_4_20250514("claude-opus-4-20250514")`
-
-        Our most capable model
-
-      - `CLAUDE_4_OPUS_20250514("claude-4-opus-20250514")`
-
-        Our most capable model
-
-      - `CLAUDE_OPUS_4_1_20250805("claude-opus-4-1-20250805")`
-
-        Our most capable model
-
-      - `CLAUDE_3_OPUS_LATEST("claude-3-opus-latest")`
-
-        Excels at writing and complex tasks
-
-      - `CLAUDE_3_OPUS_20240229("claude-3-opus-20240229")`
-
-        Excels at writing and complex tasks
-
       - `CLAUDE_3_HAIKU_20240307("claude-3-haiku-20240307")`
 
-        Our previous most fast and cost-effective
+        Fast and cost-effective model
 
     - `JsonValue; role "assistant"constant`
 
@@ -4934,6 +6938,32 @@ public final class Main {
       This will always be `"assistant"`.
 
       - `ASSISTANT("assistant")`
+
+    - `Optional<RefusalStopDetails> stopDetails`
+
+      Structured information about a refusal.
+
+      - `Optional<Category> category`
+
+        The policy category that triggered the refusal.
+
+        `null` when the refusal doesn't map to a named category.
+
+        - `CYBER("cyber")`
+
+        - `BIO("bio")`
+
+        - `REASONING_EXTRACTION("reasoning_extraction")`
+
+      - `Optional<String> explanation`
+
+        Human-readable explanation of the refusal.
+
+        This text is not guaranteed to be stable. `null` when no explanation is available for the category.
+
+      - `JsonValue; type "refusal"constant`
+
+        - `REFUSAL("refusal")`
 
     - `Optional<StopReason> stopReason`
 
@@ -5008,6 +7038,10 @@ public final class Main {
 
         The number of input tokens read from the cache.
 
+      - `Optional<String> inferenceGeo`
+
+        The geographic region where inference was performed for this request.
+
       - `long inputTokens`
 
         The number of input tokens which were used.
@@ -5016,9 +7050,33 @@ public final class Main {
 
         The number of output tokens which were used.
 
+      - `Optional<OutputTokensDetails> outputTokensDetails`
+
+        Breakdown of output tokens by category.
+
+        `output_tokens` remains the inclusive, authoritative total used for billing.
+        This object provides a read-only decomposition for observability — for example,
+        how many of the billed output tokens were spent on internal reasoning that may
+        have been summarized before being returned to you.
+
+        - `long thinkingTokens`
+
+          Number of output tokens the model generated as internal reasoning, including
+          the thinking-block delimiter tokens.
+
+          Reflects the raw reasoning the model produced, not the (possibly shorter)
+          summarized thinking text returned in the response body. Computed by
+          re-tokenizing the raw reasoning text, so it may differ from the model's exact
+          generation count by a small number of tokens. Always ≤ `output_tokens`;
+          `output_tokens - thinking_tokens` approximates the non-reasoning output.
+
       - `Optional<ServerToolUsage> serverToolUse`
 
         The number of server tool requests.
+
+        - `long webFetchRequests`
+
+          The number of web fetch tool requests.
 
         - `long webSearchRequests`
 

@@ -1,210 +1,29 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Troubleshooting
 
-> Discover solutions to common issues with Claude Code installation and usage.
-
-## Common installation issues
-
-### Windows installation issues: errors in WSL
-
-You might encounter the following issues in WSL:
-
-**OS/platform detection issues**: If you receive an error during installation, WSL may be using Windows `npm`. Try:
-
-* Run `npm config set os linux` before installation
-* Install with `npm install -g @anthropic-ai/claude-code --force --no-os-check` (Do NOT use `sudo`)
-
-**Node not found errors**: If you see `exec: node: not found` when running `claude`, your WSL environment may be using a Windows installation of Node.js. You can confirm this with `which npm` and `which node`, which should point to Linux paths starting with `/usr/` rather than `/mnt/c/`. To fix this, try installing Node via your Linux distribution's package manager or via [`nvm`](https://github.com/nvm-sh/nvm).
-
-**nvm version conflicts**: If you have nvm installed in both WSL and Windows, you may experience version conflicts when switching Node versions in WSL. This happens because WSL imports the Windows PATH by default, causing Windows nvm/npm to take priority over the WSL installation.
-
-You can identify this issue by:
-
-* Running `which npm` and `which node` - if they point to Windows paths (starting with `/mnt/c/`), Windows versions are being used
-* Experiencing broken functionality after switching Node versions with nvm in WSL
-
-To resolve this issue, fix your Linux PATH to ensure the Linux node/npm versions take priority:
-
-**Primary solution: Ensure nvm is properly loaded in your shell**
-
-The most common cause is that nvm isn't loaded in non-interactive shells. Add the following to your shell configuration file (`~/.bashrc`, `~/.zshrc`, etc.):
-
-```bash  theme={null}
-# Load nvm if it exists
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-```
-
-Or run directly in your current session:
-
-```bash  theme={null}
-source ~/.nvm/nvm.sh
-```
-
-**Alternative: Adjust PATH order**
-
-If nvm is properly loaded but Windows paths still take priority, you can explicitly prepend your Linux paths to PATH in your shell configuration:
-
-```bash  theme={null}
-export PATH="$HOME/.nvm/versions/node/$(node -v)/bin:$PATH"
-```
-
-<Warning>
-  Avoid disabling Windows PATH importing (`appendWindowsPath = false`) as this breaks the ability to call Windows executables from WSL. Similarly, avoid uninstalling Node.js from Windows if you use it for Windows development.
-</Warning>
-
-### Linux and Mac installation issues: permission or command not found errors
-
-When installing Claude Code with npm, `PATH` problems may prevent access to `claude`.
-You may also encounter permission errors if your npm global prefix is not user writable (for example, `/usr`, or `/usr/local`).
-
-#### Recommended solution: Native Claude Code installation
-
-Claude Code has a native installation that doesn't depend on npm or Node.js.
-
-Use the following command to run the native installer.
-
-**macOS, Linux, WSL:**
-
-```bash  theme={null}
-# Install stable version (default)
-curl -fsSL https://claude.ai/install.sh | bash
-
-# Install latest version
-curl -fsSL https://claude.ai/install.sh | bash -s latest
-
-# Install specific version number
-curl -fsSL https://claude.ai/install.sh | bash -s 1.0.58
-```
-
-**Windows PowerShell:**
-
-```powershell  theme={null}
-# Install stable version (default)
-irm https://claude.ai/install.ps1 | iex
-
-# Install latest version
-& ([scriptblock]::Create((irm https://claude.ai/install.ps1))) latest
-
-# Install specific version number
-& ([scriptblock]::Create((irm https://claude.ai/install.ps1))) 1.0.58
-
-```
-
-This command installs the appropriate build of Claude Code for your operating system and architecture and adds a symlink to the installation at `~/.local/bin/claude` (or `%USERPROFILE%\.local\bin\claude.exe` on Windows).
-
-<Tip>
-  Make sure that you have the installation directory in your system PATH.
-</Tip>
-
-### Windows: "Claude Code on Windows requires git-bash"
-
-Claude Code on native Windows requires [Git for Windows](https://git-scm.com/downloads/win) which includes Git Bash. If Git is installed but not detected:
-
-1. Set the path explicitly in PowerShell before running Claude:
-   ```powershell  theme={null}
-   $env:CLAUDE_CODE_GIT_BASH_PATH="C:\Program Files\Git\bin\bash.exe"
-   ```
-
-2. Or add it to your system environment variables permanently through System Properties → Environment Variables.
-
-If Git is installed in a non-standard location, adjust the path accordingly.
-
-### Windows: "installMethod is native, but claude command not found"
-
-If you see this error after installation, the `claude` command isn't in your PATH. Add it manually:
-
-<Steps>
-  <Step title="Open Environment Variables">
-    Press `Win + R`, type `sysdm.cpl`, and press Enter. Click **Advanced** → **Environment Variables**.
-  </Step>
-
-  <Step title="Edit User PATH">
-    Under "User variables", select **Path** and click **Edit**. Click **New** and add:
-
-    ```
-    %USERPROFILE%\.local\bin
-    ```
-  </Step>
-
-  <Step title="Restart your terminal">
-    Close and reopen PowerShell or CMD for changes to take effect.
-  </Step>
-</Steps>
-
-Verify installation:
-
-```bash  theme={null}
-claude doctor # Check installation health
-```
-
-## Permissions and authentication
-
-### Repeated permission prompts
-
-If you find yourself repeatedly approving the same commands, you can allow specific tools
-to run without approval using the `/permissions` command. See [Permissions docs](/en/iam#configuring-permissions).
-
-### Authentication issues
-
-If you're experiencing authentication problems:
-
-1. Run `/logout` to sign out completely
-2. Close Claude Code
-3. Restart with `claude` and complete the authentication process again
-
-If problems persist, try:
-
-```bash  theme={null}
-rm -rf ~/.config/claude-code/auth.json
-claude
-```
-
-This removes your stored authentication information and forces a clean login.
-
-## Configuration file locations
-
-Claude Code stores configuration in several locations:
-
-| File                          | Purpose                                                  |
-| :---------------------------- | :------------------------------------------------------- |
-| `~/.claude/settings.json`     | User settings (permissions, hooks, model overrides)      |
-| `.claude/settings.json`       | Project settings (checked into source control)           |
-| `.claude/settings.local.json` | Local project settings (not committed)                   |
-| `~/.claude.json`              | Global state (theme, OAuth, MCP servers, allowed tools)  |
-| `.mcp.json`                   | Project MCP servers (checked into source control)        |
-| `managed-settings.json`       | [Managed settings](/en/settings#settings-files)          |
-| `managed-mcp.json`            | [Managed MCP servers](/en/mcp#managed-mcp-configuration) |
-
-On Windows, `~` refers to your user home directory, such as `C:\Users\YourName`.
-
-**Managed file locations:**
-
-* macOS: `/Library/Application Support/ClaudeCode/`
-* Linux/WSL: `/etc/claude-code/`
-* Windows: `C:\Program Files\ClaudeCode\`
-
-For details on configuring these files, see [Settings](/en/settings) and [MCP](/en/mcp).
-
-### Resetting configuration
-
-To reset Claude Code to default settings, you can remove the configuration files:
-
-```bash  theme={null}
-# Reset all user settings and state
-rm ~/.claude.json
-rm -rf ~/.claude/
-
-# Reset project-specific settings
-rm -rf .claude/
-rm .mcp.json
-```
-
-<Warning>
-  This will remove all your settings, allowed tools, MCP server configurations, and session history.
-</Warning>
+> Fix high CPU or memory usage, hangs, auto-compact thrashing, and search problems in Claude Code, and find the right page for other issues.
+
+This page covers performance, stability, and search problems once Claude Code is running. For other issues, start with the page that matches where you're stuck:
+
+| Symptom                                                                                                 | Go to                                                                                    |
+| :------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------- |
+| `command not found`, install fails, PATH issues, `EACCES`, TLS errors                                   | [Troubleshoot installation and login](/en/troubleshoot-install)                          |
+| Login loops, OAuth errors, `403 Forbidden`, "organization disabled", Bedrock/Vertex/Foundry credentials | [Troubleshoot installation and login](/en/troubleshoot-install#login-and-authentication) |
+| Settings not applying, hooks not firing, MCP servers not loading                                        | [Debug your configuration](/en/debug-your-config)                                        |
+| `API Error: 5xx`, `529 Overloaded`, `429`, request validation errors                                    | [Error reference](/en/errors)                                                            |
+| `model not found` or `you may not have access to it`                                                    | [Error reference](/en/errors#there%E2%80%99s-an-issue-with-the-selected-model)           |
+| VS Code extension not connecting or detecting Claude                                                    | [VS Code integration](/en/vs-code#fix-common-issues)                                     |
+| JetBrains plugin or IDE not detected                                                                    | [JetBrains integration](/en/jetbrains#troubleshooting)                                   |
+| High CPU or memory, slow responses, hangs, search not finding files                                     | [Performance and stability](#performance-and-stability) below                            |
+
+If you're not sure which applies, run `/doctor` inside Claude Code for an automated check of your installation, settings, MCP servers, and context usage. If `claude` won't start at all, run `claude doctor` from your shell instead.
 
 ## Performance and stability
+
+These sections cover issues related to resource usage, responsiveness, and search behavior.
 
 ### High CPU or memory usage
 
@@ -213,6 +32,22 @@ Claude Code is designed to work with most development environments, but may cons
 1. Use `/compact` regularly to reduce context size
 2. Close and restart Claude Code between major tasks
 3. Consider adding large build directories to your `.gitignore` file
+4. Restart with [`claude --safe-mode`](/en/cli-reference#cli-flags) to check whether a plugin, MCP server, or hook is the source. It disables all customizations for the session; if usage drops, see [Debug your configuration](/en/debug-your-config#test-against-a-clean-configuration) to find which one
+
+If memory usage stays high after these steps, run `/heapdump` to write a JavaScript heap snapshot and a memory breakdown to `~/Desktop`. On Linux without a Desktop folder, the files are written to your home directory.
+
+The breakdown shows resident set size, JS heap, array buffers, and unaccounted native memory, which helps identify whether the growth is in JavaScript objects or in native code. To inspect retainers, open the `.heapsnapshot` file in Chrome DevTools under Memory → Load. Attach both files when reporting a memory issue on [GitHub](https://github.com/anthropics/claude-code/issues).
+
+### Auto-compaction stops with a thrashing error
+
+If you see `Autocompact is thrashing: the context refilled to the limit...`, automatic compaction succeeded but a file or tool output immediately refilled the context window several times in a row. Claude Code stops retrying to avoid wasting API calls on a loop that isn't making progress.
+
+To recover:
+
+1. Ask Claude to read the oversized file in smaller chunks, such as a specific line range or function, instead of the whole file
+2. Run `/compact` with a focus that drops the large output, for example `/compact keep only the plan and the diff`
+3. Move the large-file work to a [subagent](/en/sub-agents) so it runs in a separate context window
+4. Run `/clear` if the earlier conversation is no longer needed
 
 ### Command hangs or freezes
 
@@ -221,32 +56,53 @@ If Claude Code seems unresponsive:
 1. Press Ctrl+C to attempt to cancel the current operation
 2. If unresponsive, you may need to close the terminal and restart
 
+Restarting doesn't lose your conversation. Run `claude --resume` in the same directory to pick the session back up.
+
+### Garbled or corrupted text in an editor's integrated terminal
+
+If characters render as boxes, smears, or the wrong glyphs when running Claude Code in the VS Code, Cursor, or Devin Desktop integrated terminal, the terminal's GPU renderer is likely the cause. Run `/terminal-setup` inside Claude Code to set `terminal.integrated.gpuAcceleration` to `"off"`, or set it manually in your editor settings and reload the window. See [Terminal configuration](/en/terminal-config) for the other settings `/terminal-setup` writes.
+
 ### Search and discovery issues
 
-If Search tool, `@file` mentions, custom agents, and custom slash commands aren't working, install system `ripgrep`:
+If the Search tool, `@file` mentions, custom agents, or custom skills aren't finding files, the bundled `ripgrep` binary may not run on your system. Install your platform's `ripgrep` package and tell Claude Code to use it instead:
 
-```bash  theme={null}
-# macOS (Homebrew)  
-brew install ripgrep
+<Tabs>
+  <Tab title="macOS">
+    ```bash theme={null}
+    brew install ripgrep
+    ```
+  </Tab>
 
-# Windows (winget)
-winget install BurntSushi.ripgrep.MSVC
+  <Tab title="Ubuntu/Debian">
+    ```bash theme={null}
+    sudo apt install ripgrep
+    ```
+  </Tab>
 
-# Ubuntu/Debian
-sudo apt install ripgrep
+  <Tab title="Alpine">
+    ```bash theme={null}
+    apk add ripgrep
+    ```
+  </Tab>
 
-# Alpine Linux
-apk add ripgrep
+  <Tab title="Arch">
+    ```bash theme={null}
+    pacman -S ripgrep
+    ```
+  </Tab>
 
-# Arch Linux
-pacman -S ripgrep
-```
+  <Tab title="Windows">
+    ```powershell theme={null}
+    winget install BurntSushi.ripgrep.MSVC
+    ```
+  </Tab>
+</Tabs>
 
-Then set `USE_BUILTIN_RIPGREP=0` in your [environment](/en/settings#environment-variables).
+Then set `USE_BUILTIN_RIPGREP=0` in your [environment](/en/env-vars).
 
 ### Slow or incomplete search results on WSL
 
-Disk read performance penalties when [working across file systems on WSL](https://learn.microsoft.com/en-us/windows/wsl/filesystems) may result in fewer-than-expected matches (but not a complete lack of search functionality) when using Claude Code on WSL.
+Disk read performance penalties when [working across file systems on WSL](https://learn.microsoft.com/en-us/windows/wsl/filesystems) may result in fewer-than-expected matches when using Claude Code on WSL. Search still functions, but returns fewer results than on a native filesystem.
 
 <Note>
   `/doctor` will show Search as OK in this case.
@@ -254,143 +110,17 @@ Disk read performance penalties when [working across file systems on WSL](https:
 
 **Solutions:**
 
-1. **Submit more specific searches**: Reduce the number of files searched by specifying directories or file types: "Search for JWT validation logic in the auth-service package" or "Find use of md5 hash in JS files".
+1. **Submit more specific searches**: reduce the number of files searched by specifying directories or file types: "Search for JWT validation logic in the auth-service package" or "Find use of md5 hash in JS files".
 
-2. **Move project to Linux filesystem**: If possible, ensure your project is located on the Linux filesystem (`/home/`) rather than the Windows filesystem (`/mnt/c/`).
+2. **Move project to Linux filesystem**: if possible, ensure your project is located on the Linux filesystem (`/home/`) rather than the Windows filesystem (`/mnt/c/`).
 
-3. **Use native Windows instead**: Consider running Claude Code natively on Windows instead of through WSL, for better file system performance.
+3. **Use native Windows instead**: consider running Claude Code natively on Windows instead of through WSL, for better file system performance.
 
-## IDE integration issues
-
-### JetBrains IDE not detected on WSL2
-
-If you're using Claude Code on WSL2 with JetBrains IDEs and getting "No available IDEs detected" errors, this is likely due to WSL2's networking configuration or Windows Firewall blocking the connection.
-
-#### WSL2 networking modes
-
-WSL2 uses NAT networking by default, which can prevent IDE detection. You have two options:
-
-**Option 1: Configure Windows Firewall** (recommended)
-
-1. Find your WSL2 IP address:
-   ```bash  theme={null}
-   wsl hostname -I
-   # Example output: 172.21.123.456
-   ```
-
-2. Open PowerShell as Administrator and create a firewall rule:
-   ```powershell  theme={null}
-   New-NetFirewallRule -DisplayName "Allow WSL2 Internal Traffic" -Direction Inbound -Protocol TCP -Action Allow -RemoteAddress 172.21.0.0/16 -LocalAddress 172.21.0.0/16
-   ```
-   (Adjust the IP range based on your WSL2 subnet from step 1)
-
-3. Restart both your IDE and Claude Code
-
-**Option 2: Switch to mirrored networking**
-
-Add to `.wslconfig` in your Windows user directory:
-
-```ini  theme={null}
-[wsl2]
-networkingMode=mirrored
-```
-
-Then restart WSL with `wsl --shutdown` from PowerShell.
-
-<Note>
-  These networking issues only affect WSL2. WSL1 uses the host's network directly and doesn't require these configurations.
-</Note>
-
-For additional JetBrains configuration tips, see our [JetBrains IDE guide](/en/jetbrains#plugin-settings).
-
-### Reporting Windows IDE integration issues (both native and WSL)
-
-If you're experiencing IDE integration problems on Windows, [create an issue](https://github.com/anthropics/claude-code/issues) with the following information:
-
-* Environment type: native Windows (Git Bash) or WSL1/WSL2
-* WSL networking mode (if applicable): NAT or mirrored
-* IDE name and version
-* Claude Code extension/plugin version
-* Shell type: Bash, Zsh, PowerShell, etc.
-
-### Escape key not working in JetBrains (IntelliJ, PyCharm, etc.) terminals
-
-If you're using Claude Code in JetBrains terminals and the `Esc` key doesn't interrupt the agent as expected, this is likely due to a keybinding clash with JetBrains' default shortcuts.
-
-To fix this issue:
-
-1. Go to Settings → Tools → Terminal
-2. Either:
-   * Uncheck "Move focus to the editor with Escape", or
-   * Click "Configure terminal keybindings" and delete the "Switch focus to Editor" shortcut
-3. Apply the changes
-
-This allows the `Esc` key to properly interrupt Claude Code operations.
-
-## Markdown formatting issues
-
-Claude Code sometimes generates markdown files with missing language tags on code fences, which can affect syntax highlighting and readability in GitHub, editors, and documentation tools.
-
-### Missing language tags in code blocks
-
-If you notice code blocks like this in generated markdown:
-
-````markdown  theme={null}
-```
-function example() {
-  return "hello";
-}
-```
-````
-
-Instead of properly tagged blocks like:
-
-````markdown  theme={null}
-```javascript
-function example() {
-  return "hello";
-}
-```
-````
-
-**Solutions:**
-
-1. **Ask Claude to add language tags**: Request "Add appropriate language tags to all code blocks in this markdown file."
-
-2. **Use post-processing hooks**: Set up automatic formatting hooks to detect and add missing language tags. See the [markdown formatting hook example](/en/hooks-guide#markdown-formatting-hook) for implementation details.
-
-3. **Manual verification**: After generating markdown files, review them for proper code block formatting and request corrections if needed.
-
-### Inconsistent spacing and formatting
-
-If generated markdown has excessive blank lines or inconsistent spacing:
-
-**Solutions:**
-
-1. **Request formatting corrections**: Ask Claude to "Fix spacing and formatting issues in this markdown file."
-
-2. **Use formatting tools**: Set up hooks to run markdown formatters like `prettier` or custom formatting scripts on generated markdown files.
-
-3. **Specify formatting preferences**: Include formatting requirements in your prompts or project [memory](/en/memory) files.
-
-### Best practices for markdown generation
-
-To minimize formatting issues:
-
-* **Be explicit in requests**: Ask for "properly formatted markdown with language-tagged code blocks"
-* **Use project conventions**: Document your preferred markdown style in [`CLAUDE.md`](/en/memory)
-* **Set up validation hooks**: Use post-processing hooks to automatically verify and fix common formatting issues
-
-## Getting more help
+## Get more help
 
 If you're experiencing issues not covered here:
 
-1. Use the `/bug` command within Claude Code to report problems directly to Anthropic
-2. Check the [GitHub repository](https://github.com/anthropics/claude-code) for known issues
-3. Run `/doctor` to check the health of your Claude Code installation
-4. Ask Claude directly about its capabilities and features - Claude has built-in access to its documentation
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt
+1. Run `/doctor` to check installation health, settings validity, MCP configuration, and context usage in one pass
+2. Use the `/feedback` command within Claude Code to report problems directly to Anthropic
+3. Check the [GitHub repository](https://github.com/anthropics/claude-code) for known issues
+4. Ask Claude directly about its capabilities and features. Claude has built-in access to its documentation.

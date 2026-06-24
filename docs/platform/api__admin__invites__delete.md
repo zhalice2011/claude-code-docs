@@ -1,4 +1,4 @@
-## Delete
+## Delete Invite
 
 **delete** `/v1/organizations/invites/{invite_id}`
 
@@ -29,5 +29,15 @@ Delete Invite
 ```http
 curl https://api.anthropic.com/v1/organizations/invites/$INVITE_ID \
     -X DELETE \
-    -H "X-Api-Key: $ANTHROPIC_ADMIN_API_KEY"
+    -H 'anthropic-version: 2023-06-01' \
+    -H "Authorization: Bearer $ANTHROPIC_OAUTH_TOKEN"
+```
+
+#### Response
+
+```json
+{
+  "id": "invite_015gWxCN9Hfg2QhZwTK7Mdeu",
+  "type": "invite_deleted"
+}
 ```

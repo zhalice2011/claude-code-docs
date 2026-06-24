@@ -1,4 +1,4 @@
-## Create
+## Create a Text Completion
 
 `client.Completions.New(ctx, params) (*Completion, error)`
 
@@ -74,15 +74,15 @@ Future models and features will not be compatible with Text Completions. See our
 
     Used to remove "long tail" low probability responses. [Learn more technical details here](https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277).
 
-    Recommended for advanced use cases only. You usually only need to use `temperature`.
+    Recommended for advanced use cases only.
 
   - `TopP param.Field[float64]`
 
     Body param: Use nucleus sampling.
 
-    In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`. You should either alter `temperature` or `top_p`, but not both.
+    In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`.
 
-    Recommended for advanced use cases only. You usually only need to use `temperature`.
+    Recommended for advanced use cases only.
 
   - `Betas param.Field[[]AnthropicBeta]`
 
@@ -130,6 +130,24 @@ Future models and features will not be compatible with Text Completions. See our
 
       - `const AnthropicBetaSkills2025_10_02 AnthropicBeta = "skills-2025-10-02"`
 
+      - `const AnthropicBetaFastMode2026_02_01 AnthropicBeta = "fast-mode-2026-02-01"`
+
+      - `const AnthropicBetaOutput300k2026_03_24 AnthropicBeta = "output-300k-2026-03-24"`
+
+      - `const AnthropicBetaUserProfiles2026_03_24 AnthropicBeta = "user-profiles-2026-03-24"`
+
+      - `const AnthropicBetaAdvisorTool2026_03_01 AnthropicBeta = "advisor-tool-2026-03-01"`
+
+      - `const AnthropicBetaManagedAgents2026_04_01 AnthropicBeta = "managed-agents-2026-04-01"`
+
+      - `const AnthropicBetaCacheDiagnosis2026_04_07 AnthropicBeta = "cache-diagnosis-2026-04-07"`
+
+      - `const AnthropicBetaThinkingTokenCount2026_05_13 AnthropicBeta = "thinking-token-count-2026-05-13"`
+
+      - `const AnthropicBetaServerSideFallback2026_06_01 AnthropicBeta = "server-side-fallback-2026-06-01"`
+
+      - `const AnthropicBetaFallbackCredit2026_06_01 AnthropicBeta = "fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `type Completion struct{…}`
@@ -156,85 +174,85 @@ Future models and features will not be compatible with Text Completions. See our
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
+      - `const ModelClaudeFable5 Model = "claude-fable-5"`
 
-        Premium model combining maximum intelligence with practical performance
+        Next generation of intelligence for the hardest knowledge work and coding problems
+
+      - `const ModelClaudeMythos5 Model = "claude-mythos-5"`
+
+        Most capable model for cybersecurity and biology research
+
+      - `const ModelClaudeOpus4_8 Model = "claude-opus-4-8"`
+
+        Frontier intelligence for long-running agents and coding
+
+      - `const ModelClaudeOpus4_7 Model = "claude-opus-4-7"`
+
+        Frontier intelligence for long-running agents and coding
+
+      - `const ModelClaudeMythosPreview Model = "claude-mythos-preview"`
+
+        New class of intelligence, strongest in coding and cybersecurity
+
+      - `const ModelClaudeOpus4_6 Model = "claude-opus-4-6"`
+
+        Frontier intelligence for long-running agents and coding
+
+      - `const ModelClaudeSonnet4_6 Model = "claude-sonnet-4-6"`
+
+        Best combination of speed and intelligence
+
+      - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+
+        Fastest model with near-frontier intelligence
+
+      - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+
+        Fastest model with near-frontier intelligence
 
       - `const ModelClaudeOpus4_5 Model = "claude-opus-4-5"`
 
         Premium model combining maximum intelligence with practical performance
 
-      - `const ModelClaude3_7SonnetLatest Model = "claude-3-7-sonnet-latest"`
+      - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
 
-        High-performance model with early extended thinking
+        Premium model combining maximum intelligence with practical performance
 
-      - `const ModelClaude3_7Sonnet20250219 Model = "claude-3-7-sonnet-20250219"`
+      - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
 
-        High-performance model with early extended thinking
+        High-performance model for agents and coding
 
-      - `const ModelClaude3_5HaikuLatest Model = "claude-3-5-haiku-latest"`
+      - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
 
-        Fastest and most compact model for near-instant responsiveness
+        High-performance model for agents and coding
 
-      - `const ModelClaude3_5Haiku20241022 Model = "claude-3-5-haiku-20241022"`
+      - `const ModelClaudeOpus4_1 Model = "claude-opus-4-1"`
 
-        Our fastest model
+        Exceptional model for specialized complex tasks
 
-      - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+      - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
 
-        Hybrid model, capable of near-instant responses and extended thinking
+        Exceptional model for specialized complex tasks
 
-      - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+      - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
 
-        Hybrid model, capable of near-instant responses and extended thinking
+        Powerful model for complex tasks
 
-      - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
+      - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
 
-        High-performance model with extended thinking
+        Powerful model for complex tasks
 
       - `const ModelClaudeSonnet4_0 Model = "claude-sonnet-4-0"`
 
         High-performance model with extended thinking
 
-      - `const ModelClaude4Sonnet20250514 Model = "claude-4-sonnet-20250514"`
+      - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
 
         High-performance model with extended thinking
 
-      - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
-
-        Our best model for real-world agents and coding
-
-      - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
-
-        Our best model for real-world agents and coding
-
-      - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
-
-        Our most capable model
-
-      - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
-
-        Our most capable model
-
-      - `const ModelClaude4Opus20250514 Model = "claude-4-opus-20250514"`
-
-        Our most capable model
-
-      - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
-
-        Our most capable model
-
-      - `const ModelClaude3OpusLatest Model = "claude-3-opus-latest"`
-
-        Excels at writing and complex tasks
-
-      - `const ModelClaude_3_Opus_20240229 Model = "claude-3-opus-20240229"`
-
-        Excels at writing and complex tasks
-
       - `const ModelClaude_3_Haiku_20240307 Model = "claude-3-haiku-20240307"`
 
-        Our previous most fast and cost-effective
+        Fast and cost-effective model
 
     - `string`
 
@@ -274,12 +292,24 @@ func main() {
   )
   completion, err := client.Completions.New(context.TODO(), anthropic.CompletionNewParams{
     MaxTokensToSample: 256,
-    Model: anthropic.ModelClaudeOpus4_5_20251101,
+    Model: anthropic.ModelClaudeFable5,
     Prompt: "\n\nHuman: Hello, world!\n\nAssistant:",
   })
   if err != nil {
     panic(err.Error())
   }
   fmt.Printf("%+v\n", completion.ID)
+}
+```
+
+#### Response
+
+```json
+{
+  "id": "compl_018CKm6gsux7P8yMcwZbeCPw",
+  "completion": " Hello! My name is Claude.",
+  "model": "claude-2.1",
+  "stop_reason": "stop_sequence",
+  "type": "completion"
 }
 ```

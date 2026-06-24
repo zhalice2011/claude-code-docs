@@ -1,6 +1,6 @@
 # Batches
 
-## Create
+## Create a Message Batch
 
 `client.Messages.Batches.New(ctx, body) (*MessageBatch, error)`
 
@@ -37,6 +37,8 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
         The maximum number of tokens to generate before stopping.
 
         Note that our models may stop _before_ reaching this maximum. This parameter only specifies the absolute maximum number of tokens to generate.
+
+        Set to `0` to populate the [prompt cache](https://docs.claude.com/en/docs/build-with-claude/prompt-caching#pre-warming-the-cache) without generating a response.
 
         Different models have different maximum values for this parameter.  See [models](https://docs.claude.com/en/docs/models-overview) for details.
 
@@ -164,13 +166,23 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `CitedText string`
 
+                    The full text of the cited block range, concatenated.
+
+                    Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                   - `DocumentIndex int64`
 
                   - `DocumentTitle string`
 
                   - `EndBlockIndex int64`
 
+                    Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                    Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                   - `StartBlockIndex int64`
+
+                    0-based index of the first cited block in the source's `content` array.
 
                   - `Type ContentBlockLocation`
 
@@ -194,13 +206,27 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                   - `CitedText string`
 
+                    The full text of the cited block range, concatenated.
+
+                    Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                   - `EndBlockIndex int64`
 
+                    Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                    Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                   - `SearchResultIndex int64`
+
+                    0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                    Counted separately from `document_index`; server-side web search results are not included in this count.
 
                   - `Source string`
 
                   - `StartBlockIndex int64`
+
+                    0-based index of the first cited block in the source's `content` array.
 
                   - `Title string`
 
@@ -246,25 +272,6 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `Type Ephemeral`
-
-                  - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                - `TTL CacheControlEphemeralTTL`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                  - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
             - `type DocumentBlockParamResp struct{…}`
 
               - `Source DocumentBlockParamSourceUnionResp`
@@ -303,173 +310,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                       - `type TextBlockParamResp struct{…}`
 
-                        - `Text string`
-
-                        - `Type Text`
-
-                          - `const TextText Text = "text"`
-
-                        - `CacheControl CacheControlEphemeral`
-
-                          Create a cache control breakpoint at this content block.
-
-                          - `Type Ephemeral`
-
-                            - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                          - `TTL CacheControlEphemeralTTL`
-
-                            The time-to-live for the cache control breakpoint.
-
-                            This may be one the following values:
-
-                            - `5m`: 5 minutes
-                            - `1h`: 1 hour
-
-                            Defaults to `5m`.
-
-                            - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                            - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
-                        - `Citations []TextCitationParamUnionResp`
-
-                          - `type CitationCharLocationParamResp struct{…}`
-
-                            - `CitedText string`
-
-                            - `DocumentIndex int64`
-
-                            - `DocumentTitle string`
-
-                            - `EndCharIndex int64`
-
-                            - `StartCharIndex int64`
-
-                            - `Type CharLocation`
-
-                              - `const CharLocationCharLocation CharLocation = "char_location"`
-
-                          - `type CitationPageLocationParamResp struct{…}`
-
-                            - `CitedText string`
-
-                            - `DocumentIndex int64`
-
-                            - `DocumentTitle string`
-
-                            - `EndPageNumber int64`
-
-                            - `StartPageNumber int64`
-
-                            - `Type PageLocation`
-
-                              - `const PageLocationPageLocation PageLocation = "page_location"`
-
-                          - `type CitationContentBlockLocationParamResp struct{…}`
-
-                            - `CitedText string`
-
-                            - `DocumentIndex int64`
-
-                            - `DocumentTitle string`
-
-                            - `EndBlockIndex int64`
-
-                            - `StartBlockIndex int64`
-
-                            - `Type ContentBlockLocation`
-
-                              - `const ContentBlockLocationContentBlockLocation ContentBlockLocation = "content_block_location"`
-
-                          - `type CitationWebSearchResultLocationParamResp struct{…}`
-
-                            - `CitedText string`
-
-                            - `EncryptedIndex string`
-
-                            - `Title string`
-
-                            - `Type WebSearchResultLocation`
-
-                              - `const WebSearchResultLocationWebSearchResultLocation WebSearchResultLocation = "web_search_result_location"`
-
-                            - `URL string`
-
-                          - `type CitationSearchResultLocationParamResp struct{…}`
-
-                            - `CitedText string`
-
-                            - `EndBlockIndex int64`
-
-                            - `SearchResultIndex int64`
-
-                            - `Source string`
-
-                            - `StartBlockIndex int64`
-
-                            - `Title string`
-
-                            - `Type SearchResultLocation`
-
-                              - `const SearchResultLocationSearchResultLocation SearchResultLocation = "search_result_location"`
-
                       - `type ImageBlockParamResp struct{…}`
-
-                        - `Source ImageBlockParamSourceUnionResp`
-
-                          - `type Base64ImageSource struct{…}`
-
-                            - `Data string`
-
-                            - `MediaType Base64ImageSourceMediaType`
-
-                              - `const Base64ImageSourceMediaTypeImageJPEG Base64ImageSourceMediaType = "image/jpeg"`
-
-                              - `const Base64ImageSourceMediaTypeImagePNG Base64ImageSourceMediaType = "image/png"`
-
-                              - `const Base64ImageSourceMediaTypeImageGIF Base64ImageSourceMediaType = "image/gif"`
-
-                              - `const Base64ImageSourceMediaTypeImageWebP Base64ImageSourceMediaType = "image/webp"`
-
-                            - `Type Base64`
-
-                              - `const Base64Base64 Base64 = "base64"`
-
-                          - `type URLImageSource struct{…}`
-
-                            - `Type URL`
-
-                              - `const URLURL URL = "url"`
-
-                            - `URL string`
-
-                        - `Type Image`
-
-                          - `const ImageImage Image = "image"`
-
-                        - `CacheControl CacheControlEphemeral`
-
-                          Create a cache control breakpoint at this content block.
-
-                          - `Type Ephemeral`
-
-                            - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                          - `TTL CacheControlEphemeralTTL`
-
-                            The time-to-live for the cache control breakpoint.
-
-                            This may be one the following values:
-
-                            - `5m`: 5 minutes
-                            - `1h`: 1 hour
-
-                            Defaults to `5m`.
-
-                            - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                            - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
 
                   - `Type Content`
 
@@ -491,25 +332,6 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `Type Ephemeral`
-
-                  - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                - `TTL CacheControlEphemeralTTL`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                  - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
               - `Citations CitationsConfigParamResp`
 
                 - `Enabled bool`
@@ -526,112 +348,11 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `Type Text`
 
-                  - `const TextText Text = "text"`
-
                 - `CacheControl CacheControlEphemeral`
 
                   Create a cache control breakpoint at this content block.
 
-                  - `Type Ephemeral`
-
-                    - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                  - `TTL CacheControlEphemeralTTL`
-
-                    The time-to-live for the cache control breakpoint.
-
-                    This may be one the following values:
-
-                    - `5m`: 5 minutes
-                    - `1h`: 1 hour
-
-                    Defaults to `5m`.
-
-                    - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                    - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
                 - `Citations []TextCitationParamUnionResp`
-
-                  - `type CitationCharLocationParamResp struct{…}`
-
-                    - `CitedText string`
-
-                    - `DocumentIndex int64`
-
-                    - `DocumentTitle string`
-
-                    - `EndCharIndex int64`
-
-                    - `StartCharIndex int64`
-
-                    - `Type CharLocation`
-
-                      - `const CharLocationCharLocation CharLocation = "char_location"`
-
-                  - `type CitationPageLocationParamResp struct{…}`
-
-                    - `CitedText string`
-
-                    - `DocumentIndex int64`
-
-                    - `DocumentTitle string`
-
-                    - `EndPageNumber int64`
-
-                    - `StartPageNumber int64`
-
-                    - `Type PageLocation`
-
-                      - `const PageLocationPageLocation PageLocation = "page_location"`
-
-                  - `type CitationContentBlockLocationParamResp struct{…}`
-
-                    - `CitedText string`
-
-                    - `DocumentIndex int64`
-
-                    - `DocumentTitle string`
-
-                    - `EndBlockIndex int64`
-
-                    - `StartBlockIndex int64`
-
-                    - `Type ContentBlockLocation`
-
-                      - `const ContentBlockLocationContentBlockLocation ContentBlockLocation = "content_block_location"`
-
-                  - `type CitationWebSearchResultLocationParamResp struct{…}`
-
-                    - `CitedText string`
-
-                    - `EncryptedIndex string`
-
-                    - `Title string`
-
-                    - `Type WebSearchResultLocation`
-
-                      - `const WebSearchResultLocationWebSearchResultLocation WebSearchResultLocation = "web_search_result_location"`
-
-                    - `URL string`
-
-                  - `type CitationSearchResultLocationParamResp struct{…}`
-
-                    - `CitedText string`
-
-                    - `EndBlockIndex int64`
-
-                    - `SearchResultIndex int64`
-
-                    - `Source string`
-
-                    - `StartBlockIndex int64`
-
-                    - `Title string`
-
-                    - `Type SearchResultLocation`
-
-                      - `const SearchResultLocationSearchResultLocation SearchResultLocation = "search_result_location"`
 
               - `Source string`
 
@@ -645,28 +366,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `Type Ephemeral`
-
-                  - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                - `TTL CacheControlEphemeralTTL`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                  - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
               - `Citations CitationsConfigParamResp`
-
-                - `Enabled bool`
 
             - `type ThinkingBlockParamResp struct{…}`
 
@@ -702,24 +402,35 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `Type Ephemeral`
+              - `Caller ToolUseBlockParamCallerUnionResp`
 
-                  - `const EphemeralEphemeral Ephemeral = "ephemeral"`
+                Tool invocation directly from the model.
 
-                - `TTL CacheControlEphemeralTTL`
+                - `type DirectCaller struct{…}`
 
-                  The time-to-live for the cache control breakpoint.
+                  Tool invocation directly from the model.
 
-                  This may be one the following values:
+                  - `Type Direct`
 
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
+                    - `const DirectDirect Direct = "direct"`
 
-                  Defaults to `5m`.
+                - `type ServerToolCaller struct{…}`
 
-                  - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
+                  Tool invocation generated by a server-side tool.
 
-                  - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
+                  - `ToolID string`
+
+                  - `Type CodeExecution20250825`
+
+                    - `const CodeExecution20250825CodeExecution20250825 CodeExecution20250825 = "code_execution_20250825"`
+
+                - `type ServerToolCaller20260120 struct{…}`
+
+                  - `ToolID string`
+
+                  - `Type CodeExecution20260120`
+
+                    - `const CodeExecution20260120CodeExecution20260120 CodeExecution20260120 = "code_execution_20260120"`
 
             - `type ToolResultBlockParamResp struct{…}`
 
@@ -733,601 +444,31 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `Type Ephemeral`
-
-                  - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                - `TTL CacheControlEphemeralTTL`
-
-                  The time-to-live for the cache control breakpoint.
-
-                  This may be one the following values:
-
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
-
-                  Defaults to `5m`.
-
-                  - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                  - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
               - `Content []ToolResultBlockParamContentUnionResp`
 
                 - `[]ToolResultBlockParamContentUnionResp`
 
                   - `type TextBlockParamResp struct{…}`
 
-                    - `Text string`
-
-                    - `Type Text`
-
-                      - `const TextText Text = "text"`
-
-                    - `CacheControl CacheControlEphemeral`
-
-                      Create a cache control breakpoint at this content block.
-
-                      - `Type Ephemeral`
-
-                        - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                      - `TTL CacheControlEphemeralTTL`
-
-                        The time-to-live for the cache control breakpoint.
-
-                        This may be one the following values:
-
-                        - `5m`: 5 minutes
-                        - `1h`: 1 hour
-
-                        Defaults to `5m`.
-
-                        - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                        - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
-                    - `Citations []TextCitationParamUnionResp`
-
-                      - `type CitationCharLocationParamResp struct{…}`
-
-                        - `CitedText string`
-
-                        - `DocumentIndex int64`
-
-                        - `DocumentTitle string`
-
-                        - `EndCharIndex int64`
-
-                        - `StartCharIndex int64`
-
-                        - `Type CharLocation`
-
-                          - `const CharLocationCharLocation CharLocation = "char_location"`
-
-                      - `type CitationPageLocationParamResp struct{…}`
-
-                        - `CitedText string`
-
-                        - `DocumentIndex int64`
-
-                        - `DocumentTitle string`
-
-                        - `EndPageNumber int64`
-
-                        - `StartPageNumber int64`
-
-                        - `Type PageLocation`
-
-                          - `const PageLocationPageLocation PageLocation = "page_location"`
-
-                      - `type CitationContentBlockLocationParamResp struct{…}`
-
-                        - `CitedText string`
-
-                        - `DocumentIndex int64`
-
-                        - `DocumentTitle string`
-
-                        - `EndBlockIndex int64`
-
-                        - `StartBlockIndex int64`
-
-                        - `Type ContentBlockLocation`
-
-                          - `const ContentBlockLocationContentBlockLocation ContentBlockLocation = "content_block_location"`
-
-                      - `type CitationWebSearchResultLocationParamResp struct{…}`
-
-                        - `CitedText string`
-
-                        - `EncryptedIndex string`
-
-                        - `Title string`
-
-                        - `Type WebSearchResultLocation`
-
-                          - `const WebSearchResultLocationWebSearchResultLocation WebSearchResultLocation = "web_search_result_location"`
-
-                        - `URL string`
-
-                      - `type CitationSearchResultLocationParamResp struct{…}`
-
-                        - `CitedText string`
-
-                        - `EndBlockIndex int64`
-
-                        - `SearchResultIndex int64`
-
-                        - `Source string`
-
-                        - `StartBlockIndex int64`
-
-                        - `Title string`
-
-                        - `Type SearchResultLocation`
-
-                          - `const SearchResultLocationSearchResultLocation SearchResultLocation = "search_result_location"`
-
                   - `type ImageBlockParamResp struct{…}`
-
-                    - `Source ImageBlockParamSourceUnionResp`
-
-                      - `type Base64ImageSource struct{…}`
-
-                        - `Data string`
-
-                        - `MediaType Base64ImageSourceMediaType`
-
-                          - `const Base64ImageSourceMediaTypeImageJPEG Base64ImageSourceMediaType = "image/jpeg"`
-
-                          - `const Base64ImageSourceMediaTypeImagePNG Base64ImageSourceMediaType = "image/png"`
-
-                          - `const Base64ImageSourceMediaTypeImageGIF Base64ImageSourceMediaType = "image/gif"`
-
-                          - `const Base64ImageSourceMediaTypeImageWebP Base64ImageSourceMediaType = "image/webp"`
-
-                        - `Type Base64`
-
-                          - `const Base64Base64 Base64 = "base64"`
-
-                      - `type URLImageSource struct{…}`
-
-                        - `Type URL`
-
-                          - `const URLURL URL = "url"`
-
-                        - `URL string`
-
-                    - `Type Image`
-
-                      - `const ImageImage Image = "image"`
-
-                    - `CacheControl CacheControlEphemeral`
-
-                      Create a cache control breakpoint at this content block.
-
-                      - `Type Ephemeral`
-
-                        - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                      - `TTL CacheControlEphemeralTTL`
-
-                        The time-to-live for the cache control breakpoint.
-
-                        This may be one the following values:
-
-                        - `5m`: 5 minutes
-                        - `1h`: 1 hour
-
-                        Defaults to `5m`.
-
-                        - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                        - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
 
                   - `type SearchResultBlockParamResp struct{…}`
 
-                    - `Content []TextBlockParamResp`
-
-                      - `Text string`
-
-                      - `Type Text`
-
-                        - `const TextText Text = "text"`
-
-                      - `CacheControl CacheControlEphemeral`
-
-                        Create a cache control breakpoint at this content block.
-
-                        - `Type Ephemeral`
-
-                          - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                        - `TTL CacheControlEphemeralTTL`
-
-                          The time-to-live for the cache control breakpoint.
-
-                          This may be one the following values:
-
-                          - `5m`: 5 minutes
-                          - `1h`: 1 hour
-
-                          Defaults to `5m`.
-
-                          - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                          - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
-                      - `Citations []TextCitationParamUnionResp`
-
-                        - `type CitationCharLocationParamResp struct{…}`
-
-                          - `CitedText string`
-
-                          - `DocumentIndex int64`
-
-                          - `DocumentTitle string`
-
-                          - `EndCharIndex int64`
-
-                          - `StartCharIndex int64`
-
-                          - `Type CharLocation`
-
-                            - `const CharLocationCharLocation CharLocation = "char_location"`
-
-                        - `type CitationPageLocationParamResp struct{…}`
-
-                          - `CitedText string`
-
-                          - `DocumentIndex int64`
-
-                          - `DocumentTitle string`
-
-                          - `EndPageNumber int64`
-
-                          - `StartPageNumber int64`
-
-                          - `Type PageLocation`
-
-                            - `const PageLocationPageLocation PageLocation = "page_location"`
-
-                        - `type CitationContentBlockLocationParamResp struct{…}`
-
-                          - `CitedText string`
-
-                          - `DocumentIndex int64`
-
-                          - `DocumentTitle string`
-
-                          - `EndBlockIndex int64`
-
-                          - `StartBlockIndex int64`
-
-                          - `Type ContentBlockLocation`
-
-                            - `const ContentBlockLocationContentBlockLocation ContentBlockLocation = "content_block_location"`
-
-                        - `type CitationWebSearchResultLocationParamResp struct{…}`
-
-                          - `CitedText string`
-
-                          - `EncryptedIndex string`
-
-                          - `Title string`
-
-                          - `Type WebSearchResultLocation`
-
-                            - `const WebSearchResultLocationWebSearchResultLocation WebSearchResultLocation = "web_search_result_location"`
-
-                          - `URL string`
-
-                        - `type CitationSearchResultLocationParamResp struct{…}`
-
-                          - `CitedText string`
-
-                          - `EndBlockIndex int64`
-
-                          - `SearchResultIndex int64`
-
-                          - `Source string`
-
-                          - `StartBlockIndex int64`
-
-                          - `Title string`
-
-                          - `Type SearchResultLocation`
-
-                            - `const SearchResultLocationSearchResultLocation SearchResultLocation = "search_result_location"`
-
-                    - `Source string`
-
-                    - `Title string`
-
-                    - `Type SearchResult`
-
-                      - `const SearchResultSearchResult SearchResult = "search_result"`
-
-                    - `CacheControl CacheControlEphemeral`
-
-                      Create a cache control breakpoint at this content block.
-
-                      - `Type Ephemeral`
-
-                        - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                      - `TTL CacheControlEphemeralTTL`
-
-                        The time-to-live for the cache control breakpoint.
-
-                        This may be one the following values:
-
-                        - `5m`: 5 minutes
-                        - `1h`: 1 hour
-
-                        Defaults to `5m`.
-
-                        - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                        - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
-                    - `Citations CitationsConfigParamResp`
-
-                      - `Enabled bool`
-
                   - `type DocumentBlockParamResp struct{…}`
 
-                    - `Source DocumentBlockParamSourceUnionResp`
+                  - `type ToolReferenceBlockParamResp struct{…}`
 
-                      - `type Base64PDFSource struct{…}`
+                    Tool reference block that can be included in tool_result content.
 
-                        - `Data string`
+                    - `ToolName string`
 
-                        - `MediaType ApplicationPDF`
+                    - `Type ToolReference`
 
-                          - `const ApplicationPDFApplicationPDF ApplicationPDF = "application/pdf"`
-
-                        - `Type Base64`
-
-                          - `const Base64Base64 Base64 = "base64"`
-
-                      - `type PlainTextSource struct{…}`
-
-                        - `Data string`
-
-                        - `MediaType TextPlain`
-
-                          - `const TextPlainTextPlain TextPlain = "text/plain"`
-
-                        - `Type Text`
-
-                          - `const TextText Text = "text"`
-
-                      - `type ContentBlockSource struct{…}`
-
-                        - `Content ContentBlockSourceContentUnion`
-
-                          - `string`
-
-                          - `[]ContentBlockSourceContentItemUnion`
-
-                            - `type TextBlockParamResp struct{…}`
-
-                              - `Text string`
-
-                              - `Type Text`
-
-                                - `const TextText Text = "text"`
-
-                              - `CacheControl CacheControlEphemeral`
-
-                                Create a cache control breakpoint at this content block.
-
-                                - `Type Ephemeral`
-
-                                  - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                                - `TTL CacheControlEphemeralTTL`
-
-                                  The time-to-live for the cache control breakpoint.
-
-                                  This may be one the following values:
-
-                                  - `5m`: 5 minutes
-                                  - `1h`: 1 hour
-
-                                  Defaults to `5m`.
-
-                                  - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                                  - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
-                              - `Citations []TextCitationParamUnionResp`
-
-                                - `type CitationCharLocationParamResp struct{…}`
-
-                                  - `CitedText string`
-
-                                  - `DocumentIndex int64`
-
-                                  - `DocumentTitle string`
-
-                                  - `EndCharIndex int64`
-
-                                  - `StartCharIndex int64`
-
-                                  - `Type CharLocation`
-
-                                    - `const CharLocationCharLocation CharLocation = "char_location"`
-
-                                - `type CitationPageLocationParamResp struct{…}`
-
-                                  - `CitedText string`
-
-                                  - `DocumentIndex int64`
-
-                                  - `DocumentTitle string`
-
-                                  - `EndPageNumber int64`
-
-                                  - `StartPageNumber int64`
-
-                                  - `Type PageLocation`
-
-                                    - `const PageLocationPageLocation PageLocation = "page_location"`
-
-                                - `type CitationContentBlockLocationParamResp struct{…}`
-
-                                  - `CitedText string`
-
-                                  - `DocumentIndex int64`
-
-                                  - `DocumentTitle string`
-
-                                  - `EndBlockIndex int64`
-
-                                  - `StartBlockIndex int64`
-
-                                  - `Type ContentBlockLocation`
-
-                                    - `const ContentBlockLocationContentBlockLocation ContentBlockLocation = "content_block_location"`
-
-                                - `type CitationWebSearchResultLocationParamResp struct{…}`
-
-                                  - `CitedText string`
-
-                                  - `EncryptedIndex string`
-
-                                  - `Title string`
-
-                                  - `Type WebSearchResultLocation`
-
-                                    - `const WebSearchResultLocationWebSearchResultLocation WebSearchResultLocation = "web_search_result_location"`
-
-                                  - `URL string`
-
-                                - `type CitationSearchResultLocationParamResp struct{…}`
-
-                                  - `CitedText string`
-
-                                  - `EndBlockIndex int64`
-
-                                  - `SearchResultIndex int64`
-
-                                  - `Source string`
-
-                                  - `StartBlockIndex int64`
-
-                                  - `Title string`
-
-                                  - `Type SearchResultLocation`
-
-                                    - `const SearchResultLocationSearchResultLocation SearchResultLocation = "search_result_location"`
-
-                            - `type ImageBlockParamResp struct{…}`
-
-                              - `Source ImageBlockParamSourceUnionResp`
-
-                                - `type Base64ImageSource struct{…}`
-
-                                  - `Data string`
-
-                                  - `MediaType Base64ImageSourceMediaType`
-
-                                    - `const Base64ImageSourceMediaTypeImageJPEG Base64ImageSourceMediaType = "image/jpeg"`
-
-                                    - `const Base64ImageSourceMediaTypeImagePNG Base64ImageSourceMediaType = "image/png"`
-
-                                    - `const Base64ImageSourceMediaTypeImageGIF Base64ImageSourceMediaType = "image/gif"`
-
-                                    - `const Base64ImageSourceMediaTypeImageWebP Base64ImageSourceMediaType = "image/webp"`
-
-                                  - `Type Base64`
-
-                                    - `const Base64Base64 Base64 = "base64"`
-
-                                - `type URLImageSource struct{…}`
-
-                                  - `Type URL`
-
-                                    - `const URLURL URL = "url"`
-
-                                  - `URL string`
-
-                              - `Type Image`
-
-                                - `const ImageImage Image = "image"`
-
-                              - `CacheControl CacheControlEphemeral`
-
-                                Create a cache control breakpoint at this content block.
-
-                                - `Type Ephemeral`
-
-                                  - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                                - `TTL CacheControlEphemeralTTL`
-
-                                  The time-to-live for the cache control breakpoint.
-
-                                  This may be one the following values:
-
-                                  - `5m`: 5 minutes
-                                  - `1h`: 1 hour
-
-                                  Defaults to `5m`.
-
-                                  - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                                  - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
-                        - `Type Content`
-
-                          - `const ContentContent Content = "content"`
-
-                      - `type URLPDFSource struct{…}`
-
-                        - `Type URL`
-
-                          - `const URLURL URL = "url"`
-
-                        - `URL string`
-
-                    - `Type Document`
-
-                      - `const DocumentDocument Document = "document"`
+                      - `const ToolReferenceToolReference ToolReference = "tool_reference"`
 
                     - `CacheControl CacheControlEphemeral`
 
                       Create a cache control breakpoint at this content block.
-
-                      - `Type Ephemeral`
-
-                        - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-                      - `TTL CacheControlEphemeralTTL`
-
-                        The time-to-live for the cache control breakpoint.
-
-                        This may be one the following values:
-
-                        - `5m`: 5 minutes
-                        - `1h`: 1 hour
-
-                        Defaults to `5m`.
-
-                        - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                        - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
-                    - `Citations CitationsConfigParamResp`
-
-                      - `Enabled bool`
-
-                    - `Context string`
-
-                    - `Title string`
 
               - `IsError bool`
 
@@ -1337,9 +478,21 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `Input map[string, any]`
 
-              - `Name WebSearch`
+              - `Name ServerToolUseBlockParamName`
 
-                - `const WebSearchWebSearch WebSearch = "web_search"`
+                - `const ServerToolUseBlockParamNameWebSearch ServerToolUseBlockParamName = "web_search"`
+
+                - `const ServerToolUseBlockParamNameWebFetch ServerToolUseBlockParamName = "web_fetch"`
+
+                - `const ServerToolUseBlockParamNameCodeExecution ServerToolUseBlockParamName = "code_execution"`
+
+                - `const ServerToolUseBlockParamNameBashCodeExecution ServerToolUseBlockParamName = "bash_code_execution"`
+
+                - `const ServerToolUseBlockParamNameTextEditorCodeExecution ServerToolUseBlockParamName = "text_editor_code_execution"`
+
+                - `const ServerToolUseBlockParamNameToolSearchToolRegex ServerToolUseBlockParamName = "tool_search_tool_regex"`
+
+                - `const ServerToolUseBlockParamNameToolSearchToolBm25 ServerToolUseBlockParamName = "tool_search_tool_bm25"`
 
               - `Type ServerToolUse`
 
@@ -1349,24 +502,19 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `Type Ephemeral`
+              - `Caller ServerToolUseBlockParamCallerUnionResp`
 
-                  - `const EphemeralEphemeral Ephemeral = "ephemeral"`
+                Tool invocation directly from the model.
 
-                - `TTL CacheControlEphemeralTTL`
+                - `type DirectCaller struct{…}`
 
-                  The time-to-live for the cache control breakpoint.
+                  Tool invocation directly from the model.
 
-                  This may be one the following values:
+                - `type ServerToolCaller struct{…}`
 
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
+                  Tool invocation generated by a server-side tool.
 
-                  Defaults to `5m`.
-
-                  - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-                  - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
+                - `type ServerToolCaller20260120 struct{…}`
 
             - `type WebSearchToolResultBlockParamResp struct{…}`
 
@@ -1388,17 +536,19 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `type WebSearchToolRequestError struct{…}`
 
-                  - `ErrorCode WebSearchToolRequestErrorErrorCode`
+                  - `ErrorCode WebSearchToolResultErrorCode`
 
-                    - `const WebSearchToolRequestErrorErrorCodeInvalidToolInput WebSearchToolRequestErrorErrorCode = "invalid_tool_input"`
+                    - `const WebSearchToolResultErrorCodeInvalidToolInput WebSearchToolResultErrorCode = "invalid_tool_input"`
 
-                    - `const WebSearchToolRequestErrorErrorCodeUnavailable WebSearchToolRequestErrorErrorCode = "unavailable"`
+                    - `const WebSearchToolResultErrorCodeUnavailable WebSearchToolResultErrorCode = "unavailable"`
 
-                    - `const WebSearchToolRequestErrorErrorCodeMaxUsesExceeded WebSearchToolRequestErrorErrorCode = "max_uses_exceeded"`
+                    - `const WebSearchToolResultErrorCodeMaxUsesExceeded WebSearchToolResultErrorCode = "max_uses_exceeded"`
 
-                    - `const WebSearchToolRequestErrorErrorCodeTooManyRequests WebSearchToolRequestErrorErrorCode = "too_many_requests"`
+                    - `const WebSearchToolResultErrorCodeTooManyRequests WebSearchToolResultErrorCode = "too_many_requests"`
 
-                    - `const WebSearchToolRequestErrorErrorCodeQueryTooLong WebSearchToolRequestErrorErrorCode = "query_too_long"`
+                    - `const WebSearchToolResultErrorCodeQueryTooLong WebSearchToolResultErrorCode = "query_too_long"`
+
+                    - `const WebSearchToolResultErrorCodeRequestTooLarge WebSearchToolResultErrorCode = "request_too_large"`
 
                   - `Type WebSearchToolResultError`
 
@@ -1414,30 +564,393 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 Create a cache control breakpoint at this content block.
 
-                - `Type Ephemeral`
+              - `Caller WebSearchToolResultBlockParamCallerUnionResp`
 
-                  - `const EphemeralEphemeral Ephemeral = "ephemeral"`
+                Tool invocation directly from the model.
 
-                - `TTL CacheControlEphemeralTTL`
+                - `type DirectCaller struct{…}`
 
-                  The time-to-live for the cache control breakpoint.
+                  Tool invocation directly from the model.
 
-                  This may be one the following values:
+                - `type ServerToolCaller struct{…}`
 
-                  - `5m`: 5 minutes
-                  - `1h`: 1 hour
+                  Tool invocation generated by a server-side tool.
 
-                  Defaults to `5m`.
+                - `type ServerToolCaller20260120 struct{…}`
 
-                  - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
+            - `type WebFetchToolResultBlockParamResp struct{…}`
 
-                  - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
+              - `Content WebFetchToolResultBlockParamContentUnionResp`
+
+                - `type WebFetchToolResultErrorBlockParamResp struct{…}`
+
+                  - `ErrorCode WebFetchToolResultErrorCode`
+
+                    - `const WebFetchToolResultErrorCodeInvalidToolInput WebFetchToolResultErrorCode = "invalid_tool_input"`
+
+                    - `const WebFetchToolResultErrorCodeURLTooLong WebFetchToolResultErrorCode = "url_too_long"`
+
+                    - `const WebFetchToolResultErrorCodeURLNotAllowed WebFetchToolResultErrorCode = "url_not_allowed"`
+
+                    - `const WebFetchToolResultErrorCodeURLNotInPriorContext WebFetchToolResultErrorCode = "url_not_in_prior_context"`
+
+                    - `const WebFetchToolResultErrorCodeURLNotAccessible WebFetchToolResultErrorCode = "url_not_accessible"`
+
+                    - `const WebFetchToolResultErrorCodeUnsupportedContentType WebFetchToolResultErrorCode = "unsupported_content_type"`
+
+                    - `const WebFetchToolResultErrorCodeTooManyRequests WebFetchToolResultErrorCode = "too_many_requests"`
+
+                    - `const WebFetchToolResultErrorCodeMaxUsesExceeded WebFetchToolResultErrorCode = "max_uses_exceeded"`
+
+                    - `const WebFetchToolResultErrorCodeUnavailable WebFetchToolResultErrorCode = "unavailable"`
+
+                  - `Type WebFetchToolResultError`
+
+                    - `const WebFetchToolResultErrorWebFetchToolResultError WebFetchToolResultError = "web_fetch_tool_result_error"`
+
+                - `type WebFetchBlockParamResp struct{…}`
+
+                  - `Content DocumentBlockParamResp`
+
+                  - `Type WebFetchResult`
+
+                    - `const WebFetchResultWebFetchResult WebFetchResult = "web_fetch_result"`
+
+                  - `URL string`
+
+                    Fetched content URL
+
+                  - `RetrievedAt string`
+
+                    ISO 8601 timestamp when the content was retrieved
+
+              - `ToolUseID string`
+
+              - `Type WebFetchToolResult`
+
+                - `const WebFetchToolResultWebFetchToolResult WebFetchToolResult = "web_fetch_tool_result"`
+
+              - `CacheControl CacheControlEphemeral`
+
+                Create a cache control breakpoint at this content block.
+
+              - `Caller WebFetchToolResultBlockParamCallerUnionResp`
+
+                Tool invocation directly from the model.
+
+                - `type DirectCaller struct{…}`
+
+                  Tool invocation directly from the model.
+
+                - `type ServerToolCaller struct{…}`
+
+                  Tool invocation generated by a server-side tool.
+
+                - `type ServerToolCaller20260120 struct{…}`
+
+            - `type CodeExecutionToolResultBlockParamResp struct{…}`
+
+              - `Content CodeExecutionToolResultBlockParamContentUnionResp`
+
+                Code execution result with encrypted stdout for PFC + web_search results.
+
+                - `type CodeExecutionToolResultErrorParamResp struct{…}`
+
+                  - `ErrorCode CodeExecutionToolResultErrorCode`
+
+                    - `const CodeExecutionToolResultErrorCodeInvalidToolInput CodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                    - `const CodeExecutionToolResultErrorCodeUnavailable CodeExecutionToolResultErrorCode = "unavailable"`
+
+                    - `const CodeExecutionToolResultErrorCodeTooManyRequests CodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                    - `const CodeExecutionToolResultErrorCodeExecutionTimeExceeded CodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                  - `Type CodeExecutionToolResultError`
+
+                    - `const CodeExecutionToolResultErrorCodeExecutionToolResultError CodeExecutionToolResultError = "code_execution_tool_result_error"`
+
+                - `type CodeExecutionResultBlockParamResp struct{…}`
+
+                  - `Content []CodeExecutionOutputBlockParamResp`
+
+                    - `FileID string`
+
+                    - `Type CodeExecutionOutput`
+
+                      - `const CodeExecutionOutputCodeExecutionOutput CodeExecutionOutput = "code_execution_output"`
+
+                  - `ReturnCode int64`
+
+                  - `Stderr string`
+
+                  - `Stdout string`
+
+                  - `Type CodeExecutionResult`
+
+                    - `const CodeExecutionResultCodeExecutionResult CodeExecutionResult = "code_execution_result"`
+
+                - `type EncryptedCodeExecutionResultBlockParamResp struct{…}`
+
+                  Code execution result with encrypted stdout for PFC + web_search results.
+
+                  - `Content []CodeExecutionOutputBlockParamResp`
+
+                    - `FileID string`
+
+                    - `Type CodeExecutionOutput`
+
+                  - `EncryptedStdout string`
+
+                  - `ReturnCode int64`
+
+                  - `Stderr string`
+
+                  - `Type EncryptedCodeExecutionResult`
+
+                    - `const EncryptedCodeExecutionResultEncryptedCodeExecutionResult EncryptedCodeExecutionResult = "encrypted_code_execution_result"`
+
+              - `ToolUseID string`
+
+              - `Type CodeExecutionToolResult`
+
+                - `const CodeExecutionToolResultCodeExecutionToolResult CodeExecutionToolResult = "code_execution_tool_result"`
+
+              - `CacheControl CacheControlEphemeral`
+
+                Create a cache control breakpoint at this content block.
+
+            - `type BashCodeExecutionToolResultBlockParamResp struct{…}`
+
+              - `Content BashCodeExecutionToolResultBlockParamContentUnionResp`
+
+                - `type BashCodeExecutionToolResultErrorParamResp struct{…}`
+
+                  - `ErrorCode BashCodeExecutionToolResultErrorCode`
+
+                    - `const BashCodeExecutionToolResultErrorCodeInvalidToolInput BashCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                    - `const BashCodeExecutionToolResultErrorCodeUnavailable BashCodeExecutionToolResultErrorCode = "unavailable"`
+
+                    - `const BashCodeExecutionToolResultErrorCodeTooManyRequests BashCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                    - `const BashCodeExecutionToolResultErrorCodeExecutionTimeExceeded BashCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                    - `const BashCodeExecutionToolResultErrorCodeOutputFileTooLarge BashCodeExecutionToolResultErrorCode = "output_file_too_large"`
+
+                  - `Type BashCodeExecutionToolResultError`
+
+                    - `const BashCodeExecutionToolResultErrorBashCodeExecutionToolResultError BashCodeExecutionToolResultError = "bash_code_execution_tool_result_error"`
+
+                - `type BashCodeExecutionResultBlockParamResp struct{…}`
+
+                  - `Content []BashCodeExecutionOutputBlockParamResp`
+
+                    - `FileID string`
+
+                    - `Type BashCodeExecutionOutput`
+
+                      - `const BashCodeExecutionOutputBashCodeExecutionOutput BashCodeExecutionOutput = "bash_code_execution_output"`
+
+                  - `ReturnCode int64`
+
+                  - `Stderr string`
+
+                  - `Stdout string`
+
+                  - `Type BashCodeExecutionResult`
+
+                    - `const BashCodeExecutionResultBashCodeExecutionResult BashCodeExecutionResult = "bash_code_execution_result"`
+
+              - `ToolUseID string`
+
+              - `Type BashCodeExecutionToolResult`
+
+                - `const BashCodeExecutionToolResultBashCodeExecutionToolResult BashCodeExecutionToolResult = "bash_code_execution_tool_result"`
+
+              - `CacheControl CacheControlEphemeral`
+
+                Create a cache control breakpoint at this content block.
+
+            - `type TextEditorCodeExecutionToolResultBlockParamResp struct{…}`
+
+              - `Content TextEditorCodeExecutionToolResultBlockParamContentUnionResp`
+
+                - `type TextEditorCodeExecutionToolResultErrorParamResp struct{…}`
+
+                  - `ErrorCode TextEditorCodeExecutionToolResultErrorCode`
+
+                    - `const TextEditorCodeExecutionToolResultErrorCodeInvalidToolInput TextEditorCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                    - `const TextEditorCodeExecutionToolResultErrorCodeUnavailable TextEditorCodeExecutionToolResultErrorCode = "unavailable"`
+
+                    - `const TextEditorCodeExecutionToolResultErrorCodeTooManyRequests TextEditorCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                    - `const TextEditorCodeExecutionToolResultErrorCodeExecutionTimeExceeded TextEditorCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                    - `const TextEditorCodeExecutionToolResultErrorCodeFileNotFound TextEditorCodeExecutionToolResultErrorCode = "file_not_found"`
+
+                  - `Type TextEditorCodeExecutionToolResultError`
+
+                    - `const TextEditorCodeExecutionToolResultErrorTextEditorCodeExecutionToolResultError TextEditorCodeExecutionToolResultError = "text_editor_code_execution_tool_result_error"`
+
+                  - `ErrorMessage string`
+
+                - `type TextEditorCodeExecutionViewResultBlockParamResp struct{…}`
+
+                  - `Content string`
+
+                  - `FileType TextEditorCodeExecutionViewResultBlockParamFileType`
+
+                    - `const TextEditorCodeExecutionViewResultBlockParamFileTypeText TextEditorCodeExecutionViewResultBlockParamFileType = "text"`
+
+                    - `const TextEditorCodeExecutionViewResultBlockParamFileTypeImage TextEditorCodeExecutionViewResultBlockParamFileType = "image"`
+
+                    - `const TextEditorCodeExecutionViewResultBlockParamFileTypePDF TextEditorCodeExecutionViewResultBlockParamFileType = "pdf"`
+
+                  - `Type TextEditorCodeExecutionViewResult`
+
+                    - `const TextEditorCodeExecutionViewResultTextEditorCodeExecutionViewResult TextEditorCodeExecutionViewResult = "text_editor_code_execution_view_result"`
+
+                  - `NumLines int64`
+
+                  - `StartLine int64`
+
+                  - `TotalLines int64`
+
+                - `type TextEditorCodeExecutionCreateResultBlockParamResp struct{…}`
+
+                  - `IsFileUpdate bool`
+
+                  - `Type TextEditorCodeExecutionCreateResult`
+
+                    - `const TextEditorCodeExecutionCreateResultTextEditorCodeExecutionCreateResult TextEditorCodeExecutionCreateResult = "text_editor_code_execution_create_result"`
+
+                - `type TextEditorCodeExecutionStrReplaceResultBlockParamResp struct{…}`
+
+                  - `Type TextEditorCodeExecutionStrReplaceResult`
+
+                    - `const TextEditorCodeExecutionStrReplaceResultTextEditorCodeExecutionStrReplaceResult TextEditorCodeExecutionStrReplaceResult = "text_editor_code_execution_str_replace_result"`
+
+                  - `Lines []string`
+
+                  - `NewLines int64`
+
+                  - `NewStart int64`
+
+                  - `OldLines int64`
+
+                  - `OldStart int64`
+
+              - `ToolUseID string`
+
+              - `Type TextEditorCodeExecutionToolResult`
+
+                - `const TextEditorCodeExecutionToolResultTextEditorCodeExecutionToolResult TextEditorCodeExecutionToolResult = "text_editor_code_execution_tool_result"`
+
+              - `CacheControl CacheControlEphemeral`
+
+                Create a cache control breakpoint at this content block.
+
+            - `type ToolSearchToolResultBlockParamResp struct{…}`
+
+              - `Content ToolSearchToolResultBlockParamContentUnionResp`
+
+                - `type ToolSearchToolResultErrorParamResp struct{…}`
+
+                  - `ErrorCode ToolSearchToolResultErrorCode`
+
+                    - `const ToolSearchToolResultErrorCodeInvalidToolInput ToolSearchToolResultErrorCode = "invalid_tool_input"`
+
+                    - `const ToolSearchToolResultErrorCodeUnavailable ToolSearchToolResultErrorCode = "unavailable"`
+
+                    - `const ToolSearchToolResultErrorCodeTooManyRequests ToolSearchToolResultErrorCode = "too_many_requests"`
+
+                    - `const ToolSearchToolResultErrorCodeExecutionTimeExceeded ToolSearchToolResultErrorCode = "execution_time_exceeded"`
+
+                  - `Type ToolSearchToolResultError`
+
+                    - `const ToolSearchToolResultErrorToolSearchToolResultError ToolSearchToolResultError = "tool_search_tool_result_error"`
+
+                  - `ErrorMessage string`
+
+                - `type ToolSearchToolSearchResultBlockParamResp struct{…}`
+
+                  - `ToolReferences []ToolReferenceBlockParamResp`
+
+                    - `ToolName string`
+
+                    - `Type ToolReference`
+
+                    - `CacheControl CacheControlEphemeral`
+
+                      Create a cache control breakpoint at this content block.
+
+                  - `Type ToolSearchToolSearchResult`
+
+                    - `const ToolSearchToolSearchResultToolSearchToolSearchResult ToolSearchToolSearchResult = "tool_search_tool_search_result"`
+
+              - `ToolUseID string`
+
+              - `Type ToolSearchToolResult`
+
+                - `const ToolSearchToolResultToolSearchToolResult ToolSearchToolResult = "tool_search_tool_result"`
+
+              - `CacheControl CacheControlEphemeral`
+
+                Create a cache control breakpoint at this content block.
+
+            - `type ContainerUploadBlockParamResp struct{…}`
+
+              A content block that represents a file to be uploaded to the container
+              Files uploaded via this block will be available in the container's input directory.
+
+              - `FileID string`
+
+              - `Type ContainerUpload`
+
+                - `const ContainerUploadContainerUpload ContainerUpload = "container_upload"`
+
+              - `CacheControl CacheControlEphemeral`
+
+                Create a cache control breakpoint at this content block.
+
+            - `type MidConversationSystemBlockParamResp struct{…}`
+
+              System instructions that appear mid-conversation.
+
+              Use this block to provide or update system-level instructions at a specific
+              point in the conversation, rather than only via the top-level `system` parameter.
+
+              - `Content []TextBlockParamResp`
+
+                System instruction text blocks.
+
+                - `Text string`
+
+                - `Type Text`
+
+                - `CacheControl CacheControlEphemeral`
+
+                  Create a cache control breakpoint at this content block.
+
+                - `Citations []TextCitationParamUnionResp`
+
+              - `Type MidConvSystem`
+
+                - `const MidConvSystemMidConvSystem MidConvSystem = "mid_conv_system"`
+
+              - `CacheControl CacheControlEphemeral`
+
+                Create a cache control breakpoint at this content block.
 
         - `Role MessageParamRole`
 
           - `const MessageParamRoleUser MessageParamRole = "user"`
 
           - `const MessageParamRoleAssistant MessageParamRole = "assistant"`
+
+          - `const MessageParamRoleSystem MessageParamRole = "system"`
 
       - `Model Model`
 
@@ -1451,87 +964,99 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
+          - `const ModelClaudeFable5 Model = "claude-fable-5"`
 
-            Premium model combining maximum intelligence with practical performance
+            Next generation of intelligence for the hardest knowledge work and coding problems
+
+          - `const ModelClaudeMythos5 Model = "claude-mythos-5"`
+
+            Most capable model for cybersecurity and biology research
+
+          - `const ModelClaudeOpus4_8 Model = "claude-opus-4-8"`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `const ModelClaudeOpus4_7 Model = "claude-opus-4-7"`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `const ModelClaudeMythosPreview Model = "claude-mythos-preview"`
+
+            New class of intelligence, strongest in coding and cybersecurity
+
+          - `const ModelClaudeOpus4_6 Model = "claude-opus-4-6"`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `const ModelClaudeSonnet4_6 Model = "claude-sonnet-4-6"`
+
+            Best combination of speed and intelligence
+
+          - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+
+            Fastest model with near-frontier intelligence
+
+          - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+
+            Fastest model with near-frontier intelligence
 
           - `const ModelClaudeOpus4_5 Model = "claude-opus-4-5"`
 
             Premium model combining maximum intelligence with practical performance
 
-          - `const ModelClaude3_7SonnetLatest Model = "claude-3-7-sonnet-latest"`
+          - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
 
-            High-performance model with early extended thinking
+            Premium model combining maximum intelligence with practical performance
 
-          - `const ModelClaude3_7Sonnet20250219 Model = "claude-3-7-sonnet-20250219"`
+          - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
 
-            High-performance model with early extended thinking
+            High-performance model for agents and coding
 
-          - `const ModelClaude3_5HaikuLatest Model = "claude-3-5-haiku-latest"`
+          - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
 
-            Fastest and most compact model for near-instant responsiveness
+            High-performance model for agents and coding
 
-          - `const ModelClaude3_5Haiku20241022 Model = "claude-3-5-haiku-20241022"`
+          - `const ModelClaudeOpus4_1 Model = "claude-opus-4-1"`
 
-            Our fastest model
+            Exceptional model for specialized complex tasks
 
-          - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+          - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
 
-            Hybrid model, capable of near-instant responses and extended thinking
+            Exceptional model for specialized complex tasks
 
-          - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+          - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
 
-            Hybrid model, capable of near-instant responses and extended thinking
+            Powerful model for complex tasks
 
-          - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
+          - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
 
-            High-performance model with extended thinking
+            Powerful model for complex tasks
 
           - `const ModelClaudeSonnet4_0 Model = "claude-sonnet-4-0"`
 
             High-performance model with extended thinking
 
-          - `const ModelClaude4Sonnet20250514 Model = "claude-4-sonnet-20250514"`
+          - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
 
             High-performance model with extended thinking
 
-          - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
-
-            Our best model for real-world agents and coding
-
-          - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
-
-            Our best model for real-world agents and coding
-
-          - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
-
-            Our most capable model
-
-          - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
-
-            Our most capable model
-
-          - `const ModelClaude4Opus20250514 Model = "claude-4-opus-20250514"`
-
-            Our most capable model
-
-          - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
-
-            Our most capable model
-
-          - `const ModelClaude3OpusLatest Model = "claude-3-opus-latest"`
-
-            Excels at writing and complex tasks
-
-          - `const ModelClaude_3_Opus_20240229 Model = "claude-3-opus-20240229"`
-
-            Excels at writing and complex tasks
-
           - `const ModelClaude_3_Haiku_20240307 Model = "claude-3-haiku-20240307"`
 
-            Our previous most fast and cost-effective
+            Fast and cost-effective model
 
         - `string`
+
+      - `CacheControl CacheControlEphemeral`
+
+        Top-level cache control automatically applies a cache_control marker to the last cacheable block in the request.
+
+      - `Container string`
+
+        Container identifier for reuse across requests.
+
+      - `InferenceGeo string`
+
+        Specifies the geographic region for inference processing. If not specified, the workspace's `default_inference_geo` is used.
 
       - `Metadata Metadata`
 
@@ -1542,6 +1067,36 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
           An external identifier for the user who is associated with the request.
 
           This should be a uuid, hash value, or other opaque identifier. Anthropic may use this id to help detect abuse. Do not include any identifying information such as name, email address, or phone number.
+
+      - `OutputConfig OutputConfig`
+
+        Configuration options for the model's output, such as the output format.
+
+        - `Effort OutputConfigEffort`
+
+          All possible effort levels.
+
+          - `const OutputConfigEffortLow OutputConfigEffort = "low"`
+
+          - `const OutputConfigEffortMedium OutputConfigEffort = "medium"`
+
+          - `const OutputConfigEffortHigh OutputConfigEffort = "high"`
+
+          - `const OutputConfigEffortXhigh OutputConfigEffort = "xhigh"`
+
+          - `const OutputConfigEffortMax OutputConfigEffort = "max"`
+
+        - `Format JSONOutputFormat`
+
+          A schema to specify Claude's output format in responses. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
+
+          - `Schema map[string, any]`
+
+            The JSON schema of the format
+
+          - `Type JSONSchema`
+
+            - `const JSONSchemaJSONSchema JSONSchema = "json_schema"`
 
       - `ServiceTier string`
 
@@ -1579,112 +1134,11 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `Type Text`
 
-            - `const TextText Text = "text"`
-
           - `CacheControl CacheControlEphemeral`
 
             Create a cache control breakpoint at this content block.
 
-            - `Type Ephemeral`
-
-              - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-            - `TTL CacheControlEphemeralTTL`
-
-              The time-to-live for the cache control breakpoint.
-
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-              - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
-
           - `Citations []TextCitationParamUnionResp`
-
-            - `type CitationCharLocationParamResp struct{…}`
-
-              - `CitedText string`
-
-              - `DocumentIndex int64`
-
-              - `DocumentTitle string`
-
-              - `EndCharIndex int64`
-
-              - `StartCharIndex int64`
-
-              - `Type CharLocation`
-
-                - `const CharLocationCharLocation CharLocation = "char_location"`
-
-            - `type CitationPageLocationParamResp struct{…}`
-
-              - `CitedText string`
-
-              - `DocumentIndex int64`
-
-              - `DocumentTitle string`
-
-              - `EndPageNumber int64`
-
-              - `StartPageNumber int64`
-
-              - `Type PageLocation`
-
-                - `const PageLocationPageLocation PageLocation = "page_location"`
-
-            - `type CitationContentBlockLocationParamResp struct{…}`
-
-              - `CitedText string`
-
-              - `DocumentIndex int64`
-
-              - `DocumentTitle string`
-
-              - `EndBlockIndex int64`
-
-              - `StartBlockIndex int64`
-
-              - `Type ContentBlockLocation`
-
-                - `const ContentBlockLocationContentBlockLocation ContentBlockLocation = "content_block_location"`
-
-            - `type CitationWebSearchResultLocationParamResp struct{…}`
-
-              - `CitedText string`
-
-              - `EncryptedIndex string`
-
-              - `Title string`
-
-              - `Type WebSearchResultLocation`
-
-                - `const WebSearchResultLocationWebSearchResultLocation WebSearchResultLocation = "web_search_result_location"`
-
-              - `URL string`
-
-            - `type CitationSearchResultLocationParamResp struct{…}`
-
-              - `CitedText string`
-
-              - `EndBlockIndex int64`
-
-              - `SearchResultIndex int64`
-
-              - `Source string`
-
-              - `StartBlockIndex int64`
-
-              - `Title string`
-
-              - `Type SearchResultLocation`
-
-                - `const SearchResultLocationSearchResultLocation SearchResultLocation = "search_result_location"`
 
       - `Temperature float64`
 
@@ -1716,11 +1170,33 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `const EnabledEnabled Enabled = "enabled"`
 
+          - `Display ThinkingConfigEnabledDisplay`
+
+            Controls how thinking content appears in the response. When set to `summarized`, thinking is returned normally. When set to `omitted`, thinking content is redacted but a signature is returned for multi-turn continuity. Defaults to `summarized`.
+
+            - `const ThinkingConfigEnabledDisplaySummarized ThinkingConfigEnabledDisplay = "summarized"`
+
+            - `const ThinkingConfigEnabledDisplayOmitted ThinkingConfigEnabledDisplay = "omitted"`
+
         - `type ThinkingConfigDisabled struct{…}`
 
           - `Type Disabled`
 
             - `const DisabledDisabled Disabled = "disabled"`
+
+        - `type ThinkingConfigAdaptive struct{…}`
+
+          - `Type Adaptive`
+
+            - `const AdaptiveAdaptive Adaptive = "adaptive"`
+
+          - `Display ThinkingConfigAdaptiveDisplay`
+
+            Controls how thinking content appears in the response. When set to `summarized`, thinking is returned normally. When set to `omitted`, thinking content is redacted but a signature is returned for multi-turn continuity. Defaults to `summarized`.
+
+            - `const ThinkingConfigAdaptiveDisplaySummarized ThinkingConfigAdaptiveDisplay = "summarized"`
+
+            - `const ThinkingConfigAdaptiveDisplayOmitted ThinkingConfigAdaptiveDisplay = "omitted"`
 
       - `ToolChoice ToolChoiceUnion`
 
@@ -1866,34 +1342,37 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             This is how the tool will be called by the model and in `tool_use` blocks.
 
+          - `AllowedCallers []string`
+
+            - `const ToolAllowedCallerDirect ToolAllowedCaller = "direct"`
+
+            - `const ToolAllowedCallerCodeExecution20250825 ToolAllowedCaller = "code_execution_20250825"`
+
+            - `const ToolAllowedCallerCodeExecution20260120 ToolAllowedCaller = "code_execution_20260120"`
+
           - `CacheControl CacheControlEphemeral`
 
             Create a cache control breakpoint at this content block.
 
-            - `Type Ephemeral`
+          - `DeferLoading bool`
 
-              - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-            - `TTL CacheControlEphemeralTTL`
-
-              The time-to-live for the cache control breakpoint.
-
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-              - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
           - `Description string`
 
             Description of what this tool does.
 
             Tool descriptions should be as detailed as possible. The more information that the model has about what the tool is and how to use it, the better it will perform. You can use natural language descriptions to reinforce important aspects of the tool input JSON schema.
+
+          - `EagerInputStreaming bool`
+
+            Enable eager input streaming for this tool. When true, tool input parameters will be streamed incrementally as they are generated, and types will be inferred on-the-fly rather than buffering the full JSON output. When false, streaming is disabled for this tool even if the fine-grained-tool-streaming beta is active. When null (default), uses the default behavior based on beta headers.
+
+          - `InputExamples []map[string, any]`
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
 
           - `Type ToolType`
 
@@ -1913,28 +1392,167 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `const Bash20250124Bash20250124 Bash20250124 = "bash_20250124"`
 
+          - `AllowedCallers []string`
+
+            - `const ToolBash20250124AllowedCallerDirect ToolBash20250124AllowedCaller = "direct"`
+
+            - `const ToolBash20250124AllowedCallerCodeExecution20250825 ToolBash20250124AllowedCaller = "code_execution_20250825"`
+
+            - `const ToolBash20250124AllowedCallerCodeExecution20260120 ToolBash20250124AllowedCaller = "code_execution_20260120"`
+
           - `CacheControl CacheControlEphemeral`
 
             Create a cache control breakpoint at this content block.
 
-            - `Type Ephemeral`
+          - `DeferLoading bool`
 
-              - `const EphemeralEphemeral Ephemeral = "ephemeral"`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-            - `TTL CacheControlEphemeralTTL`
+          - `InputExamples []map[string, any]`
 
-              The time-to-live for the cache control breakpoint.
+          - `Strict bool`
 
-              This may be one the following values:
+            When true, guarantees schema validation on tool names and inputs
 
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
+        - `type CodeExecutionTool20250522 struct{…}`
 
-              Defaults to `5m`.
+          - `Name CodeExecution`
 
-              - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
+            Name of the tool.
 
-              - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const CodeExecutionCodeExecution CodeExecution = "code_execution"`
+
+          - `Type CodeExecution20250522`
+
+            - `const CodeExecution20250522CodeExecution20250522 CodeExecution20250522 = "code_execution_20250522"`
+
+          - `AllowedCallers []string`
+
+            - `const CodeExecutionTool20250522AllowedCallerDirect CodeExecutionTool20250522AllowedCaller = "direct"`
+
+            - `const CodeExecutionTool20250522AllowedCallerCodeExecution20250825 CodeExecutionTool20250522AllowedCaller = "code_execution_20250825"`
+
+            - `const CodeExecutionTool20250522AllowedCallerCodeExecution20260120 CodeExecutionTool20250522AllowedCaller = "code_execution_20260120"`
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `type CodeExecutionTool20250825 struct{…}`
+
+          - `Name CodeExecution`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const CodeExecutionCodeExecution CodeExecution = "code_execution"`
+
+          - `Type CodeExecution20250825`
+
+            - `const CodeExecution20250825CodeExecution20250825 CodeExecution20250825 = "code_execution_20250825"`
+
+          - `AllowedCallers []string`
+
+            - `const CodeExecutionTool20250825AllowedCallerDirect CodeExecutionTool20250825AllowedCaller = "direct"`
+
+            - `const CodeExecutionTool20250825AllowedCallerCodeExecution20250825 CodeExecutionTool20250825AllowedCaller = "code_execution_20250825"`
+
+            - `const CodeExecutionTool20250825AllowedCallerCodeExecution20260120 CodeExecutionTool20250825AllowedCaller = "code_execution_20260120"`
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `type CodeExecutionTool20260120 struct{…}`
+
+          Code execution tool with REPL state persistence (daemon mode + gVisor checkpoint).
+
+          - `Name CodeExecution`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const CodeExecutionCodeExecution CodeExecution = "code_execution"`
+
+          - `Type CodeExecution20260120`
+
+            - `const CodeExecution20260120CodeExecution20260120 CodeExecution20260120 = "code_execution_20260120"`
+
+          - `AllowedCallers []string`
+
+            - `const CodeExecutionTool20260120AllowedCallerDirect CodeExecutionTool20260120AllowedCaller = "direct"`
+
+            - `const CodeExecutionTool20260120AllowedCallerCodeExecution20250825 CodeExecutionTool20260120AllowedCaller = "code_execution_20250825"`
+
+            - `const CodeExecutionTool20260120AllowedCallerCodeExecution20260120 CodeExecutionTool20260120AllowedCaller = "code_execution_20260120"`
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `type MemoryTool20250818 struct{…}`
+
+          - `Name Memory`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const MemoryMemory Memory = "memory"`
+
+          - `Type Memory20250818`
+
+            - `const Memory20250818Memory20250818 Memory20250818 = "memory_20250818"`
+
+          - `AllowedCallers []string`
+
+            - `const MemoryTool20250818AllowedCallerDirect MemoryTool20250818AllowedCaller = "direct"`
+
+            - `const MemoryTool20250818AllowedCallerCodeExecution20250825 MemoryTool20250818AllowedCaller = "code_execution_20250825"`
+
+            - `const MemoryTool20250818AllowedCallerCodeExecution20260120 MemoryTool20250818AllowedCaller = "code_execution_20260120"`
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `InputExamples []map[string, any]`
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
 
         - `type ToolTextEditor20250124 struct{…}`
 
@@ -1950,28 +1568,27 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `const TextEditor20250124TextEditor20250124 TextEditor20250124 = "text_editor_20250124"`
 
+          - `AllowedCallers []string`
+
+            - `const ToolTextEditor20250124AllowedCallerDirect ToolTextEditor20250124AllowedCaller = "direct"`
+
+            - `const ToolTextEditor20250124AllowedCallerCodeExecution20250825 ToolTextEditor20250124AllowedCaller = "code_execution_20250825"`
+
+            - `const ToolTextEditor20250124AllowedCallerCodeExecution20260120 ToolTextEditor20250124AllowedCaller = "code_execution_20260120"`
+
           - `CacheControl CacheControlEphemeral`
 
             Create a cache control breakpoint at this content block.
 
-            - `Type Ephemeral`
+          - `DeferLoading bool`
 
-              - `const EphemeralEphemeral Ephemeral = "ephemeral"`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-            - `TTL CacheControlEphemeralTTL`
+          - `InputExamples []map[string, any]`
 
-              The time-to-live for the cache control breakpoint.
+          - `Strict bool`
 
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-              - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
+            When true, guarantees schema validation on tool names and inputs
 
         - `type ToolTextEditor20250429 struct{…}`
 
@@ -1987,28 +1604,27 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `const TextEditor20250429TextEditor20250429 TextEditor20250429 = "text_editor_20250429"`
 
+          - `AllowedCallers []string`
+
+            - `const ToolTextEditor20250429AllowedCallerDirect ToolTextEditor20250429AllowedCaller = "direct"`
+
+            - `const ToolTextEditor20250429AllowedCallerCodeExecution20250825 ToolTextEditor20250429AllowedCaller = "code_execution_20250825"`
+
+            - `const ToolTextEditor20250429AllowedCallerCodeExecution20260120 ToolTextEditor20250429AllowedCaller = "code_execution_20260120"`
+
           - `CacheControl CacheControlEphemeral`
 
             Create a cache control breakpoint at this content block.
 
-            - `Type Ephemeral`
+          - `DeferLoading bool`
 
-              - `const EphemeralEphemeral Ephemeral = "ephemeral"`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-            - `TTL CacheControlEphemeralTTL`
+          - `InputExamples []map[string, any]`
 
-              The time-to-live for the cache control breakpoint.
+          - `Strict bool`
 
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-              - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
+            When true, guarantees schema validation on tool names and inputs
 
         - `type ToolTextEditor20250728 struct{…}`
 
@@ -2024,32 +1640,31 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `const TextEditor20250728TextEditor20250728 TextEditor20250728 = "text_editor_20250728"`
 
+          - `AllowedCallers []string`
+
+            - `const ToolTextEditor20250728AllowedCallerDirect ToolTextEditor20250728AllowedCaller = "direct"`
+
+            - `const ToolTextEditor20250728AllowedCallerCodeExecution20250825 ToolTextEditor20250728AllowedCaller = "code_execution_20250825"`
+
+            - `const ToolTextEditor20250728AllowedCallerCodeExecution20260120 ToolTextEditor20250728AllowedCaller = "code_execution_20260120"`
+
           - `CacheControl CacheControlEphemeral`
 
             Create a cache control breakpoint at this content block.
 
-            - `Type Ephemeral`
+          - `DeferLoading bool`
 
-              - `const EphemeralEphemeral Ephemeral = "ephemeral"`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
-            - `TTL CacheControlEphemeralTTL`
-
-              The time-to-live for the cache control breakpoint.
-
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-              - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
+          - `InputExamples []map[string, any]`
 
           - `MaxCharacters int64`
 
             Maximum number of characters to display when viewing a file. If not specified, defaults to displaying the full file.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
 
         - `type WebSearchTool20250305 struct{…}`
 
@@ -2065,6 +1680,14 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `const WebSearch20250305WebSearch20250305 WebSearch20250305 = "web_search_20250305"`
 
+          - `AllowedCallers []string`
+
+            - `const WebSearchTool20250305AllowedCallerDirect WebSearchTool20250305AllowedCaller = "direct"`
+
+            - `const WebSearchTool20250305AllowedCallerCodeExecution20250825 WebSearchTool20250305AllowedCaller = "code_execution_20250825"`
+
+            - `const WebSearchTool20250305AllowedCallerCodeExecution20260120 WebSearchTool20250305AllowedCaller = "code_execution_20260120"`
+
           - `AllowedDomains []string`
 
             If provided, only these domains will be included in results. Cannot be used alongside `blocked_domains`.
@@ -2077,30 +1700,19 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             Create a cache control breakpoint at this content block.
 
-            - `Type Ephemeral`
+          - `DeferLoading bool`
 
-              - `const EphemeralEphemeral Ephemeral = "ephemeral"`
-
-            - `TTL CacheControlEphemeralTTL`
-
-              The time-to-live for the cache control breakpoint.
-
-              This may be one the following values:
-
-              - `5m`: 5 minutes
-              - `1h`: 1 hour
-
-              Defaults to `5m`.
-
-              - `const CacheControlEphemeralTTLTTL5m CacheControlEphemeralTTL = "5m"`
-
-              - `const CacheControlEphemeralTTLTTL1h CacheControlEphemeralTTL = "1h"`
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
 
           - `MaxUses int64`
 
             Maximum number of times the tool can be used in the API request.
 
-          - `UserLocation WebSearchTool20250305UserLocation`
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
+          - `UserLocation UserLocation`
 
             Parameters for the user's location. Used to provide more relevant search results.
 
@@ -2124,21 +1736,311 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               The [IANA timezone](https://nodatime.org/TimeZones) of the user.
 
+        - `type WebFetchTool20250910 struct{…}`
+
+          - `Name WebFetch`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const WebFetchWebFetch WebFetch = "web_fetch"`
+
+          - `Type WebFetch20250910`
+
+            - `const WebFetch20250910WebFetch20250910 WebFetch20250910 = "web_fetch_20250910"`
+
+          - `AllowedCallers []string`
+
+            - `const WebFetchTool20250910AllowedCallerDirect WebFetchTool20250910AllowedCaller = "direct"`
+
+            - `const WebFetchTool20250910AllowedCallerCodeExecution20250825 WebFetchTool20250910AllowedCaller = "code_execution_20250825"`
+
+            - `const WebFetchTool20250910AllowedCallerCodeExecution20260120 WebFetchTool20250910AllowedCaller = "code_execution_20260120"`
+
+          - `AllowedDomains []string`
+
+            List of domains to allow fetching from
+
+          - `BlockedDomains []string`
+
+            List of domains to block fetching from
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Citations CitationsConfigParamResp`
+
+            Citations configuration for fetched documents. Citations are disabled by default.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `MaxContentTokens int64`
+
+            Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+          - `MaxUses int64`
+
+            Maximum number of times the tool can be used in the API request.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `type WebSearchTool20260209 struct{…}`
+
+          - `Name WebSearch`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const WebSearchWebSearch WebSearch = "web_search"`
+
+          - `Type WebSearch20260209`
+
+            - `const WebSearch20260209WebSearch20260209 WebSearch20260209 = "web_search_20260209"`
+
+          - `AllowedCallers []string`
+
+            - `const WebSearchTool20260209AllowedCallerDirect WebSearchTool20260209AllowedCaller = "direct"`
+
+            - `const WebSearchTool20260209AllowedCallerCodeExecution20250825 WebSearchTool20260209AllowedCaller = "code_execution_20250825"`
+
+            - `const WebSearchTool20260209AllowedCallerCodeExecution20260120 WebSearchTool20260209AllowedCaller = "code_execution_20260120"`
+
+          - `AllowedDomains []string`
+
+            If provided, only these domains will be included in results. Cannot be used alongside `blocked_domains`.
+
+          - `BlockedDomains []string`
+
+            If provided, these domains will never appear in results. Cannot be used alongside `allowed_domains`.
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `MaxUses int64`
+
+            Maximum number of times the tool can be used in the API request.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
+          - `UserLocation UserLocation`
+
+            Parameters for the user's location. Used to provide more relevant search results.
+
+        - `type WebFetchTool20260209 struct{…}`
+
+          - `Name WebFetch`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const WebFetchWebFetch WebFetch = "web_fetch"`
+
+          - `Type WebFetch20260209`
+
+            - `const WebFetch20260209WebFetch20260209 WebFetch20260209 = "web_fetch_20260209"`
+
+          - `AllowedCallers []string`
+
+            - `const WebFetchTool20260209AllowedCallerDirect WebFetchTool20260209AllowedCaller = "direct"`
+
+            - `const WebFetchTool20260209AllowedCallerCodeExecution20250825 WebFetchTool20260209AllowedCaller = "code_execution_20250825"`
+
+            - `const WebFetchTool20260209AllowedCallerCodeExecution20260120 WebFetchTool20260209AllowedCaller = "code_execution_20260120"`
+
+          - `AllowedDomains []string`
+
+            List of domains to allow fetching from
+
+          - `BlockedDomains []string`
+
+            List of domains to block fetching from
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Citations CitationsConfigParamResp`
+
+            Citations configuration for fetched documents. Citations are disabled by default.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `MaxContentTokens int64`
+
+            Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+          - `MaxUses int64`
+
+            Maximum number of times the tool can be used in the API request.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `type WebFetchTool20260309 struct{…}`
+
+          Web fetch tool with use_cache parameter for bypassing cached content.
+
+          - `Name WebFetch`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const WebFetchWebFetch WebFetch = "web_fetch"`
+
+          - `Type WebFetch20260309`
+
+            - `const WebFetch20260309WebFetch20260309 WebFetch20260309 = "web_fetch_20260309"`
+
+          - `AllowedCallers []string`
+
+            - `const WebFetchTool20260309AllowedCallerDirect WebFetchTool20260309AllowedCaller = "direct"`
+
+            - `const WebFetchTool20260309AllowedCallerCodeExecution20250825 WebFetchTool20260309AllowedCaller = "code_execution_20250825"`
+
+            - `const WebFetchTool20260309AllowedCallerCodeExecution20260120 WebFetchTool20260309AllowedCaller = "code_execution_20260120"`
+
+          - `AllowedDomains []string`
+
+            List of domains to allow fetching from
+
+          - `BlockedDomains []string`
+
+            List of domains to block fetching from
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `Citations CitationsConfigParamResp`
+
+            Citations configuration for fetched documents. Citations are disabled by default.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `MaxContentTokens int64`
+
+            Maximum number of tokens used by including web page text content in the context. The limit is approximate and does not apply to binary content such as PDFs.
+
+          - `MaxUses int64`
+
+            Maximum number of times the tool can be used in the API request.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
+          - `UseCache bool`
+
+            Whether to use cached content. Set to false to bypass the cache and fetch fresh content. Only set to false when the user explicitly requests fresh content or when fetching rapidly-changing sources.
+
+        - `type ToolSearchToolBm25_20251119 struct{…}`
+
+          - `Name ToolSearchToolBm25`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const ToolSearchToolBm25ToolSearchToolBm25 ToolSearchToolBm25 = "tool_search_tool_bm25"`
+
+          - `Type ToolSearchToolBm25_20251119Type`
+
+            - `const ToolSearchToolBm25_20251119TypeToolSearchToolBm25_20251119 ToolSearchToolBm25_20251119Type = "tool_search_tool_bm25_20251119"`
+
+            - `const ToolSearchToolBm25_20251119TypeToolSearchToolBm25 ToolSearchToolBm25_20251119Type = "tool_search_tool_bm25"`
+
+          - `AllowedCallers []string`
+
+            - `const ToolSearchToolBm25_20251119AllowedCallerDirect ToolSearchToolBm25_20251119AllowedCaller = "direct"`
+
+            - `const ToolSearchToolBm25_20251119AllowedCallerCodeExecution20250825 ToolSearchToolBm25_20251119AllowedCaller = "code_execution_20250825"`
+
+            - `const ToolSearchToolBm25_20251119AllowedCallerCodeExecution20260120 ToolSearchToolBm25_20251119AllowedCaller = "code_execution_20260120"`
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
+        - `type ToolSearchToolRegex20251119 struct{…}`
+
+          - `Name ToolSearchToolRegex`
+
+            Name of the tool.
+
+            This is how the tool will be called by the model and in `tool_use` blocks.
+
+            - `const ToolSearchToolRegexToolSearchToolRegex ToolSearchToolRegex = "tool_search_tool_regex"`
+
+          - `Type ToolSearchToolRegex20251119Type`
+
+            - `const ToolSearchToolRegex20251119TypeToolSearchToolRegex20251119 ToolSearchToolRegex20251119Type = "tool_search_tool_regex_20251119"`
+
+            - `const ToolSearchToolRegex20251119TypeToolSearchToolRegex ToolSearchToolRegex20251119Type = "tool_search_tool_regex"`
+
+          - `AllowedCallers []string`
+
+            - `const ToolSearchToolRegex20251119AllowedCallerDirect ToolSearchToolRegex20251119AllowedCaller = "direct"`
+
+            - `const ToolSearchToolRegex20251119AllowedCallerCodeExecution20250825 ToolSearchToolRegex20251119AllowedCaller = "code_execution_20250825"`
+
+            - `const ToolSearchToolRegex20251119AllowedCallerCodeExecution20260120 ToolSearchToolRegex20251119AllowedCaller = "code_execution_20260120"`
+
+          - `CacheControl CacheControlEphemeral`
+
+            Create a cache control breakpoint at this content block.
+
+          - `DeferLoading bool`
+
+            If true, tool will not be included in initial system prompt. Only loaded when returned via tool_reference from tool search.
+
+          - `Strict bool`
+
+            When true, guarantees schema validation on tool names and inputs
+
       - `TopK int64`
 
         Only sample from the top K options for each subsequent token.
 
         Used to remove "long tail" low probability responses. [Learn more technical details here](https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277).
 
-        Recommended for advanced use cases only. You usually only need to use `temperature`.
+        Recommended for advanced use cases only.
 
       - `TopP float64`
 
         Use nucleus sampling.
 
-        In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`. You should either alter `temperature` or `top_p`, but not both.
+        In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`.
 
-        Recommended for advanced use cases only. You usually only need to use `temperature`.
+        Recommended for advanced use cases only.
 
 ### Returns
 
@@ -2254,13 +2156,13 @@ func main() {
         MaxTokens: 1024,
         Messages: []anthropic.MessageParam{anthropic.MessageParam{
           Content: []anthropic.ContentBlockParamUnion{anthropic.ContentBlockParamUnion{
-            OfText: &anthropic.TextBlockParam{Text: "What is a quaternion?", CacheControl: anthropic.CacheControlEphemeralParam{TTL: anthropic.CacheControlEphemeralTTLTTL5m}, Citations: []anthropic.TextCitationParamUnion{anthropic.TextCitationParamUnion{
-              OfCharLocation: &anthropic.CitationCharLocationParam{CitedText: "cited_text", DocumentIndex: 0, DocumentTitle: anthropic.String("x"), EndCharIndex: 0, StartCharIndex: 0},
-            }}},
+            OfText: &anthropic.TextBlockParam{
+              Text: "x",
+            },
           }},
           Role: anthropic.MessageParamRoleUser,
         }},
-        Model: anthropic.ModelClaudeOpus4_5_20251101,
+        Model: anthropic.ModelClaudeOpus4_6,
       },
     }},
   })
@@ -2271,7 +2173,30 @@ func main() {
 }
 ```
 
-## Retrieve
+#### Response
+
+```json
+{
+  "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+  "archived_at": "2024-08-20T18:37:24.100435Z",
+  "cancel_initiated_at": "2024-08-20T18:37:24.100435Z",
+  "created_at": "2024-08-20T18:37:24.100435Z",
+  "ended_at": "2024-08-20T18:37:24.100435Z",
+  "expires_at": "2024-08-20T18:37:24.100435Z",
+  "processing_status": "in_progress",
+  "request_counts": {
+    "canceled": 10,
+    "errored": 30,
+    "expired": 10,
+    "processing": 100,
+    "succeeded": 50
+  },
+  "results_url": "https://api.anthropic.com/v1/messages/batches/msgbatch_013Zva2CMHLNnXjNJJKqJ2EF/results",
+  "type": "message_batch"
+}
+```
+
+## Retrieve a Message Batch
 
 `client.Messages.Batches.Get(ctx, messageBatchID) (*MessageBatch, error)`
 
@@ -2402,7 +2327,30 @@ func main() {
 }
 ```
 
-## List
+#### Response
+
+```json
+{
+  "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+  "archived_at": "2024-08-20T18:37:24.100435Z",
+  "cancel_initiated_at": "2024-08-20T18:37:24.100435Z",
+  "created_at": "2024-08-20T18:37:24.100435Z",
+  "ended_at": "2024-08-20T18:37:24.100435Z",
+  "expires_at": "2024-08-20T18:37:24.100435Z",
+  "processing_status": "in_progress",
+  "request_counts": {
+    "canceled": 10,
+    "errored": 30,
+    "expired": 10,
+    "processing": 100,
+    "succeeded": 50
+  },
+  "results_url": "https://api.anthropic.com/v1/messages/batches/msgbatch_013Zva2CMHLNnXjNJJKqJ2EF/results",
+  "type": "message_batch"
+}
+```
+
+## List Message Batches
 
 `client.Messages.Batches.List(ctx, query) (*Page[MessageBatch], error)`
 
@@ -2547,7 +2495,37 @@ func main() {
 }
 ```
 
-## Cancel
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+      "archived_at": "2024-08-20T18:37:24.100435Z",
+      "cancel_initiated_at": "2024-08-20T18:37:24.100435Z",
+      "created_at": "2024-08-20T18:37:24.100435Z",
+      "ended_at": "2024-08-20T18:37:24.100435Z",
+      "expires_at": "2024-08-20T18:37:24.100435Z",
+      "processing_status": "in_progress",
+      "request_counts": {
+        "canceled": 10,
+        "errored": 30,
+        "expired": 10,
+        "processing": 100,
+        "succeeded": 50
+      },
+      "results_url": "https://api.anthropic.com/v1/messages/batches/msgbatch_013Zva2CMHLNnXjNJJKqJ2EF/results",
+      "type": "message_batch"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id"
+}
+```
+
+## Cancel a Message Batch
 
 `client.Messages.Batches.Cancel(ctx, messageBatchID) (*MessageBatch, error)`
 
@@ -2680,7 +2658,30 @@ func main() {
 }
 ```
 
-## Delete
+#### Response
+
+```json
+{
+  "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+  "archived_at": "2024-08-20T18:37:24.100435Z",
+  "cancel_initiated_at": "2024-08-20T18:37:24.100435Z",
+  "created_at": "2024-08-20T18:37:24.100435Z",
+  "ended_at": "2024-08-20T18:37:24.100435Z",
+  "expires_at": "2024-08-20T18:37:24.100435Z",
+  "processing_status": "in_progress",
+  "request_counts": {
+    "canceled": 10,
+    "errored": 30,
+    "expired": 10,
+    "processing": 100,
+    "succeeded": 50
+  },
+  "results_url": "https://api.anthropic.com/v1/messages/batches/msgbatch_013Zva2CMHLNnXjNJJKqJ2EF/results",
+  "type": "message_batch"
+}
+```
+
+## Delete a Message Batch
 
 `client.Messages.Batches.Delete(ctx, messageBatchID) (*DeletedMessageBatch, error)`
 
@@ -2739,7 +2740,16 @@ func main() {
 }
 ```
 
-## Results
+#### Response
+
+```json
+{
+  "id": "msgbatch_013Zva2CMHLNnXjNJJKqJ2EF",
+  "type": "message_batch_deleted"
+}
+```
+
+## Retrieve Message Batch results
 
 `client.Messages.Batches.Results(ctx, messageBatchID) (*MessageBatchIndividualResponse, error)`
 
@@ -2784,6 +2794,18 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
           Unique object identifier.
 
           The format and length of IDs may change over time.
+
+        - `Container Container`
+
+          Information about the container used in the request (for the code execution tool)
+
+          - `ID string`
+
+            Identifier for the container used in this request
+
+          - `ExpiresAt Time`
+
+            The time at which the container will expire.
 
         - `Content []ContentBlockUnion`
 
@@ -2862,15 +2884,25 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `CitedText string`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `DocumentIndex int64`
 
                 - `DocumentTitle string`
 
                 - `EndBlockIndex int64`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `FileID string`
 
                 - `StartBlockIndex int64`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `Type ContentBlockLocation`
 
@@ -2894,13 +2926,27 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
                 - `CitedText string`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `EndBlockIndex int64`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `SearchResultIndex int64`
+
+                  0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                  Counted separately from `document_index`; server-side web search results are not included in this count.
 
                 - `Source string`
 
                 - `StartBlockIndex int64`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `Title string`
 
@@ -2936,6 +2982,36 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `ID string`
 
+            - `Caller ToolUseBlockCallerUnion`
+
+              Tool invocation directly from the model.
+
+              - `type DirectCaller struct{…}`
+
+                Tool invocation directly from the model.
+
+                - `Type Direct`
+
+                  - `const DirectDirect Direct = "direct"`
+
+              - `type ServerToolCaller struct{…}`
+
+                Tool invocation generated by a server-side tool.
+
+                - `ToolID string`
+
+                - `Type CodeExecution20250825`
+
+                  - `const CodeExecution20250825CodeExecution20250825 CodeExecution20250825 = "code_execution_20250825"`
+
+              - `type ServerToolCaller20260120 struct{…}`
+
+                - `ToolID string`
+
+                - `Type CodeExecution20260120`
+
+                  - `const CodeExecution20260120CodeExecution20260120 CodeExecution20260120 = "code_execution_20260120"`
+
             - `Input map[string, any]`
 
             - `Name string`
@@ -2948,11 +3024,37 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             - `ID string`
 
+            - `Caller ServerToolUseBlockCallerUnion`
+
+              Tool invocation directly from the model.
+
+              - `type DirectCaller struct{…}`
+
+                Tool invocation directly from the model.
+
+              - `type ServerToolCaller struct{…}`
+
+                Tool invocation generated by a server-side tool.
+
+              - `type ServerToolCaller20260120 struct{…}`
+
             - `Input map[string, any]`
 
-            - `Name WebSearch`
+            - `Name ServerToolUseBlockName`
 
-              - `const WebSearchWebSearch WebSearch = "web_search"`
+              - `const ServerToolUseBlockNameWebSearch ServerToolUseBlockName = "web_search"`
+
+              - `const ServerToolUseBlockNameWebFetch ServerToolUseBlockName = "web_fetch"`
+
+              - `const ServerToolUseBlockNameCodeExecution ServerToolUseBlockName = "code_execution"`
+
+              - `const ServerToolUseBlockNameBashCodeExecution ServerToolUseBlockName = "bash_code_execution"`
+
+              - `const ServerToolUseBlockNameTextEditorCodeExecution ServerToolUseBlockName = "text_editor_code_execution"`
+
+              - `const ServerToolUseBlockNameToolSearchToolRegex ServerToolUseBlockName = "tool_search_tool_regex"`
+
+              - `const ServerToolUseBlockNameToolSearchToolBm25 ServerToolUseBlockName = "tool_search_tool_bm25"`
 
             - `Type ServerToolUse`
 
@@ -2960,21 +3062,37 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
           - `type WebSearchToolResultBlock struct{…}`
 
+            - `Caller WebSearchToolResultBlockCallerUnion`
+
+              Tool invocation directly from the model.
+
+              - `type DirectCaller struct{…}`
+
+                Tool invocation directly from the model.
+
+              - `type ServerToolCaller struct{…}`
+
+                Tool invocation generated by a server-side tool.
+
+              - `type ServerToolCaller20260120 struct{…}`
+
             - `Content WebSearchToolResultBlockContentUnion`
 
               - `type WebSearchToolResultError struct{…}`
 
-                - `ErrorCode WebSearchToolResultErrorErrorCode`
+                - `ErrorCode WebSearchToolResultErrorCode`
 
-                  - `const WebSearchToolResultErrorErrorCodeInvalidToolInput WebSearchToolResultErrorErrorCode = "invalid_tool_input"`
+                  - `const WebSearchToolResultErrorCodeInvalidToolInput WebSearchToolResultErrorCode = "invalid_tool_input"`
 
-                  - `const WebSearchToolResultErrorErrorCodeUnavailable WebSearchToolResultErrorErrorCode = "unavailable"`
+                  - `const WebSearchToolResultErrorCodeUnavailable WebSearchToolResultErrorCode = "unavailable"`
 
-                  - `const WebSearchToolResultErrorErrorCodeMaxUsesExceeded WebSearchToolResultErrorErrorCode = "max_uses_exceeded"`
+                  - `const WebSearchToolResultErrorCodeMaxUsesExceeded WebSearchToolResultErrorCode = "max_uses_exceeded"`
 
-                  - `const WebSearchToolResultErrorErrorCodeTooManyRequests WebSearchToolResultErrorErrorCode = "too_many_requests"`
+                  - `const WebSearchToolResultErrorCodeTooManyRequests WebSearchToolResultErrorCode = "too_many_requests"`
 
-                  - `const WebSearchToolResultErrorErrorCodeQueryTooLong WebSearchToolResultErrorErrorCode = "query_too_long"`
+                  - `const WebSearchToolResultErrorCodeQueryTooLong WebSearchToolResultErrorCode = "query_too_long"`
+
+                  - `const WebSearchToolResultErrorCodeRequestTooLarge WebSearchToolResultErrorCode = "request_too_large"`
 
                 - `Type WebSearchToolResultError`
 
@@ -3000,6 +3118,356 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `const WebSearchToolResultWebSearchToolResult WebSearchToolResult = "web_search_tool_result"`
 
+          - `type WebFetchToolResultBlock struct{…}`
+
+            - `Caller WebFetchToolResultBlockCallerUnion`
+
+              Tool invocation directly from the model.
+
+              - `type DirectCaller struct{…}`
+
+                Tool invocation directly from the model.
+
+              - `type ServerToolCaller struct{…}`
+
+                Tool invocation generated by a server-side tool.
+
+              - `type ServerToolCaller20260120 struct{…}`
+
+            - `Content WebFetchToolResultBlockContentUnion`
+
+              - `type WebFetchToolResultErrorBlock struct{…}`
+
+                - `ErrorCode WebFetchToolResultErrorCode`
+
+                  - `const WebFetchToolResultErrorCodeInvalidToolInput WebFetchToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const WebFetchToolResultErrorCodeURLTooLong WebFetchToolResultErrorCode = "url_too_long"`
+
+                  - `const WebFetchToolResultErrorCodeURLNotAllowed WebFetchToolResultErrorCode = "url_not_allowed"`
+
+                  - `const WebFetchToolResultErrorCodeURLNotInPriorContext WebFetchToolResultErrorCode = "url_not_in_prior_context"`
+
+                  - `const WebFetchToolResultErrorCodeURLNotAccessible WebFetchToolResultErrorCode = "url_not_accessible"`
+
+                  - `const WebFetchToolResultErrorCodeUnsupportedContentType WebFetchToolResultErrorCode = "unsupported_content_type"`
+
+                  - `const WebFetchToolResultErrorCodeTooManyRequests WebFetchToolResultErrorCode = "too_many_requests"`
+
+                  - `const WebFetchToolResultErrorCodeMaxUsesExceeded WebFetchToolResultErrorCode = "max_uses_exceeded"`
+
+                  - `const WebFetchToolResultErrorCodeUnavailable WebFetchToolResultErrorCode = "unavailable"`
+
+                - `Type WebFetchToolResultError`
+
+                  - `const WebFetchToolResultErrorWebFetchToolResultError WebFetchToolResultError = "web_fetch_tool_result_error"`
+
+              - `type WebFetchBlock struct{…}`
+
+                - `Content DocumentBlock`
+
+                  - `Citations CitationsConfig`
+
+                    Citation configuration for the document
+
+                    - `Enabled bool`
+
+                  - `Source DocumentBlockSourceUnion`
+
+                    - `type Base64PDFSource struct{…}`
+
+                      - `Data string`
+
+                      - `MediaType ApplicationPDF`
+
+                        - `const ApplicationPDFApplicationPDF ApplicationPDF = "application/pdf"`
+
+                      - `Type Base64`
+
+                        - `const Base64Base64 Base64 = "base64"`
+
+                    - `type PlainTextSource struct{…}`
+
+                      - `Data string`
+
+                      - `MediaType TextPlain`
+
+                        - `const TextPlainTextPlain TextPlain = "text/plain"`
+
+                      - `Type Text`
+
+                        - `const TextText Text = "text"`
+
+                  - `Title string`
+
+                    The title of the document
+
+                  - `Type Document`
+
+                    - `const DocumentDocument Document = "document"`
+
+                - `RetrievedAt string`
+
+                  ISO 8601 timestamp when the content was retrieved
+
+                - `Type WebFetchResult`
+
+                  - `const WebFetchResultWebFetchResult WebFetchResult = "web_fetch_result"`
+
+                - `URL string`
+
+                  Fetched content URL
+
+            - `ToolUseID string`
+
+            - `Type WebFetchToolResult`
+
+              - `const WebFetchToolResultWebFetchToolResult WebFetchToolResult = "web_fetch_tool_result"`
+
+          - `type CodeExecutionToolResultBlock struct{…}`
+
+            - `Content CodeExecutionToolResultBlockContentUnion`
+
+              Code execution result with encrypted stdout for PFC + web_search results.
+
+              - `type CodeExecutionToolResultError struct{…}`
+
+                - `ErrorCode CodeExecutionToolResultErrorCode`
+
+                  - `const CodeExecutionToolResultErrorCodeInvalidToolInput CodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const CodeExecutionToolResultErrorCodeUnavailable CodeExecutionToolResultErrorCode = "unavailable"`
+
+                  - `const CodeExecutionToolResultErrorCodeTooManyRequests CodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                  - `const CodeExecutionToolResultErrorCodeExecutionTimeExceeded CodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                - `Type CodeExecutionToolResultError`
+
+                  - `const CodeExecutionToolResultErrorCodeExecutionToolResultError CodeExecutionToolResultError = "code_execution_tool_result_error"`
+
+              - `type CodeExecutionResultBlock struct{…}`
+
+                - `Content []CodeExecutionOutputBlock`
+
+                  - `FileID string`
+
+                  - `Type CodeExecutionOutput`
+
+                    - `const CodeExecutionOutputCodeExecutionOutput CodeExecutionOutput = "code_execution_output"`
+
+                - `ReturnCode int64`
+
+                - `Stderr string`
+
+                - `Stdout string`
+
+                - `Type CodeExecutionResult`
+
+                  - `const CodeExecutionResultCodeExecutionResult CodeExecutionResult = "code_execution_result"`
+
+              - `type EncryptedCodeExecutionResultBlock struct{…}`
+
+                Code execution result with encrypted stdout for PFC + web_search results.
+
+                - `Content []CodeExecutionOutputBlock`
+
+                  - `FileID string`
+
+                  - `Type CodeExecutionOutput`
+
+                - `EncryptedStdout string`
+
+                - `ReturnCode int64`
+
+                - `Stderr string`
+
+                - `Type EncryptedCodeExecutionResult`
+
+                  - `const EncryptedCodeExecutionResultEncryptedCodeExecutionResult EncryptedCodeExecutionResult = "encrypted_code_execution_result"`
+
+            - `ToolUseID string`
+
+            - `Type CodeExecutionToolResult`
+
+              - `const CodeExecutionToolResultCodeExecutionToolResult CodeExecutionToolResult = "code_execution_tool_result"`
+
+          - `type BashCodeExecutionToolResultBlock struct{…}`
+
+            - `Content BashCodeExecutionToolResultBlockContentUnion`
+
+              - `type BashCodeExecutionToolResultError struct{…}`
+
+                - `ErrorCode BashCodeExecutionToolResultErrorCode`
+
+                  - `const BashCodeExecutionToolResultErrorCodeInvalidToolInput BashCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const BashCodeExecutionToolResultErrorCodeUnavailable BashCodeExecutionToolResultErrorCode = "unavailable"`
+
+                  - `const BashCodeExecutionToolResultErrorCodeTooManyRequests BashCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                  - `const BashCodeExecutionToolResultErrorCodeExecutionTimeExceeded BashCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                  - `const BashCodeExecutionToolResultErrorCodeOutputFileTooLarge BashCodeExecutionToolResultErrorCode = "output_file_too_large"`
+
+                - `Type BashCodeExecutionToolResultError`
+
+                  - `const BashCodeExecutionToolResultErrorBashCodeExecutionToolResultError BashCodeExecutionToolResultError = "bash_code_execution_tool_result_error"`
+
+              - `type BashCodeExecutionResultBlock struct{…}`
+
+                - `Content []BashCodeExecutionOutputBlock`
+
+                  - `FileID string`
+
+                  - `Type BashCodeExecutionOutput`
+
+                    - `const BashCodeExecutionOutputBashCodeExecutionOutput BashCodeExecutionOutput = "bash_code_execution_output"`
+
+                - `ReturnCode int64`
+
+                - `Stderr string`
+
+                - `Stdout string`
+
+                - `Type BashCodeExecutionResult`
+
+                  - `const BashCodeExecutionResultBashCodeExecutionResult BashCodeExecutionResult = "bash_code_execution_result"`
+
+            - `ToolUseID string`
+
+            - `Type BashCodeExecutionToolResult`
+
+              - `const BashCodeExecutionToolResultBashCodeExecutionToolResult BashCodeExecutionToolResult = "bash_code_execution_tool_result"`
+
+          - `type TextEditorCodeExecutionToolResultBlock struct{…}`
+
+            - `Content TextEditorCodeExecutionToolResultBlockContentUnion`
+
+              - `type TextEditorCodeExecutionToolResultError struct{…}`
+
+                - `ErrorCode TextEditorCodeExecutionToolResultErrorCode`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeInvalidToolInput TextEditorCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeUnavailable TextEditorCodeExecutionToolResultErrorCode = "unavailable"`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeTooManyRequests TextEditorCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeExecutionTimeExceeded TextEditorCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeFileNotFound TextEditorCodeExecutionToolResultErrorCode = "file_not_found"`
+
+                - `ErrorMessage string`
+
+                - `Type TextEditorCodeExecutionToolResultError`
+
+                  - `const TextEditorCodeExecutionToolResultErrorTextEditorCodeExecutionToolResultError TextEditorCodeExecutionToolResultError = "text_editor_code_execution_tool_result_error"`
+
+              - `type TextEditorCodeExecutionViewResultBlock struct{…}`
+
+                - `Content string`
+
+                - `FileType TextEditorCodeExecutionViewResultBlockFileType`
+
+                  - `const TextEditorCodeExecutionViewResultBlockFileTypeText TextEditorCodeExecutionViewResultBlockFileType = "text"`
+
+                  - `const TextEditorCodeExecutionViewResultBlockFileTypeImage TextEditorCodeExecutionViewResultBlockFileType = "image"`
+
+                  - `const TextEditorCodeExecutionViewResultBlockFileTypePDF TextEditorCodeExecutionViewResultBlockFileType = "pdf"`
+
+                - `NumLines int64`
+
+                - `StartLine int64`
+
+                - `TotalLines int64`
+
+                - `Type TextEditorCodeExecutionViewResult`
+
+                  - `const TextEditorCodeExecutionViewResultTextEditorCodeExecutionViewResult TextEditorCodeExecutionViewResult = "text_editor_code_execution_view_result"`
+
+              - `type TextEditorCodeExecutionCreateResultBlock struct{…}`
+
+                - `IsFileUpdate bool`
+
+                - `Type TextEditorCodeExecutionCreateResult`
+
+                  - `const TextEditorCodeExecutionCreateResultTextEditorCodeExecutionCreateResult TextEditorCodeExecutionCreateResult = "text_editor_code_execution_create_result"`
+
+              - `type TextEditorCodeExecutionStrReplaceResultBlock struct{…}`
+
+                - `Lines []string`
+
+                - `NewLines int64`
+
+                - `NewStart int64`
+
+                - `OldLines int64`
+
+                - `OldStart int64`
+
+                - `Type TextEditorCodeExecutionStrReplaceResult`
+
+                  - `const TextEditorCodeExecutionStrReplaceResultTextEditorCodeExecutionStrReplaceResult TextEditorCodeExecutionStrReplaceResult = "text_editor_code_execution_str_replace_result"`
+
+            - `ToolUseID string`
+
+            - `Type TextEditorCodeExecutionToolResult`
+
+              - `const TextEditorCodeExecutionToolResultTextEditorCodeExecutionToolResult TextEditorCodeExecutionToolResult = "text_editor_code_execution_tool_result"`
+
+          - `type ToolSearchToolResultBlock struct{…}`
+
+            - `Content ToolSearchToolResultBlockContentUnion`
+
+              - `type ToolSearchToolResultError struct{…}`
+
+                - `ErrorCode ToolSearchToolResultErrorCode`
+
+                  - `const ToolSearchToolResultErrorCodeInvalidToolInput ToolSearchToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const ToolSearchToolResultErrorCodeUnavailable ToolSearchToolResultErrorCode = "unavailable"`
+
+                  - `const ToolSearchToolResultErrorCodeTooManyRequests ToolSearchToolResultErrorCode = "too_many_requests"`
+
+                  - `const ToolSearchToolResultErrorCodeExecutionTimeExceeded ToolSearchToolResultErrorCode = "execution_time_exceeded"`
+
+                - `ErrorMessage string`
+
+                - `Type ToolSearchToolResultError`
+
+                  - `const ToolSearchToolResultErrorToolSearchToolResultError ToolSearchToolResultError = "tool_search_tool_result_error"`
+
+              - `type ToolSearchToolSearchResultBlock struct{…}`
+
+                - `ToolReferences []ToolReferenceBlock`
+
+                  - `ToolName string`
+
+                  - `Type ToolReference`
+
+                    - `const ToolReferenceToolReference ToolReference = "tool_reference"`
+
+                - `Type ToolSearchToolSearchResult`
+
+                  - `const ToolSearchToolSearchResultToolSearchToolSearchResult ToolSearchToolSearchResult = "tool_search_tool_search_result"`
+
+            - `ToolUseID string`
+
+            - `Type ToolSearchToolResult`
+
+              - `const ToolSearchToolResultToolSearchToolResult ToolSearchToolResult = "tool_search_tool_result"`
+
+          - `type ContainerUploadBlock struct{…}`
+
+            Response model for a file uploaded to the container.
+
+            - `FileID string`
+
+            - `Type ContainerUpload`
+
+              - `const ContainerUploadContainerUpload ContainerUpload = "container_upload"`
+
         - `Model Model`
 
           The model that will complete your prompt.
@@ -3012,85 +3480,85 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-            - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
+            - `const ModelClaudeFable5 Model = "claude-fable-5"`
 
-              Premium model combining maximum intelligence with practical performance
+              Next generation of intelligence for the hardest knowledge work and coding problems
+
+            - `const ModelClaudeMythos5 Model = "claude-mythos-5"`
+
+              Most capable model for cybersecurity and biology research
+
+            - `const ModelClaudeOpus4_8 Model = "claude-opus-4-8"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `const ModelClaudeOpus4_7 Model = "claude-opus-4-7"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `const ModelClaudeMythosPreview Model = "claude-mythos-preview"`
+
+              New class of intelligence, strongest in coding and cybersecurity
+
+            - `const ModelClaudeOpus4_6 Model = "claude-opus-4-6"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `const ModelClaudeSonnet4_6 Model = "claude-sonnet-4-6"`
+
+              Best combination of speed and intelligence
+
+            - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+
+              Fastest model with near-frontier intelligence
+
+            - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+
+              Fastest model with near-frontier intelligence
 
             - `const ModelClaudeOpus4_5 Model = "claude-opus-4-5"`
 
               Premium model combining maximum intelligence with practical performance
 
-            - `const ModelClaude3_7SonnetLatest Model = "claude-3-7-sonnet-latest"`
+            - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
 
-              High-performance model with early extended thinking
+              Premium model combining maximum intelligence with practical performance
 
-            - `const ModelClaude3_7Sonnet20250219 Model = "claude-3-7-sonnet-20250219"`
+            - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
 
-              High-performance model with early extended thinking
+              High-performance model for agents and coding
 
-            - `const ModelClaude3_5HaikuLatest Model = "claude-3-5-haiku-latest"`
+            - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
 
-              Fastest and most compact model for near-instant responsiveness
+              High-performance model for agents and coding
 
-            - `const ModelClaude3_5Haiku20241022 Model = "claude-3-5-haiku-20241022"`
+            - `const ModelClaudeOpus4_1 Model = "claude-opus-4-1"`
 
-              Our fastest model
+              Exceptional model for specialized complex tasks
 
-            - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+            - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
 
-              Hybrid model, capable of near-instant responses and extended thinking
+              Exceptional model for specialized complex tasks
 
-            - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+            - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
 
-              Hybrid model, capable of near-instant responses and extended thinking
+              Powerful model for complex tasks
 
-            - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
+            - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
 
-              High-performance model with extended thinking
+              Powerful model for complex tasks
 
             - `const ModelClaudeSonnet4_0 Model = "claude-sonnet-4-0"`
 
               High-performance model with extended thinking
 
-            - `const ModelClaude4Sonnet20250514 Model = "claude-4-sonnet-20250514"`
+            - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
 
               High-performance model with extended thinking
 
-            - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
-
-              Our best model for real-world agents and coding
-
-            - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
-
-              Our best model for real-world agents and coding
-
-            - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
-
-              Our most capable model
-
-            - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
-
-              Our most capable model
-
-            - `const ModelClaude4Opus20250514 Model = "claude-4-opus-20250514"`
-
-              Our most capable model
-
-            - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
-
-              Our most capable model
-
-            - `const ModelClaude3OpusLatest Model = "claude-3-opus-latest"`
-
-              Excels at writing and complex tasks
-
-            - `const ModelClaude_3_Opus_20240229 Model = "claude-3-opus-20240229"`
-
-              Excels at writing and complex tasks
-
             - `const ModelClaude_3_Haiku_20240307 Model = "claude-3-haiku-20240307"`
 
-              Our previous most fast and cost-effective
+              Fast and cost-effective model
 
           - `string`
 
@@ -3101,6 +3569,32 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
           This will always be `"assistant"`.
 
           - `const AssistantAssistant Assistant = "assistant"`
+
+        - `StopDetails RefusalStopDetails`
+
+          Structured information about a refusal.
+
+          - `Category RefusalStopDetailsCategory`
+
+            The policy category that triggered the refusal.
+
+            `null` when the refusal doesn't map to a named category.
+
+            - `const RefusalStopDetailsCategoryCyber RefusalStopDetailsCategory = "cyber"`
+
+            - `const RefusalStopDetailsCategoryBio RefusalStopDetailsCategory = "bio"`
+
+            - `const RefusalStopDetailsCategoryReasoningExtraction RefusalStopDetailsCategory = "reasoning_extraction"`
+
+          - `Explanation string`
+
+            Human-readable explanation of the refusal.
+
+            This text is not guaranteed to be stable. `null` when no explanation is available for the category.
+
+          - `Type Refusal`
+
+            - `const RefusalRefusal Refusal = "refusal"`
 
         - `StopReason StopReason`
 
@@ -3175,6 +3669,10 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             The number of input tokens read from the cache.
 
+          - `InferenceGeo string`
+
+            The geographic region where inference was performed for this request.
+
           - `InputTokens int64`
 
             The number of input tokens which were used.
@@ -3183,9 +3681,33 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
             The number of output tokens which were used.
 
+          - `OutputTokensDetails OutputTokensDetails`
+
+            Breakdown of output tokens by category.
+
+            `output_tokens` remains the inclusive, authoritative total used for billing.
+            This object provides a read-only decomposition for observability — for example,
+            how many of the billed output tokens were spent on internal reasoning that may
+            have been summarized before being returned to you.
+
+            - `ThinkingTokens int64`
+
+              Number of output tokens the model generated as internal reasoning, including
+              the thinking-block delimiter tokens.
+
+              Reflects the raw reasoning the model produced, not the (possibly shorter)
+              summarized thinking text returned in the response body. Computed by
+              re-tokenizing the raw reasoning text, so it may differ from the model's exact
+              generation count by a small number of tokens. Always ≤ `output_tokens`;
+              `output_tokens - thinking_tokens` approximates the non-reasoning output.
+
           - `ServerToolUse ServerToolUsage`
 
             The number of server tool requests.
+
+            - `WebFetchRequests int64`
+
+              The number of web fetch tool requests.
 
             - `WebSearchRequests int64`
 
@@ -3323,10 +3845,13 @@ func main() {
     option.WithAPIKey("my-anthropic-api-key"),
   )
   stream := client.Messages.Batches.ResultsStreaming(context.TODO(), "message_batch_id")
-  if stream.Err() != nil {
+  for stream.Next() {
+  fmt.Printf("%+v\n", stream.Current())
+  }
+  err := stream.Err()
+  if err != nil {
     panic(err.Error())
   }
-  fmt.Printf("%+v\n", messageBatchIndividualResponse.CustomID)
 }
 ```
 
@@ -3572,6 +4097,18 @@ func main() {
 
           The format and length of IDs may change over time.
 
+        - `Container Container`
+
+          Information about the container used in the request (for the code execution tool)
+
+          - `ID string`
+
+            Identifier for the container used in this request
+
+          - `ExpiresAt Time`
+
+            The time at which the container will expire.
+
         - `Content []ContentBlockUnion`
 
           Content generated by the model.
@@ -3649,15 +4186,25 @@ func main() {
 
                 - `CitedText string`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `DocumentIndex int64`
 
                 - `DocumentTitle string`
 
                 - `EndBlockIndex int64`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `FileID string`
 
                 - `StartBlockIndex int64`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `Type ContentBlockLocation`
 
@@ -3681,13 +4228,27 @@ func main() {
 
                 - `CitedText string`
 
+                  The full text of the cited block range, concatenated.
+
+                  Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
                 - `EndBlockIndex int64`
 
+                  Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                  Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
                 - `SearchResultIndex int64`
+
+                  0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                  Counted separately from `document_index`; server-side web search results are not included in this count.
 
                 - `Source string`
 
                 - `StartBlockIndex int64`
+
+                  0-based index of the first cited block in the source's `content` array.
 
                 - `Title string`
 
@@ -3723,6 +4284,36 @@ func main() {
 
             - `ID string`
 
+            - `Caller ToolUseBlockCallerUnion`
+
+              Tool invocation directly from the model.
+
+              - `type DirectCaller struct{…}`
+
+                Tool invocation directly from the model.
+
+                - `Type Direct`
+
+                  - `const DirectDirect Direct = "direct"`
+
+              - `type ServerToolCaller struct{…}`
+
+                Tool invocation generated by a server-side tool.
+
+                - `ToolID string`
+
+                - `Type CodeExecution20250825`
+
+                  - `const CodeExecution20250825CodeExecution20250825 CodeExecution20250825 = "code_execution_20250825"`
+
+              - `type ServerToolCaller20260120 struct{…}`
+
+                - `ToolID string`
+
+                - `Type CodeExecution20260120`
+
+                  - `const CodeExecution20260120CodeExecution20260120 CodeExecution20260120 = "code_execution_20260120"`
+
             - `Input map[string, any]`
 
             - `Name string`
@@ -3735,11 +4326,37 @@ func main() {
 
             - `ID string`
 
+            - `Caller ServerToolUseBlockCallerUnion`
+
+              Tool invocation directly from the model.
+
+              - `type DirectCaller struct{…}`
+
+                Tool invocation directly from the model.
+
+              - `type ServerToolCaller struct{…}`
+
+                Tool invocation generated by a server-side tool.
+
+              - `type ServerToolCaller20260120 struct{…}`
+
             - `Input map[string, any]`
 
-            - `Name WebSearch`
+            - `Name ServerToolUseBlockName`
 
-              - `const WebSearchWebSearch WebSearch = "web_search"`
+              - `const ServerToolUseBlockNameWebSearch ServerToolUseBlockName = "web_search"`
+
+              - `const ServerToolUseBlockNameWebFetch ServerToolUseBlockName = "web_fetch"`
+
+              - `const ServerToolUseBlockNameCodeExecution ServerToolUseBlockName = "code_execution"`
+
+              - `const ServerToolUseBlockNameBashCodeExecution ServerToolUseBlockName = "bash_code_execution"`
+
+              - `const ServerToolUseBlockNameTextEditorCodeExecution ServerToolUseBlockName = "text_editor_code_execution"`
+
+              - `const ServerToolUseBlockNameToolSearchToolRegex ServerToolUseBlockName = "tool_search_tool_regex"`
+
+              - `const ServerToolUseBlockNameToolSearchToolBm25 ServerToolUseBlockName = "tool_search_tool_bm25"`
 
             - `Type ServerToolUse`
 
@@ -3747,21 +4364,37 @@ func main() {
 
           - `type WebSearchToolResultBlock struct{…}`
 
+            - `Caller WebSearchToolResultBlockCallerUnion`
+
+              Tool invocation directly from the model.
+
+              - `type DirectCaller struct{…}`
+
+                Tool invocation directly from the model.
+
+              - `type ServerToolCaller struct{…}`
+
+                Tool invocation generated by a server-side tool.
+
+              - `type ServerToolCaller20260120 struct{…}`
+
             - `Content WebSearchToolResultBlockContentUnion`
 
               - `type WebSearchToolResultError struct{…}`
 
-                - `ErrorCode WebSearchToolResultErrorErrorCode`
+                - `ErrorCode WebSearchToolResultErrorCode`
 
-                  - `const WebSearchToolResultErrorErrorCodeInvalidToolInput WebSearchToolResultErrorErrorCode = "invalid_tool_input"`
+                  - `const WebSearchToolResultErrorCodeInvalidToolInput WebSearchToolResultErrorCode = "invalid_tool_input"`
 
-                  - `const WebSearchToolResultErrorErrorCodeUnavailable WebSearchToolResultErrorErrorCode = "unavailable"`
+                  - `const WebSearchToolResultErrorCodeUnavailable WebSearchToolResultErrorCode = "unavailable"`
 
-                  - `const WebSearchToolResultErrorErrorCodeMaxUsesExceeded WebSearchToolResultErrorErrorCode = "max_uses_exceeded"`
+                  - `const WebSearchToolResultErrorCodeMaxUsesExceeded WebSearchToolResultErrorCode = "max_uses_exceeded"`
 
-                  - `const WebSearchToolResultErrorErrorCodeTooManyRequests WebSearchToolResultErrorErrorCode = "too_many_requests"`
+                  - `const WebSearchToolResultErrorCodeTooManyRequests WebSearchToolResultErrorCode = "too_many_requests"`
 
-                  - `const WebSearchToolResultErrorErrorCodeQueryTooLong WebSearchToolResultErrorErrorCode = "query_too_long"`
+                  - `const WebSearchToolResultErrorCodeQueryTooLong WebSearchToolResultErrorCode = "query_too_long"`
+
+                  - `const WebSearchToolResultErrorCodeRequestTooLarge WebSearchToolResultErrorCode = "request_too_large"`
 
                 - `Type WebSearchToolResultError`
 
@@ -3787,6 +4420,356 @@ func main() {
 
               - `const WebSearchToolResultWebSearchToolResult WebSearchToolResult = "web_search_tool_result"`
 
+          - `type WebFetchToolResultBlock struct{…}`
+
+            - `Caller WebFetchToolResultBlockCallerUnion`
+
+              Tool invocation directly from the model.
+
+              - `type DirectCaller struct{…}`
+
+                Tool invocation directly from the model.
+
+              - `type ServerToolCaller struct{…}`
+
+                Tool invocation generated by a server-side tool.
+
+              - `type ServerToolCaller20260120 struct{…}`
+
+            - `Content WebFetchToolResultBlockContentUnion`
+
+              - `type WebFetchToolResultErrorBlock struct{…}`
+
+                - `ErrorCode WebFetchToolResultErrorCode`
+
+                  - `const WebFetchToolResultErrorCodeInvalidToolInput WebFetchToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const WebFetchToolResultErrorCodeURLTooLong WebFetchToolResultErrorCode = "url_too_long"`
+
+                  - `const WebFetchToolResultErrorCodeURLNotAllowed WebFetchToolResultErrorCode = "url_not_allowed"`
+
+                  - `const WebFetchToolResultErrorCodeURLNotInPriorContext WebFetchToolResultErrorCode = "url_not_in_prior_context"`
+
+                  - `const WebFetchToolResultErrorCodeURLNotAccessible WebFetchToolResultErrorCode = "url_not_accessible"`
+
+                  - `const WebFetchToolResultErrorCodeUnsupportedContentType WebFetchToolResultErrorCode = "unsupported_content_type"`
+
+                  - `const WebFetchToolResultErrorCodeTooManyRequests WebFetchToolResultErrorCode = "too_many_requests"`
+
+                  - `const WebFetchToolResultErrorCodeMaxUsesExceeded WebFetchToolResultErrorCode = "max_uses_exceeded"`
+
+                  - `const WebFetchToolResultErrorCodeUnavailable WebFetchToolResultErrorCode = "unavailable"`
+
+                - `Type WebFetchToolResultError`
+
+                  - `const WebFetchToolResultErrorWebFetchToolResultError WebFetchToolResultError = "web_fetch_tool_result_error"`
+
+              - `type WebFetchBlock struct{…}`
+
+                - `Content DocumentBlock`
+
+                  - `Citations CitationsConfig`
+
+                    Citation configuration for the document
+
+                    - `Enabled bool`
+
+                  - `Source DocumentBlockSourceUnion`
+
+                    - `type Base64PDFSource struct{…}`
+
+                      - `Data string`
+
+                      - `MediaType ApplicationPDF`
+
+                        - `const ApplicationPDFApplicationPDF ApplicationPDF = "application/pdf"`
+
+                      - `Type Base64`
+
+                        - `const Base64Base64 Base64 = "base64"`
+
+                    - `type PlainTextSource struct{…}`
+
+                      - `Data string`
+
+                      - `MediaType TextPlain`
+
+                        - `const TextPlainTextPlain TextPlain = "text/plain"`
+
+                      - `Type Text`
+
+                        - `const TextText Text = "text"`
+
+                  - `Title string`
+
+                    The title of the document
+
+                  - `Type Document`
+
+                    - `const DocumentDocument Document = "document"`
+
+                - `RetrievedAt string`
+
+                  ISO 8601 timestamp when the content was retrieved
+
+                - `Type WebFetchResult`
+
+                  - `const WebFetchResultWebFetchResult WebFetchResult = "web_fetch_result"`
+
+                - `URL string`
+
+                  Fetched content URL
+
+            - `ToolUseID string`
+
+            - `Type WebFetchToolResult`
+
+              - `const WebFetchToolResultWebFetchToolResult WebFetchToolResult = "web_fetch_tool_result"`
+
+          - `type CodeExecutionToolResultBlock struct{…}`
+
+            - `Content CodeExecutionToolResultBlockContentUnion`
+
+              Code execution result with encrypted stdout for PFC + web_search results.
+
+              - `type CodeExecutionToolResultError struct{…}`
+
+                - `ErrorCode CodeExecutionToolResultErrorCode`
+
+                  - `const CodeExecutionToolResultErrorCodeInvalidToolInput CodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const CodeExecutionToolResultErrorCodeUnavailable CodeExecutionToolResultErrorCode = "unavailable"`
+
+                  - `const CodeExecutionToolResultErrorCodeTooManyRequests CodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                  - `const CodeExecutionToolResultErrorCodeExecutionTimeExceeded CodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                - `Type CodeExecutionToolResultError`
+
+                  - `const CodeExecutionToolResultErrorCodeExecutionToolResultError CodeExecutionToolResultError = "code_execution_tool_result_error"`
+
+              - `type CodeExecutionResultBlock struct{…}`
+
+                - `Content []CodeExecutionOutputBlock`
+
+                  - `FileID string`
+
+                  - `Type CodeExecutionOutput`
+
+                    - `const CodeExecutionOutputCodeExecutionOutput CodeExecutionOutput = "code_execution_output"`
+
+                - `ReturnCode int64`
+
+                - `Stderr string`
+
+                - `Stdout string`
+
+                - `Type CodeExecutionResult`
+
+                  - `const CodeExecutionResultCodeExecutionResult CodeExecutionResult = "code_execution_result"`
+
+              - `type EncryptedCodeExecutionResultBlock struct{…}`
+
+                Code execution result with encrypted stdout for PFC + web_search results.
+
+                - `Content []CodeExecutionOutputBlock`
+
+                  - `FileID string`
+
+                  - `Type CodeExecutionOutput`
+
+                - `EncryptedStdout string`
+
+                - `ReturnCode int64`
+
+                - `Stderr string`
+
+                - `Type EncryptedCodeExecutionResult`
+
+                  - `const EncryptedCodeExecutionResultEncryptedCodeExecutionResult EncryptedCodeExecutionResult = "encrypted_code_execution_result"`
+
+            - `ToolUseID string`
+
+            - `Type CodeExecutionToolResult`
+
+              - `const CodeExecutionToolResultCodeExecutionToolResult CodeExecutionToolResult = "code_execution_tool_result"`
+
+          - `type BashCodeExecutionToolResultBlock struct{…}`
+
+            - `Content BashCodeExecutionToolResultBlockContentUnion`
+
+              - `type BashCodeExecutionToolResultError struct{…}`
+
+                - `ErrorCode BashCodeExecutionToolResultErrorCode`
+
+                  - `const BashCodeExecutionToolResultErrorCodeInvalidToolInput BashCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const BashCodeExecutionToolResultErrorCodeUnavailable BashCodeExecutionToolResultErrorCode = "unavailable"`
+
+                  - `const BashCodeExecutionToolResultErrorCodeTooManyRequests BashCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                  - `const BashCodeExecutionToolResultErrorCodeExecutionTimeExceeded BashCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                  - `const BashCodeExecutionToolResultErrorCodeOutputFileTooLarge BashCodeExecutionToolResultErrorCode = "output_file_too_large"`
+
+                - `Type BashCodeExecutionToolResultError`
+
+                  - `const BashCodeExecutionToolResultErrorBashCodeExecutionToolResultError BashCodeExecutionToolResultError = "bash_code_execution_tool_result_error"`
+
+              - `type BashCodeExecutionResultBlock struct{…}`
+
+                - `Content []BashCodeExecutionOutputBlock`
+
+                  - `FileID string`
+
+                  - `Type BashCodeExecutionOutput`
+
+                    - `const BashCodeExecutionOutputBashCodeExecutionOutput BashCodeExecutionOutput = "bash_code_execution_output"`
+
+                - `ReturnCode int64`
+
+                - `Stderr string`
+
+                - `Stdout string`
+
+                - `Type BashCodeExecutionResult`
+
+                  - `const BashCodeExecutionResultBashCodeExecutionResult BashCodeExecutionResult = "bash_code_execution_result"`
+
+            - `ToolUseID string`
+
+            - `Type BashCodeExecutionToolResult`
+
+              - `const BashCodeExecutionToolResultBashCodeExecutionToolResult BashCodeExecutionToolResult = "bash_code_execution_tool_result"`
+
+          - `type TextEditorCodeExecutionToolResultBlock struct{…}`
+
+            - `Content TextEditorCodeExecutionToolResultBlockContentUnion`
+
+              - `type TextEditorCodeExecutionToolResultError struct{…}`
+
+                - `ErrorCode TextEditorCodeExecutionToolResultErrorCode`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeInvalidToolInput TextEditorCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeUnavailable TextEditorCodeExecutionToolResultErrorCode = "unavailable"`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeTooManyRequests TextEditorCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeExecutionTimeExceeded TextEditorCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                  - `const TextEditorCodeExecutionToolResultErrorCodeFileNotFound TextEditorCodeExecutionToolResultErrorCode = "file_not_found"`
+
+                - `ErrorMessage string`
+
+                - `Type TextEditorCodeExecutionToolResultError`
+
+                  - `const TextEditorCodeExecutionToolResultErrorTextEditorCodeExecutionToolResultError TextEditorCodeExecutionToolResultError = "text_editor_code_execution_tool_result_error"`
+
+              - `type TextEditorCodeExecutionViewResultBlock struct{…}`
+
+                - `Content string`
+
+                - `FileType TextEditorCodeExecutionViewResultBlockFileType`
+
+                  - `const TextEditorCodeExecutionViewResultBlockFileTypeText TextEditorCodeExecutionViewResultBlockFileType = "text"`
+
+                  - `const TextEditorCodeExecutionViewResultBlockFileTypeImage TextEditorCodeExecutionViewResultBlockFileType = "image"`
+
+                  - `const TextEditorCodeExecutionViewResultBlockFileTypePDF TextEditorCodeExecutionViewResultBlockFileType = "pdf"`
+
+                - `NumLines int64`
+
+                - `StartLine int64`
+
+                - `TotalLines int64`
+
+                - `Type TextEditorCodeExecutionViewResult`
+
+                  - `const TextEditorCodeExecutionViewResultTextEditorCodeExecutionViewResult TextEditorCodeExecutionViewResult = "text_editor_code_execution_view_result"`
+
+              - `type TextEditorCodeExecutionCreateResultBlock struct{…}`
+
+                - `IsFileUpdate bool`
+
+                - `Type TextEditorCodeExecutionCreateResult`
+
+                  - `const TextEditorCodeExecutionCreateResultTextEditorCodeExecutionCreateResult TextEditorCodeExecutionCreateResult = "text_editor_code_execution_create_result"`
+
+              - `type TextEditorCodeExecutionStrReplaceResultBlock struct{…}`
+
+                - `Lines []string`
+
+                - `NewLines int64`
+
+                - `NewStart int64`
+
+                - `OldLines int64`
+
+                - `OldStart int64`
+
+                - `Type TextEditorCodeExecutionStrReplaceResult`
+
+                  - `const TextEditorCodeExecutionStrReplaceResultTextEditorCodeExecutionStrReplaceResult TextEditorCodeExecutionStrReplaceResult = "text_editor_code_execution_str_replace_result"`
+
+            - `ToolUseID string`
+
+            - `Type TextEditorCodeExecutionToolResult`
+
+              - `const TextEditorCodeExecutionToolResultTextEditorCodeExecutionToolResult TextEditorCodeExecutionToolResult = "text_editor_code_execution_tool_result"`
+
+          - `type ToolSearchToolResultBlock struct{…}`
+
+            - `Content ToolSearchToolResultBlockContentUnion`
+
+              - `type ToolSearchToolResultError struct{…}`
+
+                - `ErrorCode ToolSearchToolResultErrorCode`
+
+                  - `const ToolSearchToolResultErrorCodeInvalidToolInput ToolSearchToolResultErrorCode = "invalid_tool_input"`
+
+                  - `const ToolSearchToolResultErrorCodeUnavailable ToolSearchToolResultErrorCode = "unavailable"`
+
+                  - `const ToolSearchToolResultErrorCodeTooManyRequests ToolSearchToolResultErrorCode = "too_many_requests"`
+
+                  - `const ToolSearchToolResultErrorCodeExecutionTimeExceeded ToolSearchToolResultErrorCode = "execution_time_exceeded"`
+
+                - `ErrorMessage string`
+
+                - `Type ToolSearchToolResultError`
+
+                  - `const ToolSearchToolResultErrorToolSearchToolResultError ToolSearchToolResultError = "tool_search_tool_result_error"`
+
+              - `type ToolSearchToolSearchResultBlock struct{…}`
+
+                - `ToolReferences []ToolReferenceBlock`
+
+                  - `ToolName string`
+
+                  - `Type ToolReference`
+
+                    - `const ToolReferenceToolReference ToolReference = "tool_reference"`
+
+                - `Type ToolSearchToolSearchResult`
+
+                  - `const ToolSearchToolSearchResultToolSearchToolSearchResult ToolSearchToolSearchResult = "tool_search_tool_search_result"`
+
+            - `ToolUseID string`
+
+            - `Type ToolSearchToolResult`
+
+              - `const ToolSearchToolResultToolSearchToolResult ToolSearchToolResult = "tool_search_tool_result"`
+
+          - `type ContainerUploadBlock struct{…}`
+
+            Response model for a file uploaded to the container.
+
+            - `FileID string`
+
+            - `Type ContainerUpload`
+
+              - `const ContainerUploadContainerUpload ContainerUpload = "container_upload"`
+
         - `Model Model`
 
           The model that will complete your prompt.
@@ -3799,85 +4782,85 @@ func main() {
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-            - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
+            - `const ModelClaudeFable5 Model = "claude-fable-5"`
 
-              Premium model combining maximum intelligence with practical performance
+              Next generation of intelligence for the hardest knowledge work and coding problems
+
+            - `const ModelClaudeMythos5 Model = "claude-mythos-5"`
+
+              Most capable model for cybersecurity and biology research
+
+            - `const ModelClaudeOpus4_8 Model = "claude-opus-4-8"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `const ModelClaudeOpus4_7 Model = "claude-opus-4-7"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `const ModelClaudeMythosPreview Model = "claude-mythos-preview"`
+
+              New class of intelligence, strongest in coding and cybersecurity
+
+            - `const ModelClaudeOpus4_6 Model = "claude-opus-4-6"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `const ModelClaudeSonnet4_6 Model = "claude-sonnet-4-6"`
+
+              Best combination of speed and intelligence
+
+            - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+
+              Fastest model with near-frontier intelligence
+
+            - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+
+              Fastest model with near-frontier intelligence
 
             - `const ModelClaudeOpus4_5 Model = "claude-opus-4-5"`
 
               Premium model combining maximum intelligence with practical performance
 
-            - `const ModelClaude3_7SonnetLatest Model = "claude-3-7-sonnet-latest"`
+            - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
 
-              High-performance model with early extended thinking
+              Premium model combining maximum intelligence with practical performance
 
-            - `const ModelClaude3_7Sonnet20250219 Model = "claude-3-7-sonnet-20250219"`
+            - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
 
-              High-performance model with early extended thinking
+              High-performance model for agents and coding
 
-            - `const ModelClaude3_5HaikuLatest Model = "claude-3-5-haiku-latest"`
+            - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
 
-              Fastest and most compact model for near-instant responsiveness
+              High-performance model for agents and coding
 
-            - `const ModelClaude3_5Haiku20241022 Model = "claude-3-5-haiku-20241022"`
+            - `const ModelClaudeOpus4_1 Model = "claude-opus-4-1"`
 
-              Our fastest model
+              Exceptional model for specialized complex tasks
 
-            - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+            - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
 
-              Hybrid model, capable of near-instant responses and extended thinking
+              Exceptional model for specialized complex tasks
 
-            - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+            - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
 
-              Hybrid model, capable of near-instant responses and extended thinking
+              Powerful model for complex tasks
 
-            - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
+            - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
 
-              High-performance model with extended thinking
+              Powerful model for complex tasks
 
             - `const ModelClaudeSonnet4_0 Model = "claude-sonnet-4-0"`
 
               High-performance model with extended thinking
 
-            - `const ModelClaude4Sonnet20250514 Model = "claude-4-sonnet-20250514"`
+            - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
 
               High-performance model with extended thinking
 
-            - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
-
-              Our best model for real-world agents and coding
-
-            - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
-
-              Our best model for real-world agents and coding
-
-            - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
-
-              Our most capable model
-
-            - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
-
-              Our most capable model
-
-            - `const ModelClaude4Opus20250514 Model = "claude-4-opus-20250514"`
-
-              Our most capable model
-
-            - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
-
-              Our most capable model
-
-            - `const ModelClaude3OpusLatest Model = "claude-3-opus-latest"`
-
-              Excels at writing and complex tasks
-
-            - `const ModelClaude_3_Opus_20240229 Model = "claude-3-opus-20240229"`
-
-              Excels at writing and complex tasks
-
             - `const ModelClaude_3_Haiku_20240307 Model = "claude-3-haiku-20240307"`
 
-              Our previous most fast and cost-effective
+              Fast and cost-effective model
 
           - `string`
 
@@ -3888,6 +4871,32 @@ func main() {
           This will always be `"assistant"`.
 
           - `const AssistantAssistant Assistant = "assistant"`
+
+        - `StopDetails RefusalStopDetails`
+
+          Structured information about a refusal.
+
+          - `Category RefusalStopDetailsCategory`
+
+            The policy category that triggered the refusal.
+
+            `null` when the refusal doesn't map to a named category.
+
+            - `const RefusalStopDetailsCategoryCyber RefusalStopDetailsCategory = "cyber"`
+
+            - `const RefusalStopDetailsCategoryBio RefusalStopDetailsCategory = "bio"`
+
+            - `const RefusalStopDetailsCategoryReasoningExtraction RefusalStopDetailsCategory = "reasoning_extraction"`
+
+          - `Explanation string`
+
+            Human-readable explanation of the refusal.
+
+            This text is not guaranteed to be stable. `null` when no explanation is available for the category.
+
+          - `Type Refusal`
+
+            - `const RefusalRefusal Refusal = "refusal"`
 
         - `StopReason StopReason`
 
@@ -3962,6 +4971,10 @@ func main() {
 
             The number of input tokens read from the cache.
 
+          - `InferenceGeo string`
+
+            The geographic region where inference was performed for this request.
+
           - `InputTokens int64`
 
             The number of input tokens which were used.
@@ -3970,9 +4983,33 @@ func main() {
 
             The number of output tokens which were used.
 
+          - `OutputTokensDetails OutputTokensDetails`
+
+            Breakdown of output tokens by category.
+
+            `output_tokens` remains the inclusive, authoritative total used for billing.
+            This object provides a read-only decomposition for observability — for example,
+            how many of the billed output tokens were spent on internal reasoning that may
+            have been summarized before being returned to you.
+
+            - `ThinkingTokens int64`
+
+              Number of output tokens the model generated as internal reasoning, including
+              the thinking-block delimiter tokens.
+
+              Reflects the raw reasoning the model produced, not the (possibly shorter)
+              summarized thinking text returned in the response body. Computed by
+              re-tokenizing the raw reasoning text, so it may differ from the model's exact
+              generation count by a small number of tokens. Always ≤ `output_tokens`;
+              `output_tokens - thinking_tokens` approximates the non-reasoning output.
+
           - `ServerToolUse ServerToolUsage`
 
             The number of server tool requests.
+
+            - `WebFetchRequests int64`
+
+              The number of web fetch tool requests.
 
             - `WebSearchRequests int64`
 
@@ -4142,6 +5179,18 @@ func main() {
 
         The format and length of IDs may change over time.
 
+      - `Container Container`
+
+        Information about the container used in the request (for the code execution tool)
+
+        - `ID string`
+
+          Identifier for the container used in this request
+
+        - `ExpiresAt Time`
+
+          The time at which the container will expire.
+
       - `Content []ContentBlockUnion`
 
         Content generated by the model.
@@ -4219,15 +5268,25 @@ func main() {
 
               - `CitedText string`
 
+                The full text of the cited block range, concatenated.
+
+                Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
               - `DocumentIndex int64`
 
               - `DocumentTitle string`
 
               - `EndBlockIndex int64`
 
+                Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
               - `FileID string`
 
               - `StartBlockIndex int64`
+
+                0-based index of the first cited block in the source's `content` array.
 
               - `Type ContentBlockLocation`
 
@@ -4251,13 +5310,27 @@ func main() {
 
               - `CitedText string`
 
+                The full text of the cited block range, concatenated.
+
+                Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
               - `EndBlockIndex int64`
 
+                Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+                Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
               - `SearchResultIndex int64`
+
+                0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+                Counted separately from `document_index`; server-side web search results are not included in this count.
 
               - `Source string`
 
               - `StartBlockIndex int64`
+
+                0-based index of the first cited block in the source's `content` array.
 
               - `Title string`
 
@@ -4293,6 +5366,36 @@ func main() {
 
           - `ID string`
 
+          - `Caller ToolUseBlockCallerUnion`
+
+            Tool invocation directly from the model.
+
+            - `type DirectCaller struct{…}`
+
+              Tool invocation directly from the model.
+
+              - `Type Direct`
+
+                - `const DirectDirect Direct = "direct"`
+
+            - `type ServerToolCaller struct{…}`
+
+              Tool invocation generated by a server-side tool.
+
+              - `ToolID string`
+
+              - `Type CodeExecution20250825`
+
+                - `const CodeExecution20250825CodeExecution20250825 CodeExecution20250825 = "code_execution_20250825"`
+
+            - `type ServerToolCaller20260120 struct{…}`
+
+              - `ToolID string`
+
+              - `Type CodeExecution20260120`
+
+                - `const CodeExecution20260120CodeExecution20260120 CodeExecution20260120 = "code_execution_20260120"`
+
           - `Input map[string, any]`
 
           - `Name string`
@@ -4305,11 +5408,37 @@ func main() {
 
           - `ID string`
 
+          - `Caller ServerToolUseBlockCallerUnion`
+
+            Tool invocation directly from the model.
+
+            - `type DirectCaller struct{…}`
+
+              Tool invocation directly from the model.
+
+            - `type ServerToolCaller struct{…}`
+
+              Tool invocation generated by a server-side tool.
+
+            - `type ServerToolCaller20260120 struct{…}`
+
           - `Input map[string, any]`
 
-          - `Name WebSearch`
+          - `Name ServerToolUseBlockName`
 
-            - `const WebSearchWebSearch WebSearch = "web_search"`
+            - `const ServerToolUseBlockNameWebSearch ServerToolUseBlockName = "web_search"`
+
+            - `const ServerToolUseBlockNameWebFetch ServerToolUseBlockName = "web_fetch"`
+
+            - `const ServerToolUseBlockNameCodeExecution ServerToolUseBlockName = "code_execution"`
+
+            - `const ServerToolUseBlockNameBashCodeExecution ServerToolUseBlockName = "bash_code_execution"`
+
+            - `const ServerToolUseBlockNameTextEditorCodeExecution ServerToolUseBlockName = "text_editor_code_execution"`
+
+            - `const ServerToolUseBlockNameToolSearchToolRegex ServerToolUseBlockName = "tool_search_tool_regex"`
+
+            - `const ServerToolUseBlockNameToolSearchToolBm25 ServerToolUseBlockName = "tool_search_tool_bm25"`
 
           - `Type ServerToolUse`
 
@@ -4317,21 +5446,37 @@ func main() {
 
         - `type WebSearchToolResultBlock struct{…}`
 
+          - `Caller WebSearchToolResultBlockCallerUnion`
+
+            Tool invocation directly from the model.
+
+            - `type DirectCaller struct{…}`
+
+              Tool invocation directly from the model.
+
+            - `type ServerToolCaller struct{…}`
+
+              Tool invocation generated by a server-side tool.
+
+            - `type ServerToolCaller20260120 struct{…}`
+
           - `Content WebSearchToolResultBlockContentUnion`
 
             - `type WebSearchToolResultError struct{…}`
 
-              - `ErrorCode WebSearchToolResultErrorErrorCode`
+              - `ErrorCode WebSearchToolResultErrorCode`
 
-                - `const WebSearchToolResultErrorErrorCodeInvalidToolInput WebSearchToolResultErrorErrorCode = "invalid_tool_input"`
+                - `const WebSearchToolResultErrorCodeInvalidToolInput WebSearchToolResultErrorCode = "invalid_tool_input"`
 
-                - `const WebSearchToolResultErrorErrorCodeUnavailable WebSearchToolResultErrorErrorCode = "unavailable"`
+                - `const WebSearchToolResultErrorCodeUnavailable WebSearchToolResultErrorCode = "unavailable"`
 
-                - `const WebSearchToolResultErrorErrorCodeMaxUsesExceeded WebSearchToolResultErrorErrorCode = "max_uses_exceeded"`
+                - `const WebSearchToolResultErrorCodeMaxUsesExceeded WebSearchToolResultErrorCode = "max_uses_exceeded"`
 
-                - `const WebSearchToolResultErrorErrorCodeTooManyRequests WebSearchToolResultErrorErrorCode = "too_many_requests"`
+                - `const WebSearchToolResultErrorCodeTooManyRequests WebSearchToolResultErrorCode = "too_many_requests"`
 
-                - `const WebSearchToolResultErrorErrorCodeQueryTooLong WebSearchToolResultErrorErrorCode = "query_too_long"`
+                - `const WebSearchToolResultErrorCodeQueryTooLong WebSearchToolResultErrorCode = "query_too_long"`
+
+                - `const WebSearchToolResultErrorCodeRequestTooLarge WebSearchToolResultErrorCode = "request_too_large"`
 
               - `Type WebSearchToolResultError`
 
@@ -4357,6 +5502,356 @@ func main() {
 
             - `const WebSearchToolResultWebSearchToolResult WebSearchToolResult = "web_search_tool_result"`
 
+        - `type WebFetchToolResultBlock struct{…}`
+
+          - `Caller WebFetchToolResultBlockCallerUnion`
+
+            Tool invocation directly from the model.
+
+            - `type DirectCaller struct{…}`
+
+              Tool invocation directly from the model.
+
+            - `type ServerToolCaller struct{…}`
+
+              Tool invocation generated by a server-side tool.
+
+            - `type ServerToolCaller20260120 struct{…}`
+
+          - `Content WebFetchToolResultBlockContentUnion`
+
+            - `type WebFetchToolResultErrorBlock struct{…}`
+
+              - `ErrorCode WebFetchToolResultErrorCode`
+
+                - `const WebFetchToolResultErrorCodeInvalidToolInput WebFetchToolResultErrorCode = "invalid_tool_input"`
+
+                - `const WebFetchToolResultErrorCodeURLTooLong WebFetchToolResultErrorCode = "url_too_long"`
+
+                - `const WebFetchToolResultErrorCodeURLNotAllowed WebFetchToolResultErrorCode = "url_not_allowed"`
+
+                - `const WebFetchToolResultErrorCodeURLNotInPriorContext WebFetchToolResultErrorCode = "url_not_in_prior_context"`
+
+                - `const WebFetchToolResultErrorCodeURLNotAccessible WebFetchToolResultErrorCode = "url_not_accessible"`
+
+                - `const WebFetchToolResultErrorCodeUnsupportedContentType WebFetchToolResultErrorCode = "unsupported_content_type"`
+
+                - `const WebFetchToolResultErrorCodeTooManyRequests WebFetchToolResultErrorCode = "too_many_requests"`
+
+                - `const WebFetchToolResultErrorCodeMaxUsesExceeded WebFetchToolResultErrorCode = "max_uses_exceeded"`
+
+                - `const WebFetchToolResultErrorCodeUnavailable WebFetchToolResultErrorCode = "unavailable"`
+
+              - `Type WebFetchToolResultError`
+
+                - `const WebFetchToolResultErrorWebFetchToolResultError WebFetchToolResultError = "web_fetch_tool_result_error"`
+
+            - `type WebFetchBlock struct{…}`
+
+              - `Content DocumentBlock`
+
+                - `Citations CitationsConfig`
+
+                  Citation configuration for the document
+
+                  - `Enabled bool`
+
+                - `Source DocumentBlockSourceUnion`
+
+                  - `type Base64PDFSource struct{…}`
+
+                    - `Data string`
+
+                    - `MediaType ApplicationPDF`
+
+                      - `const ApplicationPDFApplicationPDF ApplicationPDF = "application/pdf"`
+
+                    - `Type Base64`
+
+                      - `const Base64Base64 Base64 = "base64"`
+
+                  - `type PlainTextSource struct{…}`
+
+                    - `Data string`
+
+                    - `MediaType TextPlain`
+
+                      - `const TextPlainTextPlain TextPlain = "text/plain"`
+
+                    - `Type Text`
+
+                      - `const TextText Text = "text"`
+
+                - `Title string`
+
+                  The title of the document
+
+                - `Type Document`
+
+                  - `const DocumentDocument Document = "document"`
+
+              - `RetrievedAt string`
+
+                ISO 8601 timestamp when the content was retrieved
+
+              - `Type WebFetchResult`
+
+                - `const WebFetchResultWebFetchResult WebFetchResult = "web_fetch_result"`
+
+              - `URL string`
+
+                Fetched content URL
+
+          - `ToolUseID string`
+
+          - `Type WebFetchToolResult`
+
+            - `const WebFetchToolResultWebFetchToolResult WebFetchToolResult = "web_fetch_tool_result"`
+
+        - `type CodeExecutionToolResultBlock struct{…}`
+
+          - `Content CodeExecutionToolResultBlockContentUnion`
+
+            Code execution result with encrypted stdout for PFC + web_search results.
+
+            - `type CodeExecutionToolResultError struct{…}`
+
+              - `ErrorCode CodeExecutionToolResultErrorCode`
+
+                - `const CodeExecutionToolResultErrorCodeInvalidToolInput CodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                - `const CodeExecutionToolResultErrorCodeUnavailable CodeExecutionToolResultErrorCode = "unavailable"`
+
+                - `const CodeExecutionToolResultErrorCodeTooManyRequests CodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                - `const CodeExecutionToolResultErrorCodeExecutionTimeExceeded CodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+              - `Type CodeExecutionToolResultError`
+
+                - `const CodeExecutionToolResultErrorCodeExecutionToolResultError CodeExecutionToolResultError = "code_execution_tool_result_error"`
+
+            - `type CodeExecutionResultBlock struct{…}`
+
+              - `Content []CodeExecutionOutputBlock`
+
+                - `FileID string`
+
+                - `Type CodeExecutionOutput`
+
+                  - `const CodeExecutionOutputCodeExecutionOutput CodeExecutionOutput = "code_execution_output"`
+
+              - `ReturnCode int64`
+
+              - `Stderr string`
+
+              - `Stdout string`
+
+              - `Type CodeExecutionResult`
+
+                - `const CodeExecutionResultCodeExecutionResult CodeExecutionResult = "code_execution_result"`
+
+            - `type EncryptedCodeExecutionResultBlock struct{…}`
+
+              Code execution result with encrypted stdout for PFC + web_search results.
+
+              - `Content []CodeExecutionOutputBlock`
+
+                - `FileID string`
+
+                - `Type CodeExecutionOutput`
+
+              - `EncryptedStdout string`
+
+              - `ReturnCode int64`
+
+              - `Stderr string`
+
+              - `Type EncryptedCodeExecutionResult`
+
+                - `const EncryptedCodeExecutionResultEncryptedCodeExecutionResult EncryptedCodeExecutionResult = "encrypted_code_execution_result"`
+
+          - `ToolUseID string`
+
+          - `Type CodeExecutionToolResult`
+
+            - `const CodeExecutionToolResultCodeExecutionToolResult CodeExecutionToolResult = "code_execution_tool_result"`
+
+        - `type BashCodeExecutionToolResultBlock struct{…}`
+
+          - `Content BashCodeExecutionToolResultBlockContentUnion`
+
+            - `type BashCodeExecutionToolResultError struct{…}`
+
+              - `ErrorCode BashCodeExecutionToolResultErrorCode`
+
+                - `const BashCodeExecutionToolResultErrorCodeInvalidToolInput BashCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                - `const BashCodeExecutionToolResultErrorCodeUnavailable BashCodeExecutionToolResultErrorCode = "unavailable"`
+
+                - `const BashCodeExecutionToolResultErrorCodeTooManyRequests BashCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                - `const BashCodeExecutionToolResultErrorCodeExecutionTimeExceeded BashCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                - `const BashCodeExecutionToolResultErrorCodeOutputFileTooLarge BashCodeExecutionToolResultErrorCode = "output_file_too_large"`
+
+              - `Type BashCodeExecutionToolResultError`
+
+                - `const BashCodeExecutionToolResultErrorBashCodeExecutionToolResultError BashCodeExecutionToolResultError = "bash_code_execution_tool_result_error"`
+
+            - `type BashCodeExecutionResultBlock struct{…}`
+
+              - `Content []BashCodeExecutionOutputBlock`
+
+                - `FileID string`
+
+                - `Type BashCodeExecutionOutput`
+
+                  - `const BashCodeExecutionOutputBashCodeExecutionOutput BashCodeExecutionOutput = "bash_code_execution_output"`
+
+              - `ReturnCode int64`
+
+              - `Stderr string`
+
+              - `Stdout string`
+
+              - `Type BashCodeExecutionResult`
+
+                - `const BashCodeExecutionResultBashCodeExecutionResult BashCodeExecutionResult = "bash_code_execution_result"`
+
+          - `ToolUseID string`
+
+          - `Type BashCodeExecutionToolResult`
+
+            - `const BashCodeExecutionToolResultBashCodeExecutionToolResult BashCodeExecutionToolResult = "bash_code_execution_tool_result"`
+
+        - `type TextEditorCodeExecutionToolResultBlock struct{…}`
+
+          - `Content TextEditorCodeExecutionToolResultBlockContentUnion`
+
+            - `type TextEditorCodeExecutionToolResultError struct{…}`
+
+              - `ErrorCode TextEditorCodeExecutionToolResultErrorCode`
+
+                - `const TextEditorCodeExecutionToolResultErrorCodeInvalidToolInput TextEditorCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+                - `const TextEditorCodeExecutionToolResultErrorCodeUnavailable TextEditorCodeExecutionToolResultErrorCode = "unavailable"`
+
+                - `const TextEditorCodeExecutionToolResultErrorCodeTooManyRequests TextEditorCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+                - `const TextEditorCodeExecutionToolResultErrorCodeExecutionTimeExceeded TextEditorCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+                - `const TextEditorCodeExecutionToolResultErrorCodeFileNotFound TextEditorCodeExecutionToolResultErrorCode = "file_not_found"`
+
+              - `ErrorMessage string`
+
+              - `Type TextEditorCodeExecutionToolResultError`
+
+                - `const TextEditorCodeExecutionToolResultErrorTextEditorCodeExecutionToolResultError TextEditorCodeExecutionToolResultError = "text_editor_code_execution_tool_result_error"`
+
+            - `type TextEditorCodeExecutionViewResultBlock struct{…}`
+
+              - `Content string`
+
+              - `FileType TextEditorCodeExecutionViewResultBlockFileType`
+
+                - `const TextEditorCodeExecutionViewResultBlockFileTypeText TextEditorCodeExecutionViewResultBlockFileType = "text"`
+
+                - `const TextEditorCodeExecutionViewResultBlockFileTypeImage TextEditorCodeExecutionViewResultBlockFileType = "image"`
+
+                - `const TextEditorCodeExecutionViewResultBlockFileTypePDF TextEditorCodeExecutionViewResultBlockFileType = "pdf"`
+
+              - `NumLines int64`
+
+              - `StartLine int64`
+
+              - `TotalLines int64`
+
+              - `Type TextEditorCodeExecutionViewResult`
+
+                - `const TextEditorCodeExecutionViewResultTextEditorCodeExecutionViewResult TextEditorCodeExecutionViewResult = "text_editor_code_execution_view_result"`
+
+            - `type TextEditorCodeExecutionCreateResultBlock struct{…}`
+
+              - `IsFileUpdate bool`
+
+              - `Type TextEditorCodeExecutionCreateResult`
+
+                - `const TextEditorCodeExecutionCreateResultTextEditorCodeExecutionCreateResult TextEditorCodeExecutionCreateResult = "text_editor_code_execution_create_result"`
+
+            - `type TextEditorCodeExecutionStrReplaceResultBlock struct{…}`
+
+              - `Lines []string`
+
+              - `NewLines int64`
+
+              - `NewStart int64`
+
+              - `OldLines int64`
+
+              - `OldStart int64`
+
+              - `Type TextEditorCodeExecutionStrReplaceResult`
+
+                - `const TextEditorCodeExecutionStrReplaceResultTextEditorCodeExecutionStrReplaceResult TextEditorCodeExecutionStrReplaceResult = "text_editor_code_execution_str_replace_result"`
+
+          - `ToolUseID string`
+
+          - `Type TextEditorCodeExecutionToolResult`
+
+            - `const TextEditorCodeExecutionToolResultTextEditorCodeExecutionToolResult TextEditorCodeExecutionToolResult = "text_editor_code_execution_tool_result"`
+
+        - `type ToolSearchToolResultBlock struct{…}`
+
+          - `Content ToolSearchToolResultBlockContentUnion`
+
+            - `type ToolSearchToolResultError struct{…}`
+
+              - `ErrorCode ToolSearchToolResultErrorCode`
+
+                - `const ToolSearchToolResultErrorCodeInvalidToolInput ToolSearchToolResultErrorCode = "invalid_tool_input"`
+
+                - `const ToolSearchToolResultErrorCodeUnavailable ToolSearchToolResultErrorCode = "unavailable"`
+
+                - `const ToolSearchToolResultErrorCodeTooManyRequests ToolSearchToolResultErrorCode = "too_many_requests"`
+
+                - `const ToolSearchToolResultErrorCodeExecutionTimeExceeded ToolSearchToolResultErrorCode = "execution_time_exceeded"`
+
+              - `ErrorMessage string`
+
+              - `Type ToolSearchToolResultError`
+
+                - `const ToolSearchToolResultErrorToolSearchToolResultError ToolSearchToolResultError = "tool_search_tool_result_error"`
+
+            - `type ToolSearchToolSearchResultBlock struct{…}`
+
+              - `ToolReferences []ToolReferenceBlock`
+
+                - `ToolName string`
+
+                - `Type ToolReference`
+
+                  - `const ToolReferenceToolReference ToolReference = "tool_reference"`
+
+              - `Type ToolSearchToolSearchResult`
+
+                - `const ToolSearchToolSearchResultToolSearchToolSearchResult ToolSearchToolSearchResult = "tool_search_tool_search_result"`
+
+          - `ToolUseID string`
+
+          - `Type ToolSearchToolResult`
+
+            - `const ToolSearchToolResultToolSearchToolResult ToolSearchToolResult = "tool_search_tool_result"`
+
+        - `type ContainerUploadBlock struct{…}`
+
+          Response model for a file uploaded to the container.
+
+          - `FileID string`
+
+          - `Type ContainerUpload`
+
+            - `const ContainerUploadContainerUpload ContainerUpload = "container_upload"`
+
       - `Model Model`
 
         The model that will complete your prompt.
@@ -4369,85 +5864,85 @@ func main() {
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
+          - `const ModelClaudeFable5 Model = "claude-fable-5"`
 
-            Premium model combining maximum intelligence with practical performance
+            Next generation of intelligence for the hardest knowledge work and coding problems
+
+          - `const ModelClaudeMythos5 Model = "claude-mythos-5"`
+
+            Most capable model for cybersecurity and biology research
+
+          - `const ModelClaudeOpus4_8 Model = "claude-opus-4-8"`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `const ModelClaudeOpus4_7 Model = "claude-opus-4-7"`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `const ModelClaudeMythosPreview Model = "claude-mythos-preview"`
+
+            New class of intelligence, strongest in coding and cybersecurity
+
+          - `const ModelClaudeOpus4_6 Model = "claude-opus-4-6"`
+
+            Frontier intelligence for long-running agents and coding
+
+          - `const ModelClaudeSonnet4_6 Model = "claude-sonnet-4-6"`
+
+            Best combination of speed and intelligence
+
+          - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+
+            Fastest model with near-frontier intelligence
+
+          - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+
+            Fastest model with near-frontier intelligence
 
           - `const ModelClaudeOpus4_5 Model = "claude-opus-4-5"`
 
             Premium model combining maximum intelligence with practical performance
 
-          - `const ModelClaude3_7SonnetLatest Model = "claude-3-7-sonnet-latest"`
+          - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
 
-            High-performance model with early extended thinking
+            Premium model combining maximum intelligence with practical performance
 
-          - `const ModelClaude3_7Sonnet20250219 Model = "claude-3-7-sonnet-20250219"`
+          - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
 
-            High-performance model with early extended thinking
+            High-performance model for agents and coding
 
-          - `const ModelClaude3_5HaikuLatest Model = "claude-3-5-haiku-latest"`
+          - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
 
-            Fastest and most compact model for near-instant responsiveness
+            High-performance model for agents and coding
 
-          - `const ModelClaude3_5Haiku20241022 Model = "claude-3-5-haiku-20241022"`
+          - `const ModelClaudeOpus4_1 Model = "claude-opus-4-1"`
 
-            Our fastest model
+            Exceptional model for specialized complex tasks
 
-          - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+          - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
 
-            Hybrid model, capable of near-instant responses and extended thinking
+            Exceptional model for specialized complex tasks
 
-          - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+          - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
 
-            Hybrid model, capable of near-instant responses and extended thinking
+            Powerful model for complex tasks
 
-          - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
+          - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
 
-            High-performance model with extended thinking
+            Powerful model for complex tasks
 
           - `const ModelClaudeSonnet4_0 Model = "claude-sonnet-4-0"`
 
             High-performance model with extended thinking
 
-          - `const ModelClaude4Sonnet20250514 Model = "claude-4-sonnet-20250514"`
+          - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
 
             High-performance model with extended thinking
 
-          - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
-
-            Our best model for real-world agents and coding
-
-          - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
-
-            Our best model for real-world agents and coding
-
-          - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
-
-            Our most capable model
-
-          - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
-
-            Our most capable model
-
-          - `const ModelClaude4Opus20250514 Model = "claude-4-opus-20250514"`
-
-            Our most capable model
-
-          - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
-
-            Our most capable model
-
-          - `const ModelClaude3OpusLatest Model = "claude-3-opus-latest"`
-
-            Excels at writing and complex tasks
-
-          - `const ModelClaude_3_Opus_20240229 Model = "claude-3-opus-20240229"`
-
-            Excels at writing and complex tasks
-
           - `const ModelClaude_3_Haiku_20240307 Model = "claude-3-haiku-20240307"`
 
-            Our previous most fast and cost-effective
+            Fast and cost-effective model
 
         - `string`
 
@@ -4458,6 +5953,32 @@ func main() {
         This will always be `"assistant"`.
 
         - `const AssistantAssistant Assistant = "assistant"`
+
+      - `StopDetails RefusalStopDetails`
+
+        Structured information about a refusal.
+
+        - `Category RefusalStopDetailsCategory`
+
+          The policy category that triggered the refusal.
+
+          `null` when the refusal doesn't map to a named category.
+
+          - `const RefusalStopDetailsCategoryCyber RefusalStopDetailsCategory = "cyber"`
+
+          - `const RefusalStopDetailsCategoryBio RefusalStopDetailsCategory = "bio"`
+
+          - `const RefusalStopDetailsCategoryReasoningExtraction RefusalStopDetailsCategory = "reasoning_extraction"`
+
+        - `Explanation string`
+
+          Human-readable explanation of the refusal.
+
+          This text is not guaranteed to be stable. `null` when no explanation is available for the category.
+
+        - `Type Refusal`
+
+          - `const RefusalRefusal Refusal = "refusal"`
 
       - `StopReason StopReason`
 
@@ -4532,6 +6053,10 @@ func main() {
 
           The number of input tokens read from the cache.
 
+        - `InferenceGeo string`
+
+          The geographic region where inference was performed for this request.
+
         - `InputTokens int64`
 
           The number of input tokens which were used.
@@ -4540,9 +6065,33 @@ func main() {
 
           The number of output tokens which were used.
 
+        - `OutputTokensDetails OutputTokensDetails`
+
+          Breakdown of output tokens by category.
+
+          `output_tokens` remains the inclusive, authoritative total used for billing.
+          This object provides a read-only decomposition for observability — for example,
+          how many of the billed output tokens were spent on internal reasoning that may
+          have been summarized before being returned to you.
+
+          - `ThinkingTokens int64`
+
+            Number of output tokens the model generated as internal reasoning, including
+            the thinking-block delimiter tokens.
+
+            Reflects the raw reasoning the model produced, not the (possibly shorter)
+            summarized thinking text returned in the response body. Computed by
+            re-tokenizing the raw reasoning text, so it may differ from the model's exact
+            generation count by a small number of tokens. Always ≤ `output_tokens`;
+            `output_tokens - thinking_tokens` approximates the non-reasoning output.
+
         - `ServerToolUse ServerToolUsage`
 
           The number of server tool requests.
+
+          - `WebFetchRequests int64`
+
+            The number of web fetch tool requests.
 
           - `WebSearchRequests int64`
 
@@ -4674,6 +6223,18 @@ func main() {
 
       The format and length of IDs may change over time.
 
+    - `Container Container`
+
+      Information about the container used in the request (for the code execution tool)
+
+      - `ID string`
+
+        Identifier for the container used in this request
+
+      - `ExpiresAt Time`
+
+        The time at which the container will expire.
+
     - `Content []ContentBlockUnion`
 
       Content generated by the model.
@@ -4751,15 +6312,25 @@ func main() {
 
             - `CitedText string`
 
+              The full text of the cited block range, concatenated.
+
+              Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
             - `DocumentIndex int64`
 
             - `DocumentTitle string`
 
             - `EndBlockIndex int64`
 
+              Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+              Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
             - `FileID string`
 
             - `StartBlockIndex int64`
+
+              0-based index of the first cited block in the source's `content` array.
 
             - `Type ContentBlockLocation`
 
@@ -4783,13 +6354,27 @@ func main() {
 
             - `CitedText string`
 
+              The full text of the cited block range, concatenated.
+
+              Always equals the contents of `content[start_block_index:end_block_index]` joined together. The text block is the minimal citable unit; this field is never a substring of a single block. Not counted toward output tokens, and not counted toward input tokens when sent back in subsequent turns.
+
             - `EndBlockIndex int64`
 
+              Exclusive 0-based end index of the cited block range in the source's `content` array.
+
+              Always greater than `start_block_index`; a single-block citation has `end_block_index = start_block_index + 1`.
+
             - `SearchResultIndex int64`
+
+              0-based index of the cited search result among all `search_result` content blocks in the request, in the order they appear across messages and tool results.
+
+              Counted separately from `document_index`; server-side web search results are not included in this count.
 
             - `Source string`
 
             - `StartBlockIndex int64`
+
+              0-based index of the first cited block in the source's `content` array.
 
             - `Title string`
 
@@ -4825,6 +6410,36 @@ func main() {
 
         - `ID string`
 
+        - `Caller ToolUseBlockCallerUnion`
+
+          Tool invocation directly from the model.
+
+          - `type DirectCaller struct{…}`
+
+            Tool invocation directly from the model.
+
+            - `Type Direct`
+
+              - `const DirectDirect Direct = "direct"`
+
+          - `type ServerToolCaller struct{…}`
+
+            Tool invocation generated by a server-side tool.
+
+            - `ToolID string`
+
+            - `Type CodeExecution20250825`
+
+              - `const CodeExecution20250825CodeExecution20250825 CodeExecution20250825 = "code_execution_20250825"`
+
+          - `type ServerToolCaller20260120 struct{…}`
+
+            - `ToolID string`
+
+            - `Type CodeExecution20260120`
+
+              - `const CodeExecution20260120CodeExecution20260120 CodeExecution20260120 = "code_execution_20260120"`
+
         - `Input map[string, any]`
 
         - `Name string`
@@ -4837,11 +6452,37 @@ func main() {
 
         - `ID string`
 
+        - `Caller ServerToolUseBlockCallerUnion`
+
+          Tool invocation directly from the model.
+
+          - `type DirectCaller struct{…}`
+
+            Tool invocation directly from the model.
+
+          - `type ServerToolCaller struct{…}`
+
+            Tool invocation generated by a server-side tool.
+
+          - `type ServerToolCaller20260120 struct{…}`
+
         - `Input map[string, any]`
 
-        - `Name WebSearch`
+        - `Name ServerToolUseBlockName`
 
-          - `const WebSearchWebSearch WebSearch = "web_search"`
+          - `const ServerToolUseBlockNameWebSearch ServerToolUseBlockName = "web_search"`
+
+          - `const ServerToolUseBlockNameWebFetch ServerToolUseBlockName = "web_fetch"`
+
+          - `const ServerToolUseBlockNameCodeExecution ServerToolUseBlockName = "code_execution"`
+
+          - `const ServerToolUseBlockNameBashCodeExecution ServerToolUseBlockName = "bash_code_execution"`
+
+          - `const ServerToolUseBlockNameTextEditorCodeExecution ServerToolUseBlockName = "text_editor_code_execution"`
+
+          - `const ServerToolUseBlockNameToolSearchToolRegex ServerToolUseBlockName = "tool_search_tool_regex"`
+
+          - `const ServerToolUseBlockNameToolSearchToolBm25 ServerToolUseBlockName = "tool_search_tool_bm25"`
 
         - `Type ServerToolUse`
 
@@ -4849,21 +6490,37 @@ func main() {
 
       - `type WebSearchToolResultBlock struct{…}`
 
+        - `Caller WebSearchToolResultBlockCallerUnion`
+
+          Tool invocation directly from the model.
+
+          - `type DirectCaller struct{…}`
+
+            Tool invocation directly from the model.
+
+          - `type ServerToolCaller struct{…}`
+
+            Tool invocation generated by a server-side tool.
+
+          - `type ServerToolCaller20260120 struct{…}`
+
         - `Content WebSearchToolResultBlockContentUnion`
 
           - `type WebSearchToolResultError struct{…}`
 
-            - `ErrorCode WebSearchToolResultErrorErrorCode`
+            - `ErrorCode WebSearchToolResultErrorCode`
 
-              - `const WebSearchToolResultErrorErrorCodeInvalidToolInput WebSearchToolResultErrorErrorCode = "invalid_tool_input"`
+              - `const WebSearchToolResultErrorCodeInvalidToolInput WebSearchToolResultErrorCode = "invalid_tool_input"`
 
-              - `const WebSearchToolResultErrorErrorCodeUnavailable WebSearchToolResultErrorErrorCode = "unavailable"`
+              - `const WebSearchToolResultErrorCodeUnavailable WebSearchToolResultErrorCode = "unavailable"`
 
-              - `const WebSearchToolResultErrorErrorCodeMaxUsesExceeded WebSearchToolResultErrorErrorCode = "max_uses_exceeded"`
+              - `const WebSearchToolResultErrorCodeMaxUsesExceeded WebSearchToolResultErrorCode = "max_uses_exceeded"`
 
-              - `const WebSearchToolResultErrorErrorCodeTooManyRequests WebSearchToolResultErrorErrorCode = "too_many_requests"`
+              - `const WebSearchToolResultErrorCodeTooManyRequests WebSearchToolResultErrorCode = "too_many_requests"`
 
-              - `const WebSearchToolResultErrorErrorCodeQueryTooLong WebSearchToolResultErrorErrorCode = "query_too_long"`
+              - `const WebSearchToolResultErrorCodeQueryTooLong WebSearchToolResultErrorCode = "query_too_long"`
+
+              - `const WebSearchToolResultErrorCodeRequestTooLarge WebSearchToolResultErrorCode = "request_too_large"`
 
             - `Type WebSearchToolResultError`
 
@@ -4889,6 +6546,356 @@ func main() {
 
           - `const WebSearchToolResultWebSearchToolResult WebSearchToolResult = "web_search_tool_result"`
 
+      - `type WebFetchToolResultBlock struct{…}`
+
+        - `Caller WebFetchToolResultBlockCallerUnion`
+
+          Tool invocation directly from the model.
+
+          - `type DirectCaller struct{…}`
+
+            Tool invocation directly from the model.
+
+          - `type ServerToolCaller struct{…}`
+
+            Tool invocation generated by a server-side tool.
+
+          - `type ServerToolCaller20260120 struct{…}`
+
+        - `Content WebFetchToolResultBlockContentUnion`
+
+          - `type WebFetchToolResultErrorBlock struct{…}`
+
+            - `ErrorCode WebFetchToolResultErrorCode`
+
+              - `const WebFetchToolResultErrorCodeInvalidToolInput WebFetchToolResultErrorCode = "invalid_tool_input"`
+
+              - `const WebFetchToolResultErrorCodeURLTooLong WebFetchToolResultErrorCode = "url_too_long"`
+
+              - `const WebFetchToolResultErrorCodeURLNotAllowed WebFetchToolResultErrorCode = "url_not_allowed"`
+
+              - `const WebFetchToolResultErrorCodeURLNotInPriorContext WebFetchToolResultErrorCode = "url_not_in_prior_context"`
+
+              - `const WebFetchToolResultErrorCodeURLNotAccessible WebFetchToolResultErrorCode = "url_not_accessible"`
+
+              - `const WebFetchToolResultErrorCodeUnsupportedContentType WebFetchToolResultErrorCode = "unsupported_content_type"`
+
+              - `const WebFetchToolResultErrorCodeTooManyRequests WebFetchToolResultErrorCode = "too_many_requests"`
+
+              - `const WebFetchToolResultErrorCodeMaxUsesExceeded WebFetchToolResultErrorCode = "max_uses_exceeded"`
+
+              - `const WebFetchToolResultErrorCodeUnavailable WebFetchToolResultErrorCode = "unavailable"`
+
+            - `Type WebFetchToolResultError`
+
+              - `const WebFetchToolResultErrorWebFetchToolResultError WebFetchToolResultError = "web_fetch_tool_result_error"`
+
+          - `type WebFetchBlock struct{…}`
+
+            - `Content DocumentBlock`
+
+              - `Citations CitationsConfig`
+
+                Citation configuration for the document
+
+                - `Enabled bool`
+
+              - `Source DocumentBlockSourceUnion`
+
+                - `type Base64PDFSource struct{…}`
+
+                  - `Data string`
+
+                  - `MediaType ApplicationPDF`
+
+                    - `const ApplicationPDFApplicationPDF ApplicationPDF = "application/pdf"`
+
+                  - `Type Base64`
+
+                    - `const Base64Base64 Base64 = "base64"`
+
+                - `type PlainTextSource struct{…}`
+
+                  - `Data string`
+
+                  - `MediaType TextPlain`
+
+                    - `const TextPlainTextPlain TextPlain = "text/plain"`
+
+                  - `Type Text`
+
+                    - `const TextText Text = "text"`
+
+              - `Title string`
+
+                The title of the document
+
+              - `Type Document`
+
+                - `const DocumentDocument Document = "document"`
+
+            - `RetrievedAt string`
+
+              ISO 8601 timestamp when the content was retrieved
+
+            - `Type WebFetchResult`
+
+              - `const WebFetchResultWebFetchResult WebFetchResult = "web_fetch_result"`
+
+            - `URL string`
+
+              Fetched content URL
+
+        - `ToolUseID string`
+
+        - `Type WebFetchToolResult`
+
+          - `const WebFetchToolResultWebFetchToolResult WebFetchToolResult = "web_fetch_tool_result"`
+
+      - `type CodeExecutionToolResultBlock struct{…}`
+
+        - `Content CodeExecutionToolResultBlockContentUnion`
+
+          Code execution result with encrypted stdout for PFC + web_search results.
+
+          - `type CodeExecutionToolResultError struct{…}`
+
+            - `ErrorCode CodeExecutionToolResultErrorCode`
+
+              - `const CodeExecutionToolResultErrorCodeInvalidToolInput CodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+              - `const CodeExecutionToolResultErrorCodeUnavailable CodeExecutionToolResultErrorCode = "unavailable"`
+
+              - `const CodeExecutionToolResultErrorCodeTooManyRequests CodeExecutionToolResultErrorCode = "too_many_requests"`
+
+              - `const CodeExecutionToolResultErrorCodeExecutionTimeExceeded CodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+            - `Type CodeExecutionToolResultError`
+
+              - `const CodeExecutionToolResultErrorCodeExecutionToolResultError CodeExecutionToolResultError = "code_execution_tool_result_error"`
+
+          - `type CodeExecutionResultBlock struct{…}`
+
+            - `Content []CodeExecutionOutputBlock`
+
+              - `FileID string`
+
+              - `Type CodeExecutionOutput`
+
+                - `const CodeExecutionOutputCodeExecutionOutput CodeExecutionOutput = "code_execution_output"`
+
+            - `ReturnCode int64`
+
+            - `Stderr string`
+
+            - `Stdout string`
+
+            - `Type CodeExecutionResult`
+
+              - `const CodeExecutionResultCodeExecutionResult CodeExecutionResult = "code_execution_result"`
+
+          - `type EncryptedCodeExecutionResultBlock struct{…}`
+
+            Code execution result with encrypted stdout for PFC + web_search results.
+
+            - `Content []CodeExecutionOutputBlock`
+
+              - `FileID string`
+
+              - `Type CodeExecutionOutput`
+
+            - `EncryptedStdout string`
+
+            - `ReturnCode int64`
+
+            - `Stderr string`
+
+            - `Type EncryptedCodeExecutionResult`
+
+              - `const EncryptedCodeExecutionResultEncryptedCodeExecutionResult EncryptedCodeExecutionResult = "encrypted_code_execution_result"`
+
+        - `ToolUseID string`
+
+        - `Type CodeExecutionToolResult`
+
+          - `const CodeExecutionToolResultCodeExecutionToolResult CodeExecutionToolResult = "code_execution_tool_result"`
+
+      - `type BashCodeExecutionToolResultBlock struct{…}`
+
+        - `Content BashCodeExecutionToolResultBlockContentUnion`
+
+          - `type BashCodeExecutionToolResultError struct{…}`
+
+            - `ErrorCode BashCodeExecutionToolResultErrorCode`
+
+              - `const BashCodeExecutionToolResultErrorCodeInvalidToolInput BashCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+              - `const BashCodeExecutionToolResultErrorCodeUnavailable BashCodeExecutionToolResultErrorCode = "unavailable"`
+
+              - `const BashCodeExecutionToolResultErrorCodeTooManyRequests BashCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+              - `const BashCodeExecutionToolResultErrorCodeExecutionTimeExceeded BashCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+              - `const BashCodeExecutionToolResultErrorCodeOutputFileTooLarge BashCodeExecutionToolResultErrorCode = "output_file_too_large"`
+
+            - `Type BashCodeExecutionToolResultError`
+
+              - `const BashCodeExecutionToolResultErrorBashCodeExecutionToolResultError BashCodeExecutionToolResultError = "bash_code_execution_tool_result_error"`
+
+          - `type BashCodeExecutionResultBlock struct{…}`
+
+            - `Content []BashCodeExecutionOutputBlock`
+
+              - `FileID string`
+
+              - `Type BashCodeExecutionOutput`
+
+                - `const BashCodeExecutionOutputBashCodeExecutionOutput BashCodeExecutionOutput = "bash_code_execution_output"`
+
+            - `ReturnCode int64`
+
+            - `Stderr string`
+
+            - `Stdout string`
+
+            - `Type BashCodeExecutionResult`
+
+              - `const BashCodeExecutionResultBashCodeExecutionResult BashCodeExecutionResult = "bash_code_execution_result"`
+
+        - `ToolUseID string`
+
+        - `Type BashCodeExecutionToolResult`
+
+          - `const BashCodeExecutionToolResultBashCodeExecutionToolResult BashCodeExecutionToolResult = "bash_code_execution_tool_result"`
+
+      - `type TextEditorCodeExecutionToolResultBlock struct{…}`
+
+        - `Content TextEditorCodeExecutionToolResultBlockContentUnion`
+
+          - `type TextEditorCodeExecutionToolResultError struct{…}`
+
+            - `ErrorCode TextEditorCodeExecutionToolResultErrorCode`
+
+              - `const TextEditorCodeExecutionToolResultErrorCodeInvalidToolInput TextEditorCodeExecutionToolResultErrorCode = "invalid_tool_input"`
+
+              - `const TextEditorCodeExecutionToolResultErrorCodeUnavailable TextEditorCodeExecutionToolResultErrorCode = "unavailable"`
+
+              - `const TextEditorCodeExecutionToolResultErrorCodeTooManyRequests TextEditorCodeExecutionToolResultErrorCode = "too_many_requests"`
+
+              - `const TextEditorCodeExecutionToolResultErrorCodeExecutionTimeExceeded TextEditorCodeExecutionToolResultErrorCode = "execution_time_exceeded"`
+
+              - `const TextEditorCodeExecutionToolResultErrorCodeFileNotFound TextEditorCodeExecutionToolResultErrorCode = "file_not_found"`
+
+            - `ErrorMessage string`
+
+            - `Type TextEditorCodeExecutionToolResultError`
+
+              - `const TextEditorCodeExecutionToolResultErrorTextEditorCodeExecutionToolResultError TextEditorCodeExecutionToolResultError = "text_editor_code_execution_tool_result_error"`
+
+          - `type TextEditorCodeExecutionViewResultBlock struct{…}`
+
+            - `Content string`
+
+            - `FileType TextEditorCodeExecutionViewResultBlockFileType`
+
+              - `const TextEditorCodeExecutionViewResultBlockFileTypeText TextEditorCodeExecutionViewResultBlockFileType = "text"`
+
+              - `const TextEditorCodeExecutionViewResultBlockFileTypeImage TextEditorCodeExecutionViewResultBlockFileType = "image"`
+
+              - `const TextEditorCodeExecutionViewResultBlockFileTypePDF TextEditorCodeExecutionViewResultBlockFileType = "pdf"`
+
+            - `NumLines int64`
+
+            - `StartLine int64`
+
+            - `TotalLines int64`
+
+            - `Type TextEditorCodeExecutionViewResult`
+
+              - `const TextEditorCodeExecutionViewResultTextEditorCodeExecutionViewResult TextEditorCodeExecutionViewResult = "text_editor_code_execution_view_result"`
+
+          - `type TextEditorCodeExecutionCreateResultBlock struct{…}`
+
+            - `IsFileUpdate bool`
+
+            - `Type TextEditorCodeExecutionCreateResult`
+
+              - `const TextEditorCodeExecutionCreateResultTextEditorCodeExecutionCreateResult TextEditorCodeExecutionCreateResult = "text_editor_code_execution_create_result"`
+
+          - `type TextEditorCodeExecutionStrReplaceResultBlock struct{…}`
+
+            - `Lines []string`
+
+            - `NewLines int64`
+
+            - `NewStart int64`
+
+            - `OldLines int64`
+
+            - `OldStart int64`
+
+            - `Type TextEditorCodeExecutionStrReplaceResult`
+
+              - `const TextEditorCodeExecutionStrReplaceResultTextEditorCodeExecutionStrReplaceResult TextEditorCodeExecutionStrReplaceResult = "text_editor_code_execution_str_replace_result"`
+
+        - `ToolUseID string`
+
+        - `Type TextEditorCodeExecutionToolResult`
+
+          - `const TextEditorCodeExecutionToolResultTextEditorCodeExecutionToolResult TextEditorCodeExecutionToolResult = "text_editor_code_execution_tool_result"`
+
+      - `type ToolSearchToolResultBlock struct{…}`
+
+        - `Content ToolSearchToolResultBlockContentUnion`
+
+          - `type ToolSearchToolResultError struct{…}`
+
+            - `ErrorCode ToolSearchToolResultErrorCode`
+
+              - `const ToolSearchToolResultErrorCodeInvalidToolInput ToolSearchToolResultErrorCode = "invalid_tool_input"`
+
+              - `const ToolSearchToolResultErrorCodeUnavailable ToolSearchToolResultErrorCode = "unavailable"`
+
+              - `const ToolSearchToolResultErrorCodeTooManyRequests ToolSearchToolResultErrorCode = "too_many_requests"`
+
+              - `const ToolSearchToolResultErrorCodeExecutionTimeExceeded ToolSearchToolResultErrorCode = "execution_time_exceeded"`
+
+            - `ErrorMessage string`
+
+            - `Type ToolSearchToolResultError`
+
+              - `const ToolSearchToolResultErrorToolSearchToolResultError ToolSearchToolResultError = "tool_search_tool_result_error"`
+
+          - `type ToolSearchToolSearchResultBlock struct{…}`
+
+            - `ToolReferences []ToolReferenceBlock`
+
+              - `ToolName string`
+
+              - `Type ToolReference`
+
+                - `const ToolReferenceToolReference ToolReference = "tool_reference"`
+
+            - `Type ToolSearchToolSearchResult`
+
+              - `const ToolSearchToolSearchResultToolSearchToolSearchResult ToolSearchToolSearchResult = "tool_search_tool_search_result"`
+
+        - `ToolUseID string`
+
+        - `Type ToolSearchToolResult`
+
+          - `const ToolSearchToolResultToolSearchToolResult ToolSearchToolResult = "tool_search_tool_result"`
+
+      - `type ContainerUploadBlock struct{…}`
+
+        Response model for a file uploaded to the container.
+
+        - `FileID string`
+
+        - `Type ContainerUpload`
+
+          - `const ContainerUploadContainerUpload ContainerUpload = "container_upload"`
+
     - `Model Model`
 
       The model that will complete your prompt.
@@ -4901,85 +6908,85 @@ func main() {
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
+        - `const ModelClaudeFable5 Model = "claude-fable-5"`
 
-          Premium model combining maximum intelligence with practical performance
+          Next generation of intelligence for the hardest knowledge work and coding problems
+
+        - `const ModelClaudeMythos5 Model = "claude-mythos-5"`
+
+          Most capable model for cybersecurity and biology research
+
+        - `const ModelClaudeOpus4_8 Model = "claude-opus-4-8"`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `const ModelClaudeOpus4_7 Model = "claude-opus-4-7"`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `const ModelClaudeMythosPreview Model = "claude-mythos-preview"`
+
+          New class of intelligence, strongest in coding and cybersecurity
+
+        - `const ModelClaudeOpus4_6 Model = "claude-opus-4-6"`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `const ModelClaudeSonnet4_6 Model = "claude-sonnet-4-6"`
+
+          Best combination of speed and intelligence
+
+        - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+
+          Fastest model with near-frontier intelligence
+
+        - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+
+          Fastest model with near-frontier intelligence
 
         - `const ModelClaudeOpus4_5 Model = "claude-opus-4-5"`
 
           Premium model combining maximum intelligence with practical performance
 
-        - `const ModelClaude3_7SonnetLatest Model = "claude-3-7-sonnet-latest"`
+        - `const ModelClaudeOpus4_5_20251101 Model = "claude-opus-4-5-20251101"`
 
-          High-performance model with early extended thinking
+          Premium model combining maximum intelligence with practical performance
 
-        - `const ModelClaude3_7Sonnet20250219 Model = "claude-3-7-sonnet-20250219"`
+        - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
 
-          High-performance model with early extended thinking
+          High-performance model for agents and coding
 
-        - `const ModelClaude3_5HaikuLatest Model = "claude-3-5-haiku-latest"`
+        - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
 
-          Fastest and most compact model for near-instant responsiveness
+          High-performance model for agents and coding
 
-        - `const ModelClaude3_5Haiku20241022 Model = "claude-3-5-haiku-20241022"`
+        - `const ModelClaudeOpus4_1 Model = "claude-opus-4-1"`
 
-          Our fastest model
+          Exceptional model for specialized complex tasks
 
-        - `const ModelClaudeHaiku4_5 Model = "claude-haiku-4-5"`
+        - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
 
-          Hybrid model, capable of near-instant responses and extended thinking
+          Exceptional model for specialized complex tasks
 
-        - `const ModelClaudeHaiku4_5_20251001 Model = "claude-haiku-4-5-20251001"`
+        - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
 
-          Hybrid model, capable of near-instant responses and extended thinking
+          Powerful model for complex tasks
 
-        - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
+        - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
 
-          High-performance model with extended thinking
+          Powerful model for complex tasks
 
         - `const ModelClaudeSonnet4_0 Model = "claude-sonnet-4-0"`
 
           High-performance model with extended thinking
 
-        - `const ModelClaude4Sonnet20250514 Model = "claude-4-sonnet-20250514"`
+        - `const ModelClaudeSonnet4_20250514 Model = "claude-sonnet-4-20250514"`
 
           High-performance model with extended thinking
 
-        - `const ModelClaudeSonnet4_5 Model = "claude-sonnet-4-5"`
-
-          Our best model for real-world agents and coding
-
-        - `const ModelClaudeSonnet4_5_20250929 Model = "claude-sonnet-4-5-20250929"`
-
-          Our best model for real-world agents and coding
-
-        - `const ModelClaudeOpus4_0 Model = "claude-opus-4-0"`
-
-          Our most capable model
-
-        - `const ModelClaudeOpus4_20250514 Model = "claude-opus-4-20250514"`
-
-          Our most capable model
-
-        - `const ModelClaude4Opus20250514 Model = "claude-4-opus-20250514"`
-
-          Our most capable model
-
-        - `const ModelClaudeOpus4_1_20250805 Model = "claude-opus-4-1-20250805"`
-
-          Our most capable model
-
-        - `const ModelClaude3OpusLatest Model = "claude-3-opus-latest"`
-
-          Excels at writing and complex tasks
-
-        - `const ModelClaude_3_Opus_20240229 Model = "claude-3-opus-20240229"`
-
-          Excels at writing and complex tasks
-
         - `const ModelClaude_3_Haiku_20240307 Model = "claude-3-haiku-20240307"`
 
-          Our previous most fast and cost-effective
+          Fast and cost-effective model
 
       - `string`
 
@@ -4990,6 +6997,32 @@ func main() {
       This will always be `"assistant"`.
 
       - `const AssistantAssistant Assistant = "assistant"`
+
+    - `StopDetails RefusalStopDetails`
+
+      Structured information about a refusal.
+
+      - `Category RefusalStopDetailsCategory`
+
+        The policy category that triggered the refusal.
+
+        `null` when the refusal doesn't map to a named category.
+
+        - `const RefusalStopDetailsCategoryCyber RefusalStopDetailsCategory = "cyber"`
+
+        - `const RefusalStopDetailsCategoryBio RefusalStopDetailsCategory = "bio"`
+
+        - `const RefusalStopDetailsCategoryReasoningExtraction RefusalStopDetailsCategory = "reasoning_extraction"`
+
+      - `Explanation string`
+
+        Human-readable explanation of the refusal.
+
+        This text is not guaranteed to be stable. `null` when no explanation is available for the category.
+
+      - `Type Refusal`
+
+        - `const RefusalRefusal Refusal = "refusal"`
 
     - `StopReason StopReason`
 
@@ -5064,6 +7097,10 @@ func main() {
 
         The number of input tokens read from the cache.
 
+      - `InferenceGeo string`
+
+        The geographic region where inference was performed for this request.
+
       - `InputTokens int64`
 
         The number of input tokens which were used.
@@ -5072,9 +7109,33 @@ func main() {
 
         The number of output tokens which were used.
 
+      - `OutputTokensDetails OutputTokensDetails`
+
+        Breakdown of output tokens by category.
+
+        `output_tokens` remains the inclusive, authoritative total used for billing.
+        This object provides a read-only decomposition for observability — for example,
+        how many of the billed output tokens were spent on internal reasoning that may
+        have been summarized before being returned to you.
+
+        - `ThinkingTokens int64`
+
+          Number of output tokens the model generated as internal reasoning, including
+          the thinking-block delimiter tokens.
+
+          Reflects the raw reasoning the model produced, not the (possibly shorter)
+          summarized thinking text returned in the response body. Computed by
+          re-tokenizing the raw reasoning text, so it may differ from the model's exact
+          generation count by a small number of tokens. Always ≤ `output_tokens`;
+          `output_tokens - thinking_tokens` approximates the non-reasoning output.
+
       - `ServerToolUse ServerToolUsage`
 
         The number of server tool requests.
+
+        - `WebFetchRequests int64`
+
+          The number of web fetch tool requests.
 
         - `WebSearchRequests int64`
 
