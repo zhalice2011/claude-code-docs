@@ -416,8 +416,8 @@
     "debug-your-config.md": {
       "original_url": "https://code.claude.com/docs/en/debug-your-config",
       "original_md_url": "https://code.claude.com/docs/en/debug-your-config.md",
-      "hash": "c229979ad3ec811ffc195ebd285fb8232780909d824b972c01cf06a06ba59d5d",
-      "last_updated": "2026-06-24T11:33:42.705200",
+      "hash": "544d91724aa4dc3bc2226976feda6934345b7a5a87b7b8502ca508b62140cb26",
+      "last_updated": "2026-06-25T17:04:52.227561",
       "source": "claude-code"
     },
     "deep-links.md": {
@@ -556,8 +556,8 @@
     "hooks-guide.md": {
       "original_url": "https://code.claude.com/docs/en/hooks-guide",
       "original_md_url": "https://code.claude.com/docs/en/hooks-guide.md",
-      "hash": "527cb9e1914de025886e6b331f9f9623aff529ff4e6e60a49ca0ef373ce2451b",
-      "last_updated": "2026-06-24T11:34:00.232124",
+      "hash": "e623e705dabb65c052e53683653f82b156a114b91e64188dc5f75dc785b88ea3",
+      "last_updated": "2026-06-25T17:05:12.155182",
       "source": "claude-code"
     },
     "how-claude-code-works.md": {
@@ -647,8 +647,8 @@
     "mcp-quickstart.md": {
       "original_url": "https://code.claude.com/docs/en/mcp-quickstart",
       "original_md_url": "https://code.claude.com/docs/en/mcp-quickstart.md",
-      "hash": "5f6d016806415cc787c57aac113aa64d2a1e0409f6d68a00a57decd7ca01fecf",
-      "last_updated": "2026-06-24T11:34:09.380531",
+      "hash": "f43273b572b5d8119f4fe89fa2b8baa8c5b7fa8e7b6fd4900828957e6ea9b136",
+      "last_updated": "2026-06-25T17:05:25.647659",
       "source": "claude-code"
     },
     "memory.md": {
@@ -794,8 +794,8 @@
     "routines.md": {
       "original_url": "https://code.claude.com/docs/en/routines",
       "original_md_url": "https://code.claude.com/docs/en/routines.md",
-      "hash": "27213e9ed746e4bde09615714f53bf8e5478c2d6948ee0bdf4eae1df96f73606",
-      "last_updated": "2026-06-24T11:34:29.219705",
+      "hash": "3c3f8316c1c3965ca27ae8504883f4f06b2b8bc0f90c1b34ed49cdf2f37c5860",
+      "last_updated": "2026-06-25T17:05:47.124280",
       "source": "claude-code"
     },
     "sandbox-environments.md": {
@@ -955,8 +955,8 @@
     "web-quickstart.md": {
       "original_url": "https://code.claude.com/docs/en/web-quickstart",
       "original_md_url": "https://code.claude.com/docs/en/web-quickstart.md",
-      "hash": "4bc908bec82703037e32f2d6062e61c319234e696d6ede064175414372ab56aa",
-      "last_updated": "2026-06-24T11:34:46.796388",
+      "hash": "b2f588fb0e46d45c5fc7fccec9910ca05245cc94070ca01076f2a4b4a47cb471",
+      "last_updated": "2026-06-25T17:06:07.986202",
       "source": "claude-code"
     },
     "whats-new.md": {
@@ -1074,7 +1074,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-06-25T14:06:51.670942",
+    "last_fetch_completed": "2026-06-25T17:06:24.979422",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 153,
@@ -1084,7 +1084,7 @@
     "total_files": 153,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-06-25T14:06:51.670967",
+  "last_updated": "2026-06-25T17:06:24.979445",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
