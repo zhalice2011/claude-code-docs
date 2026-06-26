@@ -22,6 +22,11 @@ import os
 import re
 import random
 
+try:
+    from markdownify import markdownify as html_to_markdown
+except ImportError:  # markdownify is only needed for the VitePress (codebuddy) source
+    html_to_markdown = None
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -64,6 +69,28 @@ DOC_SOURCES = [
         "manifest_file": "docs_manifest.json",
         "fetch_changelog": False,
         "official_docs_base": "https://platform.claude.com/docs/en",
+    },
+    {
+        "name": "codebuddy",
+        "description": "CodeBuddy (腾讯云代码助手) documentation",
+        # CodeBuddy is a VitePress site (no sitemap, no raw .md endpoint).
+        # Routes are discovered from its metadata JS chunk and content is read
+        # from the server-rendered HTML pages. See fetch_method below.
+        "fetch_method": "vitepress_html",
+        "docs_root_url": "https://www.codebuddy.cn/docs",
+        "route_sections": [
+            "cli", "ide", "plugin", "enterprise",
+            "workbuddy", "workbuddyapp", "workbuddymini",
+        ],
+        # Required by the sitemap pipeline / config tests; unused for VitePress.
+        "sitemap_urls": [],
+        "english_patterns": [],
+        "path_prefixes": [],
+        "skip_patterns": ["release-notes"],  # version logs - too numerous, skipped
+        "output_dir": "docs/codebuddy",
+        "manifest_file": "docs_manifest.json",
+        "fetch_changelog": False,
+        "official_docs_base": "https://www.codebuddy.cn/docs",
     },
 ]
 
@@ -293,6 +320,149 @@ def discover_pages_from_sitemap(
 
 
 # =============================================================================
+# VITEPRESS DISCOVERY & CONTENT (codebuddy source)
+# =============================================================================
+
+def discover_metadata_chunk_url(session: requests.Session, docs_root_url: str) -> str:
+    """
+    Find the VitePress metadata JS chunk URL from the docs index page.
+    The chunk's hash changes on each site build, so it must be discovered
+    dynamically rather than hardcoded.
+    """
+    index_url = f"{docs_root_url}/"
+    response = session.get(index_url, headers=HEADERS, timeout=30)
+    response.raise_for_status()
+
+    match = re.search(r'(static/chunks/metadata\.[\w]+\.js)', response.text)
+    if not match:
+        raise Exception(f"Could not locate metadata chunk in {index_url}")
+
+    return f"{docs_root_url}/{match.group(1)}"
+
+
+def discover_routes_from_vitepress(
+    session: requests.Session,
+    docs_root_url: str,
+    route_sections: List[str],
+    skip_patterns: List[str],
+) -> List[str]:
+    """
+    Discover documentation routes from the VitePress metadata chunk.
+
+    Returns a sorted list of route paths (e.g. "/cli/hooks") for the
+    configured top-level sections, excluding any matching skip_patterns.
+    """
+    logger.info("Discovering CodeBuddy routes from metadata chunk...")
+
+    metadata_url = discover_metadata_chunk_url(session, docs_root_url)
+    logger.info(f"Found metadata chunk: {metadata_url}")
+
+    response = session.get(metadata_url, headers=HEADERS, timeout=30)
+    response.raise_for_status()
+    content = response.text
+
+    # Routes appear as JSON-escaped string literals inside the chunk.
+    section_alt = "|".join(re.escape(s) for s in route_sections)
+    raw_routes = re.findall(rf'"(/(?:{section_alt})/[^"]*)"', content)
+
+    routes = set()
+    for route in raw_routes:
+        # Strip trailing JSON-escape artifacts and anchor fragments.
+        route = route.rstrip('\\').split('#')[0].rstrip('\\')
+        if not route or route.endswith('/'):
+            continue
+        if any(skip.lower() in route.lower() for skip in skip_patterns):
+            continue
+        routes.add(route)
+
+    routes = sorted(routes)
+    logger.info(f"Discovered {len(routes)} CodeBuddy documentation routes")
+    return routes
+
+
+def route_to_safe_filename(route: str) -> str:
+    """Convert a VitePress route to a safe filename (e.g. /cli/hooks -> cli__hooks.md)."""
+    path = route.strip('/')
+    safe_name = path.replace('/', '__')
+    if not safe_name.endswith('.md'):
+        safe_name += '.md'
+    return safe_name
+
+
+def html_page_to_markdown(html: str) -> str:
+    """
+    Extract the main documentation content from a server-rendered VitePress
+    HTML page and convert it to Markdown.
+    """
+    if html_to_markdown is None:
+        raise RuntimeError(
+            "markdownify is required for the codebuddy source. "
+            "Install it with: pip install markdownify"
+        )
+
+    # The prose lives in <div class="vp-doc ...">...</div> inside <main>.
+    main_match = re.search(r'<main[^>]*>(.*?)</main>', html, re.DOTALL)
+    region = main_match.group(1) if main_match else html
+
+    doc_match = re.search(r'<div class="vp-doc[^"]*">(.*?)</div>\s*<', region, re.DOTALL)
+    content_html = doc_match.group(1) if doc_match else region
+
+    markdown = html_to_markdown(content_html, heading_style="ATX", bullets="-")
+
+    # Strip VitePress header-anchor noise: "[​](#some-heading)".
+    markdown = re.sub(r'\s*\[​\]\([^)]*\)', '', markdown)
+    # Collapse excess blank lines.
+    markdown = re.sub(r'\n{3,}', '\n\n', markdown).strip()
+    return markdown
+
+
+def fetch_vitepress_content(
+    route: str,
+    session: requests.Session,
+    docs_root_url: str,
+) -> Tuple[str, str]:
+    """
+    Fetch a VitePress page's rendered HTML and convert it to Markdown.
+
+    Returns a tuple of (route, markdown_content).
+    """
+    page_url = f"{docs_root_url}{route}.html"
+    logger.info(f"Fetching: {page_url}")
+
+    for attempt in range(MAX_RETRIES):
+        try:
+            response = session.get(page_url, headers=HEADERS, timeout=30, allow_redirects=True)
+
+            if response.status_code == 429:
+                wait_time = int(response.headers.get('Retry-After', 60))
+                logger.warning(f"Rate limited. Waiting {wait_time} seconds...")
+                time.sleep(wait_time)
+                continue
+
+            response.raise_for_status()
+
+            markdown = html_page_to_markdown(response.text)
+            validate_markdown_content(markdown, route)
+
+            logger.info(f"Successfully fetched {route} ({len(markdown)} bytes of markdown)")
+            return route, markdown
+
+        except requests.exceptions.RequestException as e:
+            logger.warning(f"Attempt {attempt + 1}/{MAX_RETRIES} failed for {route}: {e}")
+            if attempt < MAX_RETRIES - 1:
+                delay = min(RETRY_DELAY * (2 ** attempt), MAX_RETRY_DELAY)
+                jittered_delay = delay * random.uniform(0.5, 1.0)
+                logger.info(f"Retrying in {jittered_delay:.1f} seconds...")
+                time.sleep(jittered_delay)
+            else:
+                raise Exception(f"Failed to fetch {route} after {MAX_RETRIES} attempts: {e}")
+
+        except ValueError as e:
+            logger.error(f"Content validation failed for {route}: {e}")
+            raise
+
+
+# =============================================================================
 # CONTENT VALIDATION
 # =============================================================================
 
@@ -489,6 +659,132 @@ def cleanup_old_files(docs_dir: Path, current_files: Set[str], manifest: dict) -
 def process_doc_source(source_config: dict, session: requests.Session, repo_root: Path) -> dict:
     """
     Process a single documentation source.
+
+    Dispatches to the appropriate fetch pipeline based on the source's
+    "fetch_method" ("sitemap_md" default, or "vitepress_html").
+
+    Args:
+        source_config: Configuration for the documentation source
+        session: requests Session object
+        repo_root: Path to the repository root
+
+    Returns:
+        Dictionary with processing statistics
+    """
+    if source_config.get("fetch_method") == "vitepress_html":
+        return process_vitepress_source(source_config, session, repo_root)
+    return process_sitemap_source(source_config, session, repo_root)
+
+
+def process_vitepress_source(source_config: dict, session: requests.Session, repo_root: Path) -> dict:
+    """Process a VitePress documentation source (route discovery + rendered HTML)."""
+    source_name = source_config["name"]
+    logger.info(f"\n{'='*60}")
+    logger.info(f"Processing source: {source_name} - {source_config['description']}")
+    logger.info(f"{'='*60}")
+
+    docs_dir = repo_root / source_config["output_dir"]
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    logger.info(f"Output directory: {docs_dir}")
+
+    manifest = load_manifest(docs_dir)
+
+    stats = {
+        "source_name": source_name,
+        "successful": 0,
+        "failed": 0,
+        "failed_pages": [],
+        "fetched_files": set(),
+        "pages_discovered": 0,
+    }
+    new_manifest = {"files": {}}
+
+    docs_root_url = source_config["docs_root_url"]
+
+    # Discover routes
+    try:
+        routes = discover_routes_from_vitepress(
+            session,
+            docs_root_url,
+            source_config["route_sections"],
+            source_config.get("skip_patterns", []),
+        )
+    except Exception as e:
+        logger.error(f"Failed to discover routes for {source_name}: {e}")
+        return stats
+
+    stats["pages_discovered"] = len(routes)
+
+    if not routes:
+        logger.error(f"No documentation routes discovered for {source_name}")
+        return stats
+
+    # Fetch each route
+    for i, route in enumerate(routes, 1):
+        logger.info(f"[{source_name}] Processing {i}/{len(routes)}: {route}")
+
+        try:
+            _, content = fetch_vitepress_content(route, session, docs_root_url)
+            filename = route_to_safe_filename(route)
+
+            old_hash = manifest.get("files", {}).get(filename, {}).get("hash", "")
+            old_entry = manifest.get("files", {}).get(filename, {})
+
+            if content_has_changed(content, old_hash):
+                content_hash = save_markdown_file(docs_dir, filename, content)
+                logger.info(f"Updated: {filename}")
+                last_updated = datetime.now().isoformat()
+            else:
+                content_hash = old_hash
+                logger.info(f"Unchanged: {filename}")
+                last_updated = old_entry.get("last_updated", datetime.now().isoformat())
+
+            new_manifest["files"][filename] = {
+                "original_url": f"{docs_root_url}{route}",
+                "hash": content_hash,
+                "last_updated": last_updated,
+                "source": source_name
+            }
+
+            stats["fetched_files"].add(filename)
+            stats["successful"] += 1
+
+            if i < len(routes):
+                time.sleep(RATE_LIMIT_DELAY)
+
+        except Exception as e:
+            logger.error(f"Failed to process {route}: {e}")
+            stats["failed"] += 1
+            stats["failed_pages"].append(route)
+
+    # Clean up old files
+    cleanup_old_files(docs_dir, stats["fetched_files"], manifest)
+
+    # Add metadata and save manifest
+    new_manifest["fetch_metadata"] = {
+        "source_name": source_name,
+        "last_fetch_completed": datetime.now().isoformat(),
+        "docs_root_url": docs_root_url,
+        "pages_discovered": stats["pages_discovered"],
+        "pages_fetched_successfully": stats["successful"],
+        "pages_failed": stats["failed"],
+        "failed_pages": stats["failed_pages"],
+        "total_files": len(stats["fetched_files"]),
+        "fetch_tool_version": "4.0"
+    }
+    save_manifest(docs_dir, new_manifest, source_config)
+
+    logger.info(f"\n[{source_name}] Summary:")
+    logger.info(f"  Discovered: {stats['pages_discovered']} pages")
+    logger.info(f"  Successful: {stats['successful']}")
+    logger.info(f"  Failed: {stats['failed']}")
+
+    return stats
+
+
+def process_sitemap_source(source_config: dict, session: requests.Session, repo_root: Path) -> dict:
+    """
+    Process a single sitemap-based documentation source.
 
     Args:
         source_config: Configuration for the documentation source

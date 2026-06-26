@@ -13,8 +13,10 @@ SCRIPT_VERSION="0.4.0"
 DOCS_PATH="$HOME/.claude-code-docs"
 DOCS_DIR="$DOCS_PATH/docs"
 PLATFORM_DOCS_DIR="$DOCS_PATH/docs/platform"
+CODEBUDDY_DOCS_DIR="$DOCS_PATH/docs/codebuddy"
 MANIFEST="$DOCS_DIR/docs_manifest.json"
 PLATFORM_MANIFEST="$PLATFORM_DOCS_DIR/docs_manifest.json"
+CODEBUDDY_MANIFEST="$CODEBUDDY_DOCS_DIR/docs_manifest.json"
 
 # No colors since they don't work in terminal anyway
 
@@ -36,6 +38,13 @@ print_doc_header() {
 print_platform_doc_header() {
     echo "COMMUNITY MIRROR: https://github.com/ericbuess/claude-code-docs"
     echo "OFFICIAL DOCS: https://platform.claude.com/docs/en"
+    echo ""
+}
+
+# Function to print codebuddy documentation header
+print_codebuddy_doc_header() {
+    echo "COMMUNITY MIRROR: https://github.com/ericbuess/claude-code-docs"
+    echo "OFFICIAL DOCS: https://www.codebuddy.cn/docs"
     echo ""
 }
 
@@ -144,6 +153,9 @@ show_freshness() {
     if [[ -d "$PLATFORM_DOCS_DIR" ]]; then
         echo "  - platform: /docs platform/<topic>"
     fi
+    if [[ -d "$CODEBUDDY_DOCS_DIR" ]]; then
+        echo "  - codebuddy: /docs codebuddy/<topic>"
+    fi
 }
 
 # Function to determine if topic is a platform doc
@@ -165,6 +177,23 @@ get_platform_topic() {
     echo "$result"
 }
 
+# Function to determine if topic is a codebuddy doc
+is_codebuddy_topic() {
+    local topic="$1"
+    if [[ "$topic" == codebuddy/* ]] || [[ "$topic" == codebuddy\ * ]] || [[ "$topic" == "codebuddy" ]]; then
+        return 0
+    fi
+    return 1
+}
+
+# Function to extract codebuddy topic name
+get_codebuddy_topic() {
+    local topic="$1"
+    local result="${topic#codebuddy/}"
+    result="${result#codebuddy }"
+    echo "$result"
+}
+
 # Function to read documentation
 read_doc() {
     local topic
@@ -177,6 +206,7 @@ read_doc() {
     local docs_dir="$DOCS_DIR"
     local manifest="$MANIFEST"
     local is_platform=false
+    local is_codebuddy=false
     local official_base="https://docs.anthropic.com/en/docs/claude-code"
 
     if is_platform_topic "$topic"; then
@@ -185,6 +215,12 @@ read_doc() {
         manifest="$PLATFORM_MANIFEST"
         is_platform=true
         official_base="https://platform.claude.com/docs/en"
+    elif is_codebuddy_topic "$topic"; then
+        topic=$(get_codebuddy_topic "$topic")
+        docs_dir="$CODEBUDDY_DOCS_DIR"
+        manifest="$CODEBUDDY_MANIFEST"
+        is_codebuddy=true
+        official_base="https://www.codebuddy.cn/docs"
     fi
 
     # Handle empty topic for platform (list platform docs)
@@ -193,11 +229,19 @@ read_doc() {
         return
     fi
 
+    # Handle empty topic for codebuddy (list codebuddy docs)
+    if [[ -z "$topic" ]] && [[ "$is_codebuddy" == "true" ]]; then
+        list_codebuddy_docs
+        return
+    fi
+
     local doc_path="$docs_dir/${topic}.md"
 
     if [[ -f "$doc_path" ]]; then
         if [[ "$is_platform" == "true" ]]; then
             print_platform_doc_header
+        elif [[ "$is_codebuddy" == "true" ]]; then
+            print_codebuddy_doc_header
         else
             print_doc_header
         fi
@@ -269,6 +313,8 @@ read_doc() {
         # Always show search interface - never error messages
         if [[ "$is_platform" == "true" ]]; then
             print_platform_doc_header
+        elif [[ "$is_codebuddy" == "true" ]]; then
+            print_codebuddy_doc_header
         else
             print_doc_header
         fi
@@ -292,6 +338,8 @@ read_doc() {
                 echo ""
                 if [[ "$is_platform" == "true" ]]; then
                     echo "Try: /docs platform/<topic> to read a specific document"
+                elif [[ "$is_codebuddy" == "true" ]]; then
+                    echo "Try: /docs codebuddy/<topic> to read a specific document"
                 else
                     echo "Try: /docs <topic> to read a specific document"
                 fi
@@ -328,9 +376,18 @@ list_docs() {
         echo ""
     fi
 
+    # Check if codebuddy docs exist
+    if [[ -d "$CODEBUDDY_DOCS_DIR" ]] && ls "$CODEBUDDY_DOCS_DIR"/*.md >/dev/null 2>&1; then
+        echo "CodeBuddy documentation (use /docs codebuddy/<topic>):"
+        echo ""
+        ls "$CODEBUDDY_DOCS_DIR" 2>/dev/null | grep '\.md$' | sed 's/\.md$//' | sort | column -c 80
+        echo ""
+    fi
+
     echo "Usage:"
     echo "  /docs <topic>           - Read Claude Code documentation"
     echo "  /docs platform/<topic>  - Read Platform API documentation"
+    echo "  /docs codebuddy/<topic> - Read CodeBuddy documentation"
     echo "  /docs -t                - Check freshness"
     echo "  /docs what's new        - Show recent changes"
 }
@@ -353,6 +410,26 @@ list_platform_docs() {
     fi
     echo ""
     echo "Usage: /docs platform/<topic>"
+}
+
+# Function to list codebuddy documentation
+list_codebuddy_docs() {
+    print_codebuddy_doc_header
+
+    # Auto-update to ensure fresh list
+    auto_update
+
+    echo "Available CodeBuddy documentation topics:"
+    echo ""
+    if [[ -d "$CODEBUDDY_DOCS_DIR" ]]; then
+        ls "$CODEBUDDY_DOCS_DIR" 2>/dev/null | grep '\.md$' | sed 's/\.md$//' | sort | column -c 80 || echo "(no codebuddy docs found)"
+    else
+        echo "(codebuddy docs not yet downloaded)"
+        echo ""
+        echo "CodeBuddy docs will be available after the next sync."
+    fi
+    echo ""
+    echo "Usage: /docs codebuddy/<topic>"
 }
 
 # Function for hook check (auto-update)
