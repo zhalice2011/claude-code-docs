@@ -500,8 +500,8 @@
     "fullscreen.md": {
       "original_url": "https://code.claude.com/docs/en/fullscreen",
       "original_md_url": "https://code.claude.com/docs/en/fullscreen.md",
-      "hash": "8e0781b0cc4853fecff243dc56cd7adeabeae432a9f9da0dfdf9ccf99287648b",
-      "last_updated": "2026-06-24T17:00:54.867724",
+      "hash": "71f2a6d52631abbebdd60983a3c3c2fc7761bceb4dd1748a0aea6f3f37c698f1",
+      "last_updated": "2026-06-26T19:29:26.098668",
       "source": "claude-code"
     },
     "github-actions.md": {
@@ -1081,7 +1081,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-06-26T16:57:48.570694",
+    "last_fetch_completed": "2026-06-26T19:30:59.306114",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 154,
@@ -1091,7 +1091,7 @@
     "total_files": 154,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-06-26T16:57:48.570722",
+  "last_updated": "2026-06-26T19:30:59.306145",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
