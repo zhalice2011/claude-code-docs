@@ -14,11 +14,11 @@
 
 可查看已安排的任务及历史执行记录。
 
-![](/docs/static/auto-1.BR-oYIXJ.png)#### 添加任务
+![](/docs/static/auto-1.BDJyWpyk.png)#### 添加任务
 
 点击右上角 **添加**，填写以下配置项：
 
-![](/docs/static/auto-2.WrD5blOe.png)
+![](/docs/static/auto-2.c1QqfK6l.png)
 
 | 配置项 | 说明 |
 | --- | --- |
@@ -33,7 +33,7 @@
 
 **每日 AI 新闻推送**
 
-![](/docs/static/auto-3.BkLK3JTY.png)#### 从模板入手
+![](/docs/static/auto-3.Bdgzy283.png)#### 从模板入手
 
 不想从零编写提示词？可直接使用 **任务模板**，覆盖新闻推送、周报生成、体检预约以及学习计划等常见场景，选择后按需修改即可。
 
@@ -41,7 +41,7 @@
 
 打开配置后，WorkBuddy 可在任务执行完成后自动将结果发送至**WorkBuddy小程序**，便于第一时间查看。
 
-![](/docs/static/auto-5.B0WQa2Tx.png)示例
+![](/docs/static/auto-5.BjoWFBsl.png)示例
 
 **在小程序中查看推送结果**
 

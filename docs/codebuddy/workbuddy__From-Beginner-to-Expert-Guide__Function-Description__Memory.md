@@ -15,7 +15,7 @@
 
 默认开启，允许 WorkBuddy 从对话中提取并记住相关上下文，以便在未来对话中提供更连贯、个性化的回应。
 
-![](/docs/static/memory-1.B3fTbHMZ.png)### 管理记忆
+![](/docs/static/memory-1.CDu342Tk.png)### 管理记忆
 
 记忆摘要每晚重新生成，点击已生成的记忆，可查看、编辑记忆内容，通过对话的方式告诉WorkBuddy要记住或忘记什么。
 
@@ -23,11 +23,11 @@
 
 支持同步您在其他AI上的使用习惯，点击**开始导入**：
 
-![](/docs/static/memory-3.DHb5abSa.png)复制示例提示词到其他AI产品的对话中：
+![](/docs/static/memory-3.BlGnpqWG.png)复制示例提示词到其他AI产品的对话中：
 
-![](/docs/static/memory-4.YMdOLdCc.png)将结果粘贴到下方，点击**添加到记忆**完成导入：
+![](/docs/static/memory-4.DKRpUtm6.png)将结果粘贴到下方，点击**添加到记忆**完成导入：
 
-![](/docs/static/memory-5.BllN_4Ak.png)## 注意事项与重点提示
+![](/docs/static/memory-5.C_ezZjzz.png)## 注意事项与重点提示
 
 ### 信息收集与使用
 

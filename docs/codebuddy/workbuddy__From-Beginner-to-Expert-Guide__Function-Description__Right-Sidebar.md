@@ -4,9 +4,9 @@
 
 右侧边栏用于查看当前任务的产物、文件、变更和预览内容。任务产生对话后，可从右上角展开该面板。
 
-![](/docs/static/image-39.CGrhXdbu.png)展开后效果，如下图所示：
+![](/docs/static/image-39.DE8E-m3k.png)展开后效果，如下图所示：
 
-![](/docs/static/image-40.CJhADQPn.png)右侧边栏包含以下四个标签页：
+![](/docs/static/image-40.ORaQXKcC.png)右侧边栏包含以下四个标签页：
 
 | 标签页 | 功能 |
 | --- | --- |
@@ -19,18 +19,18 @@
 
 展示当前对话中新生成的文件，点击可查看任务列表及生成内容。
 
-![](/docs/static/image-42.C22HW1F3.png)点击 **文件夹图标** 可在 Finder 中打开文件所在位置。
+![](/docs/static/image-42.Coht1O8L.png)点击 **文件夹图标** 可在 Finder 中打开文件所在位置。
 
-![](/docs/static/image-43.Ckqojzxc.png)## 二、全部文件
+![](/docs/static/image-43.Bd-Q6UDE.png)## 二、全部文件
 
 以树状结构展示当前工作目录下的所有文件，便于直接浏览。
 
-![](/docs/static/image-44.BEeeZvUn.png)## 三、变更
+![](/docs/static/image-44.B3YM_-Da.png)## 三、变更
 
 记录 AI 对文件的所有修改，展开可查看具体变更文件，通过差异对比快速确认改动。
 
-![](/docs/static/image-45.DW9gwHSY.png)## 四、预览
+![](/docs/static/image-45.FKMyYQIE.png)## 四、预览
 
 直接预览开发中的网页，无需切换到浏览器。
 
-![](/docs/static/image-46.CSVhs2Rz.png)
+![](/docs/static/image-46.DBqp3fF-.png)
