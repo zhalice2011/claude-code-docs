@@ -1112,8 +1112,8 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Permission-Modes.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Permission-Modes",
-      "hash": "ba2a79fdf8a71a447ed25e73f0fbe24da7b71f12ca566a458448798d6ab5c15b",
-      "last_updated": "2026-06-26T12:16:16.611796",
+      "hash": "5915ca9a2ce678e3b38bcecd85c9d85565f5217b1d7e2488d6c8930e7b1c1358",
+      "last_updated": "2026-06-29T07:55:51.301752",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Project.md": {
@@ -1503,7 +1503,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-06-29T03:08:55.560866",
+    "last_fetch_completed": "2026-06-29T07:56:42.013029",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 252,
     "pages_fetched_successfully": 250,
@@ -1515,7 +1515,7 @@
     "total_files": 250,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-06-29T03:08:55.560890",
+  "last_updated": "2026-06-29T07:56:42.013050",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
