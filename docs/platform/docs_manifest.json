@@ -17,8 +17,8 @@
     "agents-and-tools__agent-skills__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.md",
-      "hash": "f8032be4f748149cbad3f9a078b3071478e0fc83b5e5cadcb4b4cfb1f74734f8",
-      "last_updated": "2026-06-27T10:55:14.755716",
+      "hash": "6e0317c9322ea8c9f82dee4bb97e10efd67bc9d022eabd7fae38405263632c96",
+      "last_updated": "2026-06-30T02:31:20.285188",
       "source": "platform"
     },
     "agents-and-tools__agent-skills__quickstart.md": {
@@ -31,8 +31,8 @@
     "agents-and-tools__mcp-connector.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-connector",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-connector.md",
-      "hash": "9a6b450a0493285e7396823b097fe537c8ba51c71052fb369f6ad42bbc7bee39",
-      "last_updated": "2026-06-27T10:55:16.047516",
+      "hash": "5069457500ebb1b135dd68afcab34d6d0f8f90a3b9eeabf33ab4b580125449cc",
+      "last_updated": "2026-06-30T02:31:21.596330",
       "source": "platform"
     },
     "agents-and-tools__mcp-tunnels__concepts.md": {
@@ -129,8 +129,8 @@
     "agents-and-tools__tool-use__code-execution-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool.md",
-      "hash": "638303d902567ee0518b657d99e435a00df6d54d5f863f93e41a859cd48bbec7",
-      "last_updated": "2026-06-29T17:30:11.029659",
+      "hash": "834fab1afc433633fa205fbfa6e97cc1d890385de852408480cc53da38907f88",
+      "last_updated": "2026-06-30T02:31:30.470990",
       "source": "platform"
     },
     "agents-and-tools__tool-use__computer-use-tool.md": {
@@ -199,8 +199,8 @@
     "agents-and-tools__tool-use__programmatic-tool-calling.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling.md",
-      "hash": "e47ead47836322513364198c2642ba44f02b46e74a1a8d2a34eb1e1d7457e100",
-      "last_updated": "2026-06-28T02:36:22.538439",
+      "hash": "ad29e0eb72d5c25f1059e079cf2268bb93554c1fe150ce923aa23433e99f5d9d",
+      "last_updated": "2026-06-30T02:31:37.219912",
       "source": "platform"
     },
     "agents-and-tools__tool-use__server-tools.md": {
@@ -269,15 +269,15 @@
     "agents-and-tools__tool-use__web-fetch-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool.md",
-      "hash": "f784389a46995840bd254de1dd87356ec4aed88124e01fd11b5f030f5d5752c4",
-      "last_updated": "2026-06-29T17:30:24.193444",
+      "hash": "b24695f70ae197b2bc76de4f87793336db070e67dadf81c5d9fa6a5cbb26f05a",
+      "last_updated": "2026-06-30T02:31:43.543237",
       "source": "platform"
     },
     "agents-and-tools__tool-use__web-search-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool.md",
-      "hash": "146674a4bbb3f31ba62e575896e03b8f62fca29e40a36a9cccdd5c24a50e7f57",
-      "last_updated": "2026-06-27T10:55:38.449520",
+      "hash": "da1544877413c0e9d54755f8edf4ec323d0d676e8cef5281299f3aeb08e34260",
+      "last_updated": "2026-06-30T02:31:44.189287",
       "source": "platform"
     },
     "api__admin.md": {
@@ -11231,7 +11231,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-06-29T22:36:52.254024",
+    "last_fetch_completed": "2026-06-30T02:59:26.784611",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 1753,
@@ -11391,7 +11391,7 @@
     "total_files": 1604,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-06-29T22:36:52.254080",
+  "last_updated": "2026-06-30T02:59:26.784631",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
