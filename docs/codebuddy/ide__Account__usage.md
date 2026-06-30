@@ -2,7 +2,7 @@
 
 ## 个人/企业成员
 
-用户可通过 [CodeBuddy 官网](https://www.codebuddy.cn/home/) 个人主页查看 Credits 使用历史及当前用量。若用户为SaaS企业版或专有云企业版企业成员，还可查看企业为其添加的额度信息。
+用户可通过 [CodeBuddy 官网](https://www.codebuddy.cn/home/) 个人主页查看 Credits 使用历史及当前用量。若用户为企业旗舰版（SaaS企业版）或企业专享版（专有云企业版）的企业成员，还可查看企业为其添加的额度信息。
 
 1. 登录 CodeBuddy 官网。
 2. 点击右上角头像，进入 **个人主页/用量管理**。

@@ -470,14 +470,14 @@
     },
     "enterprise__price__Pricing.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/price/Pricing",
-      "hash": "5520422c123bff9d459a5bc75039687358328ad814e357e9edb2d0f03a6f8125",
-      "last_updated": "2026-06-28T07:27:48.429839",
+      "hash": "e5e66628d57f1bf6c2091710efa2fefe4826faa234fc91c52794ef96334a27e9",
+      "last_updated": "2026-06-30T17:37:32.692832",
       "source": "codebuddy"
     },
     "enterprise__price__Purchase.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/price/Purchase",
-      "hash": "1238ddd5e70a83d724d10bc0e88d1bf93103a198085182de22521ae5927e3cff",
-      "last_updated": "2026-06-26T12:15:13.260410",
+      "hash": "62e6ca599fca04ade0fcf0290629d3c7ba06628dfb193bd96fc9b73f696ffadd",
+      "last_updated": "2026-06-30T17:37:33.569108",
       "source": "codebuddy"
     },
     "enterprise__price__Voucher.md": {
@@ -494,8 +494,8 @@
     },
     "ide__Account__credits.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Account/credits",
-      "hash": "666b59ef66da53473549e838da254432af9756a4553610b6182d7273fc439f37",
-      "last_updated": "2026-06-26T12:15:14.975442",
+      "hash": "cc24876ce8e6647c447ad4b13ce259dee38cf083ef053e31634108f91a89008c",
+      "last_updated": "2026-06-30T17:37:35.892824",
       "source": "codebuddy"
     },
     "ide__Account__invoice.md": {
@@ -504,16 +504,22 @@
       "last_updated": "2026-06-26T12:15:15.545794",
       "source": "codebuddy"
     },
+    "ide__Account__plan.md": {
+      "original_url": "https://www.codebuddy.cn/docs/ide/Account/plan",
+      "hash": "f834124582823e820223fc48e2550ecc3e513c08411f701d82ed071309bcd930",
+      "last_updated": "2026-06-30T17:37:37.534861",
+      "source": "codebuddy"
+    },
     "ide__Account__pricing.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Account/pricing",
-      "hash": "499d4b005c1b6c4e9b9cf87e33cc93aaefd0a81e43edba1ee5f4a1b3a09f0acd",
-      "last_updated": "2026-06-26T12:15:16.125680",
+      "hash": "fd098e970a8bcc9090e52eee90bb8ed339ed0900a166c88223bb2be87a0bfe90",
+      "last_updated": "2026-06-30T17:37:38.278738",
       "source": "codebuddy"
     },
     "ide__Account__usage.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Account/usage",
-      "hash": "e8fe7277cf53dac686d940b198ca517d1820381d59edbb4c809f1583063b7b51",
-      "last_updated": "2026-06-26T12:15:16.699388",
+      "hash": "9770cea2f3f6ac50fc4cf2ba78e5e92c811cd52808845095a2786943fc5541e8",
+      "last_updated": "2026-06-30T17:37:38.985622",
       "source": "codebuddy"
     },
     "ide__Best-practice__best-practice.md": {
@@ -1004,8 +1010,8 @@
     },
     "workbuddy__Credits.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Credits",
-      "hash": "534b804d6b18a9c31e63191709e1f11f006976bcc78ca6a7f833e2a71c26c69a",
-      "last_updated": "2026-06-26T12:16:05.927917",
+      "hash": "c3b297c09fd6590facbec0e6f71a846509e4beef2dd6cf41945f731992689e31",
+      "last_updated": "2026-06-30T17:38:52.692353",
       "source": "codebuddy"
     },
     "workbuddy__Dingtalk-Guide.md": {
@@ -1302,10 +1308,16 @@
       "last_updated": "2026-06-26T12:16:34.486036",
       "source": "codebuddy"
     },
+    "workbuddy__Plan.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddy/Plan",
+      "hash": "e5fd67ebcd5c0669a8d5a3c5f5a6238675695ae3841d1f8893567e6ed857e3c0",
+      "last_updated": "2026-06-30T17:39:35.389731",
+      "source": "codebuddy"
+    },
     "workbuddy__Pricing.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Pricing",
-      "hash": "5d4f25e7c192ace341292db279a522b58c5b1e32a924faf70592e73520d178ba",
-      "last_updated": "2026-06-26T12:16:35.093796",
+      "hash": "b2aa2617316962e6e41bf821e232f57e6e915a0099f8eab512c152e9d8fd682f",
+      "last_updated": "2026-06-30T17:39:36.425393",
       "source": "codebuddy"
     },
     "workbuddy__QQ-Guide.md": {
@@ -1334,8 +1346,8 @@
     },
     "workbuddy__Usage.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Usage",
-      "hash": "89dda74a66eabd230fdc4f537156f95a9fefcb6e355301c33c5c5d7028485a41",
-      "last_updated": "2026-06-26T12:16:37.948597",
+      "hash": "852eb17d05130ea7da4389b26fef82037bf68704088945aae3138e8acca098c3",
+      "last_updated": "2026-06-30T17:39:40.611701",
       "source": "codebuddy"
     },
     "workbuddy__Wechat-Guide.md": {
@@ -1509,19 +1521,19 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-06-30T14:32:00.018702",
+    "last_fetch_completed": "2026-06-30T17:40:03.756022",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 253,
-    "pages_fetched_successfully": 251,
+    "pages_discovered": 255,
+    "pages_fetched_successfully": 253,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 251,
+    "total_files": 253,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-06-30T14:32:00.018731",
+  "last_updated": "2026-06-30T17:40:03.756044",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
