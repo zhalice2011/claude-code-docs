@@ -1068,6 +1068,12 @@
       "last_updated": "2026-06-26T12:16:11.950740",
       "source": "codebuddy"
     },
+    "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Design-Idea.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Design-Idea",
+      "hash": "ac47717263cb9127313b0e6d031956ca111e57be55c5beca25f7cf234da61b22",
+      "last_updated": "2026-06-30T12:12:38.877165",
+      "source": "codebuddy"
+    },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Expert-Center.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Expert-Center",
       "hash": "3fc1e08ccb22326118a735d2e2a4c20fa9010b4bdfdcfa5ee6101dca69d21b76",
@@ -1503,19 +1509,19 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-06-30T07:22:54.301918",
+    "last_fetch_completed": "2026-06-30T12:13:40.832394",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 252,
-    "pages_fetched_successfully": 250,
+    "pages_discovered": 253,
+    "pages_fetched_successfully": 251,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 250,
+    "total_files": 251,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-06-30T07:22:54.301947",
+  "last_updated": "2026-06-30T12:13:40.832415",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
