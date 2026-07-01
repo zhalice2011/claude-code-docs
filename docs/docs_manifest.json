@@ -227,15 +227,15 @@
     "agent-teams.md": {
       "original_url": "https://code.claude.com/docs/en/agent-teams",
       "original_md_url": "https://code.claude.com/docs/en/agent-teams.md",
-      "hash": "0d75ccc86c3d84fb9f37836a4cc1862c07419ee135b59475de58e92299a2aca0",
-      "last_updated": "2026-06-30T06:47:50.219722",
+      "hash": "81a452e0d3ebd991a95ab27e71257e4c308824493eb488776230e705e94b587b",
+      "last_updated": "2026-07-01T02:35:19.852720",
       "source": "claude-code"
     },
     "agent-view.md": {
       "original_url": "https://code.claude.com/docs/en/agent-view",
       "original_md_url": "https://code.claude.com/docs/en/agent-view.md",
-      "hash": "0decdd5716048156f6de630ac5deafbd5e9de3f1787221358814b181bf4e14ad",
-      "last_updated": "2026-06-30T06:47:50.993183",
+      "hash": "9354d237f4945b1f5bc678a141c86cd79cf8e564c2072bfa164c315a1f576f05",
+      "last_updated": "2026-07-01T02:35:21.042559",
       "source": "claude-code"
     },
     "agents.md": {
@@ -605,8 +605,8 @@
     "hooks.md": {
       "original_url": "https://code.claude.com/docs/en/hooks",
       "original_md_url": "https://code.claude.com/docs/en/hooks.md",
-      "hash": "2662e86d75330e94d8e147e7f8883dd57b3af36e6d5841cd3cf0afd922167295",
-      "last_updated": "2026-06-30T19:44:19.436707",
+      "hash": "24a7501d8f16917fc41563ec4b8dd1bebf94d8404a0502e9cef0d52aa0cb5baa",
+      "last_updated": "2026-07-01T02:36:27.759511",
       "source": "claude-code"
     },
     "hooks-guide.md": {
@@ -1144,7 +1144,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-06-30T22:17:07.220633",
+    "last_fetch_completed": "2026-07-01T02:37:57.089331",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 163,
@@ -1154,7 +1154,7 @@
     "total_files": 163,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-06-30T22:17:07.220657",
+  "last_updated": "2026-07-01T02:37:57.089359",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
