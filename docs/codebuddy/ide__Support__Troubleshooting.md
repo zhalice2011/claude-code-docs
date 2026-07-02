@@ -26,7 +26,7 @@ Windows：
 
 ## 账户相关问题
 
-#### Q: 购买旗舰版后登录提示Credits余额不足
+#### Q: 购买旗舰版后登录提示积分余额不足
 
 1. 检查账户是否已购买旗舰版
 2. 检查账户是否还有余额，[点击跳转企业后台查询](https://copilot.tencent.com/admin/overview)。

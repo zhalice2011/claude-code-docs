@@ -19,15 +19,21 @@
 
 打开浏览器，访问 [钉钉开发者后台](https://open.dingtalk.com/)，使用管理员账号登录。
 
-![](/docs/static/login-developer-console.CLo2owy8.png)首次使用
+![登录开发者后台](/docs/static/login-developer-console.CLo2owy8.png)
+
+首次使用
 
 如果系统提示「该账号还未加入组织」，您可以创建一个个人企业，按需填写信息即可。
 
-![](/docs/static/create-personal-org.CCdsgAJ_.png)### 2）创建应用
+![创建个人企业](/docs/static/create-personal-org.CCdsgAJ_.png)
+
+### 2）创建应用
 
 1. 在开发者后台首页，点击「应用开发」，并点击「创建应用」
 
-![](/docs/static/create-app.BYp0m06K.png)2. 在弹出的创建窗口中，填写以下信息：
+![创建应用](/docs/static/create-app.BYp0m06K.png)
+
+2. 在弹出的创建窗口中，填写以下信息：
 
 | 配置项 | 填写内容（后续都可以随意修改） | 说明 |
 | --- | --- | --- |
@@ -35,7 +41,9 @@
 | 应用描述 | （内容随便写） | 简单描述用途 |
 | 应用类型 | 可以暂时不传 |  |
 
-![](/docs/static/fill-app-info.BYBmvoBC.png)3. 填写完成后，点击「保存」
+![填写应用信息](/docs/static/fill-app-info.BYBmvoBC.png)
+
+3. 填写完成后，点击「保存」
 
 ### 3）添加机器人能力
 
@@ -43,14 +51,20 @@
 
 1. 找到「机器人」选项，点击「添加机器人」
 
-![](/docs/static/add-robot-capability.CZkfvmyl.png)2. 填写机器人的基本信息：
+![添加机器人能力](/docs/static/add-robot-capability.CZkfvmyl.png)
+
+2. 填写机器人的基本信息：
 	- **机器人名称**：给机器人起一个名字
 	- **机器人描述**：简单描述功能
 	- **预览图**：上传一张机器人头像
 
-![](/docs/static/config-robot-info.DY4EBXm0.png)3. 点击「确认发布」
+![配置机器人信息](/docs/static/config-robot-info.DY4EBXm0.png)
 
-![](/docs/static/confirm-publish-robot.gisNfn0e.png)## 三、配置应用权限
+3. 点击「确认发布」
+
+![确认发布机器人](/docs/static/confirm-publish-robot.gisNfn0e.png)
+
+## 三、配置应用权限
 
 为了让机器人能够正常收发消息，需要开通以下权限：
 
@@ -60,7 +74,9 @@
 	- `Card.Instance.Write`
 	- `qyapi_robot_sendmsg`
 
-![](/docs/static/add-permissions.DF98JOdW.png)## 四、获取应用凭证
+![添加权限](/docs/static/add-permissions.DF98JOdW.png)
+
+## 四、获取应用凭证
 
 ### 1）查看凭证信息
 
@@ -73,13 +89,17 @@
 
 这两个凭证非常重要，请务必妥善保存，不要泄露给他人！
 
-![](/docs/static/get-credentials.GWm559Bt.png)### 2）获取 AES Key 和 Token
+![获取凭证](/docs/static/get-credentials.GWm559Bt.png)
+
+### 2）获取 AES Key 和 Token
 
 在应用详情页左侧菜单中，点击「开发配置 \- 事件订阅」，在「推送方式」中选择「HTTP推送」。
 
 您可以点击刷新按钮自动生成您的 AES Key 和 Token。
 
-![](/docs/static/dingtalk-aes-token.C5mRmrgS.png)重要
+![AES Key 和 Token](/docs/static/dingtalk-aes-token.C5mRmrgS.png)
+
+重要
 
 请务必妥善保管 AES Key 和 Token，不要泄露给他人！
 
@@ -87,31 +107,45 @@
 
 ### 1）填写凭证
 
-打开 WorkBuddy，从左下角头像处进入「设置 \- 助理设置」，选择「钉钉集成」：
+打开 WorkBuddy，点击助理的**设置⚙️**图标后进入**助理设置**，选择**钉钉集成**：
 
-![](/docs/static/dingtalk-1.D4lr84ov.png)将刚才获取的 Client ID 和 Client Secret 填入对应输入框：
+![钉钉集成入口](/docs/static/dingtalk-1.HLe1RdDx.png)
+
+将刚才获取的 Client ID 和 Client Secret 填入对应输入框：
 
 - **WebSocket 长连接**模式 适用于个人/家庭/办公室用户（没有公网 IP）。配置更简单，不需要公网地址，开箱即用。
 
-![](/docs/static/dingtalk-2.B3WClwxI.png)- **使用 URL 回调**模式 适用于有服务器、有公网 IP 的用户，需要额外在钉钉开发者后台填写生成的 Webhook 地址。
+![WebSocket长连接模式](/docs/static/dingtalk-2.BlZP-Yfa.png)
 
-![](/docs/static/dingtalk-3.CzXuYNqe.png)### 2）注册
+- **使用 URL 回调**模式 适用于有服务器、有公网 IP 的用户，需要额外在钉钉开发者后台填写生成的 Webhook 地址。
+
+![URL回调模式](/docs/static/dingtalk-3.BWbUQV9Z.png)
+
+### 2）注册
 
 - WebSocket 长连接：点击「注册」配置成功后显示「已连接」：
 
-![](/docs/static/dingtalk-4.B5dZu0o2.png)- 使用 URL 回调：点击注册后显示「已注册」，系统会生成一个 Webhook 地址，点击复制保存：
+![WebSocket已连接](/docs/static/dingtalk-4.B5dZu0o2.png)
 
-![](/docs/static/dingtalk-5.CfyUyl-J.png)选择「使用 URL 回调」，还需要返回钉钉开发者后台，配置钉钉消息接收地址：
+- 使用 URL 回调：点击注册后显示「已注册」，系统会生成一个 Webhook 地址，点击复制保存：
+
+![URL回调已注册](/docs/static/dingtalk-5.CfyUyl-J.png)
+
+选择「使用 URL 回调」，还需要返回钉钉开发者后台，配置钉钉消息接收地址：
 
 1. 进入机器人配置页面
 2. 下滑到页面底部，找到消息接收配置
 3. 将「Stream 模式」切换为「**HTTP 模式**」
 
-![](/docs/static/switch-http-mode.BA2uojja.png)4. 在「消息接收地址」中粘贴 Webhook 地址
+![切换HTTP模式](/docs/static/switch-http-mode.BA2uojja.png)
+
+4. 在「消息接收地址」中粘贴 Webhook 地址
 5. **重要**：将地址中的 `http` 改为 `https`
 6. 点击「发布」保存配置
 
-![](/docs/static/config-webhook.UDh3FyeJ.png)## 六、发布应用
+![配置Webhook地址](/docs/static/config-webhook.UDh3FyeJ.png)
+
+## 六、发布应用
 
 应用必须发布后才能在钉钉中使用。
 
@@ -119,15 +153,23 @@
 
 1. 点击页面上方的「查看版本详情」
 
-![](/docs/static/view-version-details.0yAIXXq8.png)2. 填写版本描述信息
+![查看版本详情](/docs/static/view-version-details.0yAIXXq8.png)
 
-![](/docs/static/fill-version-desc._FOw3HqW.png)### 2）提交发布
+2. 填写版本描述信息
+
+![填写版本描述](/docs/static/fill-version-desc._FOw3HqW.png)
+
+### 2）提交发布
 
 1. 点击「确认发布」提交审核
 
-![](/docs/static/confirm-publish-version.nHnfEK4L.png)2. 等待审核通过（通常会很快自动审批）
+![确认发布版本](/docs/static/confirm-publish-version.nHnfEK4L.png)
 
-![](/docs/static/approval-passed.Cg9e4SLR.png)## 七、开始使用
+2. 等待审核通过（通常会很快自动审批）
+
+![审批通过](/docs/static/approval-passed.Cg9e4SLR.png)
+
+## 七、开始使用
 
 钉钉机器人支持两种使用方式：**群聊使用**和**单聊使用**。
 
@@ -143,27 +185,43 @@
 
 1. 点击群右上角的设置按钮
 
-![](/docs/static/group-settings.Dnq0n7SX.png)2. 选择「机器人」
+![群聊设置](/docs/static/group-settings.Dnq0n7SX.png)
 
-![](/docs/static/robot-settings.DLLx4rNs.png)3. 点击「添加机器人」
+2. 选择「机器人」
 
-![](/docs/static/add-robot-to-group.hm8ha6Sf.png)4. 搜索并选择您创建的机器人
+![机器人设置](/docs/static/robot-settings.DLLx4rNs.png)
 
-![](/docs/static/search-robot-group.LpBU0LAt.png)5. 确认添加
+3. 点击「添加机器人」
 
-![](/docs/static/confirm-add-robot.C3aLkqs-.png)**第三步**：开始使用
+![添加机器人到群聊](/docs/static/add-robot-to-group.hm8ha6Sf.png)
+
+4. 搜索并选择您创建的机器人
+
+![搜索机器人](/docs/static/search-robot-group.LpBU0LAt.png)
+
+5. 确认添加
+
+![确认添加机器人](/docs/static/confirm-add-robot.C3aLkqs-.png)
+
+**第三步**：开始使用
 
 在群里 @机器人 并发送您的需求，WorkBuddy 会自动执行任务并回复结果。
 
-![](/docs/static/chat-usage.BdwPRh3l.png)### 2）单聊使用
+![群聊使用效果](/docs/static/chat-usage.BdwPRh3l.png)
+
+### 2）单聊使用
 
 如果您想直接与机器人私聊：
 
 1. 在钉钉顶部搜索框中，搜索机器人的名称
 
-![](/docs/static/search-robot-private.DzOR9AIx.png)2. 点击机器人进入对话窗口，直接发送消息即可
+![搜索机器人私聊](/docs/static/search-robot-private.DzOR9AIx.png)
 
-![](/docs/static/chat-usage.BdwPRh3l.png)恭喜
+2. 点击机器人进入对话窗口，直接发送消息即可
+
+![单聊使用效果](/docs/static/chat-usage.BdwPRh3l.png)
+
+恭喜
 
 您已成功将 WorkBuddy 接入钉钉！现在可以通过钉钉随时随地远程控制 WorkBuddy 完成各种编程任务了。
 

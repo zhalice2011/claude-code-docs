@@ -48,6 +48,6 @@ WorkBuddy 微信小程序是 WorkBuddy 的移动端入口，您可以在手机�
 1. [快速开始](./Quickstart) 了解如何发起第一个任务，2 分钟跑通完整流程。
 2. [主页](./../features/Homepage) 了解主页布局、快捷入口和环境切换。
 3. [发起任务](./../features/Create-Task) 了解通过输入栏、快捷入口和侧边栏创建任务的方式。
-4. [选择模型](./../features/Select-Model) 了解可用模型及其能力标签和 Credits 消耗。
+4. [选择模型](./../features/Select-Model) 了解可用模型及其能力标签和积分消耗。
 5. [添加附件与技能](./../features/Attachments-and-Skills) 了解如何拍照、选择图片、上传文件和启用技能。
 6. [任务执行与对话](./../features/Task-Execution) 了解任务拆解、继续追问和中断执行的操作。

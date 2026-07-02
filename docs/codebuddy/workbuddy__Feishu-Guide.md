@@ -15,7 +15,9 @@
 
 打开浏览器，访问 [飞书开放平台](https://open.feishu.cn/app)，使用企业账号登录后，点击「创建企业自建应用」。
 
-![](/docs/static/feishu-guide-1.DVtlT-_d.png)### 2）填写应用信息
+![登录飞书开放平台](/docs/static/feishu-guide-1.DVtlT-_d.png)
+
+### 2）填写应用信息
 
 在弹出的创建窗口中，填写以下信息：
 
@@ -25,17 +27,23 @@
 | **应用描述** | 简单描述应用的功能 |
 | **应用图标** | 上传一个应用图标 |
 
-![](/docs/static/feishu-guide-2.Bq35BkzN.png)填写完成后，点击「创建」按钮。
+![填写应用信息](/docs/static/feishu-guide-2.Bq35BkzN.png)
+
+填写完成后，点击「创建」按钮。
 
 ### 3）进入应用详情
 
 应用创建成功后，会自动跳转到应用详情页面。
 
-![](/docs/static/feishu-guide-3.CquowSwv.png)## 三、添加机器人能力
+![应用详情页](/docs/static/feishu-guide-3.CquowSwv.png)
+
+## 三、添加机器人能力
 
 在应用详情页的「添加应用能力」区域，找到「机器人」卡片，点击「添加」按钮。
 
-![](/docs/static/feishu-guide-4.Bvf_VP1c.png)## 四、配置应用权限
+![添加机器人能力](/docs/static/feishu-guide-4.Bvf_VP1c.png)
+
+## 四、配置应用权限
 
 为了让机器人能够正常收发消息，需要为应用添加必要的权限。
 
@@ -43,7 +51,9 @@
 
 在应用详情页左侧菜单中，点击「权限管理」，然后选择「批量导入 / 导出权限」。
 
-![](/docs/static/feishu-guide-5.BMDln-1L.png)### 2）批量导入权限
+![复制权限列表](/docs/static/feishu-guide-5.BMDln-1L.png)
+
+### 2）批量导入权限
 
 在弹出的窗口中：
 
@@ -153,9 +163,13 @@ json
   }
 }
 ```
-![](/docs/static/feishu-guide-6.CKT55pRC.png)等待几秒钟，页面会显示权限已成功添加。
+![粘贴权限列表](/docs/static/feishu-guide-6.CKT55pRC.png)
 
-![](/docs/static/feishu-guide-7.DvbUEU9F.png)## 五、获取应用凭证
+等待几秒钟，页面会显示权限已成功添加。
+
+![权限添加成功](/docs/static/feishu-guide-7.DvbUEU9F.png)
+
+## 五、获取应用凭证
 
 ### 1）查看凭证信息
 
@@ -170,13 +184,17 @@ json
 
 请务必妥善保管 App Secret，不要泄露给他人！
 
-![](/docs/static/feishu-guide-8.CpdvKWGY.png)### 2）获取 Encrypt Key 和 Verification Token
+![凭证与基础信息](/docs/static/feishu-guide-8.CpdvKWGY.png)
+
+### 2）获取 Encrypt Key 和 Verification Token
 
 在应用详情页左侧菜单中，点击「事件与回调」，在右侧页面中选择加密策略。
 
 您可以点击刷新按钮自动生成，或点击编辑按钮自定义您的 Encrypt Key 和 Verification Token。
 
-![](/docs/static/feishu-guide-8-1.DJzG3LOk.png)重要
+![Encrypt Key 和 Verification Token](/docs/static/feishu-guide-8-1.DJzG3LOk.png)
+
+重要
 
 请务必妥善保管 Encrypt Key 和 Verification Token，不要泄露给他人！
 
@@ -186,21 +204,31 @@ json
 
 ### 1）填写凭证
 
-在 WorkBuddy 中，点击左上角的个人头像，选择「设置 \- 助理设置」，找到「飞书集成」开始配置。
+在 WorkBuddy 中，点击助理的**设置⚙️**图标后进入**助理设置**，找到**飞书集成**开始配置。
 
-![](/docs/static/feishu-guide-9.CthGAUf3.png)将刚才获取的 App ID、App Secret 以及 Encrypt Key 填入对应的输入框:
+![飞书集成入口](/docs/static/feishu-guide-9.CN779x5z.png)
+
+将刚才获取的 App ID、App Secret 以及 Encrypt Key 填入对应的输入框:
 
 - **WebSocket 长连接**模式 适用于个人/家庭/办公室用户（没有公网 IP）。配置更简单，不需要公网地址，开箱即用。
 
-![](/docs/static/feishu-guide-10.DKhyIGVo.png)- **使用 URL 回调**模式 适用于有服务器、有公网 IP 的用户，需要额外在飞书开放平台填写生成的 Webhook 地址。
+![WebSocket长连接模式](/docs/static/feishu-guide-10.Crk-ilq8.png)
 
-![](/docs/static/feishu-guide-11.br6jGO-s.png)### 3）注册
+- **使用 URL 回调**模式 适用于有服务器、有公网 IP 的用户，需要额外在飞书开放平台填写生成的 Webhook 地址。
+
+![URL回调模式](/docs/static/feishu-guide-11.DosshPS5.png)
+
+### 3）注册
 
 - WebSocket 长连接：点击「注册」按钮完成配置，配置成功显示**已连接**：
 
-![](/docs/static/feishu-guide-12.R_60TxIN.png)- 使用 URL 回调：点击「注册」按钮系统会生成一个 Webhook 地址，点击复制保存：
+![WebSocket已连接](/docs/static/feishu-guide-12.R_60TxIN.png)
 
-![](/docs/static/feishu-guide-13.Doll6xpa.png)## 七、配置飞书事件回调
+- 使用 URL 回调：点击「注册」按钮系统会生成一个 Webhook 地址，点击复制保存：
+
+![URL回调已注册](/docs/static/feishu-guide-13.Doll6xpa.png)
+
+## 七、配置飞书事件回调
 
 接下来，我们需要告诉飞书将消息发送到哪里。
 
@@ -210,21 +238,33 @@ json
 
 - WebSocket 长连接：在「订阅方式」中选择「使用长连接接收事件」，点击「验证」：
 
-![](/docs/static/feishu-guide-14.B_poTA-h.png)配置成功显示「连接成功」：
+![使用长连接接收事件](/docs/static/feishu-guide-14.B_poTA-h.png)
 
-![](/docs/static/feishu-guide-15.FMhd1iEo.png)- 使用 URL 回调：在「订阅方式」中选择「将事件发送至开发者服务器」，将刚才复制的 Webhook 地址粘贴到输入框中并点击「保存」：
+配置成功显示「连接成功」：
 
-![](/docs/static/feishu-guide-16.BeXmFzec.png)### 2）添加消息接收事件
+![连接成功](/docs/static/feishu-guide-15.FMhd1iEo.png)
+
+- 使用 URL 回调：在「订阅方式」中选择「将事件发送至开发者服务器」，将刚才复制的 Webhook 地址粘贴到输入框中并点击「保存」：
+
+![将事件发送至开发者服务器](/docs/static/feishu-guide-16.BeXmFzec.png)
+
+### 2）添加消息接收事件
 
 在「事件配置」区域，点击「添加事件」，搜索并添加「接收消息」事件。
 
-![](/docs/static/feishu-guide-17.PEN-b6c0.png)### 3）配置卡片回调
+![添加接收消息事件](/docs/static/feishu-guide-17.PEN-b6c0.png)
+
+### 3）配置卡片回调
 
 1. 切换到「回调配置」页签
 2. 搜索「卡片回传交互」
 3. 点击「确认添加」
 
-![](/docs/static/feishu-guide-18.D7Us2LUf.png)![](/docs/static/feishu-guide-19.CBUtnaq6.png)## 八、发布应用
+![卡片回传交互配置](/docs/static/feishu-guide-18.D7Us2LUf.png)
+
+![确认添加卡片回调](/docs/static/feishu-guide-19.CBUtnaq6.png)
+
+## 八、发布应用
 
 应用必须发布后才能在飞书中使用。
 
@@ -232,7 +272,9 @@ json
 
 点击页面上方的「创建版本」按钮。
 
-![](/docs/static/feishu-create-release.DkAkt14R.png)在弹出的窗口中填写：
+![创建版本](/docs/static/feishu-create-release.DkAkt14R.png)
+
+在弹出的窗口中填写：
 
 | 配置项 | 示例 |
 | --- | --- |
@@ -241,7 +283,9 @@ json
 
 点击「确定」创建版本。
 
-![](/docs/static/feishu-release.C_dxs14W.png)### 2）发布版本
+![发布版本](/docs/static/feishu-release.C_dxs14W.png)
+
+### 2）发布版本
 
 创建成功后，点击版本右侧的「发布」按钮。
 
@@ -259,11 +303,15 @@ json
 
 点击机器人进入对话窗口，或者点击「打开应用」开始使用。
 
-![](/docs/static/feishu-guide-20.CBJCZq9g.png)### 3）发送任务
+![打开应用](/docs/static/feishu-guide-20.CBJCZq9g.png)
+
+### 3）发送任务
 
 直接发送您的需求，比如「帮我写一个待办事项应用」。WorkBuddy 会在电脑上自动执行任务，并将结果返回给您。
 
-![](/docs/static/feishu-guide-21.DB5sVp5U.png)恭喜
+![发送任务](/docs/static/feishu-guide-21.DB5sVp5U.png)
+
+恭喜
 
 您已成功将 WorkBuddy 接入飞书！现在可以通过飞书随时随地远程控制 WorkBuddy 完成各种编程任务了。
 

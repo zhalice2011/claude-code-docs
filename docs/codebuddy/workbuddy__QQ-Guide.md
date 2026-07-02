@@ -17,34 +17,52 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 
 打开浏览器，访问 [QQ 开放平台](https://q.qq.com/qqbot/openclaw/login.html)，使用QQ扫码登录。
 
-![](/docs/static/qq-guide-1.BSmYTk4-.png)### 2 创建机器人
+![登录QQ开放平台](/docs/static/qq-guide-1.BSmYTk4-.png)
+
+### 2 创建机器人
 
 点击创建机器人：
 
-![](/docs/static/qq-guide-2.DdeZxWeY.png)点击后会立刻成功，此时机器人会给你的QQ发一条成功消息，头像昵称可按喜好自定义编辑。
+![创建机器人](/docs/static/qq-guide-2.DdeZxWeY.png)
+
+点击后会立刻成功，此时机器人会给你的QQ发一条成功消息，头像昵称可按喜好自定义编辑。
 
 ### 3 配置凭证
 
 复制机器人的 AppID 和 AppSecret :
 
-![](/docs/static/qq-guide-3.B1fiLS6i.png)重要提示
+![复制AppID和AppSecret](/docs/static/qq-guide-3.B1fiLS6i.png)
+
+重要提示
 
 出于安全考虑，AppSecret不支持明文保存，二次查看将会强制重置，请自行妥善保存。
 
 将获取的凭证配置到 WorkBuddy 中：
 
-1. 打开 WorkBuddy，在头像处进入 **助理设置**
+1. 打开 WorkBuddy，点击助理的**设置** ⚙️图标后进入 **助理设置**
 
-![](/docs/static/qq-guide-4.DZtA6-be.png)2. 配置 **QQ 机器人集成**
+![打开助理设置](/docs/static/qq-guide-4.Bk0lght0.png)
 
-![](/docs/static/qq-guide-5.CZ5v3-QZ.png)3. 填入刚才复制的 AppID 和 AppSecret 后点击**注册**
+2. 配置 **QQ 机器人集成**
 
-![](/docs/static/qq-guide-6.DQmj8ur6.png)4. 配置成功
+![QQ机器人集成配置](/docs/static/qq-guide-5.BvQUJ5Mx.png)
+
+3. **QQ 扫码**连接已创建的机器人；或选择 WebSocket 长连接 / 使用 URL 回调 填入刚才复制的 AppID 和 AppSecret 后点击**注册**，完成连接：
+
+![WebSocket长连接注册](/docs/static/qq-guide-6.wvwumEf6.png)
+
+![URL回调注册](/docs/static/qq-guide-7.4x4mHzrF.png)
+
+4. 配置成功
 
 在**助理设置中**，**QQ 机器人集成**显示已连接
 
-![](/docs/static/qq-guide-7.BdH1Jyn4.png)在**助理**中可以看到QQ图标
+![配置成功](/docs/static/qq-guide-8.BdH1Jyn4.png)
 
-![](/docs/static/qq-guide-8.DjCzMnbN.png)恭喜
+在**助理**中可以看到QQ图标
+
+![助理QQ图标](/docs/static/qq-guide-9.xHpaPG6L.png)
+
+恭喜
 
 您已成功将 WorkBuddy 接入 QQ！现在可以通过 QQ 随时随地远程控制 WorkBuddy 完成各种编程任务了。

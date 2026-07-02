@@ -60,7 +60,7 @@ WorkBuddy 移动端（App）支持两种执行模式：
 | 1 | [快速开始](./Quickstart) | 了解如何发起第一个任务，2分钟熟悉操作流程 |
 | 2 | [主页与导航](./features/Homepage) | 了解 App 的页面结构和导航方式 |
 | 3 | [发起任务](./features/Create-Task) | 了解通过输入栏、快捷入口创建任务的方式 |
-| 4 | [选择模型](./features/Model) | 了解可用模型及其能力标签和 Credits 消耗 |
+| 4 | [选择模型](./features/Model) | 了解可用模型及其能力标签和积分消耗 |
 | 5 | [添加附件与技能](./features/Attachments-and-Skills) | 了解如何拍照、选择图片、上传文件和启用技能 |
 | 6 | [任务执行与对话](./features/Task-Execution) | 了解任务拆解、继续追问和中断执行的操作 |
 | 7 | [产物查看与分享](./features/Share) | 了解如何查看、分享和保存任务产物 |

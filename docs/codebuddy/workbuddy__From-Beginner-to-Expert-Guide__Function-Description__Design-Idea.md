@@ -8,7 +8,7 @@
 
 1. 打开 WorkBuddy 首页，点击「新建任务」，选择最右侧的 **设计创意** Tab。
 
-![](/docs/static/ardot-01.bMnnRA1n.png)2. 首次使用时，系统会弹出授权确认窗口。WorkBuddy 通过登录手机号自动完成与 Ardot 的身份关联，无需单独注册腾讯设计账号，点击确认后即可使用。
+![](/docs/static/ardot-02.bprgeS8Q.png)2. 首次使用时，系统会弹出授权确认窗口。WorkBuddy 通过登录手机号自动完成与 Ardot 的身份关联，无需单独注册腾讯设计账号，点击确认后即可使用。
 
 **权限详情：**
 
@@ -30,7 +30,7 @@
 - 「帮我设计一张产品发布会的宣传海报，主题是 XX」
 - 「帮我制作一份 AI 硬件产品发布会 PPT，风格是XX」
 
-![](/docs/static/ardot-02.bprgeS8Q.png)支持的设计类型包括：移动端 App 界面、网站页面/Landing Page、品牌 Logo、海报/Banner、PPT 演示文稿等。
+![](/docs/static/ardot-01.bMnnRA1n.png)支持的设计类型包括：移动端 App 界面、网站页面/Landing Page、品牌 Logo、海报/Banner、PPT 演示文稿等。
 
 ### 对话驱动修改
 
@@ -48,7 +48,7 @@
 - 「首页背景改成渐变蓝色」
 - 「参考这个网页链接的视觉风格进行优化」
 
-![](/docs/static/ardot-03.BOVE09ca.png)每轮修改后，Agent 会告知本轮具体改动内容，过程可追溯。
+![](/docs/static/ardot-04.BZk9STbI.png)每轮修改后，Agent 会告知本轮具体改动内容，过程可追溯。
 
 ### 跳转 Ardot 精细化编辑
 
@@ -75,9 +75,9 @@ AI 对话擅长快速出稿和批量调整，但设计落地的"最后一公里"
 
 1. 点击画布 Tab 顶部的「用浏览器打开进行编辑」按钮
 
-![](/docs/static/ardot-04.BZk9STbI.png)2. 跳转后进入 Ardot 完整编辑器，体验专业设计工具的编辑能力
+![](/docs/static/ardot-05.D2s06LTu.png)2. 跳转后进入 Ardot 完整编辑器，体验专业设计工具的编辑能力
 
-![](/docs/static/ardot-05.D2s06LTu.png)双向实时同步：在 Ardot 浏览器端做的任何修改会实时回流 WorkBuddy 画布 Tab，无需手动刷新。回到 WorkBuddy 后 Agent 也能读取浏览器端的最新状态继续对话修改。改完回来继续对话，Agent 能接着你的最新版本往下走。
+![](/docs/static/ardot-06.Didz9awO.png)双向实时同步：在 Ardot 浏览器端做的任何修改会实时回流 WorkBuddy 画布 Tab，无需手动刷新。回到 WorkBuddy 后 Agent 也能读取浏览器端的最新状态继续对话修改。改完回来继续对话，Agent 能接着你的最新版本往下走。
 
 **推荐工作流：** 对话快速出稿（3 分钟）→ 跳转 Ardot 精修交付（5 分钟）→ 回到 WorkBuddy 生成代码（1 分钟）
 
@@ -92,7 +92,7 @@ AI 对话擅长快速出稿和批量调整，但设计落地的"最后一公里"
 - 在对话中说「将当前画布中的设计稿生成应用」
 - 或点击画布 Tab 顶部的「生成应用」按钮
 
-![](/docs/static/ardot-06.Didz9awO.png)生成后可继续用对话调整代码细节：「用 React 重写」「加一个 dark mode」「改成 Tailwind 样式」等。
+![](/docs/static/ardot-07.BOVE09ca.png)生成后可继续用对话调整代码细节：「用 React 重写」「加一个 dark mode」「改成 Tailwind 样式」等。
 
 ## 三、注意事项
 
@@ -100,3 +100,4 @@ AI 对话擅长快速出稿和批量调整，但设计落地的"最后一公里"
 - 设计稿存储在云端，换设备登录后可继续编辑
 - 跳转 Ardot 编辑器需要浏览器环境
 - 生成应用代码的功能依赖当前画布中的设计稿状态
+- 使用 Ardot 服务需遵守 [用户协议](https://ardot.tencent.com/drive/policy) 和 [隐私协议](https://ardot.tencent.com/drive/privacy)

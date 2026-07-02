@@ -221,6 +221,18 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `CODEBUDDY_GATEWAY_WECOM_CORP_SECRET` | 企业微信企业密钥 |
 | `CODEBUDDY_GATEWAY_WECOM_AGENT_ID` | 企业微信应用 ID |
 
+## Channel 自动连接
+
+| 环境变量 | 说明 |
+| --- | --- |
+| `CODEBUDDY_CHANNEL_AUTO_CONNECT` | 设置为 `1` 或 `true` 启动时自动连接所有已配置的 channel（企微 \+ 微信） |
+| `CODEBUDDY_WECOM_AUTO_CONNECT` | 设置为 `1` 或 `true` 启动时自动连接所有已配置的企微机器人实例 |
+| `CODEBUDDY_WECHAT_AUTO_CONNECT` | 设置为 `1` 或 `true` 启动时自动连接所有已配置的微信机器人实例 |
+| `CODEBUDDY_WECOM_BOT_ID` | 企微 AI 助手 Bot ID。设置后自动创建 default 实例并出现在 `/remote-control` 列表中 |
+| `CODEBUDDY_WECOM_BOT_SECRET` | 企微 AI 助手 Secret。需与 `CODEBUDDY_WECOM_BOT_ID` 配合使用 |
+
+> **提示**：`CODEBUDDY_CHANNEL_AUTO_CONNECT` 是统一开关，`CODEBUDDY_WECOM_AUTO_CONNECT` 和 `CODEBUDDY_WECHAT_AUTO_CONNECT` 是分类型开关，三者任一匹配即生效。所有模式（交互、`--serve`、daemon）下均生效。
+
 ## 调试和诊断
 
 | 环境变量 | 说明 |
