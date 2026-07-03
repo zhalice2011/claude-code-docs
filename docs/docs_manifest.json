@@ -206,8 +206,8 @@
     "agent-sdk__typescript.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/typescript",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/typescript.md",
-      "hash": "fe3fe4b1638b699d6cbbfdf3a994745a224d0d053da4e7a09f553b78d67f4554",
-      "last_updated": "2026-07-03T01:59:27.250858",
+      "hash": "f16f9288875328c2bda462abd1a9f49c9259b530d7bd6192768f72a03a9dc721",
+      "last_updated": "2026-07-03T11:26:45.852718",
       "source": "claude-code"
     },
     "agent-sdk__typescript-v2-preview.md": {
@@ -1144,7 +1144,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-03T06:24:08.790208",
+    "last_fetch_completed": "2026-07-03T11:28:50.813390",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 163,
@@ -1154,7 +1154,7 @@
     "total_files": 163,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-03T06:24:08.790232",
+  "last_updated": "2026-07-03T11:28:50.813422",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
