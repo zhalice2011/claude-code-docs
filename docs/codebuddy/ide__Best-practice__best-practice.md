@@ -21,11 +21,11 @@ text
 
 ### 1\.1 快速上手实践
 
-- **[从 0 到 1 搭建个人博客网站](https://copilot.tencent.com/blog/21)**
+- **[从 0 到 1 搭建个人博客网站](https://www.codebuddy.cn/blog/20)**
 
 	- **核心价值**：零编程基础完成完整项目
 	- **实践亮点**：Plan Mode 使用、项目规划思维
-	- **适用场景**：希望快速体验 AI 开发的完全初学者**详细实践操作**：点击「**[从 0 到 1 搭建个人博客网站](https://copilot.tencent.com/blog/21)**」查看更多详情
+	- **适用场景**：希望快速体验 AI 开发的完全初学者**详细实践操作**：点击「**[从 0 到 1 搭建个人博客网站](https://www.codebuddy.cn/blog/20)**」查看更多详情
 
 **步骤一：需求分析与规划**
 
@@ -63,11 +63,11 @@ text
 
 ### 1\.2 产品验证与原型设计
 
-- **[如何快速生成可演示原型](https://copilot.tencent.com/blog/26)**
+- **[如何快速生成可演示原型](https://www.codebuddy.cn/blog/25)**
 
 	- **核心价值**：快速验证产品概念，降低试错成本
 	- **实践亮点**：MVP 思维、原型设计、用户验证
-	- **适用场景**：初创团队、产品经理验证想法和概念**详细实践操作**：点击「**[如何快速生成可演示原型](https://copilot.tencent.com/blog/26)**」查看更多详情
+	- **适用场景**：初创团队、产品经理验证想法和概念**详细实践操作**：点击「**[如何快速生成可演示原型](https://www.codebuddy.cn/blog/25)**」查看更多详情
 
 **步骤一：GENIUS MVP 框架应用**
 
@@ -117,11 +117,11 @@ text
 
 ### 1\.3 现代开发范式
 
-- **[Vibe Coding 开发最佳实践：构建现代登录系统](https://copilot.tencent.com/blog/23)**
+- **[Vibe Coding 开发最佳实践：构建现代登录系统](https://www.codebuddy.cn/blog/22)**
 
 	- **核心价值**：掌握视觉优先的现代前端开发理念
 	- **实践亮点**：组件化开发、参数化主题、流畅交互
-	- **适用场景**：前端开发者提升 UI/UX 设计和实现能力**详细实践操作**：点击「**[Vibe Coding 开发最佳实践：构建现代登录系统](https://copilot.tencent.com/blog/23)**」查看更多详情
+	- **适用场景**：前端开发者提升 UI/UX 设计和实现能力**详细实践操作**：点击「**[Vibe Coding 开发最佳实践：构建现代登录系统](https://www.codebuddy.cn/blog/22)**」查看更多详情
 
 **步骤一：建立 Vibe Coding 设计思维**
 
@@ -193,11 +193,11 @@ json
 
 ### 2\.1 效率工具精通
 
-- **[基于 CodeBuddy 自定义指令的 AI 编程实践](https://copilot.tencent.com/blog/24)**
+- **[基于 CodeBuddy 自定义指令的 AI 编程实践](https://www.codebuddy.cn/blog/23)**
 
 	- **核心价值**：从重复输入到一键触发，重塑 AI 使用体验
 	- **实践亮点**：自定义指令创建、模板化工作流
-	- **适用场景**：希望提升 AI 使用效率的开发者和团队**详细实践操作**：点击「**[基于 CodeBuddy 自定义指令的 AI 编程实践](https://copilot.tencent.com/blog/24)**」查看更多详情
+	- **适用场景**：希望提升 AI 使用效率的开发者和团队**详细实践操作**：点击「**[基于 CodeBuddy 自定义指令的 AI 编程实践](https://www.codebuddy.cn/blog/23)**」查看更多详情
 
 **步骤一：识别重复任务场景**
 
@@ -273,7 +273,7 @@ description: 使用 TAPD MCP Server 查询待办，生成优先级计划
 
 	- **核心价值**：理解上下文窗口机制，掌握成本控制
 	- **实践亮点**：Token 计费原理、上下文管理策略
-	- **适用场景**：关注成本控制和效率优化的开发者**详细实践操作**：点击「**[CodeBuddy 高效上下文管理教程及降低 Token 消耗实用技巧](https://copilot.tencent.com/blog/31)**」查看更多详情
+	- **适用场景**：关注成本控制和效率优化的开发者**详细实践操作**：点击「**[CodeBuddy 高效上下文管理教程及降低 Token 消耗实用技巧](https://www.codebuddy.cn/blog/31)**」查看更多详情
 
 **步骤一：理解 Token 计费机制**
 
@@ -332,11 +332,11 @@ bash
 
 ### 2\.3 跨领域应用
 
-- **[人人都能学会的 CodeBuddy PPT 写作指南](https://copilot.tencent.com/blog/27)**
+- **[人人都能学会的 CodeBuddy PPT 写作指南](https://www.codebuddy.cn/blog/26)**
 
 	- **核心价值**：AI 在非编程场景的高效应用
 	- **实践亮点**：文档生成、演示文稿创建、内容结构化
-	- **适用场景**：需要创建演示文档的产品、运营、市场人员**详细实践操作**：点击「**[人人都能学会的 CodeBuddy PPT 写作指南](https://copilot.tencent.com/blog/27)**」查看更多详情
+	- **适用场景**：需要创建演示文档的产品、运营、市场人员**详细实践操作**：点击「**[人人都能学会的 CodeBuddy PPT 写作指南](https://www.codebuddy.cn/blog/26)**」查看更多详情
 
 **步骤一：准备工作 \- 安装 CodeBuddy**
 
@@ -473,11 +473,11 @@ text
 
 ### 3\.2 企业级项目实践
 
-- **[快速构建企业 CRM：使用 CodeBuddy 实现前后端一站式开发部署](https://copilot.tencent.com/blog/20)**
+- **[快速构建企业 CRM：使用 CodeBuddy 实现前后端一站式开发部署](https://www.codebuddy.cn/blog/19)**
 
 	- **核心价值**：完整的企业应用开发流程
 	- **实践亮点**：全栈开发、数据库设计、部署运维
-	- **适用场景**：需要快速交付企业应用的开发团队**详细实践操作**：点击「**[快速构建企业 CRM：使用 CodeBuddy 实现前后端一站式开发部署](https://copilot.tencent.com/blog/20)**」查看更多详情
+	- **适用场景**：需要快速交付企业应用的开发团队**详细实践操作**：点击「**[快速构建企业 CRM：使用 CodeBuddy 实现前后端一站式开发部署](https://www.codebuddy.cn/blog/19)**」查看更多详情
 
 **步骤一：CloudBase 云开发环境搭建**
 
@@ -524,11 +524,11 @@ const CustomerSchema = {
 
 ### 3\.3 企业场景落地实践
 
-- **[CodeBuddy AI Coding 企业场景落地实践与思考](https://copilot.tencent.com/blog/8)**
+- **[CodeBuddy AI Coding 企业场景落地实践与思考](https://www.codebuddy.cn/blog/7)**
 
 	- **核心价值**：系统化的企业级 AI Coding 落地方法论
 	- **实践亮点**：团队诊断、工具选型、流程改进、效果评估
-	- **适用场景**：推动 AI Coding 落地的企业技术管理者、团队负责人**详细实践操作**：点击「**[CodeBuddy AI Coding 企业场景落地实践与思考](https://copilot.tencent.com/blog/8)**」查看更多详情
+	- **适用场景**：推动 AI Coding 落地的企业技术管理者、团队负责人**详细实践操作**：点击「**[CodeBuddy AI Coding 企业场景落地实践与思考](https://www.codebuddy.cn/blog/7)**」查看更多详情
 
 **步骤一：团队开发流程诊断**
 
@@ -560,11 +560,11 @@ const CustomerSchema = {
 
 ### 4\.1 能力扩展与生态
 
-- **[基于 CodeBuddy \+ Skills 驱动的 AI 编程实践](https://copilot.tencent.com/blog/9)**
+- [基于 CodeBuddy \+ Skills 驱动的 AI 编程实践](https://www.codebuddy.cn/blog/8)
 
 	- **核心价值**：构建专业领域 AI 能力体系
 	- **实践亮点**：Skills 开发、能力组装、知识沉淀
-	- **适用场景**：希望构建专业能力体系的技术专家和团队**详细实践操作**：点击「**[基于 CodeBuddy \+ Skills 驱动的 AI 编程实践](https://copilot.tencent.com/blog/9)**」查看更多详情
+	- **适用场景**：希望构建专业能力体系的技术专家和团队**详细实践操作**：点击「[基于 CodeBuddy \+ Skills 驱动的 AI 编程实践](https://www.codebuddy.cn/blog/8)」查看更多详情
 
 **步骤一：理解 Skills 本质与价值**
 
@@ -611,11 +611,11 @@ class CodeQualitySkill:
 
 ### 4\.2 自动化测试与 MCP
 
-- **[效率革命：CodeBuddy \+ Chrome MCP 重塑电商开发与自动化测试新范式](https://copilot.tencent.com/blog/22)**
+- **[效率革命：CodeBuddy \+ Chrome MCP 重塑电商开发与自动化测试新范式](https://www.codebuddy.cn/blog/21)**
 
 	- **核心价值**：AI 驱动的端到端测试自动化
 	- **实践亮点**：MCP 协议、自动化测试、AI 代理
-	- **适用场景**：追求极致效率和自动化的技术团队**详细实践操作**：点击「**[效率革命：CodeBuddy \+ Chrome MCP 重塑电商开发与自动化测试新范式](https://copilot.tencent.com/blog/22)**」查看更多详情
+	- **适用场景**：追求极致效率和自动化的技术团队**详细实践操作**：点击「**[效率革命：CodeBuddy \+ Chrome MCP 重塑电商开发与自动化测试新范式](https://www.codebuddy.cn/blog/21)**」查看更多详情
 
 **步骤一：AI 快速电商网站构建**
 

@@ -524,8 +524,8 @@
     },
     "ide__Best-practice__best-practice.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Best-practice/best-practice",
-      "hash": "aa63e963af35183fa6c0453cb616c73b70ef6fb7c765c8dc13c4b99bbf8e01a9",
-      "last_updated": "2026-06-26T12:15:17.375147",
+      "hash": "c69393ca0252bd8ab965f94c4558af73aebafaba44a46fd496cdcbeb7bffada9",
+      "last_updated": "2026-07-04T06:45:41.181638",
       "source": "codebuddy"
     },
     "ide__Features__Hooks.md": {
@@ -1521,7 +1521,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-04T02:34:21.633691",
+    "last_fetch_completed": "2026-07-04T06:48:10.821402",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 255,
     "pages_fetched_successfully": 253,
@@ -1533,7 +1533,7 @@
     "total_files": 253,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-04T02:34:21.633714",
+  "last_updated": "2026-07-04T06:48:10.821423",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
