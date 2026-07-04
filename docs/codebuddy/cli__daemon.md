@@ -168,6 +168,76 @@ json
 | `CODEBUDDY_SESSION_LOG` | 后台会话日志路径 |
 | `CODEBUDDY_GATEWAY_AUTH` | 认证模式（none / password） |
 
+## 系统服务注册
+
+将 daemon 注册为操作系统级服务，实现**登录自动启动**和**崩溃自动恢复**。
+
+### 安装 / 卸载
+
+bash
+```
+# 注册为系统服务并立即启动 daemon
+codebuddy daemon install
+
+# 指定端口和权限模式
+codebuddy daemon install --port 8080 --permission-mode bypassPermissions
+
+# 移除系统服务注册
+codebuddy daemon uninstall
+```
+安装后 `codebuddy daemon status` 会显示系统服务状态：
+
+json
+```
+{
+  "status": "running",
+  "pid": 42567,
+  "endpoint": "http://127.0.0.1:9527",
+  "systemService": {
+    "installed": true,
+    "backend": "launchd",
+    "configPath": "/Users/xxx/Library/LaunchAgents/com.codebuddy.daemon.plist"
+  }
+}
+```
+### 平台支持
+
+| 平台 | 后端 | 服务类型 | 配置路径 |
+| --- | --- | --- | --- |
+| macOS | launchd | Launch Agent（用户级） | `~/Library/LaunchAgents/com.codebuddy.daemon.plist` |
+| Linux | systemd | User Unit | `~/.config/systemd/user/codebuddy-daemon.service` |
+| Windows | Task Scheduler | 计划任务（用户级） | `schtasks /tn "CodeBuddy Daemon"` |
+
+所有平台均为**用户级服务**，无需管理员权限。
+
+### 自动更新
+
+系统服务 \+ 自动更新形成完整的零干预运维链路：
+
+1. **系统登录** → 系统服务自动启动 daemon
+2. **每小时** → 后台检查新版本并静默安装
+3. **空闲时** → fork 新 daemon 进程 → 旧进程正常退出（不触发崩溃重启）
+4. **崩溃时** → 系统服务自动恢复（`KeepAlive` / `Restart=on-failure`）
+
+> **设计细节**：系统服务配置为仅在非正常退出时重启。自动更新的 graceful restart 以 exit code 0 退出，不会触发系统服务的重启机制——新进程已经由更新流程自行 fork 出来了。
+
+### 管理命令对照
+
+bash
+```
+# macOS 原生管理
+launchctl list | grep codebuddy
+launchctl stop com.codebuddy.daemon
+launchctl start com.codebuddy.daemon
+
+# Linux 原生管理
+systemctl --user status codebuddy-daemon
+systemctl --user stop codebuddy-daemon
+systemctl --user start codebuddy-daemon
+
+# Windows 原生管理
+schtasks /query /tn "CodeBuddy Daemon"
+```
 ## 使用场景
 
 ### 开发服务器常驻

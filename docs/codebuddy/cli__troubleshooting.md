@@ -35,6 +35,9 @@ set CODEBUDDY_CODE_GIT_BASH_PATH=C:\Program Files\Git\bin\bash.exe
 # PowerShell
 $env:CODEBUDDY_CODE_GIT_BASH_PATH="C:\Program Files\Git\bin\bash.exe"
 ```
+
+> 若 `CODEBUDDY_CODE_GIT_BASH_PATH` 指向的路径不存在，行为取决于 `CODEBUDDY_SKIP_GIT_BASH_CHECK`：默认（未设为 `1`）视为用户显式配置错误，启动时报错退出；当设为 `1`（例如上游进程已托管 shell，此时该变量可能是第三方程序如 UGit 写入后随其升级失效的），则不中断对话，改为记录一条告警到 `~/.codebuddy/logs` 并自动降级到自动探测的 Git Bash / PowerShell。若要彻底消除告警，请删除该环境变量或将其修正为有效路径。
+
 **抑制启动提示**（例如上游进程已管理 shell）：
 
 bash
