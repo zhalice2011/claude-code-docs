@@ -115,8 +115,8 @@
     "agents-and-tools__tool-use__bash-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/bash-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/bash-tool.md",
-      "hash": "ee5aa3f6503cf57321b3e46b188609f2a76d5fd30fbe8257bb5045c141901156",
-      "last_updated": "2026-06-27T10:55:23.557008",
+      "hash": "6dca052675baa1965795c1b13a46e01685eecb207fa19345dde73cebb2ef4ada",
+      "last_updated": "2026-07-06T19:45:59.421723",
       "source": "platform"
     },
     "agents-and-tools__tool-use__build-a-tool-using-agent.md": {
@@ -129,8 +129,8 @@
     "agents-and-tools__tool-use__code-execution-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool.md",
-      "hash": "8c8ffdeb1592b69ebe0b14a7e8fcba2aee88a873891391485269e22d0e61b8c7",
-      "last_updated": "2026-06-30T19:46:00.696756",
+      "hash": "1c9282e867efa501d14ec21e0112f7712958ee999c824f22477f1c86864f7966",
+      "last_updated": "2026-07-06T19:46:00.715502",
       "source": "platform"
     },
     "agents-and-tools__tool-use__computer-use-tool.md": {
@@ -3426,8 +3426,8 @@
     "api__compliance__organizations__list.md": {
       "original_url": "https://platform.claude.com/docs/en/api/compliance/organizations/list",
       "original_md_url": "https://platform.claude.com/docs/en/api/compliance/organizations/list.md",
-      "hash": "6f4165f51213fb60909f3d3e1dfbd846b040d5090ad6a82c8ad5a520ffbe3689",
-      "last_updated": "2026-07-06T17:43:42.427612",
+      "hash": "17853e6e7411b4837d3dd79fef5fd1758c59ac538948045932ccf431d746c3a3",
+      "last_updated": "2026-07-06T19:50:51.040181",
       "source": "platform"
     },
     "api__compliance__organizations__roles.md": {
@@ -3447,8 +3447,8 @@
     "api__compliance__organizations__roles__permissions.md": {
       "original_url": "https://platform.claude.com/docs/en/api/compliance/organizations/roles/permissions",
       "original_md_url": "https://platform.claude.com/docs/en/api/compliance/organizations/roles/permissions.md",
-      "hash": "554651ce30c6981098fde134e54b880aa9f9ad8139aed57b5d1e35c2ea00e52e",
-      "last_updated": "2026-07-06T17:43:44.479384",
+      "hash": "6ec8647d5b13f8f7ccae191768afe6ae0f149343d7a8ca98194cc9794a4b5ec0",
+      "last_updated": "2026-07-06T19:50:52.869080",
       "source": "platform"
     },
     "api__compliance__organizations__roles__permissions__list.md": {
@@ -3489,15 +3489,15 @@
     "api__compliance__organizations__users__list.md": {
       "original_url": "https://platform.claude.com/docs/en/api/compliance/organizations/users/list",
       "original_md_url": "https://platform.claude.com/docs/en/api/compliance/organizations/users/list.md",
-      "hash": "942a40ad8978cb87a78c634c8532742c005ef07752dfa124ce5931cfc0cb67e7",
-      "last_updated": "2026-07-06T17:43:48.203316",
+      "hash": "f333adafa8e7a1058f4fc4168f10c37280de445b375fa528c2cb6edc6a91693a",
+      "last_updated": "2026-07-06T19:50:56.490935",
       "source": "platform"
     },
     "api__csharp__beta.md": {
       "original_url": "https://platform.claude.com/docs/en/api/csharp/beta",
       "original_md_url": "https://platform.claude.com/docs/en/api/csharp/beta.md",
-      "hash": "ab80b0d232ece1b0e9ae1412c1a7467c1b47184c085d4a5064099f63dcf368e4",
-      "last_updated": "2026-07-06T17:43:48.811292",
+      "hash": "2e3c65340e614401566fe89bdc25e772b36f18f767d93d5038fd7266d06e5ab5",
+      "last_updated": "2026-07-06T19:50:57.236122",
       "source": "platform"
     },
     "api__csharp__beta__agents.md": {
@@ -11343,7 +11343,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-07-06T18:08:15.193252",
+    "last_fetch_completed": "2026-07-06T20:15:18.236741",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 1877,
@@ -11611,7 +11611,7 @@
     "total_files": 1620,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-06T18:08:15.193273",
+  "last_updated": "2026-07-06T20:15:18.236766",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
