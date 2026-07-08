@@ -10853,8 +10853,8 @@
     "build-with-claude__skills-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide.md",
-      "hash": "b614f613d8567fe3358f9409eb78db4005a889ad5296371908cd24f6d5979121",
-      "last_updated": "2026-06-30T22:47:36.222075",
+      "hash": "390378758cc31226af8a7690d8f64a55db2077f1097875bc7996b03e1d33ff19",
+      "last_updated": "2026-07-08T19:40:14.999914",
       "source": "platform"
     },
     "build-with-claude__streaming.md": {
@@ -11203,8 +11203,8 @@
     "managed-agents__files.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/files",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/files.md",
-      "hash": "45a3fad0486f7e5d9af0d70c8ce9f71b0966d4845a0f11a663b5a7a70b88d3f4",
-      "last_updated": "2026-06-27T06:53:45.953397",
+      "hash": "1fa03beb722fcb419857dd7075ce0040a84f6fb56ff43244f057c2cb15f19861",
+      "last_updated": "2026-07-08T19:40:46.971483",
       "source": "platform"
     },
     "managed-agents__github.md": {
@@ -11343,7 +11343,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-07-08T16:57:56.574474",
+    "last_fetch_completed": "2026-07-08T19:41:12.962263",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 1877,
@@ -11611,7 +11611,7 @@
     "total_files": 1620,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-08T16:57:56.574504",
+  "last_updated": "2026-07-08T19:41:12.962284",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
