@@ -19,7 +19,7 @@
 
 展示当前对话中新生成的文件，点击可查看任务列表及生成内容。
 
-![](/docs/static/image-42.Coht1O8L.png)点击 **文件夹图标** 可在 Finder 中打开文件所在位置。
+![](/docs/static/image-42.Coht1O8L.png)点击 **文件夹图标** 可在系统文件管理器（macOS Finder / Windows 文件资源管理器）中打开文件所在位置。
 
 ![](/docs/static/image-43.Bd-Q6UDE.png)## 二、全部文件
 

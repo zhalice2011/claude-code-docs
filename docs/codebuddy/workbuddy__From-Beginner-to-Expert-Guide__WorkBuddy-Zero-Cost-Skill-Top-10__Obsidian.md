@@ -3,7 +3,7 @@
 ## 一、基本信息
 
 - **安装名**：`obsidian`
-- **仓库来源**：`GitHub`
+- **仓库来源**：`SkillHub`
 
 ## 二、功能简介
 
@@ -26,7 +26,7 @@
 
 ## 五、效果示意
 
-![](/docs/static/image-6.CmM-Fyiq.png)![](/docs/static/image-7.CIxvEmxO.png)## 六、使用建议
+![](/docs/static/image-6.CtUxfxZF.png)![](/docs/static/image-7.CIxvEmxO.png)## 六、使用建议
 
 - **适合长期知识沉淀**：尤其适用于日报、周报、项目记录与个人知识库。
 - **建议提前规划目录**：如日报、项目、灵感、会议纪要等。

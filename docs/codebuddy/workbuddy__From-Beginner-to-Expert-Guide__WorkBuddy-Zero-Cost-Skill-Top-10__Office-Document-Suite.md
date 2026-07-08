@@ -2,7 +2,7 @@
 
 ## 一、基本信息
 
-- **仓库来源**：`PDF` ｜ `DOCX` ｜ `PPTX` ｜ `XLSX`
+- **内置指令**：`PDF` ｜ `DOCX` ｜ `PPTX` ｜ `XLSX`
 
 ## 二、功能简介
 
@@ -30,4 +30,4 @@
 
 ## 六、效果示意
 
-![](/docs/static/image-2.WZq6xJGC.png)
+![](/docs/static/image-2.DF-4O2Qb.png)

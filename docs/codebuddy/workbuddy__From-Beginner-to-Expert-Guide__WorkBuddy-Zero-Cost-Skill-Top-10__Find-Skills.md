@@ -28,7 +28,7 @@
 
 `WorkBuddy` 可以成功调用该 `Skill`，并给出尚未安装但适合当前需求的推荐结果。
 
-![](/docs/static/image-11.CbBOONP5.png)## 六、使用建议
+![](/docs/static/image-11.CnExhlzX.png)## 六、使用建议
 
 - **先说任务，不必先猜名字**：只描述需求即可。
 - **适合新手入门**：可显著降低试错成本。

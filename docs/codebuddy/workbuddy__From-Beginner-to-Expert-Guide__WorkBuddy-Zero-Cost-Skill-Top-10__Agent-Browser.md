@@ -3,7 +3,7 @@
 ## 一、基本信息
 
 - **安装名**：`agent-browser`
-- **仓库来源**：`GitHub`
+- **仓库来源**：`SkillHub`
 
 ## 二、功能简介
 
@@ -28,9 +28,9 @@
 
 可以看到，`WorkBuddy` 会模拟真实浏览行为，按步骤读取页面内容。
 
-![](/docs/static/image.Chq67ea5.png)最终可输出结构化总结或整理后的文档结果。
+![](/docs/static/image.B5Jk5J9x.png)最终可输出结构化总结或整理后的文档结果。
 
-![](/docs/static/image-1.BszAJWbM.png)## 六、使用建议
+![](/docs/static/image-1.P1Bj-DqB.png)## 六、使用建议
 
 - **先说明目标页面**：尽量提供明确链接与目标动作。
 - **指定输出形式**：可要求输出摘要、表格、截图或操作记录。

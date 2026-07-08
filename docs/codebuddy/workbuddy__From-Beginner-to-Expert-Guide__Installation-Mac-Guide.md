@@ -17,6 +17,14 @@ TIP
 **M 系列芯片** → 选择 `Mac ARM64` 版本；
 
 **Intel 芯片** → 选择 `Mac X64` 版本。
+
+**如何查系统版本？**
+
+点击屏幕左上角的苹果图标，选择**关于本机**可以查看。
+
+**示例：** 下图系统配置选择 `Mac ARM64` 版本。
+
+![查看系统版本](/docs/static/image-24.-gKY3-lT.png)
 2. 在浏览器弹窗中允许下载，等待安装包下载完成。
 
 ![](/docs/static/image-14.BhZn1kDP.png)
@@ -32,7 +40,7 @@ TIP
 3. 等待拷贝完成；
 
 ![](/docs/static/image-18.B8WzN7p9.png)
-4. 右键推出安装磁盘，删除桌面残留的 `.dmg` 文件。
+4. 推出已挂载的 WorkBuddy 磁盘映像；如不再需要，可删除下载目录中的 `.dmg` 安装包。
 
 ![](/docs/static/image-19.BnT816LK.png)
 
