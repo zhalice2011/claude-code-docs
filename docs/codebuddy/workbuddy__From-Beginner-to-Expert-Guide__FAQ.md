@@ -190,8 +190,8 @@ TIP
 
 常见安装目录路径：
 
-- windows：C:\\Users{用户名}\\AppData\\Local\\Programs\\WorkBuddy
-- macOS：/Applications/WorkBuddy.app
+- windows：`C:\Users\{用户名}\AppData\Local\Programs\WorkBuddy`
+- macOS：`/Applications/WorkBuddy.app`
 
 安装目录下通常有`bin`， `locales`， `resources`， `tools`， `_` 这些文件夹。
 

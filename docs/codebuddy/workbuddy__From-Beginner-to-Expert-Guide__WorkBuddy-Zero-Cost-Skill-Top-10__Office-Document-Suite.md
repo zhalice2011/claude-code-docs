@@ -30,4 +30,4 @@
 
 ## 六、效果示意
 
-![](/docs/static/image-2.DF-4O2Qb.png)
+![办公文档套件效果示意](/docs/static/image-2.DF-4O2Qb.png)

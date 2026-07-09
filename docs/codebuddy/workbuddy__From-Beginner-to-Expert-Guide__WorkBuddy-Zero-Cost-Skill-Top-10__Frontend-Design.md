@@ -3,7 +3,7 @@
 ## 一、基本信息
 
 - **安装名**：`frontend-design`
-- **仓库来源**：`GitHub`
+- **仓库来源**：`SkillHub`
 
 ## 二、功能简介
 
@@ -26,7 +26,11 @@
 
 ## 五、效果示意
 
-![](/docs/static/image-12.CFhnZ18k.png)![](/docs/static/image-13.Chze5PQR.png)## 六、使用建议
+![前端设计效果示意](/docs/static/image-12.CFhnZ18k.png)
+
+![前端设计效果示意](/docs/static/image-13.Chze5PQR.png)
+
+## 六、使用建议
 
 - **先说清页面目标**：是展示、转化还是汇报，不同目标对应不同设计重点。
 - **明确风格关键词**：如现代、极简、科技感、品牌化等。

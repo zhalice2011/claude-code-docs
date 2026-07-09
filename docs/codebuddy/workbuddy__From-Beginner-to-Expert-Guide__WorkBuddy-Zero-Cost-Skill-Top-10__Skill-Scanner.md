@@ -3,7 +3,7 @@
 ## 一、基本信息
 
 - **安装名**：`skill-scanner`
-- **仓库来源**：`GitHub`
+- **仓库来源**：`SkillHub`
 
 ## 二、功能简介
 
@@ -18,13 +18,17 @@
 
 ## 四、推荐使用方式
 
-通常无需额外强调，安装流程中即可优先触发审查能力。
+用于安装技能、包或插件的安全检查。请在执行任何 npm install、openclaw plugins install、clawhub install 或类似安装命令之前使用。
 
 **示例效果**：
 
 以下示意展示了在安装 `web-search` 时生成的审计结果。
 
-![](/docs/static/image-8.BYo6CS9e.png)![](/docs/static/image-9.Dv9VDQJT.png)## 五、使用建议
+![技能扫描效果示意](/docs/static/image-8.BYo6CS9e.png)
+
+![技能扫描结果示意](/docs/static/image-9.Dv9VDQJT.png)
+
+## 五、使用建议
 
 - **先审计，再安装**：这是最推荐的使用顺序。
 - **重点关注依赖和脚本**：尤其是来源不明的第三方 `Skill`。

@@ -28,7 +28,9 @@
 
 下面是 `WorkBuddy` 实际执行搜索后的界面示意：
 
-![](/docs/static/image-5.DXPrbrPT.png)## 六、使用建议
+![网页搜索效果示意](/docs/static/image-5.DXPrbrPT.png)
+
+## 六、使用建议
 
 - **带时间范围提问**：例如 最近 `1` 周、最近 `1` 个月、今年以来。
 - **要求附带来源**：便于后续复核与引用。
