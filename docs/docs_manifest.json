@@ -465,8 +465,8 @@
     "desktop.md": {
       "original_url": "https://code.claude.com/docs/en/desktop",
       "original_md_url": "https://code.claude.com/docs/en/desktop.md",
-      "hash": "adebacbeb2f1bf489a188facefc070eea1904213265f9872563aca2aa7a1f844",
-      "last_updated": "2026-07-09T19:24:09.004236",
+      "hash": "df5d7d54487dfd61d63a42baeb33e9d7e54d54fc9e88bfee0da8b18db6df334b",
+      "last_updated": "2026-07-09T22:14:31.462005",
       "source": "claude-code"
     },
     "desktop-linux.md": {
@@ -479,8 +479,8 @@
     "desktop-quickstart.md": {
       "original_url": "https://code.claude.com/docs/en/desktop-quickstart",
       "original_md_url": "https://code.claude.com/docs/en/desktop-quickstart.md",
-      "hash": "2f336ae0b7434db30555eb3ce186950aeebddbbca8b589ca7cdafd7f19af32b0",
-      "last_updated": "2026-07-09T19:24:10.614830",
+      "hash": "b862c1b4e2f57a712ffa044aae13a98f5c2ff3f3cf1170dbf54f081d48519624",
+      "last_updated": "2026-07-09T22:14:33.203990",
       "source": "claude-code"
     },
     "desktop-scheduled-tasks.md": {
@@ -906,8 +906,8 @@
     "settings.md": {
       "original_url": "https://code.claude.com/docs/en/settings",
       "original_md_url": "https://code.claude.com/docs/en/settings.md",
-      "hash": "2569256cf00a306084533acbc53cdfcb9e2a6c3d4c58fae73ba2e054cf84e109",
-      "last_updated": "2026-07-09T19:24:58.269585",
+      "hash": "626245a9581d2bbfdf3253331ef5a407f2286bf9f1d92d520d29e3c977817441",
+      "last_updated": "2026-07-09T22:15:27.045800",
       "source": "claude-code"
     },
     "setup.md": {
@@ -1144,7 +1144,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-09T19:25:29.538844",
+    "last_fetch_completed": "2026-07-09T22:16:00.053405",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 163,
@@ -1154,7 +1154,7 @@
     "total_files": 163,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-09T19:25:29.538867",
+  "last_updated": "2026-07-09T22:16:00.053428",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
