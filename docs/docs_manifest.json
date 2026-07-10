@@ -297,8 +297,8 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "570f35eaab539f58d323634e8bd7d014568a2beba1451a435e4c1b6e1282856d",
-      "last_updated": "2026-07-08T22:05:46.314177",
+      "hash": "2b5d3c512d7d174afc8037c2be664a1c0d21ab2f168811a2ae5d20d646207415",
+      "last_updated": "2026-07-10T02:00:33.875863",
       "source": "claude-code-repository"
     },
     "channels.md": {
@@ -465,8 +465,8 @@
     "desktop.md": {
       "original_url": "https://code.claude.com/docs/en/desktop",
       "original_md_url": "https://code.claude.com/docs/en/desktop.md",
-      "hash": "df5d7d54487dfd61d63a42baeb33e9d7e54d54fc9e88bfee0da8b18db6df334b",
-      "last_updated": "2026-07-09T22:14:31.462005",
+      "hash": "e5fdd8007a0f7774555eadbc2952f6635aa4e9aa57b5355424f8870087c0d423",
+      "last_updated": "2026-07-10T01:58:46.183836",
       "source": "claude-code"
     },
     "desktop-linux.md": {
@@ -528,8 +528,8 @@
     "feature-availability.md": {
       "original_url": "https://code.claude.com/docs/en/feature-availability",
       "original_md_url": "https://code.claude.com/docs/en/feature-availability.md",
-      "hash": "c19d3d525555303a52cda70218499e5f039eae1a7d6235c6be908f28cdac8f58",
-      "last_updated": "2026-07-04T06:11:39.695713",
+      "hash": "5f7386a24fecfb98e706e4b50f4248b0bbbf698117a9fa9e433238cebbf2b75c",
+      "last_updated": "2026-07-10T01:58:55.240713",
       "source": "claude-code"
     },
     "features-overview.md": {
@@ -668,8 +668,8 @@
     "llm-gateway-connect.md": {
       "original_url": "https://code.claude.com/docs/en/llm-gateway-connect",
       "original_md_url": "https://code.claude.com/docs/en/llm-gateway-connect.md",
-      "hash": "635e968ccef369778b9ae8fdbfc6e7013f69b8a4312347f54e99adfade4d358d",
-      "last_updated": "2026-07-09T19:24:31.529774",
+      "hash": "f6790232bd422ddcf98fdbcd621899d405858160d6fbab74d158a218a6c1eb25",
+      "last_updated": "2026-07-10T01:59:15.758472",
       "source": "claude-code"
     },
     "llm-gateway-protocol.md": {
@@ -682,8 +682,8 @@
     "llm-gateway-rollout.md": {
       "original_url": "https://code.claude.com/docs/en/llm-gateway-rollout",
       "original_md_url": "https://code.claude.com/docs/en/llm-gateway-rollout.md",
-      "hash": "d62564bf01a9f60de6525dbbc0f5747f47d41b8e1f1bff590171f17cd10e9f62",
-      "last_updated": "2026-07-04T06:12:02.559956",
+      "hash": "e84d8a0c60a026a8aa34b5c86209bf670b73e523802c7d7a3e766ca16eb10f44",
+      "last_updated": "2026-07-10T01:59:17.791120",
       "source": "claude-code"
     },
     "managed-mcp.md": {
@@ -773,8 +773,8 @@
     "platforms.md": {
       "original_url": "https://code.claude.com/docs/en/platforms",
       "original_md_url": "https://code.claude.com/docs/en/platforms.md",
-      "hash": "8183dfe63ce1a30a8f7f511f3b30ea8d933ec623c21c455c49303fc222bc5ad5",
-      "last_updated": "2026-07-04T06:12:17.011919",
+      "hash": "9ad2f6df7275ea495a465786d1caa13a8221d7ee7f4010b73251ad6dd6619658",
+      "last_updated": "2026-07-10T01:59:32.459809",
       "source": "claude-code"
     },
     "plugin-dependencies.md": {
@@ -1144,7 +1144,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-09T22:16:00.053405",
+    "last_fetch_completed": "2026-07-10T02:00:33.875929",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 163,
@@ -1154,7 +1154,7 @@
     "total_files": 163,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-09T22:16:00.053428",
+  "last_updated": "2026-07-10T02:00:33.875949",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
