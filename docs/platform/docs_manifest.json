@@ -10923,8 +10923,8 @@
     "manage-claude__access-transparency.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/access-transparency",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/access-transparency.md",
-      "hash": "75087ac428337229a954d337afbbd3702977c2f30b13b0058f78600830fc8c03",
-      "last_updated": "2026-06-27T06:53:20.405513",
+      "hash": "7d3cacfde5c061be9fc29785870c6c18c333909860931e16e1637bc41285e4c5",
+      "last_updated": "2026-07-10T19:51:12.514771",
       "source": "platform"
     },
     "manage-claude__admin-api.md": {
@@ -11343,7 +11343,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-07-10T17:23:59.097628",
+    "last_fetch_completed": "2026-07-10T19:51:49.557053",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 1877,
@@ -11611,7 +11611,7 @@
     "total_files": 1620,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-10T17:23:59.097653",
+  "last_updated": "2026-07-10T19:51:49.557076",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
