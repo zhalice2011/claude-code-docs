@@ -416,8 +416,8 @@
     "communications-kit.md": {
       "original_url": "https://code.claude.com/docs/en/communications-kit",
       "original_md_url": "https://code.claude.com/docs/en/communications-kit.md",
-      "hash": "3831875b60f4315e21436e587187590061c7818297ba41a76a2b715f1cb79892",
-      "last_updated": "2026-07-04T01:58:10.125461",
+      "hash": "2893d5a6cf46be31e70e29957835fc91e3f6d2af21c3074ef9ffd829cacb0551",
+      "last_updated": "2026-07-11T07:40:56.205799",
       "source": "claude-code"
     },
     "computer-use.md": {
@@ -766,8 +766,8 @@
     "permissions.md": {
       "original_url": "https://code.claude.com/docs/en/permissions",
       "original_md_url": "https://code.claude.com/docs/en/permissions.md",
-      "hash": "37f3e4543be53d9b0c5e6945d85ae9872a9da9be3b28a38f48c2216d48ef9f43",
-      "last_updated": "2026-07-11T01:47:03.944183",
+      "hash": "9bf2d2302458b56f0a65d2466a2bf1130a0db22173698ba12826b8b61f0faff3",
+      "last_updated": "2026-07-11T07:41:36.882048",
       "source": "claude-code"
     },
     "platforms.md": {
@@ -878,8 +878,8 @@
     "security.md": {
       "original_url": "https://code.claude.com/docs/en/security",
       "original_md_url": "https://code.claude.com/docs/en/security.md",
-      "hash": "fe52bd8f7c021b5f2390f4d401218ed14205f43fffadae4925267c9c2e89325f",
-      "last_updated": "2026-06-24T11:34:32.351950",
+      "hash": "68e2aeda340144130c612b49cfe9b067db31e931ba97f7bd31de9460210c82b4",
+      "last_updated": "2026-07-11T07:41:54.652301",
       "source": "claude-code"
     },
     "security-guidance.md": {
@@ -962,8 +962,8 @@
     "tools-reference.md": {
       "original_url": "https://code.claude.com/docs/en/tools-reference",
       "original_md_url": "https://code.claude.com/docs/en/tools-reference.md",
-      "hash": "e763ffde874ba75df3de4dec791ed8835270b7168c93b793f58dae1448138f12",
-      "last_updated": "2026-07-08T16:27:03.748174",
+      "hash": "75e07a17b00e3013248e95c7aa489f9905f6d70baec229c588ef4fb38509cc8e",
+      "last_updated": "2026-07-11T07:42:04.759832",
       "source": "claude-code"
     },
     "troubleshoot-install.md": {
@@ -1004,8 +1004,8 @@
     "vs-code.md": {
       "original_url": "https://code.claude.com/docs/en/vs-code",
       "original_md_url": "https://code.claude.com/docs/en/vs-code.md",
-      "hash": "7cf6d5197b49597bab4a6595757798d5c6a6248c37f5c7b4b93c5caea40442a7",
-      "last_updated": "2026-07-09T19:25:11.367144",
+      "hash": "24241d41a234cd69532b5aa33ea41be102b1e97dfcd90633ad82a58edee41a09",
+      "last_updated": "2026-07-11T07:42:08.926595",
       "source": "claude-code"
     },
     "web-quickstart.md": {
@@ -1158,7 +1158,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-11T05:34:26.943499",
+    "last_fetch_completed": "2026-07-11T07:42:25.228990",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 165,
@@ -1168,7 +1168,7 @@
     "total_files": 165,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-11T05:34:26.943521",
+  "last_updated": "2026-07-11T07:42:25.229017",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
