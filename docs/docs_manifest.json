@@ -682,8 +682,8 @@
     "llm-gateway-connect.md": {
       "original_url": "https://code.claude.com/docs/en/llm-gateway-connect",
       "original_md_url": "https://code.claude.com/docs/en/llm-gateway-connect.md",
-      "hash": "984e16537c508efef44fc74300179a80e56a96e34ca7aa5fab3275e72babbead",
-      "last_updated": "2026-07-14T19:04:25.567882",
+      "hash": "9390c0af5e7bbf74556d30ddf126b5cb88fd234566284242624824ba722451af",
+      "last_updated": "2026-07-15T16:14:54.721417",
       "source": "claude-code"
     },
     "llm-gateway-protocol.md": {
@@ -1172,7 +1172,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-15T13:14:52.601078",
+    "last_fetch_completed": "2026-07-15T16:16:57.676636",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 167,
@@ -1182,7 +1182,7 @@
     "total_files": 167,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-15T13:14:52.601097",
+  "last_updated": "2026-07-15T16:16:57.676666",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
