@@ -185,8 +185,8 @@
     "agents-and-tools__tool-use__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview.md",
-      "hash": "9ccea937207c570d3b4596496259e3c5f896552df76cbca7e2afa1c6a7ec4f10",
-      "last_updated": "2026-07-16T19:10:12.902094",
+      "hash": "8bed54f02b5d8a42eb8ceef1393401af8554781dfbc21acfefb123433a3f3666",
+      "last_updated": "2026-07-16T21:59:44.212959",
       "source": "platform"
     },
     "agents-and-tools__tool-use__parallel-tool-use.md": {
@@ -11462,7 +11462,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-07-16T19:39:30.186958",
+    "last_fetch_completed": "2026-07-16T22:29:09.531924",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 1894,
@@ -11730,7 +11730,7 @@
     "total_files": 1637,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-16T19:39:30.186974",
+  "last_updated": "2026-07-16T22:29:09.531944",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
