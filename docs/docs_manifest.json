@@ -122,8 +122,8 @@
     "agent-sdk__python.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/python.md",
-      "hash": "9568fd1064d950713dbbfeb211ef947c3af20faee3555e1702c26f126a52891d",
-      "last_updated": "2026-07-16T21:56:26.618389",
+      "hash": "6504777a50ab5419dd8078ee4f3e346715a8e70d7623c828908eb907da38fef5",
+      "last_updated": "2026-07-17T16:08:20.423454",
       "source": "claude-code"
     },
     "agent-sdk__quickstart.md": {
@@ -185,8 +185,8 @@
     "agent-sdk__structured-outputs.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/structured-outputs",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/structured-outputs.md",
-      "hash": "51b6676f6fd487aa1ef074b78c153c3caafa439443e893314ff15c63eeaea576",
-      "last_updated": "2026-07-17T01:47:47.058052",
+      "hash": "5c2feff4d988b9d341290f13469d301970be2be9457fe29f08715701e76ca589",
+      "last_updated": "2026-07-17T16:08:29.543105",
       "source": "claude-code"
     },
     "agent-sdk__subagents.md": {
@@ -213,8 +213,8 @@
     "agent-sdk__typescript.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/typescript",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/typescript.md",
-      "hash": "a7ef5bc0748a3e47dc849a7f3d22a835145c658a3b3b09638bec5254940981a2",
-      "last_updated": "2026-07-16T16:10:40.700753",
+      "hash": "da4df5f0d89fa847f1806adc7c7c5352eef99519af152063c13f6575babff3df",
+      "last_updated": "2026-07-17T16:08:34.402241",
       "source": "claude-code"
     },
     "agent-sdk__typescript-v2-preview.md": {
@@ -731,8 +731,8 @@
     "memory.md": {
       "original_url": "https://code.claude.com/docs/en/memory",
       "original_md_url": "https://code.claude.com/docs/en/memory.md",
-      "hash": "e9ac9966b2f3a0ec8d011a2d70465908502f3d480625febb69d39803922d7099",
-      "last_updated": "2026-07-16T21:58:25.697325",
+      "hash": "9a6b9bc5f0e7e848c9311736f6d318bb51415caf3c71d2df2b38ccbbc77995fd",
+      "last_updated": "2026-07-17T16:09:46.866783",
       "source": "claude-code"
     },
     "microsoft-foundry.md": {
@@ -766,8 +766,8 @@
     "output-styles.md": {
       "original_url": "https://code.claude.com/docs/en/output-styles",
       "original_md_url": "https://code.claude.com/docs/en/output-styles.md",
-      "hash": "553ad5da3d4aeb768cd5594b8c18b82745eff97164e34cf99b9e712f04b84b21",
-      "last_updated": "2026-06-24T11:34:14.596586",
+      "hash": "54d1fb85f0e20fa083e9cc76b29b37b674dd6c447499c1a62645ebae47155953",
+      "last_updated": "2026-07-17T16:09:54.508956",
       "source": "claude-code"
     },
     "overview.md": {
@@ -962,8 +962,8 @@
     "sub-agents.md": {
       "original_url": "https://code.claude.com/docs/en/sub-agents",
       "original_md_url": "https://code.claude.com/docs/en/sub-agents.md",
-      "hash": "aa5278a1fbb4135227ace020f2dbb78926f116c52c06a226e4aad13830ce2ada",
-      "last_updated": "2026-07-16T16:12:47.497138",
+      "hash": "ba4f7c43370ed237dd8d90049d38efc693ff794e3ed9193447d2b0022143b8a0",
+      "last_updated": "2026-07-17T16:10:19.918463",
       "source": "claude-code"
     },
     "terminal-config.md": {
@@ -1179,7 +1179,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-17T13:07:49.651054",
+    "last_fetch_completed": "2026-07-17T16:10:55.329886",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 168,
@@ -1189,7 +1189,7 @@
     "total_files": 168,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-17T13:07:49.651079",
+  "last_updated": "2026-07-17T16:10:55.329913",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
