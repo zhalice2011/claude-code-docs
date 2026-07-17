@@ -179,6 +179,44 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 - 查看存在重复项时哪些子代理处于活动状态
 - **管理工具权限**，包含所有可用工具的完整列表
 
+### 为内置子代理配置模型（per\-Agent 模型）
+
+内置子代理（如 `Explore`、`general-purpose`、`Plan`）也可以**按子代理粒度独立指定模型**，各子代理互不影响、可自由组合。这解决了以往「只能通过环境变量一刀切、无法区分」的痛点。
+
+**在 `/agents` 面板可视化配置**：
+
+1. 运行 `/agents`，用 `↑/↓` 选中一个内置子代理，按 `Enter` 进入其动作菜单。
+2. 选 **Edit Model**，进入模型选择器：
+	- 首项 **Inherit / Default** —— 清除该子代理的配置，回落默认编排。
+	- 通用场景变体 `lite` / `reasoning`。
+	- 全部可用模型（与 `/model` 一致）。
+3. 用 `Tab` 在 **Global（全局）** 与 **Project（项目）** 两个保存范围间切换，`Enter` 确认。
+4. 列表即时刷新为「生效模型 \+ 来源」。
+
+面板的 **SOURCE** 列展示每个子代理当前生效模型的来源，让默认编排透明化：
+
+| 来源标签 | 含义 |
+| --- | --- |
+| `env-global` | 环境变量 `CODEBUDDY_CODE_SUBAGENT_MODEL` 一刀切接管（见下方优先级） |
+| `settings-project` | 项目级配置（`.codebuddy/settings.json`） |
+| `settings-user` | 全局级配置（`~/.codebuddy/settings.json`） |
+| `product-default` | 内置默认声明（如 `Explore` \= `lite`） |
+| `inherit` | 无任何声明，继承主对话模型 |
+| `fallback-main` | 配置的模型被禁用/本地未知，降级回主对话模型 |
+
+**配置存储**：写入 settings 的 `subagents.agents.<子代理名>.model` 字段（`agents` 的 key \= 子代理名，`model` \= 模型 ID / 别名 / 变体 / `inherit`）。也可手动编辑 `settings.json`，详见 [设置文档](./settings)。
+
+**优先级（从高到低）**：
+
+1. 环境变量 `CODEBUDDY_CODE_SUBAGENT_MODEL`（**一刀切**，对所有子代理统一生效，最高）
+2. 本次调用的工具入参（`default` / `lite` / `reasoning`，单次生效）
+3. **项目级** `subagents.agents.<子代理名>.model`
+4. **全局级** `subagents.agents.<子代理名>.model`
+5. 内置默认声明（`product.json` 的 `agents[].models[0]`，如 `Explore` \= `lite`）
+6. 继承主对话模型（兜底）
+
+> **说明**：设置了 `CODEBUDDY_CODE_SUBAGENT_MODEL` 时，面板仍允许保存 per\-Agent 配置（不报错），但会显示「被环境变量统一覆盖」的提示；取消该环境变量后 per\-Agent 配置恢复生效。
+
 ### 直接文件管理
 
 您也可以通过直接处理子代理的文件来管理它们：

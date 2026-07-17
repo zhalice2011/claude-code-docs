@@ -18,7 +18,7 @@ cbc --prewarm --prewarm-id pool1
 ```
 进程会跑完冷启动，然后在本地 IPC 端点挂起待命（不绑定工作目录）：
 
-- macOS / Linux：unix socket `/tmp/codebuddy-prewarm-pool1.sock`（权限 `0600`，仅当前用户）
+- macOS / Linux：unix socket `/tmp/codebuddy-prewarm-pool1.sock`（权限 `0600`，仅当前用户； 落盘目录可用 env `CODEBUDDY_CODE_PREWARM_SOCKET_PATH` 覆盖）
 - Windows：named pipe `\\.\pipe\codebuddy-prewarm-pool1`
 
 `--prewarm-id` 可省略，默认用进程 PID 作为标识。
@@ -54,9 +54,12 @@ cbc-prewarm activate pool1 --cwd /path/to/project -- --serve
 ### 地址约定
 
 ```
-macOS/Linux : /tmp/codebuddy-prewarm-<id>.sock
+macOS/Linux : <dir>/codebuddy-prewarm-<id>.sock   （<dir> 默认 /tmp）
 Windows     : \\.\pipe\codebuddy-prewarm-<id>
 ```
+
+> unix socket 落盘目录默认 `/tmp`，可通过 env `CODEBUDDY_CODE_PREWARM_SOCKET_PATH` 覆盖（如 `/tmp` 被 noexec / 只读挂载，或需放进受控目录时）。进程侧与客户端侧 读取同一 env 保持同构。Windows named pipe 命名空间无目录概念，不受该 env 影响。
+
 ### 消息
 
 jsonc
@@ -82,9 +85,11 @@ js
 const net = require('net');
 
 function prewarmAddr(id) {
-  return process.platform === 'win32'
-    ? `\\\\.\\pipe\\codebuddy-prewarm-${id}`
-    : `/tmp/codebuddy-prewarm-${id}.sock`;
+  if (process.platform === 'win32') {
+    return `\\\\.\\pipe\\codebuddy-prewarm-${id}`;
+  }
+  const dir = (process.env.CODEBUDDY_CODE_PREWARM_SOCKET_PATH || '').trim() || '/tmp';
+  return require('path').join(dir, `codebuddy-prewarm-${id}.sock`);
 }
 
 function activate(id, { cwd, args = [] }) {
@@ -117,6 +122,12 @@ console.log(res); // { ok: true, cmd: 'activate', status: 'activating', cwd: '..
 ## 配置方式
 
 预热相关参数只能通过 CLI flag 配置：`--prewarm` / `--prewarm-id <id>` / `--prewarm-force`。
+
+此外可通过 env 覆盖 unix socket 落盘目录：
+
+| env | 作用 | 默认 |
+| --- | --- | --- |
+| `CODEBUDDY_CODE_PREWARM_SOCKET_PATH` | 自定义 unix socket 落盘目录（如 `/dev/abc/`，尾斜杠可有可无）。进程侧创建 \+ 客户端连接读取同一 env。仅 unix；Windows named pipe 不受影响 | `/tmp` |
 
 ## 相关
 

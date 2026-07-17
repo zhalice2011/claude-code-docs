@@ -311,7 +311,16 @@ json
   "hooks": "./config/hooks.json",
   "mcpServers": "./mcp-config.json",
   "outputStyles": "./styles/",
-  "lspServers": "./.lsp.json"
+  "lspServers": "./.lsp.json",
+  "defaultEnabled": false,
+  "dependencies": [
+    "audit-logger",
+    { "name": "secrets-vault", "version": "~2.1.0" }
+  ],
+  "experimental": {
+    "themes": "./themes/",
+    "monitors": "./monitors/monitors.json"
+  }
 }
 ```
 ### 必需字段
@@ -335,6 +344,8 @@ json
 | `repository` | string | 源代码 URL | `"https://github.com/user/plugin"` |
 | `license` | string | 许可证标识符 | `"MIT"`, `"Apache-2.0"` |
 | `keywords` | array | 发现标签 | `["deployment", "ci-cd"]` |
+| `defaultEnabled` | boolean | 没有显式设置时是否启用，默认 `true` | `false` |
+| `dependencies` | array | 当前插件依赖的其他插件，可声明 semver 范围和 marketplace | `[{"name":"helper","version":"^2.0.0"}]` |
 
 ### 组件路径字段
 
@@ -346,9 +357,43 @@ json
 | `hooks` | string \| array \| object | 钩子配置路径或内联配置 | `"./my-extra-hooks.json"` |
 | `mcpServers` | string \| array \| object | MCP 配置路径或内联配置 | `"./my-extra-mcp-config.json"` |
 | `outputStyles` | string \| array | 自定义输出样式文件/目录（替换默认 `output-styles/`） | `"./styles/"` |
+| `experimental.themes` | string \| array | Claude experimental 字段；CodeBuddy 当前仅识别，不加载到运行时 | `"./themes/"` |
+| `experimental.monitors` | string \| array | Claude experimental 字段；CodeBuddy 当前仅识别，不启动后台 monitor | `"./monitors/monitors.json"` |
 | `lspServers` | string \| array \| object | LSP 配置路径或内联配置 | `"./.lsp.json"` |
 | `userConfig` | object | 启用时提示用户配置的值。详见[用户配置](#用户配置) | 见下方 |
 | `channels` | array | 消息注入的频道声明。详见[频道](#频道) | 见下方 |
+
+### 默认启用
+
+`defaultEnabled: false` 使首次安装的插件保持禁用。已有 `enabledPlugins` 设置优先于该默认值，因此升级或重装不会改变用户已经明确选择的状态。如果一个插件是已启用插件的依赖，则依赖关系优先，CodeBuddy 会显式启用它。
+
+### 插件依赖
+
+`dependencies` 可以同时写在 `plugin.json` 和 marketplace 插件条目中，两处声明会合并。字符串依赖解析到声明方所在 marketplace；对象支持以下字段：
+
+| 字段 | 必需 | 描述 |
+| --- | --- | --- |
+| `name` | 是 | 插件名 |
+| `version` | 否 | Node semver 范围，例如 `~2.1.0`、`^2.0`、`>=1.4` |
+| `marketplace` | 否 | 依赖所在 marketplace；省略时使用声明方 marketplace |
+
+跨 marketplace 自动安装默认被阻止。需要在根插件所属 marketplace 的 `marketplace.json` 中显式授权：
+
+json
+```
+{
+  "name": "acme-tools",
+  "allowCrossMarketplaceDependenciesOn": ["acme-shared"],
+  "plugins": []
+}
+```
+只有根 marketplace 的 allowlist 生效，不传递信任。用户已经手动安装且版本满足要求的跨 marketplace 依赖可以直接复用。
+
+版本约束通过 Git tag 解析。发布方使用 `{plugin-name}--v{version}` 命名 tag，例如 `secrets-vault--v2.1.3`。CodeBuddy 会合并所有已启用插件对同一依赖的范围，并选择满足交集的最高版本。tag semver 记录在 `resolvedVersion`；缓存目录使用声明版本加 12 位 commit SHA 后缀，避免被强制移动的 tag 复用旧内容。
+
+安装插件会自动安装完整的传递依赖。启用插件只会传递启用已经安装的依赖；缺失依赖时启用失败。禁用或卸载仍被已启用插件依赖的插件会被阻止。
+
+自动安装的依赖在 `installed_plugins.json` 中标记为 `auto: true`。普通卸载会保留这些依赖；使用 `plugin prune` 或 `plugin uninstall --prune` 才会清理不再被任何手动安装插件需要的 auto dependency。显式安装一个 auto dependency 会将其提升为手动安装，之后不会被 prune。
 
 ### 用户配置
 
@@ -369,7 +414,7 @@ json
   }
 }
 ```
-键必须是有效标识符。每个值可作为 `${user_config.KEY}` 在 MCP 和 LSP 服务器配置、钩子命令中替换，以及（仅非敏感值）在技能和代理内容中替换。值也作为 `CODEBUDDY_PLUGIN_OPTION_<KEY>` 环境变量导出到插件子进程。
+键必须是有效标识符。每个值可作为 `${user_config.KEY}` 在 MCP 和 LSP 服务器配置、钩子命令中替换，以及（仅非敏感值）在技能、命令和代理内容中替换。值也作为 `CLAUDE_PLUGIN_OPTION_<KEY>` 与 `CODEBUDDY_PLUGIN_OPTION_<KEY>` 环境变量导出到插件子进程。环境变量名中的非字母、数字或下划线字符会替换为 `_`，然后转为大写。
 
 非敏感值存储在 `settings.json` 的 `pluginConfigs[<plugin-id>].options` 中。敏感值存储到系统密钥链（或在密钥链不可用时存储到 `~/.codebuddy/.credentials.json`）。密钥链存储与 OAuth 令牌共享，总限制约 2 KB，因此敏感值应保持较小。
 
@@ -419,15 +464,25 @@ json
 ```
 ### 环境变量
 
-CodeBuddy 提供两个变量用于引用插件路径。两者都在技能内容、代理内容、钩子命令、MCP 或 LSP 服务器配置中的任何位置进行内联替换。两者也作为环境变量导出到钩子进程和 MCP 或 LSP 服务器子进程。
+CodeBuddy 提供三个 Claude Code 兼容路径变量。它们会在技能、命令和代理内容、钩子配置、MCP 或 LSP 服务器配置中内联替换，也会作为环境变量导出到钩子、MCP 与 LSP 子进程。每个 `CLAUDE_*` 名称都有对应的 `CODEBUDDY_*` 别名。
 
 **`${CODEBUDDY_PLUGIN_ROOT}`**：插件安装目录的绝对路径。用于引用插件捆绑的脚本、二进制文件和配置文件。此路径在插件更新时会变化，因此写入此处的文件不会在更新后保留。
 
 **兼容性**：同时支持 `${CLAUDE_PLUGIN_ROOT}` 变量名以兼容 Claude Code 插件。
 
-**`${CODEBUDDY_PLUGIN_DATA}`**：用于插件状态的持久化目录，在更新后保留。用于已安装的依赖项（如 `node_modules` 或 Python 虚拟环境）、生成的代码、缓存以及任何需要跨插件版本持久化的文件。首次引用时自动创建该目录。
+**`${CODEBUDDY_PLUGIN_DATA}`**：用于插件状态的持久化目录，在更新后保留。用于已安装的依赖项（如 `node_modules` 或 Python 虚拟环境）、生成的代码、缓存以及任何需要跨插件版本持久化的文件。首次被占位符引用或导出到插件子进程时自动创建该目录。
 
 **兼容性**：同时支持 `${CLAUDE_PLUGIN_DATA}` 变量名。
+
+**`${CODEBUDDY_PROJECT_DIR}`**：当前工作区根目录。用于插件脚本定位用户项目，不应写入插件自身的持久化状态。
+
+**兼容性**：同时支持 `${CLAUDE_PROJECT_DIR}` 变量名。
+
+插件子进程还会收到以下选项环境变量：
+
+- `CLAUDE_PLUGIN_OPTION_<KEY>`：Claude Code 标准名称
+- `CODEBUDDY_PLUGIN_OPTION_<KEY>`：CodeBuddy 别名
+- `PLUGIN_OPT_<KEY>`：为已有 CodeBuddy 插件保留的兼容名称
 
 json
 ```
@@ -489,7 +544,7 @@ json
   }
 }
 ```
-卸载插件（从最后一个安装作用域）时数据目录会自动删除。`/plugin` 界面显示目录大小并在删除前提示。CLI 默认删除；传递 `--keep-data` 可保留。
+卸载插件的最后一个安装作用域时，数据目录会自动删除；若同一插件仍安装在其他作用域，则保留。CLI 默认删除，传递 `--keep-data` 可保留。`plugin prune` 会删除孤立自动依赖的数据目录。
 
 ---
 
@@ -500,7 +555,7 @@ json
 - 通过 `codebuddy --plugin-dir`，仅在会话期间有效
 - 通过市场安装，适用于未来会话
 
-出于安全和验证目的，CodeBuddy 将**市场**插件复制到用户的本地**插件缓存**（`~/.codebuddy/plugins/cache`），而不是原地使用。理解此行为对于开发引用外部文件的插件很重要。
+出于安全和验证目的，CodeBuddy 将**市场**插件复制到用户的本地**版本化插件缓存**（`~/.codebuddy/plugins/cache/<marketplace>/<plugin>/<version>`），而不是原地使用。市场源码仍保存在 `~/.codebuddy/plugins/marketplaces/<marketplace>`，理解此行为对于开发引用外部文件的插件很重要。
 
 ### 路径遍历限制
 
@@ -508,14 +563,18 @@ json
 
 ### 使用外部依赖
 
-如果插件需要访问其目录之外的文件，可以在插件目录中创建指向外部文件的符号链接。符号链接在复制过程中会被保留：
+如果插件需要访问同一 marketplace 中的共享文件，可以在插件目录中创建符号链接。缓存复制时按目标位置处理：
+
+- 指向插件自身目录内：保留为相对符号链接。
+- 指向同一 marketplace 的其他位置：解引用并复制目标内容。
+- 指向 marketplace 外部：跳过该符号链接。
 
 bash
 ```
 # 在插件目录内
-ln -s /path/to/shared-utils ./shared-utils
+ln -s ../../shared-plugin/skills/foo ./skills/foo
 ```
-符号链接的内容将被复制到插件缓存中。这在保持缓存系统安全优势的同时提供了灵活性。
+这在允许 marketplace 内共享文件的同时，避免插件把任意宿主机文件带入缓存。
 
 ---
 
@@ -544,6 +603,10 @@ enterprise-plugin/
 │       └── scripts/
 ├── output-styles/            # 输出样式定义
 │   └── terse.md
+├── themes/                   # Claude 标准主题定义；当前仅识别，不加载
+│   └── dracula.json
+├── monitors/                 # Claude 标准后台 monitor；当前仅识别，不启动
+│   └── monitors.json
 ├── hooks/                    # 钩子配置
 │   ├── hooks.json            # 主钩子配置
 │   └── security-hooks.json   # 额外钩子
@@ -560,7 +623,7 @@ enterprise-plugin/
 └── CHANGELOG.md              # 版本历史
 ```
 
-> **重要**: `.codebuddy-plugin/` 目录包含 `plugin.json` 文件。所有其他目录（`commands/`、`agents/`、`skills/`、`output-styles/`、`hooks/`）必须位于插件根目录，而不是 `.codebuddy-plugin/` 内部。同时兼容 `.workbuddy-plugin/` 与 `.claude-plugin/` 目录。
+> **重要**: `.codebuddy-plugin/` 目录包含 `plugin.json` 文件。所有其他目录（`commands/`、`agents/`、`skills/`、`output-styles/`、`themes/`、`monitors/`、`hooks/`）必须位于插件根目录，而不是 `.codebuddy-plugin/` 内部。同时兼容 `.workbuddy-plugin/` 与 `.claude-plugin/` 目录。
 
 ### 文件位置参考
 
@@ -571,11 +634,13 @@ enterprise-plugin/
 | **Agents** | `agents/` | 子代理 Markdown 文件 |
 | **Skills** | `skills/` | 带有 `<name>/SKILL.md` 结构的技能 |
 | **Output styles** | `output-styles/` | 输出样式定义 |
+| **Themes** | `themes/` | Claude 标准字段；CodeBuddy 当前仅识别，不加载到运行时 |
+| **Monitors** | `monitors/monitors.json` | Claude 标准字段；CodeBuddy 当前仅识别，不启动后台 monitor |
 | **Hooks** | `hooks/hooks.json` | 钩子配置 |
 | **MCP servers** | `.mcp.json` | MCP 服务器定义 |
 | **LSP servers** | `.lsp.json` | 语言服务器配置 |
 | **Executables** | `bin/` | 添加到 Bash 工具 PATH 的可执行文件。启用插件时此目录中的文件可在任何 Bash 工具调用中作为裸命令调用 |
-| **Settings** | `settings.json` | 启用插件时应用的默认配置。目前仅支持 [agent](./sub-agents) 设置 |
+| **Settings** | `settings.json` | 插件默认配置。当前运行时应用 `agent`；`subagentStatusLine` 仅识别并保留 |
 
 ---
 
@@ -635,11 +700,29 @@ codebuddy plugin uninstall <plugin> [options]
 | --- | --- | --- |
 | `-s, --scope <scope>` | 从指定作用域卸载：`user`、`project` 或 `local` | `user` |
 | `--keep-data` | 保留插件的[持久化数据目录](#持久化数据目录) |  |
+| `--prune` | 同时清理该作用域中不再被需要的 auto dependency |  |
+| `-y, --yes` | 跳过 `--prune` 确认；stdin 或 stdout 非 TTY 时必须指定 |  |
 | `-h, --help` | 显示命令帮助 |  |
 
 **别名**: `remove`, `rm`
 
 默认情况下，从最后一个剩余作用域卸载时也会删除插件的 `${CODEBUDDY_PLUGIN_DATA}` 目录。使用 `--keep-data` 可保留它，例如在测试新版本后重新安装时。
+
+### plugin prune
+
+清理指定作用域中不再被任何手动安装插件依赖的 auto dependency。
+
+bash
+```
+codebuddy plugin prune [options]
+```
+
+| 选项 | 描述 | 默认 |
+| --- | --- | --- |
+| `-s, --scope <scope>` | 清理作用域：`user`、`project` 或 `local` | `user` |
+| `--dry-run` | 只列出将被清理的插件，不修改设置和 registry |  |
+| `-y, --yes` | 跳过确认；stdin 或 stdout 非 TTY 且未指定时只列出候选项 |  |
+| `-h, --help` | 显示命令帮助 |  |
 
 ### plugin enable
 
@@ -657,7 +740,7 @@ codebuddy plugin enable <plugin> [options]
 
 | 选项 | 描述 | 默认 |
 | --- | --- | --- |
-| `-s, --scope <scope>` | 启用作用域：`user`、`project` 或 `local` | `user` |
+| `-s, --scope <scope>` | 启用作用域：`user`、`project` 或 `local` | 自动检测当前安装作用域 |
 | `-h, --help` | 显示命令帮助 |  |
 
 ### plugin disable
@@ -676,7 +759,7 @@ codebuddy plugin disable <plugin> [options]
 
 | 选项 | 描述 | 默认 |
 | --- | --- | --- |
-| `-s, --scope <scope>` | 禁用作用域：`user`、`project` 或 `local` | `user` |
+| `-s, --scope <scope>` | 禁用作用域：`user`、`project` 或 `local` | 自动检测当前安装作用域 |
 | `-h, --help` | 显示命令帮助 |  |
 
 ### plugin update
@@ -698,6 +781,14 @@ codebuddy plugin update <plugin> [options]
 | `-s, --scope <scope>` | 更新作用域：`user`、`project`、`local` 或 `managed` | `user` |
 | `-h, --help` | 显示命令帮助 |  |
 
+### plugin list
+
+列出已安装插件及其版本、marketplace、启用状态和依赖错误。`--json` 可用于脚本读取 `dependencyErrors`。
+
+bash
+```
+codebuddy plugin list --json
+```
 ### 市场管理
 
 bash
@@ -854,6 +945,17 @@ json
 > **注意**: CodeBuddy 使用版本来判断是否需要更新插件。如果更改了插件代码但未更新 `plugin.json` 中的版本，由于缓存机制，现有用户不会看到变更。
 > 
 > 如果插件在[市场](./plugin-marketplaces)目录中，可以通过 `marketplace.json` 管理版本，并从 `plugin.json` 中省略 `version` 字段。
+
+### 版本化缓存
+
+CodeBuddy 按以下优先级计算缓存键：
+
+1. `plugin.json` 的 `version`
+2. marketplace 插件条目的 `version`
+3. Git 来源的 commit SHA；`git-subdir` 还包含子目录路径哈希
+4. 无法确定版本时使用 `unknown`
+
+没有显式版本的 Git 插件以 12 位 commit SHA 为缓存目录名。通过版本约束解析 tag 时，缓存目录额外包含 12 位 commit SHA 后缀；约束校验使用单独记录的 `resolvedVersion`，不依赖可能过期的 manifest 版本。
 
 ---
 
