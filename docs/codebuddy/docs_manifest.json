@@ -24,6 +24,12 @@
       "last_updated": "2026-06-26T12:14:24.190021",
       "source": "codebuddy"
     },
+    "cli__brokered-shell-macos.md": {
+      "original_url": "https://www.codebuddy.cn/docs/cli/brokered-shell-macos",
+      "hash": "e6130d4d86948eabf8d54fe953c9b07d294999f553ed9a6e705cf0ffc4456233",
+      "last_updated": "2026-07-17T11:03:33.363832",
+      "source": "codebuddy"
+    },
     "cli__channels.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/channels",
       "hash": "f1db87253e75c1c05d96de7be52703ab09e9a99cb888b980ea571cfa667e2fc1",
@@ -80,8 +86,8 @@
     },
     "cli__env-vars.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/env-vars",
-      "hash": "6fdb964d608710a84b16c4c8e419acc71d46d838090d0064192dabcbe541d8c1",
-      "last_updated": "2026-07-02T12:00:58.628499",
+      "hash": "7a394b5fada169e6d66d292d4233b2e7d4be01240683c2774750ffa9119258eb",
+      "last_updated": "2026-07-17T11:03:41.952317",
       "source": "codebuddy"
     },
     "cli__gitlab-ci-cd.md": {
@@ -1545,19 +1551,19 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-17T08:28:39.165285",
+    "last_fetch_completed": "2026-07-17T11:06:57.243494",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 259,
-    "pages_fetched_successfully": 257,
+    "pages_discovered": 260,
+    "pages_fetched_successfully": 258,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 257,
+    "total_files": 258,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-17T08:28:39.165311",
+  "last_updated": "2026-07-17T11:06:57.243537",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

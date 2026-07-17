@@ -27,10 +27,16 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | 环境变量 | 说明 |
 | --- | --- |
 | `CODEBUDDY_MODEL` | 覆盖默认代理模型 |
-| `CODEBUDDY_SMALL_FAST_MODEL` | 后台任务使用的小型快速模型 |
-| `CODEBUDDY_BIG_SLOW_MODEL` | 复杂推理任务使用的大型模型 |
-| `CODEBUDDY_CODE_SUBAGENT_MODEL` | 子代理使用的模型 |
+| `CODEBUDDY_SMALL_FAST_MODEL` | 覆盖 `lite`（轻量快速）场景变体的模型；优先级高于 `variantModels.lite` 设置项 |
+| `CODEBUDDY_BIG_SLOW_MODEL` | 覆盖 `reasoning`（推理增强）场景变体的模型；优先级高于 `variantModels.reasoning` 设置项 |
+| `CODEBUDDY_CODE_SUBAGENT_MODEL` | **一刀切**覆盖所有内置子代理的模型（优先级最高，压过 `subagents` 设置项）。仅需按子代理独立配置时，改用 `/agents` 面板或 `settings.json` 的 `subagents.agents.<子代理名>.model` |
 | `MAX_THINKING_TOKENS` | 启用扩展思考并设置思考过程的 token 预算。默认禁用 |
+
+> **env 与 settings 的关系**：模型相关环境变量是**运维/CI 级的最高优先级覆盖**。
+> 
+> - `CODEBUDDY_CODE_SUBAGENT_MODEL` 对**所有**子代理一刀切；若要**按子代理**分别指定，用 `settings.json` 的 `subagents.agents.<子代理名>.model`（支持全局 \+ 项目双 scope，可在 `/agents` 面板编辑），详见 [子代理文档](./sub-agents)。
+> - `CODEBUDDY_SMALL_FAST_MODEL` / `CODEBUDDY_BIG_SLOW_MODEL` 是**按变体**独立设置的（前者只影响 `lite`、后者只影响 `reasoning`）；对应的可持久化设置项是 `variantModels`（可在 `/model` 面板的「场景变体区」编辑），详见 [设置文档](./settings)。
+> - 优先级：env（最高）\> `settings`（项目 \> 全局）\> 内置默认。取消 env 后 settings 恢复生效。
 
 ## Bash 工具配置
 
@@ -99,8 +105,8 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | --- | --- |
 | `CODEBUDDY_CODE_MAX_OUTPUT_TOKENS` | 设置大多数请求的最大输出 token 数 |
 | `CODEBUDDY_CODE_FILE_READ_MAX_OUTPUT_TOKENS` | 覆盖文件读取的默认 token 限制（默认：20000） |
-| `CODEBUDDY_STREAM_TIMEOUT_MS` | 流式响应中两个数据块之间允许的最大静默时间（毫秒）（默认：1200000） |
-| `CODEBUDDY_FIRST_TOKEN_TIMEOUT_MS` | 等待第一个模型输出的最大时间（毫秒）（默认：1200000） |
+| `CODEBUDDY_STREAM_TIMEOUT_MS` | 流式响应中两个数据块之间允许的最大静默时间（毫秒）（默认：300000，即 5 分钟）。已开始吐 token 后中途静默通常意味着连接已断，故与首 token 超时解耦、取较短阈值 |
+| `CODEBUDDY_FIRST_TOKEN_TIMEOUT_MS` | 等待第一个模型输出的最大时间（毫秒）（默认：1200000，即 20 分钟）。长上下文 prefill 慢吐首 token 属合法情况 |
 | `CODEBUDDY_SESSION_MAX_ITEMS` | `session/load` 回放时历史消息的最大条数（默认：1000）。达到阈值且遇到 user message 时停止逆序读取 JSONL。需要支持超长会话（如沙箱场景）时可调大（例如 2000 或更多）；零/负数/非数字会回退到默认值 |
 
 ## 文件系统和配置
