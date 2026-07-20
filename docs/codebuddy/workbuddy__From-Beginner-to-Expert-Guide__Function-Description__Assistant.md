@@ -22,7 +22,6 @@
 | 微信客服号 | [查看指南](./../../Wechat-Guide) |
 | 企微助理 | [查看指南](./../../Wecom-Guide) |
 | QQ 机器人 | [查看指南](./../../QQ-Guide) |
-| 元宝机器人 | [查看指南](./../../YuanBaoPai-Guide) |
 | 飞书 | [查看指南](./../../Feishu-Guide) |
 | 钉钉机器人 | [查看指南](./../../Dingtalk-Guide) |
 
@@ -69,7 +68,6 @@ WorkBuddy 支持多个国内主流即时通讯平台的接入，请参考以下�
 | **微信客服号** | [微信服务号接入指南](./../../Wechat-Guide) |
 | **企微助理** | [WorkBuddy 接入企业微信指南](./../../Wecom-Guide) |
 | **QQ 机器人** | [WorkBuddy 接入 QQ 指南](./../../QQ-Guide) |
-| **元宝机器人** | [WorkBuddy 接入元宝派指南](./../../YuanBaoPai-Guide) |
 | **飞书** | [WorkBuddy 接入飞书指南](./../../Feishu-Guide) |
 | **钉钉机器人** | [WorkBuddy 接入钉钉指南](./../../Dingtalk-Guide) |
 

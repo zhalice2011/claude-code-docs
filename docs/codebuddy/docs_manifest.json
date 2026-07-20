@@ -1064,8 +1064,8 @@
     },
     "workbuddy__FirstTask.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/FirstTask",
-      "hash": "03145d5c4206353d79c0e0ea78085cfccd7fdfe38f89f423e322a67aff779987",
-      "last_updated": "2026-06-26T12:16:08.325931",
+      "hash": "2cbb3bfd72f8725258746fe9972850b5e43f37d98b7d2baee1fc531ddeb28dea",
+      "last_updated": "2026-07-20T06:39:02.982233",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Efficient-Tips.md": {
@@ -1082,8 +1082,8 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Assistant.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Assistant",
-      "hash": "4b3c4078ab4227b249f17657ad7cd819267d0caafa52c274f0144b2145bde03b",
-      "last_updated": "2026-07-08T06:17:32.041526",
+      "hash": "2447c00dfaf66c4938cf633c472fabe31e2bfc68ef71668210a2abbcf561df09",
+      "last_updated": "2026-07-20T06:39:05.443791",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Automation-Guide.md": {
@@ -1398,12 +1398,6 @@
       "last_updated": "2026-06-26T12:16:39.675238",
       "source": "codebuddy"
     },
-    "workbuddy__YuanBaoPai-Guide.md": {
-      "original_url": "https://www.codebuddy.cn/docs/workbuddy/YuanBaoPai-Guide",
-      "hash": "a7aa37ac622c9410c4ff5aa7315b8c57986b6502fefc43875a276d017469aaa6",
-      "last_updated": "2026-06-26T12:16:40.256206",
-      "source": "codebuddy"
-    },
     "workbuddyapp__Overview.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/Overview",
       "hash": "dc897ca2e5ce6289e6d9f9358f2a90a0e65662b87693b2a88adf2c22aa524e3b",
@@ -1551,19 +1545,19 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-20T03:57:54.394485",
+    "last_fetch_completed": "2026-07-20T06:40:01.485027",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 260,
-    "pages_fetched_successfully": 258,
+    "pages_discovered": 259,
+    "pages_fetched_successfully": 257,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 258,
+    "total_files": 257,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-20T03:57:54.394504",
+  "last_updated": "2026-07-20T06:40:01.485046",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

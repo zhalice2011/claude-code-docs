@@ -36,7 +36,7 @@
 
 ![](/docs/static/9.B1lOzulf.png)TIP
 
-WorkBuddy 支持连接 WorkBuddy 小程序、WorkBuddy App，接入微信助理、微信客服号、企微助理、QQ 机器人、元宝机器人、飞书、钉钉机器人等移动端集成。
+WorkBuddy 支持连接 WorkBuddy 小程序、WorkBuddy App，接入微信助理、微信客服号、企微助理、QQ 机器人、飞书、钉钉机器人等移动端集成。
 
 ### 第三步 描述任务
 
