@@ -122,8 +122,8 @@
     "agent-sdk__python.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/python.md",
-      "hash": "6504777a50ab5419dd8078ee4f3e346715a8e70d7623c828908eb907da38fef5",
-      "last_updated": "2026-07-17T16:08:20.423454",
+      "hash": "812a40300b8e15a4fbb4dbeee69cae959307da9cf109d36a9c994ffaa6699564",
+      "last_updated": "2026-07-20T21:55:14.970095",
       "source": "claude-code"
     },
     "agent-sdk__quickstart.md": {
@@ -626,8 +626,8 @@
     "hooks.md": {
       "original_url": "https://code.claude.com/docs/en/hooks",
       "original_md_url": "https://code.claude.com/docs/en/hooks.md",
-      "hash": "509b8036585918b0f121b09d0e4ce41952ab778bad794e75c961c14b628a0fca",
-      "last_updated": "2026-07-18T01:29:43.051767",
+      "hash": "ff4e96042012cf97f6e48664e53af9db5d404886981b428ad320ed9785eff1d2",
+      "last_updated": "2026-07-20T21:56:35.413699",
       "source": "claude-code"
     },
     "hooks-guide.md": {
@@ -1193,7 +1193,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-20T19:27:47.594632",
+    "last_fetch_completed": "2026-07-20T21:57:34.859384",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 170,
@@ -1203,7 +1203,7 @@
     "total_files": 170,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-20T19:27:47.594658",
+  "last_updated": "2026-07-20T21:57:34.859410",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
