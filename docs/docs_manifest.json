@@ -392,6 +392,13 @@
       "last_updated": "2026-07-21T05:41:47.112901",
       "source": "claude-code"
     },
+    "claude-security.md": {
+      "original_url": "https://code.claude.com/docs/en/claude-security",
+      "original_md_url": "https://code.claude.com/docs/en/claude-security.md",
+      "hash": "5861a8cab1ccc7af463546a1cc3b12cf6ef23a62fb4309148b3b5a9d81ebc634",
+      "last_updated": "2026-07-22T18:59:17.181121",
+      "source": "claude-code"
+    },
     "cli-reference.md": {
       "original_url": "https://code.claude.com/docs/en/cli-reference",
       "original_md_url": "https://code.claude.com/docs/en/cli-reference.md",
@@ -920,8 +927,8 @@
     "security-guidance.md": {
       "original_url": "https://code.claude.com/docs/en/security-guidance",
       "original_md_url": "https://code.claude.com/docs/en/security-guidance.md",
-      "hash": "3536885c6fca282c58ef05a2b48e85cbe35a66b518e882ce3dd9d10f5095c792",
-      "last_updated": "2026-07-21T01:48:27.923167",
+      "hash": "6902efc58e5081202cafc7390023ebdea96b6e978c60456587d021171f9828c9",
+      "last_updated": "2026-07-22T19:01:31.894835",
       "source": "claude-code"
     },
     "server-managed-settings.md": {
@@ -1200,17 +1207,17 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-22T16:17:08.850398",
+    "last_fetch_completed": "2026-07-22T19:03:17.586190",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
-    "pages_discovered": 171,
-    "pages_fetched_successfully": 172,
+    "pages_discovered": 172,
+    "pages_fetched_successfully": 173,
     "pages_failed": 0,
     "failed_pages": [],
-    "total_files": 171,
+    "total_files": 172,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-22T16:17:08.850424",
+  "last_updated": "2026-07-22T19:03:17.586208",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
