@@ -934,8 +934,8 @@
     "sessions.md": {
       "original_url": "https://code.claude.com/docs/en/sessions",
       "original_md_url": "https://code.claude.com/docs/en/sessions.md",
-      "hash": "b3d24e7fe93c708e6804574f564cbaf371c92506a2a6b798f329bfbd93791b33",
-      "last_updated": "2026-07-21T19:05:55.408958",
+      "hash": "d6c8b886a582e21dd7698e5a3a79e96a7d3dc9c5eb73d9cb4901d0233951fbd0",
+      "last_updated": "2026-07-22T16:16:32.120321",
       "source": "claude-code"
     },
     "settings.md": {
@@ -1200,7 +1200,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-22T13:24:33.045398",
+    "last_fetch_completed": "2026-07-22T16:17:08.850398",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 171,
@@ -1210,7 +1210,7 @@
     "total_files": 171,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-22T13:24:33.045424",
+  "last_updated": "2026-07-22T16:17:08.850424",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
