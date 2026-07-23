@@ -640,8 +640,8 @@
     "hooks.md": {
       "original_url": "https://code.claude.com/docs/en/hooks",
       "original_md_url": "https://code.claude.com/docs/en/hooks.md",
-      "hash": "b212e7f13d2ede7d2b6d8d1c1bb6fdca5e29d023fad199abceac853904caad65",
-      "last_updated": "2026-07-21T19:05:06.147893",
+      "hash": "21ee7174a0d2e211871009ba9eff4965804cefe635fd977e26f7c67cf0646d61",
+      "last_updated": "2026-07-23T05:45:39.039616",
       "source": "claude-code"
     },
     "hooks-guide.md": {
@@ -1207,7 +1207,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-23T01:54:40.721260",
+    "last_fetch_completed": "2026-07-23T05:46:37.003441",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 172,
@@ -1217,7 +1217,7 @@
     "total_files": 172,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-23T01:54:40.721280",
+  "last_updated": "2026-07-23T05:46:37.003468",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
