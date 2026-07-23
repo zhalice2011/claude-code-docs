@@ -32,11 +32,14 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_CODE_SUBAGENT_MODEL` | **一刀切**覆盖所有内置子代理的模型（优先级最高，压过 `subagents` 设置项）。仅需按子代理独立配置时，改用 `/agents` 面板或 `settings.json` 的 `subagents.agents.<子代理名>.model` |
 | `MAX_THINKING_TOKENS` | 启用扩展思考并设置思考过程的 token 预算。默认禁用 |
 
-> **env 与 settings 的关系**：模型相关环境变量是**运维/CI 级的最高优先级覆盖**。
+> **env 与 settings 的关系**：模型相关环境变量用于运维或 CI 级覆盖。
 > 
-> - `CODEBUDDY_CODE_SUBAGENT_MODEL` 对**所有**子代理一刀切；若要**按子代理**分别指定，用 `settings.json` 的 `subagents.agents.<子代理名>.model`（支持全局 \+ 项目双 scope，可在 `/agents` 面板编辑），详见 [子代理文档](./sub-agents)。
-> - `CODEBUDDY_SMALL_FAST_MODEL` / `CODEBUDDY_BIG_SLOW_MODEL` 是**按变体**独立设置的（前者只影响 `lite`、后者只影响 `reasoning`）；对应的可持久化设置项是 `variantModels`（可在 `/model` 面板的「场景变体区」编辑），详见 [设置文档](./settings)。
-> - 优先级：env（最高）\> `settings`（项目 \> 全局）\> 内置默认。取消 env 后 settings 恢复生效。
+> - 内置子代理：`CODEBUDDY_CODE_SUBAGENT_MODEL` \> 本次 Agent 工具调用的 `model` 入参 \> 项目级 `subagents` \> 用户全局 `subagents` \> 产品内置声明 \> 主模型。
+> - 场景变体：对应的变体环境变量 \> 项目级 `variantModels` \> 用户全局 `variantModels` \> 主模型的 `relatedModels` \> 适用的产品内置默认 \> 主模型。
+> - `CODEBUDDY_CODE_SUBAGENT_MODEL` 统一覆盖所有子代理。若要分别指定，使用 `/agents` 或 `subagents.agents.<子代理名>.model`，详见 [子代理文档](./sub-agents)。
+> - `CODEBUDDY_SMALL_FAST_MODEL` 只影响 `lite`，`CODEBUDDY_BIG_SLOW_MODEL` 只影响 `reasoning`。对应的持久化设置可通过 `/model` 或 `variantModels` 管理，详见 [设置文档](./settings)。
+> 
+> 取消环境变量后会恢复低优先级配置，不一定直接回退到主模型。
 
 ## Bash 工具配置
 
@@ -68,6 +71,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_PLUGIN_DIRS` | 冒号分隔的本地插件目录路径列表（等同于 `--plugin-dir`），插件的 `bin/` 目录会自动注入到 `PATH` |
 | `CODEBUDDY_IMAGE_GEN_ENABLED` | 设置为 `false` 或 `0` 禁用图片生成功能 |
 | `CODEBUDDY_IMAGE_EDIT_ENABLED` | 设置为 `false` 或 `0` 禁用图片编辑功能 |
+| `CODEBUDDY_SHARE_LINK_ENABLED` | 设置为 `false` 或 `0` 禁用 ShareLink 工具（将本地单个 HTML 文件上传并返回可分享的公网链接）。默认开启。该环境变量优先级最高，未设置时回落到云端 `productFeatures.ShareLink` 开关（缺省 `true`） |
 | `CODEBUDDY_COMPUTER_USE_ENABLED` | **实验功能**：设置为 `true` 或 `1` 启用 macOS 桌面控制工具（截图、鼠标、键盘）。仅 macOS 可用，默认关闭。首次调用键盘/鼠标动作需在系统设置 → 隐私与安全 → 辅助功能、屏幕录制中为终端授权 |
 | `CODEBUDDY_WAIT_FOR_MCP_SERVERS_ENABLED` | 设置为 `0` 或 `false` 禁用 WaitForMcpServers 工具。默认开启。交互模式下不阻塞等待 MCP 连接，当 LLM 需要尚未就绪的 MCP 工具时可主动调用此工具按需等待。WorkBuddy 场景设置为 `0` 禁用 |
 | `CODEBUDDY_DEFERRED_TOOLS_MCP_READY_WAIT_MS` | 渲染延迟工具描述前等待 MCP 服务器就绪的最长毫秒数，默认 `2500`。设为 `0` 完全跳过等待，连接较慢则会立即把"仍在连接"提示烘焙进描述；调大可让远端 MCP 服务器有更多时间在首次提示前完成握手。一旦服务器就绪即立即继续，超时仅作为上限 |
@@ -75,6 +79,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_SHOW_ALL_DEFERRED_TOOLS` | 设置为 `true` 或 `1` 显示所有延迟工具的完整描述 |
 | `CODEBUDDY_DISABLE_CRON` | 设置为 `1` 禁用计划任务 |
 | `CODEBUDDY_DISABLE_FORK_SUBAGENT` | 设置为 `1` 禁用 Agent 工具的 Fork 子代理模式（`subagent_type="fork"`）。启用后 Agent 工具描述会自动隐藏 fork\-mode 段落，模型不会看到该功能；若模型仍然传 `subagent_type="fork"`，运行时会回落到名为 `fork` 的自定义代理（如用户在 `.codebuddy/agents/fork.md` 定义），否则改写为 `general-purpose` 普通子代理。适用于需要避免 fork 递归派生导致请求量放大的宿主场景 |
+| `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` | 设置为 `1` / `true` 禁用 Agent、Bash、PowerShell 工具的后台任务（`run_in_background=true`）。启用后这些工具 schema 中的 `run_in_background` 参数会被隐藏，模型不会看到该字段；即使历史/缓存 tool call 或直接调用方传入该参数，运行时也会兜底回退到同步（Agent）/前台（Bash、PowerShell）执行路径。适用于请求\-响应式 SDK / 一次性任务场景——这类场景主进程在主 turn 结束后立即退出，任何后台代理/后台命令的结果都无法回流到最终答复中。对齐 Claude Code 的 `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS`（同样统管 Agent \+ Bash \+ PowerShell）。默认未设置（后台任务保持可用）。与 print\-mode 守卫（`-p` 下始终阻断后台执行）相互独立 |
 | `CODEBUDDY_REHYDRATE_IMAGE_BLOB_REFS` | 设置为 `true` 在 `-p` 模式流式输出中将图片 blob 引用还原为完整 base64 数据。适用于需要直接获取图片数据的下游集成场景 |
 
 ## 上下文和内存
@@ -208,7 +213,7 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `CODEBUDDY_GATEWAY_PASSWORD` | Gateway 访问密码 |
 | `CODEBUDDY_GATEWAY_FORCE_TUNNEL` | 设置为 `1` 强制使用 tunnel 模式 |
 | `CODEBUDDY_DISABLE_REQUEST_VALIDATION` | 设置为 `1` 关闭 Gateway 自定义请求头校验（`X-CodeBuddy-Request`）。详见 [HTTP API 安全](./http-api#安全) |
-| `CODEBUDDY_CODE_CORS_ORIGINS` | 额外的 CORS 允许来源（逗号分隔）。支持精确 origin、`*.domain` 子域通配和 `*` 全开。如 `https://*.example.com,https://specific.com` |
+| `CODEBUDDY_CODE_CORS_ORIGINS` | 额外的 CORS 允许来源（逗号分隔）。支持精确 origin、`*.domain` 子域通配和 `*` 全开。如 `https://*.example.com,https://specific.com`。未设置时，若服务绑定 `0.0.0.0`（`--host 0.0.0.0`）则自动允许所有来源 |
 | `SERVER__HOST` | `--serve` 模式监听地址（默认：`127.0.0.1`） |
 | `SERVER__PORT` | `--serve` 模式监听端口 |
 
@@ -247,6 +252,8 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `CODEBUDDY_DEBUG_SDK` | 设置为 `1`/`true`/`yes`/`on` 启用 SDK 调试 |
 | `CODEBUDDY_DEBUG_REQUEST` | 设置为 `1` 启用请求调试 |
 | `CODEBUDDY_STARTUP_PROFILE` | 设置为 `1` 启用启动性能分析 |
+| `CODEBUDDY_CODE_HEAP_SNAPSHOT_NEAR_LIMIT_PCT` | **OOM 取证**（默认关闭）。开启后当进程堆越过 V8 堆上限高水位时，自动写一份 heap snapshot 到 `~/.codebuddy/diagnostics/<date>/oom-nearlimit-<pid>-<ts>.heapsnapshot`（进程内只写一次）。取值：`on`/`true`/`1` 按默认 85% 水位；`0.9` 或 `90` 自定义水位；未设 / `0` / `off` / `false` 关闭。⚠️ 快照文件≈当时 heapUsed 的 1\.5 倍（GB 级堆会写出数 GB 文件），仅排查 OOM 时开启。详见[故障排查 · OOM](./troubleshooting#内存溢出-oom-排查) |
+| `CBC_HEAP_SNAPSHOT_ON_WORKFLOW_END` | 设置为 `1` 时，每个 workflow（`ultracode` 等）跑完后写一份 heap snapshot 到 `~/.codebuddy/diagnostics/<date>/`。默认关闭（会占磁盘），仅排查 workflow 残留内存时开启 |
 
 ## E2E 测试 (Record/Replay)
 
@@ -318,7 +325,8 @@ export CODEBUDDY_BIG_SLOW_MODEL="deepseek-v4-pro"
 # 后台/轻量任务使用的小模型
 export CODEBUDDY_SMALL_FAST_MODEL="deepseek-v4-flash"
 
-# 子代理使用的模型（不设置则继承主 Agent）
+# 运维级统一覆盖所有子代理。
+# 不设置时会继续使用单次调用、按子代理设置和产品内置编排。
 export CODEBUDDY_CODE_SUBAGENT_MODEL="deepseek-v4-flash"
 
 # 启动时可通过 --model 显式指定主模型

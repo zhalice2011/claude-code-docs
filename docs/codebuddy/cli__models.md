@@ -347,7 +347,7 @@ CodeBuddy Code 在一次会话中会根据场景切换模型，避免用大模�
 | --- | --- | --- |
 | `lite` | 轻量快速模型，用于后台提取、摘要等低价值请求；也是 Agent 工具 `model: "lite"` 参数对应的模型 | **已生效** |
 | `reasoning` | 推理增强模型，用于需要深度思考的复杂推理；Agent 工具 `model: "reasoning"` 参数对应的模型 | **已生效** |
-| `subagent` | 子 Agent / 团队成员默认使用的模型 | **预留未启用**——当前子代理模型通过 `CODEBUDDY_CODE_SUBAGENT_MODEL` 环境变量或 agent 配置的 `models[0]` 决定，不读取本字段 |
+| `subagent` | 子代理和团队成员默认使用的模型 | **预留未启用**——子代理使用独立的 `subagents` 解析链，不读取本字段 |
 | `vision` | 视觉理解模型，用于需要处理图片的请求 | **预留未启用**——类型已定义，尚无调用点消费此 variant |
 | `longContext` | 长上下文模型，用于上下文超长的请求 | **预留未启用**——类型已定义，尚无调用点消费此 variant |
 
@@ -355,7 +355,7 @@ CodeBuddy Code 在一次会话中会根据场景切换模型，避免用大模�
 
 **关键规则（自定义模型必读）：**
 
-> 通过 `models.json` 添加的自定义模型**不会继承**产品内置的 `defaultRelatedModels`。 如果没有在自身条目里显式声明 `relatedModels`，所有场景都会回退到主模型自己——也就是说子代理、lite、reasoning 全部用同一个大模型跑，成本和速度都不划算。
+> 通过 `models.json` 添加的自定义模型**不会继承**产品内置的 `defaultRelatedModels`。 如果自定义主模型没有声明 `relatedModels`，且没有环境变量或 `variantModels` 覆盖，`lite` 和 `reasoning` 会回退到主模型。子代理不读取 `relatedModels.subagent`，但配置为 `lite` 或 `reasoning` 的子代理仍会走这条场景变体解析链。
 
 **配置示例（DeepSeek 主模型 \+ flash 作为 lite / reasoning）：**
 
@@ -394,21 +394,51 @@ json
   ]
 }
 ```
-**解析优先级（从高到低，当前仅 `lite` / `reasoning` 会走到这个解析链）：**
+**场景变体解析优先级（从高到低，当前仅 `lite` / `reasoning` 会走这个解析链）：**
 
-1. 环境变量显式指定（`CODEBUDDY_SMALL_FAST_MODEL` 对应 `lite`、`CODEBUDDY_BIG_SLOW_MODEL` 对应 `reasoning`）
-2. 当前主模型条目里的 `relatedModels[variant]`
-3. 产品内置的 `defaultRelatedModels[variant]`（**仅对内置模型生效，自定义模型跳过这步**）
-4. 回落到主模型自身
+1. 对应的环境变量（`CODEBUDDY_SMALL_FAST_MODEL` 对应 `lite`、`CODEBUDDY_BIG_SLOW_MODEL` 对应 `reasoning`）
+2. 项目级 `variantModels[variant]`
+3. 用户全局 `variantModels[variant]`
+4. 当前主模型条目里的 `relatedModels[variant]`
+5. 产品内置的 `defaultRelatedModels[variant]`（仅对内置模型生效，自定义模型跳过这步）
+6. 回落到主模型自身
 
-> **子代理模型的取值规则不走 `relatedModels.subagent`**，而是独立的链路：Agent 工具 `model` 参数 \> `CODEBUDDY_CODE_SUBAGENT_MODEL` 环境变量 \> agent 配置的 `models[0]` \> 主模型。
+`variantModels` 保存在 `settings.json` 中，也可通过 `/model` 面板的 **Scenario Models** 区域编辑。它适合在用户或项目范围内将 `lite` / `reasoning` 固定映射到具体模型；`relatedModels` 则适合让映射跟随当前主模型。
 
-**与环境变量方式的取舍：**
+**内置子代理解析优先级（从高到低）：**
 
-- 想让某主模型在 `lite` / `reasoning` 场景自动切到另一个同厂小模型：在主模型条目里声明 `relatedModels` 最直观，绑定关系跟着模型走。
-- 想让子代理用小模型：目前必须走环境变量 `CODEBUDDY_CODE_SUBAGENT_MODEL`，或在 agent 配置里把小模型写到 `models[0]`——**不是** `relatedModels.subagent`。
-- 想在不同项目里用不同的大小模型组合：用环境变量（`CODEBUDDY_MODEL` / `CODEBUDDY_BIG_SLOW_MODEL` / `CODEBUDDY_SMALL_FAST_MODEL` / `CODEBUDDY_CODE_SUBAGENT_MODEL`），配合项目级 `.env` 切换。
-- 两种方式同时生效时，环境变量优先。
+1. `CODEBUDDY_CODE_SUBAGENT_MODEL`，统一覆盖所有子代理
+2. 本次 Agent 工具调用的 `model` 入参
+3. 项目级 `subagents.agents.<子代理名>.model`
+4. 用户全局 `subagents.agents.<子代理名>.model`
+5. 产品内置声明，如 `Explore` 使用 `lite`
+6. 继承主对话模型
+
+子代理模型不读取 `relatedModels.subagent`。当子代理配置为 `lite` 或 `reasoning` 时，会继续通过上面的场景变体解析链得到具体模型。
+
+以下配置应写入用户级或项目级 `settings.json`：
+
+json
+```
+{
+  "subagents": {
+    "agents": {
+      "Explore": { "model": "lite" },
+      "Plan": { "model": "reasoning" }
+    }
+  },
+  "variantModels": {
+    "lite": "<fast-model-id>",
+    "reasoning": "<reasoning-model-id>"
+  }
+}
+```
+**不同配置方式的适用场景：**
+
+- 使用 `relatedModels`，让场景映射跟随主模型。
+- 使用 `variantModels` 或 `/model`，在用户或项目范围内固定 `lite` / `reasoning` 的具体模型。
+- 使用 `subagents.agents.<子代理名>.model` 或 `/agents`，为内置子代理分别选择模型或场景变体。
+- 使用模型环境变量进行运维或 CI 级覆盖。环境变量优先于持久化设置；取消后，低优先级设置会恢复生效。
 
 ### 完整示例
 

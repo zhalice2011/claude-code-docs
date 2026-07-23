@@ -78,13 +78,13 @@ CodeBuddy Code 每次交互都会消耗 Token。成本因代码库大小、查�
 
 ### 自动模型选择
 
-CodeBuddy Code 会根据任务类型自动选择合适的场景模型。当子代理执行时，系统会根据用户当前选择的主模型，自动解析出对应的场景模型。
+CodeBuddy Code 会根据任务类型解析合适的场景模型。例如，`Explore` 的内置声明是 `lite`，可以把代码搜索交给更快、更经济的模型；规划类任务则可使用 `reasoning`。
 
-例如，`contentAnalyzer` 等轻量级子代理会自动使用 `lite` 模型，在保证功能的同时降低成本、提升速度。
+在 `/model` 的 **Scenario Models** 区域将 `lite` 和 `reasoning` 映射到具体模型；如需单独配置某个内置子代理，可通过 `/agents` 选择具体模型或场景变体。项目设置只覆盖同名子代理或场景键，不会删除其他全局映射。
 
 Agent 工具支持通过 `model` 参数指定场景类型：
 
-- `default`：继承父模型，适用于一般任务
+- `default`：继续使用由按子代理设置、内置声明和主模型组成的默认编排
 - `lite`：快速且低成本，适用于简单搜索、快速文件操作
 - `reasoning`：增强推理能力，适用于复杂分析、架构决策
 
@@ -122,11 +122,11 @@ When you are using compact, please focus on test output and code changes.
 
 ### 选择合适的模型
 
-根据任务复杂度选择模型。使用 `/model` 在会话中切换模型，或在 `/config` 中设置默认值。
+根据任务复杂度选择模型。使用 `/model` 切换主模型，或在 **Scenario Models** 区域配置 `lite` / `reasoning`；使用 `/agents` 为特定内置子代理选择场景变体或具体模型。
 
-- **简单任务使用 lite**：文件搜索、快速查询、代码格式化
-- **复杂任务使用 reasoning**：架构设计、性能优化、复杂调试
-- **一般任务使用 default**：日常编码、功能实现
+- **简单任务使用 `lite`**：文件搜索、快速查询、代码格式化
+- **复杂任务使用 `reasoning`**：架构设计、性能优化、复杂调试
+- **一般任务使用 `default`**：日常编码、功能实现
 
 ### 减少 MCP 服务器开销
 

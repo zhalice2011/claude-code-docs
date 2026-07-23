@@ -65,7 +65,7 @@ export CODEBUDDY_INTERNET_ENVIRONMENT=ioa
 
 | 版本 | `CODEBUDDY_INTERNET_ENVIRONMENT` 值 | 说明 |
 | --- | --- | --- |
-| 海外版 | 不设置（或 `public`） | 默认值，连接海外服务 |
+| 海外版 | 不设置 | 默认值，连接海外服务 |
 | 中国版 | `internal` | 连接中国区服务 |
 | iOA 版 | `ioa` | 连接腾讯 iOA 内网服务 |
 
@@ -557,7 +557,7 @@ echo $CODEBUDDY_INTERNET_ENVIRONMENT
 
 | 版本 | `CODEBUDDY_INTERNET_ENVIRONMENT` |
 | --- | --- |
-| 海外版 | 不设置或 `public` |
+| 海外版 | 不设置 |
 | 中国版 | `internal` |
 | iOA 版 | `ioa` |
 

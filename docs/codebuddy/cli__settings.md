@@ -38,6 +38,16 @@ json
     "DEBUG": "codebuddy:*"
   },
   "model": "gpt-5",
+  "subagents": {
+    "agents": {
+      "Explore": { "model": "lite" },
+      "Plan": { "model": "reasoning" }
+    }
+  },
+  "variantModels": {
+    "lite": "<fast-model-id>",
+    "reasoning": "<reasoning-model-id>"
+  },
   "cleanupPeriodDays": 30,
   "includeCoAuthoredBy": false,
   "statusLine": {
@@ -65,8 +75,8 @@ json
 | `disableAllHooks` | 禁用所有 [hooks](./hooks) | `true` |
 | `allowUntrustedFrontmatterHooks` | 是否允许执行来自**非 product 内置**来源的 agent/skill 的 frontmatter `hooks` 字段（包括用户本地 `.codebuddy/agents|skills/*.md` 和插件市场）。默认 `false`，防止不可信的 md 文件静默启动 shell 命令；只有 product 内置 agent/skill 不受影响。 | `true` |
 | `model` | 覆盖 CodeBuddy Code 使用的默认模型 | `"gpt-5"` |
-| `subagents` | 按内置子代理粒度指定模型。结构为 `{"agents": {"<子代理名>": {"model": "..."}}}`（`agents` 的 key \= 子代理名，如 `Explore`；`model` \= 模型 ID / 别名 / 变体 `lite`\|`reasoning` / `inherit`）。各子代理互不影响，支持全局 \+ 项目双 scope。可在 `/agents` 面板可视化编辑。优先级：env `CODEBUDDY_CODE_SUBAGENT_MODEL`（一刀切）\> 项目 \> 全局 \> 内置默认 \> 继承主模型。详见 [子代理文档](./sub-agents) | `{"agents": {"Explore": {"model": "gpt-5.1-codex"}, "general-purpose": {"model": "claude-opus-4"}}}` |
-| `variantModels` | 通用场景变体 → 模型 的映射（key \= `lite`\|`reasoning`；value \= 模型 ID / 别名）。影响所有走该变体的逻辑（如 `Explore` 等声明 `lite` 的子代理）。可在 `/model` 面板的「场景变体区」编辑。优先级：env（`CODEBUDDY_SMALL_FAST_MODEL` / `CODEBUDDY_BIG_SLOW_MODEL`，按变体）\> 项目 \> 全局 \> 模型级 `relatedModels` \> 主模型兜底 | `{"lite": "gpt-5.1-codex-lite", "reasoning": "gpt-5.5"}` |
+| `subagents` | 按内置子代理名称指定模型。格式为 `{"agents": {"<子代理名>": {"model": "..."}}}`；`model` 支持模型 ID、别名、`lite` / `reasoning` 或 `inherit` / `default`。各子代理互不影响，支持用户全局和项目两种范围，可在 `/agents` 中编辑。优先级：`CODEBUDDY_CODE_SUBAGENT_MODEL` \> 本次 Agent 工具调用的 `model` 入参 \> 项目设置 \> 用户全局设置 \> 内置声明 \> 主模型。详见 [子代理文档](./sub-agents) | `{"agents": {"Explore": {"model": "lite"}, "Plan": {"model": "reasoning"}}}` |
+| `variantModels` | 将通用场景变体映射到模型，键为 `lite` 或 `reasoning`，值为模型 ID 或别名。该映射影响所有使用相应变体的逻辑，可在 `/model` 的 **Scenario Models** 区域编辑。优先级：对应的变体环境变量 \> 项目设置 \> 用户全局设置 \> 主模型的 `relatedModels` \> 适用的产品内置默认 \> 主模型 | `{"lite": "<fast-model-id>", "reasoning": "<reasoning-model-id>"}` |
 | `agent` | 覆盖主线程使用的 agent 名称（内置或自定义 agent），应用该 agent 的 system prompt、工具限制和模型配置。优先级：`product.json default` → `plugin agent` → `settings.json agent` → `CLI --agent` | `"my-reviewer"` |
 | `statusLine` | 配置自定义状态行以显示上下文。见 \[statusLine 文档](\#状态行配置） | `{"type": "command", "command": "~/.codebuddy/statusline.sh"}` |
 | `enableAllProjectMcpServers` | 自动批准项目 `.mcp.json` 文件中定义的所有 MCP 服务器 | `false` |
@@ -450,12 +460,36 @@ curl -X POST http://127.0.0.1:7890/api/v1/runs \
 
 ## 子代理配置
 
-CodeBuddy Code 支持可在用户和项目级别配置的自定义 AI 子代理。这些子代理存储为带有 YAML frontmatter 的 Markdown 文件：
+CodeBuddy Code 支持为内置子代理独立选择模型，也支持通过 Markdown 文件创建自定义子代理。
+
+内置子代理与场景模型可以在用户级或项目级 `settings.json` 中组合配置：
+
+json
+```
+{
+  "subagents": {
+    "agents": {
+      "Explore": { "model": "lite" },
+      "Plan": { "model": "reasoning" }
+    }
+  },
+  "variantModels": {
+    "lite": "<fast-model-id>",
+    "reasoning": "<reasoning-model-id>"
+  }
+}
+```
+- 使用 `/agents` 编辑内置子代理映射；使用 `/model` 的 **Scenario Models** 区域编辑 `lite` 和 `reasoning` 映射。
+- **Global** 写入用户设置，**Project** 写入共享项目设置。
+- `subagents` 按子代理名合并，`variantModels` 按变体名合并。项目级覆盖 `Explore` 不会删除用户级的其他子代理配置；项目级覆盖 `reasoning` 也不会删除用户级的 `lite`。
+- 在 `/agents` 中选择 **Inherit / Default**，或在 `/model` 中选择 **Default**，会删除所选范围的对应项并恢复低优先级解析链。
+
+自定义子代理存储为带有 YAML frontmatter 的 Markdown 文件：
 
 - **用户子代理**：`~/.codebuddy/agents/` \- 在所有项目中可用
 - **项目子代理**：`.codebuddy/agents/` \- 特定于项目，可与团队共享
 
-子代理文件定义具有自定义提示和工具权限的专用 AI 助手。详见 [子代理文档](./sub-agents)。
+自定义子代理文件定义专用提示、模型和工具权限。完整配置方式和优先级详见 [子代理文档](./sub-agents)。
 
 ## 插件配置
 

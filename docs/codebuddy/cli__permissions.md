@@ -235,10 +235,11 @@ CodeBuddy 默认认为只有**当前工作目录**是受信任的。Read 工具�
 | --- | --- |
 | `--add-dir <path>` 启动参数 | 进程级 |
 | 会话内 `/add-dir` 命令 | 会话级 |
+| Web UI 添加目录（`/api/v1/workspace-dirs`） | 进程级（前端持久化） |
 | `permissions.additionalDirectories` 配置项 | 持久化 |
 | `permissions.trustedDirectories` 配置项 | 持久化 |
 
-最终生效的信任目录 \= 工作区根 \+ `settings.trustedDirectories` \+ 启动时 `--add-dir` / 会话内 `/add-dir` 添加的目录。
+最终生效的信任目录 \= 工作区根 \+ `settings.trustedDirectories` \+ 启动时 `--add-dir` / 会话内 `/add-dir` / Web UI 添加的目录。
 
 > `--add-dir` 和 `permissions.additionalDirectories` 都只授予**文件访问权**，**不会**让 CodeBuddy 加载这些目录里的 `.codebuddy/` 配置（agents / hooks / settings 等都仍以启动目录的为准）。
 

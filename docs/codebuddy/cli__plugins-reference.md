@@ -957,6 +957,8 @@ CodeBuddy 按以下优先级计算缓存键：
 
 没有显式版本的 Git 插件以 12 位 commit SHA 为缓存目录名。通过版本约束解析 tag 时，缓存目录额外包含 12 位 commit SHA 后缀；约束校验使用单独记录的 `resolvedVersion`，不依赖可能过期的 manifest 版本。
 
+旧版本已经记录为 `unknown` 的 Git marketplace 插件会在启动时自动迁移：CodeBuddy 从当前 marketplace checkout 解析 commit SHA，将源码物化到对应的 SHA 缓存目录，再原子更新 `installed_plugins.json`。旧的 `unknown` 目录只会被标记为 orphan；至少保留 14 天，并且仍有活动会话的 `.in_use` 标记时不会删除。非 Git 来源且没有显式版本的插件继续使用 `unknown`。
+
 ---
 
 ## 九、与 Claude Code 的兼容性

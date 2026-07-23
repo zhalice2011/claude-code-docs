@@ -259,11 +259,16 @@ bash
 # CI 启动
 codebuddy daemon start --port 9090
 
-# 其他 CI 步骤调用
+# 其他 CI 步骤调用（body 为 Gateway Protocol 格式，须含 id/type）
 curl -X POST http://127.0.0.1:9090/api/v1/runs \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "审查这个 PR 的代码变更"}'
+  -H "X-CodeBuddy-Request: 1" \
+  -d '{"id": "run-1", "type": "message", "payload": {"text": "审查这个 PR 的代码变更"}}'
+# 响应: {"data": {"runId": "uuid-xxx", "status": "accepted"}}
 ```
+
+> 说明：`/api/v1/runs` 请求必须携带 `X-CodeBuddy-Request` 头，body 使用 [Gateway Protocol](./http-api) 格式（`id`、`type` 为必填，prompt 文本放 在 `payload.text`）。字段详情见 [HTTP API 文档](./http-api)。
+
 ### 多人共享 Agent
 
 一台开发机上启动 daemon 绑定局域网地址，团队成员通过 Web UI 共同使用同一个 Agent 环境。

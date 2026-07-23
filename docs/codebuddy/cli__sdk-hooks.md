@@ -474,6 +474,32 @@ return {
     }
 }
 ```
+### PostToolUse 特殊输出
+
+可以向 Agent 追加上下文（`additionalContext`），或用 `updatedToolOutput` **替换**将要发送给 Agent 的工具结果（对所有工具生效，常用于压缩冗长输出以节省 token）：
+
+TypeScriptPythontypescript
+```
+return {
+  continue: true,
+  hookSpecificOutput: {
+    hookEventName: 'PostToolUse',
+    // 替换工具结果（结果可变短）；也可用 additionalContext 追加（结果只会变长）
+    updatedToolOutput: compress(input.tool_response)
+  }
+};
+```
+python
+```
+return {
+    "continue_": True,
+    "hookSpecificOutput": {
+        "hookEventName": "PostToolUse",
+        # 替换工具结果（结果可变短）；也可用 additionalContext 追加（结果只会变长）
+        "updatedToolOutput": compress(input_data.get("tool_response"))
+    }
+}
+```
 ## 示例
 
 ### 完整示例：Bash 命令审计

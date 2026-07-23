@@ -134,19 +134,119 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 | `name` | 是 | 使用小写字母和连字符的唯一标识符 |
 | `description` | 是 | 子代理目的的自然语言描述 |
 | `tools` | 否 | 特定工具的逗号分隔列表。如果省略，继承主线程中的所有工具。可使用 `Defer(X)` / `NoDefer(X)` 修饰符调整工具的延迟加载状态，详见 [工具延迟加载覆盖](./tool-defer-overlay) |
-| `model` | 否 | 用于此子代理的模型。可以是模型别名（`gpt-5.1-codex`、`gemini-3.0-flash` 等）或 `'inherit'` 以使用主对话的模型。如果省略，默认为配置的子代理模型 |
+| `model` | 否 | 模型 ID、名称或别名、场景变体 `lite` / `reasoning`，或 `inherit` / `default`。省略或设为 `inherit` / `default` 时，不强制具体模型，继续通过正常的子代理解析链选择模型 |
 | `permissionMode` | 否 | 子代理的权限模式。有效值:`default`、`acceptEdits`、`bypassPermissions`、`plan`、`ignore`。控制子代理如何处理权限请求 |
 | `skills` | 否 | 子代理启动时自动加载的技能名称，逗号分隔 |
+| `mcpServers` | 否 | 子代理专属 MCP server 声明。支持引用已有全局 MCP server, 或声明当前子代理私有 inline MCP server。详见下方说明。 |
+
+### 子代理专属 MCP server
+
+`mcpServers` 用于给某个子代理声明只在该子代理运行期间可见的 MCP server。它不会写入全局 MCP 配置, 也不会让主对话或其他子代理自动看到。
+
+支持两种写法。
+
+**引用已有全局 MCP server**:
+
+yaml
+```
+---
+name: docs-searcher
+description: 使用已有 docs MCP 做检索
+tools:
+  - Read
+mcpServers:
+  - docs
+---
+```
+这里的 `docs` 必须已经是全局已连接的 MCP server。子代理只借用它, 子代理结束时不会关闭它。
+
+**声明 inline MCP server**:
+
+yaml
+```
+---
+name: browser-checker
+description: 使用私有 MCP 做浏览器检查
+tools:
+  - ToolSearch
+  - DeferExecuteTool
+mcpServers:
+  - browser_private:
+      type: stdio
+      command: node
+      args:
+        - /absolute/path/to/browser-mcp-server.js
+      defer_loading: true
+---
+```
+inline MCP server 只在该子代理 session 内创建, 子代理结束时自动关闭。它不会进入全局 MCP 池。
+
+#### 安全策略
+
+| 来源 | `mcpServers` 行为 |
+| --- | --- |
+| 用户子代理: `~/.codebuddy/agents/*.md` | 允许 inline MCP。 |
+| 项目子代理: `.codebuddy/agents/*.md` | 允许 inline MCP, 但需要项目本地批准。 |
+| Plugin agent | 忽略 `mcpServers`。 |
+| `strictMcpConfig=true` | 跳过所有 agent frontmatter/product `mcpServers`。 |
+
+项目子代理的 inline MCP 需要写入项目本地配置, 位置是当前 workspace 的 `.codebuddy/settings.local.json`:
+
+json
+```
+{
+  "enabledMcpjsonServers": ["browser_private"]
+}
+```
+也可以在本次启动时通过 CLI settings 批准:
+
+bash
+```
+codebuddy --settings '{"enabledMcpjsonServers":["browser_private"]}'
+```
+注意: 这里使用 server name, 与已有 PROJECT MCP 的审批方式保持一致。不要写到用户全局 `settings.json`, 因为项目 MCP 审批只读取项目本地和 CLI scope。
+
+#### Direct 和 deferred
+
+scoped MCP 使用与 CodeBuddy 全局 MCP 相同的延迟加载策略。默认情况下, MCP 工具会走 deferred loading: 模型先通过 `ToolSearch` 发现工具, 再通过 `DeferExecuteTool` 调用工具。
+
+默认 deferred 配置示例:
+
+yaml
+```
+tools:
+  - ToolSearch
+  - DeferExecuteTool
+mcpServers:
+  - finance_data:
+      type: stdio
+      command: node
+      args:
+        - /absolute/path/to/finance-mcp-server.js
+```
+如果希望 MCP 工具直接出现在子代理 tool list 中, 可以显式关闭 defer:
+
+yaml
+```
+mcpServers:
+  - finance_data:
+      type: stdio
+      command: node
+      args:
+        - /absolute/path/to/finance-mcp-server.js
+      defer_loading: false
+```
+也可以通过 `tools` 字段里的 `Defer(...)` / `NoDefer(...)` 修饰符对单个工具调整延迟加载行为。
 
 ### 模型选择
 
 `model` 字段允许您控制子代理使用的 [AI 模型](./models)：
 
-- **模型别名**：使用可用别名之一，如 `gpt-5.1-codex`、`gemini-3.0-flash`、`gemini-3.1-pro`、`gpt-5.1-codex` 等
-- **`'inherit'`**：使用与主对话相同的模型（对于一致性很有用）
-- **省略**：如果未指定，使用为子代理配置的默认模型
+- **模型 ID、名称或别名**：直接选择一个可用模型
+- **场景变体**：使用 `lite` 或 `reasoning`，再由 `/model` 或 `variantModels` 映射到具体模型
+- **`inherit` / `default`，或省略**：不强制具体模型，继续按环境变量、单次调用、按子代理设置、内置声明和主对话模型的顺序解析
 
-> **注意**：当您希望子代理适应主对话的模型选择，确保整个会话中的功能和响应风格一致时，使用 `'inherit'` 特别有用。
+> **注意**：使用 `inherit` 时，如果没有更高优先级的配置，子代理最终会继承主对话模型，有助于保持功能和响应风格一致。
 
 ### 可用工具
 
@@ -173,6 +273,9 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 这打开了一个交互式菜单，您可以在其中：
 
 - 查看所有可用的子代理（内置、用户和项目）
+- 查看内置子代理当前生效的路由值及其子代理层来源；场景变体对应的具体模型在 `/model` 中查看
+- 通过 **Edit Model** 为内置子代理设置模型或 `lite` / `reasoning` 场景变体
+- 通过 **View Definition** 查看内置子代理定义
 - 使用引导式设置创建新子代理
 - 编辑现有的自定义子代理，包括其工具访问权限
 - 删除自定义子代理
@@ -191,9 +294,9 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 	- 通用场景变体 `lite` / `reasoning`。
 	- 全部可用模型（与 `/model` 一致）。
 3. 用 `Tab` 在 **Global（全局）** 与 **Project（项目）** 两个保存范围间切换，`Enter` 确认。
-4. 列表即时刷新为「生效模型 \+ 来源」。
+4. 列表即时刷新为「生效路由值 \+ 子代理层来源」。该值可能是具体模型，也可能是 `lite` / `reasoning`；场景变体最终映射到的具体模型和来源可在 `/model` 的 **Scenario Models** 区域查看。
 
-面板的 **SOURCE** 列展示每个子代理当前生效模型的来源，让默认编排透明化：
+面板的 **SOURCE** 列展示每个子代理路由值的来源，让默认编排透明化：
 
 | 来源标签 | 含义 |
 | --- | --- |
@@ -204,7 +307,7 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 | `inherit` | 无任何声明，继承主对话模型 |
 | `fallback-main` | 配置的模型被禁用/本地未知，降级回主对话模型 |
 
-**配置存储**：写入 settings 的 `subagents.agents.<子代理名>.model` 字段（`agents` 的 key \= 子代理名，`model` \= 模型 ID / 别名 / 变体 / `inherit`）。也可手动编辑 `settings.json`，详见 [设置文档](./settings)。
+**配置存储**：写入 settings 的 `subagents.agents.<子代理名>.model` 字段（`agents` 的 key \= 子代理名，`model` \= 模型 ID / 别名 / 变体 / `inherit` / `default`）。也可手动编辑 `settings.json`，详见 [设置文档](./settings)。
 
 **优先级（从高到低）**：
 
@@ -271,7 +374,7 @@ General\-Purpose 子代理是一个功能强大的代理，适用于需要探索
 
 **主要特征：**
 
-- **模型**：使用默认模型进行更强大的推理
+- **模型**：使用默认编排，可通过 `/agents` 为该子代理独立调整
 - **工具**：可以访问所有工具
 - **模式**：可以读写文件、执行命令、进行修改
 - **用途**：复杂的研究任务、多步骤操作、代码修改
@@ -302,7 +405,7 @@ Plan 子代理是一个专门的内置代理，设计用于计划模式期间使
 
 **主要特征：**
 
-- **模型**：使用默认模型进行更强大的分析
+- **模型**：使用默认编排，可通过 `/agents` 为该子代理独立调整
 - **工具**：可以访问 Read、Glob、Grep 和 Bash 工具以进行代码库探索
 - **用途**：搜索文件、分析代码结构和收集上下文
 - **自动调用**：当 CodeBuddy Code 处于计划模式并需要研究代码库时，它会自动使用此代理
@@ -328,7 +431,7 @@ Explore 子代理是一个快速、轻量级的代理，专为搜索和分析代
 
 **主要特征：**
 
-- **模型**：使用 gemini\-3\.0\-flash 进行快速、低延迟的搜索
+- **模型**：内置声明为 `lite` 场景变体；实际模型由对应的环境变量、项目和用户 `variantModels`、主模型 `relatedModels` 及默认编排共同决定
 - **模式**：严格只读 \- 不能创建、修改或删除文件
 - **可用工具**：
 	- Glob \- 文件模式匹配

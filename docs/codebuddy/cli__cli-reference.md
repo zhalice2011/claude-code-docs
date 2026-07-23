@@ -43,6 +43,7 @@
 | `--tools` | 限制可用的内置工具集（白名单）。空字符串 `""` 禁用所有内置工具，`"default"` 使用全部工具，或指定逗号分隔的工具名。支持 `Defer(X)` / `NoDefer(X)` 修饰符按需调整工具的延迟加载状态，详见 [工具延迟加载覆盖](./tool-defer-overlay) | `codebuddy --tools "Bash,Read,Defer(Glob)"` |
 | `--mcp-config <fileOrString>` | 从 JSON 文件或 JSON 字符串加载 MCP 服务器配置 | `codebuddy --mcp-config ./mcp.json` |
 | `--strict-mcp-config` | 仅使用 `--mcp-config` 或 SDK `mcpServers` 提供的 MCP 服务器，忽略用户、项目和本地 `.mcp.json` 等文件型配置；未显式传入时，交互模式、`--serve` 和 ACP 会继续加载这些文件型配置 | `codebuddy --serve --strict-mcp-config` |
+| `--no-session-persistence` | 仅在内存中保留会话上下文，不创建或更新本地 transcript；仍可以只读加载已有会话 | `codebuddy --serve --no-session-persistence` |
 | `--print`, `-p` | 打印响应后退出,不进入交互模式 | `codebuddy -p "查询"` |
 | `--settings` | 从 JSON 文件或 JSON 字符串加载额外的设置配置 | `codebuddy --settings '{"model":"gpt-5"}' "查询"` |
 | `--setting-sources` | 指定要加载的设置源,逗号分隔（可选值: `user`, `project`, `local`）。默认: `user,project,local` | `codebuddy --setting-sources project,local "查询"` |
@@ -90,7 +91,7 @@ TIP
 | `prompt` | 是 | 指导子代理行为的系统提示词 |
 | `tools` | 否 | 子代理可以使用的特定工具数组（如 `["Read", "Edit", "Bash"]`)。省略则继承所有工具 |
 | `disallowedTools` | 否 | 子代理禁止使用的工具数组（黑名单），与 session 级 `--disallowedTools` 取并集生效 |
-| `model` | 否 | 要使用的模型别名: `sonnet`、`opus` 或 `haiku`。省略则使用默认子代理模型 |
+| `model` | 否 | 模型 ID、名称或别名、场景变体 `lite` / `reasoning`，或 `inherit` / `default`。省略或设为 `inherit` / `default` 时，继续通过正常的子代理解析链选择模型 |
 
 示例：
 
@@ -101,7 +102,7 @@ codebuddy --agents '{
     "description": "专业代码审查员。代码更改后主动使用。",
     "prompt": "你是高级代码审查员。专注于代码质量、安全性和最佳实践。",
     "tools": ["Read", "Grep", "Glob", "Bash"],
-    "model": "sonnet"
+    "model": "lite"
   },
   "debugger": {
     "description": "错误和测试失败的调试专家。",

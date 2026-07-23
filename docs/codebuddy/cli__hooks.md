@@ -341,7 +341,7 @@ json
 | 事件 | 触发时机 | matcher 字段 | 典型场景 |
 | --- | --- | --- | --- |
 | `PreToolUse` | 工具执行前 | 支持（工具名） | 校验命令、二次审批、日志记录 |
-| `PostToolUse` | 工具成功执行后 | 支持 | 自动格式化、补充上下文 |
+| `PostToolUse` | 工具成功执行后 | 支持 | 自动格式化、补充上下文、压缩/替换工具结果 |
 | `Notification` | 权限请求或 60 秒无输入提醒 | 部分支持 | 桌面提示、IM 通知 |
 | `UserPromptSubmit` | 用户提交消息时**注：不包括内部命令** | 不支持 | 内容审查、上下文注入 |
 | `Stop` | 主代理响应结束时 | 不支持 | 要求继续执行、追加提醒 |
@@ -610,7 +610,7 @@ Hooks 通过退出代码、stdout 和 stderr 传达状态：
 | Hook 事件 | 行为 |
 | --- | --- |
 | PreToolUse | 阻止工具调用，向 CodeBuddy 显示消息 |
-| PostToolUse | 向 CodeBuddy 显示消息（工具已运行，用于补充上下文） |
+| PostToolUse | 向 CodeBuddy 显示消息（工具已运行，用于补充上下文）；可用 `updatedToolOutput` 替换工具结果 |
 | Notification | N/A，仅向用户显示消息 |
 | UserPromptSubmit | 阻止提示词处理，清除提示词，仅向用户显示消息 |
 | Stop | 阻止停止，向 CodeBuddy 显示消息并继续对话 |
@@ -665,9 +665,14 @@ jsonc
 - `"ask"` 要求用户在 UI 中确认工具调用，`permissionDecisionReason` 会显示在确认对话框中
 - `modifiedInput` 允许你在执行前修改工具的输入参数（部分字段覆盖）
 
-#### PostToolUse 上下文注入
+#### PostToolUse 上下文注入与结果替换
 
-PostToolUse 在工具执行**完成后**触发，无法阻止已执行的操作，但可以向 Agent 注入额外上下文信息。
+PostToolUse 在工具执行**完成后**触发，无法阻止已执行的操作，但可以：
+
+1. 向 Agent **追加**额外上下文（`additionalContext`）；
+2. **替换**将要发送给 Agent 的工具结果（`updatedToolOutput`）。
+
+**追加上下文**（原始工具结果保留，在其后追加一段提示）：
 
 jsonc
 ```
@@ -678,6 +683,22 @@ jsonc
   }
 }
 ```
+**替换工具结果**（用返回值整个替换原始工具输出后再发给 Agent）：
+
+jsonc
+```
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PostToolUse",
+    "updatedToolOutput": "精简后的工具输出"
+  }
+}
+```
+- `updatedToolOutput` 对**所有工具**生效（内置工具与 MCP 工具均可）。
+- 典型用途：压缩冗长的工具输出（如超大命令日志、超长文件内容）以节省上下文 token —— 这类"压缩型" hook 依赖的正是替换能力。
+- 与 `additionalContext` 的区别：`additionalContext` 是**追加**（结果只会变长），`updatedToolOutput` 是**替换**（结果可以变短）。
+- 两者可同时返回：先用 `updatedToolOutput` 替换，再把 `additionalContext` 追加到替换后的内容上。
+- 对 MCP 工具，返回的 `updatedToolOutput` 若为数组则原样作为 MCP content 数组，否则包装为单个文本块。
 
 > **注意**：`decision: "block"` 字段已废弃。由于工具已执行完成，此时无法真正"阻止"操作。
 

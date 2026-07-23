@@ -15,7 +15,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/doctor` |  | ✅ 支持 | 检查 CodeBuddy Code 的状态和环境。 |
 | `/status` |  | ✅ 支持 | 显示当前仓库和会话的状态。 |
 | `/add-dir` | `<path>` | ✅ 支持 | 添加工作目录。指定要添加的目录路径。 |
-| `/agents` |  | ✅ 支持 | 管理实验性 AI 智能体 |
+| `/agents` |  | ✅ 支持 | 管理内置和自定义 AI 智能体；查看内置子代理的生效路由值及其来源，并将模型设置保存到 Global 或 Project 范围。具体场景模型可在 `/model` 中查看。 |
 | `/branch` | `[name]` | ✅ 支持 | 在当前对话位置创建一个分支，复制活跃对话历史到新 session 并自动切换。可选指定分支名称。 |
 | `/btw` | `<question>` | ✅ 支持 | 快速提问，不中断当前 Agent 工作流。适用于在 Agent 执行任务时临时提出简短问题，答案基于已有上下文生成。 |
 | `/compact` |  | ✅ 支持 | 压缩上下文。 |
@@ -25,7 +25,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/init` |  | ✅ 支持 | 初始化一个新的 CodeBuddy 存储库。 |
 | `/mcp` |  | ✅ 支持 | 管理 MCP 连接。 |
 | `/memory` |  | ✅ 支持 | 管理长期记忆 |
-| `/model` | `[list | model-name]` | ✅ 支持 | 切换或查看当前使用的 AI 模型。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型名称参数时直接切换到指定模型（如 `/model gpt-4o`）。 |
+| `/model` | `[list | model-name]` | ✅ 支持 | 切换或查看主模型。不带参数时打开交互式界面；还可在 **Scenario Models** 区域查看或编辑 `lite` / `reasoning` 的生效模型、来源，以及 Global / Project 设置。`list` 列出可用模型，带模型名称参数时直接切换主模型。 |
 | `/model:text-to-image` | `[list | model-id]` | ✅ 支持 | 切换或查看当前使用的文生图模型。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
 | `/model:image-to-image` | `[list | model-id]` | ✅ 支持 | 切换或查看当前使用的图生图模型。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
 | `/permissions` |  | ✅ 支持 | 管理工具权限和工作区目录访问权限。 |

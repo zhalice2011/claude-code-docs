@@ -68,6 +68,17 @@ X-CodeBuddy-Request: 1
 
 可通过环境变量 `CODEBUDDY_DISABLE_REQUEST_VALIDATION=1` 关闭此校验。
 
+### CORS 白名单
+
+跨域请求的 `Origin` 会与服务端 CORS 白名单匹配，不在白名单中的来源会被拒绝（预检返回无 CORS 头的 204，实际请求返回 403 `Origin not allowed`）。白名单来源：
+
+- 本地端点及其回环变体（`localhost` / `127.0.0.1` / `[::1]`）
+- Tunnel URL（如启用）
+- 配置项 `gateway.corsOrigins`
+- 环境变量 `CODEBUDDY_CODE_CORS_ORIGINS`（逗号分隔，支持精确 origin、`*.domain` 子域通配和 `*` 全开）
+
+绑定 `0.0.0.0` 时（如 `--host 0.0.0.0`，常见于云虚拟机 / 局域网暴露场景），若未显式设置 `CODEBUDDY_CODE_CORS_ORIGINS`，服务端会**自动允许所有来源**（等价于配置 `*`），无需额外配置即可通过任意 IP 或域名访问 Web UI；显式设置该环境变量时以用户配置为准。
+
 ### 认证
 
 支持两种模式（环境变量 `CODEBUDDY_GATEWAY_AUTH` 控制）：
@@ -287,10 +298,12 @@ CBC 增强：
 | POST | `/api/v1/plugins/enable` | 启用插件 |
 | POST | `/api/v1/plugins/disable` | 禁用插件 |
 | POST | `/api/v1/plugins/uninstall` | 卸载插件 |
+| POST | `/api/v1/plugins/update` | 更新插件到最新版本 |
 | GET | `/api/v1/plugins/marketplaces` | 列出已配置的插件市场 |
-| POST | `/api/v1/plugins/marketplaces` | 添加插件市场 |
+| POST | `/api/v1/plugins/marketplaces` | 添加插件市场（可选 `autoUpdate` 添加时即开启自动更新） |
 | POST | `/api/v1/plugins/marketplaces/browse` | 浏览市场中的可用插件 |
 | POST | `/api/v1/plugins/marketplaces/update` | 更新市场（同步远端仓库内容） |
+| POST | `/api/v1/plugins/marketplaces/auto-update` | 开启/关闭市场自动更新 |
 | DELETE | `/api/v1/plugins/marketplaces/:name` | 删除插件市场 |
 
 ### 配置管理
@@ -302,6 +315,15 @@ CBC 增强：
 | PUT | `/api/v1/settings/:key` | 设置配置值 |
 | POST | `/api/v1/settings/:key/items` | 向数组类配置追加值 |
 | POST | `/api/v1/settings/:key/remove` | 从数组类配置移除值 |
+
+### 工作目录
+
+| 方法 | 端点 | 说明 |
+| --- | --- | --- |
+| GET | `/api/v1/workspace-dirs` | 列出当前附加工作目录 |
+| POST | `/api/v1/workspace-dirs` | 添加单个工作目录 |
+| DELETE | `/api/v1/workspace-dirs?path=` | 移除单个工作目录 |
+| PUT | `/api/v1/workspace-dirs/sync` | 全量同步工作目录列表 |
 
 ### 任务模板
 
@@ -356,16 +378,45 @@ curl http://127.0.0.1:8080/api/v1/health
 
 bash
 ```
-# 发送消息
+# 发送消息（body 为 Gateway Protocol 格式，id/type 必填）
 curl -X POST http://127.0.0.1:8080/api/v1/runs \
   -H "Content-Type: application/json" \
-  -d '{"text": "帮我分析代码性能", "sender": {"id": "dev", "name": "Developer"}}'
+  -H "X-CodeBuddy-Request: 1" \
+  -d '{
+    "id": "run-1",
+    "type": "message",
+    "source": {"platform": "generic", "sender": {"id": "dev", "name": "Developer"}, "conversation": {"id": "run-1", "type": "direct"}},
+    "payload": {"text": "帮我分析代码性能"}
+  }'
 
 # 响应: {"data": {"runId": "uuid-xxx", "status": "accepted"}}
 
-# 通过 SSE 流获取结果
-curl http://127.0.0.1:8080/api/v1/runs/uuid-xxx/stream
+# 通过 SSE 流获取结果（同样需携带 X-CodeBuddy-Request 头）
+curl -H "X-CodeBuddy-Request: 1" http://127.0.0.1:8080/api/v1/runs/uuid-xxx/stream
 ```
+#### 请求体字段（Gateway Protocol）
+
+`POST /api/v1/runs` 的请求体为 Gateway Protocol 入站消息格式：
+
+| 字段 | 必填 | 类型 | 说明 |
+| --- | --- | --- | --- |
+| `id` | ✅ | string | 消息唯一 ID，由调用方生成，用于去重与追踪 |
+| `type` | ✅ | `"message"` \| `"action"` | 消息类型。`message` 发起对话，`action` 发送控制指令 |
+| `payload.text` | — | string | prompt 文本（也兼容顶层 `text` / `prompt`） |
+| `payload.attachments` | — | array | 附件列表，元素含 `type`（`image`/`voice`/`video`/`file`）、`url`、`urlType`（`local-path`/`url`）等 |
+| `version` | — | string | 协议版本，默认 `"1.0"` |
+| `source.platform` | — | string | 来源平台，默认 `"generic"` |
+| `source.sender.id` | — | string | 发送者 ID，用于限流；缺省为 `"unknown"` |
+| `source.sender.name` | — | string | 发送者名称 |
+| `source.conversation.id` | — | string | 会话 ID，缺省取 `id` |
+| `source.conversation.type` | — | `"direct"` \| `"group"` | 会话类型，默认 `"direct"` |
+| `action` | — | `"cancel"` \| `"status"` | 仅 `type="action"` 时使用的控制动作 |
+| `callback.url` | — | string | 异步回传结果的回调地址（模式 B） |
+| `callback.headers` | — | object | 回调请求附加的自定义头 |
+| `timeoutMs` | — | number | 单次执行超时（毫秒），优先级高于 `settings.gateway.runTimeoutMs`；也可用请求头 `X-Codebuddy-Run-Timeout`。设为 0 或负数关闭超时保护 |
+
+> 权威定义见源码 `src/node/remote-gateway/gateway-protocol.ts` 的 `GatewayInboundMessage`。
+
 ### PTY 终端管理
 
 bash
@@ -545,6 +596,11 @@ curl -X POST http://127.0.0.1:8080/api/v1/plugins/uninstall \
   -H "Content-Type: application/json" \
   -d '{"plugin": "my-plugin@my-marketplace"}'
 
+# 更新插件到最新版本（传 waitForApply=true 可等待重建生效后再返回）
+curl -X POST http://127.0.0.1:8080/api/v1/plugins/update \
+  -H "Content-Type: application/json" \
+  -d '{"plugin": "my-plugin@my-marketplace"}'
+
 # 列出插件市场
 curl http://127.0.0.1:8080/api/v1/plugins/marketplaces
 
@@ -552,6 +608,11 @@ curl http://127.0.0.1:8080/api/v1/plugins/marketplaces
 curl -X POST http://127.0.0.1:8080/api/v1/plugins/marketplaces \
   -H "Content-Type: application/json" \
   -d '{"source": "https://example.com/marketplace", "name": "my-marketplace"}'
+
+# 添加插件市场并默认开启自动更新（等价于添加后再调一次 marketplaces/auto-update）
+curl -X POST http://127.0.0.1:8080/api/v1/plugins/marketplaces \
+  -H "Content-Type: application/json" \
+  -d '{"source": "https://example.com/marketplace", "name": "my-marketplace", "autoUpdate": true}'
 
 # 浏览市场中的插件
 curl -X POST http://127.0.0.1:8080/api/v1/plugins/marketplaces/browse \
@@ -562,6 +623,11 @@ curl -X POST http://127.0.0.1:8080/api/v1/plugins/marketplaces/browse \
 curl -X POST http://127.0.0.1:8080/api/v1/plugins/marketplaces/update \
   -H "Content-Type: application/json" \
   -d '{"marketplace": "my-marketplace"}'
+
+# 开启/关闭市场自动更新（开启后后台周期性同步并升级已安装插件）
+curl -X POST http://127.0.0.1:8080/api/v1/plugins/marketplaces/auto-update \
+  -H "Content-Type: application/json" \
+  -d '{"marketplace": "my-marketplace", "autoUpdate": true}'
 
 # 删除插件市场
 curl -X DELETE http://127.0.0.1:8080/api/v1/plugins/marketplaces/my-marketplace
@@ -594,6 +660,34 @@ curl -X POST http://127.0.0.1:8080/api/v1/settings/permissions/remove \
   -H "Content-Type: application/json" \
   -d '{"values": ["Allow: Read(**)"]}'
 ```
+### 工作目录
+
+管理附加工作目录，使权限系统放行这些目录下的文件操作（与 `/add-dir` 命令效果一致）。
+
+bash
+```
+# 列出当前附加工作目录
+curl http://127.0.0.1:8080/api/v1/workspace-dirs
+
+# 添加工作目录
+curl -X POST http://127.0.0.1:8080/api/v1/workspace-dirs \
+  -H "Content-Type: application/json" \
+  -d '{"path": "/Users/me/other-project"}'
+
+# 移除工作目录
+curl -X DELETE "http://127.0.0.1:8080/api/v1/workspace-dirs?path=/Users/me/other-project"
+
+# 全量同步（页面刷新恢复后调用）
+curl -X PUT http://127.0.0.1:8080/api/v1/workspace-dirs/sync \
+  -H "Content-Type: application/json" \
+  -d '{"dirs": ["/Users/me/project-a", "/Users/me/project-b"]}'
+```
+**说明**：
+
+- 添加的目录存储在 CLI scope（进程内存），实例关闭后失效
+- 前端通过 Web UI 的 workspace storage 持久化，页面刷新后自动同步到后端
+- 添加后，Agent 工具（Read/Write/Glob/Grep/Bash）可免询问访问这些目录
+
 ### 使用统计
 
 bash

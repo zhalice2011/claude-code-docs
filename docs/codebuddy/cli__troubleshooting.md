@@ -128,6 +128,61 @@ netstat -an | grep PORT_NUMBER
 
 ---
 
+## 内存溢出 (OOM) 排查
+
+**症状**：长时间运行的会话（尤其 `/goal` 这类自续跑循环、或超长上下文任务）跑数小时后进程崩溃，终端出现：
+
+```
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+```
+### 为什么会发生
+
+- Node/V8 默认堆上限约 4GB（64 位）。超长会话里对话历史、工具结果等在内存中累积，堆可能一路涨到上限。
+- 自动上下文压缩按 **token 占模型窗口的比例**触发（约 92%）。**大窗口模型（如 1M 上下文）下，token 还远没到阈值，进程真实堆就已经先到 4GB 上限**——压缩来不及救场。
+- 硬 OOM（`FatalProcessOutOfMemory`）由 V8 直接终止进程，绕过所有 JS 异常处理，默认**不会留下堆快照**，事后难以定位是谁占了内存。
+
+### 先缓解
+
+- 用 `/clear` 清空上下文，或 `/compact` 主动压缩后再继续。
+- 把超大任务拆成多轮 / 多会话，避免单会话无限堆积。
+- 临时抬高堆上限（仅治标、推迟 OOM）：
+
+bash
+```
+# 抬到 8GB 再启动(会被子进程继承)
+NODE_OPTIONS=--max-old-space-size=8192 codebuddy
+```
+
+### 抓堆快照定位根因（默认关闭，按需开启）
+
+CodeBuddy 内置一个"近堆上限自愈快照"：当进程堆越过 V8 堆上限的高水位时，自动写一份 heap snapshot，供事后分析对象保留树。**因为快照文件很大（≈ 当时 heapUsed 的 1\.5 倍，GB 级堆会写出数 GB 文件），默认关闭**，仅在复现/排查 OOM 时开启：
+
+bash
+```
+# 开启(默认 85% 水位)
+CODEBUDDY_CODE_HEAP_SNAPSHOT_NEAR_LIMIT_PCT=on codebuddy
+# 自定义水位:0.9 或 90 都表示 90%
+CODEBUDDY_CODE_HEAP_SNAPSHOT_NEAR_LIMIT_PCT=90 codebuddy
+# 关闭(默认): 不设 / 0 / off / false
+```
+- 快照落盘位置：`~/.codebuddy/diagnostics/<YYYY-MM-DD>/oom-nearlimit-<pid>-<时间戳>.heapsnapshot`（按天分层，同日志目录）。
+- 进程内**只抓一次**（越过水位后即写一份，避免濒临 OOM 时反复写 GB 级文件二次爆内存）。
+- 触发时会打一条告警日志：`[WorkflowMemProbe] near heap limit ...`。
+
+分析：用 Chrome DevTools → **Memory** → **Load** 载入该 `.heapsnapshot`，看 **Retainers / 对象保留树**，定位占用最大的对象及其引用链。
+
+> 说明：未采用 Node 内建的 `--heapsnapshot-near-heap-limit` / `v8.setHeapSnapshotNearHeapLimit`——它只能写到进程当前工作目录、无法指定路径，且在接近 100% 真上限才触发（那时再写 GB 级快照本身可能二次 OOM）。这里用 85% 高水位提前抓、并落到统一的 diagnostics 目录。
+
+### 反馈给开发
+
+请附上：
+
+- 终端里的 `FATAL ERROR: ... heap out of memory` 及其后的 native 栈；
+- `~/.codebuddy/logs/<date>/` 里崩溃前的 `[WorkflowMemProbe] tick ... heap=used/total` 心跳（能看出堆增长曲线）；
+- 若开启了快照：`~/.codebuddy/diagnostics/<date>/oom-nearlimit-*.heapsnapshot`。
+
+---
+
 ## 权限确认框无响应 / ESC 才能关
 
 **症状**：TUI 弹出工具权限确认框，按数字键 / 回车确认后弹框不消失，但 ESC 能正常关闭，且关闭后任务实际已在执行。
