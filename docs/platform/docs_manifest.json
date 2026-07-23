@@ -3104,8 +3104,8 @@
     "build-with-claude__refusals-and-fallback.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback.md",
-      "hash": "c98de106d63db770275767bf3af13698f171ea421611b7979a31d362e590cc8e",
-      "last_updated": "2026-07-23T05:51:07.131702",
+      "hash": "91b98e8489e136d2b2b961874441e2ba65b2c54f2a1559940043a87cc100e249",
+      "last_updated": "2026-07-23T22:05:33.603562",
       "source": "platform"
     },
     "build-with-claude__search-results.md": {
@@ -3132,8 +3132,8 @@
     "build-with-claude__structured-outputs.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs.md",
-      "hash": "89a3c923fe1639ea75d31992e00b4e051c8c6af1beb6059443810c840e84abe7",
-      "last_updated": "2026-07-23T05:51:09.840610",
+      "hash": "01788a6c7613cd8840f5f4241f6478a3e474563a89d17a5832129ec0156ce5c7",
+      "last_updated": "2026-07-23T22:05:36.281026",
       "source": "platform"
     },
     "build-with-claude__task-budgets.md": {
@@ -3496,8 +3496,8 @@
     "manage-claude__user-management.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/user-management",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/user-management.md",
-      "hash": "4256587186b5e3ff4f0e0adb0dbcd5eab22ca5e662d02e55ca53109ddd7cc1c9",
-      "last_updated": "2026-07-14T16:39:24.384198",
+      "hash": "f3a668ae8a0458b5bd917ea0e4f02cf65965e87a0e07e9d4b81efbcbe2b55e66",
+      "last_updated": "2026-07-23T22:06:09.156404",
       "source": "platform"
     },
     "manage-claude__wif-admin-api.md": {
@@ -3825,7 +3825,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-07-23T19:11:42.606647",
+    "last_fetch_completed": "2026-07-23T22:06:37.585513",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 548,
@@ -3838,7 +3838,7 @@
     "total_files": 546,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-23T19:11:42.606674",
+  "last_updated": "2026-07-23T22:06:37.585536",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
