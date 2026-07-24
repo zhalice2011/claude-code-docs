@@ -530,8 +530,8 @@
     },
     "ide__Account__plan.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Account/plan",
-      "hash": "0212979cd0df5555205b15534c62d3fdf95f3b1d401927dede349cdb281005f9",
-      "last_updated": "2026-07-01T07:37:54.429246",
+      "hash": "c15d0060e8562c7d020d62841e6f1b1181bdf589914d80e86f82d67d1cb2031c",
+      "last_updated": "2026-07-24T05:50:24.343660",
       "source": "codebuddy"
     },
     "ide__Account__pricing.md": {
@@ -1076,8 +1076,8 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Assistant.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Assistant",
-      "hash": "2447c00dfaf66c4938cf633c472fabe31e2bfc68ef71668210a2abbcf561df09",
-      "last_updated": "2026-07-20T06:39:05.443791",
+      "hash": "ed166da1ba568be9078921fe3a6f95f52b9b55617456551bb2fcab042fbaa4c2",
+      "last_updated": "2026-07-24T05:51:34.270331",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Automation-Guide.md": {
@@ -1334,8 +1334,8 @@
     },
     "workbuddy__Plan.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Plan",
-      "hash": "df6c2c7b647debd6f338bebd61b83aea34f0fd7220000de4f8e1e401466766c4",
-      "last_updated": "2026-07-01T07:39:48.903525",
+      "hash": "d9a09f56636d43a6cb1134d2e60617c499484fe66febc6d0878aaa5e473c6d4a",
+      "last_updated": "2026-07-24T05:52:06.164699",
       "source": "codebuddy"
     },
     "workbuddy__Pricing.md": {
@@ -1539,7 +1539,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-24T02:01:31.497554",
+    "last_fetch_completed": "2026-07-24T05:52:29.996221",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 258,
     "pages_fetched_successfully": 256,
@@ -1551,7 +1551,7 @@
     "total_files": 256,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-24T02:01:31.497576",
+  "last_updated": "2026-07-24T05:52:29.996266",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

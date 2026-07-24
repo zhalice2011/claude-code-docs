@@ -51,11 +51,9 @@
 ## 五、配置方式
 
 1. 打开 WorkBuddy，点击左下角头像，打开 **设置 → 助理设置**；
-
-![](/docs/static/assistant-1.C00zsyZs.png)
 2. 按需配置对应平台的集成接入（微信/企业微信/QQ/钉钉/飞书）。
 
-![](/docs/static/assistant-2.uE3_fGNm.png)
+![](/docs/static/assistant-1.CelZeSps.png)
 3. 按照提示完成配置。
 
 ## 六、平台接入指南
