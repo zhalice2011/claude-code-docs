@@ -1016,8 +1016,8 @@
     },
     "workbuddy__Changelog.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Changelog",
-      "hash": "7c1e37dd3307619adaab67ae5a4a4c32b34a882421952f25cfbca604a47aa339",
-      "last_updated": "2026-07-23T08:22:08.126606",
+      "hash": "797347954887d0bec3e1abec5e6d7b1f3cedf99e1c328665998de7343d5ef5eb",
+      "last_updated": "2026-07-25T16:06:50.064163",
       "source": "codebuddy"
     },
     "workbuddy__Conversation.md": {
@@ -1539,7 +1539,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-25T13:12:46.455607",
+    "last_fetch_completed": "2026-07-25T16:07:58.685122",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 258,
     "pages_fetched_successfully": 256,
@@ -1551,7 +1551,7 @@
     "total_files": 256,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-25T13:12:46.455631",
+  "last_updated": "2026-07-25T16:07:58.685147",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
