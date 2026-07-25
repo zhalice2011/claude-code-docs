@@ -836,8 +836,8 @@
     "plugin-marketplaces.md": {
       "original_url": "https://code.claude.com/docs/en/plugin-marketplaces",
       "original_md_url": "https://code.claude.com/docs/en/plugin-marketplaces.md",
-      "hash": "b26587f202719e55188d55f099b17adad7a64a046bf838a7843627aa72e4129e",
-      "last_updated": "2026-07-21T19:05:36.944540",
+      "hash": "ba170944ebfaffed2546f18950d01ac207819c29e6bd58ea82a07a3cb2752209",
+      "last_updated": "2026-07-25T21:45:32.577221",
       "source": "claude-code"
     },
     "plugin-relevance.md": {
@@ -1207,7 +1207,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-25T18:56:50.059240",
+    "last_fetch_completed": "2026-07-25T21:46:33.383042",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 172,
@@ -1217,7 +1217,7 @@
     "total_files": 172,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-25T18:56:50.059264",
+  "last_updated": "2026-07-25T21:46:33.383066",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
