@@ -661,8 +661,8 @@
     "interactive-mode.md": {
       "original_url": "https://code.claude.com/docs/en/interactive-mode",
       "original_md_url": "https://code.claude.com/docs/en/interactive-mode.md",
-      "hash": "282f0498c0dd2600fb538f616eae32f9c3d200e9edb8e7c734d66371586b01c0",
-      "last_updated": "2026-07-23T01:53:32.365723",
+      "hash": "90e27bd6098951770c798f7c8df4c01c321bc1bf1ce7c0a69562b05006211036",
+      "last_updated": "2026-07-26T01:52:14.393462",
       "source": "claude-code"
     },
     "jetbrains.md": {
@@ -1207,7 +1207,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-25T21:46:33.383042",
+    "last_fetch_completed": "2026-07-26T01:53:31.451061",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 172,
@@ -1217,7 +1217,7 @@
     "total_files": 172,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-25T21:46:33.383066",
+  "last_updated": "2026-07-26T01:53:31.451089",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
