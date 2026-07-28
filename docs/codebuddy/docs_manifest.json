@@ -1128,6 +1128,12 @@
       "last_updated": "2026-06-26T12:16:13.690104",
       "source": "codebuddy"
     },
+    "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Knowledge-Base__Cowriting.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Knowledge-Base/Cowriting",
+      "hash": "e3dad2580a288be2b917591b41625872a493f492edee725537d438b214b1e3fd",
+      "last_updated": "2026-07-28T13:42:17.073060",
+      "source": "codebuddy"
+    },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Knowledge-Base__Lexiang.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Knowledge-Base/Lexiang",
       "hash": "47af17050dc174f5ced6a3b6bf8198ea455f4859fe8270c7e6fac6467df1da7e",
@@ -1551,19 +1557,19 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-28T11:22:46.450137",
+    "last_fetch_completed": "2026-07-28T13:43:23.950372",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 260,
-    "pages_fetched_successfully": 258,
+    "pages_discovered": 261,
+    "pages_fetched_successfully": 259,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 258,
+    "total_files": 259,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-28T11:22:46.450164",
+  "last_updated": "2026-07-28T13:43:23.950396",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
