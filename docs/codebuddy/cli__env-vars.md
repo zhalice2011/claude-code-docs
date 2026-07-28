@@ -215,7 +215,7 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `CODEBUDDY_DISABLE_REQUEST_VALIDATION` | 设置为 `1` 关闭 Gateway 自定义请求头校验（`X-CodeBuddy-Request`）。详见 [HTTP API 安全](./http-api#安全) |
 | `CODEBUDDY_CODE_CORS_ORIGINS` | 额外的 CORS 允许来源（逗号分隔）。支持精确 origin、`*.domain` 子域通配和 `*` 全开。如 `https://*.example.com,https://specific.com`。未设置时，若服务绑定 `0.0.0.0`（`--host 0.0.0.0`）则自动允许所有来源 |
 | `SERVER__HOST` | `--serve` 模式监听地址（默认：`127.0.0.1`） |
-| `SERVER__PORT` | `--serve` 模式监听端口 |
+| `SERVER__PORT` | `--serve` 模式监听端口；设为 `0` 时由内核自选端口，服务绑定后该变量会被更新为实际监听端口 |
 
 ## 企业微信集成
 

@@ -80,8 +80,8 @@
     },
     "cli__env-vars.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/env-vars",
-      "hash": "cdc3bc08923887ff566af5d663dfab2367732bc7331ae125775492cb6bfe58ae",
-      "last_updated": "2026-07-23T08:19:59.362876",
+      "hash": "193ee680b2036e667bce1ec21997648a12c2e0ba2a19ab2af5a01918d0b8e08d",
+      "last_updated": "2026-07-28T11:18:57.440650",
       "source": "codebuddy"
     },
     "cli__gitlab-ci-cd.md": {
@@ -1551,7 +1551,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-28T08:27:14.358214",
+    "last_fetch_completed": "2026-07-28T11:22:46.450137",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 260,
     "pages_fetched_successfully": 258,
@@ -1563,7 +1563,7 @@
     "total_files": 258,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-28T08:27:14.358248",
+  "last_updated": "2026-07-28T11:22:46.450164",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
