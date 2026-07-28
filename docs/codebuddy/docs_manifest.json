@@ -1068,10 +1068,16 @@
       "last_updated": "2026-06-26T12:16:08.974785",
       "source": "codebuddy"
     },
+    "workbuddy__From-Beginner-to-Expert-Guide__Error-Code.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Error-Code",
+      "hash": "efaf1c3102faf39b2937a63ae5f7a85300e641c47738f1366093f2542ed78a33",
+      "last_updated": "2026-07-28T08:26:02.341838",
+      "source": "codebuddy"
+    },
     "workbuddy__From-Beginner-to-Expert-Guide__FAQ.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/FAQ",
-      "hash": "f6d3cbeac5c090406aa97b024532cd9b7f19115640096986674725d90e4b0556",
-      "last_updated": "2026-07-09T07:09:58.542119",
+      "hash": "9000357b925e8317cc769661f0ec22e3c61232ba9e9e03dd1588b84ee3a58df9",
+      "last_updated": "2026-07-28T08:26:03.364046",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Assistant.md": {
@@ -1545,19 +1551,19 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-28T05:49:18.776976",
+    "last_fetch_completed": "2026-07-28T08:27:14.358214",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 259,
-    "pages_fetched_successfully": 257,
+    "pages_discovered": 260,
+    "pages_fetched_successfully": 258,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 257,
+    "total_files": 258,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-28T05:49:18.777002",
+  "last_updated": "2026-07-28T08:27:14.358248",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
