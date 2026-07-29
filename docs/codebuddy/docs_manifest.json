@@ -1310,8 +1310,8 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Office-Document-Suite.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/Office-Document-Suite",
-      "hash": "b7cf3203563ccde633f4ba0ea1a41be7aee44fc4f3a3476f1c6d0a2cad4a84b5",
-      "last_updated": "2026-07-09T07:10:28.377983",
+      "hash": "e2ea6c5d8f70780f2a2b5d40a95415f54c1d12975b7450e5dd61ab40a2289c08",
+      "last_updated": "2026-07-29T08:32:30.274567",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Skill-Scanner.md": {
@@ -1557,7 +1557,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-29T05:55:05.093498",
+    "last_fetch_completed": "2026-07-29T08:33:08.395163",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 261,
     "pages_fetched_successfully": 259,
@@ -1569,7 +1569,7 @@
     "total_files": 259,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-29T05:55:05.093518",
+  "last_updated": "2026-07-29T08:33:08.395209",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

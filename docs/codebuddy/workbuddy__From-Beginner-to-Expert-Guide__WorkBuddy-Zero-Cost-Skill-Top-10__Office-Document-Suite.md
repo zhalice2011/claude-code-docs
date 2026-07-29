@@ -28,6 +28,10 @@
 - **明确输出结果**：例如提取文本、生成新文件、补充公式或改版结构。
 - **优先处理原始文件**：可减少手动格式转换带来的损耗。
 
-## 六、效果示意
+## 六、PPT优化效果示意
 
-![办公文档套件效果示意](/docs/static/image-2.DF-4O2Qb.png)
+![办公文档套件效果示意](/docs/static/pptskill-1.Df_mo19q.png)
+
+![办公文档套件效果示意](/docs/static/pptskill-2.5a-83C8K.png)
+
+![办公文档套件效果示意](/docs/static/pptskill-3.De9-2-VX.png)
