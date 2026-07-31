@@ -24,8 +24,8 @@
     "agent-sdk__agent-loop.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/agent-loop",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/agent-loop.md",
-      "hash": "b0e3d426790832b36ac1c3f1445f0c05415494074e9ec286c838a22ab9266e2c",
-      "last_updated": "2026-07-29T05:42:21.367718",
+      "hash": "04fb0f9368ba871a48363c15f58255d569bad438c02cdf93479a0a29e3a13405",
+      "last_updated": "2026-07-31T21:57:06.580831",
       "source": "claude-code"
     },
     "agent-sdk__claude-code-features.md": {
@@ -129,8 +129,8 @@
     "agent-sdk__quickstart.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/quickstart",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/quickstart.md",
-      "hash": "585c6d1217ef01455d217ab9a56763bdb398d3275b60526f8b7547091a2cb396",
-      "last_updated": "2026-07-29T18:58:15.046086",
+      "hash": "f4c291936ecd082b6d39c44ca4293ff51694dc7ae29341aea590927d402b0dab",
+      "last_updated": "2026-07-31T21:57:30.322659",
       "source": "claude-code"
     },
     "agent-sdk__secure-deployment.md": {
@@ -1221,7 +1221,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-07-31T19:12:32.519795",
+    "last_fetch_completed": "2026-07-31T22:00:31.295145",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 174,
@@ -1231,7 +1231,7 @@
     "total_files": 174,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-31T19:12:32.519820",
+  "last_updated": "2026-07-31T22:00:31.295179",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
