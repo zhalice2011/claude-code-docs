@@ -51,6 +51,37 @@ Span 默认不记录任何敏感信息（prompt 内容、工具参数、工具�
 | `OTEL_LOG_TOOL_CONTENT=1` | 记录工具输入输出全文 | `tool_input`/`tool_result` span events（60KB 截断） |
 | `OTEL_LOG_RAW_API_BODIES=1` | 记录完整 API 请求/响应体 | 预留，暂未实现 |
 
+### GenAI 语义约定开关（agentLens / 智研 LLM 监控）
+
+默认上报使用 CodeBuddy 自有命名（`codebuddy_code.*` span、`span.type` 等）。如需对接 agentLens（腾讯智研 LLM 监控，基于 OTel），通过 `OTEL_SEMCONV` 追加 `gen_ai.*` 语义约定字段（**只增不删**，保留全部原字段）：
+
+| 值 | 含义 |
+| --- | --- |
+| `codebuddy`（默认，缺省） | 不写任何新字段，行为与现状完全一致 |
+| `agentlens` | 启用 agentLens 语义，追加 `gen_ai.*` 等字段 |
+
+- **默认关闭，存量用户零影响**；停用只需取消该变量。
+- LLM span 的输入 / 输出（`input.value` / `output.value`）随本开关一并产出，**无需**额外开 `OTEL_LOG_RAW_API_BODIES`。但入口 span 的用户 prompt 与最终回复文本仍受 `OTEL_LOG_USER_PROMPTS` 门控，未开启时不记录内容。
+- **不修改你的模型请求**：token 用量（`gen_ai.usage.*`）取决于上游是否返回 usage；未返回时该次 LLM span 缺 token 字段，其余字段照常。如需稳定获取 token，请在业务侧请求中自带 `include_usage`。
+
+启用后各类 span 携带的关键字段：
+
+| span 类型（`span.type`） | `gen_ai.span.kind` | 关键字段 |
+| --- | --- | --- |
+| `interaction`（入口） | `AGENT` | `gen_ai.user.time_to_first_token`、`input.value` / `output.value` |
+| `subagent`（嵌套） | `AGENT` | `gen_ai.operation.name` |
+| `model_stream`（LLM 调用） | `LLM` | `gen_ai.system` / `model_name` / `request.model` / `request.parameters` / `response.time_to_first_token` / `response.finish_reason` / `usage.input_tokens` / `usage.output_tokens` / `usage.total_tokens` / `input.value` / `output.value` |
+| `tool` / `user_input_wait` | `TOOL` | `tool.name` / `tool.parameters` / `input.value` / `output.value` |
+| `mcp_call` | `TOOL` | `tool.name` / `gen_ai.mcp.server_name` / `gen_ai.mcp.tool_name` |
+| `context_compact` / `session_replay` / `teammate_busy` | `TASK` | — |
+| `model_request` | （不上报） | 见下方说明 |
+
+> 通用字段（所有 span）：`gen_ai.session.id` / `gen_ai.user.id` / `gen_ai.framework` / `gen_ai.business.scenario`（缺省不写）。
+> 
+> **注意字段前缀**：`input.value` / `output.value` / `tool.name` / `tool.parameters` 沿用 OpenInference 约定，**不带** `gen_ai.` 前缀；`gen_ai.system` / `gen_ai.model_name` / `gen_ai.mcp.*` 等则带前缀。
+> 
+> **`model_request` 不上报**：它是模型调用的 HTTP 请求辅助 span，与承载推理的 `model_stream` 成对出现，两者同时上报会导致 LLM 调用次数、token、TTFT **重复统计**。因此 `agentlens` 下不上报该 span；默认 `codebuddy` 链路仍完整保留，供本地排障。
+
 ## Span 结构
 
 每个用户 prompt 产生一个 `codebuddy_code.interaction` 根 span。工具调用记录为其子 span：

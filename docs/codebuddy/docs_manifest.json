@@ -176,8 +176,8 @@
     },
     "cli__monitoring.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/monitoring",
-      "hash": "d228c8f71d4f9a254d774afd1c496e044f6be4bc280885f4bd9a167d319f3638",
-      "last_updated": "2026-06-26T12:14:41.205496",
+      "hash": "8e30ae27e7894880b60c9a59efd48ad7138ad40060837f16b0d2b6f61f86d022",
+      "last_updated": "2026-07-31T13:49:11.752003",
       "source": "codebuddy"
     },
     "cli__overview.md": {
@@ -1557,7 +1557,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-07-31T11:33:55.545708",
+    "last_fetch_completed": "2026-07-31T13:52:56.107069",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 261,
     "pages_fetched_successfully": 259,
@@ -1569,7 +1569,7 @@
     "total_files": 259,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-07-31T11:33:55.545730",
+  "last_updated": "2026-07-31T13:52:56.107093",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
