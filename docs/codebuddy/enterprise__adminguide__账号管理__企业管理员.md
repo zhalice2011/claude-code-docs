@@ -1,3 +1,5 @@
+# 企业管理员
+
 腾讯云代码助手支持在企业管理后台添加管理员角色成员，新添加的管理员可登录企业管理后台进行操作，便于更好地管理企业资源和权限，提高企业的管理灵活性。
 
 ## 添加管理员角色
@@ -28,17 +30,17 @@
 
 ![企业后台](/docs/static/%E4%BC%81%E4%B8%9A%E7%AE%A1%E7%90%86%E5%91%98-6.D2TqldX4.png)2. 在腾讯统一身份后台中，选择**企业设置/角色管理**，在**账号超级管理员**和**CodeBuddy管理员**两个角色下分别添加需要管理企业通讯录的成员。
 
-::: attention **账号超级管理员**和**CodeBuddy管理员**两个角色均需要添加，添加不全可能导致无法进行完整的企业通讯录管理。 :::
+注意
+
+**账号超级管理员**和**CodeBuddy管理员**两个角色均需要添加，添加不全可能导致无法进行完整的企业通讯录管理。
 
 ![企业后台](/docs/static/%E4%BC%81%E4%B8%9A%E7%AE%A1%E7%90%86%E5%91%98-7.DsUBsj1f.png)## 管理员登录企业管理后台
 
 > **说明：** 已添加的管理员可登录后台进行操作，登录方式与其登录插件的方式相同，下面以微信登录为例。
 
-1. 请前往 [企业管理后台](https://copilot.tencent.com/login?platform=admin&state=0&redirect_uri=https%3A%2F%2Fcopilot.tencent.com%2Fadmin%2Foverview) 页面登录账号。
+1. 请前往 [企业管理后台](https://copilot.tencent.com/login?platform=admin&state=0&redirect_uri=https%3A%2F%2Fcopilot.tencent.com%2Fadmin%2Foverview) 页面，选择**手机号**方式登录账号。
 
-![企业后台](/docs/static/%E4%BC%81%E4%B8%9A%E7%AE%A1%E7%90%86%E5%91%98-8.D95vkOw-.png)2. 选择企业登录，并使用企业支持的登录方式登录即可，比如手机验证码登录、邮箱登录或 SSO 登录（企微及其他第三方集成的身份提供商）。
-
-![企业后台](/docs/static/%E4%BC%81%E4%B8%9A%E7%AE%A1%E7%90%86%E5%91%98-9.C5QmNTgk.png)3. 登录成功。
+![登录页](/docs/static/saasguide-1.D5KnWHAz.png)2. 登录成功进入企业管理后台。
 
 ![企业后台](/docs/static/%E4%BC%81%E4%B8%9A%E7%AE%A1%E7%90%86%E5%91%98-1.C3lByvv5.png)## 管理员角色管理
 

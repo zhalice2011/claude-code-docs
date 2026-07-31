@@ -3,13 +3,11 @@
 ## 开通SaaS企业版（旗舰版）企业
 
 1. [登录购买页](https://buy.cloud.tencent.com/aipay?operation_type=new_buy&buy_type=exclusive1) 发起SaaS企业版新购，详见[购买方式](./price/Purchase)
-2. 购买完成后，进入[企业管理后台](https://copilot.tencent.com/admin)，单击**企业/授权登录**。
+2. 购买完成后，进入[企业管理后台](https://copilot.tencent.com/admin)，使用下单时填写的**超管手机号**完成登录。
 
-![登录购买页](/docs/static/saasguide-1.PoECI9hT.png)3. 使用下单时填写的**超管手机号**完成登录。
+![登录购买页](/docs/static/saasguide-1.D5KnWHAz.png)3. 登录完成后，进入管理后台。
 
-![登录购买页](/docs/static/saasguide-2.ZZg6XQS-.png)4. 登录完成后，进入管理后台。
-
-![管理后台](/docs/static/saasguide-3.8P82pU8K.png)## 添加企业成员
+## 添加企业成员
 
 ### 腾讯统一身份添加成员
 
