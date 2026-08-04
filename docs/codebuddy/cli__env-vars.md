@@ -68,11 +68,16 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_DISABLE_HOT_RELOAD` | 设置为 `1` 禁用热更新系统 |
 | `CODEBUDDY_SKIP_BUILTIN_MARKETPLACE` | 设置为 `1` 跳过内置插件市场加载 |
 | `CODEBUDDY_AUTO_UPDATE_THIRD_PARTY_MARKETPLACES` | 设置为 `true` 或 `1` 启用第三方插件市场自动更新（默认：禁用） |
+| `CODEBUDDY_MARKETPLACE_AUTO_UPDATE_INTERVAL_MS` | 覆盖插件市场自动更新的刷新窗口（毫秒），默认 `86400000`（24 小时）。设为更小的值（如 `3600000` 即 1 小时）可缩短自动更新检测间隔，便于测试/调试；非法值（非数字或 ≤0）回退默认值 |
 | `CODEBUDDY_PLUGIN_DIRS` | 冒号分隔的本地插件目录路径列表（等同于 `--plugin-dir`），插件的 `bin/` 目录会自动注入到 `PATH` |
+| `CODEBUDDY_DISABLE_EXTENDED_PLUGIN_HOOKS` | 设置为 `1` 或 `true` 时，插件 Hook 配置仅接受 `command` 类型；包含 `prompt`、`agent` 或 `http` 类型的配置会按不兼容处理。用于宿主临时回退插件 Hook 契约；默认不设置 |
 | `CODEBUDDY_IMAGE_GEN_ENABLED` | 设置为 `false` 或 `0` 禁用图片生成功能 |
 | `CODEBUDDY_IMAGE_EDIT_ENABLED` | 设置为 `false` 或 `0` 禁用图片编辑功能 |
-| `CODEBUDDY_SHARE_LINK_ENABLED` | 设置为 `false` 或 `0` 禁用 ShareLink 工具（将本地单个 HTML 文件上传并返回可分享的公网链接）。默认开启。该环境变量优先级最高，未设置时回落到云端 `productFeatures.ShareLink` 开关（缺省 `true`） |
+| `CODEBUDDY_ARTIFACT_ENABLED` | 设置为 `false` 或 `0` 禁用 Artifact / ArtifactControl 工具（将本地单个 HTML 或 Markdown 文件发布为可分享的公网链接，Markdown 由服务端渲染为样式化页面；ArtifactControl 当前仅支持取消发布）。默认开启。判定顺序：国际 endpoint（`codebuddy.ai` / `workbuddy.ai` / `staging-codebuddy.tencent.com`）下该能力恒关闭、本变量无法覆盖；其余场景下本变量优先级最高，未设置（含空值）时回落到旧变量 `CODEBUDDY_SHARE_LINK_ENABLED`，再回落到云端 `productFeatures`（`Artifact` 与 `ShareLink` 任一显式为 `false` 即关闭，均未下发时缺省 `true`） |
+| `CODEBUDDY_SHARE_LINK_ENABLED` | **已废弃（兼容保留）**：`CODEBUDDY_ARTIFACT_ENABLED` 的旧名，ShareLink 工具更名为 Artifact 前的开关。语义与新变量完全一致，新变量优先；仅在新变量未设置时生效 |
 | `CODEBUDDY_COMPUTER_USE_ENABLED` | **实验功能**：设置为 `true` 或 `1` 启用 macOS 桌面控制工具（截图、鼠标、键盘）。仅 macOS 可用，默认关闭。首次调用键盘/鼠标动作需在系统设置 → 隐私与安全 → 辅助功能、屏幕录制中为终端授权 |
+| `CODEBUDDY_PUSH_NOTIFICATION_ENABLED` | 设置为 `false` 或 `0` 禁用 PushNotification 工具（模型可在长任务/后台任务完成时主动触发一次终端/桌面通知）。默认开启 |
+| `CODEBUDDY_REPORT_FINDINGS_ENABLED` | 设置为 `false` 或 `0` 禁用 ReportFindings 工具（代码审查类 Agent 用它把发现的问题以结构化字段提交，渲染为专门的列表组件）。默认开启 |
 | `CODEBUDDY_WAIT_FOR_MCP_SERVERS_ENABLED` | 设置为 `0` 或 `false` 禁用 WaitForMcpServers 工具。默认开启。交互模式下不阻塞等待 MCP 连接，当 LLM 需要尚未就绪的 MCP 工具时可主动调用此工具按需等待。WorkBuddy 场景设置为 `0` 禁用 |
 | `CODEBUDDY_DEFERRED_TOOLS_MCP_READY_WAIT_MS` | 渲染延迟工具描述前等待 MCP 服务器就绪的最长毫秒数，默认 `2500`。设为 `0` 完全跳过等待，连接较慢则会立即把"仍在连接"提示烘焙进描述；调大可让远端 MCP 服务器有更多时间在首次提示前完成握手。一旦服务器就绪即立即继续，超时仅作为上限 |
 | `CODEBUDDY_DEFER_TOOL_LOADING` | 设置为 `false` 或 `0` 禁用 MCP 工具延迟加载 |
@@ -201,6 +206,8 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | --- | --- |
 | `CODEBUDDY_CODE_MAX_TURNS` | 主 Agent 的最大执行轮次。优先级：CLI `--max-turns` \> 此环境变量 \> 默认值 (500\) |
 | `CODEBUDDY_CODE_SUBAGENT_MAX_TURNS` | 子 Agent 的最大执行轮次。优先级：CLI `--max-turns` \> 此环境变量 \> 模型动态传入的 `max_turns` \> 默认值 (500\) |
+| `CODEBUDDY_CODE_MAX_SUBAGENTS_PER_SESSION` | 每会话子代理 spawn 预算上限（正整数，默认 200，可上下调整，不可关闭）。嵌套 spawn 共享同一份预算；超限时 Agent 工具返回错误并提示改用自身工具完成剩余工作；`/clear` 新建会话后重置 |
+| `CODEBUDDY_CODE_DISABLE_AUTO_MEMORY` | 设为 truthy 关闭 agent 级持久记忆（frontmatter `memory` 字段不再注入记忆段落）。默认未设置（启用） |
 | `CODEBUDDY_SUBAGENT_PERMISSION_MODE` | 子 Agent/团队成员的默认权限模式（如 `bypassPermissions`、`acceptEdits`、`default`、`plan`）。优先级：Agent 工具 `mode` 参数 \> CLI `--subagent-permission-mode` \> 此环境变量 \> Settings `permissions.subagentPermissionMode` \> 映射表默认值 |
 | `CODEBUDDY_TEAM_IDLE_DETECTION_DISABLED` | 设为 `1` 关闭队员空闲感知（默认启用）。关闭后"等待队员空闲"类 API 立即返回 `true` 不阻塞，进度快照也不再记录 |
 | `CODEBUDDY_TEAM_SHUTDOWN_GRACEFUL_TIMEOUT_MS` | 团队成员优雅关停的兜底超时毫秒数，默认 `15000`。超过此时长仍未收到队员响应将强制终止进程。设为 `0` 禁用强制兜底（纯等待响应） |

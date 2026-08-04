@@ -433,6 +433,44 @@ AI 根据以下因素决定是否调用 Skill：
 3. **上下文相关性**：当前对话上下文是否适合使用该 Skill
 4. **Skill 来源**：项目级 Skills 优先于用户级 Skills
 
+## 从设置覆盖 Skill 可见性（skillOverrides）
+
+`skillOverrides` 设置让你在**不修改 SKILL.md** 的情况下，从 settings 控制单个 Skill 的可见性，适用于你不方便改动的 Skill（例如提交进共享仓库的项目 Skill）。
+
+配置位于 settings 的 `skillOverrides`，按 Skill 名索引，每个值为四态之一：
+
+| 值 | 对模型可见 | 在 `/` 菜单 | 说明 |
+| --- | --- | --- | --- |
+| `on` | 名称 \+ 描述 | 是 | 不覆盖，回退 SKILL.md frontmatter 现状 |
+| `name-only` | 仅名称 | 是 | 折叠描述，省 context 预算 |
+| `user-invocable-only` | 隐藏 | 是 | 对模型隐藏（不进清单），用户与模型按名调用仍放行 |
+| `off` | 隐藏 | 隐藏 | 对模型与菜单都隐藏，按名调用返回禁用提示 |
+
+`/skills` 菜单把 `user-invocable-only` 状态标注为 **`user-only`**；这只是**显示用短标签**，写进配置文件的仍是规范值 `user-invocable-only`。
+
+未列出的 Skill 视为 `on`。示例：
+
+json
+```
+{
+  "skillOverrides": {
+    "legacy-context": "name-only",
+    "deploy": "off"
+  }
+}
+```
+设为 `off` 后，`/skill-name` 及模型按名调用都会被拦截并提示：
+
+```
+Skill "<name>" is disabled via skillOverrides. Re-enable it in /skills or remove the override from your settings to run it.
+```
+要点：
+
+- **plugin Skill 不受 `skillOverrides` 影响**，改用 `/plugin` 管理；在 `/skills` 里显示为锁定（`locked by plugin`），不可编辑。
+- **`/skills` 菜单可视化编辑**：↑/↓ 选择，`enter` / `space` / `←/→` 循环切换状态，按 `Esc` 时统一写入 `.codebuddy/settings.local.json` 并提示本次改动数量（`Updated N skill override` / `No changes`）；未按 `Esc` 直接离开则不落盘。
+- **生效优先级**：`PROJECT_LOCAL（.codebuddy/settings.local.json）> PROJECT（.codebuddy/settings.json）> USER（~/.codebuddy/settings.json）`，高优先级按 Skill 名覆盖低优先级。工作区根即 home 时，PROJECT 与 USER 为同一文件。
+- **非法值自动回退**：合并前会先过滤掉不属于四态的非法值，因此高优先级文件里的非法值不会遮蔽低优先级文件里的合法值（回退到上一个有效文件）；全部非法时该 Skill 视为 `on`。
+
 ## 权限控制
 
 ### allowed\-tools 白名单

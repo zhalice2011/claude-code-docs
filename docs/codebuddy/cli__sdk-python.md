@@ -519,6 +519,9 @@ python
 ```
 Message = UserMessage | AssistantMessage | SystemMessage | ResultMessage | StreamEvent
 ```
+
+> `TaskStartedMessage` / `TaskNotificationMessage` 是 `SystemMessage` 的子类，已被联合覆盖（`isinstance` / `case SystemMessage()` 继续匹配），并单独导出以便在调用处做精确类型判断。
+
 ### SystemMessage
 
 python
@@ -527,6 +530,107 @@ python
 class SystemMessage:
     subtype: str
     data: dict[str, Any]
+```
+### TaskStartedMessage
+
+后台任务（Bash / PowerShell / Workflow / Agent，`run_in_background: true`）进入运行态时发出。是 `SystemMessage` 的子类，`isinstance(msg, SystemMessage)` 仍然成立。
+
+python
+```
+@dataclass
+class TaskStartedMessage(SystemMessage):
+    task_id: str
+    description: str
+    uuid: str
+    session_id: str
+    tool_use_id: str | None = None
+    task_type: str | None = None   # "Bash" / "PowerShell" / "Workflow" / "Agent"
+```
+### TaskUsage
+
+`task_progress` / `task_notification` 携带的用量统计（对齐 Claude Code 的 `TaskUsage`）。sub\-agent（`task_type == "Agent"`）后台任务有值；后台 shell 任务通常省略。
+
+python
+```
+class TaskUsage(TypedDict):
+    total_tokens: int
+    tool_uses: int
+    duration_ms: int
+```
+### TaskProgressMessage
+
+后台任务进度事件。**事件驱动**（非定时）：每完成一次 tool\_use 推一条，携带累计 `usage` 与最近工具名 `last_tool_name`。后台 shell 任务不发 progress。
+
+python
+```
+@dataclass
+class TaskProgressMessage(SystemMessage):
+    task_id: str
+    description: str
+    usage: TaskUsage
+    uuid: str
+    session_id: str
+    tool_use_id: str | None = None
+    last_tool_name: str | None = None
+```
+### TaskUpdatedMessage
+
+后台任务状态变迁事件。`patch` 携带本次变更字段（至少 `status`，终态补 `end_time`）。
+
+> 生命周期提示：后台任务的终态**有时只来 `task_updated`（`patch.status` 为终态）而没有配套的 `task_notification`**。跟踪"活跃任务"的消费方应对二者的终态 status 一视同仁——用 `TERMINAL_TASK_STATUSES` frozenset 判定（`{"completed", "failed", "stopped", "killed"}`）。
+
+python
+```
+@dataclass
+class TaskUpdatedMessage(SystemMessage):
+    task_id: str
+    patch: dict[str, Any]
+    status: TaskUpdatedStatus | None = None  # pending/running/paused/completed/failed/killed
+    session_id: str | None = None
+    uuid: str | None = None
+```
+### TaskNotificationMessage
+
+后台任务完成 / 失败 / 被停止时发出。在 stdio `stream-json` 长连接模式下，任务若在触发它的那轮 `result` 之后才完成，该消息会被主动推回同一输出流——消费方需用 `receive_messages()` 持续读取才能收到（`query()` 与 `receive_response()` 在首个 `ResultMessage` 处停止，会错过后台完成事件）。`usage` 在 sub\-agent 任务上携带，shell 任务省略。
+
+> **`query()` 已自动禁用后台任务**：由于 `query()` 在首个 `ResultMessage` 处停止并关闭子进程、无法接收跨轮回推事件，SDK 在 `query()` 路径下会自动注入 `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS=1`（Bash / PowerShell / Agent 的 `run_in_background` 被隐藏/降级为前台）。若确需在 `query()` 下保留后台任务，显式在 `options.env` 或进程环境里设置该变量（任意值，包括 `"0"`）即可覆盖。`CodeBuddySDKClient` \+ `receive_messages()` 路径不受影响。
+
+python
+```
+@dataclass
+class TaskNotificationMessage(SystemMessage):
+    task_id: str
+    status: Literal["completed", "failed", "stopped"]
+    summary: str
+    uuid: str
+    session_id: str
+    tool_use_id: str | None = None
+    output_file: str | None = None          # 后台任务 stdout 落盘路径（文件模式）
+    output_stderr_file: str | None = None
+    usage: TaskUsage | None = None
+```
+多个并发后台任务靠 `task_id` 区分；`tool_use_id` 关联回模型发起该任务的 tool\_use。示例（持续读取以接收整体完成后的通知）：
+
+python
+```
+from codebuddy_agent_sdk import (
+    CodeBuddySDKClient,
+    CodeBuddyAgentOptions,
+    TaskStartedMessage,
+    TaskNotificationMessage,
+)
+
+async def run_background_tasks():
+    options = CodeBuddyAgentOptions(permission_mode="bypassPermissions")
+    async with CodeBuddySDKClient(options=options) as client:
+        await client.query("并行跑两个后台命令，完成后告诉我结果")
+        # 用 receive_messages 持续读——不要用 receive_response（它在首个 result 处停）
+        async for msg in client.receive_messages():
+            if isinstance(msg, TaskStartedMessage):
+                print(f"[started] {msg.task_id} ({msg.task_type}): {msg.description}")
+            elif isinstance(msg, TaskNotificationMessage):
+                print(f"[done] {msg.task_id} status={msg.status} output={msg.output_file}")
+                # 收齐关心的任务后自行 break
 ```
 ### UserMessage
 
@@ -564,6 +668,12 @@ class ResultMessage:
     total_cost_usd: float | None = None
     usage: dict[str, Any] | None = None
     result: str | None = None
+    errors: list[str] | None = None
+    # Structured error info aligned with `errors` by index.
+    # - Length matches `errors` when present; entry is None if no structured dimension available.
+    # - Field is absent entirely when every entry would be None (backward compatible).
+    # - Each entry may carry: status (HTTP), code (SDK/business), category (network/quota/auth/model_service/...), details (message).
+    errors_info: list[dict[str, Any] | None] | None = None
 ```
 ### StreamEvent
 

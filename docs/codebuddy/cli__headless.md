@@ -93,6 +93,48 @@ codebuddy -p "构建一个应用程序" --output-format stream-json
 ```
 每个对话都以初始 `init` 系统消息开始,然后是用户和助手消息列表,最后是包含统计信息的最终 `result` 系统消息。每条消息都作为单独的 JSON 对象发出。
 
+### 后台任务事件（异步）
+
+当模型用 `run_in_background: true` 启动后台命令（Bash / PowerShell）、后台工作流或**后台 Agent 子任务**时，CLI 会在 `stream-json` 输出流上为**每个任务**发出独立的 `system` 事件，携带唯一的 `task_id`（多任务并发时据此区分），`tool_use_id` 关联回发起该任务的 tool\_use：
+
+- 任务启动 → `system` / `subtype: "task_started"`
+- 任务进度（每完成一次 tool\_use，仅 sub\-agent/workflow 类）→ `system` / `subtype: "task_progress"`（带 `usage`）
+- 任务状态变迁 → `system` / `subtype: "task_updated"`（带 `patch`）
+- 任务完成/失败/被停止 → `system` / `subtype: "task_notification"`
+
+jsonc
+```
+// 任务启动（进入运行态时立即推）
+{"type":"system","subtype":"task_started","task_id":"agent-00f6","tool_use_id":"toolu_01","description":"bg agent","task_type":"Agent","uuid":"...","session_id":"..."}
+// 进度（每完成一次 tool_use，携带累计 usage + 最近工具名；shell 任务不发）
+{"type":"system","subtype":"task_progress","task_id":"agent-00f6","description":"bg agent","usage":{"total_tokens":320,"tool_uses":2,"duration_ms":157},"last_tool_name":"Bash","uuid":"...","session_id":"..."}
+// 状态变迁（patch 携带变更字段；终态补 end_time）
+{"type":"system","subtype":"task_updated","task_id":"agent-00f6","patch":{"status":"completed","end_time":1783945615966},"status":"completed","uuid":"...","session_id":"..."}
+// 任务完成（可能在触发它的那轮 result 之后才到达；sub-agent 带 usage）
+{"type":"system","subtype":"task_notification","task_id":"agent-00f6","tool_use_id":"toolu_01","status":"completed","summary":"Background agent \"bg agent\" completed","output_file":"/.../bg-tasks/agent-00f6.stdout.log","usage":{"total_tokens":480,"tool_uses":2,"duration_ms":250},"session_id":"..."}
+```
+字段说明：
+
+| 字段 | 事件 | 说明 |
+| --- | --- | --- |
+| `task_id` | 全部 | 后台任务唯一 ID，贯穿 started → progress → updated → notification，用于区分并发任务、路由到 `TaskOutput` |
+| `tool_use_id` | 多数（可选） | 关联回模型那次 tool\_use |
+| `description` / `task_type` | started / progress | 任务命令描述 / 工具类型（`Bash` / `PowerShell` / `Workflow` / `Agent`） |
+| `usage` | progress（必有）/ notification（sub\-agent 有，shell 省略） | `{ total_tokens, tool_uses, duration_ms }`（对齐 CC 的 `TaskUsage`） |
+| `last_tool_name` | progress（可选） | 最近一次执行的工具名 |
+| `patch` / `status` | updated | 本次变更字段（至少 `status`，终态补 `end_time`） |
+| `status` | notification | `completed` / `failed` / `stopped`（`killed`/`cancelled` 归一为 `stopped`） |
+| `summary` | notification | 人类可读的完成摘要 |
+| `output_file` / `output_stderr_file` | notification（可选） | 后台任务输出落盘路径（文件模式），可据此读取完整输出 |
+
+> **进度事件（`task_progress`）是事件驱动的**（每完成一次 tool\_use 推一条），不是定时轮询；后台 shell 任务（Bash/PowerShell）不发 progress，只有 sub\-agent / workflow 类任务发。
+> 
+> **终态可能只来 `task_updated`**：某些后台任务的终态只通过 `task_updated`（`patch.status` 为终态）到达而没有配套的 `task_notification`。跟踪"活跃任务"的消费方应对二者的终态 status（`completed` / `failed` / `stopped` / `killed`）一视同仁地清理。
+
+> **重要（stdio 长连接场景）**：后台任务可能在**触发它的那一轮 `result` 之后**才完成。使用 `--input-format stream-json --output-format stream-json`（stdin 保持打开的长连接）时，CLI 会在任务真正结束后把 `task_notification` 主动推回到同一输出流——**无需**你再发新的输入。因此消费方应持续读取输出流，不要在收到第一个 `result` 后就停止读取，否则会错过后台完成事件。纯 `-p` 单发模式（进程随首个 `result` 结束）不支持后台任务，会返回明确错误。
+
+> **禁用后台任务**：不支持/不需要后台任务的场景，设置环境变量 `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS=1` 可禁用后台任务——Bash / PowerShell / Agent 的 `run_in_background` 参数会从工具 schema 中隐藏，即便模型仍下发也会被忽略/降级为前台执行，从而不产生任何后台 task 事件、也不会有跨轮回推。**SDK 的 `query()` 单发用法已自动注入该变量**（因为 `query()` 在首个 `result` 处停止、无法接收跨轮回推事件）；持续读取的 SDK 用法（JS `unstable_v2_createSession` / Python `CodeBuddySDKClient`）不受影响。
+
 ### 结构化 JSON 输出
 
 要获得符合特定架构的输出，请使用 `--output-format json` 和 `--json-schema` 以及 [JSON Schema](https://json-schema.org/) 定义。响应包括关于请求的元数据（会话 ID、使用情况等），结构化输出在 `structured_output` 字段中。

@@ -7,6 +7,8 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | 工具 | 说明 | 需要权限 |
 | --- | --- | --- |
 | `Agent` | 生成具有独立上下文窗口的[子代理](./sub-agents)来处理任务 | 否 |
+| `Artifact` | 将本地单个 HTML 或 Markdown 文件发布为 artifact 并返回可分享的公网链接（Markdown 由服务端渲染为样式化页面）。传入 `existingShareLink` 可原地更新同一链接（仅刷新内容，不改动权限）。默认开启，可用 `CODEBUDDY_ARTIFACT_ENABLED` 或云端 `productFeatures.Artifact` 关闭（旧开关 `CODEBUDDY_SHARE_LINK_ENABLED` / `productFeatures.ShareLink` 仍兼容）。原名 `ShareLink`，旧名仅在权限规则（allow/deny、disallowedTools）中仍可匹配；hooks 的 matcher 与 `--tools` 白名单只认新名，需自行更新配置。参见[环境变量](./env-vars) | 是 |
+| `ArtifactControl` | 对 `Artifact` 发布的 artifact 执行控制动作，当前仅支持取消发布（unpublish）：将公开链接设为私密。HTML 页面链接走取消发布；Markdown 文档链接会关闭公开访问并移除协作人。接受完整链接或裸 nodeId。原名 `ShareLinkUnpublish`（兼容范围同 `Artifact`） | 是 |
 | `AskUserQuestion` | 向用户提出多选问题，收集需求或澄清歧义 | 是 |
 | `Bash` | 在你的环境中执行 Shell 命令。参见 [Bash 工具行为](#bash-工具行为) | 是 |
 | `CronCreate` | 在当前会话内调度定时或一次性任务（退出后失效）。参见[定时任务](./scheduled-tasks) | 否 |
@@ -27,8 +29,10 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `NotebookEdit` | 修改 Jupyter notebook 单元格内容 | 是 |
 | `NotebookRead` | 读取 Jupyter notebook 单元格内容，可指定 `cell_id` 读单个 cell | 否 |
 | `PowerShell` | 在 Windows 上执行 PowerShell 命令。仅 Windows 可用，参见 [PowerShell 工具行为](#powershell-工具行为) | 是 |
+| `PushNotification` | 发送终端/桌面通知，用于长任务或后台任务完成时提醒用户。延迟加载工具，参见[环境变量](./env-vars) | 否 |
 | `Read` | 读取文件内容，支持图片、PDF 和 Jupyter notebook | 否 |
 | `ReadMcpResource` | 按 server \+ URI 读取指定 MCP 资源的内容，配合 `ListMcpResources` 使用 | 是 |
+| `ReportFindings` | 将代码审查发现的问题以结构化字段（文件、摘要、失败场景、可选分类）提交，渲染为专门的列表组件而非纯文本。延迟加载工具，参见[环境变量](./env-vars) | 否 |
 | `SendMessage` | 在 [Agent 团队](./agent-teams)中向队友发送消息 | 否 |
 | `Skill` | 在主对话中执行 [Skill 技能](./skills) | 否 |
 | `SlashCommand` | 执行自定义[斜杠命令](./slash-commands) | 是 |
@@ -53,13 +57,15 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 
 ## 工具别名
 
-部分工具拥有别名，可在权限规则中互换使用：
+部分工具拥有别名，可在权限规则中互换使用（仅适用于权限规则 allow/deny/ask 与 `disallowedTools`；hooks 的 matcher 与 `--tools` 白名单只按工具真实名匹配）：
 
 | 工具 | 别名 |
 | --- | --- |
 | `TaskOutput` | `BashOutput` |
 | `TaskStop` | `KillShell` |
 | `PowerShell` | `pwsh`、`ps` |
+| `Artifact` | `ShareLink`（更名前的旧名） |
+| `ArtifactControl` | `ShareLinkUnpublish`（更名前的旧名） |
 
 ## Bash 工具行为
 
@@ -107,7 +113,7 @@ PowerShell 工具内置安全检查器，覆盖代码注入、下载执行、提
 
 ## 延迟加载工具
 
-部分工具（如通过 [MCP 服务器](./mcp)提供的工具）采用延迟加载机制。这些工具不会在初始工具列表中出现，需要通过 `ToolSearch` 发现和激活。一旦激活，工具在会话剩余时间内保持可用。
+部分工具（如通过 [MCP 服务器](./mcp)提供的工具，以及少数内置工具如 `PushNotification`、`ReportFindings`）采用延迟加载机制。这些工具不会在初始工具列表中出现，需要通过 `ToolSearch` 发现和激活。一旦激活，工具在会话剩余时间内保持可用。
 
 ## 另请参阅
 

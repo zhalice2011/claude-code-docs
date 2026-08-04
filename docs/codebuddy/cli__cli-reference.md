@@ -15,6 +15,7 @@
 | `codebuddy -r "<session-id>" "查询"` | 通过 ID 恢复会话 | `codebuddy -r "abc123" "完成这个 MR"` |
 | `codebuddy update` | 更新到最新版本 | `codebuddy update` |
 | `codebuddy mcp` | 配置 Model Context Protocol (MCP) 服务器 | 参见 [CodeBuddy Code MCP 文档](./mcp) |
+| `codebuddy agents [--json]` | 按来源分组列出全部已配置子代理 | `codebuddy agents --json` |
 | `codebuddy daemon start` | 启动 Daemon 守护进程 | `codebuddy daemon start --port 8080` |
 | `codebuddy daemon stop` | 停止 Daemon | `codebuddy daemon stop` |
 | `codebuddy daemon status` | 查看 Daemon 状态 | `codebuddy daemon status` |
@@ -92,6 +93,11 @@ TIP
 | `tools` | 否 | 子代理可以使用的特定工具数组（如 `["Read", "Edit", "Bash"]`)。省略则继承所有工具 |
 | `disallowedTools` | 否 | 子代理禁止使用的工具数组（黑名单），与 session 级 `--disallowedTools` 取并集生效 |
 | `model` | 否 | 模型 ID、名称或别名、场景变体 `lite` / `reasoning`，或 `inherit` / `default`。省略或设为 `inherit` / `default` 时，继续通过正常的子代理解析链选择模型 |
+| `effort` | 否 | 推理强度：`minimal` / `low` / `medium` / `high` / `xhigh` / `max`。省略则继承会话强度 |
+| `maxTurns` | 否 | 子代理最大执行轮次（正整数）。优先级：env `CODEBUDDY_CODE_SUBAGENT_MAX_TURNS` \> Agent 工具 `max_turns` 入参 \> 本字段 |
+| `background` | 否 | 设为 `true` 时该子代理总是后台运行（等同 `run_in_background: true`） |
+| `initialPrompt` | 否 | 该 agent 作为主会话 agent（`--agent` 或 settings `agent`）运行时，自动作为首条用户消息的前缀 |
+| `memory` | 否 | 持久记忆作用域：`user` / `project` / `local`，详见[子代理文档](./sub-agents) |
 
 示例：
 

@@ -138,6 +138,21 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 | `permissionMode` | 否 | 子代理的权限模式。有效值:`default`、`acceptEdits`、`bypassPermissions`、`plan`、`ignore`。控制子代理如何处理权限请求 |
 | `skills` | 否 | 子代理启动时自动加载的技能名称，逗号分隔 |
 | `mcpServers` | 否 | 子代理专属 MCP server 声明。支持引用已有全局 MCP server, 或声明当前子代理私有 inline MCP server。详见下方说明。 |
+| `disallowedTools` | 否 | 子代理禁止使用的工具列表（数组或逗号分隔），与 session 级 `disallowedTools` 取并集生效 |
+| `effort` | 否 | 推理强度：`minimal` / `low` / `medium` / `high` / `xhigh` / `max`，省略则继承会话强度 |
+| `maxTurns` | 否 | 子代理最大执行轮次（正整数）。优先级：env `CODEBUDDY_CODE_SUBAGENT_MAX_TURNS` \> Agent 工具 `max_turns` 入参 \> 本字段 |
+| `background` | 否 | 设为 `true` 时该子代理总是后台运行（等同调用方传 `run_in_background: true`）；`CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 启用时降级为同步执行（仅写日志，无用户可见告警） |
+| `initialPrompt` | 否 | 该 agent 作为主会话 agent（`--agent` 或 settings `agent`）运行时，自动作为首条用户消息的前缀，仅主会话首轮注入 |
+| `memory` | 否 | 持久记忆作用域：`user`（`~/.codebuddy/agent-memory/<name>/`）、`project`（`<cwd>/.codebuddy/agent-memory/<name>/`）、`local`（不进版本库）。启用后 spawn 时自动注入 MEMORY.md（截断 200 行 / 25KB），显式 `tools` 白名单自动补 Read/Write/Edit |
+
+#### 嵌套深度与会话预算
+
+- 子代理嵌套深度封顶 **5 层**（主会话为第 0 层，不可配置），超限时 Agent 工具返回错误并提示改用自身工具完成剩余工作。子代理默认不持有 Agent 工具，定义中显式列出 `tools: Agent` 的 agent 才能继续嵌套。
+- 每会话 spawn 预算默认 **200** 次，可用 `CODEBUDDY_CODE_MAX_SUBAGENTS_PER_SESSION` 上下调整（正整数，不可关闭）；嵌套 spawn 共享同一份预算，`/clear` 后重置。预算只对 Agent 工具路径的 spawn 计数；workflow / skill 路径直接构造 AgentTask，不过该闸门。
+
+#### 子代理输出扫描
+
+子代理最终报告回传主对话前会做非破坏性去毒（自研规则集，Claude Code 客户端无对应机制）：仿冒的 `<system-reminder>` 标签改写为 `<\system-reminder>`，行首 `Human:` / `Assistant:` 加反斜杠；命中时报告头部会附加 `[harness: subagent output matched ...]` 标记行。去毒只在命中片段插入反斜杠改写、不删除内容，报告诱导的工具调用仍走正常权限检查。
 
 ### 子代理专属 MCP server
 

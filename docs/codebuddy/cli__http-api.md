@@ -292,14 +292,14 @@ CBC 增强：
 
 | 方法 | 端点 | 说明 |
 | --- | --- | --- |
-| GET | `/api/v1/plugins` | 列出已安装插件 |
+| GET | `/api/v1/plugins` | 列出已安装插件（可选 `includeBuiltin=false` 过滤内置插件） |
 | POST | `/api/v1/plugins` | 安装插件 |
 | POST | `/api/v1/plugins/validate` | 验证插件/市场清单文件 |
 | POST | `/api/v1/plugins/enable` | 启用插件 |
 | POST | `/api/v1/plugins/disable` | 禁用插件 |
 | POST | `/api/v1/plugins/uninstall` | 卸载插件 |
 | POST | `/api/v1/plugins/update` | 更新插件到最新版本 |
-| GET | `/api/v1/plugins/marketplaces` | 列出已配置的插件市场 |
+| GET | `/api/v1/plugins/marketplaces` | 列出已配置的插件市场（可选 `includeBuiltin=false` 过滤内置市场） |
 | POST | `/api/v1/plugins/marketplaces` | 添加插件市场（可选 `autoUpdate` 添加时即开启自动更新） |
 | POST | `/api/v1/plugins/marketplaces/browse` | 浏览市场中的可用插件 |
 | POST | `/api/v1/plugins/marketplaces/update` | 更新市场（同步远端仓库内容） |
@@ -573,8 +573,11 @@ curl -X POST http://127.0.0.1:8080/internal/file-changes/revert \
 
 bash
 ```
-# 列出已安装插件
+# 列出已安装插件（每项带 isBuiltIn 布尔字段，标识是否属于内置市场）
 curl http://127.0.0.1:8080/api/v1/plugins
+
+# 只列出用户自行安装的插件，过滤掉内置市场下的插件
+curl "http://127.0.0.1:8080/api/v1/plugins?includeBuiltin=false"
 
 # 安装插件（"name@marketplace" 格式）
 curl -X POST http://127.0.0.1:8080/api/v1/plugins \
@@ -601,8 +604,11 @@ curl -X POST http://127.0.0.1:8080/api/v1/plugins/update \
   -H "Content-Type: application/json" \
   -d '{"plugin": "my-plugin@my-marketplace"}'
 
-# 列出插件市场
+# 列出插件市场（每项带 isBuiltIn 布尔字段）
 curl http://127.0.0.1:8080/api/v1/plugins/marketplaces
+
+# 只列出用户自行添加的市场，过滤掉内置市场
+curl "http://127.0.0.1:8080/api/v1/plugins/marketplaces?includeBuiltin=false"
 
 # 添加插件市场
 curl -X POST http://127.0.0.1:8080/api/v1/plugins/marketplaces \

@@ -75,8 +75,35 @@ jsonc
 // 唤醒（cwd 可选——省略则保持冷启动 cwd；args 为透传给 cbc 的参数）
 { "cmd": "activate", "cwd": "/path/to/project", "args": ["--serve"], "sessionId": "可选" }
 // → { "ok": true, "cmd": "activate", "status": "activating", "cwd": "..." }
+
+// 唤醒并等待 ACP 业务就绪（opt-in；建议配合 --port 0）
+{
+  "cmd": "activate",
+  "ackMode": "ready",
+  "cwd": "/path/to/project",
+  "args": ["--serve", "--port", "0"],
+  "sessionId": "session-1"
+}
+// → ACP /api/v1/acp 初始化完成后才响应：
+// {
+//   "ok": true,
+//   "cmd": "activate",
+//   "status": "active",
+//   "pid": 12345,
+//   "sessionId": "session-1",
+//   "cwd": "/path/to/project",
+//   "endpoint": "http://127.0.0.1:54321/api/v1/acp"
+// }
 ```
 `activate` 只允许成功一次；重复 activate 返回 `{ ok: false, error: "already activated" }`。
+
+`ackMode` 默认省略，保持向后兼容的 immediate ACK：IPC server 收到请求即返回 `status: "activating"`，不代表 HTTP listener 或 ACP 路由已经可用。需要把 endpoint 直接交给下游客户端的宿主应显式传 `"ackMode": "ready"`：
+
+- 子进程用 `--port 0` 让内核分配无竞争端口。
+- 响应会延迟到 HTTP listener 已启动且 ACP `/api/v1/acp` 完成初始化。
+- ready 响应携带实际非零端口、`pid` 与原样回传的 `sessionId`，调用方应校验三者。
+- ready ACK 刷出后，预热 IPC 会关闭并清理；后续通信改走返回的 ACP endpoint。
+- 调用方应使用覆盖完整冷启动的超时窗口；WorkBuddy 默认等待 180 秒。连接提前断开时 agent\-cli 不会自行终止已经 ready 的 serve 进程；宿主仍应回收无法接管的进程。
 
 ### Node.js 示例
 
@@ -110,6 +137,18 @@ function activate(id, { cwd, args = [] }) {
 // 唤醒 pool1，绑定目标目录并以 serve 模式启动
 const res = await activate('pool1', { cwd: '/Users/me/project-A', args: ['--serve'] });
 console.log(res); // { ok: true, cmd: 'activate', status: 'activating', cwd: '...' }
+```
+上例展示默认 immediate ACK。若需要 ACP\-ready 边界，把发送内容改为：
+
+js
+```
+sock.write(JSON.stringify({
+  cmd: 'activate',
+  ackMode: 'ready',
+  sessionId: 'session-1',
+  cwd,
+  args: ['--serve', '--port', '0'],
+}) + '\n');
 ```
 ## 行为与约束
 

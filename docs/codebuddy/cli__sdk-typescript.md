@@ -566,6 +566,8 @@ type Message =
   | ResultMessage
   | CompactBoundaryMessage
   | StatusMessage
+  | TaskStartedMessage
+  | TaskNotificationMessage
   | ToolProgressMessage;
 ```
 ### SystemMessage
@@ -588,6 +590,127 @@ type SystemMessage = {
   skills?: string[];
   plugins?: Array<{ name: string; path: string }>;
 };
+```
+### TaskStartedMessage
+
+后台任务（Bash / PowerShell / Workflow / Agent，`run_in_background: true`）进入运行态时发出的 `system` 事件。并发任务靠 `task_id` 区分，`tool_use_id` 关联回发起该任务的 tool\_use。
+
+typescript
+```
+interface TaskStartedMessage {
+  type: 'system';
+  subtype: 'task_started';
+  task_id: string;
+  tool_use_id?: string;
+  description: string;
+  task_type?: string; // "Bash" / "PowerShell" / "Workflow" / "Agent"
+  uuid: string;
+  session_id: string;
+}
+```
+### TaskUsage
+
+`task_progress` / `task_notification` 携带的用量统计（对齐 Claude Code 的 `TaskUsage`）。sub\-agent（`task_type: 'Agent'`）后台任务有值；后台 shell（Bash/PowerShell）任务通常省略 `usage`。
+
+typescript
+```
+interface TaskUsage {
+  total_tokens: number;
+  tool_uses: number;
+  duration_ms: number;
+}
+```
+### TaskProgressMessage
+
+后台任务进度事件。**事件驱动**（非定时）：每完成一次 tool\_use（`usage.tool_uses` 增长）推一条，携带累计 `usage` 与最近工具名 `last_tool_name`。后台 shell 任务不发 progress（对齐 CC——只有 sub\-agent/workflow 类任务发 progress）。
+
+typescript
+```
+interface TaskProgressMessage {
+  type: 'system';
+  subtype: 'task_progress';
+  task_id: string;
+  tool_use_id?: string;
+  description: string;
+  usage: TaskUsage;
+  last_tool_name?: string;
+  uuid: string;
+  session_id: string;
+}
+```
+### TaskUpdatedMessage
+
+后台任务状态变迁事件。`patch` 携带本次变更的字段（至少 `status`，终态补 `end_time`）。
+
+> 生命周期提示：后台任务的终态**有时只来 `task_updated`（`patch.status` 为终态）而没有配套的 `task_notification`**。跟踪"活跃任务"的消费方应对 `TaskNotificationMessage` 与 `TaskUpdatedMessage` 二者的终态 status（`completed` / `failed` / `stopped` / `killed`）一视同仁地清理。
+
+typescript
+```
+interface TaskUpdatedMessage {
+  type: 'system';
+  subtype: 'task_updated';
+  task_id: string;
+  patch: Record<string, unknown>; // e.g. { status, end_time }
+  status?: 'pending' | 'running' | 'paused' | 'completed' | 'failed' | 'killed';
+  uuid?: string;
+  session_id?: string;
+}
+```
+### TaskNotificationMessage
+
+后台任务完成 / 失败 / 被停止时发出。在 stdio `stream-json` 长连接模式下，任务若在触发它的那轮 `result` 之后才完成，该消息会被主动推回同一输出流——消费方需**持续读取**才能收到。据 `task_id` 路由，`output_file` 指向落盘的完整输出。`usage` 在 sub\-agent 任务上携带，shell 任务省略。
+
+> ⚠️ `query()` 在首个 `ResultMessage` 处 `break` 并关闭子进程，**会错过**在该 `result` 之后才回推的后台完成事件。要接收跨轮完成事件，请用 V2 Session（`unstable_v2_createSession`）并在 `send()` 后反复调用 `stream()` 持续消费后台任务完成触发的后续轮次（对应 Python SDK 的 `receive_messages()` 持续读语义）。
+> 
+> **`query()` 已自动禁用后台任务**：由于上述结构性限制，SDK 在 `query()` 路径下会自动注入 `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS=1`（Bash / PowerShell / Agent 的 `run_in_background` 被隐藏/降级为前台），避免后台任务被 `query()` 悄悄丢弃。若你确有理由要在 `query()` 下保留后台任务，显式在 `options.env` 或进程环境里设置该变量（任意值，包括 `0`）即可覆盖此默认。V2 Session 路径不受影响。
+
+typescript
+```
+interface TaskNotificationMessage {
+  type: 'system';
+  subtype: 'task_notification';
+  task_id: string;
+  tool_use_id?: string;
+  status: 'completed' | 'failed' | 'stopped';
+  summary: string;
+  output_file?: string;
+  output_stderr_file?: string;
+  usage?: TaskUsage;
+  uuid: string;
+  session_id: string;
+}
+```
+用法示例（并发后台任务，靠 `task_id` 区分并在整体完成后接收通知）：
+
+typescript
+```
+import { unstable_v2_createSession, type Message } from '@tencent-ai/agent-sdk';
+
+const session = unstable_v2_createSession({ permissionMode: 'bypassPermissions' });
+const started = new Map<string, Message>();
+const notified = new Map<string, Message>();
+
+await session.send('并行跑两个后台命令，完成后告诉我结果');
+
+// stream() 在每轮 result 处返回（但不关闭子进程）。反复调用它即可继续消费由后台
+// 任务完成触发的后续 drain-run 轮次，直到集齐所有 task_notification。
+while (notified.size < 2) {
+  let sawResult = false;
+  for await (const message of session.stream()) {
+    if (message.type === 'system' && message.subtype === 'task_started') {
+      started.set(message.task_id, message);
+      console.log('started', message.task_id, message.description);
+    } else if (message.type === 'system' && message.subtype === 'task_notification') {
+      notified.set(message.task_id, message);
+      console.log('done', message.task_id, message.status, message.output_file);
+    } else if (message.type === 'result') {
+      sawResult = true;
+    }
+  }
+  if (!sawResult) break; // 子进程已关闭，避免空转
+}
+
+session.close();
 ```
 ### UserMessage
 
@@ -661,6 +784,26 @@ type ResultMessage =
       usage: Usage;
       permission_denials: PermissionDenial[];
       errors?: string[];
+      /**
+       * Structured error info aligned with `errors[]` by index.
+       * - Length always equals `errors.length` when present
+       * - `errors_info[i]` describes `errors[i]`; `null` if no structured dimension could be extracted
+       * - Entire field is omitted when all entries are null (backward compatible: legacy consumers reading only `errors` are unaffected)
+       * - `category` values align with ACP error categories: `network` / `quota` / `auth` / `model_service` / `cancelled` / `internal`
+       */
+      errors_info?: Array<
+        | {
+            /** HTTP status code (e.g. 502, 429, 401) */
+            status?: number;
+            /** SDK/business error code (number like 10006 or string like `ECONNRESET`) */
+            code?: string | number;
+            /** Error category — same taxonomy as ACP `classifyErrorAsRequestError` */
+            category?: string;
+            /** Human-readable, sanitised error message */
+            details?: string;
+          }
+        | null
+      >;
     };
 ```
 ### ContentBlock
