@@ -2957,8 +2957,8 @@
     "build-with-claude__compaction.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/compaction.md",
-      "hash": "0e312fbd2c99ef37801adf2d71641a431a79c03bf0e40c21b58b70603a8c8062",
-      "last_updated": "2026-07-24T19:20:43.895623",
+      "hash": "7c481a8881a9818084d4326e846f091ca38bcc1c75cc7a56fb1231941cb0d672",
+      "last_updated": "2026-08-05T01:48:59.372975",
       "source": "platform"
     },
     "build-with-claude__context-editing.md": {
@@ -3139,8 +3139,8 @@
     "build-with-claude__structured-outputs.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs.md",
-      "hash": "5dae6dc1f124e6bb67607f46c5f5432c859c4e4d2fbdec9c76e95b0985560689",
-      "last_updated": "2026-07-24T19:21:00.786537",
+      "hash": "55a6368f428fb12681dee36bfabebe0ad9095309d0fd461e333de3876e46b6c2",
+      "last_updated": "2026-08-05T01:49:16.328331",
       "source": "platform"
     },
     "build-with-claude__task-budgets.md": {
@@ -3832,7 +3832,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-08-04T22:12:03.618374",
+    "last_fetch_completed": "2026-08-05T01:50:19.533463",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 549,
@@ -3845,7 +3845,7 @@
     "total_files": 547,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-04T22:12:03.618395",
+  "last_updated": "2026-08-05T01:50:19.533484",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
