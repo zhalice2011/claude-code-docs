@@ -73,8 +73,8 @@
     "agent-sdk__mcp.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/mcp",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/mcp.md",
-      "hash": "5c08380e70ee05b55214874589a1353136129ec66a05e1829a52b9c14710e2a5",
-      "last_updated": "2026-08-05T01:42:06.111479",
+      "hash": "b2b52d1537653962618f8c0f7dcdd4941558c031a594098320b411227a2699a5",
+      "last_updated": "2026-08-05T05:37:00.349088",
       "source": "claude-code"
     },
     "agent-sdk__migration-guide.md": {
@@ -1221,7 +1221,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-08-05T01:44:35.570437",
+    "last_fetch_completed": "2026-08-05T05:39:20.217070",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 174,
@@ -1231,7 +1231,7 @@
     "total_files": 174,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-05T01:44:35.570447",
+  "last_updated": "2026-08-05T05:39:20.217095",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
