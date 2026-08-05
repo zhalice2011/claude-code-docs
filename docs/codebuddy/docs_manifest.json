@@ -1563,7 +1563,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-08-05T13:55:34.725381",
+    "last_fetch_completed": "2026-08-05T16:38:32.731638",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 262,
     "pages_fetched_successfully": 260,
@@ -1575,7 +1575,7 @@
     "total_files": 260,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-05T13:55:34.725406",
+  "last_updated": "2026-08-05T16:38:32.731657",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
