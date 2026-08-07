@@ -2866,8 +2866,8 @@
     "api__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/api/overview",
       "original_md_url": "https://platform.claude.com/docs/en/api/overview.md",
-      "hash": "900f5ed5aaa388efdfee6009fd9318b7764d33d1e2e16f6e54ac1767d3ec868b",
-      "last_updated": "2026-08-03T22:08:21.080306",
+      "hash": "faa72736afd34438623db97129d080ed887fb672fbd76c20668eef0df02a08f0",
+      "last_updated": "2026-08-07T15:52:04.344657",
       "source": "platform"
     },
     "api__rate-limits.md": {
@@ -3181,8 +3181,8 @@
     "build-with-claude__token-counting.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/token-counting.md",
-      "hash": "09b65155c26273802ade85593b04e8ff402a19032ab530f91695474dd298e524",
-      "last_updated": "2026-08-06T01:37:50.740132",
+      "hash": "45a25930a1fbc0c80be80337c25844b1c3562a31d14cef331e9cfced8342ebb6",
+      "last_updated": "2026-08-07T15:52:37.726624",
       "source": "platform"
     },
     "build-with-claude__vision.md": {
@@ -3489,8 +3489,8 @@
     "manage-claude__inference-hooks.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks.md",
-      "hash": "db2cab1e3304147b4699273e4865ec2791b75c09d63e2ab87bff28eab07f25af",
-      "last_updated": "2026-08-05T19:22:17.550649",
+      "hash": "a6f2a9e59b295a3c87e88b195903d0448370e6bd508c18bc56bfdfbda990ec15",
+      "last_updated": "2026-08-07T15:53:08.177512",
       "source": "platform"
     },
     "manage-claude__inference-hooks-configuration.md": {
@@ -3510,8 +3510,8 @@
     "manage-claude__rate-limits-api.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/rate-limits-api",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/rate-limits-api.md",
-      "hash": "a6fb53ad07d49abd7a9747fb5cbaa3dcf8fa4f24e9b904eac40b4768abb79235",
-      "last_updated": "2026-07-24T19:21:32.145379",
+      "hash": "87d7bfd68ccd199ac364ca44ec0f3b1a82f0e0cfe58d14c2ce81b3770ef61304",
+      "last_updated": "2026-08-07T15:53:10.141019",
       "source": "platform"
     },
     "manage-claude__spend-limits-api.md": {
@@ -3608,8 +3608,8 @@
     "manage-claude__workspaces.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/workspaces",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/workspaces.md",
-      "hash": "c1b17e494718e2104a2c1df89890bd0859a02fee5e0a08cc4ae48603ea72154c",
-      "last_updated": "2026-07-16T19:39:13.401518",
+      "hash": "43af46c90229c2850f3e74e8faadb832af80dcd5d34e15bd37e181335e0d2606",
+      "last_updated": "2026-08-07T15:53:19.531727",
       "source": "platform"
     },
     "managed-agents__agent-setup.md": {
@@ -3741,8 +3741,8 @@
     "managed-agents__self-hosted-sandboxes.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes.md",
-      "hash": "5e7bf5451cc9294d35fe2dfc1afbbd3755fea0e692458444539b689aa7ebe5bd",
-      "last_updated": "2026-08-06T23:57:37.700922",
+      "hash": "03cbde3b297488b6999d7afca87713fa8f353c5282763ea268f54710ff583352",
+      "last_updated": "2026-08-07T15:53:32.455552",
       "source": "platform"
     },
     "managed-agents__self-hosted-sandboxes-security.md": {
@@ -3860,7 +3860,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-08-07T12:48:26.331741",
+    "last_fetch_completed": "2026-08-07T15:53:43.891851",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 553,
@@ -3873,7 +3873,7 @@
     "total_files": 551,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-07T12:48:26.331767",
+  "last_updated": "2026-08-07T15:53:43.891868",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

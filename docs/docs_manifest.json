@@ -346,8 +346,8 @@
     "claude-apps-gateway.md": {
       "original_url": "https://code.claude.com/docs/en/claude-apps-gateway",
       "original_md_url": "https://code.claude.com/docs/en/claude-apps-gateway.md",
-      "hash": "1659b14bfcc2e3a824249f6033dcf62b2cf049fc28d1d22d73e2f1f6cd5b4f8b",
-      "last_updated": "2026-08-06T23:50:12.798921",
+      "hash": "f8cf7a6557849d4106f43c9ca5250d6eb246d46b9533fc20291efb77a119aac0",
+      "last_updated": "2026-08-07T15:44:50.462315",
       "source": "claude-code"
     },
     "claude-apps-gateway-config.md": {
@@ -570,8 +570,8 @@
     "env-vars.md": {
       "original_url": "https://code.claude.com/docs/en/env-vars",
       "original_md_url": "https://code.claude.com/docs/en/env-vars.md",
-      "hash": "0c21f842863656091979a87d40ee9decae5a3ba4bf18d70cedf34af40d55772c",
-      "last_updated": "2026-08-07T07:00:50.402594",
+      "hash": "728e83363af97c8994d5df5c03b599f6e78929973c83685f72e5709fbaa066f6",
+      "last_updated": "2026-08-07T15:45:22.385140",
       "source": "claude-code"
     },
     "errors.md": {
@@ -941,8 +941,8 @@
     "sandboxing.md": {
       "original_url": "https://code.claude.com/docs/en/sandboxing",
       "original_md_url": "https://code.claude.com/docs/en/sandboxing.md",
-      "hash": "f8048824c97179127839e207a1b38b4d22de46e57bbc1086ad795391b30bf7a2",
-      "last_updated": "2026-08-07T04:49:06.700707",
+      "hash": "0ac91a85d383b84038c58d510fa4b7bdb71cfeca9d65a3a14ce28027bb0f0945",
+      "last_updated": "2026-08-07T15:46:15.450379",
       "source": "claude-code"
     },
     "scheduled-tasks.md": {
@@ -1032,8 +1032,8 @@
     "settings.md": {
       "original_url": "https://code.claude.com/docs/en/settings",
       "original_md_url": "https://code.claude.com/docs/en/settings.md",
-      "hash": "3a4c1444f92f348c4b7aa74ded92628c0d45993677e82366ed5736d84e6b579b",
-      "last_updated": "2026-08-07T07:01:46.944705",
+      "hash": "a0652704f448c6e4fc9c6f4a93f034c77ae9367460feb3d06017a95f80a415e5",
+      "last_updated": "2026-08-07T15:46:29.271085",
       "source": "claude-code"
     },
     "setup.md": {
@@ -1284,7 +1284,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-08-07T12:42:32.458803",
+    "last_fetch_completed": "2026-08-07T15:47:02.384724",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 183,
@@ -1294,7 +1294,7 @@
     "total_files": 183,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-07T12:42:32.458822",
+  "last_updated": "2026-08-07T15:47:02.384748",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
