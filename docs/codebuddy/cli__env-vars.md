@@ -117,6 +117,8 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_CODE_FILE_READ_MAX_OUTPUT_TOKENS` | 覆盖文件读取的默认 token 限制（默认：20000） |
 | `CODEBUDDY_STREAM_TIMEOUT_MS` | 流式响应中两个数据块之间允许的最大静默时间（毫秒）（默认：300000，即 5 分钟）。已开始吐 token 后中途静默通常意味着连接已断，故与首 token 超时解耦、取较短阈值 |
 | `CODEBUDDY_FIRST_TOKEN_TIMEOUT_MS` | 等待第一个模型输出的最大时间（毫秒）（默认：1200000，即 20 分钟）。长上下文 prefill 慢吐首 token 属合法情况 |
+| `CODEBUDDY_MAX_RETRIES` | 模型请求"生成开始前"失败（429 / 5xx / 请求超时 / 锁超时）的最大退避重试次数（默认：8，上限：15，超限自动收敛）。重试采用指数退避 \+ 抖动并尊重服务器 `retry-after`，严格发生在流式内容产出之前，不会重发已产出内容。额度耗尽类错误不重试（转由模型 fallback 处理） |
+| `CODEBUDDY_RETRY_WATCHDOG` | 置为 `1` / `true` / `yes` 开启无人值守 / CI 场景的无限重试模式，仅对上述"生成开始前"失败生效，单次退避封顶 5 分钟。默认关闭 |
 | `CODEBUDDY_SESSION_MAX_ITEMS` | `session/load` 回放时历史消息的最大条数（默认：1000）。达到阈值且遇到 user message 时停止逆序读取 JSONL。需要支持超长会话（如沙箱场景）时可调大（例如 2000 或更多）；零/负数/非数字会回退到默认值 |
 
 ## 文件系统和配置
@@ -216,8 +218,8 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 
 | 环境变量 | 说明 |
 | --- | --- |
-| `CODEBUDDY_GATEWAY_AUTH` | Gateway 认证模式（`password` 或 `none`） |
-| `CODEBUDDY_GATEWAY_PASSWORD` | Gateway 访问密码 |
+| `CODEBUDDY_GATEWAY_AUTH` | Gateway 认证模式（`password` 或 `none`）。优先级最高，覆盖 `--auth` 与 settings `gateway.auth`。`--serve` 默认已是 `password`；设为 `none` 会关闭认证，此时同机任意进程可经该服务执行命令、读写文件，仅建议在隔离环境或 CI 中使用 |
+| `CODEBUDDY_GATEWAY_PASSWORD` | Gateway 访问密码。未设置时首次启动自动生成随机密码并写入 settings |
 | `CODEBUDDY_GATEWAY_FORCE_TUNNEL` | 设置为 `1` 强制使用 tunnel 模式 |
 | `CODEBUDDY_DISABLE_REQUEST_VALIDATION` | 设置为 `1` 关闭 Gateway 自定义请求头校验（`X-CodeBuddy-Request`）。详见 [HTTP API 安全](./http-api#安全) |
 | `CODEBUDDY_CODE_CORS_ORIGINS` | 额外的 CORS 允许来源（逗号分隔）。支持精确 origin、`*.domain` 子域通配和 `*` 全开。如 `https://*.example.com,https://specific.com`。未设置时，若服务绑定 `0.0.0.0`（`--host 0.0.0.0`）则自动允许所有来源 |

@@ -403,7 +403,7 @@ json
 5. 产品内置的 `defaultRelatedModels[variant]`（仅对内置模型生效，自定义模型跳过这步）
 6. 回落到主模型自身
 
-`variantModels` 保存在 `settings.json` 中，也可通过 `/model` 面板的 **Scenario Models** 区域编辑。它适合在用户或项目范围内将 `lite` / `reasoning` 固定映射到具体模型；`relatedModels` 则适合让映射跟随当前主模型。
+`variantModels` 保存在 `settings.json` 中，也可通过 `/model:lite` / `/model:reasoning` 命令编辑。它适合在用户或项目范围内将 `lite` / `reasoning` 固定映射到具体模型；`relatedModels` 则适合让映射跟随当前主模型。
 
 **内置子代理解析优先级（从高到低）：**
 

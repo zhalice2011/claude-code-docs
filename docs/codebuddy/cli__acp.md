@@ -214,6 +214,7 @@ codebuddy --acp
 ## 相关链接
 
 - [CLI 参考手册](./cli-reference) \- 查看所有命令行参数
+- [`codebuddy.ai/*` 扩展命名空间参考](./acp-meta-reference) \- 全部 `_meta` 扩展键与 `_codebuddy.ai/*` 扩展方法清单，含公共 / 私有分界
 - [IDE 集成说明](./ide-integrations) \- 更多编辑器集成方式
 - [ACP 协议规范](https://github.com/agentclientprotocol/agent-client-protocol) \- 协议详细文档
 

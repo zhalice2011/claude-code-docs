@@ -80,7 +80,7 @@ CodeBuddy Code 每次交互都会消耗 Token。成本因代码库大小、查�
 
 CodeBuddy Code 会根据任务类型解析合适的场景模型。例如，`Explore` 的内置声明是 `lite`，可以把代码搜索交给更快、更经济的模型；规划类任务则可使用 `reasoning`。
 
-在 `/model` 的 **Scenario Models** 区域将 `lite` 和 `reasoning` 映射到具体模型；如需单独配置某个内置子代理，可通过 `/agents` 选择具体模型或场景变体。项目设置只覆盖同名子代理或场景键，不会删除其他全局映射。
+使用 `/model:lite` 和 `/model:reasoning` 将 `lite` 和 `reasoning` 映射到具体模型；如需单独配置某个内置子代理，可通过 `/agents` 选择具体模型或场景变体。项目设置只覆盖同名子代理或场景键，不会删除其他全局映射。
 
 Agent 工具支持通过 `model` 参数指定场景类型：
 
@@ -122,7 +122,7 @@ When you are using compact, please focus on test output and code changes.
 
 ### 选择合适的模型
 
-根据任务复杂度选择模型。使用 `/model` 切换主模型，或在 **Scenario Models** 区域配置 `lite` / `reasoning`；使用 `/agents` 为特定内置子代理选择场景变体或具体模型。
+根据任务复杂度选择模型。使用 `/model` 切换主模型，或使用 `/model:lite` / `/model:reasoning` 配置 `lite` / `reasoning`；使用 `/agents` 为特定内置子代理选择场景变体或具体模型。
 
 - **简单任务使用 `lite`**：文件搜索、快速查询、代码格式化
 - **复杂任务使用 `reasoning`**：架构设计、性能优化、复杂调试

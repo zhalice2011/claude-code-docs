@@ -48,14 +48,15 @@ Web UI 支持两种认证模式：
 
 | 模式 | 设置 | 说明 |
 | --- | --- | --- |
-| 免认证（默认） | `CODEBUDDY_GATEWAY_AUTH=none` | 无需密码 |
-| 密码认证 | `CODEBUDDY_GATEWAY_AUTH=password` | 启动时终端显示密码 |
+| 密码认证（默认） | `--auth password` / `CODEBUDDY_GATEWAY_AUTH=password` | `--serve` 的默认行为，启动时终端打印密码和带密码的可点链接 |
+| 免认证 | `--auth none` / `CODEBUDDY_GATEWAY_AUTH=none` | 显式关闭，启动时打印警告。同机任意进程可经此服务执行命令、读写文件，仅建议在隔离环境或 CI 中使用 |
 
 认证方式（以下任一方式均可）：
 
-- **URL 参数**：`?password=xxx` — 通过 URL 自动登录
+- **URL 参数**：`?password=xxx` — 打开 Web UI 首页时自动登录并下发 Cookie（**仅首页有效，对 `/api/v1/*` 端点无效**）
 - **登录页面**：输入终端显示的密码
 - **Bearer Token**：`Authorization: Bearer <password>`，用于 API 访问
+- **Cookie**：`gateway_session`，浏览器登录后自动携带，有效期 30 天
 
 在 `~/.codebuddy/settings.json` 中配置：
 
