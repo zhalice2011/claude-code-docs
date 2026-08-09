@@ -584,8 +584,8 @@
     "env-vars.md": {
       "original_url": "https://code.claude.com/docs/en/env-vars",
       "original_md_url": "https://code.claude.com/docs/en/env-vars.md",
-      "hash": "1973917c95bf48a36e1bc4474c0bf5f498fdf7bb2afebee169c5767c40616bb7",
-      "last_updated": "2026-08-08T00:54:49.716468",
+      "hash": "5961f37b9369849f268b74e1afcc4305a58203c92b92b5f48c1a6d0b44a5f22d",
+      "last_updated": "2026-08-09T04:11:30.546982",
       "source": "claude-code"
     },
     "errors.md": {
@@ -710,8 +710,8 @@
     "interactive-mode.md": {
       "original_url": "https://code.claude.com/docs/en/interactive-mode",
       "original_md_url": "https://code.claude.com/docs/en/interactive-mode.md",
-      "hash": "4281baa14a6befe1f13b27ef9ae94bc35552ee185fb23468218d880cb53e4e80",
-      "last_updated": "2026-08-08T00:55:07.098963",
+      "hash": "4b4bb782f99f6db60cbfee917b58ddc76d8aa9b9fc94c0db0f218e4243c1ccf4",
+      "last_updated": "2026-08-09T04:11:42.285482",
       "source": "claude-code"
     },
     "jetbrains.md": {
@@ -1046,8 +1046,8 @@
     "settings.md": {
       "original_url": "https://code.claude.com/docs/en/settings",
       "original_md_url": "https://code.claude.com/docs/en/settings.md",
-      "hash": "f668e49ff6c12c6c634ef1f8d44d5cb87158c811dba1aa04e191d1d229706292",
-      "last_updated": "2026-08-08T00:55:50.695926",
+      "hash": "20a7c3bf0a74995739cce6c52a0bb7af3232a8a93885bb8186d2be6ebf76b753",
+      "last_updated": "2026-08-09T04:12:19.575154",
       "source": "claude-code"
     },
     "setup.md": {
@@ -1298,7 +1298,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-08-09T00:58:42.973592",
+    "last_fetch_completed": "2026-08-09T04:12:43.367580",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 185,
@@ -1308,7 +1308,7 @@
     "total_files": 185,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-09T00:58:42.973620",
+  "last_updated": "2026-08-09T04:12:43.367606",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
