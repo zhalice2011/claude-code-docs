@@ -404,8 +404,8 @@
     },
     "enterprise__Overview.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/Overview",
-      "hash": "3e14fc49aa75cafc5e7c641fb5d2817fbb1eeee84631cbb03d73da058788ed48",
-      "last_updated": "2026-07-02T12:01:47.865110",
+      "hash": "c221cfb5c70e48d0d1caaf3bbe045daaa049910800870f4f1d649e8f95157eb6",
+      "last_updated": "2026-08-10T04:32:09.686712",
       "source": "codebuddy"
     },
     "enterprise__PrivateQuickstart.md": {
@@ -686,8 +686,8 @@
     },
     "ide__User-guide__Code-Completion.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Code-Completion",
-      "hash": "54dcc4fda9865880beb3bea63b0f1e36858cceda70e1578462961a955ee8fab7",
-      "last_updated": "2026-06-26T12:15:29.417239",
+      "hash": "e271b1c2a4f0949230ec2e8b654d0e52139807a7ba132b52f3026d0dfd6860db",
+      "last_updated": "2026-08-10T04:32:53.039484",
       "source": "codebuddy"
     },
     "ide__User-guide__Context.md": {
@@ -1482,6 +1482,12 @@
       "last_updated": "2026-07-23T05:55:32.809667",
       "source": "codebuddy"
     },
+    "workbuddyapp__features__Multidevice.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Multidevice",
+      "hash": "f88e3a7c126e6795f603bd57af46f427759bde0698bee082ba1c6866d665f23a",
+      "last_updated": "2026-08-10T04:34:57.607877",
+      "source": "codebuddy"
+    },
     "workbuddyapp__features__Share.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Share",
       "hash": "bd5a766edee18a78d955ae38a053a0fc92cac56e9a74aec85d18cd94bdaa730c",
@@ -1530,6 +1536,12 @@
       "last_updated": "2026-06-26T12:16:50.164059",
       "source": "codebuddy"
     },
+    "workbuddymini__features__Multidevice.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Multidevice",
+      "hash": "9c572c1ea98999e99bd0da461b0323250b162975bfec47b456e42f4d8647d1f4",
+      "last_updated": "2026-08-10T04:35:06.439960",
+      "source": "codebuddy"
+    },
     "workbuddymini__features__Select-Model.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Select-Model",
       "hash": "2162e895a44e60c608b6f84d21008b06dffed54140e9b191002ba094a4f07ff5",
@@ -1568,26 +1580,26 @@
     },
     "workbuddymini__quick-start__Quickstart.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/quick-start/Quickstart",
-      "hash": "1fd76a784c0b9343336e3bf37fd52416ad64adc0e445eb863d5ba3301446f4a9",
-      "last_updated": "2026-06-26T12:16:54.198142",
+      "hash": "04b90e6bab7eb53b6fedebdb83701304268266b708fd41dd67b3dc478e033c30",
+      "last_updated": "2026-08-10T04:35:12.727806",
       "source": "codebuddy"
     }
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-08-10T01:11:01.916192",
+    "last_fetch_completed": "2026-08-10T04:35:12.727911",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 264,
-    "pages_fetched_successfully": 262,
+    "pages_discovered": 266,
+    "pages_fetched_successfully": 264,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 262,
+    "total_files": 264,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-10T01:11:01.916212",
+  "last_updated": "2026-08-10T04:35:12.727930",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
