@@ -1151,8 +1151,8 @@
     "whats-new.md": {
       "original_url": "https://code.claude.com/docs/en/whats-new",
       "original_md_url": "https://code.claude.com/docs/en/whats-new.md",
-      "hash": "9f66cbe31eb348a6d14df057a1b0bfa8dc0ee89e9e40db163a1be1723d518d34",
-      "last_updated": "2026-07-21T01:48:53.255088",
+      "hash": "598220ee884ac6bd854b235f57e7b9bbd6bf0e41f478523d52d824306c7bb039",
+      "last_updated": "2026-08-10T18:44:26.496045",
       "source": "claude-code"
     },
     "whats-new__2026-w13.md": {
@@ -1274,6 +1274,20 @@
       "last_updated": "2026-07-29T01:45:31.135138",
       "source": "claude-code"
     },
+    "whats-new__2026-w30.md": {
+      "original_url": "https://code.claude.com/docs/en/whats-new/2026-w30",
+      "original_md_url": "https://code.claude.com/docs/en/whats-new/2026-w30.md",
+      "hash": "df099e47a73428b58df52eea4515ce2cc5894b6090a769e0f172808906f33ba1",
+      "last_updated": "2026-08-10T18:44:40.423995",
+      "source": "claude-code"
+    },
+    "whats-new__2026-w32.md": {
+      "original_url": "https://code.claude.com/docs/en/whats-new/2026-w32",
+      "original_md_url": "https://code.claude.com/docs/en/whats-new/2026-w32.md",
+      "hash": "f7f1e5a97f228bf821404093e534ceaa95b1263fcb486cde6dc3eec851a93eaa",
+      "last_updated": "2026-08-10T18:44:41.286459",
+      "source": "claude-code"
+    },
     "workflows.md": {
       "original_url": "https://code.claude.com/docs/en/workflows",
       "original_md_url": "https://code.claude.com/docs/en/workflows.md",
@@ -1298,17 +1312,17 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-08-10T15:53:44.633647",
+    "last_fetch_completed": "2026-08-10T18:44:43.671744",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
-    "pages_discovered": 185,
-    "pages_fetched_successfully": 186,
+    "pages_discovered": 187,
+    "pages_fetched_successfully": 188,
     "pages_failed": 0,
     "failed_pages": [],
-    "total_files": 185,
+    "total_files": 187,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-10T15:53:44.633675",
+  "last_updated": "2026-08-10T18:44:43.671765",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
