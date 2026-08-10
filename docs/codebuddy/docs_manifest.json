@@ -164,8 +164,8 @@
     },
     "cli__mcp.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/mcp",
-      "hash": "09231dfa437e381a86fcd5afa4d43209b70416eee504f98bd34a677733e90e14",
-      "last_updated": "2026-06-26T12:14:38.586069",
+      "hash": "8bcc21a67fdc6342002150e3b915e55e9c29e5f822ad67b3713ae7e67564cff7",
+      "last_updated": "2026-08-10T16:00:12.708448",
       "source": "codebuddy"
     },
     "cli__mcp-apps.md": {
@@ -206,8 +206,8 @@
     },
     "cli__permissions.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/permissions",
-      "hash": "a7bf7f3ae8b6bb2dcb0013a26b33c612cc8a435279752d6c1307842533be0466",
-      "last_updated": "2026-07-23T08:20:18.023405",
+      "hash": "0260154c85d985258864d832536124325f34d7e75f6adbd89734bf12300aee38",
+      "last_updated": "2026-08-10T16:00:20.058863",
       "source": "codebuddy"
     },
     "cli__plugin-marketplaces.md": {
@@ -1587,7 +1587,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-08-10T12:56:34.951560",
+    "last_fetch_completed": "2026-08-10T16:03:54.340924",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 266,
     "pages_fetched_successfully": 264,
@@ -1599,7 +1599,7 @@
     "total_files": 264,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-10T12:56:34.951583",
+  "last_updated": "2026-08-10T16:03:54.340947",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
