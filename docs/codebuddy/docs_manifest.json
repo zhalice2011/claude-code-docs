@@ -1034,8 +1034,8 @@
     },
     "workbuddy__Changelog.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Changelog",
-      "hash": "d0fd906863a05c31963bf7462d0e08be62174b96ebbfd6ad4a34709d28f0543e",
-      "last_updated": "2026-08-06T13:52:08.275334",
+      "hash": "bec05a6ced38ed574fa0635a3458a461a08591d35d436059f06c270fed6c4cc2",
+      "last_updated": "2026-08-10T07:21:43.527179",
       "source": "codebuddy"
     },
     "workbuddy__Conversation.md": {
@@ -1484,8 +1484,8 @@
     },
     "workbuddyapp__features__Multidevice.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Multidevice",
-      "hash": "f88e3a7c126e6795f603bd57af46f427759bde0698bee082ba1c6866d665f23a",
-      "last_updated": "2026-08-10T04:34:57.607877",
+      "hash": "15c21030a09bd686466865f1aaef7c9e17ad284bf77405d309a746fc74473ff2",
+      "last_updated": "2026-08-10T07:22:51.632692",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Share.md": {
@@ -1538,8 +1538,8 @@
     },
     "workbuddymini__features__Multidevice.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Multidevice",
-      "hash": "9c572c1ea98999e99bd0da461b0323250b162975bfec47b456e42f4d8647d1f4",
-      "last_updated": "2026-08-10T04:35:06.439960",
+      "hash": "62a93a72bfd6774067ac02a97aba94788f709b4cef5dd0e1861b654c6df876b9",
+      "last_updated": "2026-08-10T07:22:59.943458",
       "source": "codebuddy"
     },
     "workbuddymini__features__Select-Model.md": {
@@ -1587,7 +1587,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-08-10T04:35:12.727911",
+    "last_fetch_completed": "2026-08-10T07:23:06.234832",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 266,
     "pages_fetched_successfully": 264,
@@ -1599,7 +1599,7 @@
     "total_files": 264,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-10T04:35:12.727930",
+  "last_updated": "2026-08-10T07:23:06.234870",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
