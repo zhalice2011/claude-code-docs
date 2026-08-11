@@ -103,7 +103,7 @@ json
 | `Read` | 所有文件读 |
 | `Edit` | 所有文件编辑 |
 
-`*` 也可以单独作为规则，相当于全匹配通配。
+`*` 也可以单独作为规则，相当于全匹配通配（但不覆盖 MCP 工具，见 [MCP 工具](#mcp-工具)）。
 
 ### 加 specifier 做细粒度
 
@@ -185,15 +185,20 @@ WebFetch(domain:example.com)   # 仅 example.com 及子域
 
 ### MCP 工具
 
-MCP 工具命名格式：`mcp__<server>__<tool>`。规则三种粒度：
+MCP 工具命名格式：`mcp__<server>__<tool>`，用双下划线 `__` 分段（名字里的单下划线只是普通字符）。四种写法：
 
 | 规则 | 匹配 |
 | --- | --- |
-| `mcp__puppeteer` | 整个 puppeteer server 的所有工具 |
-| `mcp__puppeteer__*` | 同上（通配符写法） |
-| `mcp__puppeteer__navigate` | 仅 navigate 工具 |
+| `mcp__puppeteer` | 前缀为 `mcp__puppeteer__` 的全部工具 |
+| `mcp__puppeteer__*` | 同上，两者等价 |
+| `mcp__puppeteer__navigate` | 仅 navigate 一个工具 |
+| `mcp__*` | 全部 MCP 工具，仅 `deny` / `ask` 生效 |
 
-工具名以 `mcp__` 开头时按 MCP 规则匹配。
+注意：
+
+- 规则不区分大小写；连字符、点号等符号按下划线处理，`mcp__web-search` 与 `mcp__web_search` 等价
+- `*` 只能整段替换最后一节。`mcp__pup*`、`mcp__puppeteer__nav*` 匹配不到任何工具，而且不会报错
+- MCP 工具只认 `mcp__` 开头的规则，裸 `*` 对它无效；要全部禁用请写 `"deny": ["mcp__*"]`
 
 ### Agent（子代理）
 

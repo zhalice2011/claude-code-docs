@@ -125,9 +125,11 @@ Gateway 启动时会自动生成一个随机密码（token），访问 Web UI �
 
 Gateway 默认允许以下来源的跨域请求：
 
-- 本地回环地址（`localhost`、`127.0.0.1`、`[::1]`）
+- 服务自身监听端口的本地回环来源（`localhost`、`127.0.0.1`、`[::1]` \+ 实际端口）
 - Tunnel 分配的公网地址
 - 通过 `gateway.corsOrigins` 配置的额外来源
+
+> 注意：**其他端口**的 `localhost` 页面不再自动放行（避免本机任意端口上的页面跨源调用执行进程 / 文件读写接口），需在 `gateway.corsOrigins` 或 `CODEBUDDY_CODE_CORS_ORIGINS` 中显式声明。
 
 支持三种配置模式：
 
@@ -168,7 +170,7 @@ json
 
 | 配置键 | 说明 | 默认值 |
 | --- | --- | --- |
-| `auth` | 认证模式，`"password"` 或 `"none"` | `"none"` |
+| `auth` | 认证模式，`"password"` 或 `"none"`。`--serve` 未显式配置时默认 `"password"` | `"password"`（`--serve`） |
 | `password` | 自定义密码。为空时首次启动自动生成 | 自动生成 |
 | `corsOrigins` | 额外允许的 CORS 来源列表。支持精确 origin、`*.domain` 子域通配和 `*` 全开 | `[]` |
 | `maxConnections` | ACP 最大并发连接数 | `5` |

@@ -309,7 +309,7 @@ mcpServers:
 	- 通用场景变体 `lite` / `reasoning`。
 	- 全部可用模型（与 `/model` 一致）。
 3. 用 `Tab` 在 **Global（全局）** 与 **Project（项目）** 两个保存范围间切换，`Enter` 确认。
-4. 列表即时刷新为「生效路由值 \+ 子代理层来源」。该值可能是具体模型，也可能是 `lite` / `reasoning`；场景变体最终映射到的具体模型和来源可在 `/model` 的 **Scenario Models** 区域查看。
+4. 列表即时刷新为「生效路由值 \+ 子代理层来源」。该值可能是具体模型，也可能是 `lite` / `reasoning`；场景变体最终映射到的具体模型和来源可通过 `/model:lite` / `/model:reasoning` 查看。
 
 面板的 **SOURCE** 列展示每个子代理路由值的来源，让默认编排透明化：
 

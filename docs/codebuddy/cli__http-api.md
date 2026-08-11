@@ -72,35 +72,82 @@ X-CodeBuddy-Request: 1
 
 跨域请求的 `Origin` 会与服务端 CORS 白名单匹配，不在白名单中的来源会被拒绝（预检返回无 CORS 头的 204，实际请求返回 403 `Origin not allowed`）。白名单来源：
 
-- 本地端点及其回环变体（`localhost` / `127.0.0.1` / `[::1]`）
+- 本地端点自身的回环变体（`localhost` / `127.0.0.1` / `[::1]`，**仅限服务实际监听的端口**）
 - Tunnel URL（如启用）
 - 配置项 `gateway.corsOrigins`
 - 环境变量 `CODEBUDDY_CODE_CORS_ORIGINS`（逗号分隔，支持精确 origin、`*.domain` 子域通配和 `*` 全开）
 
-绑定 `0.0.0.0` 时（如 `--host 0.0.0.0`，常见于云虚拟机 / 局域网暴露场景），若未显式设置 `CODEBUDDY_CODE_CORS_ORIGINS`，服务端会**自动允许所有来源**（等价于配置 `*`），无需额外配置即可通过任意 IP 或域名访问 Web UI；显式设置该环境变量时以用户配置为准。
+> ⚠️ **回环来源不再被无条件放行。** 早期实现允许任意 `localhost` / `127.0.0.1` 来源（不论端口），这使用户浏览器中任何占用本地端口的页面（如恶意页运行在 `http://localhost:3000`）都能跨源调用本服务的执行进程 / 文件读写接口。Cookie 的 `SameSite=Strict` 无法防护此场景 —— 端口不属于 "site" 的组成部分，`localhost:3000` 与 `localhost:8321` 属同 site 不同 origin，浏览器会照常携带会话 Cookie。
+> 
+> **本地开发**（Vite dev server 5173 → 后端 8321 属跨源）需显式声明来源：
+> 
+> bash
+> ```
+> CODEBUDDY_CODE_CORS_ORIGINS=http://localhost:5173 codebuddy --serve
+> ```
+> 被拒绝时，服务端日志与 403 响应体的 `hint` 字段都会提示该配置方式。
+
+绑定 `0.0.0.0` 时（如 `--host 0.0.0.0`，常见于云虚拟机 / 局域网暴露场景），若未显式设置 `CODEBUDDY_CODE_CORS_ORIGINS`，服务端会**自动允许所有来源**（等价于配置 `*`），无需额外配置即可通过任意 IP 或域名访问 Web UI；显式设置该环境变量时以用户配置为准。此场景下认证为强制开启（见下），凭据仍是必需的。
 
 ### 认证
 
-支持两种模式（环境变量 `CODEBUDDY_GATEWAY_AUTH` 控制）：
+`--serve` **默认开启密码认证**。首次启动会生成随机密码并写入 `~/.codebuddy/settings.json`，同时在终端打印一条带密码的可点链接：
 
-| 模式 | 值 | 说明 |
+```
+  Endpoint    http://127.0.0.1:8321
+  Web UI      http://127.0.0.1:8321/?password=<生成的密码>
+
+  Password    <生成的密码>
+  Config      ~/.codebuddy/settings.json
+```
+点击该链接即可登录 Web UI（服务端会下发有效期 30 天的 `gateway_session` Cookie，后续直接访问端点即可，无需重复输入）。
+
+认证模式优先级（高 → 低）：
+
+| 来源 | 取值 | 说明 |
 | --- | --- | --- |
-| 无认证 | `none`（默认） | 本地开发用，不需要认证 |
-| 密码认证 | `password` | 远程访问时自动开启 |
+| 环境变量 `CODEBUDDY_GATEWAY_AUTH` | `password` / `none` | 优先级最高，适合 CI |
+| 绑定非回环地址（如 `--host 0.0.0.0`） | 强制 `password` | 对外暴露时不允许关闭 |
+| 命令行 `--auth <mode>` | `password` / `none` |  |
+| 配置项 `gateway.auth` | `password` / `none` |  |
+| 默认值 | `password` | `--serve` 的兜底模式 |
 
-密码认证支持以下方式（任一通过即可）：
+> **安全说明**：这组端点包含执行进程（`/api/v1/process/*`）、读写任意文件（`/api/v1/files/*`、`/api/v1/fs/*`）和交互式终端（`/api/v1/pty/*`）等敏感能力。因此默认强制认证（secure by default，与 [E2B Secured Access](https://e2b.dev/docs/sandbox/secured-access) 的默认行为一致）。**关闭认证意味着同机任意进程都能通过该服务执行命令、读写文件**，仅建议在隔离环境（容器 / 一次性沙箱）或 CI 中使用。
+
+关闭认证（仅在明确知晓风险时使用，启动时会打印警告）：
 
 bash
 ```
-# Bearer Token（同时携带安全头）
+codebuddy --serve --auth none
+# 或
+CODEBUDDY_GATEWAY_AUTH=none codebuddy --serve
+```
+#### 携带凭据的方式
+
+**API 请求（`/api/v1/*`）只接受请求头或 Cookie**：
+
+bash
+```
+# 1) Bearer Token（推荐，同时携带安全头）
 curl -H "X-CodeBuddy-Request: 1" \
      -H "Authorization: Bearer YOUR_PASSWORD" \
      http://host:port/api/v1/sessions
 
-# URL 参数
+# 2) X-Access-Token（与 Bearer 等价，对齐 E2B envd 的凭据头习惯）
 curl -H "X-CodeBuddy-Request: 1" \
-     http://host:port/api/v1/sessions?password=YOUR_PASSWORD
+     -H "X-Access-Token: YOUR_PASSWORD" \
+     http://host:port/api/v1/sessions
+
+# 3) Cookie（浏览器登录后自动携带）
+curl -H "X-CodeBuddy-Request: 1" \
+     -H "Cookie: gateway_session=<sha256(password)>" \
+     http://host:port/api/v1/sessions
 ```
+
+> ⚠️ **`?password=` 仅对 `GET /` 与 `POST /api/v1/auth/login` 有效，对其他 `/api/v1/*` 端点无效**（会返回 401）。这是有意设计：URL 会被记录到浏览器历史、服务端访问日志，并在用户复制分享链接时泄露，因此密码不出现在 API 请求的网址中。`?password=` 的唯一用途是首次进门换取 `gateway_session` Cookie。
+> 
+> 用 `?password=` 测 API 会得到 401，这**不是**认证实现有问题。
+
 ## 响应格式
 
 所有 `/api/v1/*` 端点使用统一的信封格式：
@@ -209,6 +256,75 @@ Worker 是运行中的 CLI 进程（interactive / bg / daemon），通过 PID �
 - `?tail=200` — 只返回最后 N 行
 - 不传 type 时自动选择最佳来源（telemetry \> process \> debug \> transcript）
 
+### Jobs（后台智能体实例）
+
+Jobs 是由 `/bg`、左箭头转后台或 `codebuddy agents` 派发出的后台智能体实例。它们与 CLI agent\-view / TUI 共用 JobStore 和生命周期语义。
+
+| 方法 | 端点 | 说明 |
+| --- | --- | --- |
+| GET | `/api/v1/jobs` | 获取实例列表；支持 `all=1` 和 `cwd` 过滤 |
+| POST | `/api/v1/jobs` | 派发后台智能体或 shell job |
+| GET | `/api/v1/jobs/events` | SSE 订阅 `snapshot` / `added` / `changed` / `removed` / `keepalive` |
+| GET | `/api/v1/jobs/prefs` | 获取置顶与项目分组偏好 |
+| PUT | `/api/v1/jobs/prefs` | 批量更新置顶与项目分组偏好 |
+| GET | `/api/v1/jobs/dispatch-context` | 获取启动目录、可用 Agent 与仓库目标 |
+| GET | `/api/v1/jobs/resumable` | 获取可恢复的历史会话；支持 `cwd`、`includeAttached=1` |
+| POST | `/api/v1/jobs/resume` | 从历史会话恢复为独立 job |
+| GET | `/api/v1/jobs/:id` | 获取 job 详情；id 支持稳定 ID、short ID 或 sessionId |
+| PATCH | `/api/v1/jobs/:id/name` | 重命名 job |
+| POST | `/api/v1/jobs/:id/reply` | 回复等待输入的 job |
+| POST | `/api/v1/jobs/:id/stop` | 停止 job |
+| POST | `/api/v1/jobs/:id/respawn` | 重启 job 并恢复对话 |
+| DELETE | `/api/v1/jobs/:id` | 删除 job 记录 |
+| GET | `/api/v1/jobs/:id/stream` | SSE 回放 transcript 尾部并尾随新输出 |
+| GET | `/api/v1/jobs/:id/transcript` | 一次性返回最近最多 1000 行 ACP replay updates |
+
+**派发请求体** (`POST /api/v1/jobs`):
+
+| 字段 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| `prompt` | string | 是 | 初始指令；`bash=true` 时为 shell 命令 |
+| `cwd` | string | 否 | 启动目录，默认当前工作目录 |
+| `agent` / `model` | string | 否 | 自定义 Agent 或模型 |
+| `effort` | string | 否 | `minimal` / `low` / `medium` / `high` / `xhigh` / `max` |
+| `permissionMode` | string | 否 | `default` / `acceptEdits` / `plan` / `auto` / `dontAsk` / `bypassPermissions` |
+| `name` | string | 否 | 列表显示名称 |
+| `bash` | boolean | 否 | 派发一次性 shell job |
+| `sourceSessionId` | string | 否 | 继承受限上下文；新 job 仍使用独立会话 |
+| `bgIsolation` | string | 否 | `none` / `worktree`；省略时跟随全局后台写隔离设置 |
+
+`effort`、`permissionMode`、`bgIsolation` 按白名单校验，非法值返回 `400 BAD_REQUEST`。请求省略可选字段时不覆盖会话或全局默认值。
+
+**生命周期字段**:
+
+- `state`: `working` / `blocked` / `done` / `failed` / `stopped`
+- `status`: 存活进程的即时状态 `busy` / `waiting` / `idle` / `stopped`
+- `tempo`: `active` / `idle` / `blocked`
+- `alive` 与 `settled` 独立；`settled=true && alive=false` 表示已结束历史
+- `foregroundHeld=true` 表示仍被前台终端持有，暂时不能 attach
+- `webUrl` 仅在 job worker 存活并监听 loopback HTTP(S) 时返回，否则为 `null`
+
+**对话与错误**:
+
+- `/transcript` 一次性返回 `{ sessionId, updates }`，最多包含最近 1000 行转换后的 ACP replay updates。
+- `/stream` 返回 `text/event-stream`；先回放最多 1000 行，再每秒尾随新增 JSONL 记录；shell job 返回空流。
+- 不存在的 job 返回 `404 JOB_NOT_FOUND`。
+- 删除若被 worktree 或前台持有守卫拒绝，仍返回 HTTP 200，但 body 为 `{ "deleted": false, "reason": "..." }`。
+
+bash
+```
+# 派发后台智能体
+curl -H "X-CodeBuddy-Request: 1" \
+  -H "Authorization: Bearer $PASSWORD" \
+  -H 'Content-Type: application/json' \
+  -X POST http://127.0.0.1:8080/api/v1/jobs \
+  -d '{"prompt":"检查当前仓库的测试状态","cwd":"/repo/app"}'
+
+# 订阅 job 列表变化
+curl -N -H "X-CodeBuddy-Request: 1" \
+  -H "Authorization: Bearer $PASSWORD" \
+  http://127.0.0.1:8080/api/v1/jobs/events
+```
 ### Channels（远程控制）
 
 | 方法 | 端点 | 说明 |
@@ -367,6 +483,14 @@ CBC 增强：
 - `?sessionId=xxx` — 会话 ID（必需，不传则使用当前活跃会话）
 
 ## 使用示例
+
+> 以下示例为突出各端点自身的参数而省略了公共请求头。实际调用 `/api/v1/*` 时需要补上：
+> 
+> 
+> ```
+> -H "X-CodeBuddy-Request: 1" -H "Authorization: Bearer $PASSWORD"
+> ```
+> 其中 `$PASSWORD` 是 `--serve` 启动时打印的密码（见[认证](#认证)）。缺少安全头会得到 403 `Missing required header`，缺少凭据会得到 401 `AUTH_REQUIRED`。仅 `/api/v1/health`、`/api/v1/auth/status` 等豁免端点可直接访问。
 
 ### 健康检查
 
