@@ -334,7 +334,7 @@ type SessionOptions = {
 | `continue` | `boolean` | 继续最近的会话 |
 | `resume` | `string` | 要恢复的会话 ID |
 | `resumeSessionAt` | `string` | 恢复到特定消息位置 |
-| `persistSession` | `boolean` | 持久化会话 |
+| `persistSession` | `boolean` | 是否持久化会话记录，默认 `true`。设为 `false` 时会话只保留在内存中，不写入本地 transcript，文件检查点也会一并跳过；恢复已有会话仍可用，只是不再写入。需要 CLI \>\= 2\.125\.1 |
 | `forkSession` | `boolean` | 分叉会话 |
 | `agents` | `Record<string, AgentDefinition>` | 自定义 Agent |
 | `hooks` | `Partial<Record<HookEvent, HookCallbackMatcher[]>>` | Hook 配置 |

@@ -322,6 +322,7 @@ class CodeBuddyAgentOptions:
     hooks: dict[HookEvent, list[HookMatcher]] | None = None
     include_partial_messages: bool = False
     fork_session: bool = False
+    persist_session: bool = True
     agents: dict[str, AgentDefinition] | None = None
     setting_sources: list[SettingSource] | None = None
     can_use_tool: CanUseTool | None = None
@@ -347,6 +348,7 @@ class CodeBuddyAgentOptions:
 | `hooks` | `dict[HookEvent, list[HookMatcher]]` | Hook 配置 |
 | `include_partial_messages` | `bool` | 包含部分消息 |
 | `fork_session` | `bool` | 分叉会话 |
+| `persist_session` | `bool` | 是否持久化会话记录，默认 `True`。设为 `False` 时会话只保留在内存中，不写入本地 transcript，文件检查点也会一并跳过；恢复已有会话仍可用，只是不再写入。需要 CLI \>\= 2\.125\.1 |
 | `agents` | `dict[str, AgentDefinition]` | 自定义 Agent |
 | `setting_sources` | `list[SettingSource]` | 设置来源 |
 | `can_use_tool` | `CanUseTool` | 权限回调函数 |
