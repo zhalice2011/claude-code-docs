@@ -25,9 +25,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/init` |  | ✅ 支持 | 初始化一个新的 CodeBuddy 存储库。 |
 | `/mcp` |  | ✅ 支持 | 管理 MCP 连接。 |
 | `/memory` |  | ✅ 支持 | 管理长期记忆 |
-| `/model` | `[list | model-name]` | ✅ 支持 | 切换或查看主模型。不带参数时打开交互式界面。`list` 列出可用模型，带模型名称参数时直接切换主模型。 |
-| `/model:lite` | `[list | model-id]` | ✅ 支持 | 切换或查看 `lite` 场景变体（Explore 等轻量子任务使用）的生效模型、来源。不带参数时打开交互式选择界面（含 Global / Project 设置），`list` 列出可用模型，带模型 ID 参数时直接切换。 |
-| `/model:reasoning` | `[list | model-id]` | ✅ 支持 | 切换或查看 `reasoning` 场景变体（复杂分析任务使用）的生效模型、来源。不带参数时打开交互式选择界面（含 Global / Project 设置），`list` 列出可用模型，带模型 ID 参数时直接切换。 |
+| `/model` | `[list | model-name]` | ✅ 支持 | 切换或查看主模型。不带参数时打开交互式界面；还可在 **Scenario Models** 区域查看或编辑 `lite` / `reasoning` 的生效模型、来源，以及 Global / Project 设置。`list` 列出可用模型，带模型名称参数时直接切换主模型。 |
 | `/model:text-to-image` | `[list | model-id]` | ✅ 支持 | 切换或查看当前使用的文生图模型。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
 | `/model:image-to-image` | `[list | model-id]` | ✅ 支持 | 切换或查看当前使用的图生图模型。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
 | `/permissions` |  | ✅ 支持 | 管理工具权限和工作区目录访问权限。 |

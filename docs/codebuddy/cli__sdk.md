@@ -114,8 +114,6 @@ export CODEBUDDY_API_KEY="your-api-key"
 > - 海外版：不设置（默认）
 > - 中国版：`export CODEBUDDY_INTERNET_ENVIRONMENT=internal`
 > - iOA 版：`export CODEBUDDY_INTERNET_ENVIRONMENT=ioa`
-> - 专享版：`export CODEBUDDY_INTERNET_ENVIRONMENT=cloudhosted`
-> - 私有化部署：`export CODEBUDDY_INTERNET_ENVIRONMENT=selfhosted`
 > 
 > 详见 [身份和访问管理文档](./iam#个人用户获取-api-key)。
 
@@ -126,18 +124,12 @@ TypeScriptPythontypescript
 const q = query({
   prompt: '...',
   options: {
-    // 仅专享版或私有化部署用户需要设置，填写你的企业服务地址：
-    // endpoint: 'https://your-company.copilot.qq.com',
     env: {
       CODEBUDDY_API_KEY: process.env.MY_API_KEY,
       // 中国版用户需要设置：
       // CODEBUDDY_INTERNET_ENVIRONMENT: 'internal'
       // iOA 版用户需要设置：
       // CODEBUDDY_INTERNET_ENVIRONMENT: 'ioa'
-      // 专享版用户需要设置：
-      // CODEBUDDY_INTERNET_ENVIRONMENT: 'cloudhosted'
-      // 私有化部署用户需要设置：
-      // CODEBUDDY_INTERNET_ENVIRONMENT: 'selfhosted'
     }
   }
 });
@@ -145,18 +137,12 @@ const q = query({
 python
 ```
 options = CodeBuddyAgentOptions(
-    # 仅专享版或私有化部署用户需要设置，填写你的企业服务地址：
-    # endpoint="https://your-company.copilot.qq.com",
     env={
         "CODEBUDDY_API_KEY": os.environ.get("MY_API_KEY"),
         # 中国版用户需要设置：
         # "CODEBUDDY_INTERNET_ENVIRONMENT": "internal"
         # iOA 版用户需要设置：
         # "CODEBUDDY_INTERNET_ENVIRONMENT": "ioa"
-        # 专享版用户需要设置：
-        # "CODEBUDDY_INTERNET_ENVIRONMENT": "cloudhosted"
-        # 私有化部署用户需要设置：
-        # "CODEBUDDY_INTERNET_ENVIRONMENT": "selfhosted"
     }
 )
 ```

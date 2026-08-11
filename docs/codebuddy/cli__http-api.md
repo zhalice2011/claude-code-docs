@@ -72,82 +72,35 @@ X-CodeBuddy-Request: 1
 
 跨域请求的 `Origin` 会与服务端 CORS 白名单匹配，不在白名单中的来源会被拒绝（预检返回无 CORS 头的 204，实际请求返回 403 `Origin not allowed`）。白名单来源：
 
-- 本地端点自身的回环变体（`localhost` / `127.0.0.1` / `[::1]`，**仅限服务实际监听的端口**）
+- 本地端点及其回环变体（`localhost` / `127.0.0.1` / `[::1]`）
 - Tunnel URL（如启用）
 - 配置项 `gateway.corsOrigins`
 - 环境变量 `CODEBUDDY_CODE_CORS_ORIGINS`（逗号分隔，支持精确 origin、`*.domain` 子域通配和 `*` 全开）
 
-> ⚠️ **回环来源不再被无条件放行。** 早期实现允许任意 `localhost` / `127.0.0.1` 来源（不论端口），这使用户浏览器中任何占用本地端口的页面（如恶意页运行在 `http://localhost:3000`）都能跨源调用本服务的执行进程 / 文件读写接口。Cookie 的 `SameSite=Strict` 无法防护此场景 —— 端口不属于 "site" 的组成部分，`localhost:3000` 与 `localhost:8321` 属同 site 不同 origin，浏览器会照常携带会话 Cookie。
-> 
-> **本地开发**（Vite dev server 5173 → 后端 8321 属跨源）需显式声明来源：
-> 
-> bash
-> ```
-> CODEBUDDY_CODE_CORS_ORIGINS=http://localhost:5173 codebuddy --serve
-> ```
-> 被拒绝时，服务端日志与 403 响应体的 `hint` 字段都会提示该配置方式。
-
-绑定 `0.0.0.0` 时（如 `--host 0.0.0.0`，常见于云虚拟机 / 局域网暴露场景），若未显式设置 `CODEBUDDY_CODE_CORS_ORIGINS`，服务端会**自动允许所有来源**（等价于配置 `*`），无需额外配置即可通过任意 IP 或域名访问 Web UI；显式设置该环境变量时以用户配置为准。此场景下认证为强制开启（见下），凭据仍是必需的。
+绑定 `0.0.0.0` 时（如 `--host 0.0.0.0`，常见于云虚拟机 / 局域网暴露场景），若未显式设置 `CODEBUDDY_CODE_CORS_ORIGINS`，服务端会**自动允许所有来源**（等价于配置 `*`），无需额外配置即可通过任意 IP 或域名访问 Web UI；显式设置该环境变量时以用户配置为准。
 
 ### 认证
 
-`--serve` **默认开启密码认证**。首次启动会生成随机密码并写入 `~/.codebuddy/settings.json`，同时在终端打印一条带密码的可点链接：
+支持两种模式（环境变量 `CODEBUDDY_GATEWAY_AUTH` 控制）：
 
-```
-  Endpoint    http://127.0.0.1:8321
-  Web UI      http://127.0.0.1:8321/?password=<生成的密码>
-
-  Password    <生成的密码>
-  Config      ~/.codebuddy/settings.json
-```
-点击该链接即可登录 Web UI（服务端会下发有效期 30 天的 `gateway_session` Cookie，后续直接访问端点即可，无需重复输入）。
-
-认证模式优先级（高 → 低）：
-
-| 来源 | 取值 | 说明 |
+| 模式 | 值 | 说明 |
 | --- | --- | --- |
-| 环境变量 `CODEBUDDY_GATEWAY_AUTH` | `password` / `none` | 优先级最高，适合 CI |
-| 绑定非回环地址（如 `--host 0.0.0.0`） | 强制 `password` | 对外暴露时不允许关闭 |
-| 命令行 `--auth <mode>` | `password` / `none` |  |
-| 配置项 `gateway.auth` | `password` / `none` |  |
-| 默认值 | `password` | `--serve` 的兜底模式 |
+| 无认证 | `none`（默认） | 本地开发用，不需要认证 |
+| 密码认证 | `password` | 远程访问时自动开启 |
 
-> **安全说明**：这组端点包含执行进程（`/api/v1/process/*`）、读写任意文件（`/api/v1/files/*`、`/api/v1/fs/*`）和交互式终端（`/api/v1/pty/*`）等敏感能力。因此默认强制认证（secure by default，与 [E2B Secured Access](https://e2b.dev/docs/sandbox/secured-access) 的默认行为一致）。**关闭认证意味着同机任意进程都能通过该服务执行命令、读写文件**，仅建议在隔离环境（容器 / 一次性沙箱）或 CI 中使用。
-
-关闭认证（仅在明确知晓风险时使用，启动时会打印警告）：
+密码认证支持以下方式（任一通过即可）：
 
 bash
 ```
-codebuddy --serve --auth none
-# 或
-CODEBUDDY_GATEWAY_AUTH=none codebuddy --serve
-```
-#### 携带凭据的方式
-
-**API 请求（`/api/v1/*`）只接受请求头或 Cookie**：
-
-bash
-```
-# 1) Bearer Token（推荐，同时携带安全头）
+# Bearer Token（同时携带安全头）
 curl -H "X-CodeBuddy-Request: 1" \
      -H "Authorization: Bearer YOUR_PASSWORD" \
      http://host:port/api/v1/sessions
 
-# 2) X-Access-Token（与 Bearer 等价，对齐 E2B envd 的凭据头习惯）
+# URL 参数
 curl -H "X-CodeBuddy-Request: 1" \
-     -H "X-Access-Token: YOUR_PASSWORD" \
-     http://host:port/api/v1/sessions
-
-# 3) Cookie（浏览器登录后自动携带）
-curl -H "X-CodeBuddy-Request: 1" \
-     -H "Cookie: gateway_session=<sha256(password)>" \
-     http://host:port/api/v1/sessions
+     http://host:port/api/v1/sessions?password=YOUR_PASSWORD
 ```
-
-> ⚠️ **`?password=` 仅对 `GET /` 与 `POST /api/v1/auth/login` 有效，对其他 `/api/v1/*` 端点无效**（会返回 401）。这是有意设计：URL 会被记录到浏览器历史、服务端访问日志，并在用户复制分享链接时泄露，因此密码不出现在 API 请求的网址中。`?password=` 的唯一用途是首次进门换取 `gateway_session` Cookie。
-> 
-> 用 `?password=` 测 API 会得到 401，这**不是**认证实现有问题。
-
 ## 响应格式
 
 所有 `/api/v1/*` 端点使用统一的信封格式：
@@ -414,14 +367,6 @@ CBC 增强：
 - `?sessionId=xxx` — 会话 ID（必需，不传则使用当前活跃会话）
 
 ## 使用示例
-
-> 以下示例为突出各端点自身的参数而省略了公共请求头。实际调用 `/api/v1/*` 时需要补上：
-> 
-> 
-> ```
-> -H "X-CodeBuddy-Request: 1" -H "Authorization: Bearer $PASSWORD"
-> ```
-> 其中 `$PASSWORD` 是 `--serve` 启动时打印的密码（见[认证](#认证)）。缺少安全头会得到 403 `Missing required header`，缺少凭据会得到 401 `AUTH_REQUIRED`。仅 `/api/v1/health`、`/api/v1/auth/status` 等豁免端点可直接访问。
 
 ### 健康检查
 

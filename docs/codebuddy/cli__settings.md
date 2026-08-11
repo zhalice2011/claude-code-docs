@@ -74,10 +74,9 @@ json
 | `hooks` | 配置在工具执行前后运行的自定义命令。见 [hooks 文档](./hooks) | `{"PreToolUse": {"Bash": "echo 'Running command...'"}}` |
 | `disableAllHooks` | 禁用所有 [hooks](./hooks) | `true` |
 | `allowUntrustedFrontmatterHooks` | 是否允许执行来自**非 product 内置**来源的 agent/skill 的 frontmatter `hooks` 字段（包括用户本地 `.codebuddy/agents|skills/*.md` 和插件市场）。默认 `false`，防止不可信的 md 文件静默启动 shell 命令；只有 product 内置 agent/skill 不受影响。 | `true` |
-| `model` | 覆盖 CodeBuddy Code 使用的默认模型。直接编辑 settings.json 后**已开启的会话不生效**（需重启进程或执行 `/clear`（新建会话）后才应用新值）；通过 `/model` 或 `/config set model` 切换则立即生效 | `"gpt-5"` |
-| `outputStyle` | 输出风格。直接编辑 settings.json 后**已开启的会话不生效**（需重启进程或执行 `/clear`（新建会话）后才应用新值）；通过样式面板（`/output-style`）或 `/config set outputStyle` 切换则立即生效 | `"concise"` |
+| `model` | 覆盖 CodeBuddy Code 使用的默认模型 | `"gpt-5"` |
 | `subagents` | 按内置子代理名称指定模型。格式为 `{"agents": {"<子代理名>": {"model": "..."}}}`；`model` 支持模型 ID、别名、`lite` / `reasoning` 或 `inherit` / `default`。各子代理互不影响，支持用户全局和项目两种范围，可在 `/agents` 中编辑。优先级：`CODEBUDDY_CODE_SUBAGENT_MODEL` \> 本次 Agent 工具调用的 `model` 入参 \> 项目设置 \> 用户全局设置 \> 内置声明 \> 主模型。详见 [子代理文档](./sub-agents) | `{"agents": {"Explore": {"model": "lite"}, "Plan": {"model": "reasoning"}}}` |
-| `variantModels` | 将通用场景变体映射到模型，键为 `lite` 或 `reasoning`，值为模型 ID 或别名。该映射影响所有使用相应变体的逻辑，可通过 `/model:lite` / `/model:reasoning` 编辑。优先级：对应的变体环境变量 \> 项目设置 \> 用户全局设置 \> 主模型的 `relatedModels` \> 适用的产品内置默认 \> 主模型 | `{"lite": "<fast-model-id>", "reasoning": "<reasoning-model-id>"}` |
+| `variantModels` | 将通用场景变体映射到模型，键为 `lite` 或 `reasoning`，值为模型 ID 或别名。该映射影响所有使用相应变体的逻辑，可在 `/model` 的 **Scenario Models** 区域编辑。优先级：对应的变体环境变量 \> 项目设置 \> 用户全局设置 \> 主模型的 `relatedModels` \> 适用的产品内置默认 \> 主模型 | `{"lite": "<fast-model-id>", "reasoning": "<reasoning-model-id>"}` |
 | `agent` | 覆盖主线程使用的 agent 名称（内置或自定义 agent），应用该 agent 的 system prompt、工具限制和模型配置。优先级：`product.json default` → `plugin agent` → `settings.json agent` → `CLI --agent` | `"my-reviewer"` |
 | `statusLine` | 配置自定义状态行以显示上下文。见 \[statusLine 文档](\#状态行配置） | `{"type": "command", "command": "~/.codebuddy/statusline.sh"}` |
 | `enableAllProjectMcpServers` | 自动批准项目 `.mcp.json` 文件中定义的所有 MCP 服务器 | `false` |
@@ -91,7 +90,7 @@ json
 | `envRouteMode` | 环境路由模式配置 | `"production"` |
 | `sandbox` | Bash 沙箱配置,见[Bash沙箱设置](#bash沙箱设置) | `{"enabled": true}` |
 | `promptSuggestionEnabled` | 启用 Prompt 建议功能，在 Agent 完成对话后自动预测下一步操作（默认：`true`） | `false` |
-| `reasoningEffort` | Reasoning effort 级别配置，控制模型推理的深度。可选值：`minimal`、`low`、`medium`、`high`、`xhigh`、`max`。留空时使用产品配置默认值。可通过 `/config` 面板切换，选择 `auto` 等效于清除此设置 | `"high"` |
+| `reasoningEffort` | Reasoning effort 级别配置，控制模型推理的深度。可选值：`low`、`medium`、`high`、`xhigh`。留空时使用产品配置默认值。可通过 `/config` 面板切换，选择 `auto` 等效于清除此设置 | `"high"` |
 | `memory` | \[Experimental] 记忆功能配置，见[记忆功能配置](#记忆功能配置experimental) | `{"enabled": true}` |
 | `trustedDirectories` | 已经信任过的工作目录列表。命中的目录启动时不会再弹"是否信任此目录"的授权提示。通常由首次启动时的弹窗自动写入，也可手动编辑 | `["~/workspace/myproj"]` |
 | `trustAll` | 信任所有工作目录，启动时不再弹"是否信任此目录"的授权提示。**仅免除目录信任授权，不会跳过工具执行权限**——是否弹工具审批仍由 `permissions.defaultMode` / `bypassPermissions` 模式决定，与本字段相互独立 | `true` |
@@ -432,9 +431,9 @@ json
 
 | 字段 | 描述 | 默认 |
 | --- | --- | --- |
-| `auth` | 认证模式。`"password"` 要求客户端携带密码，`"none"` 不做认证。`--serve` 未显式配置时默认为 `"password"`；显式设为 `"none"` 可关闭（此时同机任意进程即可经该服务执行命令、读写文件，仅建议隔离环境 / CI 使用） | `"password"`（`--serve`） |
+| `auth` | 认证模式。`"password"` 要求客户端携带密码，`"none"` 不做认证（仅建议 loopback 使用） | `"none"` |
 | `password` | `auth: "password"` 时的密码。为空首次启动会自动生成并打印到日志 | 自动生成 |
-| `corsOrigins` | 允许跨域访问 Gateway 的额外 Origin 列表。服务自身监听端口的 loopback 来源自动放行，**其他端口的 `localhost` 页面需在此显式声明**（如本地开发的 Vite dev server） | `[]` |
+| `corsOrigins` | 允许跨域访问 Gateway 的额外 Origin 列表（无需包含 loopback，loopback 自动放行） | `[]` |
 | `maxConnections` | ACP 协议最大并发连接数。环境变量 `CODEBUDDY_ACP_MAX_CONNECTIONS` 优先级更高 | `5` |
 | `tokenTtlMs` | ACP session token 有效期（毫秒）。环境变量 `CODEBUDDY_ACP_TOKEN_TTL_MS` 优先级更高 | `86400000`（24 小时） |
 | `runTimeoutMs` | `/api/v1/runs` 任务执行超时（毫秒）。超时返回 `{code:'EXECUTION_ERROR', message:'Task timed out after Xmin'}` | `1800000`（30 分钟） |
@@ -480,7 +479,7 @@ json
   }
 }
 ```
-- 使用 `/agents` 编辑内置子代理映射；使用 `/model:lite` / `/model:reasoning` 编辑 `lite` 和 `reasoning` 映射。
+- 使用 `/agents` 编辑内置子代理映射；使用 `/model` 的 **Scenario Models** 区域编辑 `lite` 和 `reasoning` 映射。
 - **Global** 写入用户设置，**Project** 写入共享项目设置。
 - `subagents` 按子代理名合并，`variantModels` 按变体名合并。项目级覆盖 `Explore` 不会删除用户级的其他子代理配置；项目级覆盖 `reasoning` 也不会删除用户级的 `lite`。
 - 在 `/agents` 中选择 **Inherit / Default**，或在 `/model` 中选择 **Default**，会删除所选范围的对应项并恢复低优先级解析链。

@@ -90,15 +90,28 @@ NES 默认启用。要切换它：
 
 或在设置中配置：
 
-1. 打开系统设置 (`Cmd/Ctrl + ,`)
+1. 打开设置 (`Cmd/Ctrl + ,`)
 2. 搜索 `codingcopilot.enableNextEditSuggestions`
 3. 切换该设置
+
+## 切换补全模型
+
+您可以在不同的 AI 模型之间切换用于代码补全：
+
+1. 打开命令面板 (`Cmd/Ctrl + Shift + P`)
+2. 搜索 "CodeBuddy: Change Completions Model"
+3. 选择您要使用的模型
+
+或通过快速设置访问：
+
+1. 点击状态栏中的 CodeBuddy 图标
+2. 选择 "Change Completions Model"
 
 ## 配置代码补全
 
 ### 全局启用/禁用自动补全
 
-1. 打开系统设置 (`Cmd/Ctrl + ,`)
+1. 打开设置 (`Cmd/Ctrl + ,`)
 2. 搜索 `codingcopilot.enableAutoCompletions`
 3. 切换该设置
 
@@ -112,7 +125,7 @@ NES 默认启用。要切换它：
 
 您可以控制特定编程语言的代码补全：
 
-1. 打开系统设置 (`Cmd/Ctrl + ,`)
+1. 打开设置 (`Cmd/Ctrl + ,`)
 2. 搜索 `codingcopilot.enableCompletionLanguage`
 3. 配置特定语言的设置
 
@@ -135,7 +148,7 @@ json
 
 控制代码补全的风格：
 
-1. 打开系统设置 (`Cmd/Ctrl + ,`)
+1. 打开设置 (`Cmd/Ctrl + ,`)
 2. 搜索 `codingcopilot.generationPreference`
 3. 选择：
 	- **智能模式**：根据上下文提供多行补全

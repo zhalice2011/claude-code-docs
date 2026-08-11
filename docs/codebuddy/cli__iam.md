@@ -62,30 +62,12 @@ bash
 export CODEBUDDY_API_KEY="your-api-key"
 export CODEBUDDY_INTERNET_ENVIRONMENT=ioa
 ```
-**专享版：**
-
-bash
-```
-export CODEBUDDY_API_KEY="your-api-key"
-export CODEBUDDY_INTERNET_ENVIRONMENT=cloudhosted
-```
-**私有化部署：**
-
-bash
-```
-export CODEBUDDY_API_KEY="your-api-key"
-export CODEBUDDY_INTERNET_ENVIRONMENT=selfhosted
-```
 
 | 版本 | `CODEBUDDY_INTERNET_ENVIRONMENT` 值 | 说明 |
 | --- | --- | --- |
 | 海外版 | 不设置 | 默认值，连接海外服务 |
 | 中国版 | `internal` | 连接中国区服务 |
 | iOA 版 | `ioa` | 连接腾讯 iOA 内网服务 |
-| 专享版 | `cloudhosted` | 连接腾讯代运维的企业实例 |
-| 私有化部署 | `selfhosted` | 连接客户自建的企业服务 |
-
-> **💡 专享版 / 私有化部署还需指定服务地址：** 这两种版本的服务地址由企业自定义（如 `https://your-company.copilot.qq.com`），仅设置环境变量不足以让请求指向企业服务。使用 CLI 时在登录流程的「企业域名配置」中填写，会自动写入 `settings.json`；使用 API Key 时需手动配置，详见 [CODEBUDDY\_API\_KEY](#codebuddy_api_key)；使用 SDK 时通过 `options.endpoint` 传入。
 
 > **💡 持久化配置建议：** 将环境变量添加到 `~/.bashrc`、`~/.zshrc` 或 shell 配置文件中，避免每次手动设置。
 > 
@@ -192,8 +174,6 @@ codebuddy --model openai/gpt-4
 > | 海外版 | 不设置（默认） |
 > | 中国版 | `internal` |
 > | iOA 版 | `ioa` |
-> | 专享版 | `cloudhosted` |
-> | 私有化部署 | `selfhosted` |
 
 bash
 ```
@@ -207,30 +187,7 @@ export CODEBUDDY_INTERNET_ENVIRONMENT=internal
 # iOA 版
 export CODEBUDDY_API_KEY="your-api-key"
 export CODEBUDDY_INTERNET_ENVIRONMENT=ioa
-
-# 专享版（服务地址由企业自定义，还需在 settings.json 配置，见下方说明）
-export CODEBUDDY_API_KEY="your-api-key"
-export CODEBUDDY_INTERNET_ENVIRONMENT=cloudhosted
-
-# 私有化部署（服务地址由企业自定义，还需在 settings.json 配置，见下方说明）
-export CODEBUDDY_API_KEY="your-api-key"
-export CODEBUDDY_INTERNET_ENVIRONMENT=selfhosted
 ```
-
-> **⚠️ 专享版 / 私有化部署：还需在 `settings.json` 中配置企业服务地址**
-> 
-> 这两个版本的服务地址由企业自定义，仅设置 `CODEBUDDY_INTERNET_ENVIRONMENT` 不足以让请求指向企业服务——还需在 `~/.codebuddy/settings.json` 中补充：
-> 
-> json
-> ```
-> {
->   "endpoint": "https://your-company.copilot.qq.com"
-> }
-> ```
-> 未配置时，请求会发往默认的公网服务地址，通常表现为鉴权失败或取不到企业模型列表。
-> 
-> 通过 CLI 登录时，该地址会由登录流程的「企业域名配置」自动写入，无需手动编辑。
-
 #### CODEBUDDY\_AUTH\_TOKEN
 
 已获取的 OAuth Bearer Token，适用于 CI/CD 或已有 token 的场景。
@@ -603,14 +560,11 @@ echo $CODEBUDDY_INTERNET_ENVIRONMENT
 | 海外版 | 不设置 |
 | 中国版 | `internal` |
 | iOA 版 | `ioa` |
-| 专享版 | `cloudhosted` |
-| 私有化部署 | `selfhosted` |
 
 **常见错误：**
 
 - ❌ 中国版用户忘记设置 `CODEBUDDY_INTERNET_ENVIRONMENT=internal`
 - ❌ iOA 版用户设置成了 `internal` 而不是 `ioa`
-- ❌ 专享版 / 私有化部署用户只设了环境变量，忘记指定企业服务地址（CLI 的「企业域名配置」或 SDK 的 `options.endpoint`），导致请求仍发往默认公网地址
 - ❌ 环境变量只在当前终端生效，新开终端后失效（建议添加到 shell 配置文件）
 
 ### 如何临时绕过权限？

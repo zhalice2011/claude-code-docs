@@ -95,13 +95,7 @@ CodeBuddy Code 允许用户配置模型上下文协议(MCP)服务器。允许的
 
 ### 认证保护
 
-`codebuddy --serve` **默认开启密码认证**（secure by default）。这组端点包含执行进程（`/api/v1/process/*`）、读写任意文件（`/api/v1/files/*`、`/api/v1/fs/*`）和交互式终端（`/api/v1/pty/*`）等敏感能力，因此不再依赖"仅监听回环地址"作为安全边界——同机的其他进程以及浏览器中打开的网页都能触达回环端口。
-
-启动时会打印随机密码和带密码的可点链接，点击后落 30 天有效期的会话 Cookie。API 请求需携带 `Authorization: Bearer <password>` 或该 Cookie（`?password=` 仅对首页有效）。
-
-可用 `--auth none` 或 `CODEBUDDY_GATEWAY_AUTH=none` 显式关闭认证，此时启动会打印警告。**关闭后同机任意进程都能通过该服务执行命令、读写文件**，仅建议在隔离环境（容器 / 一次性沙箱）或 CI 中使用。
-
-详见 [HTTP API 认证](./http-api#认证)。
+敏感端点（包括 `/info`、`/health`）在启用密码认证时需要 Bearer Token。详见 [HTTP API 认证](./http-api#认证)。
 
 ## 沙箱安全
 
