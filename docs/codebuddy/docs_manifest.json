@@ -1164,6 +1164,30 @@
       "last_updated": "2026-06-28T07:29:25.373913",
       "source": "codebuddy"
     },
+    "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Library.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Library",
+      "hash": "ce8a8736e275ce584a65c3a60d71edfce412fbabf1b4706d28a0721e70a7359a",
+      "last_updated": "2026-08-11T04:23:32.657087",
+      "source": "codebuddy"
+    },
+    "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Library__Collaboration.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Library/Collaboration",
+      "hash": "1b155a86d9d0a5df005b0f81ad73193c44caed8bb35338ff6031a85114851d93",
+      "last_updated": "2026-08-11T04:23:33.600408",
+      "source": "codebuddy"
+    },
+    "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Library__Content-Management.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Library/Content-Management",
+      "hash": "bbf45213f8e689012452b6cd571ee11de2645f8668a463a0312aa1b76800a526",
+      "last_updated": "2026-08-11T04:23:34.501886",
+      "source": "codebuddy"
+    },
+    "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Library__Lightweight-Publish.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Library/Lightweight-Publish",
+      "hash": "7462cdc2f007a56ae10b63176c1dcae355b4ea51d0d7b7d70eabb638cdbfc235",
+      "last_updated": "2026-08-11T04:23:35.423259",
+      "source": "codebuddy"
+    },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Mailbox.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Mailbox",
       "hash": "4882326532b8a28dffcc68bf15ebd0b63d8cd00354700224d1e805ea66c72d18",
@@ -1587,19 +1611,19 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-08-11T01:11:13.717160",
+    "last_fetch_completed": "2026-08-11T04:24:41.661646",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 266,
-    "pages_fetched_successfully": 264,
+    "pages_discovered": 270,
+    "pages_fetched_successfully": 268,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 264,
+    "total_files": 268,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-11T01:11:13.717185",
+  "last_updated": "2026-08-11T04:24:41.661669",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
