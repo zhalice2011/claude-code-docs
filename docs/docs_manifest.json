@@ -990,8 +990,8 @@
     "self-hosted-environments-configuration.md": {
       "original_url": "https://code.claude.com/docs/en/self-hosted-environments-configuration",
       "original_md_url": "https://code.claude.com/docs/en/self-hosted-environments-configuration.md",
-      "hash": "913bf0891a25ed02e9fd037b304b4acb50a59859530feb138486c004bf64ec70",
-      "last_updated": "2026-08-13T01:07:56.855164",
+      "hash": "c6b12f510c2627accc943085c1f90227034a187d197a183838eab9f889bf52e2",
+      "last_updated": "2026-08-13T15:52:07.486354",
       "source": "claude-code"
     },
     "self-hosted-environments-deploy.md": {
@@ -1018,8 +1018,8 @@
     "self-hosted-environments-reference.md": {
       "original_url": "https://code.claude.com/docs/en/self-hosted-environments-reference",
       "original_md_url": "https://code.claude.com/docs/en/self-hosted-environments-reference.md",
-      "hash": "6ddfb34196e06d173cc953c107fde3571cd6d246c0a80d565d16df5889763125",
-      "last_updated": "2026-08-13T01:08:01.400344",
+      "hash": "abeacfd00187b2adbbc398c1de12ae7a7c6d3d0e5cfd08f91ce626b0c70f785f",
+      "last_updated": "2026-08-13T15:52:11.091234",
       "source": "claude-code"
     },
     "self-hosted-environments-testing.md": {
@@ -1312,7 +1312,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-08-13T12:48:01.204149",
+    "last_fetch_completed": "2026-08-13T15:52:51.441515",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 187,
@@ -1322,7 +1322,7 @@
     "total_files": 187,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-13T12:48:01.204178",
+  "last_updated": "2026-08-13T15:52:51.441539",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
