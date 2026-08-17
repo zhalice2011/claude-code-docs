@@ -232,7 +232,3 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 3. 点击 **发票管理**，前往腾讯云控制台查看发票，注意请使用企业绑定的腾讯云 uin 登录腾讯云控制台。
 
 ![alt text](/docs/static/%E5%8F%91%E7%A5%A8-2.BPLlgsdS.png)
-
-TIP
-
-仅企业版支持开具企业抬头的发票，个人版不支持。
