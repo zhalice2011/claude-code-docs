@@ -122,15 +122,15 @@
     "agents-and-tools__agent-skills__enterprise.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise.md",
-      "hash": "de38cb2a0a0e4fd777a979be4604da73f93052bb29132f763beb79a0e1840190",
-      "last_updated": "2026-08-12T18:52:30.239371",
+      "hash": "7a83e80ce335ab329ed9f1c674fa3747b3b0d46656c9de6835932cc168976e36",
+      "last_updated": "2026-08-18T21:17:06.701567",
       "source": "platform"
     },
     "agents-and-tools__agent-skills__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.md",
-      "hash": "4f7b241829ad6a1358475dfc59e33de0669f7d0b00e634acd2da66c3c6e9b321",
-      "last_updated": "2026-08-14T21:18:56.474725",
+      "hash": "f3a9e69a05e4d41157561ced529eb795dc420d99103faf2a3488d364f5eacf03",
+      "last_updated": "2026-08-18T21:17:07.393438",
       "source": "platform"
     },
     "agents-and-tools__agent-skills__quickstart.md": {
@@ -3195,8 +3195,8 @@
     "build-with-claude__skills-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide.md",
-      "hash": "71451b5bc3e2193c5673fb70c0380002900a142ddd5393fd2a1f750f3292e797",
-      "last_updated": "2026-08-12T18:57:08.524044",
+      "hash": "85af315e980fe974e2f85d403db4099a5aee51a1fb0d902dd468cb4c42d5bb49",
+      "last_updated": "2026-08-18T21:21:47.621542",
       "source": "platform"
     },
     "build-with-claude__streaming.md": {
@@ -3944,7 +3944,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-08-18T18:33:14.630105",
+    "last_fetch_completed": "2026-08-18T21:22:56.491738",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 566,
@@ -3958,7 +3958,7 @@
     "total_files": 563,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-18T18:33:14.630125",
+  "last_updated": "2026-08-18T21:22:56.491753",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
