@@ -1,5 +1,12 @@
 {
   "files": {
+    "about-claude__additional-resources.md": {
+      "original_url": "https://platform.claude.com/docs/en/about-claude/additional-resources",
+      "original_md_url": "https://platform.claude.com/docs/en/about-claude/additional-resources.md",
+      "hash": "6303bfff6af1937165805bbe94e3da23b32f9602c516810e2d72e986aa934bd9",
+      "last_updated": "2026-08-19T18:22:04.380151",
+      "source": "platform"
+    },
     "about-claude__glossary.md": {
       "original_url": "https://platform.claude.com/docs/en/about-claude/glossary",
       "original_md_url": "https://platform.claude.com/docs/en/about-claude/glossary.md",
@@ -3279,8 +3286,8 @@
     "claude_api_primer.md": {
       "original_url": "https://platform.claude.com/docs/en/claude_api_primer",
       "original_md_url": "https://platform.claude.com/docs/en/claude_api_primer.md",
-      "hash": "d479d22027cea9d39174890cb995efb1e3baae520c154f288e9791748bdd5eec",
-      "last_updated": "2026-08-13T18:55:49.615853",
+      "hash": "584a287a204754021389e49cc0883ecab22ebadae2375b7254f4bccfaef6e8b3",
+      "last_updated": "2026-08-19T18:27:05.042302",
       "source": "platform"
     },
     "cli-sdks-libraries__cli__authentication.md": {
@@ -3419,15 +3426,15 @@
     "manage-claude__admin-api.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/admin-api",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/admin-api.md",
-      "hash": "fccb182841bede8aa232ccf9024076ce87bf2e65847e699fc161c96f6d3be274",
-      "last_updated": "2026-08-19T00:46:57.883230",
+      "hash": "0e5af336fe39eb46fa97aace4cf37760242b8db76be96f33ddc977f2c2ec0f68",
+      "last_updated": "2026-08-19T18:27:18.797310",
       "source": "platform"
     },
     "manage-claude__admin-api-keys.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/admin-api-keys",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/admin-api-keys.md",
-      "hash": "8cdd1fed4dac05b2c430f73b9514d8f8ecceae426a6a614b7e5e54743acc5b31",
-      "last_updated": "2026-08-13T18:56:02.485279",
+      "hash": "65fbcf778abe7aaa3869228a738a4d2674955bc694c9651e669c394d72592e11",
+      "last_updated": "2026-08-19T18:27:19.500553",
       "source": "platform"
     },
     "manage-claude__analytics-api.md": {
@@ -3608,8 +3615,8 @@
     "manage-claude__user-management.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/user-management",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/user-management.md",
-      "hash": "a4c3e5e16d896c1e3e8eaabf67252558e21b3ce5c4f663cbb796122d8c4799cb",
-      "last_updated": "2026-08-12T18:57:47.605698",
+      "hash": "23d4ab4bfa7a8e09dcee5052e96e5e4042a35fcc5fde9e1e0733befd8330062f",
+      "last_updated": "2026-08-19T18:27:36.363226",
       "source": "platform"
     },
     "manage-claude__wif-admin-api.md": {
@@ -3881,8 +3888,8 @@
     "release-notes__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/overview",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/overview.md",
-      "hash": "b37e0bd3d987a2e6c4e6be8b364086961e297b7893d64602de82ec5754885f14",
-      "last_updated": "2026-08-19T00:47:40.305786",
+      "hash": "5fcf9fd94b19435c991dfd518693ad4c935457af3ad08a4841cefbec6949324d",
+      "last_updated": "2026-08-19T18:28:02.157987",
       "source": "platform"
     },
     "release-notes__system-prompts.md": {
@@ -3944,21 +3951,21 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-08-19T15:30:53.998284",
+    "last_fetch_completed": "2026-08-19T18:28:07.371995",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
-    "pages_discovered": 566,
-    "pages_fetched_successfully": 563,
+    "pages_discovered": 567,
+    "pages_fetched_successfully": 564,
     "pages_failed": 3,
     "failed_pages": [
       "/docs/en/about-claude/use-case-guides/overview",
       "/docs/en/home",
       "/docs/en/resources/overview"
     ],
-    "total_files": 563,
+    "total_files": 564,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-19T15:30:53.998304",
+  "last_updated": "2026-08-19T18:28:07.372016",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
