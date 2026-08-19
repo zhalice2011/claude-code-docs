@@ -3132,8 +3132,8 @@
     "build-with-claude__prompt-caching.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching.md",
-      "hash": "4af14eac456ba952ff0ee0fb0664b9d51bee244eb9a4fdef9ace0066f84fd6e6",
-      "last_updated": "2026-08-13T18:55:36.451327",
+      "hash": "3ce76cbe15423204c0abd1613dcd8806f61559e0ed254beb652b4fdbc8cea579",
+      "last_updated": "2026-08-19T06:32:53.146203",
       "source": "platform"
     },
     "build-with-claude__prompt-engineering__claude-prompting-best-practices.md": {
@@ -3944,7 +3944,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-08-19T03:47:04.235866",
+    "last_fetch_completed": "2026-08-19T06:34:03.984921",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 566,
@@ -3958,7 +3958,7 @@
     "total_files": 563,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-19T03:47:04.235903",
+  "last_updated": "2026-08-19T06:34:03.984942",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
