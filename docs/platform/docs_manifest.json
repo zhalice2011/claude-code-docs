@@ -129,22 +129,22 @@
     "agents-and-tools__agent-skills__enterprise.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise.md",
-      "hash": "7a83e80ce335ab329ed9f1c674fa3747b3b0d46656c9de6835932cc168976e36",
-      "last_updated": "2026-08-18T21:17:06.701567",
+      "hash": "dbbd6b433898c561e78a1ee161bfcee4e996aec0e4442bfeaa26c1cf587eda67",
+      "last_updated": "2026-08-19T21:19:05.702352",
       "source": "platform"
     },
     "agents-and-tools__agent-skills__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.md",
-      "hash": "f3a9e69a05e4d41157561ced529eb795dc420d99103faf2a3488d364f5eacf03",
-      "last_updated": "2026-08-18T21:17:07.393438",
+      "hash": "c161721ff90020eb3e9ba8755f70371f1c70a1b1aeba3c0b1545087479a6949c",
+      "last_updated": "2026-08-19T21:19:06.398550",
       "source": "platform"
     },
     "agents-and-tools__agent-skills__quickstart.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart.md",
-      "hash": "c1295ed9cb4998662848b4a9b45e61e156a1f542adde11a5f2ea876d432d4be7",
-      "last_updated": "2026-08-12T18:52:31.494501",
+      "hash": "b00c029bb325e47977bd8f4a50845c19e7707533f0371fb6660923b7b4501e38",
+      "last_updated": "2026-08-19T21:19:07.124632",
       "source": "platform"
     },
     "agents-and-tools__mcp-connector.md": {
@@ -3090,8 +3090,8 @@
     "build-with-claude__files.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/files",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/files.md",
-      "hash": "9cb3e722238635102bd70c5006d3c5d362a60022d1718e59d89c4bd7dde2c8b6",
-      "last_updated": "2026-08-18T18:31:57.015043",
+      "hash": "ef44643401ba90ac33bf00ca99d501dcc9f1e6fc32c6e6d6404398df7a7c3ef7",
+      "last_updated": "2026-08-19T21:23:31.035864",
       "source": "platform"
     },
     "build-with-claude__handling-stop-reasons.md": {
@@ -3202,8 +3202,8 @@
     "build-with-claude__skills-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide.md",
-      "hash": "85af315e980fe974e2f85d403db4099a5aee51a1fb0d902dd468cb4c42d5bb49",
-      "last_updated": "2026-08-18T21:21:47.621542",
+      "hash": "c8f32577cd749adfd92db848db1f84c5b8f4a97fe654ff8bfa9405a033376846",
+      "last_updated": "2026-08-19T21:23:41.554469",
       "source": "platform"
     },
     "build-with-claude__streaming.md": {
@@ -3447,8 +3447,8 @@
     "manage-claude__api-and-data-retention.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention.md",
-      "hash": "9981daf66c4b75639235c980cf4e81cba75fa6eb8634d522ef8180e6aed19916",
-      "last_updated": "2026-08-19T00:46:59.960832",
+      "hash": "f28771f6605286a50dc1cdc7a0b5696795b2481ae983bca5e308589e87318e81",
+      "last_updated": "2026-08-19T21:24:04.146213",
       "source": "platform"
     },
     "manage-claude__app-attest.md": {
@@ -3951,7 +3951,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-08-19T18:28:07.371995",
+    "last_fetch_completed": "2026-08-19T21:24:49.799285",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 567,
@@ -3965,7 +3965,7 @@
     "total_files": 564,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-19T18:28:07.372016",
+  "last_updated": "2026-08-19T21:24:49.799311",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
