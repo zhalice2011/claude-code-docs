@@ -122,31 +122,7 @@ secrets 支持 `${VAR_NAME}` 引用环境变量，避免硬编码密钥。系统
 
 在左侧对话框切换**Test Run**模式，使用当前配置对话测试 Agent 的响应效果。
 
-![](/docs/static/cloudagent-5.VISJar_9.png)### 渠道接入
-
-支持接入企微 AIBot、QQ 机器人、飞书和钉钉接收和回复Agent消息。在企业后台可以管理 Agent 的即时通讯渠道，每条接入记录对应一个 Bot → Session 的绑定关系
-
-![](/docs/static/cloudagent-8.MmHtp8Mj.png)#### 选择类型
-
-选择**企微 AIBot** 接入：
-
-![](/docs/static/cloudagent-15.DnGXTD6U.png)#### 填写配置
-
-在创建的企微 AIBot 中选择**使用URL回调**的连接方式，点击 Token 和 Encoding\-AESKey 输入框右侧的**随机获取**。将获取到的Token 和 EncodingAESKey 填入对应位置：
-
-![](/docs/static/cloudagent-16.be6RglWi.png)#### 绑定 Session
-
-选择一个 Session 与此渠道绑定，消息将路由到该 Session：
-
-![](/docs/static/cloudagent-17.DTfZidPF.png)#### 完成
-
-复制 Webhook 地址填入 企微AIBot 连接方式中的URL位置：
-
-![](/docs/static/cloudagent-18.CtxBFRQT.png)TIP
-
-企微AIBot后台相关配置参考[企业微信接入指南](./../../workbuddy/Wecom-Guide)中的**六、备选方案：使用 URL 回调接入**板块。
-
-### 凭据管理
+![](/docs/static/cloudagent-5.VISJar_9.png)### 凭据管理
 
 凭据管理为 Agent 提供安全的凭据存储和代理注入能力。当 Agent 调用 **MCP 服务、Skill 技能或外部 API**时，系统会自动将对应的认证凭据注入请求中，无需在代码或配置中明文暴露密钥。
 

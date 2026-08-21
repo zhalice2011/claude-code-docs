@@ -422,8 +422,8 @@
     },
     "enterprise__adminguide__CloudAgent.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/adminguide/CloudAgent",
-      "hash": "a71d7a6a7ab91dee1bd77d8bd42d296c7b021b74d62658b7f13e722eae84afc6",
-      "last_updated": "2026-06-26T12:15:06.298928",
+      "hash": "6729b3e85fb927dcf909b8e580c2d7947022dead1ea11bb84e1e1e7df21df1ef",
+      "last_updated": "2026-08-21T03:51:46.679658",
       "source": "codebuddy"
     },
     "enterprise__adminguide__Connector\u7ba1\u7406.md": {
@@ -1034,8 +1034,8 @@
     },
     "workbuddy__Changelog.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Changelog",
-      "hash": "d55bba6fbe4b72ffc78af4630826620b774aa9c5a4d5e41a27e0942c5f12c80a",
-      "last_updated": "2026-08-18T09:32:47.975740",
+      "hash": "b2e1f0d239221da3ad3de3de06eb556d148c4a4f55a290b13c05314b5f8baf6c",
+      "last_updated": "2026-08-21T03:53:19.933392",
       "source": "codebuddy"
     },
     "workbuddy__Conversation.md": {
@@ -1530,6 +1530,12 @@
       "last_updated": "2026-06-26T12:16:47.275406",
       "source": "codebuddy"
     },
+    "workbuddyapp__features__WeChat-Open.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/WeChat-Open",
+      "hash": "eee03fa20efe3b16db16f0af6617aff72ce1e1a49247b1d2a8dc44a648676f5b",
+      "last_updated": "2026-08-21T03:54:35.575918",
+      "source": "codebuddy"
+    },
     "workbuddymini__features__Attachments-and-Skills.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Attachments-and-Skills",
       "hash": "86f332d007f4cba457023be80598235294637e997aafaed1c68c5c2e7c967641",
@@ -1596,6 +1602,12 @@
       "last_updated": "2026-06-26T12:16:53.052498",
       "source": "codebuddy"
     },
+    "workbuddymini__features__WeChat-Open.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/WeChat-Open",
+      "hash": "c123c02371984565b0df67e6e2934d0d97b75b49cb471f384cf54bbcce392d28",
+      "last_updated": "2026-08-21T03:54:46.084232",
+      "source": "codebuddy"
+    },
     "workbuddymini__quick-start__Overview.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/quick-start/Overview",
       "hash": "d8018705e86f0995c42a88544d513131377f60d52c8957aab0fb56f2d3d855ec",
@@ -1611,19 +1623,19 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-08-21T00:56:23.421029",
+    "last_fetch_completed": "2026-08-21T03:54:47.774872",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 270,
-    "pages_fetched_successfully": 268,
+    "pages_discovered": 272,
+    "pages_fetched_successfully": 270,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 268,
+    "total_files": 270,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-21T00:56:23.421050",
+  "last_updated": "2026-08-21T03:54:47.774894",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
