@@ -267,7 +267,7 @@ Jobs 是由 `/bg`、左箭头转后台或 `codebuddy agents` 派发出的后台�
 | GET | `/api/v1/jobs/events` | SSE 订阅 `snapshot` / `added` / `changed` / `removed` / `keepalive` |
 | GET | `/api/v1/jobs/prefs` | 获取置顶与项目分组偏好 |
 | PUT | `/api/v1/jobs/prefs` | 批量更新置顶与项目分组偏好 |
-| GET | `/api/v1/jobs/dispatch-context` | 获取启动目录、可用 Agent 与仓库目标 |
+| GET | `/api/v1/jobs/dispatch-context` | 获取启动目录、Agent 目录（内置四种模式 \+ 自定义，与主对话选择器同源）与仓库目标；响应含 `defaultAgentName`、`agents`、`permissionMode`（进程 `--permission-mode`） |
 | GET | `/api/v1/jobs/resumable` | 获取可恢复的历史会话；支持 `cwd`、`includeAttached=1` |
 | POST | `/api/v1/jobs/resume` | 从历史会话恢复为独立 job |
 | GET | `/api/v1/jobs/:id` | 获取 job 详情；id 支持稳定 ID、short ID 或 sessionId |
@@ -285,15 +285,26 @@ Jobs 是由 `/bg`、左箭头转后台或 `codebuddy agents` 派发出的后台�
 | --- | --- | --- | --- |
 | `prompt` | string | 是 | 初始指令；`bash=true` 时为 shell 命令 |
 | `cwd` | string | 否 | 启动目录，默认当前工作目录 |
-| `agent` / `model` | string | 否 | 自定义 Agent 或模型 |
+| `model` | string | 否 | 指定模型，缺省按常规模型解析规则 |
 | `effort` | string | 否 | `minimal` / `low` / `medium` / `high` / `xhigh` / `max` |
-| `permissionMode` | string | 否 | `default` / `acceptEdits` / `plan` / `auto` / `dontAsk` / `bypassPermissions` |
+| `permissionMode` | string | 否 | `default` / `acceptEdits` / `plan` / `auto` / `dontAsk` / `bypassPermissions`。进程 `--permission-mode` 作为 Web 派发框默认，仍可被本次请求覆盖 |
+| `agent` | string | 否 | 主 Agent：`cli` / `ptc` / `minimal` / `create` 或自定义 agent 名。省略时：进程 `--agent` \> `lastUsed` \> `default` \> 产品 `cli`。总闸关闭时忽略 shipped 模式名。`minimal` 与 `permissionMode=plan` 同传返回 `400 BAD_REQUEST` |
 | `name` | string | 否 | 列表显示名称 |
 | `bash` | boolean | 否 | 派发一次性 shell job |
 | `sourceSessionId` | string | 否 | 继承受限上下文；新 job 仍使用独立会话 |
 | `bgIsolation` | string | 否 | `none` / `worktree`；省略时跟随全局后台写隔离设置 |
 
-`effort`、`permissionMode`、`bgIsolation` 按白名单校验，非法值返回 `400 BAD_REQUEST`。请求省略可选字段时不覆盖会话或全局默认值。
+`effort`、`permissionMode`、`bgIsolation` 按白名单校验，非法值返回 `400 BAD_REQUEST`。请求省略可选字段时不覆盖会话、全局或进程默认值。
+
+`GET /api/v1/jobs/dispatch-context` 响应字段：
+
+| 字段 | 说明 |
+| --- | --- |
+| `cwd` | 当前工作目录 |
+| `defaultAgentName` | 派发框默认主 Agent：进程 `--agent` 优先，否则 `lastUsed` / `default` / 产品默认 |
+| `agents` | 与主对话 chip 同一份目录（`built-in` 含 cli/ptc/minimal/create，外加自定义） |
+| `permissionMode` | 进程 `--permission-mode`；有值时前端压过 lastUsed 权限 chip |
+| `repoTargets` | 可派发的子仓 / worktree / 已有 job 仓根 |
 
 **生命周期字段**:
 
@@ -884,6 +895,7 @@ curl -X DELETE "http://127.0.0.1:8080/api/v1/scheduled-tasks/TASK_ID?sessionId=S
 | `RATE_LIMITED` | 429 | 请求频率过高 |
 | `INTERNAL_ERROR` | 500 | 服务器内部错误 |
 | `SESSION_NOT_FOUND` | 404 | 会话不存在 |
+| `JOB_NOT_FOUND` | 404 | Jobs 实例不存在 |
 | `SESSION_DELETE_CURRENT` | 400 | 不能删除当前会话 |
 | `TERMINAL_NOT_FOUND` | 404 | PTY 不存在 |
 | `PROCESS_NOT_FOUND` | 404 | 进程不存在 |

@@ -95,7 +95,9 @@ codebuddy --permission-mode dontAsk
 codebuddy --permission-mode plan
 codebuddy --permission-mode bypassPermissions
 ```
-`--permission-mode` 官方支持这 6 个字面量。其他模式（`delegate` / `work` / `fullAccess` / `ignore`）不能作为标准 CLI 启动参数。
+`--permission-mode` help 列出这 6 个字面量。运行时还认 `fullAccess`（语义接近 `bypassPermissions`，help 未列）。`delegate` / `work` / `ignore` 不能作为标准 CLI 启动参数。`--serve` 的模式 × 权限对照见 [Web UI — Serve 启动：模式与权限](./web-ui#serve-启动模式与权限)。
+
+TUI / `--serve` Web / ACP 把该值当作**本进程新会话默认**，压过 `lastUsed`；**不会**把未改过的启动值写入 `permissions.defaultMode`。Web 派发框默认同样取进程 `--permission-mode`。`minimal` 主 Agent 不能与 `plan` 同用。
 
 非交互模式下同样可用：
 

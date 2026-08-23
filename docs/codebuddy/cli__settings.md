@@ -76,14 +76,16 @@ json
 | `allowUntrustedFrontmatterHooks` | 是否允许执行来自**非 product 内置**来源的 agent/skill 的 frontmatter `hooks` 字段（包括用户本地 `.codebuddy/agents|skills/*.md` 和插件市场）。默认 `false`，防止不可信的 md 文件静默启动 shell 命令；只有 product 内置 agent/skill 不受影响。 | `true` |
 | `model` | 覆盖 CodeBuddy Code 使用的默认模型。直接编辑 settings.json 后**已开启的会话不生效**（需重启进程或执行 `/clear`（新建会话）后才应用新值）；通过 `/model` 或 `/config set model` 切换则立即生效 | `"gpt-5"` |
 | `outputStyle` | 输出风格。直接编辑 settings.json 后**已开启的会话不生效**（需重启进程或执行 `/clear`（新建会话）后才应用新值）；通过样式面板（`/output-style`）或 `/config set outputStyle` 切换则立即生效 | `"concise"` |
-| `subagents` | 按内置子代理名称指定模型。格式为 `{"agents": {"<子代理名>": {"model": "..."}}}`；`model` 支持模型 ID、别名、`lite` / `reasoning` 或 `inherit` / `default`。各子代理互不影响，支持用户全局和项目两种范围，可在 `/agents` 中编辑。优先级：`CODEBUDDY_CODE_SUBAGENT_MODEL` \> 本次 Agent 工具调用的 `model` 入参 \> 项目设置 \> 用户全局设置 \> 内置声明 \> 主模型。详见 [子代理文档](./sub-agents) | `{"agents": {"Explore": {"model": "lite"}, "Plan": {"model": "reasoning"}}}` |
+| `subagents` | 按内置子代理名称指定模型。格式为 `{"agents": {"<子代理名>": {"model": "..."}}}`；`model` 支持模型 ID、名称、别名、`lite` / `reasoning` 或 `inherit` / `default`。各子代理互不影响，支持用户全局和项目两种范围，可在 `/agents` 中编辑。优先级：`CODEBUDDY_CODE_SUBAGENT_MODEL` \> 本次 Agent 工具调用的 `model` 入参 \> 项目设置 \> 用户全局设置 \> 内置声明 \> 主模型。详见 [子代理文档](./sub-agents) | `{"agents": {"Explore": {"model": "lite"}, "Plan": {"model": "reasoning"}}}` |
 | `variantModels` | 将通用场景变体映射到模型，键为 `lite` 或 `reasoning`，值为模型 ID 或别名。该映射影响所有使用相应变体的逻辑，可通过 `/model:lite` / `/model:reasoning` 编辑。优先级：对应的变体环境变量 \> 项目设置 \> 用户全局设置 \> 主模型的 `relatedModels` \> 适用的产品内置默认 \> 主模型 | `{"lite": "<fast-model-id>", "reasoning": "<reasoning-model-id>"}` |
 | `agent` | 覆盖主线程使用的 agent 名称（内置或自定义 agent），应用该 agent 的 system prompt、工具限制和模型配置。优先级：`product.json default` → `plugin agent` → `settings.json agent` → `CLI --agent` | `"my-reviewer"` |
+| `codebuddy.mainAgent` | 四种主 Agent 模式（`cli` / `ptc` / `minimal` / `create`）与自定义智能体。子键：`enabled` 总闸（缺省开）；`allowUnopted` 未声明 `mainAgentSupport` 的 ACP 宿主（WorkBuddy）是否走模式解析（缺省关，始终原生 `cli`）；`default` 仅「设为默认」写入，作为新会话默认；`lastUsed` 为 Web chip / 新建智能体上次选择，**不覆盖** `default`。进程 `--agent` 压过 `lastUsed`，且不写 `default`。环境变量 `CODEBUDDY_MAIN_AGENT_ENABLED` / `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` 优先。CLI：`codebuddy config set codebuddy '{"mainAgent":{"enabled":true,"allowUnopted":false}}'` | `{"enabled": true, "allowUnopted": false, "default": "cli"}` |
 | `statusLine` | 配置自定义状态行以显示上下文。见 \[statusLine 文档](\#状态行配置） | `{"type": "command", "command": "~/.codebuddy/statusline.sh"}` |
 | `enableAllProjectMcpServers` | 自动批准项目 `.mcp.json` 文件中定义的所有 MCP 服务器 | `false` |
 | `enabledMcpjsonServers` | 从 `.mcp.json` 文件批准的特定 MCP 服务器列表 | `["memory", "github"]` |
 | `disabledMcpjsonServers` | 从 `.mcp.json` 文件拒绝的特定 MCP 服务器列表 | `["filesystem"]` |
 | `autoCompactEnabled` | 开启自动压缩功能 | `true` |
+| `autoCompactWindow` | 自动压缩计算的上下文窗口基准值（token），触发点 \= `min(该值, 模型有效预算) × 阈值`；留空跟随模型窗口，clamp 到 \[100k, 1M] 且不超过模型实际窗口。环境变量 `CODEBUDDY_AUTO_COMPACT_WINDOW` 优先级更高 | `200000` |
 | `autoUpdates` | 自动更新设置 | `false` |
 | `alwaysThinkingEnabled` | 始终启用思考模式 | `true` |
 | `showTokensCounter` | 是否在界面中显示 Tokens 计数器 | `false` |

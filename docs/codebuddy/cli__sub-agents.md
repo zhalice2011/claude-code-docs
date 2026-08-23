@@ -327,7 +327,7 @@ mcpServers:
 **优先级（从高到低）**：
 
 1. 环境变量 `CODEBUDDY_CODE_SUBAGENT_MODEL`（**一刀切**，对所有子代理统一生效，最高）
-2. 本次调用的工具入参（`default` / `lite` / `reasoning`，单次生效）
+2. 本次调用的工具入参（模型 ID、名称、别名或 `default` / `lite` / `reasoning`，单次生效）
 3. **项目级** `subagents.agents.<子代理名>.model`
 4. **全局级** `subagents.agents.<子代理名>.model`
 5. 内置默认声明（`product.json` 的 `agents[].models[0]`，如 `Explore` \= `lite`）
@@ -747,7 +747,11 @@ typescript
 | --- | --- | --- |
 | `task_id` | string | 必需。后台任务的 ID |
 | `block` | boolean | 是否等待任务完成。默认为 `true` |
-| `timeout` | number | 等待超时时间（毫秒）。默认 30000ms，最大 600000ms |
+| `timeout` | number | 等待超时时间（毫秒）。默认 **60000**，范围 0–600000。超时不是失败：返回当前快照，`status` 仍为 `running` |
+
+REPL 沙箱里 `TaskOutput` 返回 `{ status, taskId, content }`（完成时可能带 `result`）。用 `r.status === "completed"` 再读产物；**不要**写 `r.status || "done"`——缺字段或 `running` 都不是完成。
+
+Named Agent 会自动组队。对仍在运行的 teammate，`TaskOutput` **不会 block 等待**（完成走 inbox 通知），快照里 `status` 为 `running`。`block: true` 只对非团队后台任务生效。
 
 **用例：**
 

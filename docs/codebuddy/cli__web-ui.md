@@ -14,7 +14,7 @@ Web UI 提供与终端界面相同的核心能力，并针对浏览器进行了�
 - **监控**：系统资源指标和各 Worker 进程级内存/运行时间指标
 - **任务**：浏览任务模版并创建定时任务
 - **插件**：管理插件安装和插件市场
-- **设置**：配置主题、语言、模型和权限模式
+- **设置**：配置主题、语言、模型、权限模式和主 Agent（标准 / PTC / 极简 / 创造）
 - **文档**：浏览 CLI 文档，支持全文搜索
 - **API 文档**：查看交互式 Swagger UI，方便 HTTP API 探索
 
@@ -27,12 +27,16 @@ Web UI 提供与终端界面相同的核心能力，并针对浏览器进行了�
 bash
 ```
 codebuddy --serve --port 7890
+# 新对话盖章进程默认（不写 settings.json）：
+codebuddy --serve --agent ptc --permission-mode bypassPermissions
 ```
 然后在浏览器中打开：
 
 ```
 http://127.0.0.1:7890
 ```
+标准模式请显式传 `--agent cli`，不要指望 `lastUsed` 或默认 chip。`minimal` 不要配 `--permission-mode plan`。
+
 ### 方式二：远程控制
 
 在已有的 CodeBuddy Code 会话中启动 Gateway：
@@ -41,6 +45,86 @@ http://127.0.0.1:7890
 /gateway
 ```
 终端会显示二维码和 URL。用手机扫码或在浏览器中打开 URL。详见[远程控制](./remote-control)文档。
+
+## Serve 启动：模式与权限
+
+进程默认，**不写 settings**。`--agent` 压过 chip `lastUsed`，以及续接会话上的 leftover 四模式 / `cli` 站立键。不抢自定义 `@agent`。
+
+bash
+```
+codebuddy --serve --agent <模式> --permission-mode <权限>
+```
+本机调试常见写法（`--auth none` 只给本机 / CI，不要对公网这么开）：
+
+bash
+```
+codebuddy --serve --agent ptc --permission-mode bypassPermissions --auth none --open
+```
+### `--agent` 四种 shipped
+
+| 值 | 界面 | 对话层 | 说明 |
+| --- | --- | --- | --- |
+| `cli` | 标准模式 | 原生全工具（Bash / Read / Grep…） | **什么都不加**时的默认；要标准模式请显式传它 |
+| `ptc` | PTC | 只有 `REPL`，沙箱里全量 | Code Mode |
+| `minimal` | 极简 | 只有 `REPL`，沙箱仅 Bash \+ Edit | 无 Read / Glob / MCP |
+| `create` | 创造模式 | 与标准同一套工具 | 多写自定义 agent 的提示 |
+
+也可以是自定义 id（`.codebuddy/agents/<name>.md` 的 `name`）。
+
+### `--permission-mode`
+
+help 写的是前 6 个；运行时还认 `fullAccess`。
+
+| 值 | 含义 |
+| --- | --- |
+| `default` | 默认：按规则问 |
+| `acceptEdits` | 编辑自动过，其它仍问 |
+| `bypassPermissions` | 跳过权限确认 |
+| `plan` | Plan 模式。**`minimal` \+ `plan` 会 400**，不要这么配 |
+| `dontAsk` | 不问，该拒就拒 |
+| `auto` | 自动分类 |
+| `fullAccess` | 运行时允许，help 里没列；语义接近 `bypassPermissions` |
+
+相关（一般不用）：
+
+text
+```
+--permission-mode-before-plan <mode>   退出 plan 回到哪个权限
+--subagent-permission-mode <mode>      子代理/队友权限，不继承主会话
+```
+完整语义见 [权限模式](./permission-modes)。
+
+### 四模式 × 常用权限
+
+bash
+```
+# 标准 + 默认权限
+codebuddy --serve --agent cli --permission-mode default --auth none --open
+
+# 标准 + 跳过权限
+codebuddy --serve --agent cli --permission-mode bypassPermissions --auth none --open
+
+# PTC + 跳过权限
+codebuddy --serve --agent ptc --permission-mode bypassPermissions --auth none --open
+
+# PTC + 默认权限
+codebuddy --serve --agent ptc --permission-mode default --auth none --open
+
+# 极简 + 跳过权限（不要加 --permission-mode plan）
+codebuddy --serve --agent minimal --permission-mode bypassPermissions --auth none --open
+
+# 创造 + 跳过权限
+codebuddy --serve --agent create --permission-mode bypassPermissions --auth none --open
+```
+### 同条上的其它开关
+
+| 旗标 | 取值 | 说明 |
+| --- | --- | --- |
+| `--serve` | 无参 | HTTP \+ Web UI |
+| `--open` | 无参 | ACP 起来后再开浏览器 |
+| `--auth` | `password`（默认）/ `none` | 本机调试用 `none` |
+| `--host` | 默认 `127.0.0.1` | 绑全接口再显式 `--host 0.0.0.0` |
+| `--port` | 数字 | 不写则自动选 |
 
 ## 认证方式
 
@@ -79,6 +163,8 @@ json
 - **任务进度**：实时监控后台任务和 Team 进度
 - **会话管理**：新建对话、浏览历史、切换会话
 - **工作目录管理**：添加/移除附加工作目录，扩展 Agent 的文件访问范围（底部工具栏堆叠图标）
+- **主 Agent**：空白会话可切换 `cli` / `ptc` / `minimal` / `create` 或自定义智能体。chip 选择写入 `codebuddy.mainAgent.lastUsed`，不改 `default`。进程 `--agent` 压过 lastUsed。已有历史的会话锁定当前 Agent。
+- **目标**：输入 `/goal` 或从输入框进入目标模式，可设置进行中目标。暂停会立刻卸掉续跑并掐当前回合，目标条保留为已暂停；继续后按同一条件重新启动。垃圾桶清除目标并收起目标条。
 
 ### 终端视图
 
@@ -108,12 +194,28 @@ json
 - **手动添加**：通过 URL 添加远程实例
 - **隧道支持**：通过 Cloudflare Tunnel 访问实例
 
+### 后台会话
+
+Web UI 的 Agent View 直接使用 `/api/v1/jobs` 管理后台 agent；外部 worker 由独立的 Workers 视图管理，不混入 jobs 列表。
+
+- **项目列表**：按工作目录分组，支持置顶、项目分组、搜索和完成通知；运行中的 job 用动态指示，等待输入的 job 显示需要输入提示。
+- **派发新会话**：可选择主 Agent（与对话栏同一份目录：内置四种模式 \+ 自定义）、模型、思考强度、启动权限、启动目录、自定义名称和 shell 模式，并支持图片与文件附件。请求体字段：`agent`、`model`、`effort`、`permissionMode`、`sourceSessionId`（继承受限上下文）、`bgIsolation`（`none` / `worktree`，省略时跟随全局设置）。`GET /api/v1/jobs/dispatch-context` 返回 `defaultAgentName`、`agents`、`permissionMode`（进程 `--permission-mode`）。`minimal` 不能与 `permissionMode=plan` 同用。
+- **右键操作**：停止、重启、置顶/取消置顶、重命名、移出项目、复制会话 ID、复制工作目录和删除。
+- **会话恢复**：重启 job 会恢复其 session；浏览器重新打开时，主 Web UI 使用持久化的 session ID 加载历史，失败后才回退到 continue 选择。
+- **内嵌对话**：父网关同源 iframe 池化打开后台 agent。页面由父网关出 SPA，ACP / 目标 / internal API 经 `/api/v1/jobs/:id/frame/` 反代到该 job 的 loopback；storage、auth、jobs 仍由父网关处理。iframe `src` 不携带网关密码。
+- **对话数据**：`GET /api/v1/jobs/:id/transcript` 一次性返回最近最多 1000 行 ACP replay updates；`GET /api/v1/jobs/:id/stream` 先回放 transcript 尾部，再通过 SSE 尾随新输出。
+- **生命周期**：支持 reply、stop、respawn 和 delete。删除可能因前台持有或 worktree 守卫返回 `{ deleted: false, reason }`，UI 会保留该 job 并提示原因。
+- **实时更新**：列表通过 `/api/v1/jobs/events` 接收 `snapshot`、`added`、`changed`、`removed` 和 `keepalive` 事件，无需手动刷新。
+
+完整端点、字段、错误码和 curl 示例见 [HTTP API — Jobs](./http-api)。
+
 ### 设置
 
 - **主题**：浅色、深色或跟随系统（自动检测）
 - **语言**：中文、英文或跟随系统（自动检测）
 - **模型**：从可用选项中选择 AI 模型
 - **权限模式**：默认、接受编辑、跳过权限或规划模式
+- **主 Agent**：总闸 `codebuddy.mainAgent.enabled`（缺省开）；「允许未声明宿主」`allowUnopted`（缺省关，WorkBuddy 保持原生 `cli`）；管理页可设 `default`、用 AI 创建自定义智能体。chip 选择只写 `lastUsed`。
 
 ## API 文档
 
@@ -162,4 +264,6 @@ Web UI 完全响应式，支持移动设备：
 - [远程控制](./remote-control) — 通过 Gateway 和 Tunnel 启动 Web UI
 - [HTTP API](./http-api) — 完整的 REST API 文档
 - [ACP 协议](./acp) — IDE 集成的 Agent Client Protocol
+- [权限模式](./permission-modes) — `--permission-mode` 语义
+- [CLI 参考](./cli-reference) — `--agent` / `--serve` 参数
 - [设置](./settings) — 配置选项

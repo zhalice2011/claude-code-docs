@@ -72,6 +72,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_PLUGIN_DIRS` | 冒号分隔的本地插件目录路径列表（等同于 `--plugin-dir`），插件的 `bin/` 目录会自动注入到 `PATH` |
 | `CODEBUDDY_DISABLE_EXTENDED_PLUGIN_HOOKS` | 设置为 `1` 或 `true` 时，插件 Hook 配置仅接受 `command` 类型；包含 `prompt`、`agent` 或 `http` 类型的配置会按不兼容处理。用于宿主临时回退插件 Hook 契约；默认不设置 |
 | `CODEBUDDY_IMAGE_GEN_ENABLED` | 设置为 `false` 或 `0` 禁用图片生成功能 |
+| `CODEBUDDY_BRIEF` | 设置为 `1` / `true` / `yes` 启用 `SendUserMessage` 工具（等同 `--brief`），让 Agent 通过该工具向用户发送消息；未设置时该工具不可见 |
 | `CODEBUDDY_IMAGE_EDIT_ENABLED` | 设置为 `false` 或 `0` 禁用图片编辑功能 |
 | `CODEBUDDY_ARTIFACT_ENABLED` | 设置为 `false` 或 `0` 禁用 Artifact / ArtifactControl 工具（将本地单个 HTML 或 Markdown 文件发布为可分享的公网链接，Markdown 由服务端渲染为样式化页面；ArtifactControl 当前仅支持取消发布）。默认开启。判定顺序：国际 endpoint（`codebuddy.ai` / `workbuddy.ai` / `staging-codebuddy.tencent.com`）下该能力恒关闭、本变量无法覆盖；其余场景下本变量优先级最高，未设置（含空值）时回落到旧变量 `CODEBUDDY_SHARE_LINK_ENABLED`，再回落到云端 `productFeatures`（`Artifact` 与 `ShareLink` 任一显式为 `false` 即关闭，均未下发时缺省 `true`） |
 | `CODEBUDDY_SHARE_LINK_ENABLED` | **已废弃（兼容保留）**：`CODEBUDDY_ARTIFACT_ENABLED` 的旧名，ShareLink 工具更名为 Artifact 前的开关。语义与新变量完全一致，新变量优先；仅在新变量未设置时生效 |
@@ -83,6 +84,11 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_DEFER_TOOL_LOADING` | 设置为 `false` 或 `0` 禁用 MCP 工具延迟加载 |
 | `CODEBUDDY_SHOW_ALL_DEFERRED_TOOLS` | 设置为 `true` 或 `1` 显示所有延迟工具的完整描述 |
 | `CODEBUDDY_DISABLE_CRON` | 设置为 `1` 禁用计划任务 |
+| `CODEBUDDY_MAIN_AGENT_ENABLED` | 主 Agent 四种模式总闸。`0`/`false` 关闭（Web/CLI 无 picker，run 链不读 standing 主 agent）。未设置时看 `settings.json` 的 `codebuddy.mainAgent.enabled`，再缺省为开。覆盖 settings |
+| `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` | 允许未声明 `mainAgentSupport` 的 ACP 宿主（WorkBuddy Desktop / sidecar）也走模式解析。默认关：这些宿主始终原生 `cli`。`1`/`true` 打开（仍要求总闸开）。覆盖 `codebuddy.mainAgent.allowUnopted` |
+| `CODEBUDDY_REPL_ENABLED` | REPL 总闸。`1`/`true` 强开，`0`/`false` 强关，优先级最高。未设置时：`ptc` / `minimal` 默认开（REPL 是唯一直连工具，关掉等于工具面为空）；**标准 / 创造 / WorkBuddy 原生 `cli` 默认关**。WorkBuddy 将来要开：在 sidecar `managedEnv` 写死 `CODEBUDDY_REPL_ENABLED=1`（工具已在 overlay 的 `cli.tools` 里，只差这道闸）。不要翻 `codebuddy.mainAgent.allowUnopted`——那是让 WorkBuddy 走 PTC 模式解析，不是单独开 REPL |
+| `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | 是否把内置工具加载进 REPL 沙箱（成为顶层全局与 `tools.*` 成员）。`1`/`true` 强开，`0`/`false` 强关。未设置时：`ptc` / `minimal` 默认开（REPL 是唯一直连工具，沙箱必须有内置）；其余模式（含仅打开 `CODEBUDDY_REPL_ENABLED` 的标准 REPL）默认关，避免把全部内置塞进 REPL 挤占上下文、诱导模型用 REPL 调一次性原生工具。关闭后骨架目录与沙箱注入同时不含内置工具，MCP / bridge 编排不受影响 |
+| `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | 是否把骨架工具目录注入 REPL 的 `code` 参数描述。默认开。`0` 关闭后工具仍预加载，只是模型不提前知情，退化为纯渐进披露（靠 `REPL.searchTools` / `REPL.describeTool` 发现） |
 | `CODEBUDDY_DISABLE_FORK_SUBAGENT` | 设置为 `1` 禁用 Agent 工具的 Fork 子代理模式（`subagent_type="fork"`）。启用后 Agent 工具描述会自动隐藏 fork\-mode 段落，模型不会看到该功能；若模型仍然传 `subagent_type="fork"`，运行时会回落到名为 `fork` 的自定义代理（如用户在 `.codebuddy/agents/fork.md` 定义），否则改写为 `general-purpose` 普通子代理。适用于需要避免 fork 递归派生导致请求量放大的宿主场景 |
 | `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` | 设置为 `1` / `true` 禁用 Agent、Bash、PowerShell 工具的后台任务（`run_in_background=true`）。启用后这些工具 schema 中的 `run_in_background` 参数会被隐藏，模型不会看到该字段；即使历史/缓存 tool call 或直接调用方传入该参数，运行时也会兜底回退到同步（Agent）/前台（Bash、PowerShell）执行路径。适用于请求\-响应式 SDK / 一次性任务场景——这类场景主进程在主 turn 结束后立即退出，任何后台代理/后台命令的结果都无法回流到最终答复中。对齐 Claude Code 的 `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS`（同样统管 Agent \+ Bash \+ PowerShell）。默认未设置（后台任务保持可用）。与 print\-mode 守卫（`-p` 下始终阻断后台执行）相互独立 |
 | `CODEBUDDY_REHYDRATE_IMAGE_BLOB_REFS` | 设置为 `true` 在 `-p` 模式流式输出中将图片 blob 引用还原为完整 base64 数据。适用于需要直接获取图片数据的下游集成场景 |
@@ -92,6 +98,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | 环境变量 | 说明 |
 | --- | --- |
 | `CODEBUDDY_AUTOCOMPACT_PCT_OVERRIDE` | 设置自动压缩触发的上下文容量百分比（1\-100）。默认由产品配置决定（通常 70\-92%）。使用更低的值（如 `50`）来更早压缩 |
+| `CODEBUDDY_AUTO_COMPACT_WINDOW` | 自动压缩计算的上下文窗口基准值（token）。触发点 \= `min(该值, 模型有效预算) × 阈值`，clamp 到 \[100k, 1M] 且不超过模型实际窗口。优先级高于 settings 项 `autoCompactWindow`（env \> settings）。留空跟随模型窗口 |
 | `CODEBUDDY_PRE_MESSAGE_COMPACT` | 强制控制 pre\-message 压缩开关。`true`/`1` 启用，`false`/`0` 禁用。优先级高于产品配置的 `enablePreMessageCompact` 和 `ContextSummaryAgent` 开关 |
 | `CODEBUDDY_PRE_MESSAGE_COMPACT_PCT` | 设置用户发消息前预检压缩的上下文容量百分比（1\-100）。默认 10%。当上下文超过此阈值时，在处理用户新消息前自动压缩 |
 | `CODEBUDDY_DISABLE_AUTO_MEMORY` | 设置为 `1` 禁用自动内存，设置为 `0` 启用 |

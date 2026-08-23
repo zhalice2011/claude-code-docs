@@ -37,7 +37,7 @@
 | 参数 | 说明 | 示例 |
 | --- | --- | --- |
 | `--add-dir` | 添加额外的工作目录供 CodeBuddy 访问（验证每个路径是否存在） | `codebuddy --add-dir ../apps ../lib` |
-| `--agent` | 指定当前会话使用的 agent 名称（内置或自定义 agent），优先级高于 settings.json 的 `agent` 配置 | `codebuddy --agent my-reviewer` |
+| `--agent` | 本进程新会话的主 Agent（TUI / `--serve` Web / ACP）。内置：`cli`、`ptc`、`minimal`、`create`，或自定义 agent 名。压过 `codebuddy.mainAgent.lastUsed`，**不写入** `codebuddy.mainAgent.default` 或 settings `agent`。标准模式请显式 `cli`。对照表见 [Web UI](./web-ui#serve-启动模式与权限) | `codebuddy --serve --agent ptc` |
 | `--agents` | 通过 JSON 动态定义自定义[子代理](./sub-agents)（格式见下文） | `codebuddy --agents '{"reviewer":{"description":"审查代码","prompt":"你是代码审查员"}}'` |
 | `--allowedTools` | 除了[settings.json 文件](./settings)外,无需提示用户即可允许的工具列表 | `"Bash(git log:*)" "Bash(git diff:*)" "Read"` |
 | `--disallowedTools` | 除了[settings.json 文件](./settings)外,应禁止使用的工具列表 | `"Bash(git log:*)" "Bash(git diff:*)" "Edit"` |
@@ -56,11 +56,13 @@
 | `--json-schema` | 使用 JSON Schema 验证结构化输出。示例: `'{"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}'` | `codebuddy -p --output-format json --json-schema '{"type":"object","properties":{...}}' "查询"` |
 | `--include-partial-messages` | 在输出中包含部分流式事件（需要 `--print` 和 `--output-format=stream-json`) | `codebuddy -p --output-format stream-json --include-partial-messages "查询"` |
 | `--verbose` | 启用详细日志记录,显示完整的轮次输出(在打印和交互模式下都有助于调试) | `codebuddy --verbose` |
+| `--brief` | 启用 `SendUserMessage` 工具，让 Agent 通过该工具向用户发送消息（也可用环境变量 `CODEBUDDY_BRIEF` 激活）；未开启时该工具不可见 | `codebuddy --brief "帮我实现登录页面"` |
 | `--max-turns` | 限制非交互模式下的代理轮次数 | `codebuddy -p --max-turns 3 "查询"` |
 | `--model` | 使用别名设置当前会话的模型，如最新模型的别名（`sonnet` 或 `opus`）或模型全名 | `codebuddy --model gpt-5` |
+| `--autocompact` | 设置自动压缩窗口大小：`auto` 跟随模型窗口，或 token 数（如 `400000`、`400k`、`1m`，clamp 到 100k\-1M） | `codebuddy --autocompact 400k` |
 | `--text-to-image-model` | 设置文生图功能使用的模型 ID | `codebuddy --text-to-image-model your-image-model` |
 | `--image-to-image-model` | 设置图生图功能使用的模型 ID | `codebuddy --image-to-image-model your-edit-model` |
-| `--permission-mode` | 以指定的[权限模式](./permission-modes)开始。常用值：`default`、`acceptEdits`、`auto`、`dontAsk`、`plan`、`bypassPermissions` | `codebuddy --permission-mode auto` |
+| `--permission-mode` | 本进程新会话的默认[权限模式](./permission-modes)。help 6 个：`default`、`acceptEdits`、`auto`、`dontAsk`、`plan`、`bypassPermissions`；运行时还认 `fullAccess`。`--serve` Web 新对话盖章此值；**不把未改过的启动值写入** `permissions.defaultMode`。`minimal` 不要配 `plan`。对照表见 [Web UI](./web-ui#serve-启动模式与权限) | `codebuddy --serve --permission-mode bypassPermissions` |
 | `--subagent-permission-mode` | 设置 subagent/团队成员的默认权限模式，覆盖从主 session 继承的模式。支持 `acceptEdits`、`default`、`plan`、`auto`、`dontAsk`、`bypassPermissions` | `codebuddy --subagent-permission-mode dontAsk` |
 | `--permission-prompt-tool` | 指定在非交互模式下处理权限提示的 MCP 工具 | `codebuddy -p --permission-prompt-tool mcp_auth_tool "查询"` |
 | `--resume` | 通过 ID 恢复特定会话,或在交互模式下选择 | `codebuddy --resume abc123 "查询"` |
@@ -74,7 +76,13 @@
 | `--plugin-dir <dirs...>` | 从本地目录加载插件（用于开发/测试），可指定多个路径。详见 [插件文档](./plugins) | `codebuddy --plugin-dir ./my-plugin ../other-plugin` |
 | `--bg` | 后台运行会话（detached 模式），日志输出到 `~/.codebuddy/logs/`。详见 [Daemon 文档](./daemon) | `codebuddy --bg "实现登录页面"` |
 | `--name <name>` | 后台会话名称（与 `--bg` 配合使用，便于通过 `ps`/`logs`/`kill` 查找） | `codebuddy --bg --name feature-x "实现功能"` |
-| `--serve` | 启动 HTTP 服务（Web UI、REST API、ACP 协议） | `codebuddy --serve --port 8080` |
+| `--serve` | 启动 HTTP 服务（Web UI、REST API、ACP）。未同时传 `--acp` 时 ACP 走 HTTP SSE，不会把 `session/update` 打到进程 stdout | `codebuddy --serve --port 8080` |
+| `--port <number>` | HTTP 监听端口（仅 `--serve`）。默认自动分配 | `codebuddy --serve --port 7890` |
+| `--host <string>` | HTTP 绑定地址（仅 `--serve`）。默认 `127.0.0.1`；非回环会强制鉴权，除非显式 `--auth none` | `codebuddy --serve --host 0.0.0.0` |
+| `--auth <mode>` | `--serve` 鉴权：`password`（默认）或 `none`。环境变量 `CODEBUDDY_GATEWAY_AUTH` 优先。`--auth none` 可覆盖非回环的 forceAuth | `codebuddy --serve --auth none` |
+| `--open` | `--serve` 启动后打开浏览器 | `codebuddy --serve --open` |
+| `--acp` | 以 ACP 服务端启动（默认 stdio NDJSON）。不要与「仅 `--serve`」混淆：后者给 Web UI 用 HTTP ACP | `codebuddy --acp` |
+| `--acp-transport` | 仅在同时传了 `--acp` 时生效：`stdio`（默认）或 `streamable-http`。未传 `--acp` 时 commander 缺省 `stdio` **不会**覆盖 `--serve` 的 HTTP transport | `codebuddy --acp --acp-transport streamable-http` |
 | `--prewarm` | 以预热待命模式启动：先完成启动初始化后挂起，等待外部通过 IPC 唤醒（唤醒时才绑定工作目录）。用于消除会话拉起时的冷启动等待。默认关闭。 | `codebuddy --prewarm --prewarm-id pool1` |
 | `--prewarm-id <id>` | 预热 IPC 端点标识（默认取进程 PID），用于构造本地 socket/管道地址。配合 `cbc-prewarm` 管理命令使用。 | `codebuddy --prewarm --prewarm-id pool1` |
 

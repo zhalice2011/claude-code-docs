@@ -165,6 +165,7 @@ codebuddy -p "/goal CHANGELOG.md has an entry for every PR merged this week"
 | 三态语义（ok / not\-yet / impossible） | ✅ | 不可达时立即清除 goal，避免无效循环 |
 | evaluator 走小模型 | ✅ | 使用 `lite` 槽位绑定的模型（按 provider 分别映射） |
 | `/goal` 无参 → 状态视图 | ✅ | TUI / Web UI 面板 \+ headless 文本降级 |
+| Web UI 目标条暂停 / 继续 / 清除 | ✅ | 暂停立刻卸掉 Stop hook 并掐当前回合，条保留为已暂停；继续按同一 condition 重新启动；垃圾桶清除并收起目标条。仅 Web UI ACP，不改变 WorkBuddy `--acp` |
 | 持续运行指示器 `⊚ /goal active (Xs)` | ✅ | 输入框右下方常驻显示运行时长，1Hz 刷新 |
 | `--resume` 时 turn / timer / token 重置 | ❌ 待补 | 当前沿用原 createdAt / turnCount，需"重新计时"请先 `/goal clear` |
 

@@ -31,16 +31,18 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `PowerShell` | 在 Windows 上执行 PowerShell 命令。仅 Windows 可用，参见 [PowerShell 工具行为](#powershell-工具行为) | 是 |
 | `PushNotification` | 发送终端/桌面通知，用于长任务或后台任务完成时提醒用户。延迟加载工具，参见[环境变量](./env-vars) | 否 |
 | `Read` | 读取文件内容，支持图片、PDF 和 Jupyter notebook | 否 |
+| `REPL` | 在隔离沙箱中执行 JavaScript 编排工具调用。PTC / 极简模式下这是模型面**唯一**直连工具；沙箱内 Bash 返回 `{ stdout, stderr, exitCode, signal }`，Agent 返回 `{ taskId }`，TaskOutput 返回 `{ status, taskId, content }`。受 `CODEBUDDY_REPL_ENABLED` 控制，参见[环境变量](./env-vars) | 是 |
 | `ReadMcpResource` | 按 server \+ URI 读取指定 MCP 资源的内容，配合 `ListMcpResources` 使用 | 是 |
 | `ReportFindings` | 将代码审查发现的问题以结构化字段（文件、摘要、失败场景、可选分类）提交，渲染为专门的列表组件而非纯文本。延迟加载工具，参见[环境变量](./env-vars) | 否 |
 | `SendMessage` | 在 [Agent 团队](./agent-teams)中向队友发送消息 | 否 |
+| `SendUserMessage` | 向用户发送面向阅读的消息（支持 markdown、附件、`status` 意图标签）。仅在 Brief 模式（`--brief` 或 `CODEBUDDY_BRIEF`）下可见，参见[环境变量](./env-vars) | 否 |
 | `Skill` | 在主对话中执行 [Skill 技能](./skills) | 否 |
 | `SlashCommand` | 执行自定义[斜杠命令](./slash-commands) | 是 |
 | `StructuredOutput` | 返回符合 JSON Schema 的结构化输出 | 否 |
 | `TaskCreate` | 创建新任务到任务列表 | 否 |
 | `TaskGet` | 获取特定任务的完整详情 | 否 |
 | `TaskList` | 列出所有任务及其当前状态 | 否 |
-| `TaskOutput` | 获取后台任务或子代理的输出 | 否 |
+| `TaskOutput` | 获取后台任务或子代理的输出。参数：`task_id`（必需）、`block`（默认 true）、`timeout`（默认 60000ms）。REPL 中返回 `{ status, taskId, content }`；`running` 不是完成 | 否 |
 | `TaskStop` | 按 ID 终止正在运行的后台任务 | 否 |
 | `TaskUpdate` | 更新任务状态、依赖、详情或删除任务 | 否 |
 | `TeamCreate` | 创建 [Agent 团队](./agent-teams)以协调多个代理协作 | 否 |
