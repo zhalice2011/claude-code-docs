@@ -657,11 +657,7 @@ bash
 export CODEBUDDY_AUTO_UPDATE_THIRD_PARTY_MARKETPLACES=true
 codebuddy
 ```
-#### 方式 2：通过产品配置启用
-
-在 product 配置中设置 `autoUpdateThirdPartyMarketplaces: true`，为所有第三方市场启用自动更新。
-
-#### 方式 3：通过 UI 单个管理
+#### 方式 2：通过 UI 单个管理
 
 1. 运行 `/plugin` 命令进入插件管理界面
 2. 选择「Marketplaces」查看市场列表
@@ -675,7 +671,7 @@ codebuddy
 - 多个市场间隔 2 秒依次更新，避免资源竞争
 - 更新失败不影响其他市场，错误记录到日志
 
-**优先级**：环境变量 \> 产品配置 \> UI 配置
+**优先级**：环境变量优先于单个市场的 UI 开关
 
 ## 实现原理
 

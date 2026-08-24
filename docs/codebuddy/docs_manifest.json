@@ -212,8 +212,8 @@
     },
     "cli__plugin-marketplaces.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/plugin-marketplaces",
-      "hash": "347abb4d254766d5862a7240ce7fa5969f027bc52d68bc411a5091a1e560dedc",
-      "last_updated": "2026-06-26T12:14:43.820370",
+      "hash": "31e55b6dc5ed0d6de79ce9b685b90cfe9af376348fc949bb40feade9c394c272",
+      "last_updated": "2026-08-24T15:39:32.752980",
       "source": "codebuddy"
     },
     "cli__plugins.md": {
@@ -1623,7 +1623,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-08-24T12:40:54.239196",
+    "last_fetch_completed": "2026-08-24T15:42:49.346056",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 272,
     "pages_fetched_successfully": 270,
@@ -1635,7 +1635,7 @@
     "total_files": 270,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-24T12:40:54.239220",
+  "last_updated": "2026-08-24T15:42:49.346080",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
