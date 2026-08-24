@@ -44,6 +44,10 @@ inference call has aged out returns 404.
 
   - `"compliance_local_session"`
 
+- `updated_at: string`
+
+  Timestamp of the session's last retained inference call (RFC 3339, UTC). Always at or after `created_at`. When a session's activity spans the child organization's retention boundary, calls older than the boundary are no longer reflected — but because retention removes only the oldest calls, this value (unlike `created_at`) is unaffected until the entire session has aged out. On the list endpoint this value is a lower bound: for a session still active at a page or `created_at.lt` window boundary it can momentarily lag the session's true last activity. Retrieving the session, or its messages, always reflects the exact latest retained call.
+
 - `user: object { id, email_address }`
 
   The authenticated user at the time of the session. Always set; `user.id` is always populated. `user.email_address` is null when the user's account has been deleted or the user is no longer a member of an organization the key may read.
@@ -80,6 +84,7 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
     "email_address": "engineer@example.com"
   },
   "product_surface": "cowork",
-  "created_at": "2026-07-09T14:02:11Z"
+  "created_at": "2026-07-09T14:02:11Z",
+  "updated_at": "2026-07-09T15:47:33Z"
 }
 ```

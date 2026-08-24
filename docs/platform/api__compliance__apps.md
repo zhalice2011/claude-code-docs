@@ -15,6 +15,15 @@ Lists chat metadata with filtering capabilities for targeted
 compliance review. Results are sorted chronologically (time ascending)
 by the `order_by` key, with ties broken by id.
 
+**Deprecation notice:** Combining `user_ids[]` with any `updated_at.*`
+filter is deprecated and will be rejected with HTTP 400 after
+2026-09-22. For incremental polling by update time, omit `user_ids[]`
+and set `order_by=updated_at` with `after_id` cursor pagination —
+this returns the same chats across the whole organization in a single
+request stream. For per-user listing, use `created_at.*` filters (or
+no time filter) with the default `order_by`. `user_ids[]` with
+`order_by=updated_at` is already rejected.
+
 ### Query Parameters
 
 - `after_id: optional string`
@@ -67,23 +76,23 @@ by the `order_by` key, with ties broken by id.
 
   - `gt: optional string`
 
-    Filter chats updated after this time (RFC 3339 format)
+    Filter chats updated after this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
   - `gte: optional string`
 
-    Filter chats updated at or after this time (RFC 3339 format)
+    Filter chats updated at or after this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
   - `lt: optional string`
 
-    Filter chats updated before this time (RFC 3339 format)
+    Filter chats updated before this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
   - `lte: optional string`
 
-    Filter chats updated at or before this time (RFC 3339 format)
+    Filter chats updated at or before this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
 - `user_ids: optional array of string`
 
-  Filter to chats created by specific users (max 10 per request). Omit for an org-wide query. Enumerate IDs via `GET /v1/compliance/organizations/{org_uuid}/users`.
+  Filter to chats created by specific users (max 10 per request). Omit for an org-wide query. Enumerate IDs via `GET /v1/compliance/organizations/{org_uuid}/users`. Deprecated combination: passing `user_ids[]` together with any `updated_at.*` filter is deprecated and will be rejected after 2026-09-22. For `updated_at`-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
 ### Header Parameters
 
@@ -113,7 +122,7 @@ by the `order_by` key, with ties broken by id.
 
   - `model: string or null`
 
-    Model selected for this chat (e.g. 'claude-opus-4-7'). May be null for legacy chats that never had a model recorded.
+    Model selected for this chat (e.g. 'claude-opus-5'). May be null for legacy chats that never had a model recorded.
 
   - `name: string`
 
@@ -177,9 +186,9 @@ curl https://api.anthropic.com/v1/compliance/apps/chats \
       "created_at": "2025-06-07T08:09:10Z",
       "updated_at": "2025-06-07T09:10:11Z",
       "organization_id": "org_abc123",
-      "organization_uuid": "abcdef0123-4567-89ab-cdef-0123456789ab",
+      "organization_uuid": "abcdef01-2345-6789-abcd-ef0123456789",
       "project_id": "claude_proj_xyz789",
-      "model": "claude-opus-4-7",
+      "model": "claude-opus-5",
       "user": {
         "id": "user_xyz456",
         "email_address": "user@example.com"
@@ -265,7 +274,7 @@ curl https://api.anthropic.com/v1/compliance/apps/chats/$CLAUDE_CHAT_ID \
 
   - `model: string or null`
 
-    Model selected for this chat (e.g. 'claude-opus-4-7'). May be null for legacy chats that never had a model recorded.
+    Model selected for this chat (e.g. 'claude-opus-5'). May be null for legacy chats that never had a model recorded.
 
   - `name: string`
 
@@ -623,7 +632,7 @@ Retrieves message history and file metadata for a specific chat.
 
 - `model: string or null`
 
-  Model selected for this chat (e.g. 'claude-opus-4-7'). May be null for legacy chats that never had a model recorded.
+  Model selected for this chat (e.g. 'claude-opus-5'). May be null for legacy chats that never had a model recorded.
 
 - `name: string`
 
@@ -673,9 +682,9 @@ curl https://api.anthropic.com/v1/compliance/apps/chats/$CLAUDE_CHAT_ID/messages
   "created_at": "2025-06-07T08:09:10Z",
   "updated_at": "2025-06-07T08:09:11Z",
   "organization_id": "org_abc123",
-  "organization_uuid": "abcdef0123-4567-89ab-cdef-0123456789ab",
+  "organization_uuid": "abcdef01-2345-6789-abcd-ef0123456789",
   "project_id": "claude_proj_xyz789",
-  "model": "claude-opus-4-7",
+  "model": "claude-opus-5",
   "user": {
     "id": "user_xyz456",
     "email_address": "user@example.com"
@@ -2780,15 +2789,21 @@ forward-only via `next_page`; there is no reverse cursor.
 
   Opaque pagination token from a previous response's `next_page` field. Pass this to retrieve the next page of results. Clients should treat this value as an opaque string and not attempt to parse or interpret its contents, as the format may change without notice.
 
+- `updated_at: optional object { gte }`
+
+  - `gte: optional string`
+
+    Only return sessions whose last inference call is at or after this time (RFC 3339; a UTC offset is required). Combines with `created_at.gte` / `created_at.lt`; the ordering and pagination are unchanged. Use it to poll for sessions that have been active since a previous pass — a session that becomes active later can only enter the result, never leave it.
+
 ### Header Parameters
 
 - `"x-api-key": optional string`
 
 ### Returns
 
-- `data: array of object { id, created_at, organization_uuid, 4 more }`
+- `data: array of object { id, created_at, organization_uuid, 5 more }`
 
-  Page of local sessions, ordered by `created_at` descending; ties are broken by a fixed server-side order.
+  Page of local sessions, ordered by `created_at` descending; ties are broken by a fixed server-side order. `updated_at` never participates in the ordering; the `updated_at.gte` query parameter filters on it without changing the order or the pagination cursor.
 
   - `id: string`
 
@@ -2809,6 +2824,10 @@ forward-only via `next_page`; there is no reverse cursor.
   - `type: "compliance_local_session"`
 
     - `"compliance_local_session"`
+
+  - `updated_at: string`
+
+    Timestamp of the session's last retained inference call (RFC 3339, UTC). Always at or after `created_at`. When a session's activity spans the child organization's retention boundary, calls older than the boundary are no longer reflected — but because retention removes only the oldest calls, this value (unlike `created_at`) is unaffected until the entire session has aged out. On the list endpoint this value is a lower bound: for a session still active at a page or `created_at.lt` window boundary it can momentarily lag the session's true last activity. Retrieving the session, or its messages, always reflects the exact latest retained call.
 
   - `user: object { id, email_address }`
 
@@ -2852,7 +2871,8 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local \
         "email_address": "engineer@example.com"
       },
       "product_surface": "cowork",
-      "created_at": "2026-07-09T14:02:11Z"
+      "created_at": "2026-07-09T14:02:11Z",
+      "updated_at": "2026-07-09T15:47:33Z"
     }
   ]
 }
@@ -2899,6 +2919,10 @@ inference call has aged out returns 404.
 
   - `"compliance_local_session"`
 
+- `updated_at: string`
+
+  Timestamp of the session's last retained inference call (RFC 3339, UTC). Always at or after `created_at`. When a session's activity spans the child organization's retention boundary, calls older than the boundary are no longer reflected — but because retention removes only the oldest calls, this value (unlike `created_at`) is unaffected until the entire session has aged out. On the list endpoint this value is a lower bound: for a session still active at a page or `created_at.lt` window boundary it can momentarily lag the session's true last activity. Retrieving the session, or its messages, always reflects the exact latest retained call.
+
 - `user: object { id, email_address }`
 
   The authenticated user at the time of the session. Always set; `user.id` is always populated. `user.email_address` is null when the user's account has been deleted or the user is no longer a member of an organization the key may read.
@@ -2935,7 +2959,8 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
     "email_address": "engineer@example.com"
   },
   "product_surface": "cowork",
-  "created_at": "2026-07-09T14:02:11Z"
+  "created_at": "2026-07-09T14:02:11Z",
+  "updated_at": "2026-07-09T15:47:33Z"
 }
 ```
 
@@ -2943,7 +2968,7 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
 
 ### Local List Response
 
-- `LocalListResponse object { id, created_at, organization_uuid, 4 more }`
+- `LocalListResponse object { id, created_at, organization_uuid, 5 more }`
 
   A Cowork or Claude Code session that a user ran on their own computer
   while signed in with their organization account.
@@ -2967,6 +2992,10 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
   - `type: "compliance_local_session"`
 
     - `"compliance_local_session"`
+
+  - `updated_at: string`
+
+    Timestamp of the session's last retained inference call (RFC 3339, UTC). Always at or after `created_at`. When a session's activity spans the child organization's retention boundary, calls older than the boundary are no longer reflected — but because retention removes only the oldest calls, this value (unlike `created_at`) is unaffected until the entire session has aged out. On the list endpoint this value is a lower bound: for a session still active at a page or `created_at.lt` window boundary it can momentarily lag the session's true last activity. Retrieving the session, or its messages, always reflects the exact latest retained call.
 
   - `user: object { id, email_address }`
 
@@ -2986,7 +3015,7 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
 
 ### Local Retrieve Response
 
-- `LocalRetrieveResponse object { id, created_at, organization_uuid, 4 more }`
+- `LocalRetrieveResponse object { id, created_at, organization_uuid, 5 more }`
 
   A Cowork or Claude Code session that a user ran on their own computer
   while signed in with their organization account.
@@ -3010,6 +3039,10 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
   - `type: "compliance_local_session"`
 
     - `"compliance_local_session"`
+
+  - `updated_at: string`
+
+    Timestamp of the session's last retained inference call (RFC 3339, UTC). Always at or after `created_at`. When a session's activity spans the child organization's retention boundary, calls older than the boundary are no longer reflected — but because retention removes only the oldest calls, this value (unlike `created_at`) is unaffected until the entire session has aged out. On the list endpoint this value is a lower bound: for a session still active at a page or `created_at.lt` window boundary it can momentarily lag the session's true last activity. Retrieving the session, or its messages, always reflects the exact latest retained call.
 
   - `user: object { id, email_address }`
 
@@ -3079,9 +3112,9 @@ explicit 400; restart the walk to read under the current boundary.
 
 ### Returns
 
-- `data: array of object { id, content, created_at, 3 more }`
+- `data: array of object { id, content, created_at, 4 more }`
 
-  Transcript turns for this page, ordered by `created_at` in the direction selected by the `order` parameter (ascending by default). Turns sharing a `created_at` (all messages of one inference call carry the call's timestamp) are returned in transcript order.
+  Transcript turns for this page, in call order: oldest call first by default, newest call first with `order=desc`. The messages of one call carry the call's timestamp and follow each other in transcript order; a page boundary can fall between them.
 
   - `id: string`
 
@@ -3171,6 +3204,10 @@ explicit 400; restart the walk to read under the current boundary.
 
     When the message was recorded (RFC 3339, UTC)
 
+  - `model: string or null`
+
+    The model that served this assistant turn, as reported in the `model` field of the underlying Messages API response. Null on user messages and on any assistant message whose `provenance` is set: client-asserted history and synthetic markers were not produced by a model during this session, and for unavailable content the serving model is not known.
+
   - `provenance: object { reason, type }  or object { type }  or object { type }  or null`
 
     Where this turn's content came from, discriminated on `type`. Null (the common case) means verified content: on an assistant message, content Claude produced during this session; on a user message, content the user sent. `content_unavailable`: the turn's content cannot be returned and `content` is empty; `reason` says why. `client_asserted`: assistant content the client supplied as conversation history; `content` shows what the model received but its authorship is not verified; never on user-role messages. `synthetic_marker`: a transcript marker the endpoint generated rather than content either party sent during the session. Both `client_asserted` and `synthetic_marker` can result from normal request or client processing, not only client modification. Callers should tolerate unrecognized `type` values.
@@ -3181,7 +3218,7 @@ explicit 400; restart the walk to read under the current boundary.
 
       - `reason: string`
 
-        Why this turn's content cannot be returned, e.g. `not_captured` (the content was not captured for compliance retrieval), `cmek_key_revoked` (the content is encrypted under the organization's customer-managed key and that key is unavailable), `retention_elapsed` (the content lies past the organization's retention boundary; on the placeholder standing in for every pre-boundary turn), or `oversize` (the message exceeds the server's per-message size bound even after per-block truncation). Callers should tolerate unrecognized values. `not_captured` is not proof that no record was stored: content withheld by the storage layer's fail-closed access policies carries the same reason and is deliberately indistinguishable from content that was never captured.
+        Why this turn's content cannot be returned, e.g. `not_captured` (the content was not captured for compliance retrieval), `client_aborted` (the client closed the connection or cancelled the request before the response completed, so the response was not captured for this turn; any partial output already streamed to the client is not included; assistant-role turns only), `cmek_key_revoked` (the content is encrypted under the organization's customer-managed key and that key is unavailable), `retention_elapsed` (the content lies past the organization's retention boundary; on the placeholder standing in for every pre-boundary turn), or `oversize` (the message exceeds the server's per-message size bound even after per-block truncation). Callers should tolerate unrecognized values. `not_captured` is not proof that no record was stored: content withheld by the storage layer's fail-closed access policies carries the same reason and is deliberately indistinguishable from content that was never captured.
 
       - `type: "content_unavailable"`
 
@@ -3231,7 +3268,7 @@ explicit 400; restart the walk to read under the current boundary.
 
   Opaque pagination cursor (prefixed `page_`) for the next page. Null when there is no further page. Treat as an opaque string; the format may change without notice.
 
-- `session: object { id, created_at, organization_uuid, 4 more }`
+- `session: object { id, created_at, organization_uuid, 5 more }`
 
   The local session the messages belong to. `user.email_address` is always null on this endpoint; the messages endpoint does not resolve email addresses.
 
@@ -3254,6 +3291,10 @@ explicit 400; restart the walk to read under the current boundary.
   - `type: "compliance_local_session"`
 
     - `"compliance_local_session"`
+
+  - `updated_at: string`
+
+    Timestamp of the session's last retained inference call (RFC 3339, UTC). Always at or after `created_at`. When a session's activity spans the child organization's retention boundary, calls older than the boundary are no longer reflected — but because retention removes only the oldest calls, this value (unlike `created_at`) is unaffected until the entire session has aged out. On the list endpoint this value is a lower bound: for a session still active at a page or `created_at.lt` window boundary it can momentarily lag the session's true last activity. Retrieving the session, or its messages, always reflects the exact latest retained call.
 
   - `user: object { id, email_address }`
 
@@ -3293,6 +3334,7 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
         }
       ],
       "created_at": "2025-03-12T18:22:41.123456Z",
+      "model": "claude-opus-5",
       "provenance": {
         "reason": "not_captured",
         "type": "content_unavailable"
@@ -3308,6 +3350,7 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
     "organization_uuid": "a1b2c3d4-e5f6-4789-a012-3456789abcde",
     "product_surface": "cowork",
     "type": "compliance_local_session",
+    "updated_at": "2025-03-12T18:22:41.123456Z",
     "user": {
       "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
       "email_address": "jane.doe@example.com"
@@ -3321,7 +3364,7 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
 
 ### Message List Response
 
-- `MessageListResponse object { id, content, created_at, 3 more }`
+- `MessageListResponse object { id, content, created_at, 4 more }`
 
   A single user or assistant turn in a local session transcript.
 
@@ -3413,6 +3456,10 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
 
     When the message was recorded (RFC 3339, UTC)
 
+  - `model: string or null`
+
+    The model that served this assistant turn, as reported in the `model` field of the underlying Messages API response. Null on user messages and on any assistant message whose `provenance` is set: client-asserted history and synthetic markers were not produced by a model during this session, and for unavailable content the serving model is not known.
+
   - `provenance: object { reason, type }  or object { type }  or object { type }  or null`
 
     Where this turn's content came from, discriminated on `type`. Null (the common case) means verified content: on an assistant message, content Claude produced during this session; on a user message, content the user sent. `content_unavailable`: the turn's content cannot be returned and `content` is empty; `reason` says why. `client_asserted`: assistant content the client supplied as conversation history; `content` shows what the model received but its authorship is not verified; never on user-role messages. `synthetic_marker`: a transcript marker the endpoint generated rather than content either party sent during the session. Both `client_asserted` and `synthetic_marker` can result from normal request or client processing, not only client modification. Callers should tolerate unrecognized `type` values.
@@ -3423,7 +3470,7 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local/$LOCAL_SESSION_
 
       - `reason: string`
 
-        Why this turn's content cannot be returned, e.g. `not_captured` (the content was not captured for compliance retrieval), `cmek_key_revoked` (the content is encrypted under the organization's customer-managed key and that key is unavailable), `retention_elapsed` (the content lies past the organization's retention boundary; on the placeholder standing in for every pre-boundary turn), or `oversize` (the message exceeds the server's per-message size bound even after per-block truncation). Callers should tolerate unrecognized values. `not_captured` is not proof that no record was stored: content withheld by the storage layer's fail-closed access policies carries the same reason and is deliberately indistinguishable from content that was never captured.
+        Why this turn's content cannot be returned, e.g. `not_captured` (the content was not captured for compliance retrieval), `client_aborted` (the client closed the connection or cancelled the request before the response completed, so the response was not captured for this turn; any partial output already streamed to the client is not included; assistant-role turns only), `cmek_key_revoked` (the content is encrypted under the organization's customer-managed key and that key is unavailable), `retention_elapsed` (the content lies past the organization's retention boundary; on the placeholder standing in for every pre-boundary turn), or `oversize` (the message exceeds the server's per-message size bound even after per-block truncation). Callers should tolerate unrecognized values. `not_captured` is not proof that no record was stored: content withheld by the storage layer's fail-closed access policies carries the same reason and is deliberately indistinguishable from content that was never captured.
 
       - `type: "content_unavailable"`
 

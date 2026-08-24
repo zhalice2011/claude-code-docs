@@ -32,15 +32,21 @@ forward-only via `next_page`; there is no reverse cursor.
 
   Opaque pagination token from a previous response's `next_page` field. Pass this to retrieve the next page of results. Clients should treat this value as an opaque string and not attempt to parse or interpret its contents, as the format may change without notice.
 
+- `updated_at: optional object { gte }`
+
+  - `gte: optional string`
+
+    Only return sessions whose last inference call is at or after this time (RFC 3339; a UTC offset is required). Combines with `created_at.gte` / `created_at.lt`; the ordering and pagination are unchanged. Use it to poll for sessions that have been active since a previous pass — a session that becomes active later can only enter the result, never leave it.
+
 ### Header Parameters
 
 - `"x-api-key": optional string`
 
 ### Returns
 
-- `data: array of object { id, created_at, organization_uuid, 4 more }`
+- `data: array of object { id, created_at, organization_uuid, 5 more }`
 
-  Page of local sessions, ordered by `created_at` descending; ties are broken by a fixed server-side order.
+  Page of local sessions, ordered by `created_at` descending; ties are broken by a fixed server-side order. `updated_at` never participates in the ordering; the `updated_at.gte` query parameter filters on it without changing the order or the pagination cursor.
 
   - `id: string`
 
@@ -61,6 +67,10 @@ forward-only via `next_page`; there is no reverse cursor.
   - `type: "compliance_local_session"`
 
     - `"compliance_local_session"`
+
+  - `updated_at: string`
+
+    Timestamp of the session's last retained inference call (RFC 3339, UTC). Always at or after `created_at`. When a session's activity spans the child organization's retention boundary, calls older than the boundary are no longer reflected — but because retention removes only the oldest calls, this value (unlike `created_at`) is unaffected until the entire session has aged out. On the list endpoint this value is a lower bound: for a session still active at a page or `created_at.lt` window boundary it can momentarily lag the session's true last activity. Retrieving the session, or its messages, always reflects the exact latest retained call.
 
   - `user: object { id, email_address }`
 
@@ -104,7 +114,8 @@ curl https://api.anthropic.com/v1/compliance/apps/sessions/local \
         "email_address": "engineer@example.com"
       },
       "product_surface": "cowork",
-      "created_at": "2026-07-09T14:02:11Z"
+      "created_at": "2026-07-09T14:02:11Z",
+      "updated_at": "2026-07-09T15:47:33Z"
     }
   ]
 }

@@ -13,6 +13,15 @@ Lists chat metadata with filtering capabilities for targeted
 compliance review. Results are sorted chronologically (time ascending)
 by the `order_by` key, with ties broken by id.
 
+**Deprecation notice:** Combining `user_ids[]` with any `updated_at.*`
+filter is deprecated and will be rejected with HTTP 400 after
+2026-09-22. For incremental polling by update time, omit `user_ids[]`
+and set `order_by=updated_at` with `after_id` cursor pagination —
+this returns the same chats across the whole organization in a single
+request stream. For per-user listing, use `created_at.*` filters (or
+no time filter) with the default `order_by`. `user_ids[]` with
+`order_by=updated_at` is already rejected.
+
 ### Query Parameters
 
 - `after_id: optional string`
@@ -65,23 +74,23 @@ by the `order_by` key, with ties broken by id.
 
   - `gt: optional string`
 
-    Filter chats updated after this time (RFC 3339 format)
+    Filter chats updated after this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
   - `gte: optional string`
 
-    Filter chats updated at or after this time (RFC 3339 format)
+    Filter chats updated at or after this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
   - `lt: optional string`
 
-    Filter chats updated before this time (RFC 3339 format)
+    Filter chats updated before this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
   - `lte: optional string`
 
-    Filter chats updated at or before this time (RFC 3339 format)
+    Filter chats updated at or before this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
 - `user_ids: optional array of string`
 
-  Filter to chats created by specific users (max 10 per request). Omit for an org-wide query. Enumerate IDs via `GET /v1/compliance/organizations/{org_uuid}/users`.
+  Filter to chats created by specific users (max 10 per request). Omit for an org-wide query. Enumerate IDs via `GET /v1/compliance/organizations/{org_uuid}/users`. Deprecated combination: passing `user_ids[]` together with any `updated_at.*` filter is deprecated and will be rejected after 2026-09-22. For `updated_at`-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
 ### Header Parameters
 
@@ -111,7 +120,7 @@ by the `order_by` key, with ties broken by id.
 
   - `model: string or null`
 
-    Model selected for this chat (e.g. 'claude-opus-4-7'). May be null for legacy chats that never had a model recorded.
+    Model selected for this chat (e.g. 'claude-opus-5'). May be null for legacy chats that never had a model recorded.
 
   - `name: string`
 
@@ -175,9 +184,9 @@ curl https://api.anthropic.com/v1/compliance/apps/chats \
       "created_at": "2025-06-07T08:09:10Z",
       "updated_at": "2025-06-07T09:10:11Z",
       "organization_id": "org_abc123",
-      "organization_uuid": "abcdef0123-4567-89ab-cdef-0123456789ab",
+      "organization_uuid": "abcdef01-2345-6789-abcd-ef0123456789",
       "project_id": "claude_proj_xyz789",
-      "model": "claude-opus-4-7",
+      "model": "claude-opus-5",
       "user": {
         "id": "user_xyz456",
         "email_address": "user@example.com"
@@ -263,7 +272,7 @@ curl https://api.anthropic.com/v1/compliance/apps/chats/$CLAUDE_CHAT_ID \
 
   - `model: string or null`
 
-    Model selected for this chat (e.g. 'claude-opus-4-7'). May be null for legacy chats that never had a model recorded.
+    Model selected for this chat (e.g. 'claude-opus-5'). May be null for legacy chats that never had a model recorded.
 
   - `name: string`
 
@@ -621,7 +630,7 @@ Retrieves message history and file metadata for a specific chat.
 
 - `model: string or null`
 
-  Model selected for this chat (e.g. 'claude-opus-4-7'). May be null for legacy chats that never had a model recorded.
+  Model selected for this chat (e.g. 'claude-opus-5'). May be null for legacy chats that never had a model recorded.
 
 - `name: string`
 
@@ -671,9 +680,9 @@ curl https://api.anthropic.com/v1/compliance/apps/chats/$CLAUDE_CHAT_ID/messages
   "created_at": "2025-06-07T08:09:10Z",
   "updated_at": "2025-06-07T08:09:11Z",
   "organization_id": "org_abc123",
-  "organization_uuid": "abcdef0123-4567-89ab-cdef-0123456789ab",
+  "organization_uuid": "abcdef01-2345-6789-abcd-ef0123456789",
   "project_id": "claude_proj_xyz789",
-  "model": "claude-opus-4-7",
+  "model": "claude-opus-5",
   "user": {
     "id": "user_xyz456",
     "email_address": "user@example.com"

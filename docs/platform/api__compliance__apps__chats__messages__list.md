@@ -309,7 +309,7 @@ Retrieves message history and file metadata for a specific chat.
 
 - `model: string or null`
 
-  Model selected for this chat (e.g. 'claude-opus-4-7'). May be null for legacy chats that never had a model recorded.
+  Model selected for this chat (e.g. 'claude-opus-5'). May be null for legacy chats that never had a model recorded.
 
 - `name: string`
 
@@ -359,9 +359,9 @@ curl https://api.anthropic.com/v1/compliance/apps/chats/$CLAUDE_CHAT_ID/messages
   "created_at": "2025-06-07T08:09:10Z",
   "updated_at": "2025-06-07T08:09:11Z",
   "organization_id": "org_abc123",
-  "organization_uuid": "abcdef0123-4567-89ab-cdef-0123456789ab",
+  "organization_uuid": "abcdef01-2345-6789-abcd-ef0123456789",
   "project_id": "claude_proj_xyz789",
-  "model": "claude-opus-4-7",
+  "model": "claude-opus-5",
   "user": {
     "id": "user_xyz456",
     "email_address": "user@example.com"

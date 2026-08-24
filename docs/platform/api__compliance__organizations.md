@@ -625,7 +625,7 @@ unknown organizations and organizations outside the hierarchy return 404.
 
     A setting whose enforced value is a single true/false flag.
 
-    - `name: "ai_powered_artifacts_enabled" or "api_workbench_feedback_collection_enabled" or "artifact_connectors_enabled" or 43 more`
+    - `name: "ai_powered_artifacts_enabled" or "api_workbench_feedback_collection_enabled" or "artifact_connectors_enabled" or 44 more`
 
       - `"ai_powered_artifacts_enabled"`
 
@@ -684,6 +684,8 @@ unknown organizations and organizations outside the hierarchy return 404.
       - `"directory_sync_enabled"`
 
       - `"frontier_data_use_enabled"`
+
+      - `"group_skill_sharing_enabled"`
 
       - `"hipaa_compliance_enabled"`
 
@@ -948,7 +950,7 @@ curl https://api.anthropic.com/v1/compliance/organizations/$ORGANIZATION_ID/sett
 
       A setting whose enforced value is a single true/false flag.
 
-      - `name: "ai_powered_artifacts_enabled" or "api_workbench_feedback_collection_enabled" or "artifact_connectors_enabled" or 43 more`
+      - `name: "ai_powered_artifacts_enabled" or "api_workbench_feedback_collection_enabled" or "artifact_connectors_enabled" or 44 more`
 
         - `"ai_powered_artifacts_enabled"`
 
@@ -1007,6 +1009,8 @@ curl https://api.anthropic.com/v1/compliance/organizations/$ORGANIZATION_ID/sett
         - `"directory_sync_enabled"`
 
         - `"frontier_data_use_enabled"`
+
+        - `"group_skill_sharing_enabled"`
 
         - `"hipaa_compliance_enabled"`
 
