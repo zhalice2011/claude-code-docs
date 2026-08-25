@@ -1,11 +1,6 @@
----
-title: List chats
-url: https://platform.claude.com/docs/en/api/compliance/apps/chats/list
----
+# List chats
 
-## List chats
-
-**get** `/v1/compliance/apps/chats`
+**GET** `/v1/compliance/apps/chats`
 
 Lists chat metadata with filtering capabilities for targeted
 compliance review. Results are sorted chronologically (time ascending)
@@ -20,7 +15,7 @@ request stream. For per-user listing, use `created_at.*` filters (or
 no time filter) with the default `order_by`. `user_ids[]` with
 `order_by=updated_at` is already rejected.
 
-### Query Parameters
+## Query parameters
 
 - `after_id: optional string`
 
@@ -30,31 +25,43 @@ no time filter) with the default `order_by`. `user_ids[]` with
 
   Pagination cursor for retrieving the previous page of results. To paginate, pass the `first_id` value from the most recent response. Clients should treat this value as an opaque string and not attempt to parse or interpret its contents, as the format may change without notice.
 
-- `created_at: optional object { gt, gte, lt, lte }`
+- `created_at: optional object`
 
   - `gt: optional string`
 
     Filter chats created after this time (RFC 3339 format)
 
+    format: date-time
+
   - `gte: optional string`
 
     Filter chats created at or after this time (RFC 3339 format)
+
+    format: date-time
 
   - `lt: optional string`
 
     Filter chats created before this time (RFC 3339 format)
 
+    format: date-time
+
   - `lte: optional string`
 
     Filter chats created at or before this time (RFC 3339 format)
+
+    format: date-time
 
 - `limit: optional number`
 
   Maximum results (default: 100, max: 1000)
 
+  default: 100, maximum: 1000, minimum: 1
+
 - `order_by: optional "created_at" or "updated_at"`
 
   Sort key for results. `created_at` (default) sorts by chat creation time. `updated_at` sorts by last update time and is only supported for org-wide queries (omit user_ids[]). For org-wide queries, any time filter must match the sort key: `created_at.*` filters require `order_by=created_at`, and `updated_at.*` filters require `order_by=updated_at`.
+
+  default: created_at
 
   - `"created_at"`
 
@@ -68,35 +75,45 @@ no time filter) with the default `order_by`. `user_ids[]` with
 
   Filter by project IDs (accepts `claude_proj_...`). Enumerate IDs via `GET /v1/compliance/apps/projects`. Requires user_ids[]; not supported for org-wide queries.
 
-- `updated_at: optional object { gt, gte, lt, lte }`
+- `updated_at: optional object`
 
   - `gt: optional string`
 
     Filter chats updated after this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
+    format: date-time
+
   - `gte: optional string`
 
     Filter chats updated at or after this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
+
+    format: date-time
 
   - `lt: optional string`
 
     Filter chats updated before this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
+    format: date-time
+
   - `lte: optional string`
 
     Filter chats updated at or before this time (RFC 3339 format). Combining updated_at filters with `user_ids[]` is deprecated and will be rejected after 2026-09-22; for updated_at-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
+
+    format: date-time
 
 - `user_ids: optional array of string`
 
   Filter to chats created by specific users (max 10 per request). Omit for an org-wide query. Enumerate IDs via `GET /v1/compliance/organizations/{org_uuid}/users`. Deprecated combination: passing `user_ids[]` together with any `updated_at.*` filter is deprecated and will be rejected after 2026-09-22. For `updated_at`-windowed polling, omit `user_ids[]` and use `order_by=updated_at` with `after_id` pagination.
 
-### Header Parameters
+  maxItems: 10
+
+## Headers
 
 - `"x-api-key": optional string`
 
-### Returns
+## Returns
 
-- `data: array of object { id, created_at, deleted_at, 8 more }`
+- `data: array of object`
 
   List of chat metadata sorted chronologically by the request's `order_by` key (default `created_at`), tie break by id
 
@@ -108,9 +125,13 @@ no time filter) with the default `order_by`. `user_ids[]` with
 
     Creation timestamp
 
+    format: date-time
+
   - `deleted_at: string or null`
 
     Deletion timestamp if deleted
+
+    format: date-time
 
   - `href: string`
 
@@ -124,10 +145,6 @@ no time filter) with the default `order_by`. `user_ids[]` with
 
     Chat name/title
 
-  - `organization_id: string`
-
-    Organization ID this chat belongs to
-
   - `organization_uuid: string`
 
     Organization UUID this chat belongs to
@@ -140,7 +157,9 @@ no time filter) with the default `order_by`. `user_ids[]` with
 
     Last update timestamp
 
-  - `user: object { id, email_address }  or null`
+    format: date-time
+
+  - `user: object or null`
 
     User information for compliance responses.
 
@@ -151,6 +170,12 @@ no time filter) with the default `order_by`. `user_ids[]` with
     - `email_address: string`
 
       User's email address
+
+  - `organization_id: string`
+
+    **Deprecated**
+
+    Organization ID this chat belongs to
 
 - `first_id: string or null`
 
@@ -164,14 +189,14 @@ no time filter) with the default `order_by`. `user_ids[]` with
 
   Opaque pagination cursor for the last chat in the current result set. Pass as `after_id` on the next request to page forwards. Clients should treat this value as an opaque string and not attempt to parse or interpret its contents, as the format may change without notice.
 
-### Example
+## Example
 
-```http
+```bash
 curl https://api.anthropic.com/v1/compliance/apps/chats \
     -H "Authorization: Bearer $ANTHROPIC_COMPLIANCE_API_KEY"
 ```
 
-#### Response
+### Response (200)
 
 ```json
 {
