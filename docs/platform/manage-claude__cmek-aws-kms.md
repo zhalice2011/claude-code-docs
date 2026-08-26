@@ -134,7 +134,7 @@ How you register the key depends on which product you use.
         Create an external key configuration through the Admin API.
 
         <Note>
-          For organizations on [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws), the external key endpoints are not yet available. Register, validate, and attach your key in the Claude Console instead.
+          For organizations on [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws), the external key endpoints are not yet available. Register and attach your key in the Claude Console instead. There is no separate validation step; the key policy is first exercised when a workspace starts using the key, so a key policy problem surfaces at that point rather than at registration.
         </Note>
 
         ```bash

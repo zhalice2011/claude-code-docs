@@ -90,10 +90,10 @@ There are five organization-level roles. See more details in the [API Console ro
 
 | Role               | Permissions                                                                    |
 | ------------------ | ------------------------------------------------------------------------------ |
-| user               | Can use Playground                                                             |
-| claude\_code\_user | Can use Playground and [Claude Code](https://code.claude.com/docs/en/overview) |
-| developer          | Can use Playground and manage API keys                                         |
-| billing            | Can use Playground and manage billing details                                  |
+| user               | Can use playground                                                             |
+| claude\_code\_user | Can use playground and [Claude Code](https://code.claude.com/docs/en/overview) |
+| developer          | Can use playground and manage API keys                                         |
+| billing            | Can use playground and manage billing details                                  |
 | admin              | Can do all of the preceding, plus manage users                                 |
 
 Organization owners and primary owners have all admin permissions and can additionally manage admins. All references to the admin role on this page also apply to owners and primary owners.
