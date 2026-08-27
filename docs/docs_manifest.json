@@ -584,8 +584,8 @@
     "errors.md": {
       "original_url": "https://code.claude.com/docs/en/errors",
       "original_md_url": "https://code.claude.com/docs/en/errors.md",
-      "hash": "c945f5d5ccf5062b202b5022c5b0c1164ebf08223afd08fcc2f2dafa1d60740d",
-      "last_updated": "2026-08-27T00:22:03.730112",
+      "hash": "d3b98519b17a7e4509ad703ecc2ccc164e78dbbb8f4a879a25bd7eac5011aa7e",
+      "last_updated": "2026-08-27T13:21:45.486078",
       "source": "claude-code"
     },
     "fast-mode.md": {
@@ -780,8 +780,8 @@
     "mcp.md": {
       "original_url": "https://code.claude.com/docs/en/mcp",
       "original_md_url": "https://code.claude.com/docs/en/mcp.md",
-      "hash": "9ea29d271dd355b4baf8d3ab06df92ddc7d05203de2d837716ac01044b3c4c34",
-      "last_updated": "2026-08-22T03:35:20.033573",
+      "hash": "19a036f16bd0fc454dbc1505ef23ca747f8c1dd33d20b8c36290c7aaa282ce84",
+      "last_updated": "2026-08-27T13:22:28.168373",
       "source": "claude-code"
     },
     "mcp-quickstart.md": {
@@ -1340,7 +1340,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-08-27T00:23:54.830466",
+    "last_fetch_completed": "2026-08-27T13:23:50.181998",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 191,
@@ -1350,7 +1350,7 @@
     "total_files": 191,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-27T00:23:54.830480",
+  "last_updated": "2026-08-27T13:23:50.182026",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
