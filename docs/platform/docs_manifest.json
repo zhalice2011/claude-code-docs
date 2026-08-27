@@ -367,15 +367,15 @@
     "agents-and-tools__tool-use__web-fetch-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool.md",
-      "hash": "a7a468b3c3c953377f61b6ea2d9e626732dad65fbd8024875770baa69a2a486f",
-      "last_updated": "2026-08-20T21:21:36.871090",
+      "hash": "2e8fbff0eef10cd393bbc5a8be1af8e8e4572f9df2cc8a5f7db1561aac682df1",
+      "last_updated": "2026-08-27T00:24:30.826675",
       "source": "platform"
     },
     "agents-and-tools__tool-use__web-search-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool.md",
-      "hash": "68e1c04c7773e6884f4936d6d9254515842fdb65967e46a4bab1e685065c25cd",
-      "last_updated": "2026-08-20T00:42:12.190760",
+      "hash": "fe09357ca613ea1d82c62de53e0588ff0cc7b2c5dcffdbaa910bc4de0e436120",
+      "last_updated": "2026-08-27T00:24:31.502696",
       "source": "platform"
     },
     "api__admin.md": {
@@ -4791,7 +4791,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-08-26T19:45:53.434274",
+    "last_fetch_completed": "2026-08-27T00:32:07.993603",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 688,
@@ -4806,7 +4806,7 @@
     "total_files": 684,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-26T19:45:53.434295",
+  "last_updated": "2026-08-27T00:32:07.993624",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
