@@ -75,7 +75,7 @@ json
 | `--allowedTools <tools...>` | 进程级临时 allow 规则。空格或逗号分隔。例：`--allowedTools "Bash(git:*) Edit"` |
 | `--disallowedTools <tools...>` | 进程级临时 deny 规则。同上 |
 | `--add-dir <path>` | 把额外目录加入信任目录范围（影响 Read 是否需要弹询问） |
-| `-y` / `--dangerously-skip-permissions` | 等价于 `--permission-mode bypassPermissions` |
+| `-y` / `--dangerously-skip-permissions` | 等价于 `--permission-mode bypassPermissions`。HIGH/CRITICAL 仍可能询问。隔离沙箱 full pass：`export CODEBUDDY_IS_SANDBOX=1 && codebuddy -y`（高危，仅进程环境，详见[沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危)） |
 
 ### 配置文件
 

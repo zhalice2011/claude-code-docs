@@ -535,7 +535,7 @@ fi
 
 ### 无人值守操作
 
-容器增强的安全措施（隔离和防火墙规则）允许您运行 `codebuddy -y` （或 `codebuddy --dangerously-skip-permissions`) 来绕过权限提示，实现无人值守操作。
+容器增强的安全措施（隔离和防火墙规则）允许您运行 `codebuddy -y` （或 `codebuddy --dangerously-skip-permissions`) 来绕过大部分权限提示。若 HIGH/CRITICAL 危险命令仍会询问，再在容器启动环境里设置 `CODEBUDDY_IS_SANDBOX=1`（高危 full pass，仅进程环境，详见[沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危)）。
 
 ---
 

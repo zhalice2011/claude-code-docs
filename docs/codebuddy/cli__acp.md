@@ -55,7 +55,7 @@ json
 > 
 > 	- 海外版：不设置（默认）
 > 	- 中国版：`internal`
-> 	- iOA 版：`ioa`详见 [身份和访问管理文档](./iam#个人用户获取-api-key)。
+> 	- iOA 版：`ioa`详见 [身份和访问管理文档](./iam#个人用户-获取-api-key)。
 
 ## ACP 协议特性
 
@@ -95,6 +95,15 @@ CodeBuddy Code 会在创建新会话时自动向客户端推送可用的 Slash �
 - 动态更新可用命令
 
 命令列表会自动过滤掉本地命令（如 `/clear`、`/exit`）和客户端专属命令（如 `/theme`、`/config`），只推送适用于 ACP 模式的命令。
+
+### 上下文窗口档位配置
+
+CodeBuddy Code 通过 `getConfigOptions` / `setSessionConfigOption` 的 `context_window` 配置项支持会话级上下文预算档位选择（如 200K / 1M）：
+
+- **下发条件**：仅当当前模型配置了多档上下文预算（`contextWindow.supportedLengths` 不少于 2 档）时，`getConfigOptions` 才返回该配置项；单档或无配置的模型不会出现选择器。
+- **档位校验**：`setSessionConfigOption('context_window', value)` 只接受当前模型已声明的档位，非法值会被拒绝。
+- **生效范围**：档位是会话级临时配置，进程内有效；切换会话时保持，重启进程后回落模型默认档。
+- **分母联动**：选择档位后，上下文环（`usage_update.size`）与压缩阈值均按该档位计算。
 
 ### Agent Teams 协议扩展
 
@@ -214,7 +223,6 @@ codebuddy --acp
 ## 相关链接
 
 - [CLI 参考手册](./cli-reference) \- 查看所有命令行参数
-- [`codebuddy.ai/*` 扩展命名空间参考](./acp-meta-reference) \- 全部 `_meta` 扩展键与 `_codebuddy.ai/*` 扩展方法清单，含公共 / 私有分界
 - [IDE 集成说明](./ide-integrations) \- 更多编辑器集成方式
 - [ACP 协议规范](https://github.com/agentclientprotocol/agent-client-protocol) \- 协议详细文档
 

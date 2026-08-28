@@ -176,7 +176,7 @@ cat error.log | codebuddy -p "分析这些错误日志"
 codebuddy -p "审查 src/utils.js 的代码质量" -y
 ```
 
-> **重要提示**：使用 `-p/--print` 参数进行单次执行时,如果操作需要访问文件、执行命令等授权操作,必须添加 `-y` （或 `--dangerously-skip-permissions`) 参数。
+> **重要提示**：使用 `-p/--print` 参数进行单次执行时,如果操作需要访问文件、执行命令等授权操作,必须添加 `-y` （或 `--dangerously-skip-permissions`) 参数。仅 `-y` 时 HIGH/CRITICAL 危险命令仍可能要求确认；隔离沙箱里真正不询问请用 `export CODEBUDDY_IS_SANDBOX=1 && codebuddy -p -y ...`（高危，详见[沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危)）。
 
 ### 项目级操作
 

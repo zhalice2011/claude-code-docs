@@ -8,8 +8,8 @@ Hook（钩子）允许你在 CodeBuddy Code 的会话生命周期内插入自定
 
 ## 功能概览
 
-- 完整支持 Hook 事件家族（27\+ 种），覆盖工具生命周期（`PreToolUse` / `PostToolUse` / `PostToolUseFailure`）、会话与子代理（`SessionStart` / `SessionEnd` / `Stop` / `SubagentStart` / `SubagentStop` / `StopFailure`）、用户交互（`UserPromptSubmit` / `Notification` / `PermissionRequest` / `PermissionDenied` / `Elicitation` / `ElicitationResult`）、上下文（`PreCompact` / `PostCompact` / `InstructionsLoaded` / `ConfigChange`）、任务与团队（`TaskCreated` / `TaskCompleted` / `TeammateIdle`）、文件与环境（`FileChanged` / `CwdChanged` / `WorktreeCreate` / `WorktreeRemove`）以及启动/维护（`Setup`）。完整事件清单见[插件参考的事件表](./plugins-reference#3-hooks钩子)。
-- 在自定义 Agent / Skill 的 frontmatter 里直接声明 hooks，scope 与 subagent 生命周期绑定（详见[本文末尾章节](#agent--skill-frontmatter-hooks)）。
+- 完整支持 Hook 事件家族（27\+ 种），覆盖工具生命周期（`PreToolUse` / `PostToolUse` / `PostToolUseFailure`）、会话与子代理（`SessionStart` / `SessionEnd` / `Stop` / `SubagentStart` / `SubagentStop` / `StopFailure`）、用户交互（`UserPromptSubmit` / `Notification` / `PermissionRequest` / `PermissionDenied` / `Elicitation` / `ElicitationResult`）、上下文（`PreCompact` / `PostCompact` / `InstructionsLoaded` / `ConfigChange`）、任务与团队（`TaskCreated` / `TaskCompleted` / `TeammateIdle`）、文件与环境（`FileChanged` / `CwdChanged` / `WorktreeCreate` / `WorktreeRemove`）以及启动/维护（`Setup`）。完整事件清单见[插件参考的事件表](./plugins-reference#_3-hooks-钩子)。
+- 在自定义 Agent / Skill 的 frontmatter 里直接声明 hooks，scope 与 subagent 生命周期绑定（详见[本文末尾章节](#agent-skill-frontmatter-hooks)）。
 - 支持基于正则表达式的 matcher，可按工具名称或事件上下文筛选执行。
 - 自动注入 `session_id`、会话转录文件、当前工作目录等上下文信息。
 - 支持退出码与 JSON 输出双模式，提供清晰的决策语义。

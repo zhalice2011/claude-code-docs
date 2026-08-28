@@ -203,7 +203,8 @@ inline MCP server 只在该子代理 session 内创建, 子代理结束时自动
 | 用户子代理: `~/.codebuddy/agents/*.md` | 允许 inline MCP。 |
 | 项目子代理: `.codebuddy/agents/*.md` | 允许 inline MCP, 但需要项目本地批准。 |
 | Plugin agent | 忽略 `mcpServers`。 |
-| `strictMcpConfig=true` | 跳过所有 agent frontmatter/product `mcpServers`。 |
+| strict \+ 内置/用户/项目/Plugin agent | 忽略 agent 声明的 `mcpServers`。 |
+| strict \+ `--agents` / SDK 显式 Agent | 只允许 inline MCP 对象；忽略名称字符串引用。 |
 
 项目子代理的 inline MCP 需要写入项目本地配置, 位置是当前 workspace 的 `.codebuddy/settings.local.json`:
 

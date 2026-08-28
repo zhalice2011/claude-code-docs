@@ -146,7 +146,7 @@ json
 | `hooks/hooks.json`（本节描述） | 整个会话（插件启用时） | 不受 `allowUntrustedFrontmatterHooks` 约束，启用插件即生效 |
 | `agents/*.md` 或 `skills/SKILL.md` 中的 `hooks` frontmatter | 仅在该 subagent / fork skill 生命周期内 | 受 `allowUntrustedFrontmatterHooks` 闸门约束，默认拒绝；用户需在 `settings.json` 显式开启 |
 
-由于 frontmatter hooks 受安全闸门拦截，插件分发的 Skill / Agent 如果依赖 frontmatter hooks 才能正常工作，应在插件 README 中明确告知用户开启 `allowUntrustedFrontmatterHooks` 设置。详见 [Hook 参考指南 \- Frontmatter Hooks](./hooks#agent--skill-frontmatter-hooks)。
+由于 frontmatter hooks 受安全闸门拦截，插件分发的 Skill / Agent 如果依赖 frontmatter hooks 才能正常工作，应在插件 README 中明确告知用户开启 `allowUntrustedFrontmatterHooks` 设置。详见 [Hook 参考指南 \- Frontmatter Hooks](./hooks#agent-skill-frontmatter-hooks)。
 
 ### 4\. MCP Servers（MCP 服务器）
 

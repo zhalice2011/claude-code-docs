@@ -11,6 +11,28 @@
 - **灵活来源**：支持 GitHub 仓库、Git URL、本地路径和 HTTP URL
 - **两步流程**：先添加市场，再安装具体插件
 
+## 运行时投影与管理所有权
+
+Agent CLI 的首轮插件投影是 cache\-first 的：进程只读取各设置作用域中的 `enabledPlugins`、`installed_plugins.json` registry，以及 registry 指向的不可变插件 cache。首轮投影不会扫描 Marketplace、访问远端或修复/迁移磁盘状态；已启用插件的 依赖闭包也只从同一份 registry 与 cache 中解析。
+
+具备管理权限的 Agent CLI runtime 会在首轮投影提交后启动一次后台 reconcile。它负责 同步 Marketplace、补齐插件、迁移旧 cache、应用策略和清理孤儿状态；提交后通过同一条 串行事务队列提交 Plugin 活动快照，避免多轮管理和投影交叉。事务内会并行准备 MCP/LSP 与 Product 投影；Product 提交后，Command、Output Style 和 Agent 并行重建。 后台 reconcile 的活动快照没有变化时不重投下游；发生变化时也只刷新受影响的组件。 宿主若在创建 Session 前确实需要某些插件，可调用通用 `_codebuddy.ai/reconcilePlugins` ACP 方法：Agent CLI 使用同一标准 workflow 重新检查磁盘并幂等物化， 然后只严格校验宿主传入的 required roots 及其依赖闭包。该请求是有界的；与本会话无关的 marketplace 失败不会阻断已健康的 required roots，migration、cleanup 和 auto\-update 仍只属于后台维护。
+
+长驻 Host 还可调用 `POST /api/v1/plugins/reconcile`，幂等物化 Product/settings 声明的 完整 configured state，并在物化后重建运行时投影。这个端点不接受宿主名、marketplace 名或 本地路径，因而不会形成 WorkBuddy 专用的管理分支；并发请求复用同一个底层 pass。HTTP waiter 有固定上限，超时或客户端断开只结束当前等待，不取消仍受跨进程锁保护的底层物化，后续请求仍可 加入或重试。严格聚合失败前已经原子提交的 marketplace/cache 会先投影为 partial/last\-good 状态。
+
+普通 TUI、`--print`、headless 和 stream\-json 调用共享同一条首轮边界：启动时从已提交的 registry/cache 构建运行时投影，第一次真正 dispatch Agent 前等待该投影完成；不会在两种 UI 模式之间插入不同的前台 Marketplace 下载。单个 cache 缺失或加载失败只让对应插件缺席并记录 插件错误，其他插件和 Agent 继续运行；缺失插件由后台 reconcile 补齐并在提交后重投影。
+
+长驻 ACP/serve 进程的 startup 只发布 cache\-first 快照，不抢先启动可能覆盖 Session 精确选择的 下游投影。宿主显式 reconcile 会成为第一个完整投影；未发送该扩展的标准 ACP client 在首次 Session 消费时只投影已提交的 registry/cache，不会把产品级全量修复重新接入 Agent 首轮。显式 `--no-plugin-management` 下只从已有 registry/cache 做完整投影，不产生管理写入。
+
+Directory Marketplace 遵循标准安装语义：marketplace 注册记录保留源目录， 但被安装的插件仍经过标准依赖解析，物化到 `cache/<marketplace>/<plugin>/<version>`，再提交 `installed_plugins.json`。运行时只从该 版本化快照加载，不直接把 mutable marketplace source 当作已安装插件。Product 声明的 目录与远端 marketplace 也复用这一流程；缺失 cache/registry 会在具备管理权限的进程中 幂等补齐。
+
+`--no-plugin-management` 是通用的显式只读开关，仅适用于宿主已能保证完整 registry/cache 闭包的特殊运行时。该模式下 Marketplace 与插件的安装、更新、删除、启停和修复 API 都会在任何 I/O 前拒绝。普通 CLI 和会话 runtime 默认保留标准管理能力；Agent CLI 不根据宿主品牌或拓扑自动切换该模式。
+
+Marketplace 写操作统一按 `source → stable storage name` 获取跨进程锁；add 在任何 clone/download/swap 之前就持有 source 锁，并在锁内再次按规范化 source 查重，关闭并发 check/install 间的 TOCTOU 窗口。远端 add 先写入独立 staging 目录，registry 提交成功后 才清理旧目录；同进程并发 update 共享一次远端同步，跨进程 update/remove 也遵守同一锁序。 remove 会清理该 Marketplace 在 user/project/local scope 的全部 registry/settings 记录、孤儿 cache、插件配置 和 MCP OAuth 凭证。产品管理的内置 Marketplace 不允许被普通 remove/replace。
+
+远端 Marketplace 也只有 Agent CLI 一套生命周期：Product 只声明 `source`、`url`、可选 `versionUrl` 和 `autoUpdate`。ZIP 源按 `versionUrl → ZIP URL 版本 → ETag/Last-Modified` 检查新鲜度；普通自动更新不会清空这些检查元数据或强制下载。ZIP 的 freshness 只在 `marketplace.json` 与其中声明的全部本地插件目录都完整时生效；任何目录缺失都会绕过 version/ETag short\-circuit，重新下载完整快照。ZIP 和 URL 源都先在独立目录完成下载与完整 清单校验，再原子替换 live source；URL 源中任一插件清单失败会让整次刷新失败，不会发布 部分目录。Git 源也先在 live checkout 旁完成浅克隆和完整清单校验，仅在新 commit 就绪后才通过 backup \+ rename 原子晋升；同 commit 是 no\-op，克隆、鉴权、网络或清单失败都保留旧 checkout。 任何 remote registry 记录指向缺失或不完整的本地 source 快照时，后台 reconcile 会把它视为需要重新物化， 而不是只因 source 元数据相同就误判为已安装。声明式 Directory 源临时不可达时则保守保留注册记录和已有 插件 cache，不用空目录覆盖 last\-good。刷新失败时不提交新的 marketplace 记录，也不改写已安装 registry/cache；现有版本继续作为 last\-good 运行。只有源内容真的变化 时才重新物化该市场中已安装的插件；声明换源和中断状态修复也复用同一条物化路径，而不是只改 marketplace 元数据后留下旧插件 cache。`force` 只用于用户显式恢复/诊断，不是另一套宿主更新器。
+
+Product 声明的稳定 marketplace 名优先于同源的历史 URL 派生别名：标准注册事务会在新记录 提交后退休旧别名。Agent CLI 不识别 WorkBuddy、Desktop 或任何平台品牌；宿主不应维护额外 版本文件、定时器或强制刷新 RPC。
+
 ## 官方市场
 
 官方市场在 CodeBuddy Code 启动时自动可用。运行 `/plugin` 并进入**发现**标签页浏览可用插件。
@@ -98,7 +120,7 @@ bash
 ```
 ### 选择安装作用域
 
-使用交互式界面选择[安装作用域](./settings#配置作用域)：
+使用交互式界面选择[安装作用域](./plugins-reference#二-插件安装作用域)：
 
 1. 运行 `/plugin` 打开插件管理器
 2. 进入**发现**标签页
@@ -106,7 +128,7 @@ bash
 	- **用户作用域**（默认）：为你自己在所有项目中安装
 	- **项目作用域**：为所有协作者在此仓库中安装（添加到 `.codebuddy/settings.json`）
 	- **本地作用域**：仅为你自己在此仓库中安装（不与协作者共享）
-	- **托管作用域**：由管理员通过[托管设置](./settings#托管设置)安装（不可修改）
+	- **托管作用域**：由管理员通过[托管设置](./settings#插件设置)安装（不可修改）
 
 > 📌 **提示**：运行 `/plugin` 进入**已安装**标签页，查看按作用域分组的插件
 
@@ -202,7 +224,7 @@ CodeBuddy Code 可以在启动时自动更新市场及其已安装的插件。�
 
 **禁用所有自动更新**：
 
-设置 `DISABLE_AUTOUPDATER` 环境变量可以禁用 CodeBuddy Code 和所有插件的自动更新。参见[自动更新](./env-vars#自动更新)。
+设置 `DISABLE_AUTOUPDATER` 环境变量可以禁用 CodeBuddy Code 和所有插件的自动更新。参见[自动更新](./env-vars#遥测和报告)。
 
 **保持插件自动更新，禁用 CodeBuddy 自动更新**：
 
@@ -239,7 +261,7 @@ export FORCE_AUTOUPDATE_PLUGINS=1
 | Swift | `swift-lsp` | `sourcekit-lsp` |
 | TypeScript | `typescript-lsp` | `typescript-language-server` |
 
-你也可以为其他语言[创建自己的 LSP 插件](./plugins-reference#lsp-servers)
+你也可以为其他语言[创建自己的 LSP 插件](./plugins-reference#_5-lsp-servers-lsp-服务器)
 
 > ⚠️ **注意**：如果在 `/plugin` 错误标签页中看到 `Executable not found in $PATH`，请从上表中安装所需的二进制文件。
 
@@ -319,7 +341,7 @@ bash
 ```
 /plugin install commit-commands@your-org-codebuddy-plugins
 ```
-参见[配置作用域](./settings#配置作用域)了解更多关于作用域的信息。
+参见[配置作用域](./plugins-reference#二-插件安装作用域)了解更多关于作用域的信息。
 
 ### 4\. 使用新插件
 
@@ -358,7 +380,7 @@ json
 
 ## 安全性
 
-插件和市场是高度受信任的组件，可以以你的用户权限在你的计算机上执行任意代码。仅从你信任的来源安装插件和添加市场。组织可以使用[托管市场限制](./settings#托管市场限制)限制用户允许添加的市场。
+插件和市场是高度受信任的组件，可以以你的用户权限在你的计算机上执行任意代码。仅从你信任的来源安装插件和添加市场。组织可以使用[托管市场限制](./settings#extraknownmarketplaces)限制用户允许添加的市场。
 
 ## 故障排除
 
@@ -379,7 +401,7 @@ json
 - **安装后文件未找到**：插件被复制到缓存，所以引用插件目录外的文件路径无法工作
 - **插件技能不显示**：清除缓存 `rm -rf ~/.codebuddy/plugins/cache`，重启 CodeBuddy Code 并重新安装插件
 
-更多故障排除方案参见[完整故障排除指南](./troubleshooting)。调试工具参见[调试和开发工具](./plugins-reference#调试和开发工具)
+更多故障排除方案参见[完整故障排除指南](./troubleshooting)。调试工具参见[调试和开发工具](./plugins-reference#七-调试和开发工具)
 
 ### 代码智能问题
 
@@ -389,7 +411,7 @@ json
 
 ### URL 型市场的相对路径问题
 
-如果从 URL 型市场安装插件时遇到"路径未找到"错误，这是因为相对路径参考问题。使用 Git 型市场（GitHub、GitLab 等）或将所有路径更改为绝对 URL 作为解决方案。
+URL 型市场是 catalog 分发方式：Agent CLI 获取 `marketplace.json`，并为相对路径条目获取 `plugin.json`，但无法通过 HTTP 目录列表递归镜像任意插件文件。因此，只有功能完全由清单内联的插件可以使用 相对路径；包含 skills/commands/hooks/本地代码的插件应在条目中声明 Git/NPM 等可物化的远端源， 或把整个 Marketplace 改用 Git/ZIP 发布。这样 catalog 和插件 payload 的边界是显式的，不会把只下载到的 `plugin.json` 误当成完整插件目录。
 
 ## 创建自己的市场
 

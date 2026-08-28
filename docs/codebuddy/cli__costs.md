@@ -20,41 +20,29 @@ CodeBuddy Code 每次交互都会消耗 Token。成本因代码库大小、查�
 ```
 ### 使用 /context 命令
 
-`/context` 命令可以分析当前上下文的占用情况，查看不同类型上下文的大小分布：
+`/context` 命令可以分析当前上下文的占用情况，查看不同类型上下文的大小分布。默认折叠明细，`/context all` 展开：
 
 ```
 > /context 
   ⎿  Context Usage
-     ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁    glm-4.7 · 38.1k/200.0k tokens (19.1%)
+     ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁    glm-4.7 · 38.1k/200k tokens (19%)
      ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁ ⛁
-     ⛁ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛁ System prompt: 2.1k tokens (1.1%)
+     ⛁ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    Estimated usage by category
+     ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛁ System prompt: 2.1k tokens (1.1%)
      ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛁ System tools: 16.4k tokens (8.2%)
      ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛁ Memory files: 3.7k tokens (1.9%)
-     ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛁ Messages: 15.9k tokens (7.9%)
-     ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛶ Free space: 145.9k (72.9%)
-     ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛝ Autocompact buffer: 16.0k tokens (8.0%)
-     ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶
-     ⛶ ⛶ ⛶ ⛶ ⛝ ⛝ ⛝ ⛝ ⛝ ⛝
+     ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛁ Skills: 1.7k tokens (0.9%)
+     ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛁ Messages: 15.9k tokens (8.0%)
+     ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶ ⛶    ⛶ Free space: 144.2k (72.1%)
+     ⛶ ⛶ ⛶ ⛶ ⛝ ⛝ ⛝ ⛝ ⛝ ⛝    ⛝ Autocompact buffer: 16k tokens (8.0%)
 
      Memory files · /memory
-     └ /Users/yangsubo/.codebuddy/CODEBUDDY.md (User): 18 tokens
-     └ /Users/yangsubo/CODEBUDDY.md (Project): 15 tokens
-     └ /Users/yangsubo/workspace/genie/CODEBUDDY.md (Project): 1.2k tokens
-     └ /Users/yangsubo/workspace/genie/packages/agent-cli/CODEBUDDY.md (Project): 2.5k tokens
+     └ 4 files · 3.7k tokens
 
-     Skills and slash commands · /skills
+     Skills · /skills
+     └ 9 skills · 1.7k tokens
 
-     Project
-     └ release: 1.1k tokens
-     └ gen-drawio: 846 tokens
-     └ task-manager: 815 tokens
-     └ task-add: 730 tokens
-     └ task-done: 525 tokens
-     └ mr: 519 tokens
-     └ task-start: 493 tokens
-     └ my-task: 238 tokens
-     └ task-list: 233 tokens
-     └ security-review: 30 tokens
+     /context all to expand
 ```
 通过 `/context` 可以快速识别哪些内容占用了大量上下文空间，从而有针对性地优化。
 

@@ -37,13 +37,13 @@
 | 参数 | 说明 | 示例 |
 | --- | --- | --- |
 | `--add-dir` | 添加额外的工作目录供 CodeBuddy 访问（验证每个路径是否存在） | `codebuddy --add-dir ../apps ../lib` |
-| `--agent` | 本进程新会话的主 Agent（TUI / `--serve` Web / ACP）。内置：`cli`、`ptc`、`minimal`、`create`，或自定义 agent 名。压过 `codebuddy.mainAgent.lastUsed`，**不写入** `codebuddy.mainAgent.default` 或 settings `agent`。标准模式请显式 `cli`。对照表见 [Web UI](./web-ui#serve-启动模式与权限) | `codebuddy --serve --agent ptc` |
+| `--agent` | 本进程新会话的主 Agent（TUI / `--serve` Web / ACP）。内置：`cli`、`ptc`、`minimal`、`create`，或自定义 agent 名。压过 `codebuddy.mainAgent.lastUsed`，**不写入** `codebuddy.mainAgent.default` 或 settings `agent`。标准模式请显式 `cli`。对照表见 [Web UI](./web-ui#serve-启动-模式与权限) | `codebuddy --serve --agent ptc` |
 | `--agents` | 通过 JSON 动态定义自定义[子代理](./sub-agents)（格式见下文） | `codebuddy --agents '{"reviewer":{"description":"审查代码","prompt":"你是代码审查员"}}'` |
 | `--allowedTools` | 除了[settings.json 文件](./settings)外,无需提示用户即可允许的工具列表 | `"Bash(git log:*)" "Bash(git diff:*)" "Read"` |
 | `--disallowedTools` | 除了[settings.json 文件](./settings)外,应禁止使用的工具列表 | `"Bash(git log:*)" "Bash(git diff:*)" "Edit"` |
 | `--tools` | 限制可用的内置工具集（白名单）。空字符串 `""` 禁用所有内置工具，`"default"` 使用全部工具，或指定逗号分隔的工具名。支持 `Defer(X)` / `NoDefer(X)` 修饰符按需调整工具的延迟加载状态，详见 [工具延迟加载覆盖](./tool-defer-overlay) | `codebuddy --tools "Bash,Read,Defer(Glob)"` |
 | `--mcp-config <fileOrString>` | 从 JSON 文件或 JSON 字符串加载 MCP 服务器配置 | `codebuddy --mcp-config ./mcp.json` |
-| `--strict-mcp-config` | 仅使用 `--mcp-config` 或 SDK `mcpServers` 提供的 MCP 服务器，忽略用户、项目和本地 `.mcp.json` 等文件型配置；未显式传入时，交互模式、`--serve` 和 ACP 会继续加载这些文件型配置 | `codebuddy --serve --strict-mcp-config` |
+| `--strict-mcp-config` | 仅使用 `--mcp-config` 或 SDK 显式注入的 MCP，忽略 Plugin MCP 以及用户、项目和本地配置。显式 `--agents` / SDK Agent 仅保留内联 MCP 对象，名称字符串引用仍忽略；未传入时继续加载全部常规来源 | `codebuddy --serve --strict-mcp-config` |
 | `--no-session-persistence` | 仅在内存中保留会话上下文，不创建或更新本地 transcript；仍可以只读加载已有会话 | `codebuddy --serve --no-session-persistence` |
 | `--print`, `-p` | 打印响应后退出,不进入交互模式 | `codebuddy -p "查询"` |
 | `--settings` | 从 JSON 文件或 JSON 字符串加载额外的设置配置 | `codebuddy --settings '{"model":"gpt-5"}' "查询"` |
@@ -62,12 +62,12 @@
 | `--autocompact` | 设置自动压缩窗口大小：`auto` 跟随模型窗口，或 token 数（如 `400000`、`400k`、`1m`，clamp 到 100k\-1M） | `codebuddy --autocompact 400k` |
 | `--text-to-image-model` | 设置文生图功能使用的模型 ID | `codebuddy --text-to-image-model your-image-model` |
 | `--image-to-image-model` | 设置图生图功能使用的模型 ID | `codebuddy --image-to-image-model your-edit-model` |
-| `--permission-mode` | 本进程新会话的默认[权限模式](./permission-modes)。help 6 个：`default`、`acceptEdits`、`auto`、`dontAsk`、`plan`、`bypassPermissions`；运行时还认 `fullAccess`。`--serve` Web 新对话盖章此值；**不把未改过的启动值写入** `permissions.defaultMode`。`minimal` 不要配 `plan`。对照表见 [Web UI](./web-ui#serve-启动模式与权限) | `codebuddy --serve --permission-mode bypassPermissions` |
+| `--permission-mode` | 本进程新会话的默认[权限模式](./permission-modes)。help 6 个：`default`、`acceptEdits`、`auto`、`dontAsk`、`plan`、`bypassPermissions`；运行时还认 `fullAccess`。`--serve` Web 新对话盖章此值；**不把未改过的启动值写入** `permissions.defaultMode`。`minimal` 不要配 `plan`。对照表见 [Web UI](./web-ui#serve-启动-模式与权限) | `codebuddy --serve --permission-mode bypassPermissions` |
 | `--subagent-permission-mode` | 设置 subagent/团队成员的默认权限模式，覆盖从主 session 继承的模式。支持 `acceptEdits`、`default`、`plan`、`auto`、`dontAsk`、`bypassPermissions` | `codebuddy --subagent-permission-mode dontAsk` |
 | `--permission-prompt-tool` | 指定在非交互模式下处理权限提示的 MCP 工具 | `codebuddy -p --permission-prompt-tool mcp_auth_tool "查询"` |
 | `--resume` | 通过 ID 恢复特定会话,或在交互模式下选择 | `codebuddy --resume abc123 "查询"` |
 | `--continue` | 加载当前目录中最近的对话 | `codebuddy --continue` |
-| `-y` / `--dangerously-skip-permissions` | 跳过权限提示（谨慎使用） | `codebuddy -y` 或 `codebuddy --dangerously-skip-permissions` |
+| `-y` / `--dangerously-skip-permissions` | 跳过大部分权限提示（谨慎使用）。**不是**真正的 full pass：交互态下 HIGH/CRITICAL 命令仍可能要求确认。隔离沙箱中配合进程环境变量 `CODEBUDDY_IS_SANDBOX=1` 才跳过这些确认。全权限放行属于高危模式，故意做成环境变量而不是 CLI 参数。详见[沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危) | `codebuddy -y` 或 `export CODEBUDDY_IS_SANDBOX=1 && codebuddy -y` |
 | `--ide` | 启动时自动连接到 IDE（如果恰好有一个有效的 IDE 可用且打开了当前工作目录） | `codebuddy --ide` |
 | `--sandbox` | 在沙箱中运行 CodeBuddy（详见下方[沙箱模式](#沙箱模式-beta)) | `codebuddy --sandbox "分析项目"` |
 | `--debug` | 启用调试模式,支持可选的类别过滤 | `codebuddy --debug` |
@@ -76,7 +76,7 @@
 | `--plugin-dir <dirs...>` | 从本地目录加载插件（用于开发/测试），可指定多个路径。详见 [插件文档](./plugins) | `codebuddy --plugin-dir ./my-plugin ../other-plugin` |
 | `--bg` | 后台运行会话（detached 模式），日志输出到 `~/.codebuddy/logs/`。详见 [Daemon 文档](./daemon) | `codebuddy --bg "实现登录页面"` |
 | `--name <name>` | 后台会话名称（与 `--bg` 配合使用，便于通过 `ps`/`logs`/`kill` 查找） | `codebuddy --bg --name feature-x "实现功能"` |
-| `--serve` | 启动 HTTP 服务（Web UI、REST API、ACP）。未同时传 `--acp` 时 ACP 走 HTTP SSE，不会把 `session/update` 打到进程 stdout | `codebuddy --serve --port 8080` |
+| `--serve` | 启动 HTTP 服务（Web UI、REST API、ACP）。未叠加 `--acp` 时 ACP 走 `/api/v1/acp`，不会在进程 stdout 输出 `session/update` JSON\-RPC | `codebuddy --serve --port 8080` |
 | `--port <number>` | HTTP 监听端口（仅 `--serve`）。默认自动分配 | `codebuddy --serve --port 7890` |
 | `--host <string>` | HTTP 绑定地址（仅 `--serve`）。默认 `127.0.0.1`；非回环会强制鉴权，除非显式 `--auth none` | `codebuddy --serve --host 0.0.0.0` |
 | `--auth <mode>` | `--serve` 鉴权：`password`（默认）或 `none`。环境变量 `CODEBUDDY_GATEWAY_AUTH` 优先。`--auth none` 可覆盖非回环的 forceAuth | `codebuddy --serve --auth none` |
@@ -86,7 +86,9 @@
 | `--prewarm` | 以预热待命模式启动：先完成启动初始化后挂起，等待外部通过 IPC 唤醒（唤醒时才绑定工作目录）。用于消除会话拉起时的冷启动等待。默认关闭。 | `codebuddy --prewarm --prewarm-id pool1` |
 | `--prewarm-id <id>` | 预热 IPC 端点标识（默认取进程 PID），用于构造本地 socket/管道地址。配合 `cbc-prewarm` 管理命令使用。 | `codebuddy --prewarm --prewarm-id pool1` |
 
-> **重要提示**：在使用 `-p/--print` 进行非交互式执行时，涉及文件读写、命令执行、网络请求等操作必须有一个明确的权限策略：最常见的是 `-y` / `--dangerously-skip-permissions`，也可以使用 `--permission-mode auto`、`--permission-mode dontAsk`、预先配置的 `permissions.allow` 规则，或专门的权限提示 MCP 工具。否则需要人工确认的操作会被阻止。
+> **重要提示**：在使用 `-p/--print` 进行非交互式执行时，涉及文件读写、命令执行、网络请求等操作必须有一个明确的权限策略：最常见的是 `-y` / `--dangerously-skip-permissions`，也可以使用 `--permission-mode auto`、`--permission-mode dontAsk`、预先配置的 `permissions.allow` 规则，或专门的权限提示 MCP 工具。否则需要人工确认的操作会被阻止。仅 `-y` 时 HIGH/CRITICAL 危险命令仍可能要求确认。
+> 
+> **⚠️ 风险声明**：`CODEBUDDY_IS_SANDBOX=1` \+ `-y` 会跳过危险命令确认，仅限隔离无外网沙箱。该变量只认进程环境，不会从 `settings.json` 的 `env` 注入。不要在本机或能访问生产密钥的环境使用。
 
 TIP
 

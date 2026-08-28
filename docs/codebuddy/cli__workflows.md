@@ -77,7 +77,7 @@ CodeBuddy Code 内置如下 Workflow：
 
 | 命令 | 作用 |
 | --- | --- |
-| `/deep-research <问题>` | 多角度并行搜索、抓取并交叉印证来源，对每条主张投票，剔除未通过印证的部分，输出一份带引用的报告。需要 [WebSearch 工具](./tools-reference#websearch-tool-behavior) 可用。 |
+| `/deep-research <问题>` | 多角度并行搜索、抓取并交叉印证来源，对每条主张投票，剔除未通过印证的部分，输出一份带引用的报告。需要 [WebSearch 工具](./tools-reference) 可用。 |
 
 [你自己保存的 Workflow](#保存-workflow-以便复用) 会以同样方式注册成命令，在 `/` 自动补全里与内置 Workflow 一同出现。
 
@@ -107,7 +107,7 @@ text
 让 CodeBuddy 为你的任务写 Workflow，有两种方式：
 
 - [在提示里直接要 Workflow](#在提示里要-workflow)：用自然语言或者关键词 `ultracode`，CodeBuddy 会为这个任务写一份。
-- [让 CodeBuddy 自己决定（ultracode 模式）](#ultracode-模式让-codebuddy-自己决定)：`/effort ultracode` 把 effort 等级设到 ultracode，会话里的每一个有分量的任务 CodeBuddy 都会先规划成 Workflow。
+- [让 CodeBuddy 自己决定（ultracode 模式）](#ultracode-模式-让-codebuddy-自己决定)：`/effort ultracode` 把 effort 等级设到 ultracode，会话里的每一个有分量的任务 CodeBuddy 都会先规划成 Workflow。
 
 也可以直接运行已有的 Workflow 命令：内置如 `/deep-research`，或你[保存](#保存-workflow-以便复用)过的。
 
@@ -127,7 +127,7 @@ CodeBuddy Code 会高亮你输入里的关键词，CodeBuddy 收到这个提示�
 
 ### Ultracode 模式：让 CodeBuddy 自己决定
 
-Ultracode 是 CodeBuddy Code 的一个组合配置：把 [推理强度](./models#调整推理强度) 推到 `xhigh`，并叠加自动 Workflow 编排。开启后，CodeBuddy 会主动判断哪些任务值得走 Workflow，不必你每次提醒。
+Ultracode 是 CodeBuddy Code 的一个组合配置：把 [推理强度](./settings#可用设置) 推到 `xhigh`，并叠加自动 Workflow 编排。开启后，CodeBuddy 会主动判断哪些任务值得走 Workflow，不必你每次提醒。
 
 text
 ```
@@ -135,7 +135,7 @@ text
 ```
 进入 ultracode 后，一个请求可能被拆成连续多个 Workflow：先一个 run 摸代码现状、再一个 run 实施改动、再一个 run 验证。会话里**每个**任务都按这个模式跑，每条请求消耗的 Token 会比低 effort 等级显著更多、耗时也更长。
 
-ultracode 仅在当前会话生效，新开会话自动重置。回到日常工作时用 `/effort high` 回退即可。它仅在支持 `xhigh` [推理强度](./models#调整推理强度) 的模型上可用；不支持的模型上 `/effort` 菜单不会展示该选项。
+ultracode 仅在当前会话生效，新开会话自动重置。回到日常工作时用 `/effort high` 回退即可。它仅在支持 `xhigh` [推理强度](./settings#可用设置) 的模型上可用；不支持的模型上 `/effort` 菜单不会展示该选项。
 
 ### 运行前批准计划
 
@@ -152,7 +152,7 @@ CLI 里，每次启动都会弹出运行前确认：
 | Default、Accept edits、Auto | 每次都询问；除非你在当前会话里选过 **Yes, and don't ask again this session**。ultracode 开启时整个询问被跳过 |
 | Bypass permissions、`codebuddy -p`、Agent SDK | 永不询问，运行直接开始 |
 
-权限模式只影响**启动前**这个询问。Workflow 派出去的子代理始终在 `acceptEdits` 模式下跑，并继承你的[工具白名单](./settings#permission-settings)，与你会话当前模式无关。文件改动是自动批准的。
+权限模式只影响**启动前**这个询问。Workflow 派出去的子代理始终在 `acceptEdits` 模式下跑，并继承你的[工具白名单](./settings#权限设置)，与你会话当前模式无关。文件改动是自动批准的。
 
 不在白名单里的 Shell 命令、Web Fetch、MCP 工具调用，仍可能在运行中弹询问。要避免长任务被打断，启动前把代理需要的命令加进白名单。
 
@@ -258,7 +258,7 @@ Workflow 在 CLI、桌面端、IDE 扩展、`codebuddy -p` 非交互模式与 [A
 - `~/.codebuddy/settings.json` 设 `"disableWorkflows": true`，会持久化
 - 设环境变量 `CODEBUDDY_DISABLE_WORKFLOWS=1`，启动时读取，在哪儿设就在哪儿生效
 
-为整个组织关闭：在 [托管设置](./settings#enterprise-managed-policy-settings) 里设 `"disableWorkflows": true`。
+为整个组织关闭：在 [托管设置](./settings) 里设 `"disableWorkflows": true`。
 
 关闭后，内置 Workflow 命令不可用，关键词 `ultracode` 不再触发，`/effort` 菜单也不再展示 ultracode 选项。
 
@@ -267,5 +267,5 @@ Workflow 在 CLI、桌面端、IDE 扩展、`codebuddy -p` 非交互模式与 [A
 - [子代理](./sub-agents)：Workflow 编排的底层"工人"原语
 - [Agent Teams](./agent-teams)：另一种多代理协作形态，由领导代理管计划
 - [Skills 技能系统](./skills)：把"指令"沉淀成可复用 Skill
-- [推理强度调整（含 ultracode）](./models#调整推理强度)
+- [推理强度调整（含 ultracode）](./settings#可用设置)
 - [Hooks 钩子系统](./hooks-guide)：在工具调用与会话事件上挂钩子

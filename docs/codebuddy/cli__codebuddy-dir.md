@@ -160,7 +160,7 @@ paths: src/**/*.ts
 - 优先使用 `interface` 而非 `type`
 - 禁止使用 `any`
 ```
-详见 [记忆管理 \- 规则系统](./memory#使用-codebuddyrules-实现模块化规则)。
+详见 [记忆管理 \- 规则系统](./memory#使用-codebuddy-rules-实现模块化规则)。
 
 #### `skills/`
 

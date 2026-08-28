@@ -256,45 +256,52 @@ Worker 是运行中的 CLI 进程（interactive / bg / daemon），通过 PID �
 - `?tail=200` — 只返回最后 N 行
 - 不传 type 时自动选择最佳来源（telemetry \> process \> debug \> transcript）
 
-### Jobs（后台智能体实例）
+### Jobs（智能体实例）
 
-Jobs 是由 `/bg`、左箭头转后台或 `codebuddy agents` 派发出的后台智能体实例。它们与 CLI agent\-view / TUI 共用 JobStore 和生命周期语义。
+Job 是由 `/bg`、左箭头转后台或 `codebuddy agents` 派发出的智能体实例。实例拥有独立进程生命周期，并关联一个可继续加载的对话；它不是普通会话列表项。API 可创建、监控、回复、停止、重启与删除实例。
 
 | 方法 | 端点 | 说明 |
 | --- | --- | --- |
-| GET | `/api/v1/jobs` | 获取实例列表；支持 `all=1` 和 `cwd` 过滤 |
-| POST | `/api/v1/jobs` | 派发后台智能体或 shell job |
-| GET | `/api/v1/jobs/events` | SSE 订阅 `snapshot` / `added` / `changed` / `removed` / `keepalive` |
-| GET | `/api/v1/jobs/prefs` | 获取置顶与项目分组偏好 |
-| PUT | `/api/v1/jobs/prefs` | 批量更新置顶与项目分组偏好 |
-| GET | `/api/v1/jobs/dispatch-context` | 获取启动目录、Agent 目录（内置四种模式 \+ 自定义，与主对话选择器同源）与仓库目标；响应含 `defaultAgentName`、`agents`、`permissionMode`（进程 `--permission-mode`） |
-| GET | `/api/v1/jobs/resumable` | 获取可恢复的历史会话；支持 `cwd`、`includeAttached=1` |
-| POST | `/api/v1/jobs/resume` | 从历史会话恢复为独立 job |
-| GET | `/api/v1/jobs/:id` | 获取 job 详情；id 支持稳定 ID、short ID 或 sessionId |
-| PATCH | `/api/v1/jobs/:id/name` | 重命名 job |
-| POST | `/api/v1/jobs/:id/reply` | 回复等待输入的 job |
-| POST | `/api/v1/jobs/:id/stop` | 停止 job |
-| POST | `/api/v1/jobs/:id/respawn` | 重启 job 并恢复对话 |
-| DELETE | `/api/v1/jobs/:id` | 删除 job 记录 |
-| GET | `/api/v1/jobs/:id/stream` | SSE 回放 transcript 尾部并尾随新输出 |
-| GET | `/api/v1/jobs/:id/transcript` | 一次性返回最近最多 1000 行 ACP replay updates |
+| GET | `/api/v1/jobs` | 获取智能体实例列表 |
+| POST | `/api/v1/jobs` | 派发新的智能体实例 |
+| GET | `/api/v1/jobs/events` | SSE 订阅实例增量变化 |
+| GET | `/api/v1/jobs/prefs` | 获取置顶/分组偏好 |
+| PUT | `/api/v1/jobs/prefs` | 更新置顶/分组偏好 |
+| GET | `/api/v1/jobs/dispatch-context` | 获取可派发的仓库目录与 Agent 候选（内置四种模式 \+ 自定义，与主对话选择器同源）；响应含 `defaultAgentName`、`agents`、`permissionMode`（进程 `--permission-mode`） |
+| GET | `/api/v1/jobs/resumable` | 获取可恢复为实例的历史对话；支持 `cwd`、`includeAttached=1` |
+| POST | `/api/v1/jobs/resume` | 从历史对话恢复为智能体实例 |
+| GET | `/api/v1/jobs/:id` | 获取实例详情；id 支持稳定 ID、short ID 或 sessionId |
+| PATCH | `/api/v1/jobs/:id/name` | 重命名实例 |
+| POST | `/api/v1/jobs/:id/reply` | 回复正在等待输入的实例 |
+| POST | `/api/v1/jobs/:id/stop` | 停止实例 |
+| POST | `/api/v1/jobs/:id/respawn` | 重启实例并恢复其对话 |
+| DELETE | `/api/v1/jobs/:id` | 删除实例记录 |
+| GET | `/api/v1/jobs/:id/stream` | SSE 流式获取实例对话输出 |
+| GET | `/api/v1/jobs/:id/transcript` | 一次性读取实例最近 1000 行 ACP replay 对话（只读，不启动 worker） |
+
+**列表查询参数** (`GET /api/v1/jobs`):
+
+- `?all=1` — 包含已结束的实例（默认只返回运行中或等待输入的实例）
+- `?cwd=<path>` — 按工作目录过滤
+
+`GET /api/v1/jobs/events` 固定按 `all=1` 收集，首帧会包含终结态 job；事件流随后每秒比较列表快照并发送增量。
 
 **派发请求体** (`POST /api/v1/jobs`):
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `prompt` | string | 是 | 初始指令；`bash=true` 时为 shell 命令 |
+| `prompt` | string | 是 | 实例初始指令；`bash` 为 `true` 时作为 shell 命令 |
 | `cwd` | string | 否 | 启动目录，默认当前工作目录 |
 | `model` | string | 否 | 指定模型，缺省按常规模型解析规则 |
-| `effort` | string | 否 | `minimal` / `low` / `medium` / `high` / `xhigh` / `max` |
-| `permissionMode` | string | 否 | `default` / `acceptEdits` / `plan` / `auto` / `dontAsk` / `bypassPermissions`。进程 `--permission-mode` 作为 Web 派发框默认，仍可被本次请求覆盖 |
+| `effort` | string | 否 | 思考强度，可选 `minimal`/`low`/`medium`/`high`/`xhigh`/`max` |
+| `permissionMode` | string | 否 | 启动权限模式，可选 `default`/`acceptEdits`/`plan`/`auto`/`dontAsk`/`bypassPermissions`。进程 `--permission-mode` 作为 Web 派发框默认，仍可被本次请求覆盖 |
 | `agent` | string | 否 | 主 Agent：`cli` / `ptc` / `minimal` / `create` 或自定义 agent 名。省略时：进程 `--agent` \> `lastUsed` \> `default` \> 产品 `cli`。总闸关闭时忽略 shipped 模式名。`minimal` 与 `permissionMode=plan` 同传返回 `400 BAD_REQUEST` |
-| `name` | string | 否 | 列表显示名称 |
-| `bash` | boolean | 否 | 派发一次性 shell job |
-| `sourceSessionId` | string | 否 | 继承受限上下文；新 job 仍使用独立会话 |
-| `bgIsolation` | string | 否 | `none` / `worktree`；省略时跟随全局后台写隔离设置 |
+| `name` | string | 否 | 实例显示名称 |
+| `bash` | boolean | 否 | 为 `true` 时派发为一次性 shell 任务而非智能体实例 |
+| `sourceSessionId` | string | 否 | 从指定对话继承受限上下文，新的实例对话仍保持独立 |
+| `bgIsolation` | string | 否 | 按 job 覆盖后台写隔离：`none` / `worktree`；省略时跟随全局设置 |
 
-`effort`、`permissionMode`、`bgIsolation` 按白名单校验，非法值返回 `400 BAD_REQUEST`。请求省略可选字段时不覆盖会话、全局或进程默认值。
+`effort`、`permissionMode` 与 `bgIsolation` 均按白名单校验，传入不支持的取值返回 `400 BAD_REQUEST`。省略字段表示不覆盖，由会话按配置与进程默认解析。
 
 `GET /api/v1/jobs/dispatch-context` 响应字段：
 
@@ -306,35 +313,55 @@ Jobs 是由 `/bg`、左箭头转后台或 `codebuddy agents` 派发出的后台�
 | `permissionMode` | 进程 `--permission-mode`；有值时前端压过 lastUsed 权限 chip |
 | `repoTargets` | 可派发的子仓 / worktree / 已有 job 仓根 |
 
-**生命周期字段**:
+**SSE 事件类型** (`GET /api/v1/jobs/events`):
 
-- `state`: `working` / `blocked` / `done` / `failed` / `stopped`
-- `status`: 存活进程的即时状态 `busy` / `waiting` / `idle` / `stopped`
-- `tempo`: `active` / `idle` / `blocked`
-- `alive` 与 `settled` 独立；`settled=true && alive=false` 表示已结束历史
-- `foregroundHeld=true` 表示仍被前台终端持有，暂时不能 attach
-- `webUrl` 仅在 job worker 存活并监听 loopback HTTP(S) 时返回，否则为 `null`
+- `snapshot` — 首帧，完整实例数组
+- `added` / `changed` / `removed` — 后续增量变化
+- `keepalive` — 心跳
 
-**对话与错误**:
+**列表与详情的生命周期字段**:
 
-- `/transcript` 一次性返回 `{ sessionId, updates }`，最多包含最近 1000 行转换后的 ACP replay updates。
-- `/stream` 返回 `text/event-stream`；先回放最多 1000 行，再每秒尾随新增 JSONL 记录；shell job 返回空流。
-- 不存在的 job 返回 `404 JOB_NOT_FOUND`。
-- 删除若被 worktree 或前台持有守卫拒绝，仍返回 HTTP 200，但 body 为 `{ "deleted": false, "reason": "..." }`。
+| 字段 | 说明 |
+| --- | --- |
+| `state` | 持久化生命周期：`working` / `blocked` / `done` / `failed` / `stopped` |
+| `status` | 存活进程的即时状态：`busy` / `waiting` / `idle` / `stopped`；进程退出后省略 |
+| `tempo` | 模型活动节奏：`active` / `idle` / `blocked` |
+| `alive` | broker/worker 进程当前是否存活 |
+| `settled` | 是否已终结；仅 `done/failed/stopped` 且 `tempo !== active` 时为真 |
+| `firstTerminalAt` | 首次进入终态的 Unix 毫秒时间戳，供历史排序使用 |
+| `sessionId` | 实例内部对话 ID，可通过原生 session/load 恢复查看 |
+
+`settled` 与 `alive` 是两个正交维度：已完成但进程仍存活的实例仍可继续交互；只有 `settled=true && alive=false` 才属于“已结束智能体”历史。`webUrl` 仅在实例为本机存活进程且监听 loopback HTTP(S) 地址时返回，否则为 `null`。
+
+**动作请求体**:
+
+- `PATCH /:id/name`：`{ "name": "..." }`
+- `POST /:id/reply`：`{ "text": "...", "bash": false }`
+- `POST /resume`：`{ "sessionId": "..." }`，可带 `?cwd=<path>`；`GET /resumable` 可带 `?cwd=<path>&includeAttached=1`
+- `PUT /prefs`：操作数组，支持 `{ "op": "pin", "id": "...", "pinned": true }` 与 `{ "op": "group", "id": "...", "group": "..." }`
+- `/:id` 支持稳定 job id、short id 或关联 sessionId；不存在返回 `404 JOB_NOT_FOUND`。删除被 worktree/前台持有守卫拒绝时返回 `200 { "deleted": false, "reason": "..." }`。
+
+`GET /api/v1/jobs/:id/transcript` 一次性返回 `{ sessionId, updates }`，其中 `updates` 是最近最多 1000 行转换出的 ACP replay update；`GET /api/v1/jobs/:id/stream` 返回 `text/event-stream`，先回放 transcript 尾部（最多 1000 行），随后每秒尾随新增内容。shell job 没有 session transcript，返回空流。
+
+### Jobs 使用示例
 
 bash
 ```
-# 派发后台智能体
-curl -H "X-CodeBuddy-Request: 1" \
-  -H "Authorization: Bearer $PASSWORD" \
+# 派发一个后台 agent（认证服务需要附带 Bearer token）
+curl -H "Authorization: Bearer $CODEBUDDY_GATEWAY_TOKEN" \
   -H 'Content-Type: application/json' \
-  -X POST http://127.0.0.1:8080/api/v1/jobs \
+  -X POST http://127.0.0.1:${PORT}/api/v1/jobs \
   -d '{"prompt":"检查当前仓库的测试状态","cwd":"/repo/app"}'
 
-# 订阅 job 列表变化
-curl -N -H "X-CodeBuddy-Request: 1" \
-  -H "Authorization: Bearer $PASSWORD" \
-  http://127.0.0.1:8080/api/v1/jobs/events
+# 订阅所有 job 的快照和增量事件
+curl -N -H "Authorization: Bearer $CODEBUDDY_GATEWAY_TOKEN" \
+  http://127.0.0.1:${PORT}/api/v1/jobs/events
+
+# 回复等待输入的 job
+curl -H "Authorization: Bearer $CODEBUDDY_GATEWAY_TOKEN" \
+  -H 'Content-Type: application/json' \
+  -X POST http://127.0.0.1:${PORT}/api/v1/jobs/<id>/reply \
+  -d '{"text":"继续","bash":false}'
 ```
 ### Channels（远程控制）
 
@@ -421,6 +448,7 @@ CBC 增强：
 | --- | --- | --- |
 | GET | `/api/v1/plugins` | 列出已安装插件（可选 `includeBuiltin=false` 过滤内置插件） |
 | POST | `/api/v1/plugins` | 安装插件 |
+| POST | `/api/v1/plugins/reconcile` | 幂等物化并投影 Product/settings 声明的插件状态；单次最多等待 120 秒 |
 | POST | `/api/v1/plugins/validate` | 验证插件/市场清单文件 |
 | POST | `/api/v1/plugins/enable` | 启用插件 |
 | POST | `/api/v1/plugins/disable` | 禁用插件 |
@@ -718,6 +746,13 @@ curl "http://127.0.0.1:8080/api/v1/plugins?includeBuiltin=false"
 curl -X POST http://127.0.0.1:8080/api/v1/plugins \
   -H "Content-Type: application/json" \
   -d '{"plugin": "my-plugin@my-marketplace"}'
+
+# 幂等物化并投影当前 Product/settings 声明的全部插件状态
+curl -X POST http://127.0.0.1:8080/api/v1/plugins/reconcile
+
+# 204 表示严格物化与投影完成；409 表示 runtime 禁用了插件管理；
+# 503 表示本次严格物化部分失败，可幂等重试；504 只结束当前 HTTP 等待，
+# 已开始的共享物化仍在后台继续，后续请求会加入同一个进行中的操作。
 
 # 启用插件
 curl -X POST http://127.0.0.1:8080/api/v1/plugins/enable \

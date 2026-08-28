@@ -2,7 +2,9 @@
 
 CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以在启动前设置，也可以在 [`settings.json`](./settings#可用设置) 的 `env` 字段中配置以应用到每个会话。
 
-> **提示**：所有环境变量也可以在 `settings.json` 的 `env` 字段中设置，这样可以自动为每个会话应用，或为整个团队推出配置。
+> **提示**：除特别声明外，环境变量也可以在 `settings.json` 的 `env` 字段中设置，这样可以自动为每个会话应用，或为整个团队推出配置。
+> 
+> **例外**：`CODEBUDDY_IS_SANDBOX` 只认进程环境变量，**不会**从 `settings.json` 的 `env`（含项目级）注入，避免仓库静默提权。详见[沙箱 full pass（高危）](#沙箱-full-pass-高危)。
 
 ## 认证相关
 
@@ -48,10 +50,11 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `BASH_DEFAULT_TIMEOUT_MS` | 长时间运行 bash 命令的默认超时（默认：120000） |
 | `BASH_MAX_OUTPUT_LENGTH` | bash 输出在内存中保留的最大字符数（默认：30000，上限：150000）。超出部分会被中间截断（保留 head 20% \+ tail 80%），完整输出会自动保存到磁盘 |
 | `BASH_MAX_TIMEOUT_MS` | 模型可为长时间运行的 bash 命令设置的最大超时（默认：600000） |
-| `CODEBUDDY_BASH_ASSISTANT_BUDGET_MS` | 主对话响应预算（毫秒，默认 `0`\=关闭）。设为 `>0` 时，主会话的前台 Bash/PowerShell 命令超过该时长会自动转为后台任务让对话保持响应。sub\-agent 不受此预算影响。对齐 Claude Code 的 `ASSISTANT_BLOCKING_BUDGET_MS`（CC 官方默认值 `15000`） |
-| `CODEBUDDY_BASH_AUTO_BACKGROUND_DISABLED` | 设为 `1` 关闭超时自动后台化,前台命令到 timeout 回到旧的 SIGTERM/kill 硬杀行为。仅用于调试或遇到回归时临时回滚；正常场景保持默认（未设置） |
+| `CODEBUDDY_BASH_ASSISTANT_BUDGET_MS` | 主对话响应预算（毫秒，默认 `0`\=关闭）。设为 `>0` 时，主会话的前台 Bash/PowerShell 命令超过该时长会自动转为后台任务让对话保持响应。sub\-agent 不受此预算影响。`-p`（print，非 stdio stream\-json）非交互模式下不生效——进程随主 turn 退出，后台任务无法续跑，命令一律留在前台跑完。对齐 Claude Code 的 `ASSISTANT_BLOCKING_BUDGET_MS`（CC 官方默认值 `15000`） |
+| `CODEBUDDY_BASH_AUTO_BACKGROUND_DISABLED` | 设为 `1` 关闭超时自动后台化,前台命令到 timeout 回到旧的 SIGTERM/kill 硬杀行为。仅用于调试或遇到回归时临时回滚；正常场景保持默认（未设置）。注：`-p`（print，非 stdio stream\-json）非交互模式本就禁止自动后台化，无需设置此项 |
 | `CODEBUDDY_BASH_BG_MAX_OUTPUT_BYTES` | 后台 bash 任务 stdout\+stderr 落盘文件总字节上限（默认 `52428800` \= 50MB）。超过则 size watchdog 触发 `SIGKILL` 并标记任务为 `killed`，stderr 末尾会注入提示。Claude Code 在 `ShellCommand.ts` 把同等阈值写死为常量，这里暴露为 env 给运维做调节。仅在文件 fd 模式生效（pipe 模式下子进程输出不落盘） |
 | `CODEBUDDY_BASH_BG_PIPE_MODE` | 设为 `1` 强制后台任务回到 pipe 模式（不走文件 fd），用于回滚或调试。默认（未设置）走文件 fd 模式，解决 nohup 等命令孙进程持有父 pipe fd 导致僵尸进程的问题；sandbox 路径会自动回退 pipe，不需要显式设置。Claude Code 没有等价开关，这是 codebuddy 兼容旧 sandbox/PTY 路径的兜底 |
+| `CODEBUDDY_BG_TASK_RECONCILE` | 设为 `0` 关闭后台任务的存活对账。默认（未设置）开启：每 5 秒检查一次后台任务的进程是否已经终止，连续两次确认后把任务收口为终态并推送完成通知。它兜的是"子进程已经结束、但进程终止事件没有送达"这种情况——此时任务状态会一直停在运行中，完成通知也发不出来。仅用于回滚或排查误判，正常场景保持默认 |
 
 ## 工具输出外部化
 
@@ -73,6 +76,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_DISABLE_EXTENDED_PLUGIN_HOOKS` | 设置为 `1` 或 `true` 时，插件 Hook 配置仅接受 `command` 类型；包含 `prompt`、`agent` 或 `http` 类型的配置会按不兼容处理。用于宿主临时回退插件 Hook 契约；默认不设置 |
 | `CODEBUDDY_IMAGE_GEN_ENABLED` | 设置为 `false` 或 `0` 禁用图片生成功能 |
 | `CODEBUDDY_BRIEF` | 设置为 `1` / `true` / `yes` 启用 `SendUserMessage` 工具（等同 `--brief`），让 Agent 通过该工具向用户发送消息；未设置时该工具不可见 |
+| `CODEBUDDY_IS_SANDBOX` | **仅进程环境变量**。设为 `1` / `true` / `yes` / `on` 时，配合 `-y` 跳过 HIGH/CRITICAL 审批。单独设置不会改默认模式。详见[沙箱 full pass（高危）](#沙箱-full-pass-高危)。默认未设置 |
 | `CODEBUDDY_IMAGE_EDIT_ENABLED` | 设置为 `false` 或 `0` 禁用图片编辑功能 |
 | `CODEBUDDY_ARTIFACT_ENABLED` | 设置为 `false` 或 `0` 禁用 Artifact / ArtifactControl 工具（将本地单个 HTML 或 Markdown 文件发布为可分享的公网链接，Markdown 由服务端渲染为样式化页面；ArtifactControl 当前仅支持取消发布）。默认开启。判定顺序：国际 endpoint（`codebuddy.ai` / `workbuddy.ai` / `staging-codebuddy.tencent.com`）下该能力恒关闭、本变量无法覆盖；其余场景下本变量优先级最高，未设置（含空值）时回落到旧变量 `CODEBUDDY_SHARE_LINK_ENABLED`，再回落到云端 `productFeatures`（`Artifact` 与 `ShareLink` 任一显式为 `false` 即关闭，均未下发时缺省 `true`） |
 | `CODEBUDDY_SHARE_LINK_ENABLED` | **已废弃（兼容保留）**：`CODEBUDDY_ARTIFACT_ENABLED` 的旧名，ShareLink 工具更名为 Artifact 前的开关。语义与新变量完全一致，新变量优先；仅在新变量未设置时生效 |
@@ -92,6 +96,33 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_DISABLE_FORK_SUBAGENT` | 设置为 `1` 禁用 Agent 工具的 Fork 子代理模式（`subagent_type="fork"`）。启用后 Agent 工具描述会自动隐藏 fork\-mode 段落，模型不会看到该功能；若模型仍然传 `subagent_type="fork"`，运行时会回落到名为 `fork` 的自定义代理（如用户在 `.codebuddy/agents/fork.md` 定义），否则改写为 `general-purpose` 普通子代理。适用于需要避免 fork 递归派生导致请求量放大的宿主场景 |
 | `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` | 设置为 `1` / `true` 禁用 Agent、Bash、PowerShell 工具的后台任务（`run_in_background=true`）。启用后这些工具 schema 中的 `run_in_background` 参数会被隐藏，模型不会看到该字段；即使历史/缓存 tool call 或直接调用方传入该参数，运行时也会兜底回退到同步（Agent）/前台（Bash、PowerShell）执行路径。适用于请求\-响应式 SDK / 一次性任务场景——这类场景主进程在主 turn 结束后立即退出，任何后台代理/后台命令的结果都无法回流到最终答复中。对齐 Claude Code 的 `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS`（同样统管 Agent \+ Bash \+ PowerShell）。默认未设置（后台任务保持可用）。与 print\-mode 守卫（`-p` 下始终阻断后台执行）相互独立 |
 | `CODEBUDDY_REHYDRATE_IMAGE_BLOB_REFS` | 设置为 `true` 在 `-p` 模式流式输出中将图片 blob 引用还原为完整 base64 数据。适用于需要直接获取图片数据的下游集成场景 |
+| `CODEBUDDY_REPL_ENABLED` | **实验功能**：REPL code mode 总闸。设置为 `1` 或 `true` 开启代码执行模式——模型可在隔离的 vm sandbox 中编写 JS 编排工具调用（内置工具直接 `Bash({...})`，MCP 工具统一挂 `mcp_<server>` 前缀全局），减少多工具任务的 LLM 往返次数。默认关闭 |
+| `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | REPL 工具目录注入细闸。默认开启，只有显式设置为 `0` 或 `false` 才关闭（工具仍预加载，只是模型不提前知情，退化为纯渐进披露） |
+| `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | REPL 内置工具注入开关。默认开启，`0` 或 `false` 关闭后内置工具不进 REPL 骨架目录与 sandbox 注入（仅保留 MCP 工具） |
+
+## 沙箱 full pass（高危）
+
+`CODEBUDDY_IS_SANDBOX` 让隔离沙箱里的 `-y` 变成真正的 full pass（跳过 HIGH/CRITICAL 危险命令确认）。**故意做成环境变量、而不是 CLI 参数**：全权限放行属于高危模式，必须由启动进程显式声明，对齐业界沙箱设计，避免 `codebuddy -y` 被误当成无条件放行。
+
+bash
+```
+export CODEBUDDY_IS_SANDBOX=1
+codebuddy -y
+# 或一行
+export CODEBUDDY_IS_SANDBOX=1 && cbc -y
+```
+
+> **⚠️ 风险声明**
+> 
+> - 开启后，代理可以不经确认执行危险命令（如删除文件、改系统状态），可能导致数据丢失、系统损坏，或通过提示注入泄露凭证与数据。
+> - **仅**在隔离沙箱 / 容器 / VM / 无外网的受信环境使用。不要在本机日常开发、共享机器或能访问生产密钥的环境打开。
+> - 只认进程环境变量，不会从 `settings.json` 的 `env`（含项目级）注入，避免仓库静默提权。
+> - 单独设置、不带 `-y` / `bypassPermissions` 不会改变默认权限模式。
+> - 可见模式仍是 `bypassPermissions`（TUI 文案不变、颜色改为红色），不会改写成 `fullAccess`。
+> - `permissions.disableBypassPermissionsMode: "disable"` 仍然生效：禁止 bypass 后，本变量不能再打开 full pass。
+> - 显式 `deny` 规则仍然最高优先。
+
+`codebuddy -h` 的 `-y` / `--dangerously-skip-permissions` 说明也会指向本变量。
 
 ## 上下文和内存
 
@@ -158,6 +189,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_CODE_DISABLE_TERMINAL_TITLE` | 设置为 `1` 禁用自动终端标题更新 |
 | `CODEBUDDY_INCLUDE_PROMPT_SUGGESTION` | 显式启用提示建议，覆盖 headless 默认关闭和 `promptSuggestionEnabled=false` 配置 |
 | `CODEBUDDY_PROMPT_SUGGESTION_DISABLED` | 设置为 `1` / `true` 禁用提示建议，优先级高于 `CODEBUDDY_INCLUDE_PROMPT_SUGGESTION` |
+| `CODEBUDDY_ENABLE_ASK_USER_FOR_STRUCTURED_INPUT` | 设置为 `1` / `true` 启用 `AskUserForStructuredInput` 工具（默认关闭）；仅当运行在 ACP 或 stream\-json 模式且客户端声明 `elicitation.form` capability 时才实际生效 |
 | `IS_DEMO` | 设置为 `true` 启用演示模式：隐藏邮箱和组织 |
 
 ## 安全和认证
@@ -374,7 +406,11 @@ export CODEBUDDY_DISABLE_AUTO_MEMORY="0"
 # 启用扩展思考
 export MAX_THINKING_TOKENS="10000"
 
-# 非交互模式运行
+# 非交互模式运行（-y 仍可能询问 HIGH/CRITICAL）
+codebuddy -p -y "你的查询"
+
+# 隔离沙箱 full pass（高危：仅限无外网容器 / VM）
+export CODEBUDDY_IS_SANDBOX=1
 codebuddy -p -y "你的查询"
 ```
 ### 调试和性能分析
@@ -393,6 +429,8 @@ codebuddy
 ## 在 settings.json 中配置
 
 环境变量也可以在 `settings.json` 的 `env` 字段中设置：
+
+> **例外**：`CODEBUDDY_IS_SANDBOX` **不会**从这里注入。必须在启动进程的环境里设置，例如 `export CODEBUDDY_IS_SANDBOX=1 && codebuddy -y`。详见[沙箱 full pass（高危）](#沙箱-full-pass-高危)。
 
 json
 ```
@@ -455,6 +493,7 @@ Shell 输出
 ## 另见
 
 - [Settings](./settings) \- 在 `settings.json` 中配置环境变量和其他设置
-- [CLI Reference](./cli-reference) \- 命令行参数完整列表
+- [CLI Reference](./cli-reference) \- 命令行参数完整列表，含 `-y` 与 `CODEBUDDY_IS_SANDBOX`
+- [权限模式](./permission-modes) \- `bypassPermissions` 与沙箱 full pass
 - [MCP Setup](./mcp) \- MCP 服务器配置
 - [子代理](./sub-agents) \- 子代理存储目录说明

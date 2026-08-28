@@ -35,18 +35,18 @@ CodeBuddy Code 提供以下权限模式。其中多数模式可在 CLI 中直接
 | 模式 | 不询问就能跑什么 | 适用场景 |
 | --- | --- | --- |
 | `default` | 信任目录内的 Read 工具 | 默认；适合敏感工作 / 上手期 |
-| [`acceptEdits`](#acceptedits自动批准文件编辑) | 信任目录内的 Read \+ Edit 系列工具 | 边写边走 `git diff` 复核 |
-| [`auto`](#auto分类器自动判定) | 原本会 ask 的动作，交给分类器判定 allow / deny | 想减少打断，但保留安全边界 |
-| [`dontAsk`](#dontask不弹框直接拒绝未预批准动作) | 仅已预批准动作继续执行；其余不询问直接拒绝 | 非交互自动化 / 固定白名单代理 |
-| [`plan`](#plan探索后再改) | 委托给“进入 plan 前”的那个模式（默认 \= `default`）；额外允许写入会话计划文件 | 落手改动前先摸清代码再决定 |
-| [`bypassPermissions`](#bypasspermissions尽量跳过审批) | 跳过绝大多数审批 | 沙箱容器 / VM / 离线 dev container 才用 |
-| [`delegate`](#delegate多代理协调模式) | 仅协调类工具（如 Agent / TaskCreate / SendMessage / 团队管理），实现类工具被屏蔽 | 主代理只做拆派、把执行交给子代理 |
+| [`acceptEdits`](#acceptedits-自动批准文件编辑) | 信任目录内的 Read \+ Edit 系列工具 | 边写边走 `git diff` 复核 |
+| [`auto`](#auto-分类器自动判定) | 原本会 ask 的动作，交给分类器判定 allow / deny | 想减少打断，但保留安全边界 |
+| [`dontAsk`](#dontask-不弹框-直接拒绝未预批准动作) | 仅已预批准动作继续执行；其余不询问直接拒绝 | 非交互自动化 / 固定白名单代理 |
+| [`plan`](#plan-探索后再改) | 委托给“进入 plan 前”的那个模式（默认 \= `default`）；额外允许写入会话计划文件 | 落手改动前先摸清代码再决定 |
+| [`bypassPermissions`](#bypasspermissions-尽量跳过审批) | 跳过绝大多数审批 | 沙箱容器 / VM / 离线 dev container 才用 |
+| [`delegate`](#delegate-多代理协调模式) | 仅协调类工具（如 Agent / TaskCreate / SendMessage / 团队管理），实现类工具被屏蔽 | 主代理只做拆派、把执行交给子代理 |
 
 ### 程序化 / 集成模式（不在 Shift\+Tab 循环里）
 
 | 模式 | 何时出现 |
 | --- | --- |
-| `fullAccess` | IDE 客户端通过协议传入；语义上接近 `bypassPermissions` 的全局放行 |
+| `fullAccess` | IDE 客户端通过协议传入；真正的 full pass（含危险命令）。CLI 沙箱 full pass 不改写成此模式 |
 | `work` | IDE 客户端传入。Read 直接放行（不查信任目录），Edit 一律询问，Bash 仅安全命令直接放行，其他询问 |
 | `ignore` | 仅在子代理（subagent / teammate）场景生效，表示“用主会话的模式，不要被子代理自己的 frontmatter 覆盖”；主会话用不到 |
 
@@ -76,7 +76,7 @@ default → bypassPermissions → acceptEdits → auto（可用时）→ plan �
 | 模式 | 文案 | 说明 |
 | --- | --- | --- |
 | `default` | 不显示 | 默认模式不额外占位 |
-| `bypassPermissions` | `⏵⏵ bypass permissions on (shift+tab to cycle)` | 可循环切回其他模式 |
+| `bypassPermissions` | `⏵⏵ bypass permissions on (shift+tab to cycle)` | 可循环切回其他模式；`CODEBUDDY_IS_SANDBOX=1` \+ `-y` 文案相同，颜色改为红色 |
 | `acceptEdits` | `⏵⏵ accept edits on (shift+tab to cycle)` | 可循环切回其他模式 |
 | `auto` | `⏵⏵ auto mode on (shift+tab to cycle)` | 仅在可用时出现 |
 | `dontAsk` | `⏵⏵ don't ask on` | 不在循环链里，所以无 cycle hint |
@@ -95,7 +95,7 @@ codebuddy --permission-mode dontAsk
 codebuddy --permission-mode plan
 codebuddy --permission-mode bypassPermissions
 ```
-`--permission-mode` help 列出这 6 个字面量。运行时还认 `fullAccess`（语义接近 `bypassPermissions`，help 未列）。`delegate` / `work` / `ignore` 不能作为标准 CLI 启动参数。`--serve` 的模式 × 权限对照见 [Web UI — Serve 启动：模式与权限](./web-ui#serve-启动模式与权限)。
+`--permission-mode` help 列出这 6 个字面量。运行时还认 `fullAccess`（语义接近 `bypassPermissions`，help 未列）。`delegate` / `work` / `ignore` 不能作为标准 CLI 启动参数。`--serve` 的模式 × 权限对照见 [Web UI — Serve 启动：模式与权限](./web-ui#serve-启动-模式与权限)。
 
 TUI / `--serve` Web / ACP 把该值当作**本进程新会话默认**，压过 `lastUsed`；**不会**把未改过的启动值写入 `permissions.defaultMode`。Web 派发框默认同样取进程 `--permission-mode`。`minimal` 主 Agent 不能与 `plan` 同用。
 
@@ -108,7 +108,8 @@ codebuddy -p --permission-mode auto "先尝试自动修复 lint 错误"
 ```
 额外快捷方式：
 
-- `-y` / `--dangerously-skip-permissions`：等价于 `--permission-mode bypassPermissions`
+- `-y` / `--dangerously-skip-permissions`：等价于 `--permission-mode bypassPermissions`（`codebuddy -h` 也会说明这一点）
+- `CODEBUDDY_IS_SANDBOX=1` \+ `-y`：可见模式仍是 `bypassPermissions`，但跳过 HIGH/CRITICAL 确认（TUI 文案相同、颜色改为红色）。单独设环境变量不会改变默认模式。必须是进程环境变量，不会从项目 `settings.json` 的 `env` 注入。全权限放行属于高危模式，因此做成环境变量而不是 CLI 参数。风险声明见 [bypassPermissions](#bypasspermissions-尽量跳过审批) 与 [沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危)
 
 ### 持久化默认值：`permissions.defaultMode`
 
@@ -340,6 +341,17 @@ codebuddy --permission-mode bypassPermissions
 codebuddy -y
 codebuddy --dangerously-skip-permissions
 ```
+若要跳过 HIGH/CRITICAL 危险命令确认（真正的 full pass），在隔离沙箱中加上进程环境变量：
+
+bash
+```
+export CODEBUDDY_IS_SANDBOX=1
+codebuddy -y
+```
+TUI 仍显示原来的 `⏵⏵ bypass permissions on`，颜色从 warning 改为红色，表示这是沙箱 full pass。可见模式不会变成 `fullAccess`（ACP / Web chip 也继续显示 Bypass Permissions）。
+
+> **⚠️ 风险声明**：`CODEBUDDY_IS_SANDBOX=1` \+ `-y` 是真正的 full pass，代理可不经确认执行危险命令，可能导致数据丢失、系统损坏或凭证泄露。仅限隔离沙箱 / 容器 / 无外网受信环境。不要在本机日常开发或能访问生产密钥的环境打开。故意不提供独立 CLI 参数，避免误开。该变量不会从 `settings.json` 的 `env` 注入。详见[沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危)。
+
 #### 关闭通道（管理员）
 
 关闭该模式：
@@ -352,6 +364,8 @@ json
   }
 }
 ```
+该开关对 `CODEBUDDY_IS_SANDBOX` \+ `-y` 同样生效：禁止 bypass 后，环境变量不能再打开 full pass。
+
 适合：
 
 - 隔离容器 / 沙箱 / dev container
@@ -386,7 +400,9 @@ json
 
 ### fullAccess（IDE 集成）
 
-仅由 IDE 客户端通过协议设置；语义上接近 `bypassPermissions`。
+仅由 IDE 客户端通过协议设置。跳过全部权限提示，包括 HIGH/CRITICAL 危险命令。显式 `deny` 规则仍然最高优先。
+
+CLI 的沙箱 full pass 请用 `CODEBUDDY_IS_SANDBOX=1` \+ `-y`，可见模式仍是 `bypassPermissions`，不会把会话改写成 `fullAccess`。
 
 ### ignore（子代理专用）
 
@@ -459,13 +475,14 @@ json
 | `default` / `acceptEdits` / `plan` | 任何最终仍需 ask 的动作都会被拒绝 |
 | `auto` | 原本会 ask 的动作走 classifier；classifier 不可用时 fail\-closed；transcript 过长会中止 run |
 | `dontAsk` | 未预批准动作直接拒绝，不会等待人工确认 |
-| `bypassPermissions` | 大多数动作直接继续执行 |
+| `bypassPermissions` | 大多数动作直接继续执行。未设 `CODEBUDDY_IS_SANDBOX` 时 HIGH/CRITICAL 仍可能要求确认 |
 
 因此：
 
 - 想做“固定白名单自动化” → `dontAsk` \+ `allow` 规则
 - 想做“尽可能自动，但保留分类器安全边界” → `auto`
 - 想做“绝大多数都别拦” → `bypassPermissions`
+- 想做“隔离沙箱里真正不询问” → `CODEBUDDY_IS_SANDBOX=1` \+ `bypassPermissions`（高危，仅限隔离环境）
 
 ## 与权限规则配合使用
 
@@ -521,7 +538,8 @@ json
 
 - [权限规则](./permissions)：allow / ask / deny 的匹配语法与完整求值顺序
 - [Settings 配置](./settings)：`defaultMode`、`disableAutoMode`、`autoMode`、`subagentPermissionMode` 等字段
-- [CLI 参考](./cli-reference)：`--permission-mode`、`--subagent-permission-mode`、`codebuddy auto-mode` 等命令
+- [CLI 参考](./cli-reference)：`--permission-mode`、`--subagent-permission-mode`、`-y` 等命令
+- [环境变量参考](./env-vars#沙箱-full-pass-高危)：`CODEBUDDY_IS_SANDBOX` 沙箱 full pass 与风险声明
 - [Agent Teams：多代理协作](./agent-teams)：`delegate` 模式下的协作方式
 - [子代理（Sub\-agents）](./sub-agents)：子代理的工具与权限模式继承
 - [Hooks 钩子系统](./hooks-guide)：用 `PreToolUse` / `PermissionRequest` / `PermissionDenied` 扩展权限判定

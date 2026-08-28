@@ -3685,8 +3685,8 @@
     "build-with-claude__files.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/files",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/files.md",
-      "hash": "7baa692f82b997c54aa0b1ecf045e838a6adbf27d851f20d9bdf8e3d6c721fe0",
-      "last_updated": "2026-08-28T00:18:28.040762",
+      "hash": "28f15e784c679df98e851191f310a1fcc0b14ebd97fea57f6858bc5429ef6c77",
+      "last_updated": "2026-08-28T14:52:03.124649",
       "source": "platform"
     },
     "build-with-claude__handling-stop-reasons.md": {
@@ -3797,8 +3797,8 @@
     "build-with-claude__skills-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide.md",
-      "hash": "7041e9cf57eed8f6dc032ab110cf6bd64579ad43d5ae596de04c741955469928",
-      "last_updated": "2026-08-28T00:18:38.198388",
+      "hash": "198b554a3fa55b999e26d3366b2b55b5be32da993bd29a7b76a5a2059f46faac",
+      "last_updated": "2026-08-28T14:52:13.804219",
       "source": "platform"
     },
     "build-with-claude__streaming.md": {
@@ -4616,8 +4616,8 @@
     "release-notes__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/overview",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/overview.md",
-      "hash": "4e20ced5aace9486c5a84aee866d749b2a4ef4d3ccbcf9b1bcab587eb8270361",
-      "last_updated": "2026-08-28T00:19:52.880077",
+      "hash": "ae27e196f0831ccc83ad5a05f46747b9ff0587d219cd30bb5fdb51222c83c769",
+      "last_updated": "2026-08-28T14:53:31.439999",
       "source": "platform"
     },
     "release-notes__system-prompts__claude-fable-5.md": {
@@ -4791,7 +4791,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-08-28T00:20:07.297607",
+    "last_fetch_completed": "2026-08-28T14:53:46.907089",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 688,
@@ -4806,7 +4806,7 @@
     "total_files": 684,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-28T00:20:07.297627",
+  "last_updated": "2026-08-28T14:53:46.907107",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

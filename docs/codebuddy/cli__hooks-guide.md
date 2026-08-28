@@ -341,7 +341,7 @@ json
   "allowUntrustedFrontmatterHooks": true
 }
 ```
-更详细的字段语义、安全闸门与作用域规则见 [Skills 文档 \- 在 Skill 中配置 Hooks](./skills#在-skill-中配置-hooks) 与 [Hook 参考指南 \- Frontmatter Hooks](./hooks#agent--skill-frontmatter-hooks)。
+更详细的字段语义、安全闸门与作用域规则见 [Skills 文档 \- 在 Skill 中配置 Hooks](./skills#在-skill-中配置-hooks) 与 [Hook 参考指南 \- Frontmatter Hooks](./hooks#agent-skill-frontmatter-hooks)。
 
 ## 最佳实践与建议
 

@@ -6,7 +6,7 @@
 
 SDK 默认**不加载任何文件系统配置**，包括 `settings.json`、`CODEBUDDY.md`、MCP 服务器、子代理、斜杠命令、Rules 和 Skills。这是与 CLI 直接使用的关键区别，确保 SDK 应用的行为完全由代码控制，具有可预测性和一致性。
 
-如需加载这些配置，请使用 `settingSources` 选项显式指定。详见 [环境隔离](#环境隔离settingsources) 章节。
+如需加载这些配置，请使用 `settingSources` 选项显式指定。详见 [环境隔离](#环境隔离-settingsources) 章节。
 
 CodeBuddy Agent SDK 允许你在应用程序中以编程方式控制 CodeBuddy Agent。支持 TypeScript/JavaScript 和 Python，可实现自动化任务执行、自定义权限控制、构建 AI 驱动的开发工具等场景。
 
@@ -117,7 +117,7 @@ export CODEBUDDY_API_KEY="your-api-key"
 > - 专享版：`export CODEBUDDY_INTERNET_ENVIRONMENT=cloudhosted`
 > - 私有化部署：`export CODEBUDDY_INTERNET_ENVIRONMENT=selfhosted`
 > 
-> 详见 [身份和访问管理文档](./iam#个人用户获取-api-key)。
+> 详见 [身份和访问管理文档](./iam#个人用户-获取-api-key)。
 
 也可以在代码中通过 `env` 选项传递：
 

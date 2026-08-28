@@ -8,7 +8,7 @@
 
 无头模式也支持定时任务相关能力。在脚本、SDK 或服务端集成场景中，可以使用 `CronCreate`、`CronList`、`CronDelete` 等工具来创建、查看和取消定时任务。
 
-> **⚠️ 重要提示：** `-y` （或 `--dangerously-skip-permissions`) 是非交互模式的必需参数。在使用 `-p/--print` 参数进行非交互式执行时，必须添加此参数才能执行需要授权的操作（文件读写、命令执行、网络请求等）,否则这些操作会被阻止。仅在受信任的环境和明确的任务场景下使用此参数。详见 [CLI 参考](./cli-reference)。
+> **⚠️ 重要提示：** `-y` （或 `--dangerously-skip-permissions`) 是非交互模式的必需参数。在使用 `-p/--print` 参数进行非交互式执行时，必须添加此参数才能执行需要授权的操作（文件读写、命令执行、网络请求等）,否则这些操作会被阻止。仅 `-y` 时 HIGH/CRITICAL 危险命令仍可能要求确认；隔离沙箱里真正不询问请用 `export CODEBUDDY_IS_SANDBOX=1 && codebuddy -p -y ...`（高危，仅进程环境）。仅在受信任的环境和明确的任务场景下使用。详见 [CLI 参考](./cli-reference) 与 [沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危)。
 
 ## 基本用法
 
@@ -195,6 +195,143 @@ printf '%s\n' \
   '{"type":"user","message":{"role":"user","content":[{"type":"text","text":"第二问"}]}}' \
   | codebuddy -p --input-format stream-json --output-format stream-json --verbose
 ```
+\#\#会话回退（Rewind）
+
+回退能力让你把「工作区文件」和/或「对话历史」恢复到某条历史用户消息发送**之前**的状态。适用于自动化 Agent 在一次错误改动后重来、或 IDE/上游平台（如 CloudAgent）实现"撤销到某条消息"的场景。
+
+对齐 Anthropic Claude Code v2\.1\.88 的命名与协议，并针对上游需求做了扩展。
+
+### 命令行 flag（`--print` 家族启动时）
+
+| Flag | 作用 | 约束 |
+| --- | --- | --- |
+| `--rewind-files <user-message-id>` | 把工作区文件恢复到该user 消息发送前的快照，然后**立即退出** | 需配合 `--resume`/`-c`；不能同时带 prompt |
+| `--resume-session-at <message id>` | 恢复会话时，只保留到该消息（含）为止的历史（`slice(0, index+1)`），再继续对话 | 需配合 `--resume`/`-c` |
+| `--dry-run` | 与 `--rewind-files` 组合，只预览要回退的文件差异，不改磁盘 | — |
+
+bash
+```
+# 把文件回退到某条 user 消息之前的状态并退出
+codebuddy -p --resume <sessionId> --rewind-files <userMessageUuid>
+
+# 只预览（不改磁盘）
+codebuddy -p --resume <sessionId> --rewind-files <userMessageUuid> --dry-run
+
+# 恢复会话但把历史截断到某条消息，然后发新prompt
+codebuddy -p --resume <sessionId> --resume-session-at <messageUuid> "换个方式重做这一步"
+```
+这三个 flag 是隐藏 flag（不出现在 `--help`），仅供 SDK / 上游平台脚本化调用。它们在所有 `--print` 变体（一次性、`--output-format json`、`--input-format stream-json` 长驻）启动时都生效。
+
+### 流式 JSON 控制协议（长驻运行时）
+
+在 `--input-format stream-json` 长驻模式下，可在**不重启进程**的情况下通过 `control_request` 触发回退。支持两个 subtype：
+
+| subtype | 回退范围 | 说明 |
+| --- | --- | --- |
+| `rewind_files` | 仅**文件** | 对齐 Claude Code，只回退磁盘、不动对话历史 |
+| `rewind` | 由 `scope` 决定 | cbc 扩展。`scope` 可选 `Code`（仅文件）/ `Conversation`（仅历史）/ `CodeAndConversation`（默认，文件\+历史）。文件回退失败**不阻塞**历史回退（部分成功语义） |
+
+`rewind` 的 `scope` 取值：
+
+| scope | 回退范围 |
+| --- | --- |
+| `CodeAndConversation`（默认） | 文件 \+ 对话历史一起（真实上游 CloudAgent 用法） |
+| `Conversation` | 仅回退对话历史，保留磁盘文件 |
+| `Code` | 仅回退磁盘文件 |
+
+**请求：**
+
+jsonc
+```
+// 仅回退文件（对齐 Claude Code）
+{"type":"control_request","request_id":"r1","request":{"subtype":"rewind_files","user_message_id":"<uuid>","dry_run":false}}
+
+// 文件 + 对话历史一起回退（scope 省略即默认 CodeAndConversation）
+{"type":"control_request","request_id":"r2","request":{"subtype":"rewind","user_message_id":"<uuid>","dry_run":false}}
+
+// 仅回退对话历史（保留磁盘文件）
+{"type":"control_request","request_id":"r3","request":{"subtype":"rewind","user_message_id":"<uuid>","scope":"Conversation"}}
+```
+**响应（成功）：**
+
+jsonc
+```
+// rewind_files（严格对齐 Claude schema，五字段）
+{"type":"control_response","response":{"subtype":"success","request_id":"r1","response":{
+  "canRewind":true,"filesChanged":["src/a.ts"],"insertions":12,"deletions":5}}}
+
+// rewind（额外带 historyRewound；部分成功时带 fileRewindError）
+{"type":"control_response","response":{"subtype":"success","request_id":"r2","response":{
+  "canRewind":true,"filesChanged":["src/a.ts"],"insertions":12,"deletions":5,"historyRewound":true}}}
+```
+响应字段：
+
+| 字段 | 类型 | 含义 |
+| --- | --- | --- |
+| `canRewind` | boolean | 是否成功回退（`rewind` 下历史成功即为 true） |
+| `error` | string? | 失败原因（前置校验失败 / 历史回退失败） |
+| `filesChanged` | string\[]? | 涉及的文件列表 |
+| `insertions` / `deletions` | number? | 行级增删统计 |
+| `historyRewound` | boolean? | （仅 `rewind`）对话历史是否已回退 |
+| `fileRewindError` | string? | （仅 `rewind`）**部分成功**标志：`canRewind:true` 但文件回退失败，历史已回退——上游据此提示用户手动处理文件，但对话上下文已正确回到目标点 |
+
+**关键语义（`rewind`）：文件回退失败不阻塞历史回退。** handler 先尽力回退文件（失败仅记录到 `fileRewindError`，不中断），再回退对话历史（必须成功）。因此即便工作区文件被占用/权限不足，会话上下文仍能正确回到目标点。
+
+**`user_message_id` 的获取**：在 stream\-json 输出流里，`file-history-snapshot` 消息的 `snapshot.messageId` 即对应 user 消息的 id；也可直接用输出流中`type:"user"` 消息的 `uuid`。
+
+**`dry_run: true`**：只计算并返回 `filesChanged`/`insertions`/`deletions` 预览，不改磁盘、不截断历史（`historyRewound:false`）。适合先弹窗给用户确认再真正回退。
+
+### 与 Claude Code 的差异
+
+| 能力 | Claude Code | cbc |
+| --- | --- | --- |
+| `rewind_files`（文件回退） | ✅ | ✅ 字段/语义严格对齐 |
+| `--resume-session-at`（历史截断） | ✅ 仅 CLI flag | ✅ CLI flag |
+| 运行时 `rewind`（文件 / 历史 / 两者，由 scope 选择） | ❌ 无 | ✅ cbc 扩展 |
+| 运行时仅回退对话历史 | ❌ 无 | ✅ `rewind` \+ `scope:"Conversation"` |
+| 文件回退失败不阻塞历史 | ❌ | ✅ `fileRewindError` 部分成功 |
+
+### 在 SDK 中调用
+
+TypeScript / Python SDK **无需新增专用方法**——rewind 是 SDK → CLI 方向的控制请求，直接复用 SDK 已有的通用 `control_request` 发送通道透传即可。请求/响应字段与上文一致。
+
+**TypeScript SDK：**
+
+ts
+```
+// query 为 SDK 的 Query 实例；transport.sendControlRequest 是既有通用通道
+const resp = await query.transport.sendControlRequest<{
+  canRewind: boolean;
+  filesChanged?: string[];
+  insertions?: number;
+  deletions?: number;
+  historyRewound?: boolean;
+  fileRewindError?: string;
+  error?: string;
+}>({
+  subtype: 'rewind',
+  user_message_id: '<uuid>',
+  scope: 'CodeAndConversation', // 省略即默认；可选 'Conversation' / 'Code'
+});
+if (resp.canRewind && resp.fileRewindError) {
+  // 部分成功：历史已回退，文件回退失败——提示用户手动处理文件
+}
+```
+**Python SDK：**
+
+python
+```
+# query 为 SDK 的 Query 实例；_send_control_request 是既有通用通道
+resp = await query._send_control_request({
+    "subtype": "rewind",
+    "user_message_id": "<uuid>",
+    "scope": "Conversation",  # 仅回退对话历史
+})
+# resp: {"canRewind": True, "historyRewound": True, ...}
+```
+
+> 类型定义（`ControlRewindRequest` / `ControlRewindResponse` / `ControlRewindFilesRequest` / `ControlRewindFilesResponse`）已从 cbc 的 control\-signal 协议模块导出，TypeScript 消费方可直接 import 获得类型提示。
+
 ## Agent 集成示例
 
 ### SRE 事件响应机器人
@@ -287,7 +424,7 @@ codebuddy -p "分析代码并运行测试" \
   --allowedTools "Bash,Read,Grep"
 ```
 
-> **⚠️ 重要提示：** `-y` （或 `--dangerously-skip-permissions`) 是非交互模式的必需参数。在使用 `-p/--print` 参数进行非交互式执行时，必须添加此参数才能执行需要授权的操作（文件读写、命令执行、网络请求等）,否则这些操作会被阻止。仅在受信任的环境和明确的任务场景下使用此参数。详见 [CLI 参考](./cli-reference)。
+> **⚠️ 重要提示：** `-y` （或 `--dangerously-skip-permissions`) 是非交互模式的必需参数。在使用 `-p/--print` 参数进行非交互式执行时，必须添加此参数才能执行需要授权的操作（文件读写、命令执行、网络请求等）,否则这些操作会被阻止。仅 `-y` 时 HIGH/CRITICAL 危险命令仍可能要求确认；隔离沙箱里真正不询问请用 `export CODEBUDDY_IS_SANDBOX=1 && codebuddy -p -y ...`（高危，仅进程环境）。仅在受信任的环境和明确的任务场景下使用。详见 [CLI 参考](./cli-reference) 与 [沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危)。
 
 ## 相关资源
 

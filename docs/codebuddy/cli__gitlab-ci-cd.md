@@ -72,9 +72,9 @@ CodeBuddy Code 支持强大的 CI/CD 工作流，改变您与代码的协作方�
 
 > 📖 **完整配置指南**：根据您的账号类型，查看对应的配置方法和 API KEY 获取地址：
 > 
-> - **iOA 账号用户**（公司内部）：参考 [iOA 账号使用 API KEY](./settings#ioa-账号使用-api-key)
-> - **中国版用户**：参考 [中国版使用 API KEY](./settings#中国版使用-api-key)
-> - **海外版用户**：参考 [海外版使用 API KEY](./settings#海外版使用-api-key)
+> - **iOA 账号用户**（公司内部）：参考 [iOA 账号使用 API KEY](./iam#codebuddy-api-key)
+> - **中国版用户**：参考 [中国版使用 API KEY](./iam#codebuddy-api-key)
+> - **海外版用户**：参考 [海外版使用 API KEY](./iam#codebuddy-api-key)
 > 
 > 每个章节包含完整的环境变量配置方法和 API KEY 获取地址。
 
@@ -268,7 +268,7 @@ markdown
 - 验证 API 密钥是否有效且未过期
 - 确认复制 API 密钥时没有包含额外的空格或换行符
 - 检查 API 密钥的权限范围是否足够
-- 查看 [设置配置文档](./settings#认证配置) 了解详细配置方法
+- 查看 [设置配置文档](./iam#认证方法) 了解详细配置方法
 
 **API 连接失败：**
 

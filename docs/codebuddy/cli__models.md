@@ -408,7 +408,7 @@ json
 **内置子代理解析优先级（从高到低）：**
 
 1. `CODEBUDDY_CODE_SUBAGENT_MODEL`，统一覆盖所有子代理
-2. 本次 Agent 工具调用的 `model` 入参
+2. 本次 Agent 工具调用的 `model` 入参（模型 ID、名称、别名或 `default` / `lite` / `reasoning`）
 3. 项目级 `subagents.agents.<子代理名>.model`
 4. 用户全局 `subagents.agents.<子代理名>.model`
 5. 产品内置声明，如 `Explore` 使用 `lite`

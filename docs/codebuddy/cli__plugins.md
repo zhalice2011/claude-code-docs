@@ -78,7 +78,7 @@ json
 | --- | --- |
 | `name` | 唯一标识符和技能命名空间。技能以此为前缀（如 `/my-first-plugin:hello`） |
 | `description` | 在插件管理器中浏览或安装插件时显示 |
-| `version` | 使用[语义化版本](./plugins-reference#版本管理)跟踪发布 |
+| `version` | 使用[语义化版本](./plugins-reference#八-版本管理参考)跟踪发布 |
 | `author` | 可选。用于归属标注 |
 
 更多字段如 `homepage`、`repository` 和 `license`，参见[完整清单 Schema](./plugins-reference)。
@@ -404,7 +404,7 @@ json
 当插件准备好共享时：
 
 1. **添加文档**：包含一个 `README.md`，说明安装和使用方式
-2. **版本管理**：在 `plugin.json` 中使用[语义化版本](./plugins-reference#版本管理)
+2. **版本管理**：在 `plugin.json` 中使用[语义化版本](./plugins-reference#八-版本管理参考)
 3. **创建或使用市场**：通过[插件市场](./plugin-marketplaces)分发
 4. **与他人测试**：在更广泛分发之前，让团队成员测试插件
 

@@ -197,9 +197,9 @@ CODEBUDDY.md 可以放在多个位置：
 - **权限白名单**：允许你确认安全的特定命令（如 `npm run lint` 或 `git commit`）
 - **沙箱模式**：启用系统级隔离，限制文件系统和网络访问，让 CodeBuddy Code 在定义好的边界内更自由地工作
 
-也可以用 `--dangerously-skip-permissions` 跳过所有权限检查，适合封闭的工作流，如修复 lint 错误或生成样板代码。
+也可以用 `--dangerously-skip-permissions`（`-y`）跳过大部分权限检查，适合封闭的工作流，如修复 lint 错误或生成样板代码。默认 `-y` 仍可能对 HIGH/CRITICAL 危险命令询问；隔离沙箱里若需要真正不询问，再设置进程环境变量 `CODEBUDDY_IS_SANDBOX=1`。
 
-> **警告**：让 CodeBuddy Code 随意执行命令可能导致数据丢失、系统损坏，或通过提示注入泄露数据。`--dangerously-skip-permissions` 只应在没有网络的沙箱环境中使用。
+> **警告**：让 CodeBuddy Code 随意执行命令可能导致数据丢失、系统损坏，或通过提示注入泄露数据。`-y` 只应在没有网络的沙箱环境中使用。`CODEBUDDY_IS_SANDBOX=1` \+ `-y` 是更高危的 full pass，故意做成环境变量而不是 CLI 参数，不要在本机或能访问生产密钥的环境打开。详见[沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危)。
 
 详细了解[配置权限](./settings)和[启用沙箱](./bash-sandboxing)。
 
@@ -488,9 +488,9 @@ codebuddy -p "<您的提示>" --output-format json | your_command
 
 ### 安全的自主模式
 
-用 `codebuddy --dangerously-skip-permissions` 可以跳过所有权限检查，让 CodeBuddy Code 不间断地工作。适合那些封闭的工作流，比如修复 lint 错误或生成样板代码。
+用 `codebuddy --dangerously-skip-permissions`（`-y`）可以跳过大部分权限检查，让 CodeBuddy Code 不间断地工作。适合那些封闭的工作流，比如修复 lint 错误或生成样板代码。默认 `-y` 仍可能对 HIGH/CRITICAL 危险命令询问；隔离沙箱里真正不询问请用 `export CODEBUDDY_IS_SANDBOX=1 && codebuddy -y`。
 
-> **警告**：让 CodeBuddy Code 随意执行命令有风险——可能导致数据丢失、系统损坏，或通过提示注入泄露数据。为了降低风险，请在没有网络访问的容器中使用 `--dangerously-skip-permissions`。
+> **警告**：让 CodeBuddy Code 随意执行命令有风险——可能导致数据丢失、系统损坏，或通过提示注入泄露数据。为了降低风险，请在没有网络访问的容器中使用 `-y`。`CODEBUDDY_IS_SANDBOX=1` \+ `-y` 属于高危 full pass，故意做成环境变量而不是 CLI 参数，不要在本机打开。详见[沙箱 full pass（高危）](./env-vars#沙箱-full-pass-高危)。
 > 
 > 启用沙箱 (`/sandbox`) 后，您可以获得类似的自主性，但安全性更好。沙箱提前划定边界，而不是绕过所有检查。
 

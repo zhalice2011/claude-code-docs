@@ -10,6 +10,7 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `Artifact` | 将本地单个 HTML 或 Markdown 文件发布为 artifact 并返回可分享的公网链接（Markdown 由服务端渲染为样式化页面）。传入 `existingShareLink` 可原地更新同一链接（仅刷新内容，不改动权限）。默认开启，可用 `CODEBUDDY_ARTIFACT_ENABLED` 或云端 `productFeatures.Artifact` 关闭（旧开关 `CODEBUDDY_SHARE_LINK_ENABLED` / `productFeatures.ShareLink` 仍兼容）。原名 `ShareLink`，旧名仅在权限规则（allow/deny、disallowedTools）中仍可匹配；hooks 的 matcher 与 `--tools` 白名单只认新名，需自行更新配置。参见[环境变量](./env-vars) | 是 |
 | `ArtifactControl` | 对 `Artifact` 发布的 artifact 执行控制动作，当前仅支持取消发布（unpublish）：将公开链接设为私密。HTML 页面链接走取消发布；Markdown 文档链接会关闭公开访问并移除协作人。接受完整链接或裸 nodeId。原名 `ShareLinkUnpublish`（兼容范围同 `Artifact`） | 是 |
 | `AskUserQuestion` | 向用户提出多选问题，收集需求或澄清歧义 | 是 |
+| `AskUserForStructuredInput` | 让客户端把一段受限 JSON Schema 渲染成表单，收集结构化答复（多字段、每字段独立控件）。适合"多个 MCP 授权 / 多字段表单"等超出单/多选表达能力的场景。需 env `CODEBUDDY_ENABLE_ASK_USER_FOR_STRUCTURED_INPUT=1` 且客户端声明 `elicitation.form` capability，否则模型看不到该工具 | 是 |
 | `Bash` | 在你的环境中执行 Shell 命令。参见 [Bash 工具行为](#bash-工具行为) | 是 |
 | `CronCreate` | 在当前会话内调度定时或一次性任务（退出后失效）。参见[定时任务](./scheduled-tasks) | 否 |
 | `CronDelete` | 按 ID 取消定时任务 | 否 |
@@ -48,7 +49,7 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `TeamCreate` | 创建 [Agent 团队](./agent-teams)以协调多个代理协作 | 否 |
 | `TeamDelete` | 删除 Agent 团队及其任务目录 | 否 |
 | `VideoGen` | 根据文本描述或输入图片生成视频，支持文生视频和图生视频 | 是 |
-| `ToolSearch` | 搜索并加载延迟加载的工具，支持内置工具和 [MCP 工具](./mcp#延迟加载-defer_loading)；可结合 [`Defer(...)`/`NoDefer(...)` 修饰符](./tool-defer-overlay) 按需调整工具的延迟加载状态 | 否 |
+| `ToolSearch` | 搜索并加载延迟加载的工具，支持内置工具和 [MCP 工具](./mcp#延迟加载-defer-loading)；可结合 [`Defer(...)`/`NoDefer(...)` 修饰符](./tool-defer-overlay) 按需调整工具的延迟加载状态 | 否 |
 | `WaitForMcpServers` | 等待指定的 MCP 服务器完成连接（默认等所有 pending 的服务器），最长 5 秒 | 否 |
 | `WebFetch` | 获取指定 URL 的内容并进行 AI 分析 | 是 |
 | `WebSearch` | 执行网络搜索 | 是 |

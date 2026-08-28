@@ -10,8 +10,8 @@
 
 | 场景 | 推荐方式 | 如何获取凭据 |
 | --- | --- | --- |
-| 个人开发者 | `CODEBUDDY_API_KEY` | [从平台获取 API Key](#个人用户获取-api-key) |
-| 企业/团队（OAuth 集成） | `apiKeyHelper` | [创建应用获取 Client ID/Secret](#企业用户oauth-认证) |
+| 个人开发者 | `CODEBUDDY_API_KEY` | [从平台获取 API Key](#个人用户-获取-api-key) |
+| 企业/团队（OAuth 集成） | `apiKeyHelper` | [创建应用获取 Client ID/Secret](#企业用户-oauth-认证) |
 | CI/CD 已有 OAuth token | `CODEBUDDY_AUTH_TOKEN` | 直接使用已有 token |
 | 第三方模型服务 | `CODEBUDDY_API_KEY` \+ `BASE_URL` | 从第三方服务商获取 |
 
@@ -85,7 +85,7 @@ export CODEBUDDY_INTERNET_ENVIRONMENT=selfhosted
 | 专享版 | `cloudhosted` | 连接腾讯代运维的企业实例 |
 | 私有化部署 | `selfhosted` | 连接客户自建的企业服务 |
 
-> **💡 专享版 / 私有化部署还需指定服务地址：** 这两种版本的服务地址由企业自定义（如 `https://your-company.copilot.qq.com`），仅设置环境变量不足以让请求指向企业服务。使用 CLI 时在登录流程的「企业域名配置」中填写，会自动写入 `settings.json`；使用 API Key 时需手动配置，详见 [CODEBUDDY\_API\_KEY](#codebuddy_api_key)；使用 SDK 时通过 `options.endpoint` 传入。
+> **💡 专享版 / 私有化部署还需指定服务地址：** 这两种版本的服务地址由企业自定义（如 `https://your-company.copilot.qq.com`），仅设置环境变量不足以让请求指向企业服务。使用 CLI 时在登录流程的「企业域名配置」中填写，会自动写入 `settings.json`；使用 API Key 时需手动配置，详见 [CODEBUDDY\_API\_KEY](#codebuddy-api-key)；使用 SDK 时通过 `options.endpoint` 传入。
 
 > **💡 持久化配置建议：** 将环境变量添加到 `~/.bashrc`、`~/.zshrc` 或 shell 配置文件中，避免每次手动设置。
 > 
@@ -334,7 +334,7 @@ CodeBuddy Code 支持多种权限模式，可在 [settings](./settings) 的 `per
 
 WARNING
 
- \`bypassPermissions\` 模式应仅在安全、隔离的环境中使用，例如 Docker 容器或 VM。在生产环境或包含敏感数据的系统上使用此模式可能会带来安全风险。 NOTE
+ \`bypassPermissions\` / \`\-y\` 应仅在安全、隔离的环境中使用，例如 Docker 容器或 VM。默认 \`\-y\` 仍可能对 HIGH/CRITICAL 危险命令询问。真正的 full pass 需要再设置进程环境变量 \`CODEBUDDY\_IS\_SANDBOX\=1\`，属于高危模式，仅限隔离无外网沙箱，故意不做成 CLI 参数。在生产环境或包含敏感数据的系统上使用可能会带来安全风险。详见\[沙箱 full pass（高危）](env\-vars.md\#沙箱\-full\-pass\-高危)。 NOTE
 
  \*\*\`trustAll\` / \`trustedDirectories\` 不是权限模式替代项。\*\* 这两个字段只影响启动时的\*\*目录信任授权提示\*\*（即"是否信任此目录并允许在其中运行 CodeBuddy"的一次性弹窗），和工具执行时是否弹审批无关。 - 免除工具审批请设置 `permissions.defaultMode` 或使用 `--permission-mode bypassPermissions` / `-y` / `--dangerously-skip-permissions`
 - 免除目录信任弹窗才用 `trustAll: true` 或把目录加入 `trustedDirectories`

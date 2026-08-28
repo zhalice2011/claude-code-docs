@@ -89,12 +89,13 @@ json
 | `autoUpdates` | 自动更新设置 | `false` |
 | `alwaysThinkingEnabled` | 始终启用思考模式 | `true` |
 | `showTokensCounter` | 是否在界面中显示 Tokens 计数器 | `false` |
+| `showTurnDuration` | 是否在每轮回复结束后展示本轮耗时，形如 `✔ Worked for 1m 31s`；被中断或以报错收场的回合本就不展示（默认：`true`） | `false` |
 | `endpoint` | 自定义服务端点地址 | `"https://api.example.com"` |
 | `envRouteMode` | 环境路由模式配置 | `"production"` |
 | `sandbox` | Bash 沙箱配置,见[Bash沙箱设置](#bash沙箱设置) | `{"enabled": true}` |
 | `promptSuggestionEnabled` | 启用 Prompt 建议功能，在 Agent 完成对话后自动预测下一步操作（默认：`true`） | `false` |
 | `reasoningEffort` | Reasoning effort 级别配置，控制模型推理的深度。可选值：`minimal`、`low`、`medium`、`high`、`xhigh`、`max`。留空时使用产品配置默认值。可通过 `/config` 面板切换，选择 `auto` 等效于清除此设置 | `"high"` |
-| `memory` | \[Experimental] 记忆功能配置，见[记忆功能配置](#记忆功能配置experimental) | `{"enabled": true}` |
+| `memory` | \[Experimental] 记忆功能配置，见[记忆功能配置](#记忆功能配置) | `{"enabled": true}` |
 | `trustedDirectories` | 已经信任过的工作目录列表。命中的目录启动时不会再弹"是否信任此目录"的授权提示。通常由首次启动时的弹窗自动写入，也可手动编辑 | `["~/workspace/myproj"]` |
 | `trustAll` | 信任所有工作目录，启动时不再弹"是否信任此目录"的授权提示。**仅免除目录信任授权，不会跳过工具执行权限**——是否弹工具审批仍由 `permissions.defaultMode` / `bypassPermissions` 模式决定，与本字段相互独立 | `true` |
 | `gateway` | Remote Gateway 配置，见 [Gateway 配置](#gateway-配置) | `{"runTimeoutMs": 1800000}` |
@@ -109,7 +110,7 @@ json
 | `deny` | [权限规则](./iam#配置权限)数组,拒绝工具使用。用于排除 CodeBuddy Code 访问敏感文件。**注意:** Bash 模式是前缀匹配,可以被绕过(参见 [Bash 权限限制](./iam#工具特定的权限规则)) | `[ "WebFetch", "Bash(curl:*)", "Read(./.env)", "Read(./secrets/**)" ]` |
 | `additionalDirectories` | CodeBuddy 可以访问的额外[工作目录](./iam#工作目录) | `[ "../docs/" ]` |
 | `defaultMode` | 打开 CodeBuddy Code 时的默认[权限模式](./permission-modes)。常用值：`default`、`acceptEdits`、`auto`、`dontAsk`、`plan`、`bypassPermissions` | `"acceptEdits"` |
-| `disableBypassPermissionsMode` | 设置为 `"disable"` 以防止激活 `bypassPermissions` 模式。这会禁用 `-y` 和 `--dangerously-skip-permissions` 命令行标志 | `"disable"` |
+| `disableBypassPermissionsMode` | 设置为 `"disable"` 以防止激活 `bypassPermissions` 模式。这会禁用 `-y` 和 `--dangerously-skip-permissions`，同时阻止 `CODEBUDDY_IS_SANDBOX` 打开 full pass | `"disable"` |
 | `disableAutoMode` | 设置为 `"disable"` 以防止激活 `auto` 模式。禁用后，`--permission-mode auto` 和 `defaultMode: "auto"` 都会回退到 `default` | `"disable"` |
 | `subagentPermissionMode` | 覆盖 subagent/团队成员的默认权限模式。设置后所有 subagent 使用此模式，而非继承主 session 的模式。Agent 工具的 `mode` 参数优先级更高；但主会话若处于 `auto` / `dontAsk`，子代理仍会受父会话权限上限约束 | `"bypassPermissions"` |
 
@@ -754,7 +755,7 @@ CodeBuddy Code 可以访问一组强大的工具，帮助它理解和修改您�
 | **NotebookEdit** | 修改 Jupyter notebook 单元格 | 是 |
 | **Read** | 读取文件内容 | 否 |
 | **Skill** | 在主对话中执行技能 | 是 |
-| **SlashCommand** | 运行[自定义斜杠命令](./slash-commands#slashcommand-工具) | 是 |
+| **SlashCommand** | 运行[自定义斜杠命令](./slash-commands#自定义斜杠命令-custom-slash-commands) | 是 |
 | **Task** | 运行子代理以处理复杂的多步骤任务 | 否 |
 | **TaskOutput** | 从正在运行或已完成的后台任务检索输出 | 否 |
 | **TaskCreate** | 创建任务以跟踪工作进度 | 否 |

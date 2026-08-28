@@ -20,7 +20,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/btw` | `<question>` | ✅ 支持 | 快速提问，不中断当前 Agent 工作流。适用于在 Agent 执行任务时临时提出简短问题，答案基于已有上下文生成。 |
 | `/compact` |  | ✅ 支持 | 压缩上下文。 |
 | `/config` | `[list | get | set]` | ✅ 支持 | 查看或修改本地配置。不带参数时打开交互式面板，`list` 列出当前设置，`get <key>` 读取设置，`set <key> <value>` 修改设置。 |
-| `/context` |  | ✅ 支持 | 计算当前会话的上下文 token 分布情况。 |
+| `/context` | `[all]` | ✅ 支持 | 计算当前会话的上下文 token 分布。默认折叠 Memory / Skills / Agents 明细，`/context all` 展开。 |
 | `/cost` |  | ✅ 支持 | 显示会话的成本和 Token 使用情况。 |
 | `/init` |  | ✅ 支持 | 初始化一个新的 CodeBuddy 存储库。 |
 | `/mcp` |  | ✅ 支持 | 管理 MCP 连接。 |
