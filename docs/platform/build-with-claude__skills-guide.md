@@ -2153,7 +2153,7 @@ Combine multiple Skills in a single request to handle complex workflows:
 ## Managing custom Skills
 
 <Warning id="workspace-scoped-access">
-  **Custom Skills are accessible to your entire workspace, not scoped to an end user, conversation, or session.** Any API key in the same workspace can read, invoke, and delete every custom Skill uploaded there, and all of your keys share your organization's Default Workspace unless you have assigned them to separate [workspaces](https://platform.claude.com/docs/en/manage-claude/workspaces#api-keys-and-resource-scoping).
+  **Custom Skills are accessible to your entire workspace, not scoped to an end user, conversation, or session.** Any API key with access to a workspace can read, invoke, and delete every custom Skill uploaded to that workspace. Every service account, and every user whose organization role allows API access, can use the Default Workspace in addition to any workspace you add them to, so keep Skills that must stay separate in their own [workspace](https://platform.claude.com/docs/en/manage-claude/workspaces#api-keys-and-resource-scoping) and access them only with keys scoped to that workspace.
 
   If you are building a multi-tenant platform on the Skills API, create a separate [workspace](https://platform.claude.com/docs/en/manage-claude/workspaces) for each tenant. The workspace is the isolation boundary for custom Skills, so a workspace per tenant gives each tenant's Skills hard isolation from every other tenant. Each organization can have up to 100 workspaces by default (see [How workspaces work](https://platform.claude.com/docs/en/manage-claude/workspaces#how-workspaces-work)); if you need more for tenant isolation, contact your account team.
 </Warning>

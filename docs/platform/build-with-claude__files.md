@@ -25,7 +25,7 @@ The Files API provides a create-once, use-many-times approach for working with f
 * **Manage your files** with list, retrieve, and delete operations
 
 <Warning id="workspace-scoped-access">
-  **Uploaded files are accessible to your entire workspace, not scoped to an end user, conversation, or session.** Any API key in the same workspace can access any file uploaded there, and all of your keys share your organization's Default Workspace unless you have assigned them to separate [workspaces](https://platform.claude.com/docs/en/manage-claude/workspaces#api-keys-and-resource-scoping). Never accept `file_id` values from end users or other untrusted sources: a user-supplied file ID would let one user of your application read content that another user uploaded. Treat file IDs as server-side references, and keep the mapping between your users and their files in your application.
+  **Uploaded files are accessible to your entire workspace, not scoped to an end user, conversation, or session.** Any API key with access to a workspace can access any files uploaded to that workspace. Every service account, and every user whose organization role allows API access, can use the Default Workspace in addition to any workspace you add them to, so keep files that must stay separate in their own [workspace](https://platform.claude.com/docs/en/manage-claude/workspaces#api-keys-and-resource-scoping) and access them only with keys scoped to that workspace. Never accept `file_id` values from end users or other untrusted sources: a user-supplied file ID would let one user of your application read content that another user uploaded. Treat file IDs as server-side references, and keep the mapping between your users and their files in your application.
 
   If you are building a multi-tenant application on the Files API, create a separate [workspace](https://platform.claude.com/docs/en/manage-claude/workspaces) for each tenant. The workspace is the isolation boundary for files, so a workspace per tenant gives each tenant's data hard isolation from every other tenant. Each organization can have up to 100 workspaces; contact your account team if you need more.
 </Warning>
@@ -949,7 +949,7 @@ Download files that were created by [skills](https://platform.claude.com/docs/en
 
 ### File lifecycle
 
-* Files are scoped to the workspace of the API key that uploaded them. Any API key in the same workspace can reference them; never accept file IDs from untrusted sources (see the [workspace access warning](https://platform.claude.com/docs/en/build-with-claude/files#workspace-scoped-access))
+* Files are scoped to the workspace they were uploaded in. Any request in the same workspace can reference them; never accept file IDs from untrusted sources (see the [workspace access warning](https://platform.claude.com/docs/en/build-with-claude/files#workspace-scoped-access))
 * Files cannot be modified or renamed after upload. To change a file's content, upload a new file and delete the old one
 * Files persist until you delete them with the `DELETE /v1/files/{file_id}` endpoint or they reach their `expires_at`
 * Deleted files cannot be recovered

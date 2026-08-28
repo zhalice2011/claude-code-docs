@@ -12,6 +12,10 @@ The Claude Platform release notes list changes to the Claude API, the client SDK
   For updates to Claude Code, see the [complete CHANGELOG.md](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md) in the `claude-code` repository.
 </Tip>
 
+### August 27, 2026
+
+* You can now create **personal keys** and **service account keys** in the Claude Console. They act as you or as a [service account](https://platform.claude.com/docs/en/manage-claude/workload-identity-federation#service-accounts), with the same permissions, and stop working when the linked account is removed from an organization. This lets organization admins more easily track usage for each account, and ensure key usage is legitimate. These API keys can be scoped to a specific workspace or [work on admin endpoints and across any workspace](https://platform.claude.com/docs/en/manage-claude/authentication#select-a-workspace) the account has access to. Workspace API keys remain supported as a legacy option. See [API keys](https://platform.claude.com/docs/en/manage-claude/authentication#api-keys) for more information.
+
 ### August 26, 2026
 
 * The [Compliance API](https://platform.claude.com/docs/en/manage-claude/compliance-api) session endpoints are out of beta for Cowork and Claude Code sessions. See [Retrieve session transcripts](https://platform.claude.com/docs/en/manage-claude/compliance-sessions).
