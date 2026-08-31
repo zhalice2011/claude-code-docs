@@ -1094,8 +1094,8 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__FAQ.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/FAQ",
-      "hash": "9000357b925e8317cc769661f0ec22e3c61232ba9e9e03dd1588b84ee3a58df9",
-      "last_updated": "2026-07-28T08:26:03.364046",
+      "hash": "32b4198b3116004516a873c890c165a55b0e06a9eb2c8f32379762e2ff6a8e2c",
+      "last_updated": "2026-08-31T09:17:30.515086",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Assistant.md": {
@@ -1623,7 +1623,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-08-31T02:34:31.716579",
+    "last_fetch_completed": "2026-08-31T09:18:43.918413",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 272,
     "pages_fetched_successfully": 270,
@@ -1635,7 +1635,7 @@
     "total_files": 270,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-31T02:34:31.716602",
+  "last_updated": "2026-08-31T09:18:43.918432",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
