@@ -71,6 +71,8 @@ codebuddy --serve --agent ptc --permission-mode bypassPermissions --auth none --
 
 也可以是自定义 id（`.codebuddy/agents/<name>.md` 的 `name`）。
 
+`multitask` **不是** `--serve` / Web UI 的启动值：入口守卫会拒，进程非 0。协调器在会话内用 `/multitask`（交互 TUI）或 [`session/set_multitask`](./acp#multitask-协调器sessionset_multitask)（ACP）。
+
 ### `--permission-mode`
 
 help 写的是前 6 个；运行时还认 `fullAccess`。

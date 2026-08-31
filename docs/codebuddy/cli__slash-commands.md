@@ -16,6 +16,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/status` |  | ✅ 支持 | 显示当前仓库和会话的状态。 |
 | `/add-dir` | `<path>` | ✅ 支持 | 添加工作目录。指定要添加的目录路径。 |
 | `/agents` |  | ✅ 支持 | 管理内置和自定义 AI 智能体；查看内置子代理的生效路由值及其来源，并将模型设置保存到 Global 或 Project 范围。具体场景模型可在 `/model` 中查看。 |
+| `/multitask` |  | ✅ 支持 | 开关 Multitask 协调器（少动手、派 worker）。再敲一次退出并还原进模式前的 agent。非空白会话可进；worker / 子会话 / `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 拒绝。不写 `lastUsed`。ACP 宿主用 [`session/set_multitask`](./acp#multitask-协调器sessionset_multitask)，不要给 `codebuddy --acp` 加 `--agent multitask`。 |
 | `/branch` | `[name]` | ✅ 支持 | 在当前对话位置创建一个分支，复制活跃对话历史到新 session 并自动切换。可选指定分支名称。 |
 | `/btw` | `<question>` | ✅ 支持 | 快速提问，不中断当前 Agent 工作流。适用于在 Agent 执行任务时临时提出简短问题，答案基于已有上下文生成。 |
 | `/compact` |  | ✅ 支持 | 压缩上下文。 |

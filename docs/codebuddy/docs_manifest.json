@@ -2,8 +2,8 @@
   "files": {
     "cli__acp.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/acp",
-      "hash": "f6ee3daf594c9d8aa186126f5f7f5f961909ce8193dc1054d2b28f04c55f0c06",
-      "last_updated": "2026-08-28T14:53:49.023960",
+      "hash": "7ca29f57256ae0336c62a0e4dc4d7650a52a10d6356923272894c3c5a7698900",
+      "last_updated": "2026-08-31T18:38:34.711057",
       "source": "codebuddy"
     },
     "cli__agent-teams.md": {
@@ -44,8 +44,8 @@
     },
     "cli__cli-reference.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/cli-reference",
-      "hash": "54df5609d13e56e53bdef4a1671582545f538a59c09a7b8464854fbe75319ae1",
-      "last_updated": "2026-08-28T14:53:55.694775",
+      "hash": "9c9f7c5ddbc9cfeaac8c8c6bef24d6e5eeb7fcdf75eba9f098ac19d375cf4fd6",
+      "last_updated": "2026-08-31T18:38:41.655861",
       "source": "codebuddy"
     },
     "cli__codebuddy-dir.md": {
@@ -80,8 +80,8 @@
     },
     "cli__env-vars.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/env-vars",
-      "hash": "2a05a10c733c417bfc2f28118180cce96bbe2058794746c9fa153d1f1ccb0d3b",
-      "last_updated": "2026-08-28T14:54:01.224981",
+      "hash": "fa75e743286d50f03c74600429b288f81c6dc3d986a73560f229f1b881d1e59c",
+      "last_updated": "2026-08-31T18:38:47.476356",
       "source": "codebuddy"
     },
     "cli__gitlab-ci-cd.md": {
@@ -326,8 +326,8 @@
     },
     "cli__slash-commands.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/slash-commands",
-      "hash": "05770a6fbf696267daf1ef3876422467c5e73cbe6630016c1421313934b794e9",
-      "last_updated": "2026-08-28T14:54:40.159804",
+      "hash": "e038d2e0e2ecaea6d07719944397e2c365eedeb3a33641fadd6cc81955e887bd",
+      "last_updated": "2026-08-31T18:39:28.908979",
       "source": "codebuddy"
     },
     "cli__statusline.md": {
@@ -368,8 +368,8 @@
     },
     "cli__web-ui.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/web-ui",
-      "hash": "35c36125cdbabf61f403205577f9b8585a019576bf011c124f4af8a6bf22e911",
-      "last_updated": "2026-08-28T14:54:46.420841",
+      "hash": "754181672db4a2920a8e623dd2047ca4674c0e77c89cd4ceea10cc90f990ac97",
+      "last_updated": "2026-08-31T18:39:35.629679",
       "source": "codebuddy"
     },
     "cli__wecom-bot-setup.md": {
@@ -1034,8 +1034,8 @@
     },
     "workbuddy__Changelog.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Changelog",
-      "hash": "b2e1f0d239221da3ad3de3de06eb556d148c4a4f55a290b13c05314b5f8baf6c",
-      "last_updated": "2026-08-21T03:53:19.933392",
+      "hash": "7469cd1d3b904792c06020ced239383b3c12ee9e90644870742287d88ddafa63",
+      "last_updated": "2026-08-31T18:41:17.181799",
       "source": "codebuddy"
     },
     "workbuddy__Conversation.md": {
@@ -1623,7 +1623,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-08-31T09:18:43.918413",
+    "last_fetch_completed": "2026-08-31T18:42:42.984956",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 272,
     "pages_fetched_successfully": 270,
@@ -1635,7 +1635,7 @@
     "total_files": 270,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-08-31T09:18:43.918432",
+  "last_updated": "2026-08-31T18:42:42.984979",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

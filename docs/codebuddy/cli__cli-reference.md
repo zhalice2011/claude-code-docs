@@ -37,7 +37,8 @@
 | 参数 | 说明 | 示例 |
 | --- | --- | --- |
 | `--add-dir` | 添加额外的工作目录供 CodeBuddy 访问（验证每个路径是否存在） | `codebuddy --add-dir ../apps ../lib` |
-| `--agent` | 本进程新会话的主 Agent（TUI / `--serve` Web / ACP）。内置：`cli`、`ptc`、`minimal`、`create`，或自定义 agent 名。压过 `codebuddy.mainAgent.lastUsed`，**不写入** `codebuddy.mainAgent.default` 或 settings `agent`。标准模式请显式 `cli`。对照表见 [Web UI](./web-ui#serve-启动-模式与权限) | `codebuddy --serve --agent ptc` |
+| `--agent` | 本进程新会话的主 Agent（TUI / `--serve` Web / ACP）。内置：`cli`、`ptc`、`minimal`、`create`、`multitask`，或自定义 agent 名。压过 `codebuddy.mainAgent.lastUsed`，**不写入** `codebuddy.mainAgent.default` 或 settings `agent`。标准模式请显式 `cli`。`multitask` **只允许交互 TUI**（stdout\+stdin 都是 TTY）；与 `-p` / stream\-json / `--acp` / `--serve` / 管道 stdin 互斥，进程非 0。ACP 宿主改走 [`session/set_multitask`](./acp#multitask-协调器sessionset_multitask)。对照表见 [Web UI](./web-ui#serve-启动-模式与权限) | `codebuddy --agent multitask` |
+| `--multitask` | 归一成 `--agent multitask` 后再盖章、再走同一套入口守卫。显式 `--multitask` 优先于其它 `--agent`。交互 TUI only | `codebuddy --multitask` |
 | `--agents` | 通过 JSON 动态定义自定义[子代理](./sub-agents)（格式见下文） | `codebuddy --agents '{"reviewer":{"description":"审查代码","prompt":"你是代码审查员"}}'` |
 | `--allowedTools` | 除了[settings.json 文件](./settings)外,无需提示用户即可允许的工具列表 | `"Bash(git log:*)" "Bash(git diff:*)" "Read"` |
 | `--disallowedTools` | 除了[settings.json 文件](./settings)外,应禁止使用的工具列表 | `"Bash(git log:*)" "Bash(git diff:*)" "Edit"` |
@@ -80,6 +81,7 @@
 | `--port <number>` | HTTP 监听端口（仅 `--serve`）。默认自动分配 | `codebuddy --serve --port 7890` |
 | `--host <string>` | HTTP 绑定地址（仅 `--serve`）。默认 `127.0.0.1`；非回环会强制鉴权，除非显式 `--auth none` | `codebuddy --serve --host 0.0.0.0` |
 | `--auth <mode>` | `--serve` 鉴权：`password`（默认）或 `none`。环境变量 `CODEBUDDY_GATEWAY_AUTH` 优先。`--auth none` 可覆盖非回环的 forceAuth | `codebuddy --serve --auth none` |
+| `--base-path <path>` | `--serve` Web UI 的公共 path 前缀（如 `/cnb-5gg-1k09dqp5v-001`）。反向代理把实例挂在子路径时使用。也可用 `CODEBUDDY_GATEWAY_BASE_PATH`。非法值启动时报错；未设置或 `/` 表示挂在站点根 | `codebuddy --serve --base-path /cnb-5gg-1k09dqp5v-001` |
 | `--open` | `--serve` 启动后打开浏览器 | `codebuddy --serve --open` |
 | `--acp` | 以 ACP 服务端启动（默认 stdio NDJSON）。不要与「仅 `--serve`」混淆：后者给 Web UI 用 HTTP ACP | `codebuddy --acp` |
 | `--acp-transport` | 仅在同时传了 `--acp` 时生效：`stdio`（默认）或 `streamable-http`。未传 `--acp` 时 commander 缺省 `stdio` **不会**覆盖 `--serve` 的 HTTP transport | `codebuddy --acp --acp-transport streamable-http` |

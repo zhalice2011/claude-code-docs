@@ -94,7 +94,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | 是否把内置工具加载进 REPL 沙箱（成为顶层全局与 `tools.*` 成员）。`1`/`true` 强开，`0`/`false` 强关。未设置时：`ptc` / `minimal` 默认开（REPL 是唯一直连工具，沙箱必须有内置）；其余模式（含仅打开 `CODEBUDDY_REPL_ENABLED` 的标准 REPL）默认关，避免把全部内置塞进 REPL 挤占上下文、诱导模型用 REPL 调一次性原生工具。关闭后骨架目录与沙箱注入同时不含内置工具，MCP / bridge 编排不受影响 |
 | `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | 是否把骨架工具目录注入 REPL 的 `code` 参数描述。默认开。`0` 关闭后工具仍预加载，只是模型不提前知情，退化为纯渐进披露（靠 `REPL.searchTools` / `REPL.describeTool` 发现） |
 | `CODEBUDDY_DISABLE_FORK_SUBAGENT` | 设置为 `1` 禁用 Agent 工具的 Fork 子代理模式（`subagent_type="fork"`）。启用后 Agent 工具描述会自动隐藏 fork\-mode 段落，模型不会看到该功能；若模型仍然传 `subagent_type="fork"`，运行时会回落到名为 `fork` 的自定义代理（如用户在 `.codebuddy/agents/fork.md` 定义），否则改写为 `general-purpose` 普通子代理。适用于需要避免 fork 递归派生导致请求量放大的宿主场景 |
-| `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` | 设置为 `1` / `true` 禁用 Agent、Bash、PowerShell 工具的后台任务（`run_in_background=true`）。启用后这些工具 schema 中的 `run_in_background` 参数会被隐藏，模型不会看到该字段；即使历史/缓存 tool call 或直接调用方传入该参数，运行时也会兜底回退到同步（Agent）/前台（Bash、PowerShell）执行路径。适用于请求\-响应式 SDK / 一次性任务场景——这类场景主进程在主 turn 结束后立即退出，任何后台代理/后台命令的结果都无法回流到最终答复中。对齐 Claude Code 的 `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS`（同样统管 Agent \+ Bash \+ PowerShell）。默认未设置（后台任务保持可用）。与 print\-mode 守卫（`-p` 下始终阻断后台执行）相互独立 |
+| `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` | 设置为 `1` / `true` 禁用 Agent、Bash、PowerShell 工具的后台任务（`run_in_background=true`）。启用后这些工具 schema 中的 `run_in_background` 参数会被隐藏，模型不会看到该字段；即使历史/缓存 tool call 或直接调用方传入该参数，运行时也会兜底回退到同步（Agent）/前台（Bash、PowerShell）执行路径。适用于请求\-响应式 SDK / 一次性任务场景——这类场景主进程在主 turn 结束后立即退出，任何后台代理/后台命令的结果都无法回流到最终答复中。对齐 Claude Code 的 `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS`（同样统管 Agent \+ Bash \+ PowerShell）。默认未设置（后台任务保持可用）。与 print\-mode 守卫（`-p` 下始终阻断后台执行）相互独立。**同时拒绝 Multitask**：`--agent multitask` / `--multitask` 非 0；`/multitask` 与 `session/set_multitask` 返回失败；`initialize.multitaskSupport` 为 false；带站立键 `multitask` 的续聊**不**重盖协调器章（避免工具面锁死） |
 | `CODEBUDDY_REHYDRATE_IMAGE_BLOB_REFS` | 设置为 `true` 在 `-p` 模式流式输出中将图片 blob 引用还原为完整 base64 数据。适用于需要直接获取图片数据的下游集成场景 |
 | `CODEBUDDY_REPL_ENABLED` | **实验功能**：REPL code mode 总闸。设置为 `1` 或 `true` 开启代码执行模式——模型可在隔离的 vm sandbox 中编写 JS 编排工具调用（内置工具直接 `Bash({...})`，MCP 工具统一挂 `mcp_<server>` 前缀全局），减少多工具任务的 LLM 往返次数。默认关闭 |
 | `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | REPL 工具目录注入细闸。默认开启，只有显式设置为 `0` 或 `false` 才关闭（工具仍预加载，只是模型不提前知情，退化为纯渐进披露） |
@@ -258,6 +258,7 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | 环境变量 | 说明 |
 | --- | --- |
 | `CODEBUDDY_GATEWAY_AUTH` | Gateway 认证模式（`password` 或 `none`）。优先级最高，覆盖 `--auth` 与 settings `gateway.auth`。`--serve` 默认已是 `password`；设为 `none` 会关闭认证，此时同机任意进程可经该服务执行命令、读写文件，仅建议在隔离环境或 CI 中使用 |
+| `CODEBUDDY_GATEWAY_BASE_PATH` | Gateway Web UI 的公共 URL path 前缀（如 `/cnb-5gg-1k09dqp5v-001`）。`--base-path` 优先。未设置或 `/` 表示挂在站点根。设置后终端打印的 Web UI 链接、登录跳转、Cookie Path 以及页面内 `/api` `/assets` 请求都会带上此前缀 |
 | `CODEBUDDY_GATEWAY_PASSWORD` | Gateway 访问密码。未设置时首次启动自动生成随机密码并写入 settings |
 | `CODEBUDDY_GATEWAY_FORCE_TUNNEL` | 设置为 `1` 强制使用 tunnel 模式 |
 | `CODEBUDDY_DISABLE_REQUEST_VALIDATION` | 设置为 `1` 关闭 Gateway 自定义请求头校验（`X-CodeBuddy-Request`）。详见 [HTTP API 安全](./http-api#安全) |

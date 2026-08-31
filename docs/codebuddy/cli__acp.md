@@ -189,6 +189,41 @@ json
   }
 }
 ```
+## Multitask 协调器（`session/set_multitask`）
+
+ACP / `--serve` **不要**加 `--agent multitask` 或 `--multitask`（入口守卫会拒，进程非 0）。会话内用扩展方法开关协调器，与 `mainAgentSupport` / `session/set_agent` 解耦。
+
+### 能力位
+
+`initialize` 回包看 `agentCapabilities.multitaskSupport`。`CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 为真时为 `false`。不必为 Multitask 打开站立 picker。
+
+### 方法
+
+|  |  |
+| --- | --- |
+| 方法名 | `session/set_multitask`（`ACP_METHOD_SESSION_SET_MULTITASK`） |
+| 参数 | `{ sessionId, enabled?: boolean }`：`true` 进入，`false` 退出，省略 toggle |
+| 响应 | `{ ok, on, already, agentName, message }` |
+| 约束 | 非空白可切；不要求 `mainAgentSupport`；worker / 子会话 / 后台禁用返回 `ok: false` |
+| 归属 | `--serve` 多连接只比 `session.meta.acpConnectionId` 与当前连接。无 owner 戳时 fail\-open（兼容非 serve 会话）。**不**走 `isSessionVisibleToMainAgentRpc`（unopted 宿主正是调用方） |
+| 校验 | `enabled` 出现但不是布尔 → `invalidParams`（`"true"` / `null` 不会静默 toggle） |
+
+ts
+```
+import {
+    ACP_METHOD_SESSION_SET_MULTITASK,
+    buildSetMultitaskParams,
+    isMultitaskSupportAdvertised,
+} from '@genie/agent-client-protocol';
+
+if (isMultitaskSupportAdvertised(init.agentCapabilities)) {
+    await conn.extMethod(ACP_METHOD_SESSION_SET_MULTITASK, buildSetMultitaskParams(sessionId, true));
+}
+```
+常量与 builder 在 `@genie/agent-client-protocol`。TUI 斜杠 `/multitask` 走同一套盖章函数。Worker 审批依赖子会话继承协调器的 `acpConnectionId`；非 bypass 模式下缺这条会无人认领。
+
+假模型端到端：`packages/agent-cli/src/e2e/multitask-wakeup.spec.ts`（需先 `pnpm run bundle`）。
+
 ## 故障排除
 
 ### 连接失败
@@ -222,7 +257,8 @@ codebuddy --acp
 
 ## 相关链接
 
-- [CLI 参考手册](./cli-reference) \- 查看所有命令行参数
+- [CLI 参考手册](./cli-reference) \- 查看所有命令行参数（含 `--multitask`）
+- [斜杠命令](./slash-commands) \- `/multitask`
 - [IDE 集成说明](./ide-integrations) \- 更多编辑器集成方式
 - [ACP 协议规范](https://github.com/agentclientprotocol/agent-client-protocol) \- 协议详细文档
 
