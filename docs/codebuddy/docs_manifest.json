@@ -1106,8 +1106,8 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Automation-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Automation-Guide",
-      "hash": "9bb6d5f1f8ca13487bcad1995b4fbe42dd443dd26597de95f2a7f9cc7f287013",
-      "last_updated": "2026-07-08T06:17:32.917707",
+      "hash": "b9162f68a707413b4fb00f1f534ef2c1c1bf7095813327ef62754111dcbed003",
+      "last_updated": "2026-09-02T13:19:10.877805",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Connector.md": {
@@ -1623,7 +1623,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-09-02T07:40:06.849874",
+    "last_fetch_completed": "2026-09-02T13:20:21.816214",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 272,
     "pages_fetched_successfully": 270,
@@ -1635,7 +1635,7 @@
     "total_files": 270,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-02T07:40:06.849899",
+  "last_updated": "2026-09-02T13:20:21.816240",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
