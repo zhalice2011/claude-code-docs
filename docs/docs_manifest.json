@@ -248,8 +248,8 @@
     "agent-view.md": {
       "original_url": "https://code.claude.com/docs/en/agent-view",
       "original_md_url": "https://code.claude.com/docs/en/agent-view.md",
-      "hash": "3b8b645bbe8e489ba3e1eb9b9af599a8b1d700bcaceef212088cd21f17ff8baf",
-      "last_updated": "2026-08-31T09:04:04.164909",
+      "hash": "749fbbc661b80f4ea8881246f04077f0dd8198adbafebcb72428ef50614b69f9",
+      "last_updated": "2026-09-02T07:26:17.929694",
       "source": "claude-code"
     },
     "agents.md": {
@@ -395,8 +395,8 @@
     "claude-directory.md": {
       "original_url": "https://code.claude.com/docs/en/claude-directory",
       "original_md_url": "https://code.claude.com/docs/en/claude-directory.md",
-      "hash": "c3ebaaabdf1a57137c83c1fa15ec1f1625c5c6027fce1488849a01fbbef52d9a",
-      "last_updated": "2026-08-29T16:09:09.665143",
+      "hash": "af1b349852f70db8c53612ea00822961b63c17e45641b4b5dc73e56a608e533e",
+      "last_updated": "2026-09-02T07:26:38.551184",
       "source": "claude-code"
     },
     "claude-platform-on-aws.md": {
@@ -493,8 +493,8 @@
     "cross-session-messaging.md": {
       "original_url": "https://code.claude.com/docs/en/cross-session-messaging",
       "original_md_url": "https://code.claude.com/docs/en/cross-session-messaging.md",
-      "hash": "c98400cc04eb02d1c9ffbfe3965f3c3f512958906a3d8d186c78aa9c7e2e3719",
-      "last_updated": "2026-08-29T04:48:32.220524",
+      "hash": "9281f4206f2b587be2282b827485a66d217511b5ee2b34c7fbd528831b0168b5",
+      "last_updated": "2026-09-02T07:26:50.758063",
       "source": "claude-code"
     },
     "data-usage.md": {
@@ -528,8 +528,8 @@
     "desktop-ios-simulator.md": {
       "original_url": "https://code.claude.com/docs/en/desktop-ios-simulator",
       "original_md_url": "https://code.claude.com/docs/en/desktop-ios-simulator.md",
-      "hash": "0d5c48a0ba3ad4772457abc46c471493da913f1bb6cba9b5dc3da08f596e3afc",
-      "last_updated": "2026-08-12T01:05:57.187252",
+      "hash": "9ef38bd26965240e873fa23a9b06bcac4e78e280a2f384bf3daf59a800b13a9f",
+      "last_updated": "2026-09-02T07:26:54.935938",
       "source": "claude-code"
     },
     "desktop-linux.md": {
@@ -745,8 +745,8 @@
     "llm-gateway-connect.md": {
       "original_url": "https://code.claude.com/docs/en/llm-gateway-connect",
       "original_md_url": "https://code.claude.com/docs/en/llm-gateway-connect.md",
-      "hash": "79a7f0ccda7b254de1e367e613aef3e839b487df806d8f60c6e3bad2907a1d25",
-      "last_updated": "2026-09-01T08:08:02.024038",
+      "hash": "20a6a179e6b55f832cff842a3ea5b44de441ac2dcd6eb334a8fbb004bdb6e03c",
+      "last_updated": "2026-09-02T07:27:23.503455",
       "source": "claude-code"
     },
     "llm-gateway-protocol.md": {
@@ -1340,7 +1340,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-09-02T02:01:34.051710",
+    "last_fetch_completed": "2026-09-02T07:28:34.415087",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 191,
@@ -1350,7 +1350,7 @@
     "total_files": 191,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-02T02:01:34.051747",
+  "last_updated": "2026-09-02T07:28:34.415113",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
