@@ -129,8 +129,8 @@
     "agent-sdk__python.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/python.md",
-      "hash": "c05be4a1b246fbd870f9db69968a8ccc2e182729cc8920f3723c36ac66e4f447",
-      "last_updated": "2026-09-02T01:58:56.061305",
+      "hash": "065665ff7e6119d00741c2f1d92164bfbeccf1f16773621b5314a2e666462aa8",
+      "last_updated": "2026-09-03T18:14:23.234582",
       "source": "claude-code"
     },
     "agent-sdk__quickstart.md": {
@@ -220,8 +220,8 @@
     "agent-sdk__typescript.md": {
       "original_url": "https://code.claude.com/docs/en/agent-sdk/typescript",
       "original_md_url": "https://code.claude.com/docs/en/agent-sdk/typescript.md",
-      "hash": "ade380769323c116d3c79da09c777cb20ad6af780d2e0e961badf271d86eea7a",
-      "last_updated": "2026-09-02T01:59:09.867675",
+      "hash": "4ae37f56971ecfb1680a1996aa87ea80fdc794ac5af09fd7b8b567d9acad7d53",
+      "last_updated": "2026-09-03T18:14:38.863185",
       "source": "claude-code"
     },
     "agent-sdk__typescript-v2-preview.md": {
@@ -1340,7 +1340,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-09-03T13:09:40.697876",
+    "last_fetch_completed": "2026-09-03T18:17:57.733381",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 191,
@@ -1350,7 +1350,7 @@
     "total_files": 191,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-03T13:09:40.697899",
+  "last_updated": "2026-09-03T18:17:57.733404",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
