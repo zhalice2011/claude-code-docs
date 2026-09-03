@@ -42,9 +42,9 @@ TIP
 1. 启动 WorkBuddy，点击 **登录** 按钮；
 
 ![](/docs/static/image-8.CK0afJ4M.png)
-2. 勾选《服务条款》与《隐私协议》，使用微信扫码完成登录；
+2. 浏览器打开登录页面（WorkBuddy 官网 **workbuddy.cn**），在当前页面的登录弹窗中勾选《用户服务协议》与《隐私政策》，使用**微信扫码**完成登录；也支持**手机号、邮箱、SSO** 等登录方式，登录全程在当前页面完成，无需跳转；
 
-![](/docs/static/image-9.B-sCZ4xM.png)
+![登录弹窗](/docs/static/login-popup.Vnh_2lK9.png)
 3. 登录成功后自动返回客户端，即可开始使用。
 
 语言设置
