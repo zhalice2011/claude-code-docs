@@ -3489,8 +3489,8 @@
     "api__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/api/overview",
       "original_md_url": "https://platform.claude.com/docs/en/api/overview.md",
-      "hash": "f9055b712d7cd91982a263eaffd1f6687a08fdd6f29601fc78ad3bdad857cd94",
-      "last_updated": "2026-08-28T00:18:08.244422",
+      "hash": "2fab8d010c46878e6f3e6e7387a0566fd6ca06f7711dca972517fa212460ba13",
+      "last_updated": "2026-09-03T23:02:38.192500",
       "source": "platform"
     },
     "api__rate-limits.md": {
@@ -3594,8 +3594,8 @@
     "build-with-claude__batch-processing.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/batch-processing",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/batch-processing.md",
-      "hash": "5c1501ce73f82df3071d3e9f0cad93b645e0143cc64c59664e77533381f73bb2",
-      "last_updated": "2026-09-01T18:18:48.097078",
+      "hash": "e1df24b2de12d22c8eed0e85d4dbc46cf6c2e1c8300d6d635d0667fd22a439c4",
+      "last_updated": "2026-09-03T23:02:48.164310",
       "source": "platform"
     },
     "build-with-claude__cache-diagnostics.md": {
@@ -4070,8 +4070,8 @@
     "manage-claude__analytics-api.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/analytics-api",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/analytics-api.md",
-      "hash": "6cf4163d7fdace7949f03aa26747619f24d09f08dc3dc087f47edff290f2ede5",
-      "last_updated": "2026-09-02T23:03:20.256614",
+      "hash": "dbe0b187a2ccfc550d8ce3761383c9dce6f880a70475ce05284d64b09c5d2b57",
+      "last_updated": "2026-09-03T23:03:31.698057",
       "source": "platform"
     },
     "manage-claude__api-and-data-retention.md": {
@@ -4091,8 +4091,8 @@
     "manage-claude__authentication.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/authentication",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/authentication.md",
-      "hash": "ba35b3be8a7512334bf461af7c418e1ca9e4d7a74adbe1b620c35ed5bedce88b",
-      "last_updated": "2026-09-02T18:25:50.778307",
+      "hash": "a5eba03567151b50bdf796b3d2657299eb48148d18b44c12c27dc33bcbf30314",
+      "last_updated": "2026-09-03T23:03:33.534596",
       "source": "platform"
     },
     "manage-claude__claude-code-analytics-api.md": {
@@ -4861,7 +4861,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-09-03T18:26:09.555121",
+    "last_fetch_completed": "2026-09-03T23:04:44.115936",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 698,
@@ -4876,7 +4876,7 @@
     "total_files": 694,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-03T18:26:09.555141",
+  "last_updated": "2026-09-03T23:04:44.115958",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
