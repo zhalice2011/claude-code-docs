@@ -381,8 +381,8 @@
     "api__admin.md": {
       "original_url": "https://platform.claude.com/docs/en/api/admin",
       "original_md_url": "https://platform.claude.com/docs/en/api/admin.md",
-      "hash": "76f171d88a85f8a21b6a9c13e8f6580b69fa4ba1ed1623232e04fe28160777c3",
-      "last_updated": "2026-08-28T00:13:12.478426",
+      "hash": "728563acd5ef991fb8ed8da6f11964e380cc1656a83258f2cf6f444bcc363caf",
+      "last_updated": "2026-09-04T20:05:11.630907",
       "source": "platform"
     },
     "api__admin__analytics.md": {
@@ -598,8 +598,8 @@
     "api__admin__external_keys__retrieve.md": {
       "original_url": "https://platform.claude.com/docs/en/api/admin/external_keys/retrieve",
       "original_md_url": "https://platform.claude.com/docs/en/api/admin/external_keys/retrieve.md",
-      "hash": "842317b76fbdaadd1f24b1972d45eb6f4f5243f719bd733019a0248f60c5c267",
-      "last_updated": "2026-08-28T00:13:33.273365",
+      "hash": "5a78b620cb194af346aeb09f1306d44273fac781865cc6c8ee3934507eab4ffb",
+      "last_updated": "2026-09-04T20:05:33.774842",
       "source": "platform"
     },
     "api__admin__external_keys__update.md": {
@@ -913,8 +913,8 @@
     "api__admin__rbac_groups__members__delete.md": {
       "original_url": "https://platform.claude.com/docs/en/api/admin/rbac_groups/members/delete",
       "original_md_url": "https://platform.claude.com/docs/en/api/admin/rbac_groups/members/delete.md",
-      "hash": "8b74b0ed04f3b797800997efc1def6866f5db93696623a36f1f6a516bf22672d",
-      "last_updated": "2026-08-28T00:14:03.112844",
+      "hash": "844f52b8448ede6d895accbbc9a87cee1f087ac6ca67e68116472534870f1b78",
+      "last_updated": "2026-09-04T20:06:06.570248",
       "source": "platform"
     },
     "api__admin__rbac_groups__members__list.md": {
@@ -1053,8 +1053,8 @@
     "api__admin__spend_limits__create.md": {
       "original_url": "https://platform.claude.com/docs/en/api/admin/spend_limits/create",
       "original_md_url": "https://platform.claude.com/docs/en/api/admin/spend_limits/create.md",
-      "hash": "4f8000e22585f47dcb0ade62746bacd2a914faf6bd686cb4f4be106969b9c393",
-      "last_updated": "2026-08-28T00:14:16.466849",
+      "hash": "b76baa52873e16814a69e3d27a070db2c1a67aa2a0a641acc779347971c35f79",
+      "last_updated": "2026-09-04T20:06:20.991548",
       "source": "platform"
     },
     "api__admin__spend_limits__delete.md": {
@@ -1151,8 +1151,8 @@
     "api__admin__users__list.md": {
       "original_url": "https://platform.claude.com/docs/en/api/admin/users/list",
       "original_md_url": "https://platform.claude.com/docs/en/api/admin/users/list.md",
-      "hash": "1dc355493c06842820fb2723a8b30d41f652aa18cea9c7fbb77e775cf4d0ee37",
-      "last_updated": "2026-08-28T00:14:26.222208",
+      "hash": "550234fe98ecdb3acf196647f0e380f2d404693606e8d728abaa92c302eb25e0",
+      "last_updated": "2026-09-04T20:06:33.021456",
       "source": "platform"
     },
     "api__admin__users__retrieve.md": {
@@ -1186,8 +1186,8 @@
     "api__admin__workspaces__create.md": {
       "original_url": "https://platform.claude.com/docs/en/api/admin/workspaces/create",
       "original_md_url": "https://platform.claude.com/docs/en/api/admin/workspaces/create.md",
-      "hash": "997c615511a9c9cc7aa4c7b0665ee651dae03c6d24100cb04c953ed91cd352de",
-      "last_updated": "2026-08-28T00:14:29.611644",
+      "hash": "30753707053d3624b61c452db4067052814c9706cb68522818b0a61b53b12742",
+      "last_updated": "2026-09-04T20:06:37.673531",
       "source": "platform"
     },
     "api__admin__workspaces__list.md": {
@@ -3755,8 +3755,8 @@
     "build-with-claude__preserved-thinking.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/preserved-thinking",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/preserved-thinking.md",
-      "hash": "53148ea49d32b7e9b353f8931ba90ac1ed1e73d548bb3b3a1e6b05d556f77239",
-      "last_updated": "2026-09-03T07:40:41.975816",
+      "hash": "24e105f4706c02664d4c6d281aa215750ea7e6a1accb398059f53594d20472c5",
+      "last_updated": "2026-09-04T20:11:29.117585",
       "source": "platform"
     },
     "build-with-claude__prompt-caching.md": {
@@ -3860,8 +3860,8 @@
     "build-with-claude__thinking.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/thinking",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/thinking.md",
-      "hash": "892a7347dd63acc87296fc65098edfce96e5c5dd0a709bbf880084f43b4751e6",
-      "last_updated": "2026-09-01T18:19:13.256759",
+      "hash": "9baa0fba3a60b873c42b66b2ab09b9b42ec60b2d7d45aa79f9500646e562eadd",
+      "last_updated": "2026-09-04T20:11:39.518501",
       "source": "platform"
     },
     "build-with-claude__thinking-steering-and-cost.md": {
@@ -4679,8 +4679,8 @@
     "release-notes__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/overview",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/overview.md",
-      "hash": "861805eb964765360df407d419e77a5a63a118f1b7ef122a809751b0c82a99cd",
-      "last_updated": "2026-09-03T07:43:01.301624",
+      "hash": "274fa6831570140361a991f69bdedd6b3511b9fbca25d97a23867eeebdd8558f",
+      "last_updated": "2026-09-04T20:12:59.963103",
       "source": "platform"
     },
     "release-notes__system-prompts__claude-fable-5.md": {
@@ -4861,7 +4861,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-09-04T18:07:21.618594",
+    "last_fetch_completed": "2026-09-04T20:13:17.880567",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 698,
@@ -4876,7 +4876,7 @@
     "total_files": 694,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-04T18:07:21.618615",
+  "last_updated": "2026-09-04T20:13:17.880587",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
