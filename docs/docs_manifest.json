@@ -311,8 +311,8 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "d3c1fe222dfb104d3cf634883355a7ff42fc1f670785187277d7f5ffba372606",
-      "last_updated": "2026-09-04T20:04:33.055659",
+      "hash": "519e876398af3ba74f8ae30ab8945a0ec7cf7f33d0aeab36ebfdd3b835d6950c",
+      "last_updated": "2026-09-06T07:27:15.753901",
       "source": "claude-code-repository"
     },
     "channels.md": {
@@ -1340,7 +1340,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-09-06T01:57:54.385791",
+    "last_fetch_completed": "2026-09-06T07:27:15.753957",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 191,
@@ -1350,7 +1350,7 @@
     "total_files": 191,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-06T01:57:54.385823",
+  "last_updated": "2026-09-06T07:27:15.753975",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
