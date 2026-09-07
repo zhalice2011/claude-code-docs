@@ -20,7 +20,25 @@
 
 成员在项目中创建任务时，WorkBuddy 会自动从项目配置中拉取必要的信息注入到任务上下文。
 
-![](/docs/static/project-1.F71YBzZ9.png)## 核心能力
+![](/docs/static/project-1.F71YBzZ9.png)## 项目级代码开发配置
+
+进行代码开发时，WorkBuddy 支持读取项目工作目录下的 `.codebuddy/` 项目级配置，行为与 CodeBuddy Code 保持一致。项目级配置可提交到版本控制，随项目共享给团队：
+
+| 目录 / 文件 | 作用 |
+| --- | --- |
+| `.codebuddy/rules/` | 项目规则：团队统一的代码规范、工作流约定等，规则文件自动加载并在对应项目会话中生效 |
+| `.codebuddy/agents/` | 项目专属 Agent 定义：WorkBuddy 会自动发现并使用其中定义的 Agent |
+| `.codebuddy/skills/` | 项目级技能：每个技能为独立目录，包含 SKILL.md 定义 |
+| `.codebuddy/commands/` | 自定义斜杠命令：通过 `/命令名` 触发，支持目录嵌套 |
+| `.codebuddy/CODEBUDDY.md` | 项目级记忆文件：存储项目架构、约定、常用命令等团队知识 |
+
+- **兼容现有配置**：与 `CODEBUDDY.md`、`.codebuddy/CODEBUDDY.md`、`AGENTS.md` 及用户级 `~/.codebuddy/` 配置兼容，可并存使用；
+- **优先级清晰**：代理 / 技能 / 规则按「项目级 \> 用户级」的优先级生效，同名时项目级优先；
+- **项目间隔离**：各项目的配置互不影响，切换项目后加载结果自动跟随当前项目。
+
+完整的目录结构、文件格式与配置优先级说明，见 CodeBuddy Code 的[`.codebuddy` 目录结构说明](/docs/cli/codebuddy-dir)。
+
+## 核心能力
 
 ### 项目动态
 
