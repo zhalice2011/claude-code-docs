@@ -10,7 +10,7 @@
 
 1\.购买成功后，前往[官网](https://www.codebuddy.cn/home/)使用超管手机号登录。
 
-![访问企业管理后台](/docs/static/%E4%B8%93%E7%94%A8%E4%BA%91%E4%BC%81%E4%B8%9A%E7%89%88%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-1.CryI-iJ8.png)2. 专享版购买成功后需要约二十分钟的部署时间，部署完成后即可从[官网](https://www.codebuddy.cn/home/)进入企业控制台。
+![访问企业管理后台](/docs/static/%E4%B8%93%E7%94%A8%E4%BA%91%E4%BC%81%E4%B8%9A%E7%89%88%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-1.CryI-iJ8.png)2. 专享版购买成功后，系统将自动进行部署，部署期间暂不可使用。部署完成后，即可从[官网](https://www.codebuddy.cn/home/)进入企业控制台。
 
 ![官网](/docs/static/%E4%B8%93%E7%94%A8%E4%BA%91%E4%BC%81%E4%B8%9A%E7%89%88%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-2.Cqjlos9f.png)3. 首次登录需设置超管账号初始密码，设置完成后前往企业管理后台。
 

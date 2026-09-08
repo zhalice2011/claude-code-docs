@@ -410,8 +410,8 @@
     },
     "enterprise__PrivateQuickstart.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/PrivateQuickstart",
-      "hash": "e5de0862c79f6795420a67041cbaf7a5a8439448a538b844097f5f77d1ab8976",
-      "last_updated": "2026-06-26T12:15:05.119887",
+      "hash": "44b99bb39d15cb1acfc3d932f6e6273f993b078200110181dca0111e634e930a",
+      "last_updated": "2026-09-08T07:44:34.386720",
       "source": "codebuddy"
     },
     "enterprise__SaaSQuickstart.md": {
@@ -1641,7 +1641,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-09-08T02:18:01.615184",
+    "last_fetch_completed": "2026-09-08T07:47:42.362560",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 275,
     "pages_fetched_successfully": 273,
@@ -1653,7 +1653,7 @@
     "total_files": 273,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-08T02:18:01.615210",
+  "last_updated": "2026-09-08T07:47:42.362584",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
