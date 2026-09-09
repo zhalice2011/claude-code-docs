@@ -518,8 +518,8 @@
     },
     "enterprise__price__Purchase.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/price/Purchase",
-      "hash": "41522560792061b21925fe65e661b4d52a092f66d48317f82cd4302e4b5b05d2",
-      "last_updated": "2026-08-17T03:49:56.453183",
+      "hash": "f308fcda3cb410b4739944fb13b7e1e6363031fa2777302a24ad41b9e197a75f",
+      "last_updated": "2026-09-09T07:52:02.913336",
       "source": "codebuddy"
     },
     "enterprise__price__Voucher.md": {
@@ -1641,7 +1641,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-09-09T02:24:36.861546",
+    "last_fetch_completed": "2026-09-09T07:54:55.238308",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 275,
     "pages_fetched_successfully": 273,
@@ -1653,7 +1653,7 @@
     "total_files": 273,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-09T02:24:36.861571",
+  "last_updated": "2026-09-09T07:54:55.238329",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
