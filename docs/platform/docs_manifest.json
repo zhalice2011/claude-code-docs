@@ -2453,8 +2453,8 @@
     "api__beta__sessions__events__stream.md": {
       "original_url": "https://platform.claude.com/docs/en/api/beta/sessions/events/stream",
       "original_md_url": "https://platform.claude.com/docs/en/api/beta/sessions/events/stream.md",
-      "hash": "62dd00ae8c82a2b873cd02a22daceb441147788ed51440297ac6de070eee8dac",
-      "last_updated": "2026-09-01T23:00:55.201870",
+      "hash": "74e9bd3a25f0ef148c906e3c1f60a18d6489a3569076104420dfcd0858351d10",
+      "last_updated": "2026-09-09T22:57:37.988213",
       "source": "platform"
     },
     "api__beta__sessions__list.md": {
@@ -4875,7 +4875,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-09-09T18:22:03.554449",
+    "last_fetch_completed": "2026-09-09T23:02:55.834558",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 700,
@@ -4890,7 +4890,7 @@
     "total_files": 696,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-09T18:22:03.554467",
+  "last_updated": "2026-09-09T23:02:55.834582",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
