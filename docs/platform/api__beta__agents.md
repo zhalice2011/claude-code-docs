@@ -1,3 +1,8 @@
+---
+title: Agents
+url: https://platform.claude.com/docs/en/api/beta/agents
+---
+
 # Agents
 
 ## Create Agent
@@ -14,7 +19,7 @@ Create Agent
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -62,6 +67,8 @@ Create Agent
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -103,6 +110,8 @@ Create Agent
     - `"thinking-binding-controls-2026-08-01"`
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
+
+- `"anthropic-workspace-id": optional string`
 
 ### Body parameters
 
@@ -266,13 +275,13 @@ Create Agent
 
   MCP servers this agent connects to. Maximum 20. Names must be unique within the array. Every server must be referenced by an `mcp_toolset` in `tools`; unreferenced servers are rejected. See the [MCP connector guide](https://platform.claude.com/docs/en/managed-agents/mcp-connector).
 
+  - `type: "url"`
+
   - `name: string`
 
     Unique name for this server, referenced by mcp_toolset configurations. 1-255 characters.
 
     minLength: 1, maxLength: 255
-
-  - `type: "url"`
 
   - `url: string`
 
@@ -288,6 +297,8 @@ Create Agent
 
   A coordinator topology: the session's primary thread orchestrates work by spawning session threads, each running an agent drawn from the `agents` roster.
 
+  - `type: "coordinator"`
+
   - `agents: array of BetaManagedAgentsMultiagentRosterEntryParams`
 
     Agents the coordinator may spawn as session threads. 1–20 entries. Each entry is an agent ID string, a versioned `{"type":"agent","id","version"}` reference, or `{"type":"self"}` to allow recursive self-invocation. Entries must reference distinct agents (after resolving `self` and string forms); at most one `self`. Referenced agents must exist, must not be archived, and must not themselves have `multiagent` set (depth limit 1).
@@ -298,13 +309,13 @@ Create Agent
 
       Specification for an Agent. Provide a specific `version` or use the short-form `agent="agent_id"` for the most recent version
 
+      - `type: "agent"`
+
       - `id: string`
 
         The `agent` ID.
 
         minLength: 1, maxLength: 128
-
-      - `type: "agent"`
 
       - `version: optional number`
 
@@ -322,15 +333,13 @@ Create Agent
 
       Platform advisor roster entry: a model the session's primary thread may consult mid-turn. At most one per roster; the entry occupies the roster name `anthropic.advisor`.
 
+      - `type: "advisor"`
+
       - `model: string`
 
         A Claude model id. The model must be permitted as an advisor for this agent's model — see the sessions/threads/advisor spec.
 
         minLength: 1, maxLength: 256
-
-      - `type: "advisor"`
-
-  - `type: "coordinator"`
 
 - `skills: optional array of BetaManagedAgentsSkillParams`
 
@@ -340,13 +349,13 @@ Create Agent
 
     An Anthropic-managed skill.
 
+    - `type: "anthropic"`
+
     - `skill_id: string`
 
       Identifier of the Anthropic skill (e.g., "xlsx").
 
       minLength: 1, maxLength: 64
-
-    - `type: "anthropic"`
 
     - `version: optional string or null`
 
@@ -358,13 +367,13 @@ Create Agent
 
     A user-created custom skill.
 
+    - `type: "custom"`
+
     - `skill_id: string`
 
       Tagged ID of the custom skill (e.g., "skill_01XJ5...").
 
       minLength: 1, maxLength: 64
-
-    - `type: "custom"`
 
     - `version: optional string or null`
 
@@ -396,6 +405,8 @@ Create Agent
 
         Configuration override for the bash tool.
 
+        - `type: optional "bash"`
+
         - `name: "bash"`
 
           Must be "bash".
@@ -420,11 +431,11 @@ Create Agent
 
             - `type: "always_ask"`
 
-        - `type: optional "bash"`
-
       - `BetaManagedAgentsEditToolConfigParams object`
 
         Configuration override for the edit tool.
+
+        - `type: optional "edit"`
 
         - `name: "edit"`
 
@@ -446,11 +457,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "edit"`
-
       - `BetaManagedAgentsReadToolConfigParams object`
 
         Configuration override for the read tool.
+
+        - `type: optional "read"`
 
         - `name: "read"`
 
@@ -472,11 +483,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "read"`
-
       - `BetaManagedAgentsWriteToolConfigParams object`
 
         Configuration override for the write tool.
+
+        - `type: optional "write"`
 
         - `name: "write"`
 
@@ -498,11 +509,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "write"`
-
       - `BetaManagedAgentsGlobToolConfigParams object`
 
         Configuration override for the glob tool.
+
+        - `type: optional "glob"`
 
         - `name: "glob"`
 
@@ -524,11 +535,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "glob"`
-
       - `BetaManagedAgentsGrepToolConfigParams object`
 
         Configuration override for the grep tool.
+
+        - `type: optional "grep"`
 
         - `name: "grep"`
 
@@ -550,11 +561,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "grep"`
-
       - `BetaManagedAgentsWebFetchToolConfigParams object`
 
         Configuration override for the web_fetch tool.
+
+        - `type: optional "web_fetch"`
 
         - `name: "web_fetch"`
 
@@ -590,11 +601,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "web_fetch"`
-
       - `BetaManagedAgentsWebSearchToolConfigParams object`
 
         Configuration override for the web_search tool.
+
+        - `type: optional "web_search"`
 
         - `name: "web_search"`
 
@@ -623,8 +634,6 @@ Create Agent
           - `BetaManagedAgentsAlwaysAskPolicy object`
 
             Tool calls require user confirmation before execution.
-
-        - `type: optional "web_search"`
 
         - `user_location: optional BetaManagedAgentsUserLocation or null`
 
@@ -680,13 +689,13 @@ Create Agent
 
     Configuration for tools from an MCP server defined in `mcp_servers`.
 
+    - `type: "mcp_toolset"`
+
     - `mcp_server_name: string`
 
       Name of the MCP server. Must match a server name from the mcp_servers array. 1-255 characters.
 
       minLength: 1, maxLength: 255
-
-    - `type: "mcp_toolset"`
 
     - `configs: optional array of BetaManagedAgentsMCPToolConfigParams`
 
@@ -738,6 +747,8 @@ Create Agent
 
     A custom tool that is executed by the API client rather than the agent. When the agent calls this tool, an `agent.custom_tool_use` event is emitted and the session goes idle, waiting for the client to provide the result via a `user.custom_tool_result` event.
 
+    - `type: "custom"`
+
     - `description: string`
 
       Description of what the tool does, shown to the agent to help it decide when to use the tool.
@@ -760,13 +771,13 @@ Create Agent
 
       minLength: 1, maxLength: 128
 
-    - `type: "custom"`
-
 ### Returns
 
 - `BetaManagedAgentsAgent object`
 
   A Managed Agents `agent`.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -786,9 +797,9 @@ Create Agent
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -918,6 +929,8 @@ Create Agent
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -926,9 +939,9 @@ Create Agent
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -938,13 +951,11 @@ Create Agent
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -954,9 +965,9 @@ Create Agent
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -964,9 +975,9 @@ Create Agent
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -976,11 +987,15 @@ Create Agent
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -1002,11 +1017,11 @@ Create Agent
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -1024,11 +1039,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -1046,11 +1061,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -1068,11 +1083,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -1090,11 +1105,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -1112,11 +1127,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -1134,8 +1149,6 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -1147,6 +1160,8 @@ Create Agent
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -1163,8 +1178,6 @@ Create Agent
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -1218,9 +1231,9 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -1260,11 +1273,11 @@ Create Agent
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -1279,10 +1292,6 @@ Create Agent
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 
@@ -1439,7 +1448,7 @@ List Agents
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -1487,6 +1496,8 @@ List Agents
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -1529,11 +1540,15 @@ List Agents
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ### Returns
 
 - `data: array of BetaManagedAgentsAgent`
 
   List of agents.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -1553,9 +1568,9 @@ List Agents
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -1685,6 +1700,8 @@ List Agents
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -1693,9 +1710,9 @@ List Agents
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -1705,13 +1722,11 @@ List Agents
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -1721,9 +1736,9 @@ List Agents
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -1731,9 +1746,9 @@ List Agents
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -1743,11 +1758,15 @@ List Agents
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -1769,11 +1788,11 @@ List Agents
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -1791,11 +1810,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -1813,11 +1832,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -1835,11 +1854,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -1857,11 +1876,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -1879,11 +1898,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -1901,8 +1920,6 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -1914,6 +1931,8 @@ List Agents
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -1930,8 +1949,6 @@ List Agents
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -1985,9 +2002,9 @@ List Agents
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -2027,11 +2044,11 @@ List Agents
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -2046,10 +2063,6 @@ List Agents
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 
@@ -2184,7 +2197,7 @@ Get Agent
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -2232,6 +2245,8 @@ Get Agent
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -2274,11 +2289,15 @@ Get Agent
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ### Returns
 
 - `BetaManagedAgentsAgent object`
 
   A Managed Agents `agent`.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -2298,9 +2317,9 @@ Get Agent
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -2430,6 +2449,8 @@ Get Agent
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -2438,9 +2459,9 @@ Get Agent
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -2450,13 +2471,11 @@ Get Agent
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -2466,9 +2485,9 @@ Get Agent
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -2476,9 +2495,9 @@ Get Agent
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -2488,11 +2507,15 @@ Get Agent
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -2514,11 +2537,11 @@ Get Agent
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -2536,11 +2559,11 @@ Get Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -2558,11 +2581,11 @@ Get Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -2580,11 +2603,11 @@ Get Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -2602,11 +2625,11 @@ Get Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -2624,11 +2647,11 @@ Get Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -2646,8 +2669,6 @@ Get Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -2659,6 +2680,8 @@ Get Agent
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -2675,8 +2698,6 @@ Get Agent
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -2730,9 +2751,9 @@ Get Agent
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -2772,11 +2793,11 @@ Get Agent
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -2791,10 +2812,6 @@ Get Agent
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 
@@ -2912,7 +2929,7 @@ Update Agent
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -2960,6 +2977,8 @@ Update Agent
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -3002,6 +3021,8 @@ Update Agent
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ### Body parameters
 
 - `description: optional string or null`
@@ -3014,13 +3035,13 @@ Update Agent
 
   MCP servers. Full replacement. Omit to preserve; send empty array or `null` to clear. Names must be unique. Maximum 20. Every server must be referenced by an `mcp_toolset` in the agent's resulting `tools`; unreferenced servers are rejected. See the [MCP connector guide](https://platform.claude.com/docs/en/managed-agents/mcp-connector).
 
+  - `type: "url"`
+
   - `name: string`
 
     Unique name for this server, referenced by mcp_toolset configurations. 1-255 characters.
 
     minLength: 1, maxLength: 255
-
-  - `type: "url"`
 
   - `url: string`
 
@@ -3180,6 +3201,8 @@ Update Agent
 
   A coordinator topology: the session's primary thread orchestrates work by spawning session threads, each running an agent drawn from the `agents` roster.
 
+  - `type: "coordinator"`
+
   - `agents: array of BetaManagedAgentsMultiagentRosterEntryParams`
 
     Agents the coordinator may spawn as session threads. 1–20 entries. Each entry is an agent ID string, a versioned `{"type":"agent","id","version"}` reference, or `{"type":"self"}` to allow recursive self-invocation. Entries must reference distinct agents (after resolving `self` and string forms); at most one `self`. Referenced agents must exist, must not be archived, and must not themselves have `multiagent` set (depth limit 1).
@@ -3190,13 +3213,13 @@ Update Agent
 
       Specification for an Agent. Provide a specific `version` or use the short-form `agent="agent_id"` for the most recent version
 
+      - `type: "agent"`
+
       - `id: string`
 
         The `agent` ID.
 
         minLength: 1, maxLength: 128
-
-      - `type: "agent"`
 
       - `version: optional number`
 
@@ -3214,15 +3237,13 @@ Update Agent
 
       Platform advisor roster entry: a model the session's primary thread may consult mid-turn. At most one per roster; the entry occupies the roster name `anthropic.advisor`.
 
+      - `type: "advisor"`
+
       - `model: string`
 
         A Claude model id. The model must be permitted as an advisor for this agent's model — see the sessions/threads/advisor spec.
 
         minLength: 1, maxLength: 256
-
-      - `type: "advisor"`
-
-  - `type: "coordinator"`
 
 - `name: optional string`
 
@@ -3238,13 +3259,13 @@ Update Agent
 
     An Anthropic-managed skill.
 
+    - `type: "anthropic"`
+
     - `skill_id: string`
 
       Identifier of the Anthropic skill (e.g., "xlsx").
 
       minLength: 1, maxLength: 64
-
-    - `type: "anthropic"`
 
     - `version: optional string or null`
 
@@ -3256,13 +3277,13 @@ Update Agent
 
     A user-created custom skill.
 
+    - `type: "custom"`
+
     - `skill_id: string`
 
       Tagged ID of the custom skill (e.g., "skill_01XJ5...").
 
       minLength: 1, maxLength: 64
-
-    - `type: "custom"`
 
     - `version: optional string or null`
 
@@ -3294,6 +3315,8 @@ Update Agent
 
         Configuration override for the bash tool.
 
+        - `type: optional "bash"`
+
         - `name: "bash"`
 
           Must be "bash".
@@ -3318,11 +3341,11 @@ Update Agent
 
             - `type: "always_ask"`
 
-        - `type: optional "bash"`
-
       - `BetaManagedAgentsEditToolConfigParams object`
 
         Configuration override for the edit tool.
+
+        - `type: optional "edit"`
 
         - `name: "edit"`
 
@@ -3344,11 +3367,11 @@ Update Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "edit"`
-
       - `BetaManagedAgentsReadToolConfigParams object`
 
         Configuration override for the read tool.
+
+        - `type: optional "read"`
 
         - `name: "read"`
 
@@ -3370,11 +3393,11 @@ Update Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "read"`
-
       - `BetaManagedAgentsWriteToolConfigParams object`
 
         Configuration override for the write tool.
+
+        - `type: optional "write"`
 
         - `name: "write"`
 
@@ -3396,11 +3419,11 @@ Update Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "write"`
-
       - `BetaManagedAgentsGlobToolConfigParams object`
 
         Configuration override for the glob tool.
+
+        - `type: optional "glob"`
 
         - `name: "glob"`
 
@@ -3422,11 +3445,11 @@ Update Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "glob"`
-
       - `BetaManagedAgentsGrepToolConfigParams object`
 
         Configuration override for the grep tool.
+
+        - `type: optional "grep"`
 
         - `name: "grep"`
 
@@ -3448,11 +3471,11 @@ Update Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "grep"`
-
       - `BetaManagedAgentsWebFetchToolConfigParams object`
 
         Configuration override for the web_fetch tool.
+
+        - `type: optional "web_fetch"`
 
         - `name: "web_fetch"`
 
@@ -3488,11 +3511,11 @@ Update Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "web_fetch"`
-
       - `BetaManagedAgentsWebSearchToolConfigParams object`
 
         Configuration override for the web_search tool.
+
+        - `type: optional "web_search"`
 
         - `name: "web_search"`
 
@@ -3521,8 +3544,6 @@ Update Agent
           - `BetaManagedAgentsAlwaysAskPolicy object`
 
             Tool calls require user confirmation before execution.
-
-        - `type: optional "web_search"`
 
         - `user_location: optional BetaManagedAgentsUserLocation or null`
 
@@ -3578,13 +3599,13 @@ Update Agent
 
     Configuration for tools from an MCP server defined in `mcp_servers`.
 
+    - `type: "mcp_toolset"`
+
     - `mcp_server_name: string`
 
       Name of the MCP server. Must match a server name from the mcp_servers array. 1-255 characters.
 
       minLength: 1, maxLength: 255
-
-    - `type: "mcp_toolset"`
 
     - `configs: optional array of BetaManagedAgentsMCPToolConfigParams`
 
@@ -3636,6 +3657,8 @@ Update Agent
 
     A custom tool that is executed by the API client rather than the agent. When the agent calls this tool, an `agent.custom_tool_use` event is emitted and the session goes idle, waiting for the client to provide the result via a `user.custom_tool_result` event.
 
+    - `type: "custom"`
+
     - `description: string`
 
       Description of what the tool does, shown to the agent to help it decide when to use the tool.
@@ -3658,8 +3681,6 @@ Update Agent
 
       minLength: 1, maxLength: 128
 
-    - `type: "custom"`
-
 - `version: optional number`
 
   The agent's current version, used to prevent concurrent overwrites. Obtain this value from a create or retrieve response. Must be at least 1 if specified. When supplied, the request fails if it does not match the server's current version; omit to apply the update unconditionally.
@@ -3671,6 +3692,8 @@ Update Agent
 - `BetaManagedAgentsAgent object`
 
   A Managed Agents `agent`.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -3690,9 +3713,9 @@ Update Agent
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -3822,6 +3845,8 @@ Update Agent
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -3830,9 +3855,9 @@ Update Agent
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -3842,13 +3867,11 @@ Update Agent
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -3858,9 +3881,9 @@ Update Agent
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -3868,9 +3891,9 @@ Update Agent
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -3880,11 +3903,15 @@ Update Agent
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -3906,11 +3933,11 @@ Update Agent
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -3928,11 +3955,11 @@ Update Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -3950,11 +3977,11 @@ Update Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -3972,11 +3999,11 @@ Update Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -3994,11 +4021,11 @@ Update Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -4016,11 +4043,11 @@ Update Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -4038,8 +4065,6 @@ Update Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -4051,6 +4076,8 @@ Update Agent
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -4067,8 +4094,6 @@ Update Agent
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -4122,9 +4147,9 @@ Update Agent
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -4164,11 +4189,11 @@ Update Agent
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -4183,10 +4208,6 @@ Update Agent
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 
@@ -4310,7 +4331,7 @@ Archive Agent
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -4358,6 +4379,8 @@ Archive Agent
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -4400,11 +4423,15 @@ Archive Agent
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ### Returns
 
 - `BetaManagedAgentsAgent object`
 
   A Managed Agents `agent`.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -4424,9 +4451,9 @@ Archive Agent
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -4556,6 +4583,8 @@ Archive Agent
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -4564,9 +4593,9 @@ Archive Agent
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -4576,13 +4605,11 @@ Archive Agent
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -4592,9 +4619,9 @@ Archive Agent
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -4602,9 +4629,9 @@ Archive Agent
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -4614,11 +4641,15 @@ Archive Agent
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -4640,11 +4671,11 @@ Archive Agent
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -4662,11 +4693,11 @@ Archive Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -4684,11 +4715,11 @@ Archive Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -4706,11 +4737,11 @@ Archive Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -4728,11 +4759,11 @@ Archive Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -4750,11 +4781,11 @@ Archive Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -4772,8 +4803,6 @@ Archive Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -4785,6 +4814,8 @@ Archive Agent
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -4801,8 +4832,6 @@ Archive Agent
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -4856,9 +4885,9 @@ Archive Agent
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -4898,11 +4927,11 @@ Archive Agent
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -4917,10 +4946,6 @@ Archive Agent
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 
@@ -5029,17 +5054,19 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+  - `type: "advisor"`
+
   - `model: string`
 
     The advisor model id.
-
-  - `type: "advisor"`
 
 ### Beta Managed Agents Agent
 
 - `BetaManagedAgentsAgent object`
 
   A Managed Agents `agent`.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -5059,9 +5086,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -5191,6 +5218,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -5199,9 +5228,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -5211,13 +5240,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -5227,9 +5254,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -5237,9 +5264,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -5249,11 +5276,15 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -5275,11 +5306,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -5297,11 +5328,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -5319,11 +5350,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -5341,11 +5372,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -5363,11 +5394,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -5385,11 +5416,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -5407,8 +5438,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -5420,6 +5449,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -5436,8 +5467,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -5491,9 +5520,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -5533,11 +5562,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -5552,10 +5581,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 
@@ -5575,9 +5600,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   A resolved agent reference with a concrete version.
 
-  - `id: string`
-
   - `type: "agent"`
+
+  - `id: string`
 
   - `version: number`
 
@@ -5592,6 +5617,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
   - `BetaManagedAgentsBashToolConfig object`
 
     Configuration for the bash tool.
+
+    - `type: "bash"`
 
     - `enabled: boolean`
 
@@ -5613,11 +5640,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         - `type: "always_ask"`
 
-    - `type: "bash"`
-
   - `BetaManagedAgentsEditToolConfig object`
 
     Configuration for the edit tool.
+
+    - `type: "edit"`
 
     - `enabled: boolean`
 
@@ -5635,11 +5662,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: "edit"`
-
   - `BetaManagedAgentsReadToolConfig object`
 
     Configuration for the read tool.
+
+    - `type: "read"`
 
     - `enabled: boolean`
 
@@ -5657,11 +5684,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: "read"`
-
   - `BetaManagedAgentsWriteToolConfig object`
 
     Configuration for the write tool.
+
+    - `type: "write"`
 
     - `enabled: boolean`
 
@@ -5679,11 +5706,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: "write"`
-
   - `BetaManagedAgentsGlobToolConfig object`
 
     Configuration for the glob tool.
+
+    - `type: "glob"`
 
     - `enabled: boolean`
 
@@ -5701,11 +5728,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: "glob"`
-
   - `BetaManagedAgentsGrepToolConfig object`
 
     Configuration for the grep tool.
+
+    - `type: "grep"`
 
     - `enabled: boolean`
 
@@ -5723,11 +5750,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: "grep"`
-
   - `BetaManagedAgentsWebFetchToolConfig object`
 
     Configuration for the web_fetch tool.
+
+    - `type: "web_fetch"`
 
     - `enabled: boolean`
 
@@ -5745,8 +5772,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: "web_fetch"`
-
     - `allowed_domains: optional array of string`
 
     - `blocked_domains: optional array of string`
@@ -5758,6 +5783,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
   - `BetaManagedAgentsWebSearchToolConfig object`
 
     Configuration for the web_search tool.
+
+    - `type: "web_search"`
 
     - `enabled: boolean`
 
@@ -5774,8 +5801,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
       - `BetaManagedAgentsAlwaysAskPolicy object`
 
         Tool calls require user confirmation before execution.
-
-    - `type: "web_search"`
 
     - `allowed_domains: optional array of string`
 
@@ -5821,6 +5846,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
     Configuration override for the bash tool.
 
+    - `type: optional "bash"`
+
     - `name: "bash"`
 
       Must be "bash".
@@ -5845,11 +5872,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         - `type: "always_ask"`
 
-    - `type: optional "bash"`
-
   - `BetaManagedAgentsEditToolConfigParams object`
 
     Configuration override for the edit tool.
+
+    - `type: optional "edit"`
 
     - `name: "edit"`
 
@@ -5871,11 +5898,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: optional "edit"`
-
   - `BetaManagedAgentsReadToolConfigParams object`
 
     Configuration override for the read tool.
+
+    - `type: optional "read"`
 
     - `name: "read"`
 
@@ -5897,11 +5924,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: optional "read"`
-
   - `BetaManagedAgentsWriteToolConfigParams object`
 
     Configuration override for the write tool.
+
+    - `type: optional "write"`
 
     - `name: "write"`
 
@@ -5923,11 +5950,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: optional "write"`
-
   - `BetaManagedAgentsGlobToolConfigParams object`
 
     Configuration override for the glob tool.
+
+    - `type: optional "glob"`
 
     - `name: "glob"`
 
@@ -5949,11 +5976,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: optional "glob"`
-
   - `BetaManagedAgentsGrepToolConfigParams object`
 
     Configuration override for the grep tool.
+
+    - `type: optional "grep"`
 
     - `name: "grep"`
 
@@ -5975,11 +6002,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: optional "grep"`
-
   - `BetaManagedAgentsWebFetchToolConfigParams object`
 
     Configuration override for the web_fetch tool.
+
+    - `type: optional "web_fetch"`
 
     - `name: "web_fetch"`
 
@@ -6015,11 +6042,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
         Tool calls require user confirmation before execution.
 
-    - `type: optional "web_fetch"`
-
   - `BetaManagedAgentsWebSearchToolConfigParams object`
 
     Configuration override for the web_search tool.
+
+    - `type: optional "web_search"`
 
     - `name: "web_search"`
 
@@ -6048,8 +6075,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
       - `BetaManagedAgentsAlwaysAskPolicy object`
 
         Tool calls require user confirmation before execution.
-
-    - `type: optional "web_search"`
 
     - `user_location: optional BetaManagedAgentsUserLocation or null`
 
@@ -6135,11 +6160,15 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
 - `BetaManagedAgentsAgentToolset20260401 object`
 
+  - `type: "agent_toolset_20260401"`
+
   - `configs: array of BetaManagedAgentsAgentToolConfig`
 
     - `BetaManagedAgentsBashToolConfig object`
 
       Configuration for the bash tool.
+
+      - `type: "bash"`
 
       - `enabled: boolean`
 
@@ -6161,11 +6190,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           - `type: "always_ask"`
 
-      - `type: "bash"`
-
     - `BetaManagedAgentsEditToolConfig object`
 
       Configuration for the edit tool.
+
+      - `type: "edit"`
 
       - `enabled: boolean`
 
@@ -6183,11 +6212,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: "edit"`
-
     - `BetaManagedAgentsReadToolConfig object`
 
       Configuration for the read tool.
+
+      - `type: "read"`
 
       - `enabled: boolean`
 
@@ -6205,11 +6234,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: "read"`
-
     - `BetaManagedAgentsWriteToolConfig object`
 
       Configuration for the write tool.
+
+      - `type: "write"`
 
       - `enabled: boolean`
 
@@ -6227,11 +6256,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: "write"`
-
     - `BetaManagedAgentsGlobToolConfig object`
 
       Configuration for the glob tool.
+
+      - `type: "glob"`
 
       - `enabled: boolean`
 
@@ -6249,11 +6278,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: "glob"`
-
     - `BetaManagedAgentsGrepToolConfig object`
 
       Configuration for the grep tool.
+
+      - `type: "grep"`
 
       - `enabled: boolean`
 
@@ -6271,11 +6300,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: "grep"`
-
     - `BetaManagedAgentsWebFetchToolConfig object`
 
       Configuration for the web_fetch tool.
+
+      - `type: "web_fetch"`
 
       - `enabled: boolean`
 
@@ -6293,8 +6322,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: "web_fetch"`
-
       - `allowed_domains: optional array of string`
 
       - `blocked_domains: optional array of string`
@@ -6306,6 +6333,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
     - `BetaManagedAgentsWebSearchToolConfig object`
 
       Configuration for the web_search tool.
+
+      - `type: "web_search"`
 
       - `enabled: boolean`
 
@@ -6322,8 +6351,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
         - `BetaManagedAgentsAlwaysAskPolicy object`
 
           Tool calls require user confirmation before execution.
-
-      - `type: "web_search"`
 
       - `allowed_domains: optional array of string`
 
@@ -6376,8 +6403,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
       - `BetaManagedAgentsAlwaysAskPolicy object`
 
         Tool calls require user confirmation before execution.
-
-  - `type: "agent_toolset_20260401"`
 
 ### Beta Managed Agents Agent Toolset20260401 Bash Input
 
@@ -6480,6 +6505,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       Configuration override for the bash tool.
 
+      - `type: optional "bash"`
+
       - `name: "bash"`
 
         Must be "bash".
@@ -6504,11 +6531,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           - `type: "always_ask"`
 
-      - `type: optional "bash"`
-
     - `BetaManagedAgentsEditToolConfigParams object`
 
       Configuration override for the edit tool.
+
+      - `type: optional "edit"`
 
       - `name: "edit"`
 
@@ -6530,11 +6557,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: optional "edit"`
-
     - `BetaManagedAgentsReadToolConfigParams object`
 
       Configuration override for the read tool.
+
+      - `type: optional "read"`
 
       - `name: "read"`
 
@@ -6556,11 +6583,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: optional "read"`
-
     - `BetaManagedAgentsWriteToolConfigParams object`
 
       Configuration override for the write tool.
+
+      - `type: optional "write"`
 
       - `name: "write"`
 
@@ -6582,11 +6609,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: optional "write"`
-
     - `BetaManagedAgentsGlobToolConfigParams object`
 
       Configuration override for the glob tool.
+
+      - `type: optional "glob"`
 
       - `name: "glob"`
 
@@ -6608,11 +6635,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: optional "glob"`
-
     - `BetaManagedAgentsGrepToolConfigParams object`
 
       Configuration override for the grep tool.
+
+      - `type: optional "grep"`
 
       - `name: "grep"`
 
@@ -6634,11 +6661,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: optional "grep"`
-
     - `BetaManagedAgentsWebFetchToolConfigParams object`
 
       Configuration override for the web_fetch tool.
+
+      - `type: optional "web_fetch"`
 
       - `name: "web_fetch"`
 
@@ -6674,11 +6701,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
           Tool calls require user confirmation before execution.
 
-      - `type: optional "web_fetch"`
-
     - `BetaManagedAgentsWebSearchToolConfigParams object`
 
       Configuration override for the web_search tool.
+
+      - `type: optional "web_search"`
 
       - `name: "web_search"`
 
@@ -6707,8 +6734,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
         - `BetaManagedAgentsAlwaysAskPolicy object`
 
           Tool calls require user confirmation before execution.
-
-      - `type: optional "web_search"`
 
       - `user_location: optional BetaManagedAgentsUserLocation or null`
 
@@ -6817,9 +6842,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   A resolved Anthropic-managed skill.
 
-  - `skill_id: string`
-
   - `type: "anthropic"`
+
+  - `skill_id: string`
 
   - `version: string`
 
@@ -6829,13 +6854,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   An Anthropic-managed skill.
 
+  - `type: "anthropic"`
+
   - `skill_id: string`
 
     Identifier of the Anthropic skill (e.g., "xlsx").
 
     minLength: 1, maxLength: 64
-
-  - `type: "anthropic"`
 
   - `version: optional string or null`
 
@@ -6848,6 +6873,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 - `BetaManagedAgentsBashToolConfig object`
 
   Configuration for the bash tool.
+
+  - `type: "bash"`
 
   - `enabled: boolean`
 
@@ -6869,13 +6896,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: "bash"`
-
 ### Beta Managed Agents Bash Tool Config Params
 
 - `BetaManagedAgentsBashToolConfigParams object`
 
   Configuration override for the bash tool.
+
+  - `type: optional "bash"`
 
   - `name: "bash"`
 
@@ -6901,17 +6928,15 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: optional "bash"`
-
 ### Beta Managed Agents Custom Skill
 
 - `BetaManagedAgentsCustomSkill object`
 
   A resolved user-created custom skill.
 
-  - `skill_id: string`
-
   - `type: "custom"`
+
+  - `skill_id: string`
 
   - `version: string`
 
@@ -6921,13 +6946,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   A user-created custom skill.
 
+  - `type: "custom"`
+
   - `skill_id: string`
 
     Tagged ID of the custom skill (e.g., "skill_01XJ5...").
 
     minLength: 1, maxLength: 64
-
-  - `type: "custom"`
 
   - `version: optional string or null`
 
@@ -6940,6 +6965,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 - `BetaManagedAgentsCustomTool object`
 
   A custom tool as returned in API responses.
+
+  - `type: "custom"`
 
   - `description: string`
 
@@ -6954,8 +6981,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
     - `required: optional array of string or null`
 
   - `name: string`
-
-  - `type: "custom"`
 
 ### Beta Managed Agents Custom Tool Input Schema
 
@@ -6974,6 +6999,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 - `BetaManagedAgentsCustomToolParams object`
 
   A custom tool that is executed by the API client rather than the agent. When the agent calls this tool, an `agent.custom_tool_use` event is emitted and the session goes idle, waiting for the client to provide the result via a `user.custom_tool_result` event.
+
+  - `type: "custom"`
 
   - `description: string`
 
@@ -6997,13 +7024,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
     minLength: 1, maxLength: 128
 
-  - `type: "custom"`
-
 ### Beta Managed Agents Edit Tool Config
 
 - `BetaManagedAgentsEditToolConfig object`
 
   Configuration for the edit tool.
+
+  - `type: "edit"`
 
   - `enabled: boolean`
 
@@ -7025,13 +7052,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: "edit"`
-
 ### Beta Managed Agents Edit Tool Config Params
 
 - `BetaManagedAgentsEditToolConfigParams object`
 
   Configuration override for the edit tool.
+
+  - `type: optional "edit"`
 
   - `name: "edit"`
 
@@ -7056,8 +7083,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
       Tool calls require user confirmation before execution.
 
       - `type: "always_ask"`
-
-  - `type: optional "edit"`
 
 ### Beta Managed Agents Effort High
 
@@ -7105,6 +7130,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   Configuration for the glob tool.
 
+  - `type: "glob"`
+
   - `enabled: boolean`
 
   - `name: "glob"`
@@ -7125,13 +7152,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: "glob"`
-
 ### Beta Managed Agents Glob Tool Config Params
 
 - `BetaManagedAgentsGlobToolConfigParams object`
 
   Configuration override for the glob tool.
+
+  - `type: optional "glob"`
 
   - `name: "glob"`
 
@@ -7157,13 +7184,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: optional "glob"`
-
 ### Beta Managed Agents Grep Tool Config
 
 - `BetaManagedAgentsGrepToolConfig object`
 
   Configuration for the grep tool.
+
+  - `type: "grep"`
 
   - `enabled: boolean`
 
@@ -7185,13 +7212,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: "grep"`
-
 ### Beta Managed Agents Grep Tool Config Params
 
 - `BetaManagedAgentsGrepToolConfigParams object`
 
   Configuration override for the grep tool.
+
+  - `type: optional "grep"`
 
   - `name: "grep"`
 
@@ -7217,17 +7244,15 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: optional "grep"`
-
 ### Beta Managed Agents MCP Server URL Definition
 
 - `BetaManagedAgentsMCPServerURLDefinition object`
 
   URL-based MCP server connection as returned in API responses.
 
-  - `name: string`
-
   - `type: "url"`
+
+  - `name: string`
 
   - `url: string`
 
@@ -7293,6 +7318,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
 - `BetaManagedAgentsMCPToolset object`
 
+  - `type: "mcp_toolset"`
+
   - `configs: array of BetaManagedAgentsMCPToolConfig`
 
     - `enabled: boolean`
@@ -7334,8 +7361,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
         Tool calls require user confirmation before execution.
 
   - `mcp_server_name: string`
-
-  - `type: "mcp_toolset"`
 
 ### Beta Managed Agents MCP Toolset Default Config
 
@@ -7393,13 +7418,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   Configuration for tools from an MCP server defined in `mcp_servers`.
 
+  - `type: "mcp_toolset"`
+
   - `mcp_server_name: string`
 
     Name of the MCP server. Must match a server name from the mcp_servers array. 1-255 characters.
 
     minLength: 1, maxLength: 255
-
-  - `type: "mcp_toolset"`
 
   - `configs: optional array of BetaManagedAgentsMCPToolConfigParams`
 
@@ -7787,6 +7812,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   Resolved coordinator topology with a concrete agent roster.
 
+  - `type: "coordinator"`
+
   - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
     Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -7795,9 +7822,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       A resolved agent reference with a concrete version.
 
-      - `id: string`
-
       - `type: "agent"`
+
+      - `id: string`
 
       - `version: number`
 
@@ -7807,19 +7834,19 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+      - `type: "advisor"`
+
       - `model: string`
 
         The advisor model id.
-
-      - `type: "advisor"`
-
-  - `type: "coordinator"`
 
 ### Beta Managed Agents Multiagent Coordinator Params
 
 - `BetaManagedAgentsMultiagentCoordinatorParams object`
 
   A coordinator topology: the session's primary thread orchestrates work by spawning session threads, each running an agent drawn from the `agents` roster.
+
+  - `type: "coordinator"`
 
   - `agents: array of BetaManagedAgentsMultiagentRosterEntryParams`
 
@@ -7831,13 +7858,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       Specification for an Agent. Provide a specific `version` or use the short-form `agent="agent_id"` for the most recent version
 
+      - `type: "agent"`
+
       - `id: string`
 
         The `agent` ID.
 
         minLength: 1, maxLength: 128
-
-      - `type: "agent"`
 
       - `version: optional number`
 
@@ -7855,15 +7882,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       Platform advisor roster entry: a model the session's primary thread may consult mid-turn. At most one per roster; the entry occupies the roster name `anthropic.advisor`.
 
+      - `type: "advisor"`
+
       - `model: string`
 
         A Claude model id. The model must be permitted as an advisor for this agent's model — see the sessions/threads/advisor spec.
 
         minLength: 1, maxLength: 256
-
-      - `type: "advisor"`
-
-  - `type: "coordinator"`
 
 ### Beta Managed Agents Multiagent Self Params
 
@@ -7878,6 +7903,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 - `BetaManagedAgentsReadToolConfig object`
 
   Configuration for the read tool.
+
+  - `type: "read"`
 
   - `enabled: boolean`
 
@@ -7899,13 +7926,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: "read"`
-
 ### Beta Managed Agents Read Tool Config Params
 
 - `BetaManagedAgentsReadToolConfigParams object`
 
   Configuration override for the read tool.
+
+  - `type: optional "read"`
 
   - `name: "read"`
 
@@ -7931,13 +7958,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: optional "read"`
-
 ### Beta Managed Agents Session Thread Agent
 
 - `BetaManagedAgentsSessionThreadAgent object`
 
   Resolved `agent` definition for a single `session_thread`. Snapshot of the agent at thread creation time. The multiagent roster is not repeated here; read it from `Session.agent`.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -7945,9 +7972,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -8079,9 +8106,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -8089,9 +8116,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -8101,11 +8128,15 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -8127,11 +8158,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -8149,11 +8180,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -8171,11 +8202,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -8193,11 +8224,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -8215,11 +8246,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -8237,11 +8268,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -8259,8 +8290,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -8272,6 +8301,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -8288,8 +8319,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -8343,9 +8372,9 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -8385,11 +8414,11 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -8405,10 +8434,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `name: string`
 
-      - `type: "custom"`
-
-  - `type: "agent"`
-
   - `version: number`
 
     format: int32
@@ -8423,13 +8448,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
     An Anthropic-managed skill.
 
+    - `type: "anthropic"`
+
     - `skill_id: string`
 
       Identifier of the Anthropic skill (e.g., "xlsx").
 
       minLength: 1, maxLength: 64
-
-    - `type: "anthropic"`
 
     - `version: optional string or null`
 
@@ -8441,13 +8466,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
     A user-created custom skill.
 
+    - `type: "custom"`
+
     - `skill_id: string`
 
       Tagged ID of the custom skill (e.g., "skill_01XJ5...").
 
       minLength: 1, maxLength: 64
-
-    - `type: "custom"`
 
     - `version: optional string or null`
 
@@ -8461,13 +8486,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   URL-based MCP server connection.
 
+  - `type: "url"`
+
   - `name: string`
 
     Unique name for this server, referenced by mcp_toolset configurations. 1-255 characters.
 
     minLength: 1, maxLength: 255
-
-  - `type: "url"`
 
   - `url: string`
 
@@ -8513,6 +8538,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   Configuration for the web_fetch tool.
 
+  - `type: "web_fetch"`
+
   - `enabled: boolean`
 
   - `name: "web_fetch"`
@@ -8533,8 +8560,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: "web_fetch"`
-
   - `allowed_domains: optional array of string`
 
   - `blocked_domains: optional array of string`
@@ -8548,6 +8573,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 - `BetaManagedAgentsWebFetchToolConfigParams object`
 
   Configuration override for the web_fetch tool.
+
+  - `type: optional "web_fetch"`
 
   - `name: "web_fetch"`
 
@@ -8587,13 +8614,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: optional "web_fetch"`
-
 ### Beta Managed Agents Web Search Tool Config
 
 - `BetaManagedAgentsWebSearchToolConfig object`
 
   Configuration for the web_search tool.
+
+  - `type: "web_search"`
 
   - `enabled: boolean`
 
@@ -8614,8 +8641,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
       Tool calls require user confirmation before execution.
 
       - `type: "always_ask"`
-
-  - `type: "web_search"`
 
   - `allowed_domains: optional array of string`
 
@@ -8657,6 +8682,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   Configuration override for the web_search tool.
 
+  - `type: optional "web_search"`
+
   - `name: "web_search"`
 
     Must be "web_search".
@@ -8688,8 +8715,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
       Tool calls require user confirmation before execution.
 
       - `type: "always_ask"`
-
-  - `type: optional "web_search"`
 
   - `user_location: optional BetaManagedAgentsUserLocation or null`
 
@@ -8727,6 +8752,8 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
   Configuration for the write tool.
 
+  - `type: "write"`
+
   - `enabled: boolean`
 
   - `name: "write"`
@@ -8747,13 +8774,13 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
 
       - `type: "always_ask"`
 
-  - `type: "write"`
-
 ### Beta Managed Agents Write Tool Config Params
 
 - `BetaManagedAgentsWriteToolConfigParams object`
 
   Configuration override for the write tool.
+
+  - `type: optional "write"`
 
   - `name: "write"`
 
@@ -8778,8 +8805,6 @@ curl https://api.anthropic.com/v1/agents/$AGENT_ID/archive \
       Tool calls require user confirmation before execution.
 
       - `type: "always_ask"`
-
-  - `type: optional "write"`
 
 ## Agents › Versions
 
@@ -8813,7 +8838,7 @@ List Agent Versions
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -8861,6 +8886,8 @@ List Agent Versions
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -8903,11 +8930,15 @@ List Agent Versions
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 #### Returns
 
 - `data: array of BetaManagedAgentsAgent`
 
   Agent versions.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -8927,9 +8958,9 @@ List Agent Versions
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -9059,6 +9090,8 @@ List Agent Versions
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -9067,9 +9100,9 @@ List Agent Versions
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -9079,13 +9112,11 @@ List Agent Versions
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -9095,9 +9126,9 @@ List Agent Versions
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -9105,9 +9136,9 @@ List Agent Versions
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -9117,11 +9148,15 @@ List Agent Versions
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -9143,11 +9178,11 @@ List Agent Versions
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -9165,11 +9200,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -9187,11 +9222,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -9209,11 +9244,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -9231,11 +9266,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -9253,11 +9288,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -9275,8 +9310,6 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -9288,6 +9321,8 @@ List Agent Versions
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -9304,8 +9339,6 @@ List Agent Versions
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -9359,9 +9392,9 @@ List Agent Versions
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -9401,11 +9434,11 @@ List Agent Versions
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -9420,10 +9453,6 @@ List Agent Versions
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 

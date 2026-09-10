@@ -1,3 +1,8 @@
+---
+title: Create Agent
+url: https://platform.claude.com/docs/en/api/beta/agents/create
+---
+
 # Create Agent
 
 **POST** `/v1/agents`
@@ -12,7 +17,7 @@ Create Agent
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -60,6 +65,8 @@ Create Agent
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -101,6 +108,8 @@ Create Agent
     - `"thinking-binding-controls-2026-08-01"`
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
+
+- `"anthropic-workspace-id": optional string`
 
 ## Body parameters
 
@@ -264,13 +273,13 @@ Create Agent
 
   MCP servers this agent connects to. Maximum 20. Names must be unique within the array. Every server must be referenced by an `mcp_toolset` in `tools`; unreferenced servers are rejected. See the [MCP connector guide](https://platform.claude.com/docs/en/managed-agents/mcp-connector).
 
+  - `type: "url"`
+
   - `name: string`
 
     Unique name for this server, referenced by mcp_toolset configurations. 1-255 characters.
 
     minLength: 1, maxLength: 255
-
-  - `type: "url"`
 
   - `url: string`
 
@@ -286,6 +295,8 @@ Create Agent
 
   A coordinator topology: the session's primary thread orchestrates work by spawning session threads, each running an agent drawn from the `agents` roster.
 
+  - `type: "coordinator"`
+
   - `agents: array of BetaManagedAgentsMultiagentRosterEntryParams`
 
     Agents the coordinator may spawn as session threads. 1–20 entries. Each entry is an agent ID string, a versioned `{"type":"agent","id","version"}` reference, or `{"type":"self"}` to allow recursive self-invocation. Entries must reference distinct agents (after resolving `self` and string forms); at most one `self`. Referenced agents must exist, must not be archived, and must not themselves have `multiagent` set (depth limit 1).
@@ -296,13 +307,13 @@ Create Agent
 
       Specification for an Agent. Provide a specific `version` or use the short-form `agent="agent_id"` for the most recent version
 
+      - `type: "agent"`
+
       - `id: string`
 
         The `agent` ID.
 
         minLength: 1, maxLength: 128
-
-      - `type: "agent"`
 
       - `version: optional number`
 
@@ -320,15 +331,13 @@ Create Agent
 
       Platform advisor roster entry: a model the session's primary thread may consult mid-turn. At most one per roster; the entry occupies the roster name `anthropic.advisor`.
 
+      - `type: "advisor"`
+
       - `model: string`
 
         A Claude model id. The model must be permitted as an advisor for this agent's model — see the sessions/threads/advisor spec.
 
         minLength: 1, maxLength: 256
-
-      - `type: "advisor"`
-
-  - `type: "coordinator"`
 
 - `skills: optional array of BetaManagedAgentsSkillParams`
 
@@ -338,13 +347,13 @@ Create Agent
 
     An Anthropic-managed skill.
 
+    - `type: "anthropic"`
+
     - `skill_id: string`
 
       Identifier of the Anthropic skill (e.g., "xlsx").
 
       minLength: 1, maxLength: 64
-
-    - `type: "anthropic"`
 
     - `version: optional string or null`
 
@@ -356,13 +365,13 @@ Create Agent
 
     A user-created custom skill.
 
+    - `type: "custom"`
+
     - `skill_id: string`
 
       Tagged ID of the custom skill (e.g., "skill_01XJ5...").
 
       minLength: 1, maxLength: 64
-
-    - `type: "custom"`
 
     - `version: optional string or null`
 
@@ -394,6 +403,8 @@ Create Agent
 
         Configuration override for the bash tool.
 
+        - `type: optional "bash"`
+
         - `name: "bash"`
 
           Must be "bash".
@@ -418,11 +429,11 @@ Create Agent
 
             - `type: "always_ask"`
 
-        - `type: optional "bash"`
-
       - `BetaManagedAgentsEditToolConfigParams object`
 
         Configuration override for the edit tool.
+
+        - `type: optional "edit"`
 
         - `name: "edit"`
 
@@ -444,11 +455,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "edit"`
-
       - `BetaManagedAgentsReadToolConfigParams object`
 
         Configuration override for the read tool.
+
+        - `type: optional "read"`
 
         - `name: "read"`
 
@@ -470,11 +481,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "read"`
-
       - `BetaManagedAgentsWriteToolConfigParams object`
 
         Configuration override for the write tool.
+
+        - `type: optional "write"`
 
         - `name: "write"`
 
@@ -496,11 +507,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "write"`
-
       - `BetaManagedAgentsGlobToolConfigParams object`
 
         Configuration override for the glob tool.
+
+        - `type: optional "glob"`
 
         - `name: "glob"`
 
@@ -522,11 +533,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "glob"`
-
       - `BetaManagedAgentsGrepToolConfigParams object`
 
         Configuration override for the grep tool.
+
+        - `type: optional "grep"`
 
         - `name: "grep"`
 
@@ -548,11 +559,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "grep"`
-
       - `BetaManagedAgentsWebFetchToolConfigParams object`
 
         Configuration override for the web_fetch tool.
+
+        - `type: optional "web_fetch"`
 
         - `name: "web_fetch"`
 
@@ -588,11 +599,11 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-        - `type: optional "web_fetch"`
-
       - `BetaManagedAgentsWebSearchToolConfigParams object`
 
         Configuration override for the web_search tool.
+
+        - `type: optional "web_search"`
 
         - `name: "web_search"`
 
@@ -621,8 +632,6 @@ Create Agent
           - `BetaManagedAgentsAlwaysAskPolicy object`
 
             Tool calls require user confirmation before execution.
-
-        - `type: optional "web_search"`
 
         - `user_location: optional BetaManagedAgentsUserLocation or null`
 
@@ -678,13 +687,13 @@ Create Agent
 
     Configuration for tools from an MCP server defined in `mcp_servers`.
 
+    - `type: "mcp_toolset"`
+
     - `mcp_server_name: string`
 
       Name of the MCP server. Must match a server name from the mcp_servers array. 1-255 characters.
 
       minLength: 1, maxLength: 255
-
-    - `type: "mcp_toolset"`
 
     - `configs: optional array of BetaManagedAgentsMCPToolConfigParams`
 
@@ -736,6 +745,8 @@ Create Agent
 
     A custom tool that is executed by the API client rather than the agent. When the agent calls this tool, an `agent.custom_tool_use` event is emitted and the session goes idle, waiting for the client to provide the result via a `user.custom_tool_result` event.
 
+    - `type: "custom"`
+
     - `description: string`
 
       Description of what the tool does, shown to the agent to help it decide when to use the tool.
@@ -758,13 +769,13 @@ Create Agent
 
       minLength: 1, maxLength: 128
 
-    - `type: "custom"`
-
 ## Returns
 
 - `BetaManagedAgentsAgent object`
 
   A Managed Agents `agent`.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -784,9 +795,9 @@ Create Agent
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -916,6 +927,8 @@ Create Agent
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -924,9 +937,9 @@ Create Agent
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -936,13 +949,11 @@ Create Agent
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -952,9 +963,9 @@ Create Agent
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -962,9 +973,9 @@ Create Agent
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -974,11 +985,15 @@ Create Agent
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -1000,11 +1015,11 @@ Create Agent
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -1022,11 +1037,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -1044,11 +1059,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -1066,11 +1081,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -1088,11 +1103,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -1110,11 +1125,11 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -1132,8 +1147,6 @@ Create Agent
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -1145,6 +1158,8 @@ Create Agent
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -1161,8 +1176,6 @@ Create Agent
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -1216,9 +1229,9 @@ Create Agent
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -1258,11 +1271,11 @@ Create Agent
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -1277,10 +1290,6 @@ Create Agent
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 

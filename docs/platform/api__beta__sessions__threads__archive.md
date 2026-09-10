@@ -1,3 +1,8 @@
+---
+title: Archive Session Thread
+url: https://platform.claude.com/docs/en/api/beta/sessions/threads/archive
+---
+
 # Archive Session Thread
 
 **POST** `/v1/sessions/{session_id}/threads/{thread_id}/archive`
@@ -18,7 +23,7 @@ Archive Session Thread
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -66,6 +71,8 @@ Archive Session Thread
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -108,11 +115,15 @@ Archive Session Thread
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ## Returns
 
 - `BetaManagedAgentsSessionThread object`
 
   An execution thread within a `session`. Each session has one primary thread plus zero or more child threads spawned by the coordinator.
+
+  - `type: "session_thread"`
 
   - `id: string`
 
@@ -126,15 +137,17 @@ Archive Session Thread
 
       Resolved `agent` definition for a single `session_thread`. Snapshot of the agent at thread creation time. The multiagent roster is not repeated here; read it from `Session.agent`.
 
+      - `type: "agent"`
+
       - `id: string`
 
       - `description: string or null`
 
       - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-        - `name: string`
-
         - `type: "url"`
+
+        - `name: string`
 
         - `url: string`
 
@@ -266,9 +279,9 @@ Archive Session Thread
 
           A resolved Anthropic-managed skill.
 
-          - `skill_id: string`
-
           - `type: "anthropic"`
+
+          - `skill_id: string`
 
           - `version: string`
 
@@ -276,9 +289,9 @@ Archive Session Thread
 
           A resolved user-created custom skill.
 
-          - `skill_id: string`
-
           - `type: "custom"`
+
+          - `skill_id: string`
 
           - `version: string`
 
@@ -288,11 +301,15 @@ Archive Session Thread
 
         - `BetaManagedAgentsAgentToolset20260401 object`
 
+          - `type: "agent_toolset_20260401"`
+
           - `configs: array of BetaManagedAgentsAgentToolConfig`
 
             - `BetaManagedAgentsBashToolConfig object`
 
               Configuration for the bash tool.
+
+              - `type: "bash"`
 
               - `enabled: boolean`
 
@@ -314,11 +331,11 @@ Archive Session Thread
 
                   - `type: "always_ask"`
 
-              - `type: "bash"`
-
             - `BetaManagedAgentsEditToolConfig object`
 
               Configuration for the edit tool.
+
+              - `type: "edit"`
 
               - `enabled: boolean`
 
@@ -336,11 +353,11 @@ Archive Session Thread
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "edit"`
-
             - `BetaManagedAgentsReadToolConfig object`
 
               Configuration for the read tool.
+
+              - `type: "read"`
 
               - `enabled: boolean`
 
@@ -358,11 +375,11 @@ Archive Session Thread
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "read"`
-
             - `BetaManagedAgentsWriteToolConfig object`
 
               Configuration for the write tool.
+
+              - `type: "write"`
 
               - `enabled: boolean`
 
@@ -380,11 +397,11 @@ Archive Session Thread
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "write"`
-
             - `BetaManagedAgentsGlobToolConfig object`
 
               Configuration for the glob tool.
+
+              - `type: "glob"`
 
               - `enabled: boolean`
 
@@ -402,11 +419,11 @@ Archive Session Thread
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "glob"`
-
             - `BetaManagedAgentsGrepToolConfig object`
 
               Configuration for the grep tool.
+
+              - `type: "grep"`
 
               - `enabled: boolean`
 
@@ -424,11 +441,11 @@ Archive Session Thread
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "grep"`
-
             - `BetaManagedAgentsWebFetchToolConfig object`
 
               Configuration for the web_fetch tool.
+
+              - `type: "web_fetch"`
 
               - `enabled: boolean`
 
@@ -446,8 +463,6 @@ Archive Session Thread
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "web_fetch"`
-
               - `allowed_domains: optional array of string`
 
               - `blocked_domains: optional array of string`
@@ -459,6 +474,8 @@ Archive Session Thread
             - `BetaManagedAgentsWebSearchToolConfig object`
 
               Configuration for the web_search tool.
+
+              - `type: "web_search"`
 
               - `enabled: boolean`
 
@@ -475,8 +492,6 @@ Archive Session Thread
                 - `BetaManagedAgentsAlwaysAskPolicy object`
 
                   Tool calls require user confirmation before execution.
-
-              - `type: "web_search"`
 
               - `allowed_domains: optional array of string`
 
@@ -530,9 +545,9 @@ Archive Session Thread
 
                 Tool calls require user confirmation before execution.
 
-          - `type: "agent_toolset_20260401"`
-
         - `BetaManagedAgentsMCPToolset object`
+
+          - `type: "mcp_toolset"`
 
           - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -572,11 +587,11 @@ Archive Session Thread
 
           - `mcp_server_name: string`
 
-          - `type: "mcp_toolset"`
-
         - `BetaManagedAgentsCustomTool object`
 
           A custom tool as returned in API responses.
+
+          - `type: "custom"`
 
           - `description: string`
 
@@ -592,10 +607,6 @@ Archive Session Thread
 
           - `name: string`
 
-          - `type: "custom"`
-
-      - `type: "agent"`
-
       - `version: number`
 
         format: int32
@@ -604,11 +615,11 @@ Archive Session Thread
 
       Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+      - `type: "advisor"`
+
       - `model: string`
 
         The advisor model id.
-
-      - `type: "advisor"`
 
   - `archived_at: string or null`
 
@@ -663,8 +674,6 @@ Archive Session Thread
     - `"rescheduling"`
 
     - `"terminated"`
-
-  - `type: "session_thread"`
 
   - `updated_at: string`
 

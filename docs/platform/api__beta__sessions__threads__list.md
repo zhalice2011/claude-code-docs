@@ -1,3 +1,8 @@
+---
+title: List Session Threads
+url: https://platform.claude.com/docs/en/api/beta/sessions/threads/list
+---
+
 # List Session Threads
 
 **GET** `/v1/sessions/{session_id}/threads`
@@ -28,7 +33,7 @@ List Session Threads
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -76,6 +81,8 @@ List Session Threads
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -118,11 +125,15 @@ List Session Threads
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ## Returns
 
 - `data: optional array of BetaManagedAgentsSessionThread`
 
   Threads in the session, primary first then children in spawn order.
+
+  - `type: "session_thread"`
 
   - `id: string`
 
@@ -136,15 +147,17 @@ List Session Threads
 
       Resolved `agent` definition for a single `session_thread`. Snapshot of the agent at thread creation time. The multiagent roster is not repeated here; read it from `Session.agent`.
 
+      - `type: "agent"`
+
       - `id: string`
 
       - `description: string or null`
 
       - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-        - `name: string`
-
         - `type: "url"`
+
+        - `name: string`
 
         - `url: string`
 
@@ -276,9 +289,9 @@ List Session Threads
 
           A resolved Anthropic-managed skill.
 
-          - `skill_id: string`
-
           - `type: "anthropic"`
+
+          - `skill_id: string`
 
           - `version: string`
 
@@ -286,9 +299,9 @@ List Session Threads
 
           A resolved user-created custom skill.
 
-          - `skill_id: string`
-
           - `type: "custom"`
+
+          - `skill_id: string`
 
           - `version: string`
 
@@ -298,11 +311,15 @@ List Session Threads
 
         - `BetaManagedAgentsAgentToolset20260401 object`
 
+          - `type: "agent_toolset_20260401"`
+
           - `configs: array of BetaManagedAgentsAgentToolConfig`
 
             - `BetaManagedAgentsBashToolConfig object`
 
               Configuration for the bash tool.
+
+              - `type: "bash"`
 
               - `enabled: boolean`
 
@@ -324,11 +341,11 @@ List Session Threads
 
                   - `type: "always_ask"`
 
-              - `type: "bash"`
-
             - `BetaManagedAgentsEditToolConfig object`
 
               Configuration for the edit tool.
+
+              - `type: "edit"`
 
               - `enabled: boolean`
 
@@ -346,11 +363,11 @@ List Session Threads
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "edit"`
-
             - `BetaManagedAgentsReadToolConfig object`
 
               Configuration for the read tool.
+
+              - `type: "read"`
 
               - `enabled: boolean`
 
@@ -368,11 +385,11 @@ List Session Threads
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "read"`
-
             - `BetaManagedAgentsWriteToolConfig object`
 
               Configuration for the write tool.
+
+              - `type: "write"`
 
               - `enabled: boolean`
 
@@ -390,11 +407,11 @@ List Session Threads
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "write"`
-
             - `BetaManagedAgentsGlobToolConfig object`
 
               Configuration for the glob tool.
+
+              - `type: "glob"`
 
               - `enabled: boolean`
 
@@ -412,11 +429,11 @@ List Session Threads
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "glob"`
-
             - `BetaManagedAgentsGrepToolConfig object`
 
               Configuration for the grep tool.
+
+              - `type: "grep"`
 
               - `enabled: boolean`
 
@@ -434,11 +451,11 @@ List Session Threads
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "grep"`
-
             - `BetaManagedAgentsWebFetchToolConfig object`
 
               Configuration for the web_fetch tool.
+
+              - `type: "web_fetch"`
 
               - `enabled: boolean`
 
@@ -456,8 +473,6 @@ List Session Threads
 
                   Tool calls require user confirmation before execution.
 
-              - `type: "web_fetch"`
-
               - `allowed_domains: optional array of string`
 
               - `blocked_domains: optional array of string`
@@ -469,6 +484,8 @@ List Session Threads
             - `BetaManagedAgentsWebSearchToolConfig object`
 
               Configuration for the web_search tool.
+
+              - `type: "web_search"`
 
               - `enabled: boolean`
 
@@ -485,8 +502,6 @@ List Session Threads
                 - `BetaManagedAgentsAlwaysAskPolicy object`
 
                   Tool calls require user confirmation before execution.
-
-              - `type: "web_search"`
 
               - `allowed_domains: optional array of string`
 
@@ -540,9 +555,9 @@ List Session Threads
 
                 Tool calls require user confirmation before execution.
 
-          - `type: "agent_toolset_20260401"`
-
         - `BetaManagedAgentsMCPToolset object`
+
+          - `type: "mcp_toolset"`
 
           - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -582,11 +597,11 @@ List Session Threads
 
           - `mcp_server_name: string`
 
-          - `type: "mcp_toolset"`
-
         - `BetaManagedAgentsCustomTool object`
 
           A custom tool as returned in API responses.
+
+          - `type: "custom"`
 
           - `description: string`
 
@@ -602,10 +617,6 @@ List Session Threads
 
           - `name: string`
 
-          - `type: "custom"`
-
-      - `type: "agent"`
-
       - `version: number`
 
         format: int32
@@ -614,11 +625,11 @@ List Session Threads
 
       Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+      - `type: "advisor"`
+
       - `model: string`
 
         The advisor model id.
-
-      - `type: "advisor"`
 
   - `archived_at: string or null`
 
@@ -673,8 +684,6 @@ List Session Threads
     - `"rescheduling"`
 
     - `"terminated"`
-
-  - `type: "session_thread"`
 
   - `updated_at: string`
 

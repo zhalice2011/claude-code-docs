@@ -1,3 +1,8 @@
+---
+title: List Agents
+url: https://platform.claude.com/docs/en/api/beta/agents/list
+---
+
 # List Agents
 
 **GET** `/v1/agents`
@@ -40,7 +45,7 @@ List Agents
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -88,6 +93,8 @@ List Agents
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -130,11 +137,15 @@ List Agents
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ## Returns
 
 - `data: array of BetaManagedAgentsAgent`
 
   List of agents.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -154,9 +165,9 @@ List Agents
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -286,6 +297,8 @@ List Agents
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -294,9 +307,9 @@ List Agents
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -306,13 +319,11 @@ List Agents
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -322,9 +333,9 @@ List Agents
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -332,9 +343,9 @@ List Agents
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -344,11 +355,15 @@ List Agents
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -370,11 +385,11 @@ List Agents
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -392,11 +407,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -414,11 +429,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -436,11 +451,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -458,11 +473,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -480,11 +495,11 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -502,8 +517,6 @@ List Agents
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -515,6 +528,8 @@ List Agents
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -531,8 +546,6 @@ List Agents
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -586,9 +599,9 @@ List Agents
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -628,11 +641,11 @@ List Agents
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -647,10 +660,6 @@ List Agents
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 

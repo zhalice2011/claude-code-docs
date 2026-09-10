@@ -1,3 +1,8 @@
+---
+title: Events
+url: https://platform.claude.com/docs/en/api/beta/sessions/threads/events
+---
+
 # Events
 
 ## List Session Thread Events
@@ -32,7 +37,7 @@ List Session Thread Events
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -80,6 +85,8 @@ List Session Thread Events
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -122,6 +129,8 @@ List Session Thread Events
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ### Returns
 
 - `data: optional array of BetaManagedAgentsSessionEvent`
@@ -131,6 +140,8 @@ List Session Thread Events
   - `BetaManagedAgentsUserMessageEvent object`
 
     A user message event in the session conversation.
+
+    - `type: "user.message"`
 
     - `id: string`
 
@@ -144,17 +155,19 @@ List Session Thread Events
 
         Regular text content.
 
+        - `type: "text"`
+
         - `text: string`
 
           The text content.
 
           minLength: 1
 
-        - `type: "text"`
-
       - `BetaManagedAgentsImageBlock object`
 
         Image content specified directly as base64 data or as a reference via a URL.
+
+        - `type: "image"`
 
         - `source: BetaManagedAgentsBase64ImageSource or BetaManagedAgentsURLImageSource or BetaManagedAgentsFileImageSource`
 
@@ -163,6 +176,8 @@ List Session Thread Events
           - `BetaManagedAgentsBase64ImageSource object`
 
             Base64-encoded image data.
+
+            - `type: "base64"`
 
             - `data: string`
 
@@ -175,8 +190,6 @@ List Session Thread Events
               MIME type of the image (e.g., "image/png", "image/jpeg", "image/gif", "image/webp").
 
               minLength: 1
-
-            - `type: "base64"`
 
           - `BetaManagedAgentsURLImageSource object`
 
@@ -194,19 +207,19 @@ List Session Thread Events
 
             Image referenced by file ID.
 
+            - `type: "file"`
+
             - `file_id: string`
 
               ID of a previously uploaded file.
 
               minLength: 1
 
-            - `type: "file"`
-
-        - `type: "image"`
-
       - `BetaManagedAgentsDocumentBlock object`
 
         Document content, either specified directly as base64 data, as text, or as a reference via a URL.
+
+        - `type: "document"`
 
         - `source: BetaManagedAgentsBase64DocumentSource or BetaManagedAgentsPlainTextDocumentSource or BetaManagedAgentsURLDocumentSource or BetaManagedAgentsFileDocumentSource`
 
@@ -215,6 +228,8 @@ List Session Thread Events
           - `BetaManagedAgentsBase64DocumentSource object`
 
             Base64-encoded document data.
+
+            - `type: "base64"`
 
             - `data: string`
 
@@ -228,11 +243,11 @@ List Session Thread Events
 
               minLength: 1
 
-            - `type: "base64"`
-
           - `BetaManagedAgentsPlainTextDocumentSource object`
 
             Plain text document content.
+
+            - `type: "text"`
 
             - `data: string`
 
@@ -243,8 +258,6 @@ List Session Thread Events
             - `media_type: "text/plain"`
 
               MIME type of the text content. Must be "text/plain".
-
-            - `type: "text"`
 
           - `BetaManagedAgentsURLDocumentSource object`
 
@@ -262,15 +275,13 @@ List Session Thread Events
 
             Document referenced by file ID.
 
+            - `type: "file"`
+
             - `file_id: string`
 
               ID of a previously uploaded file.
 
               minLength: 1
-
-            - `type: "file"`
-
-        - `type: "document"`
 
         - `context: optional string or null`
 
@@ -286,8 +297,6 @@ List Session Thread Events
 
         - `type: "redacted"`
 
-    - `type: "user.message"`
-
     - `processed_at: optional string or null`
 
       A timestamp in RFC 3339 format
@@ -298,11 +307,11 @@ List Session Thread Events
 
     An interrupt event that pauses agent execution and returns control to the user.
 
+    - `type: "user.interrupt"`
+
     - `id: string`
 
       Unique identifier for this event.
-
-    - `type: "user.interrupt"`
 
     - `processed_at: optional string or null`
 
@@ -317,6 +326,8 @@ List Session Thread Events
   - `BetaManagedAgentsUserToolConfirmationEvent object`
 
     A tool confirmation event that approves or denies a pending tool execution.
+
+    - `type: "user.tool_confirmation"`
 
     - `id: string`
 
@@ -333,8 +344,6 @@ List Session Thread Events
     - `tool_use_id: string`
 
       The id of the `agent.tool_use` or `agent.mcp_tool_use` event this result corresponds to, which can be found in the last `session.status_idle` [event's](https://platform.claude.com/docs/en/api/beta/sessions/events/list#beta_managed_agents_session_requires_action.event_ids) `stop_reason.event_ids` field.
-
-    - `type: "user.tool_confirmation"`
 
     - `deny_message: optional string or null`
 
@@ -356,6 +365,8 @@ List Session Thread Events
 
     Event sent by the client providing the result of a custom tool execution.
 
+    - `type: "user.custom_tool_result"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -363,8 +374,6 @@ List Session Thread Events
     - `custom_tool_use_id: string`
 
       The id of the `agent.custom_tool_use` event this result corresponds to, which can be found in the last `session.status_idle` [event's](https://platform.claude.com/docs/en/api/beta/sessions/events/list#beta_managed_agents_session_requires_action.event_ids) `stop_reason.event_ids` field.
-
-    - `type: "user.custom_tool_result"`
 
     - `content: optional array of BetaManagedAgentsTextBlock or BetaManagedAgentsImageBlock or BetaManagedAgentsDocumentBlock or BetaManagedAgentsSearchResultBlock`
 
@@ -386,6 +395,8 @@ List Session Thread Events
 
         A block containing a web search result.
 
+        - `type: "search_result"`
+
         - `citations: BetaManagedAgentsSearchResultCitations`
 
           Citation settings for a search result.
@@ -398,13 +409,13 @@ List Session Thread Events
 
           Array of text content blocks from the search result.
 
+          - `type: "text"`
+
           - `text: string`
 
             The text content.
 
             minLength: 1
-
-          - `type: "text"`
 
         - `source: string`
 
@@ -417,8 +428,6 @@ List Session Thread Events
           The title of the search result.
 
           minLength: 1
-
-        - `type: "search_result"`
 
     - `is_error: optional boolean or null`
 
@@ -438,6 +447,8 @@ List Session Thread Events
 
     Event emitted when the agent calls a custom tool. The session goes idle until the client sends a `user.custom_tool_result` event with the result.
 
+    - `type: "agent.custom_tool_use"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -456,8 +467,6 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "agent.custom_tool_use"`
-
     - `session_thread_id: optional string or null`
 
       When set, this event was cross-posted from a subagent's thread to surface its custom tool use on the primary thread's stream. Empty on the thread's own events. Echo this on a `user.custom_tool_result` event to route the result back.
@@ -465,6 +474,8 @@ List Session Thread Events
   - `BetaManagedAgentsAgentMessageEvent object`
 
     An agent response event in the session conversation.
+
+    - `type: "agent.message"`
 
     - `id: string`
 
@@ -488,11 +499,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "agent.message"`
-
   - `BetaManagedAgentsAgentThinkingEvent object`
 
     Indicates the agent is making forward progress via extended thinking. A progress signal, not a content carrier.
+
+    - `type: "agent.thinking"`
 
     - `id: string`
 
@@ -504,11 +515,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "agent.thinking"`
-
   - `BetaManagedAgentsAgentMCPToolUseEvent object`
 
     Event emitted when the agent invokes a tool provided by an MCP server.
+
+    - `type: "agent.mcp_tool_use"`
 
     - `id: string`
 
@@ -532,8 +543,6 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "agent.mcp_tool_use"`
-
     - `evaluated_permission: optional "allow" or "ask" or "deny"`
 
       AgentEvaluatedPermission enum
@@ -552,6 +561,8 @@ List Session Thread Events
 
     Event representing the result of an MCP tool execution.
 
+    - `type: "agent.mcp_tool_result"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -565,8 +576,6 @@ List Session Thread Events
       A timestamp in RFC 3339 format
 
       format: date-time
-
-    - `type: "agent.mcp_tool_result"`
 
     - `content: optional array of BetaManagedAgentsTextBlock or BetaManagedAgentsImageBlock or BetaManagedAgentsDocumentBlock or BetaManagedAgentsSearchResultBlock`
 
@@ -596,6 +605,8 @@ List Session Thread Events
 
     Event emitted when the agent invokes a built-in agent tool.
 
+    - `type: "agent.tool_use"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -613,8 +624,6 @@ List Session Thread Events
       A timestamp in RFC 3339 format
 
       format: date-time
-
-    - `type: "agent.tool_use"`
 
     - `evaluated_permission: optional "allow" or "ask" or "deny"`
 
@@ -634,6 +643,8 @@ List Session Thread Events
 
     Event representing the result of an agent tool execution.
 
+    - `type: "agent.tool_result"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -647,8 +658,6 @@ List Session Thread Events
     - `tool_use_id: string`
 
       The id of the `agent.tool_use` event this result corresponds to.
-
-    - `type: "agent.tool_result"`
 
     - `content: optional array of BetaManagedAgentsTextBlock or BetaManagedAgentsImageBlock or BetaManagedAgentsDocumentBlock or BetaManagedAgentsSearchResultBlock`
 
@@ -677,6 +686,8 @@ List Session Thread Events
   - `BetaManagedAgentsAgentThreadMessageReceivedEvent object`
 
     Delivery event written to the target thread's input stream when an agent-to-agent message arrives.
+
+    - `type: "agent.thread_message_received"`
 
     - `id: string`
 
@@ -712,8 +723,6 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "agent.thread_message_received"`
-
     - `from_agent_name: optional string or null`
 
       Name of the callable agent this message came from. Absent when received from the primary agent.
@@ -721,6 +730,8 @@ List Session Thread Events
   - `BetaManagedAgentsAgentThreadMessageSentEvent object`
 
     Observability event emitted to the sender's output stream when an agent-to-agent message is sent.
+
+    - `type: "agent.thread_message_sent"`
 
     - `id: string`
 
@@ -756,8 +767,6 @@ List Session Thread Events
 
       Public `sthr_` ID of the thread the message was sent to.
 
-    - `type: "agent.thread_message_sent"`
-
     - `to_agent_name: optional string or null`
 
       Name of the callable agent this message was sent to. Absent when sent to the primary agent.
@@ -765,6 +774,8 @@ List Session Thread Events
   - `BetaManagedAgentsAgentThreadContextCompactedEvent object`
 
     Indicates that context compaction (summarization) occurred during the session.
+
+    - `type: "agent.thread_context_compacted"`
 
     - `id: string`
 
@@ -776,11 +787,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "agent.thread_context_compacted"`
-
   - `BetaManagedAgentsSessionErrorEvent object`
 
     An error event indicating a problem occurred during session execution.
+
+    - `type: "session.error"`
 
     - `id: string`
 
@@ -793,6 +804,8 @@ List Session Thread Events
       - `BetaManagedAgentsUnknownError object`
 
         An unknown or unexpected error occurred during session execution. A fallback variant; clients that don't recognize a new error code can match on `retry_status` and `message` alone.
+
+        - `type: "unknown_error"`
 
         - `message: string`
 
@@ -820,11 +833,11 @@ List Session Thread Events
 
             - `type: "terminal"`
 
-        - `type: "unknown_error"`
-
       - `BetaManagedAgentsModelOverloadedError object`
 
         The model is currently overloaded. Emitted after automatic retries are exhausted.
+
+        - `type: "model_overloaded_error"`
 
         - `message: string`
 
@@ -845,13 +858,13 @@ List Session Thread Events
           - `BetaManagedAgentsRetryStatusTerminal object`
 
             The session encountered a terminal error and will transition to `terminated` state.
-
-        - `type: "model_overloaded_error"`
 
       - `BetaManagedAgentsModelRateLimitedError object`
 
         The model request was rate-limited.
 
+        - `type: "model_rate_limited_error"`
+
         - `message: string`
 
           Human-readable error description.
@@ -871,13 +884,13 @@ List Session Thread Events
           - `BetaManagedAgentsRetryStatusTerminal object`
 
             The session encountered a terminal error and will transition to `terminated` state.
-
-        - `type: "model_rate_limited_error"`
 
       - `BetaManagedAgentsModelRequestFailedError object`
 
         A model request failed for a reason other than overload or rate-limiting.
 
+        - `type: "model_request_failed_error"`
+
         - `message: string`
 
           Human-readable error description.
@@ -898,11 +911,11 @@ List Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "model_request_failed_error"`
-
       - `BetaManagedAgentsMCPConnectionFailedError object`
 
         Failed to connect to an MCP server.
+
+        - `type: "mcp_connection_failed_error"`
 
         - `mcp_server_name: string`
 
@@ -928,11 +941,11 @@ List Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "mcp_connection_failed_error"`
-
       - `BetaManagedAgentsMCPAuthenticationFailedError object`
 
         Authentication to an MCP server failed.
+
+        - `type: "mcp_authentication_failed_error"`
 
         - `mcp_server_name: string`
 
@@ -958,11 +971,11 @@ List Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "mcp_authentication_failed_error"`
-
       - `BetaManagedAgentsBillingError object`
 
         The caller's organization or workspace cannot make model requests — out of credits or spend limit reached. Retrying with the same credentials will not succeed; the caller must resolve the billing state.
+
+        - `type: "billing_error"`
 
         - `message: string`
 
@@ -984,11 +997,11 @@ List Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "billing_error"`
-
       - `BetaManagedAgentsCredentialHostUnreachableError object`
 
         An `environment_variable` credential's `auth.networking.allowed_hosts` includes a host the environment's network policy does not permit.
+
+        - `type: "credential_host_unreachable_error"`
 
         - `credential_id: string`
 
@@ -1014,8 +1027,6 @@ List Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "credential_host_unreachable_error"`
-
         - `vault_id: string`
 
           ID of the vault containing the affected credential.
@@ -1026,11 +1037,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "session.error"`
-
   - `BetaManagedAgentsSessionStatusRescheduledEvent object`
 
     Indicates the session is recovering from an error state and is rescheduled for execution.
+
+    - `type: "session.status_rescheduled"`
 
     - `id: string`
 
@@ -1041,13 +1052,13 @@ List Session Thread Events
       A timestamp in RFC 3339 format
 
       format: date-time
-
-    - `type: "session.status_rescheduled"`
 
   - `BetaManagedAgentsSessionStatusRunningEvent object`
 
     Indicates the session is actively running and the agent is working.
 
+    - `type: "session.status_running"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -1058,11 +1069,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "session.status_running"`
-
   - `BetaManagedAgentsSessionStatusIdleEvent object`
 
     Indicates the agent has paused and is awaiting user input.
+
+    - `type: "session.status_idle"`
 
     - `id: string`
 
@@ -1088,11 +1099,11 @@ List Session Thread Events
 
         The agent is idle waiting on one or more blocking user-input events (tool confirmation, custom tool result, etc.). Resolving all of them transitions the session back to running.
 
+        - `type: "requires_action"`
+
         - `event_ids: array of string`
 
           The ids of events the agent is blocked on. Resolving fewer than all re-emits `session.status_idle` with the remainder.
-
-        - `type: "requires_action"`
 
       - `BetaManagedAgentsSessionRetriesExhausted object`
 
@@ -1106,11 +1117,11 @@ List Session Thread Events
 
         - `type: "budget_reached"`
 
-    - `type: "session.status_idle"`
-
   - `BetaManagedAgentsSessionStatusTerminatedEvent object`
 
     Indicates the session has terminated, either due to an error or completion.
+
+    - `type: "session.status_terminated"`
 
     - `id: string`
 
@@ -1122,11 +1133,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "session.status_terminated"`
-
   - `BetaManagedAgentsSessionThreadCreatedEvent object`
 
     Emitted when a subagent is spawned as a new thread. Written to the parent thread's output stream so clients observing the session see child creation.
+
+    - `type: "session.thread_created"`
 
     - `id: string`
 
@@ -1146,11 +1157,11 @@ List Session Thread Events
 
       Public `sthr_` ID of the newly created thread.
 
-    - `type: "session.thread_created"`
-
   - `BetaManagedAgentsSpanOutcomeEvaluationStartEvent object`
 
     Emitted when an outcome evaluation cycle begins.
+
+    - `type: "span.outcome_evaluation_start"`
 
     - `id: string`
 
@@ -1172,11 +1183,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "span.outcome_evaluation_start"`
-
   - `BetaManagedAgentsSpanOutcomeEvaluationEndEvent object`
 
     Emitted when an outcome evaluation cycle completes. Carries the verdict and aggregate token usage. A verdict of `needs_revision` means another evaluation cycle follows; `satisfied`, `max_iterations_reached`, `failed`, or `interrupted` are terminal — no further evaluation cycles follow.
+
+    - `type: "span.outcome_evaluation_end"`
 
     - `id: string`
 
@@ -1209,8 +1220,6 @@ List Session Thread Events
     - `result: string`
 
       Evaluation verdict. 'satisfied': criteria met, session goes idle. 'needs_revision': criteria not met, another revision cycle follows. 'max_iterations_reached': evaluation budget exhausted with criteria still unmet — one final acknowledgment turn follows before the session goes idle, but no further evaluation runs. 'failed': grader determined the rubric does not apply to the deliverables. 'interrupted': user sent an interrupt while evaluation was in progress.
-
-    - `type: "span.outcome_evaluation_end"`
 
     - `usage: BetaManagedAgentsSpanModelUsage`
 
@@ -1252,6 +1261,8 @@ List Session Thread Events
 
     Emitted when a model request is initiated by the agent.
 
+    - `type: "span.model_request_start"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -1262,11 +1273,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "span.model_request_start"`
-
   - `BetaManagedAgentsSpanModelRequestEndEvent object`
 
     Emitted when a model request completes.
+
+    - `type: "span.model_request_end"`
 
     - `id: string`
 
@@ -1290,11 +1301,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "span.model_request_end"`
-
   - `BetaManagedAgentsSpanOutcomeEvaluationOngoingEvent object`
 
     Periodic heartbeat emitted while an outcome evaluation cycle is in progress. Distinguishes 'evaluation is actively running' from 'evaluation is stuck' between the corresponding `span.outcome_evaluation_start` and `span.outcome_evaluation_end` events.
+
+    - `type: "span.outcome_evaluation_ongoing"`
 
     - `id: string`
 
@@ -1316,11 +1327,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "span.outcome_evaluation_ongoing"`
-
   - `BetaManagedAgentsUserDefineOutcomeEvent object`
 
     Echo of a `user.define_outcome` input event. Carries the server-generated `outcome_id` that subsequent `span.outcome_evaluation_*` events reference.
+
+    - `type: "user.define_outcome"`
 
     - `id: string`
 
@@ -1354,27 +1365,27 @@ List Session Thread Events
 
         Rubric referenced by a file uploaded via the Files API.
 
+        - `type: "file"`
+
         - `file_id: string`
 
           ID of the rubric file.
-
-        - `type: "file"`
 
       - `BetaManagedAgentsTextRubric object`
 
         Rubric content provided inline as text.
 
+        - `type: "text"`
+
         - `content: string`
 
           Rubric content. Plain text or markdown — the grader treats it as freeform text.
 
-        - `type: "text"`
-
-    - `type: "user.define_outcome"`
-
   - `BetaManagedAgentsSessionDeletedEvent object`
 
     Emitted when a session has been deleted. Terminates any active event stream — no further events will be emitted for this session.
+
+    - `type: "session.deleted"`
 
     - `id: string`
 
@@ -1386,11 +1397,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "session.deleted"`
-
   - `BetaManagedAgentsSessionThreadStatusRunningEvent object`
 
     A session thread has begun executing. Emitted on the thread's own stream and cross-posted to the primary stream for child threads.
+
+    - `type: "session.thread_status_running"`
 
     - `id: string`
 
@@ -1410,11 +1421,11 @@ List Session Thread Events
 
       Public sthr_ ID of the thread that started running.
 
-    - `type: "session.thread_status_running"`
-
   - `BetaManagedAgentsSessionThreadStatusIdleEvent object`
 
     A session thread has yielded and is awaiting input. Emitted on the thread's own stream and cross-posted to the primary stream for child threads.
+
+    - `type: "session.thread_status_idle"`
 
     - `id: string`
 
@@ -1454,11 +1465,11 @@ List Session Thread Events
 
         The agent stopped because the session's tracked list cost reached its budget, or because its usage includes a model with no list price (which the budget cannot measure). Raise the budget to continue — or, if raising is rejected because a model has no list price, remove the budget.
 
-    - `type: "session.thread_status_idle"`
-
   - `BetaManagedAgentsSessionThreadStatusTerminatedEvent object`
 
     A session thread has terminated and will accept no further input. Emitted on the thread's own stream and cross-posted to the primary stream for child threads.
+
+    - `type: "session.thread_status_terminated"`
 
     - `id: string`
 
@@ -1478,11 +1489,11 @@ List Session Thread Events
 
       Public sthr_ ID of the thread that terminated.
 
-    - `type: "session.thread_status_terminated"`
-
   - `BetaManagedAgentsUserToolResultEvent object`
 
     Event sent by the client providing the result of an agent-toolset tool execution. Only valid on `self_hosted` environments, where sandbox-routed tools are executed by the client rather than the server.
+
+    - `type: "user.tool_result"`
 
     - `id: string`
 
@@ -1491,8 +1502,6 @@ List Session Thread Events
     - `tool_use_id: string`
 
       The id of the `agent.tool_use` event this result corresponds to, which can be found in the last `session.status_idle` [event's](https://platform.claude.com/docs/en/api/beta/sessions/events/list#beta_managed_agents_session_requires_action.event_ids) `stop_reason.event_ids` field.
-
-    - `type: "user.tool_result"`
 
     - `content: optional array of BetaManagedAgentsTextBlock or BetaManagedAgentsImageBlock or BetaManagedAgentsDocumentBlock or BetaManagedAgentsSearchResultBlock`
 
@@ -1532,6 +1541,8 @@ List Session Thread Events
 
     A session thread hit a transient error and is retrying automatically. Emitted on the thread's own stream and cross-posted to the primary stream for child threads.
 
+    - `type: "session.thread_status_rescheduled"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -1550,11 +1561,11 @@ List Session Thread Events
 
       Public sthr_ ID of the thread that is retrying.
 
-    - `type: "session.thread_status_rescheduled"`
-
   - `BetaManagedAgentsSessionUpdatedEvent object`
 
     Emitted when an UpdateSession request changed at least one field. Carries only the fields that changed; absent fields were not part of the update. The new configuration applies from the next turn.
+
+    - `type: "session.updated"`
 
     - `id: string`
 
@@ -1566,11 +1577,11 @@ List Session Thread Events
 
       format: date-time
 
-    - `type: "session.updated"`
-
     - `agent: optional BetaManagedAgentsSessionAgent or null`
 
       Resolved `agent` definition for a `session`. Snapshot of the `agent` at `session` creation time.
+
+      - `type: "agent"`
 
       - `id: string`
 
@@ -1578,9 +1589,9 @@ List Session Thread Events
 
       - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-        - `name: string`
-
         - `type: "url"`
+
+        - `name: string`
 
         - `url: string`
 
@@ -1708,6 +1719,8 @@ List Session Thread Events
 
         Resolved coordinator topology with full agent definitions for each roster member.
 
+        - `type: "coordinator"`
+
         - `agents: array of BetaManagedAgentsSessionThreadAgent or BetaManagedAgentsAdvisor`
 
           Full `agent` definitions the coordinator may spawn as session threads.
@@ -1716,15 +1729,17 @@ List Session Thread Events
 
             Resolved `agent` definition for a single `session_thread`. Snapshot of the agent at thread creation time. The multiagent roster is not repeated here; read it from `Session.agent`.
 
+            - `type: "agent"`
+
             - `id: string`
 
             - `description: string or null`
 
             - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-              - `name: string`
-
               - `type: "url"`
+
+              - `name: string`
 
               - `url: string`
 
@@ -1740,9 +1755,9 @@ List Session Thread Events
 
                 A resolved Anthropic-managed skill.
 
-                - `skill_id: string`
-
                 - `type: "anthropic"`
+
+                - `skill_id: string`
 
                 - `version: string`
 
@@ -1750,9 +1765,9 @@ List Session Thread Events
 
                 A resolved user-created custom skill.
 
-                - `skill_id: string`
-
                 - `type: "custom"`
+
+                - `skill_id: string`
 
                 - `version: string`
 
@@ -1762,11 +1777,15 @@ List Session Thread Events
 
               - `BetaManagedAgentsAgentToolset20260401 object`
 
+                - `type: "agent_toolset_20260401"`
+
                 - `configs: array of BetaManagedAgentsAgentToolConfig`
 
                   - `BetaManagedAgentsBashToolConfig object`
 
                     Configuration for the bash tool.
+
+                    - `type: "bash"`
 
                     - `enabled: boolean`
 
@@ -1788,11 +1807,11 @@ List Session Thread Events
 
                         - `type: "always_ask"`
 
-                    - `type: "bash"`
-
                   - `BetaManagedAgentsEditToolConfig object`
 
                     Configuration for the edit tool.
+
+                    - `type: "edit"`
 
                     - `enabled: boolean`
 
@@ -1810,11 +1829,11 @@ List Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "edit"`
-
                   - `BetaManagedAgentsReadToolConfig object`
 
                     Configuration for the read tool.
+
+                    - `type: "read"`
 
                     - `enabled: boolean`
 
@@ -1832,11 +1851,11 @@ List Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "read"`
-
                   - `BetaManagedAgentsWriteToolConfig object`
 
                     Configuration for the write tool.
+
+                    - `type: "write"`
 
                     - `enabled: boolean`
 
@@ -1854,11 +1873,11 @@ List Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "write"`
-
                   - `BetaManagedAgentsGlobToolConfig object`
 
                     Configuration for the glob tool.
+
+                    - `type: "glob"`
 
                     - `enabled: boolean`
 
@@ -1876,11 +1895,11 @@ List Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "glob"`
-
                   - `BetaManagedAgentsGrepToolConfig object`
 
                     Configuration for the grep tool.
+
+                    - `type: "grep"`
 
                     - `enabled: boolean`
 
@@ -1898,11 +1917,11 @@ List Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "grep"`
-
                   - `BetaManagedAgentsWebFetchToolConfig object`
 
                     Configuration for the web_fetch tool.
+
+                    - `type: "web_fetch"`
 
                     - `enabled: boolean`
 
@@ -1920,8 +1939,6 @@ List Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "web_fetch"`
-
                     - `allowed_domains: optional array of string`
 
                     - `blocked_domains: optional array of string`
@@ -1933,6 +1950,8 @@ List Session Thread Events
                   - `BetaManagedAgentsWebSearchToolConfig object`
 
                     Configuration for the web_search tool.
+
+                    - `type: "web_search"`
 
                     - `enabled: boolean`
 
@@ -1949,8 +1968,6 @@ List Session Thread Events
                       - `BetaManagedAgentsAlwaysAskPolicy object`
 
                         Tool calls require user confirmation before execution.
-
-                    - `type: "web_search"`
 
                     - `allowed_domains: optional array of string`
 
@@ -2004,9 +2021,9 @@ List Session Thread Events
 
                       Tool calls require user confirmation before execution.
 
-                - `type: "agent_toolset_20260401"`
-
               - `BetaManagedAgentsMCPToolset object`
+
+                - `type: "mcp_toolset"`
 
                 - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -2046,11 +2063,11 @@ List Session Thread Events
 
                 - `mcp_server_name: string`
 
-                - `type: "mcp_toolset"`
-
               - `BetaManagedAgentsCustomTool object`
 
                 A custom tool as returned in API responses.
+
+                - `type: "custom"`
 
                 - `description: string`
 
@@ -2066,10 +2083,6 @@ List Session Thread Events
 
                 - `name: string`
 
-                - `type: "custom"`
-
-            - `type: "agent"`
-
             - `version: number`
 
               format: int32
@@ -2078,13 +2091,11 @@ List Session Thread Events
 
             Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+            - `type: "advisor"`
+
             - `model: string`
 
               The advisor model id.
-
-            - `type: "advisor"`
-
-        - `type: "coordinator"`
 
       - `name: string`
 
@@ -2110,8 +2121,6 @@ List Session Thread Events
 
           A custom tool as returned in API responses.
 
-      - `type: "agent"`
-
       - `version: number`
 
         format: int32
@@ -2119,6 +2128,8 @@ List Session Thread Events
     - `budget: optional BetaManagedAgentsBudgetLimit or null`
 
       A hard spend ceiling. The session stops issuing new model requests once the tracked list cost reaches `max_list_cost`.
+
+      - `type: "limit"`
 
       - `max_list_cost: BetaMonetaryAmount`
 
@@ -2132,8 +2143,6 @@ List Session Thread Events
 
           Uppercase ISO-4217 currency code. `USD` is the only currency currently supported; the accepted set is closed and grows only when a new currency is priced.
 
-      - `type: "limit"`
-
     - `metadata: optional map[string]`
 
       The session's full metadata bag after the update. Present when the update set non-empty metadata; absent when metadata was unchanged or cleared to empty.
@@ -2146,6 +2155,8 @@ List Session Thread Events
 
     A mid-conversation system message event. Carries system-role content that is appended to the session as a `role: "system"` turn.
 
+    - `type: "system.message"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -2154,15 +2165,13 @@ List Session Thread Events
 
       System content blocks. Text-only.
 
+      - `type: "text"`
+
       - `text: string`
 
         The text content.
 
         minLength: 1
-
-      - `type: "text"`
-
-    - `type: "system.message"`
 
     - `processed_at: optional string or null`
 
@@ -2174,6 +2183,8 @@ List Session Thread Events
 
     Periodic snapshot of the session's cumulative usage and tracked list cost.
 
+    - `type: "session.usage"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -2183,8 +2194,6 @@ List Session Thread Events
       A timestamp in RFC 3339 format
 
       format: date-time
-
-    - `type: "session.usage"`
 
     - `usage: BetaManagedAgentsSessionUsageSnapshot`
 
@@ -2318,7 +2327,7 @@ Stream Session Thread Events
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -2366,6 +2375,8 @@ Stream Session Thread Events
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -2408,6 +2419,8 @@ Stream Session Thread Events
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ### Returns
 
 - `BetaManagedAgentsStreamSessionThreadEvents = BetaManagedAgentsUserMessageEvent or BetaManagedAgentsUserInterruptEvent or BetaManagedAgentsUserToolConfirmationEvent or 34 more`
@@ -2417,6 +2430,8 @@ Stream Session Thread Events
   - `BetaManagedAgentsUserMessageEvent object`
 
     A user message event in the session conversation.
+
+    - `type: "user.message"`
 
     - `id: string`
 
@@ -2430,17 +2445,19 @@ Stream Session Thread Events
 
         Regular text content.
 
+        - `type: "text"`
+
         - `text: string`
 
           The text content.
 
           minLength: 1
 
-        - `type: "text"`
-
       - `BetaManagedAgentsImageBlock object`
 
         Image content specified directly as base64 data or as a reference via a URL.
+
+        - `type: "image"`
 
         - `source: BetaManagedAgentsBase64ImageSource or BetaManagedAgentsURLImageSource or BetaManagedAgentsFileImageSource`
 
@@ -2449,6 +2466,8 @@ Stream Session Thread Events
           - `BetaManagedAgentsBase64ImageSource object`
 
             Base64-encoded image data.
+
+            - `type: "base64"`
 
             - `data: string`
 
@@ -2461,8 +2480,6 @@ Stream Session Thread Events
               MIME type of the image (e.g., "image/png", "image/jpeg", "image/gif", "image/webp").
 
               minLength: 1
-
-            - `type: "base64"`
 
           - `BetaManagedAgentsURLImageSource object`
 
@@ -2480,19 +2497,19 @@ Stream Session Thread Events
 
             Image referenced by file ID.
 
+            - `type: "file"`
+
             - `file_id: string`
 
               ID of a previously uploaded file.
 
               minLength: 1
 
-            - `type: "file"`
-
-        - `type: "image"`
-
       - `BetaManagedAgentsDocumentBlock object`
 
         Document content, either specified directly as base64 data, as text, or as a reference via a URL.
+
+        - `type: "document"`
 
         - `source: BetaManagedAgentsBase64DocumentSource or BetaManagedAgentsPlainTextDocumentSource or BetaManagedAgentsURLDocumentSource or BetaManagedAgentsFileDocumentSource`
 
@@ -2501,6 +2518,8 @@ Stream Session Thread Events
           - `BetaManagedAgentsBase64DocumentSource object`
 
             Base64-encoded document data.
+
+            - `type: "base64"`
 
             - `data: string`
 
@@ -2514,11 +2533,11 @@ Stream Session Thread Events
 
               minLength: 1
 
-            - `type: "base64"`
-
           - `BetaManagedAgentsPlainTextDocumentSource object`
 
             Plain text document content.
+
+            - `type: "text"`
 
             - `data: string`
 
@@ -2529,8 +2548,6 @@ Stream Session Thread Events
             - `media_type: "text/plain"`
 
               MIME type of the text content. Must be "text/plain".
-
-            - `type: "text"`
 
           - `BetaManagedAgentsURLDocumentSource object`
 
@@ -2548,15 +2565,13 @@ Stream Session Thread Events
 
             Document referenced by file ID.
 
+            - `type: "file"`
+
             - `file_id: string`
 
               ID of a previously uploaded file.
 
               minLength: 1
-
-            - `type: "file"`
-
-        - `type: "document"`
 
         - `context: optional string or null`
 
@@ -2572,8 +2587,6 @@ Stream Session Thread Events
 
         - `type: "redacted"`
 
-    - `type: "user.message"`
-
     - `processed_at: optional string or null`
 
       A timestamp in RFC 3339 format
@@ -2584,11 +2597,11 @@ Stream Session Thread Events
 
     An interrupt event that pauses agent execution and returns control to the user.
 
+    - `type: "user.interrupt"`
+
     - `id: string`
 
       Unique identifier for this event.
-
-    - `type: "user.interrupt"`
 
     - `processed_at: optional string or null`
 
@@ -2603,6 +2616,8 @@ Stream Session Thread Events
   - `BetaManagedAgentsUserToolConfirmationEvent object`
 
     A tool confirmation event that approves or denies a pending tool execution.
+
+    - `type: "user.tool_confirmation"`
 
     - `id: string`
 
@@ -2619,8 +2634,6 @@ Stream Session Thread Events
     - `tool_use_id: string`
 
       The id of the `agent.tool_use` or `agent.mcp_tool_use` event this result corresponds to, which can be found in the last `session.status_idle` [event's](https://platform.claude.com/docs/en/api/beta/sessions/events/list#beta_managed_agents_session_requires_action.event_ids) `stop_reason.event_ids` field.
-
-    - `type: "user.tool_confirmation"`
 
     - `deny_message: optional string or null`
 
@@ -2642,6 +2655,8 @@ Stream Session Thread Events
 
     Event sent by the client providing the result of a custom tool execution.
 
+    - `type: "user.custom_tool_result"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -2649,8 +2664,6 @@ Stream Session Thread Events
     - `custom_tool_use_id: string`
 
       The id of the `agent.custom_tool_use` event this result corresponds to, which can be found in the last `session.status_idle` [event's](https://platform.claude.com/docs/en/api/beta/sessions/events/list#beta_managed_agents_session_requires_action.event_ids) `stop_reason.event_ids` field.
-
-    - `type: "user.custom_tool_result"`
 
     - `content: optional array of BetaManagedAgentsTextBlock or BetaManagedAgentsImageBlock or BetaManagedAgentsDocumentBlock or BetaManagedAgentsSearchResultBlock`
 
@@ -2672,6 +2685,8 @@ Stream Session Thread Events
 
         A block containing a web search result.
 
+        - `type: "search_result"`
+
         - `citations: BetaManagedAgentsSearchResultCitations`
 
           Citation settings for a search result.
@@ -2684,13 +2699,13 @@ Stream Session Thread Events
 
           Array of text content blocks from the search result.
 
+          - `type: "text"`
+
           - `text: string`
 
             The text content.
 
             minLength: 1
-
-          - `type: "text"`
 
         - `source: string`
 
@@ -2703,8 +2718,6 @@ Stream Session Thread Events
           The title of the search result.
 
           minLength: 1
-
-        - `type: "search_result"`
 
     - `is_error: optional boolean or null`
 
@@ -2724,6 +2737,8 @@ Stream Session Thread Events
 
     Event emitted when the agent calls a custom tool. The session goes idle until the client sends a `user.custom_tool_result` event with the result.
 
+    - `type: "agent.custom_tool_use"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -2742,8 +2757,6 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "agent.custom_tool_use"`
-
     - `session_thread_id: optional string or null`
 
       When set, this event was cross-posted from a subagent's thread to surface its custom tool use on the primary thread's stream. Empty on the thread's own events. Echo this on a `user.custom_tool_result` event to route the result back.
@@ -2751,6 +2764,8 @@ Stream Session Thread Events
   - `BetaManagedAgentsAgentMessageEvent object`
 
     An agent response event in the session conversation.
+
+    - `type: "agent.message"`
 
     - `id: string`
 
@@ -2774,11 +2789,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "agent.message"`
-
   - `BetaManagedAgentsAgentThinkingEvent object`
 
     Indicates the agent is making forward progress via extended thinking. A progress signal, not a content carrier.
+
+    - `type: "agent.thinking"`
 
     - `id: string`
 
@@ -2790,11 +2805,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "agent.thinking"`
-
   - `BetaManagedAgentsAgentMCPToolUseEvent object`
 
     Event emitted when the agent invokes a tool provided by an MCP server.
+
+    - `type: "agent.mcp_tool_use"`
 
     - `id: string`
 
@@ -2818,8 +2833,6 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "agent.mcp_tool_use"`
-
     - `evaluated_permission: optional "allow" or "ask" or "deny"`
 
       AgentEvaluatedPermission enum
@@ -2838,6 +2851,8 @@ Stream Session Thread Events
 
     Event representing the result of an MCP tool execution.
 
+    - `type: "agent.mcp_tool_result"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -2851,8 +2866,6 @@ Stream Session Thread Events
       A timestamp in RFC 3339 format
 
       format: date-time
-
-    - `type: "agent.mcp_tool_result"`
 
     - `content: optional array of BetaManagedAgentsTextBlock or BetaManagedAgentsImageBlock or BetaManagedAgentsDocumentBlock or BetaManagedAgentsSearchResultBlock`
 
@@ -2882,6 +2895,8 @@ Stream Session Thread Events
 
     Event emitted when the agent invokes a built-in agent tool.
 
+    - `type: "agent.tool_use"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -2899,8 +2914,6 @@ Stream Session Thread Events
       A timestamp in RFC 3339 format
 
       format: date-time
-
-    - `type: "agent.tool_use"`
 
     - `evaluated_permission: optional "allow" or "ask" or "deny"`
 
@@ -2920,6 +2933,8 @@ Stream Session Thread Events
 
     Event representing the result of an agent tool execution.
 
+    - `type: "agent.tool_result"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -2933,8 +2948,6 @@ Stream Session Thread Events
     - `tool_use_id: string`
 
       The id of the `agent.tool_use` event this result corresponds to.
-
-    - `type: "agent.tool_result"`
 
     - `content: optional array of BetaManagedAgentsTextBlock or BetaManagedAgentsImageBlock or BetaManagedAgentsDocumentBlock or BetaManagedAgentsSearchResultBlock`
 
@@ -2963,6 +2976,8 @@ Stream Session Thread Events
   - `BetaManagedAgentsAgentThreadMessageReceivedEvent object`
 
     Delivery event written to the target thread's input stream when an agent-to-agent message arrives.
+
+    - `type: "agent.thread_message_received"`
 
     - `id: string`
 
@@ -2998,8 +3013,6 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "agent.thread_message_received"`
-
     - `from_agent_name: optional string or null`
 
       Name of the callable agent this message came from. Absent when received from the primary agent.
@@ -3007,6 +3020,8 @@ Stream Session Thread Events
   - `BetaManagedAgentsAgentThreadMessageSentEvent object`
 
     Observability event emitted to the sender's output stream when an agent-to-agent message is sent.
+
+    - `type: "agent.thread_message_sent"`
 
     - `id: string`
 
@@ -3042,8 +3057,6 @@ Stream Session Thread Events
 
       Public `sthr_` ID of the thread the message was sent to.
 
-    - `type: "agent.thread_message_sent"`
-
     - `to_agent_name: optional string or null`
 
       Name of the callable agent this message was sent to. Absent when sent to the primary agent.
@@ -3051,6 +3064,8 @@ Stream Session Thread Events
   - `BetaManagedAgentsAgentThreadContextCompactedEvent object`
 
     Indicates that context compaction (summarization) occurred during the session.
+
+    - `type: "agent.thread_context_compacted"`
 
     - `id: string`
 
@@ -3062,11 +3077,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "agent.thread_context_compacted"`
-
   - `BetaManagedAgentsSessionErrorEvent object`
 
     An error event indicating a problem occurred during session execution.
+
+    - `type: "session.error"`
 
     - `id: string`
 
@@ -3079,6 +3094,8 @@ Stream Session Thread Events
       - `BetaManagedAgentsUnknownError object`
 
         An unknown or unexpected error occurred during session execution. A fallback variant; clients that don't recognize a new error code can match on `retry_status` and `message` alone.
+
+        - `type: "unknown_error"`
 
         - `message: string`
 
@@ -3106,11 +3123,11 @@ Stream Session Thread Events
 
             - `type: "terminal"`
 
-        - `type: "unknown_error"`
-
       - `BetaManagedAgentsModelOverloadedError object`
 
         The model is currently overloaded. Emitted after automatic retries are exhausted.
+
+        - `type: "model_overloaded_error"`
 
         - `message: string`
 
@@ -3131,13 +3148,13 @@ Stream Session Thread Events
           - `BetaManagedAgentsRetryStatusTerminal object`
 
             The session encountered a terminal error and will transition to `terminated` state.
-
-        - `type: "model_overloaded_error"`
 
       - `BetaManagedAgentsModelRateLimitedError object`
 
         The model request was rate-limited.
 
+        - `type: "model_rate_limited_error"`
+
         - `message: string`
 
           Human-readable error description.
@@ -3157,13 +3174,13 @@ Stream Session Thread Events
           - `BetaManagedAgentsRetryStatusTerminal object`
 
             The session encountered a terminal error and will transition to `terminated` state.
-
-        - `type: "model_rate_limited_error"`
 
       - `BetaManagedAgentsModelRequestFailedError object`
 
         A model request failed for a reason other than overload or rate-limiting.
 
+        - `type: "model_request_failed_error"`
+
         - `message: string`
 
           Human-readable error description.
@@ -3184,11 +3201,11 @@ Stream Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "model_request_failed_error"`
-
       - `BetaManagedAgentsMCPConnectionFailedError object`
 
         Failed to connect to an MCP server.
+
+        - `type: "mcp_connection_failed_error"`
 
         - `mcp_server_name: string`
 
@@ -3214,11 +3231,11 @@ Stream Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "mcp_connection_failed_error"`
-
       - `BetaManagedAgentsMCPAuthenticationFailedError object`
 
         Authentication to an MCP server failed.
+
+        - `type: "mcp_authentication_failed_error"`
 
         - `mcp_server_name: string`
 
@@ -3244,11 +3261,11 @@ Stream Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "mcp_authentication_failed_error"`
-
       - `BetaManagedAgentsBillingError object`
 
         The caller's organization or workspace cannot make model requests — out of credits or spend limit reached. Retrying with the same credentials will not succeed; the caller must resolve the billing state.
+
+        - `type: "billing_error"`
 
         - `message: string`
 
@@ -3270,11 +3287,11 @@ Stream Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "billing_error"`
-
       - `BetaManagedAgentsCredentialHostUnreachableError object`
 
         An `environment_variable` credential's `auth.networking.allowed_hosts` includes a host the environment's network policy does not permit.
+
+        - `type: "credential_host_unreachable_error"`
 
         - `credential_id: string`
 
@@ -3300,8 +3317,6 @@ Stream Session Thread Events
 
             The session encountered a terminal error and will transition to `terminated` state.
 
-        - `type: "credential_host_unreachable_error"`
-
         - `vault_id: string`
 
           ID of the vault containing the affected credential.
@@ -3312,11 +3327,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "session.error"`
-
   - `BetaManagedAgentsSessionStatusRescheduledEvent object`
 
     Indicates the session is recovering from an error state and is rescheduled for execution.
+
+    - `type: "session.status_rescheduled"`
 
     - `id: string`
 
@@ -3327,13 +3342,13 @@ Stream Session Thread Events
       A timestamp in RFC 3339 format
 
       format: date-time
-
-    - `type: "session.status_rescheduled"`
 
   - `BetaManagedAgentsSessionStatusRunningEvent object`
 
     Indicates the session is actively running and the agent is working.
 
+    - `type: "session.status_running"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -3344,11 +3359,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "session.status_running"`
-
   - `BetaManagedAgentsSessionStatusIdleEvent object`
 
     Indicates the agent has paused and is awaiting user input.
+
+    - `type: "session.status_idle"`
 
     - `id: string`
 
@@ -3374,11 +3389,11 @@ Stream Session Thread Events
 
         The agent is idle waiting on one or more blocking user-input events (tool confirmation, custom tool result, etc.). Resolving all of them transitions the session back to running.
 
+        - `type: "requires_action"`
+
         - `event_ids: array of string`
 
           The ids of events the agent is blocked on. Resolving fewer than all re-emits `session.status_idle` with the remainder.
-
-        - `type: "requires_action"`
 
       - `BetaManagedAgentsSessionRetriesExhausted object`
 
@@ -3392,11 +3407,11 @@ Stream Session Thread Events
 
         - `type: "budget_reached"`
 
-    - `type: "session.status_idle"`
-
   - `BetaManagedAgentsSessionStatusTerminatedEvent object`
 
     Indicates the session has terminated, either due to an error or completion.
+
+    - `type: "session.status_terminated"`
 
     - `id: string`
 
@@ -3408,11 +3423,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "session.status_terminated"`
-
   - `BetaManagedAgentsSessionThreadCreatedEvent object`
 
     Emitted when a subagent is spawned as a new thread. Written to the parent thread's output stream so clients observing the session see child creation.
+
+    - `type: "session.thread_created"`
 
     - `id: string`
 
@@ -3432,11 +3447,11 @@ Stream Session Thread Events
 
       Public `sthr_` ID of the newly created thread.
 
-    - `type: "session.thread_created"`
-
   - `BetaManagedAgentsSpanOutcomeEvaluationStartEvent object`
 
     Emitted when an outcome evaluation cycle begins.
+
+    - `type: "span.outcome_evaluation_start"`
 
     - `id: string`
 
@@ -3458,11 +3473,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "span.outcome_evaluation_start"`
-
   - `BetaManagedAgentsSpanOutcomeEvaluationEndEvent object`
 
     Emitted when an outcome evaluation cycle completes. Carries the verdict and aggregate token usage. A verdict of `needs_revision` means another evaluation cycle follows; `satisfied`, `max_iterations_reached`, `failed`, or `interrupted` are terminal — no further evaluation cycles follow.
+
+    - `type: "span.outcome_evaluation_end"`
 
     - `id: string`
 
@@ -3495,8 +3510,6 @@ Stream Session Thread Events
     - `result: string`
 
       Evaluation verdict. 'satisfied': criteria met, session goes idle. 'needs_revision': criteria not met, another revision cycle follows. 'max_iterations_reached': evaluation budget exhausted with criteria still unmet — one final acknowledgment turn follows before the session goes idle, but no further evaluation runs. 'failed': grader determined the rubric does not apply to the deliverables. 'interrupted': user sent an interrupt while evaluation was in progress.
-
-    - `type: "span.outcome_evaluation_end"`
 
     - `usage: BetaManagedAgentsSpanModelUsage`
 
@@ -3538,6 +3551,8 @@ Stream Session Thread Events
 
     Emitted when a model request is initiated by the agent.
 
+    - `type: "span.model_request_start"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -3548,11 +3563,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "span.model_request_start"`
-
   - `BetaManagedAgentsSpanModelRequestEndEvent object`
 
     Emitted when a model request completes.
+
+    - `type: "span.model_request_end"`
 
     - `id: string`
 
@@ -3576,11 +3591,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "span.model_request_end"`
-
   - `BetaManagedAgentsSpanOutcomeEvaluationOngoingEvent object`
 
     Periodic heartbeat emitted while an outcome evaluation cycle is in progress. Distinguishes 'evaluation is actively running' from 'evaluation is stuck' between the corresponding `span.outcome_evaluation_start` and `span.outcome_evaluation_end` events.
+
+    - `type: "span.outcome_evaluation_ongoing"`
 
     - `id: string`
 
@@ -3602,11 +3617,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "span.outcome_evaluation_ongoing"`
-
   - `BetaManagedAgentsUserDefineOutcomeEvent object`
 
     Echo of a `user.define_outcome` input event. Carries the server-generated `outcome_id` that subsequent `span.outcome_evaluation_*` events reference.
+
+    - `type: "user.define_outcome"`
 
     - `id: string`
 
@@ -3640,27 +3655,27 @@ Stream Session Thread Events
 
         Rubric referenced by a file uploaded via the Files API.
 
+        - `type: "file"`
+
         - `file_id: string`
 
           ID of the rubric file.
-
-        - `type: "file"`
 
       - `BetaManagedAgentsTextRubric object`
 
         Rubric content provided inline as text.
 
+        - `type: "text"`
+
         - `content: string`
 
           Rubric content. Plain text or markdown — the grader treats it as freeform text.
 
-        - `type: "text"`
-
-    - `type: "user.define_outcome"`
-
   - `BetaManagedAgentsSessionDeletedEvent object`
 
     Emitted when a session has been deleted. Terminates any active event stream — no further events will be emitted for this session.
+
+    - `type: "session.deleted"`
 
     - `id: string`
 
@@ -3672,11 +3687,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "session.deleted"`
-
   - `BetaManagedAgentsSessionThreadStatusRunningEvent object`
 
     A session thread has begun executing. Emitted on the thread's own stream and cross-posted to the primary stream for child threads.
+
+    - `type: "session.thread_status_running"`
 
     - `id: string`
 
@@ -3696,11 +3711,11 @@ Stream Session Thread Events
 
       Public sthr_ ID of the thread that started running.
 
-    - `type: "session.thread_status_running"`
-
   - `BetaManagedAgentsSessionThreadStatusIdleEvent object`
 
     A session thread has yielded and is awaiting input. Emitted on the thread's own stream and cross-posted to the primary stream for child threads.
+
+    - `type: "session.thread_status_idle"`
 
     - `id: string`
 
@@ -3740,11 +3755,11 @@ Stream Session Thread Events
 
         The agent stopped because the session's tracked list cost reached its budget, or because its usage includes a model with no list price (which the budget cannot measure). Raise the budget to continue — or, if raising is rejected because a model has no list price, remove the budget.
 
-    - `type: "session.thread_status_idle"`
-
   - `BetaManagedAgentsSessionThreadStatusTerminatedEvent object`
 
     A session thread has terminated and will accept no further input. Emitted on the thread's own stream and cross-posted to the primary stream for child threads.
+
+    - `type: "session.thread_status_terminated"`
 
     - `id: string`
 
@@ -3764,11 +3779,11 @@ Stream Session Thread Events
 
       Public sthr_ ID of the thread that terminated.
 
-    - `type: "session.thread_status_terminated"`
-
   - `BetaManagedAgentsUserToolResultEvent object`
 
     Event sent by the client providing the result of an agent-toolset tool execution. Only valid on `self_hosted` environments, where sandbox-routed tools are executed by the client rather than the server.
+
+    - `type: "user.tool_result"`
 
     - `id: string`
 
@@ -3777,8 +3792,6 @@ Stream Session Thread Events
     - `tool_use_id: string`
 
       The id of the `agent.tool_use` event this result corresponds to, which can be found in the last `session.status_idle` [event's](https://platform.claude.com/docs/en/api/beta/sessions/events/list#beta_managed_agents_session_requires_action.event_ids) `stop_reason.event_ids` field.
-
-    - `type: "user.tool_result"`
 
     - `content: optional array of BetaManagedAgentsTextBlock or BetaManagedAgentsImageBlock or BetaManagedAgentsDocumentBlock or BetaManagedAgentsSearchResultBlock`
 
@@ -3818,6 +3831,8 @@ Stream Session Thread Events
 
     A session thread hit a transient error and is retrying automatically. Emitted on the thread's own stream and cross-posted to the primary stream for child threads.
 
+    - `type: "session.thread_status_rescheduled"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -3836,11 +3851,11 @@ Stream Session Thread Events
 
       Public sthr_ ID of the thread that is retrying.
 
-    - `type: "session.thread_status_rescheduled"`
-
   - `BetaManagedAgentsSessionUpdatedEvent object`
 
     Emitted when an UpdateSession request changed at least one field. Carries only the fields that changed; absent fields were not part of the update. The new configuration applies from the next turn.
+
+    - `type: "session.updated"`
 
     - `id: string`
 
@@ -3852,11 +3867,11 @@ Stream Session Thread Events
 
       format: date-time
 
-    - `type: "session.updated"`
-
     - `agent: optional BetaManagedAgentsSessionAgent or null`
 
       Resolved `agent` definition for a `session`. Snapshot of the `agent` at `session` creation time.
+
+      - `type: "agent"`
 
       - `id: string`
 
@@ -3864,9 +3879,9 @@ Stream Session Thread Events
 
       - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-        - `name: string`
-
         - `type: "url"`
+
+        - `name: string`
 
         - `url: string`
 
@@ -3994,6 +4009,8 @@ Stream Session Thread Events
 
         Resolved coordinator topology with full agent definitions for each roster member.
 
+        - `type: "coordinator"`
+
         - `agents: array of BetaManagedAgentsSessionThreadAgent or BetaManagedAgentsAdvisor`
 
           Full `agent` definitions the coordinator may spawn as session threads.
@@ -4002,15 +4019,17 @@ Stream Session Thread Events
 
             Resolved `agent` definition for a single `session_thread`. Snapshot of the agent at thread creation time. The multiagent roster is not repeated here; read it from `Session.agent`.
 
+            - `type: "agent"`
+
             - `id: string`
 
             - `description: string or null`
 
             - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-              - `name: string`
-
               - `type: "url"`
+
+              - `name: string`
 
               - `url: string`
 
@@ -4026,9 +4045,9 @@ Stream Session Thread Events
 
                 A resolved Anthropic-managed skill.
 
-                - `skill_id: string`
-
                 - `type: "anthropic"`
+
+                - `skill_id: string`
 
                 - `version: string`
 
@@ -4036,9 +4055,9 @@ Stream Session Thread Events
 
                 A resolved user-created custom skill.
 
-                - `skill_id: string`
-
                 - `type: "custom"`
+
+                - `skill_id: string`
 
                 - `version: string`
 
@@ -4048,11 +4067,15 @@ Stream Session Thread Events
 
               - `BetaManagedAgentsAgentToolset20260401 object`
 
+                - `type: "agent_toolset_20260401"`
+
                 - `configs: array of BetaManagedAgentsAgentToolConfig`
 
                   - `BetaManagedAgentsBashToolConfig object`
 
                     Configuration for the bash tool.
+
+                    - `type: "bash"`
 
                     - `enabled: boolean`
 
@@ -4074,11 +4097,11 @@ Stream Session Thread Events
 
                         - `type: "always_ask"`
 
-                    - `type: "bash"`
-
                   - `BetaManagedAgentsEditToolConfig object`
 
                     Configuration for the edit tool.
+
+                    - `type: "edit"`
 
                     - `enabled: boolean`
 
@@ -4096,11 +4119,11 @@ Stream Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "edit"`
-
                   - `BetaManagedAgentsReadToolConfig object`
 
                     Configuration for the read tool.
+
+                    - `type: "read"`
 
                     - `enabled: boolean`
 
@@ -4118,11 +4141,11 @@ Stream Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "read"`
-
                   - `BetaManagedAgentsWriteToolConfig object`
 
                     Configuration for the write tool.
+
+                    - `type: "write"`
 
                     - `enabled: boolean`
 
@@ -4140,11 +4163,11 @@ Stream Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "write"`
-
                   - `BetaManagedAgentsGlobToolConfig object`
 
                     Configuration for the glob tool.
+
+                    - `type: "glob"`
 
                     - `enabled: boolean`
 
@@ -4162,11 +4185,11 @@ Stream Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "glob"`
-
                   - `BetaManagedAgentsGrepToolConfig object`
 
                     Configuration for the grep tool.
+
+                    - `type: "grep"`
 
                     - `enabled: boolean`
 
@@ -4184,11 +4207,11 @@ Stream Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "grep"`
-
                   - `BetaManagedAgentsWebFetchToolConfig object`
 
                     Configuration for the web_fetch tool.
+
+                    - `type: "web_fetch"`
 
                     - `enabled: boolean`
 
@@ -4206,8 +4229,6 @@ Stream Session Thread Events
 
                         Tool calls require user confirmation before execution.
 
-                    - `type: "web_fetch"`
-
                     - `allowed_domains: optional array of string`
 
                     - `blocked_domains: optional array of string`
@@ -4219,6 +4240,8 @@ Stream Session Thread Events
                   - `BetaManagedAgentsWebSearchToolConfig object`
 
                     Configuration for the web_search tool.
+
+                    - `type: "web_search"`
 
                     - `enabled: boolean`
 
@@ -4235,8 +4258,6 @@ Stream Session Thread Events
                       - `BetaManagedAgentsAlwaysAskPolicy object`
 
                         Tool calls require user confirmation before execution.
-
-                    - `type: "web_search"`
 
                     - `allowed_domains: optional array of string`
 
@@ -4290,9 +4311,9 @@ Stream Session Thread Events
 
                       Tool calls require user confirmation before execution.
 
-                - `type: "agent_toolset_20260401"`
-
               - `BetaManagedAgentsMCPToolset object`
+
+                - `type: "mcp_toolset"`
 
                 - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -4332,11 +4353,11 @@ Stream Session Thread Events
 
                 - `mcp_server_name: string`
 
-                - `type: "mcp_toolset"`
-
               - `BetaManagedAgentsCustomTool object`
 
                 A custom tool as returned in API responses.
+
+                - `type: "custom"`
 
                 - `description: string`
 
@@ -4352,10 +4373,6 @@ Stream Session Thread Events
 
                 - `name: string`
 
-                - `type: "custom"`
-
-            - `type: "agent"`
-
             - `version: number`
 
               format: int32
@@ -4364,13 +4381,11 @@ Stream Session Thread Events
 
             Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+            - `type: "advisor"`
+
             - `model: string`
 
               The advisor model id.
-
-            - `type: "advisor"`
-
-        - `type: "coordinator"`
 
       - `name: string`
 
@@ -4396,8 +4411,6 @@ Stream Session Thread Events
 
           A custom tool as returned in API responses.
 
-      - `type: "agent"`
-
       - `version: number`
 
         format: int32
@@ -4405,6 +4418,8 @@ Stream Session Thread Events
     - `budget: optional BetaManagedAgentsBudgetLimit or null`
 
       A hard spend ceiling. The session stops issuing new model requests once the tracked list cost reaches `max_list_cost`.
+
+      - `type: "limit"`
 
       - `max_list_cost: BetaMonetaryAmount`
 
@@ -4418,8 +4433,6 @@ Stream Session Thread Events
 
           Uppercase ISO-4217 currency code. `USD` is the only currency currently supported; the accepted set is closed and grows only when a new currency is priced.
 
-      - `type: "limit"`
-
     - `metadata: optional map[string]`
 
       The session's full metadata bag after the update. Present when the update set non-empty metadata; absent when metadata was unchanged or cleared to empty.
@@ -4432,41 +4445,43 @@ Stream Session Thread Events
 
     Opens a preview of a buffered event. Carries the previewed event's type and id only. Followed by zero or more event_delta events with the same event id, normally concluded by the buffered event carrying that id. If the producing model request ends without that event (an error or interrupt mid-stream), its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
 
+    - `type: "event_start"`
+
     - `event: BetaManagedAgentsStartEventPreview`
 
       The previewed event's type and id. The event type determines which delta types the preview's event_delta events carry: agent.message events stream content_delta fragments; agent.thinking previews are start-only — no deltas follow, and the buffered agent.thinking with the same id concludes them.
 
       - `BetaManagedAgentsAgentMessagePreview object`
 
+        - `type: "agent.message"`
+
         - `id: string`
 
           The id the buffered agent.message will carry if it is emitted. Matches the event_id on this preview's event_delta events.
 
-        - `type: "agent.message"`
-
       - `BetaManagedAgentsAgentThinkingPreview object`
+
+        - `type: "agent.thinking"`
 
         - `id: string`
 
           The id the buffered agent.thinking will carry if it is emitted. Start-only — no event_delta events follow.
 
-        - `type: "agent.thinking"`
-
-    - `type: "event_start"`
-
   - `BetaManagedAgentsDeltaEvent object`
 
     An incremental update to an event that is still being streamed. Deltas are best-effort and may stop early; when the buffered event with id == event_id is produced it carries the complete content. A model request that ends early (an error or interrupt) produces no buffered event — its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+    - `type: "event_delta"`
 
     - `delta: BetaManagedAgentsDeltaContent`
 
       One fragment of the previewed event. The delta type is named for the previewed event's field it streams into: agent.message events stream content_delta fragments, each a partial element of the content array.
 
+      - `type: "content_delta"`
+
       - `content: BetaManagedAgentsTextBlock`
 
         Regular text content.
-
-      - `type: "content_delta"`
 
       - `index: optional number`
 
@@ -4478,11 +4493,11 @@ Stream Session Thread Events
 
       The id of the event being previewed. Matches event.id on the corresponding event_start and the buffered event that reconciles the preview.
 
-    - `type: "event_delta"`
-
   - `BetaManagedAgentsSystemMessageEvent object`
 
     A mid-conversation system message event. Carries system-role content that is appended to the session as a `role: "system"` turn.
+
+    - `type: "system.message"`
 
     - `id: string`
 
@@ -4492,15 +4507,13 @@ Stream Session Thread Events
 
       System content blocks. Text-only.
 
+      - `type: "text"`
+
       - `text: string`
 
         The text content.
 
         minLength: 1
-
-      - `type: "text"`
-
-    - `type: "system.message"`
 
     - `processed_at: optional string or null`
 
@@ -4512,6 +4525,8 @@ Stream Session Thread Events
 
     Periodic snapshot of the session's cumulative usage and tracked list cost.
 
+    - `type: "session.usage"`
+
     - `id: string`
 
       Unique identifier for this event.
@@ -4521,8 +4536,6 @@ Stream Session Thread Events
       A timestamp in RFC 3339 format
 
       format: date-time
-
-    - `type: "session.usage"`
 
     - `usage: BetaManagedAgentsSessionUsageSnapshot`
 

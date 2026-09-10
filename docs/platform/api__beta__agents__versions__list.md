@@ -1,3 +1,8 @@
+---
+title: List Agent Versions
+url: https://platform.claude.com/docs/en/api/beta/agents/versions/list
+---
+
 # List Agent Versions
 
 **GET** `/v1/agents/{agent_id}/versions`
@@ -28,7 +33,7 @@ List Agent Versions
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 41 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 42 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -76,6 +81,8 @@ List Agent Versions
 
     - `"user-profiles-2026-08-18"`
 
+    - `"user-profiles-2026-09-04"`
+
     - `"advisor-tool-2026-03-01"`
 
     - `"managed-agents-2026-04-01"`
@@ -118,11 +125,15 @@ List Agent Versions
 
     - `"mid-conversation-system-clear-at-2026-08-21"`
 
+- `"anthropic-workspace-id": optional string`
+
 ## Returns
 
 - `data: array of BetaManagedAgentsAgent`
 
   Agent versions.
+
+  - `type: "agent"`
 
   - `id: string`
 
@@ -142,9 +153,9 @@ List Agent Versions
 
   - `mcp_servers: array of BetaManagedAgentsMCPServerURLDefinition`
 
-    - `name: string`
-
     - `type: "url"`
+
+    - `name: string`
 
     - `url: string`
 
@@ -274,6 +285,8 @@ List Agent Versions
 
     Resolved coordinator topology with a concrete agent roster.
 
+    - `type: "coordinator"`
+
     - `agents: array of BetaManagedAgentsAgentReference or BetaManagedAgentsAdvisor`
 
       Agents the coordinator may spawn as session threads, each resolved to a specific version.
@@ -282,9 +295,9 @@ List Agent Versions
 
         A resolved agent reference with a concrete version.
 
-        - `id: string`
-
         - `type: "agent"`
+
+        - `id: string`
 
         - `version: number`
 
@@ -294,13 +307,11 @@ List Agent Versions
 
         Platform advisor roster entry: a model the session's primary thread may consult mid-turn.
 
+        - `type: "advisor"`
+
         - `model: string`
 
           The advisor model id.
-
-        - `type: "advisor"`
-
-    - `type: "coordinator"`
 
   - `name: string`
 
@@ -310,9 +321,9 @@ List Agent Versions
 
       A resolved Anthropic-managed skill.
 
-      - `skill_id: string`
-
       - `type: "anthropic"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -320,9 +331,9 @@ List Agent Versions
 
       A resolved user-created custom skill.
 
-      - `skill_id: string`
-
       - `type: "custom"`
+
+      - `skill_id: string`
 
       - `version: string`
 
@@ -332,11 +343,15 @@ List Agent Versions
 
     - `BetaManagedAgentsAgentToolset20260401 object`
 
+      - `type: "agent_toolset_20260401"`
+
       - `configs: array of BetaManagedAgentsAgentToolConfig`
 
         - `BetaManagedAgentsBashToolConfig object`
 
           Configuration for the bash tool.
+
+          - `type: "bash"`
 
           - `enabled: boolean`
 
@@ -358,11 +373,11 @@ List Agent Versions
 
               - `type: "always_ask"`
 
-          - `type: "bash"`
-
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
+
+          - `type: "edit"`
 
           - `enabled: boolean`
 
@@ -380,11 +395,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "edit"`
-
         - `BetaManagedAgentsReadToolConfig object`
 
           Configuration for the read tool.
+
+          - `type: "read"`
 
           - `enabled: boolean`
 
@@ -402,11 +417,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "read"`
-
         - `BetaManagedAgentsWriteToolConfig object`
 
           Configuration for the write tool.
+
+          - `type: "write"`
 
           - `enabled: boolean`
 
@@ -424,11 +439,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "write"`
-
         - `BetaManagedAgentsGlobToolConfig object`
 
           Configuration for the glob tool.
+
+          - `type: "glob"`
 
           - `enabled: boolean`
 
@@ -446,11 +461,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "glob"`
-
         - `BetaManagedAgentsGrepToolConfig object`
 
           Configuration for the grep tool.
+
+          - `type: "grep"`
 
           - `enabled: boolean`
 
@@ -468,11 +483,11 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "grep"`
-
         - `BetaManagedAgentsWebFetchToolConfig object`
 
           Configuration for the web_fetch tool.
+
+          - `type: "web_fetch"`
 
           - `enabled: boolean`
 
@@ -490,8 +505,6 @@ List Agent Versions
 
               Tool calls require user confirmation before execution.
 
-          - `type: "web_fetch"`
-
           - `allowed_domains: optional array of string`
 
           - `blocked_domains: optional array of string`
@@ -503,6 +516,8 @@ List Agent Versions
         - `BetaManagedAgentsWebSearchToolConfig object`
 
           Configuration for the web_search tool.
+
+          - `type: "web_search"`
 
           - `enabled: boolean`
 
@@ -519,8 +534,6 @@ List Agent Versions
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
-
-          - `type: "web_search"`
 
           - `allowed_domains: optional array of string`
 
@@ -574,9 +587,9 @@ List Agent Versions
 
             Tool calls require user confirmation before execution.
 
-      - `type: "agent_toolset_20260401"`
-
     - `BetaManagedAgentsMCPToolset object`
+
+      - `type: "mcp_toolset"`
 
       - `configs: array of BetaManagedAgentsMCPToolConfig`
 
@@ -616,11 +629,11 @@ List Agent Versions
 
       - `mcp_server_name: string`
 
-      - `type: "mcp_toolset"`
-
     - `BetaManagedAgentsCustomTool object`
 
       A custom tool as returned in API responses.
+
+      - `type: "custom"`
 
       - `description: string`
 
@@ -635,10 +648,6 @@ List Agent Versions
         - `required: optional array of string or null`
 
       - `name: string`
-
-      - `type: "custom"`
-
-  - `type: "agent"`
 
   - `updated_at: string`
 
