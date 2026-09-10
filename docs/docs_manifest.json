@@ -773,8 +773,8 @@
     "managed-settings.md": {
       "original_url": "https://code.claude.com/docs/en/managed-settings",
       "original_md_url": "https://code.claude.com/docs/en/managed-settings.md",
-      "hash": "156d0c9d2aaf1813d42ffeb56b10ae07bd0e9f12845a863bbd9a44250ec740f0",
-      "last_updated": "2026-09-09T22:51:55.969195",
+      "hash": "474fabdd0e21e3681c0623388b1798edfe31f25d56e84af43f844b92b9b7b4a7",
+      "last_updated": "2026-09-10T07:39:43.722209",
       "source": "claude-code"
     },
     "mcp.md": {
@@ -997,8 +997,8 @@
     "self-hosted-environments-deploy.md": {
       "original_url": "https://code.claude.com/docs/en/self-hosted-environments-deploy",
       "original_md_url": "https://code.claude.com/docs/en/self-hosted-environments-deploy.md",
-      "hash": "e931e3a09ee6d1d800faa46421906e1c93e7af1a23c8fbbdedf0092c76efe879",
-      "last_updated": "2026-09-09T22:52:25.229958",
+      "hash": "ca956e16e1ac95806858a845c8e1ff60a4b2c8a11397404d430c16db3753ac5c",
+      "last_updated": "2026-09-10T07:40:12.000493",
       "source": "claude-code"
     },
     "self-hosted-environments-identity.md": {
@@ -1018,8 +1018,8 @@
     "self-hosted-environments-reference.md": {
       "original_url": "https://code.claude.com/docs/en/self-hosted-environments-reference",
       "original_md_url": "https://code.claude.com/docs/en/self-hosted-environments-reference.md",
-      "hash": "8ac5f4a3049a04ceac34b1943498902a072f7b99c22d84fa4165247e72ff3045",
-      "last_updated": "2026-09-09T22:52:27.949242",
+      "hash": "4739e5cb92adb1b34c04e2d5a81861d3f93cd8358bc7504aa5de16b03690d782",
+      "last_updated": "2026-09-10T07:40:14.823042",
       "source": "claude-code"
     },
     "self-hosted-environments-testing.md": {
@@ -1032,8 +1032,8 @@
     "server-managed-settings.md": {
       "original_url": "https://code.claude.com/docs/en/server-managed-settings",
       "original_md_url": "https://code.claude.com/docs/en/server-managed-settings.md",
-      "hash": "86a0df508449f3d333772574d9fb015ca8f1e86769894bbe51bb4e980acd5708",
-      "last_updated": "2026-09-09T22:52:29.780107",
+      "hash": "8e7a0e4545e8e12507ad6ac1004e608e1d02179be6b8435f265f07d0f195ef0c",
+      "last_updated": "2026-09-10T07:40:18.840507",
       "source": "claude-code"
     },
     "sessions.md": {
@@ -1060,8 +1060,8 @@
     "settings-reference.md": {
       "original_url": "https://code.claude.com/docs/en/settings-reference",
       "original_md_url": "https://code.claude.com/docs/en/settings-reference.md",
-      "hash": "03ddc5f669f37a1c509b10a2d18d0f6b790f9d225d7847042a5f456ff86efdf1",
-      "last_updated": "2026-09-10T02:08:25.641086",
+      "hash": "ca8028b4bef6b527283a2bf08e4b8fb9f8513f4be3958250b9152be402f26386",
+      "last_updated": "2026-09-10T07:40:22.067422",
       "source": "claude-code"
     },
     "setup.md": {
@@ -1340,7 +1340,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-09-10T02:08:57.041636",
+    "last_fetch_completed": "2026-09-10T07:40:57.819942",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 191,
@@ -1350,7 +1350,7 @@
     "total_files": 191,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-10T02:08:57.041677",
+  "last_updated": "2026-09-10T07:40:57.819962",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
