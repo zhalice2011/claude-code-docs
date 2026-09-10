@@ -25476,6 +25476,20 @@ compliance activities that can be filtered by various criteria.
 
       Unique identifier for the activity e.g. 'activity_abcd1234'
 
+    - `access_via: optional "member" or "organization_admin" or "organization_share" or 2 more or null`
+
+      How the actor was authorized to make this change: "owner" (the scan project's owner), "member" (an individually added member), "organization_share" (the project is shared with the actor's organization), or "organization_admin" (an administrator of the organization's security scanning). Absent when no project relationship was involved (for example, an automated change); events recorded before this field was introduced omit it.
+
+      - `"member"`
+
+      - `"organization_admin"`
+
+      - `"organization_share"`
+
+      - `"owner"`
+
+      - `"unspecified"`
+
     - `created_at: optional string`
 
       When this activity occurred.
@@ -25737,6 +25751,20 @@ compliance activities that can be filtered by various criteria.
 
       Unique identifier for the activity e.g. 'activity_abcd1234'
 
+    - `access_via: optional "member" or "organization_admin" or "organization_share" or 2 more or null`
+
+      How the actor was authorized to make this change: "owner" (the scan project's owner), "member" (an individually added member), "organization_share" (the project is shared with the actor's organization), or "organization_admin" (an administrator of the organization's security scanning). Absent when no project relationship was involved (the project's creation, or an automated change); events recorded before this field was introduced omit it.
+
+      - `"member"`
+
+      - `"organization_admin"`
+
+      - `"organization_share"`
+
+      - `"owner"`
+
+      - `"unspecified"`
+
     - `created_at: optional string`
 
       When this activity occurred.
@@ -25991,6 +26019,20 @@ compliance activities that can be filtered by various criteria.
     - `access_level: optional string or null`
 
       Access level granted to organization members (read_only or full); only set when shared
+
+    - `access_via: optional "member" or "organization_admin" or "organization_share" or 2 more or null`
+
+      How the actor was authorized to make this change: "owner" (the scan project's owner), "member" (an individually added member), "organization_share" (the project is shared with the actor's organization), or "organization_admin" (an administrator of the organization's security scanning). Absent when no project relationship was involved (for example, an automated change); events recorded before this field was introduced omit it.
+
+      - `"member"`
+
+      - `"organization_admin"`
+
+      - `"organization_share"`
+
+      - `"owner"`
+
+      - `"unspecified"`
 
     - `created_at: optional string`
 
@@ -26977,6 +27019,20 @@ compliance activities that can be filtered by various criteria.
     - `id: optional string`
 
       Unique identifier for the activity e.g. 'activity_abcd1234'
+
+    - `access_via: optional "member" or "organization_admin" or "organization_share" or 2 more or null`
+
+      How the actor was authorized to make this change: "owner" (the scan project's owner), "member" (an individually added member), "organization_share" (the project is shared with the actor's organization), or "organization_admin" (an administrator of the organization's security scanning). Absent when no project relationship was involved; events recorded before this field was introduced omit it.
+
+      - `"member"`
+
+      - `"organization_admin"`
+
+      - `"organization_share"`
+
+      - `"owner"`
+
+      - `"unspecified"`
 
     - `created_at: optional string`
 

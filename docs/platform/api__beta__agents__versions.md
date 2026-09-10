@@ -359,7 +359,7 @@ List Agent Versions
 
           - `name: "bash"`
 
-          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
             Permission policy for tool execution.
 
@@ -375,6 +375,12 @@ List Agent Versions
 
               - `type: "always_ask"`
 
+            - `BetaManagedAgentsAutoPolicy object`
+
+              The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
+
+              - `type: "auto"`
+
         - `BetaManagedAgentsEditToolConfig object`
 
           Configuration for the edit tool.
@@ -385,7 +391,7 @@ List Agent Versions
 
           - `name: "edit"`
 
-          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
             Permission policy for tool execution.
 
@@ -396,6 +402,10 @@ List Agent Versions
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
+
+            - `BetaManagedAgentsAutoPolicy object`
+
+              The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
         - `BetaManagedAgentsReadToolConfig object`
 
@@ -407,7 +417,7 @@ List Agent Versions
 
           - `name: "read"`
 
-          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
             Permission policy for tool execution.
 
@@ -418,6 +428,10 @@ List Agent Versions
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
+
+            - `BetaManagedAgentsAutoPolicy object`
+
+              The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
         - `BetaManagedAgentsWriteToolConfig object`
 
@@ -429,7 +443,7 @@ List Agent Versions
 
           - `name: "write"`
 
-          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
             Permission policy for tool execution.
 
@@ -440,6 +454,10 @@ List Agent Versions
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
+
+            - `BetaManagedAgentsAutoPolicy object`
+
+              The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
         - `BetaManagedAgentsGlobToolConfig object`
 
@@ -451,7 +469,7 @@ List Agent Versions
 
           - `name: "glob"`
 
-          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
             Permission policy for tool execution.
 
@@ -462,6 +480,10 @@ List Agent Versions
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
+
+            - `BetaManagedAgentsAutoPolicy object`
+
+              The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
         - `BetaManagedAgentsGrepToolConfig object`
 
@@ -473,7 +495,7 @@ List Agent Versions
 
           - `name: "grep"`
 
-          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
             Permission policy for tool execution.
 
@@ -484,6 +506,10 @@ List Agent Versions
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
+
+            - `BetaManagedAgentsAutoPolicy object`
+
+              The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
         - `BetaManagedAgentsWebFetchToolConfig object`
 
@@ -495,7 +521,7 @@ List Agent Versions
 
           - `name: "web_fetch"`
 
-          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
             Permission policy for tool execution.
 
@@ -506,6 +532,10 @@ List Agent Versions
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
+
+            - `BetaManagedAgentsAutoPolicy object`
+
+              The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
           - `allowed_domains: optional array of string`
 
@@ -525,7 +555,7 @@ List Agent Versions
 
           - `name: "web_search"`
 
-          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+          - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
             Permission policy for tool execution.
 
@@ -536,6 +566,10 @@ List Agent Versions
             - `BetaManagedAgentsAlwaysAskPolicy object`
 
               Tool calls require user confirmation before execution.
+
+            - `BetaManagedAgentsAutoPolicy object`
+
+              The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
           - `allowed_domains: optional array of string`
 
@@ -577,7 +611,7 @@ List Agent Versions
 
         - `enabled: boolean`
 
-        - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+        - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
           Permission policy for tool execution.
 
@@ -588,6 +622,10 @@ List Agent Versions
           - `BetaManagedAgentsAlwaysAskPolicy object`
 
             Tool calls require user confirmation before execution.
+
+          - `BetaManagedAgentsAutoPolicy object`
+
+            The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
     - `BetaManagedAgentsMCPToolset object`
 
@@ -599,7 +637,7 @@ List Agent Versions
 
         - `name: string`
 
-        - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+        - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
           Permission policy for tool execution.
 
@@ -610,6 +648,10 @@ List Agent Versions
           - `BetaManagedAgentsAlwaysAskPolicy object`
 
             Tool calls require user confirmation before execution.
+
+          - `BetaManagedAgentsAutoPolicy object`
+
+            The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
       - `default_config: BetaManagedAgentsMCPToolsetDefaultConfig`
 
@@ -617,7 +659,7 @@ List Agent Versions
 
         - `enabled: boolean`
 
-        - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+        - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
           Permission policy for tool execution.
 
@@ -628,6 +670,10 @@ List Agent Versions
           - `BetaManagedAgentsAlwaysAskPolicy object`
 
             Tool calls require user confirmation before execution.
+
+          - `BetaManagedAgentsAutoPolicy object`
+
+            The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
       - `mcp_server_name: string`
 

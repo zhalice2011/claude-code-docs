@@ -547,6 +547,62 @@ Stream Events
 
       - `"deny"`
 
+    - `evaluation: optional BetaManagedAgentsAgentToolEvaluation`
+
+      Names the resolved permission_policy that produced evaluated_permission, and under auto carries the judgement. Open union: clients must tolerate unknown variants.
+
+      - `BetaManagedAgentsAgentToolEvaluationAlwaysAllow object`
+
+        The resolved permission_policy was always_allow; accompanies evaluated_permission "allow".
+
+        - `type: "always_allow"`
+
+      - `BetaManagedAgentsAgentToolEvaluationAlwaysAsk object`
+
+        The resolved permission_policy was always_ask; accompanies evaluated_permission "ask".
+
+        - `type: "always_ask"`
+
+      - `BetaManagedAgentsAgentToolEvaluationAuto object`
+
+        The resolved permission_policy was auto: the server judged this invocation individually.
+
+        - `type: "auto"`
+
+        - `evaluated_permission: BetaManagedAgentsAgentAutoEvaluatedPermission`
+
+          The server's per-invocation judgement under the auto permission policy. Its type always equals the event's top-level evaluated_permission. Open union: clients must tolerate unknown variants.
+
+          - `BetaManagedAgentsAgentAutoEvaluatedPermissionAllow object`
+
+            The server judged the invocation safe to execute without client approval.
+
+            - `type: "allow"`
+
+          - `BetaManagedAgentsAgentAutoEvaluatedPermissionAsk object`
+
+            The server reached no judgement; the invocation is held for client approval.
+
+            - `type: "ask"`
+
+            - `reason_code: string`
+
+              The judgement's grounds in registry-bound terms, for client branching and audit rather than end-user display. Open registry; currently "indeterminate" (no judgement was reached). Clients must tolerate values outside this set.
+
+              maxLength: 64
+
+          - `BetaManagedAgentsAgentAutoEvaluatedPermissionDeny object`
+
+            The server judged the invocation high-risk; it does not execute and a synthetic error tool result is appended.
+
+            - `type: "deny"`
+
+            - `reason_code: string`
+
+              The judgement's grounds in registry-bound terms. Open registry; currently "high_risk" (judged high-risk; the call does not run). Clients must tolerate values outside this set.
+
+              maxLength: 64
+
     - `session_thread_id: optional string or null`
 
       When set, this event was cross-posted from a subagent's thread to surface its permission request on the primary thread's stream. Empty on the thread's own events. Echo this on a `user.tool_confirmation` event to route the approval back.
@@ -628,6 +684,10 @@ Stream Events
       - `"ask"`
 
       - `"deny"`
+
+    - `evaluation: optional BetaManagedAgentsAgentToolEvaluation`
+
+      Names the resolved permission_policy that produced evaluated_permission, and under auto carries the judgement. Open union: clients must tolerate unknown variants.
 
     - `session_thread_id: optional string or null`
 
@@ -1785,7 +1845,7 @@ Stream Events
 
                     - `name: "bash"`
 
-                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                       Permission policy for tool execution.
 
@@ -1801,6 +1861,12 @@ Stream Events
 
                         - `type: "always_ask"`
 
+                      - `BetaManagedAgentsAutoPolicy object`
+
+                        The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
+
+                        - `type: "auto"`
+
                   - `BetaManagedAgentsEditToolConfig object`
 
                     Configuration for the edit tool.
@@ -1811,7 +1877,7 @@ Stream Events
 
                     - `name: "edit"`
 
-                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                       Permission policy for tool execution.
 
@@ -1822,6 +1888,10 @@ Stream Events
                       - `BetaManagedAgentsAlwaysAskPolicy object`
 
                         Tool calls require user confirmation before execution.
+
+                      - `BetaManagedAgentsAutoPolicy object`
+
+                        The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
                   - `BetaManagedAgentsReadToolConfig object`
 
@@ -1833,7 +1903,7 @@ Stream Events
 
                     - `name: "read"`
 
-                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                       Permission policy for tool execution.
 
@@ -1844,6 +1914,10 @@ Stream Events
                       - `BetaManagedAgentsAlwaysAskPolicy object`
 
                         Tool calls require user confirmation before execution.
+
+                      - `BetaManagedAgentsAutoPolicy object`
+
+                        The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
                   - `BetaManagedAgentsWriteToolConfig object`
 
@@ -1855,7 +1929,7 @@ Stream Events
 
                     - `name: "write"`
 
-                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                       Permission policy for tool execution.
 
@@ -1866,6 +1940,10 @@ Stream Events
                       - `BetaManagedAgentsAlwaysAskPolicy object`
 
                         Tool calls require user confirmation before execution.
+
+                      - `BetaManagedAgentsAutoPolicy object`
+
+                        The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
                   - `BetaManagedAgentsGlobToolConfig object`
 
@@ -1877,7 +1955,7 @@ Stream Events
 
                     - `name: "glob"`
 
-                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                       Permission policy for tool execution.
 
@@ -1888,6 +1966,10 @@ Stream Events
                       - `BetaManagedAgentsAlwaysAskPolicy object`
 
                         Tool calls require user confirmation before execution.
+
+                      - `BetaManagedAgentsAutoPolicy object`
+
+                        The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
                   - `BetaManagedAgentsGrepToolConfig object`
 
@@ -1899,7 +1981,7 @@ Stream Events
 
                     - `name: "grep"`
 
-                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                       Permission policy for tool execution.
 
@@ -1910,6 +1992,10 @@ Stream Events
                       - `BetaManagedAgentsAlwaysAskPolicy object`
 
                         Tool calls require user confirmation before execution.
+
+                      - `BetaManagedAgentsAutoPolicy object`
+
+                        The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
                   - `BetaManagedAgentsWebFetchToolConfig object`
 
@@ -1921,7 +2007,7 @@ Stream Events
 
                     - `name: "web_fetch"`
 
-                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                       Permission policy for tool execution.
 
@@ -1932,6 +2018,10 @@ Stream Events
                       - `BetaManagedAgentsAlwaysAskPolicy object`
 
                         Tool calls require user confirmation before execution.
+
+                      - `BetaManagedAgentsAutoPolicy object`
+
+                        The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
                     - `allowed_domains: optional array of string`
 
@@ -1951,7 +2041,7 @@ Stream Events
 
                     - `name: "web_search"`
 
-                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                    - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                       Permission policy for tool execution.
 
@@ -1962,6 +2052,10 @@ Stream Events
                       - `BetaManagedAgentsAlwaysAskPolicy object`
 
                         Tool calls require user confirmation before execution.
+
+                      - `BetaManagedAgentsAutoPolicy object`
+
+                        The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
                     - `allowed_domains: optional array of string`
 
@@ -2003,7 +2097,7 @@ Stream Events
 
                   - `enabled: boolean`
 
-                  - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                  - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                     Permission policy for tool execution.
 
@@ -2014,6 +2108,10 @@ Stream Events
                     - `BetaManagedAgentsAlwaysAskPolicy object`
 
                       Tool calls require user confirmation before execution.
+
+                    - `BetaManagedAgentsAutoPolicy object`
+
+                      The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
               - `BetaManagedAgentsMCPToolset object`
 
@@ -2025,7 +2123,7 @@ Stream Events
 
                   - `name: string`
 
-                  - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                  - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                     Permission policy for tool execution.
 
@@ -2036,6 +2134,10 @@ Stream Events
                     - `BetaManagedAgentsAlwaysAskPolicy object`
 
                       Tool calls require user confirmation before execution.
+
+                    - `BetaManagedAgentsAutoPolicy object`
+
+                      The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
                 - `default_config: BetaManagedAgentsMCPToolsetDefaultConfig`
 
@@ -2043,7 +2145,7 @@ Stream Events
 
                   - `enabled: boolean`
 
-                  - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+                  - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                     Permission policy for tool execution.
 
@@ -2054,6 +2156,10 @@ Stream Events
                     - `BetaManagedAgentsAlwaysAskPolicy object`
 
                       Tool calls require user confirmation before execution.
+
+                    - `BetaManagedAgentsAutoPolicy object`
+
+                      The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
                 - `mcp_server_name: string`
 

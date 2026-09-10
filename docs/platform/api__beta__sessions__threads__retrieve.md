@@ -315,7 +315,7 @@ Get Session Thread
 
               - `name: "bash"`
 
-              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                 Permission policy for tool execution.
 
@@ -331,6 +331,12 @@ Get Session Thread
 
                   - `type: "always_ask"`
 
+                - `BetaManagedAgentsAutoPolicy object`
+
+                  The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
+
+                  - `type: "auto"`
+
             - `BetaManagedAgentsEditToolConfig object`
 
               Configuration for the edit tool.
@@ -341,7 +347,7 @@ Get Session Thread
 
               - `name: "edit"`
 
-              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                 Permission policy for tool execution.
 
@@ -352,6 +358,10 @@ Get Session Thread
                 - `BetaManagedAgentsAlwaysAskPolicy object`
 
                   Tool calls require user confirmation before execution.
+
+                - `BetaManagedAgentsAutoPolicy object`
+
+                  The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
             - `BetaManagedAgentsReadToolConfig object`
 
@@ -363,7 +373,7 @@ Get Session Thread
 
               - `name: "read"`
 
-              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                 Permission policy for tool execution.
 
@@ -374,6 +384,10 @@ Get Session Thread
                 - `BetaManagedAgentsAlwaysAskPolicy object`
 
                   Tool calls require user confirmation before execution.
+
+                - `BetaManagedAgentsAutoPolicy object`
+
+                  The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
             - `BetaManagedAgentsWriteToolConfig object`
 
@@ -385,7 +399,7 @@ Get Session Thread
 
               - `name: "write"`
 
-              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                 Permission policy for tool execution.
 
@@ -396,6 +410,10 @@ Get Session Thread
                 - `BetaManagedAgentsAlwaysAskPolicy object`
 
                   Tool calls require user confirmation before execution.
+
+                - `BetaManagedAgentsAutoPolicy object`
+
+                  The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
             - `BetaManagedAgentsGlobToolConfig object`
 
@@ -407,7 +425,7 @@ Get Session Thread
 
               - `name: "glob"`
 
-              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                 Permission policy for tool execution.
 
@@ -418,6 +436,10 @@ Get Session Thread
                 - `BetaManagedAgentsAlwaysAskPolicy object`
 
                   Tool calls require user confirmation before execution.
+
+                - `BetaManagedAgentsAutoPolicy object`
+
+                  The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
             - `BetaManagedAgentsGrepToolConfig object`
 
@@ -429,7 +451,7 @@ Get Session Thread
 
               - `name: "grep"`
 
-              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                 Permission policy for tool execution.
 
@@ -440,6 +462,10 @@ Get Session Thread
                 - `BetaManagedAgentsAlwaysAskPolicy object`
 
                   Tool calls require user confirmation before execution.
+
+                - `BetaManagedAgentsAutoPolicy object`
+
+                  The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
             - `BetaManagedAgentsWebFetchToolConfig object`
 
@@ -451,7 +477,7 @@ Get Session Thread
 
               - `name: "web_fetch"`
 
-              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                 Permission policy for tool execution.
 
@@ -462,6 +488,10 @@ Get Session Thread
                 - `BetaManagedAgentsAlwaysAskPolicy object`
 
                   Tool calls require user confirmation before execution.
+
+                - `BetaManagedAgentsAutoPolicy object`
+
+                  The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
               - `allowed_domains: optional array of string`
 
@@ -481,7 +511,7 @@ Get Session Thread
 
               - `name: "web_search"`
 
-              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+              - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
                 Permission policy for tool execution.
 
@@ -492,6 +522,10 @@ Get Session Thread
                 - `BetaManagedAgentsAlwaysAskPolicy object`
 
                   Tool calls require user confirmation before execution.
+
+                - `BetaManagedAgentsAutoPolicy object`
+
+                  The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
               - `allowed_domains: optional array of string`
 
@@ -533,7 +567,7 @@ Get Session Thread
 
             - `enabled: boolean`
 
-            - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+            - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
               Permission policy for tool execution.
 
@@ -544,6 +578,10 @@ Get Session Thread
               - `BetaManagedAgentsAlwaysAskPolicy object`
 
                 Tool calls require user confirmation before execution.
+
+              - `BetaManagedAgentsAutoPolicy object`
+
+                The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
         - `BetaManagedAgentsMCPToolset object`
 
@@ -555,7 +593,7 @@ Get Session Thread
 
             - `name: string`
 
-            - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+            - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
               Permission policy for tool execution.
 
@@ -566,6 +604,10 @@ Get Session Thread
               - `BetaManagedAgentsAlwaysAskPolicy object`
 
                 Tool calls require user confirmation before execution.
+
+              - `BetaManagedAgentsAutoPolicy object`
+
+                The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
           - `default_config: BetaManagedAgentsMCPToolsetDefaultConfig`
 
@@ -573,7 +615,7 @@ Get Session Thread
 
             - `enabled: boolean`
 
-            - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy`
+            - `permission_policy: BetaManagedAgentsAlwaysAllowPolicy or BetaManagedAgentsAlwaysAskPolicy or BetaManagedAgentsAutoPolicy`
 
               Permission policy for tool execution.
 
@@ -584,6 +626,10 @@ Get Session Thread
               - `BetaManagedAgentsAlwaysAskPolicy object`
 
                 Tool calls require user confirmation before execution.
+
+              - `BetaManagedAgentsAutoPolicy object`
+
+                The server decides each tool call individually: it judges, from the tool, its input, and the session content so far, whether the call is safe to execute or high-risk, and evaluates it to allow when judged safe and to deny when judged high-risk. A call the server cannot reach a judgement on evaluates to ask.
 
           - `mcp_server_name: string`
 

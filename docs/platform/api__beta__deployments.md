@@ -409,17 +409,17 @@ Create Deployment
 
     - `type: "github_repository"`
 
-    - `authorization_token: string`
-
-      GitHub authorization token used to clone the repository.
-
-      minLength: 1, maxLength: 4096
-
     - `url: string`
 
       Github URL of the repository
 
       minLength: 1, maxLength: 2048
+
+    - `authorization_token: optional string`
+
+      GitHub authorization token used to clone the repository. Required for private repositories; optional for public ones.
+
+      minLength: 1, maxLength: 4096
 
     - `checkout: optional BetaManagedAgentsBranchCheckout or BetaManagedAgentsCommitCheckout or null`
 
@@ -2985,17 +2985,17 @@ Update Deployment
 
     - `type: "github_repository"`
 
-    - `authorization_token: string`
-
-      GitHub authorization token used to clone the repository.
-
-      minLength: 1, maxLength: 4096
-
     - `url: string`
 
       Github URL of the repository
 
       minLength: 1, maxLength: 2048
+
+    - `authorization_token: optional string`
+
+      GitHub authorization token used to clone the repository. Required for private repositories; optional for public ones.
+
+      minLength: 1, maxLength: 4096
 
     - `checkout: optional BetaManagedAgentsBranchCheckout or BetaManagedAgentsCommitCheckout or null`
 
