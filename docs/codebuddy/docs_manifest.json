@@ -404,20 +404,20 @@
     },
     "enterprise__Overview.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/Overview",
-      "hash": "c221cfb5c70e48d0d1caaf3bbe045daaa049910800870f4f1d649e8f95157eb6",
-      "last_updated": "2026-08-11T10:00:23.057674",
+      "hash": "41900fdf956fbbda15bffd40529a29d2a97a67d55bd1d7bd1917fdafcc591742",
+      "last_updated": "2026-09-11T13:17:32.798082",
       "source": "codebuddy"
     },
     "enterprise__PrivateQuickstart.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/PrivateQuickstart",
-      "hash": "44b99bb39d15cb1acfc3d932f6e6273f993b078200110181dca0111e634e930a",
-      "last_updated": "2026-09-08T07:44:34.386720",
+      "hash": "2b7ae8898df11de6dc5b6afb451118abe312c1d7c343cb59d5baf5d1e7316819",
+      "last_updated": "2026-09-11T13:17:33.741470",
       "source": "codebuddy"
     },
     "enterprise__SaaSQuickstart.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/SaaSQuickstart",
-      "hash": "ba103284db87d605ef3c1870a50958728417019eb47a66f0ee0b0e13152c5052",
-      "last_updated": "2026-07-31T06:05:10.955724",
+      "hash": "74f2d9a2f3652a2a1e962ae1e7cfa88f6640eeffeef999253c39af27e2ac01ea",
+      "last_updated": "2026-09-11T13:17:34.689629",
       "source": "codebuddy"
     },
     "enterprise__adminguide__CloudAgent.md": {
@@ -512,8 +512,8 @@
     },
     "enterprise__price__Pricing.md": {
       "original_url": "https://www.codebuddy.cn/docs/enterprise/price/Pricing",
-      "hash": "2e902fd083f6bd1c29085c206540059deb59e41fefcf9ed9555f912583c4f65a",
-      "last_updated": "2026-07-06T07:38:26.058189",
+      "hash": "0511684844e91b06f2d36b47225ed4836c3af955e482e97a4e110a14daf56739",
+      "last_updated": "2026-09-11T13:17:50.358393",
       "source": "codebuddy"
     },
     "enterprise__price__Purchase.md": {
@@ -1641,7 +1641,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-09-11T07:49:00.146179",
+    "last_fetch_completed": "2026-09-11T13:20:53.213875",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 275,
     "pages_fetched_successfully": 273,
@@ -1653,7 +1653,7 @@
     "total_files": 273,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-11T07:49:00.146202",
+  "last_updated": "2026-09-11T13:20:53.213919",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

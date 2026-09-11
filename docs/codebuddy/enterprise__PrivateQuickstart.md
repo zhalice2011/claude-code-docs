@@ -1,14 +1,14 @@
-# 专有云企业版快速入门
+# 企业专享版快速入门（专有云企业版）
 
-## 开通专有云企业版（专享版）企业
+## 开通 WorkBuddy Enterprise 企业专享版
 
-通过官网或企业后台，[前往购买页](https://buy.cloud.tencent.com/aipay?operation_type=new_buy&edition_type=exclusive)，发起专享版企业新购，购买时输入企业名称、企业 ID、超级管理员手机号等信息。
+通过官网或企业后台，[前往购买页](https://buy.cloud.tencent.com/aipay?operation_type=new_buy&edition_type=exclusive)，发起 WorkBuddy Enterprise 企业专享版新购，购买时输入企业名称、企业 ID、超级管理员手机号等信息。
 
 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/9cf3aa97108c11f0854e525400454e06.png)
 
 ## 访问企业管理后台
 
-1\.购买成功后，前往[官网](https://www.codebuddy.cn/home/)使用超管手机号登录。
+1. 购买成功后，前往[官网](https://www.codebuddy.cn/home/)使用超管手机号登录。
 
 ![访问企业管理后台](/docs/static/%E4%B8%93%E7%94%A8%E4%BA%91%E4%BC%81%E4%B8%9A%E7%89%88%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-1.CryI-iJ8.png)2. 专享版购买成功后，系统将自动进行部署，部署期间暂不可使用。部署完成后，即可从[官网](https://www.codebuddy.cn/home/)进入企业控制台。
 
