@@ -2845,8 +2845,8 @@
     "api__errors.md": {
       "original_url": "https://platform.claude.com/docs/en/api/errors",
       "original_md_url": "https://platform.claude.com/docs/en/api/errors.md",
-      "hash": "f4835ef9676f61918f28196337d34a2ad4559e5747ab522cb1fff0cd9a58f4b7",
-      "last_updated": "2026-09-01T18:18:23.137596",
+      "hash": "994df3f3660f102b7127d1d543ce0100eb2f7d6fe40ff86491e5ecd4276ffeb3",
+      "last_updated": "2026-09-11T02:10:15.240769",
       "source": "platform"
     },
     "api__files.md": {
@@ -3188,8 +3188,8 @@
     "build-with-claude__extended-thinking.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking.md",
-      "hash": "e4659de68a1379fdcd291cf6ba725003e78450c67e57d363273cc6238a825c96",
-      "last_updated": "2026-09-01T18:18:56.808993",
+      "hash": "f36ffca7bb81f3a718ac63d4feddc5d0579349aa60e328285bea1b996afc466b",
+      "last_updated": "2026-09-11T02:10:47.419350",
       "source": "platform"
     },
     "build-with-claude__fallback-credit.md": {
@@ -3356,8 +3356,8 @@
     "build-with-claude__task-budgets.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/task-budgets",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/task-budgets.md",
-      "hash": "e3cfd1af5bd8e63eccef60bac877083056f72161d6fd62e3b790597f3c7275e3",
-      "last_updated": "2026-09-03T07:40:55.934659",
+      "hash": "62748c519874f1dd9d2d05e0c89d2a45e3e25444bb704e5d906ebc1f7d764741",
+      "last_updated": "2026-09-11T02:11:03.151627",
       "source": "platform"
     },
     "build-with-claude__thinking.md": {
@@ -3384,8 +3384,8 @@
     "build-with-claude__thinking-troubleshooting.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/thinking-troubleshooting",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/thinking-troubleshooting.md",
-      "hash": "65e073a4ed945452ce0981304d7c434963911419d14a246df531bae73de7b39b",
-      "last_updated": "2026-09-01T18:19:15.136461",
+      "hash": "8b39ee35c7ac19a6106aceca5b4365ef7db543751822d323c900889575c63f1b",
+      "last_updated": "2026-09-11T02:11:05.626787",
       "source": "platform"
     },
     "build-with-claude__token-counting.md": {
@@ -3720,15 +3720,15 @@
     "manage-claude__inference-hooks-configuration.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks-configuration",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks-configuration.md",
-      "hash": "252e17d2b80bf07e8aff2110e0dddaac85d1e9e74cd84930a2d7a99ad76184f4",
-      "last_updated": "2026-09-10T18:06:09.833111",
+      "hash": "bd8dfeb074241457dcbc16e2bde251e8c4f37f330711301ef0beb377771ed94d",
+      "last_updated": "2026-09-11T02:11:36.787002",
       "source": "platform"
     },
     "manage-claude__inference-hooks-endpoint.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks-endpoint",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks-endpoint.md",
-      "hash": "0207b345247c2db6b0bf7cc3bc6758da4c9fcfa4c167c098465e5718c34207c0",
-      "last_updated": "2026-09-01T00:23:32.246136",
+      "hash": "7ae3bfe271bf2df6b4695e12699fdb97882de46d3f7be0a1bc0ca42275d06cec",
+      "last_updated": "2026-09-11T02:11:37.446208",
       "source": "platform"
     },
     "manage-claude__rate-limits-api.md": {
@@ -4371,7 +4371,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-09-10T23:00:51.666398",
+    "last_fetch_completed": "2026-09-11T02:12:36.282138",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 628,
@@ -4386,7 +4386,7 @@
     "total_files": 624,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-10T23:00:51.666419",
+  "last_updated": "2026-09-11T02:12:36.282160",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

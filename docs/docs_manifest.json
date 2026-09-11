@@ -353,8 +353,8 @@
     "claude-apps-gateway-config.md": {
       "original_url": "https://code.claude.com/docs/en/claude-apps-gateway-config",
       "original_md_url": "https://code.claude.com/docs/en/claude-apps-gateway-config.md",
-      "hash": "fccdefd966e2e36e6a8ed1218414b8a4d9893d5333a4b0423a8cc642c26ddefd",
-      "last_updated": "2026-09-10T22:51:48.826956",
+      "hash": "3257bfe37d57f4673a2bd0a0cd20daf9780ff3a718ac81280970d97368c04245",
+      "last_updated": "2026-09-11T02:04:00.065823",
       "source": "claude-code"
     },
     "claude-apps-gateway-deploy.md": {
@@ -1340,7 +1340,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-09-10T22:53:51.428178",
+    "last_fetch_completed": "2026-09-11T02:05:41.907407",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 191,
@@ -1350,7 +1350,7 @@
     "total_files": 191,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-10T22:53:51.428193",
+  "last_updated": "2026-09-11T02:05:41.907435",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
