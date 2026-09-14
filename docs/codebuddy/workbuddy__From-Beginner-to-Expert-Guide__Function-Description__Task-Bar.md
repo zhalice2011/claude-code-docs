@@ -79,7 +79,7 @@ WorkBuddy 内置多个主流模型，可按需灵活切换：
 
 **技能（Skills）** 用于扩展 WorkBuddy 的任务能力。启用对应技能后，系统可完成更多特定类型的工作。
 
-![](/docs/static/image-7.C15-_p58.png)在对话框中选择已安装技能，WorkBuddy 执行任务时将自动调用对应能力：
+![](https://download.codebuddy.cn/web/docs/71c8722a08165ddedf566c5f1711bb0ec8ea991b/docs/static/image-7.C15-_p58.png)在对话框中选择已安装技能，WorkBuddy 执行任务时将自动调用对应能力：
 
 ![](/docs/static/image-8.CcNU1SIQ.png)
 

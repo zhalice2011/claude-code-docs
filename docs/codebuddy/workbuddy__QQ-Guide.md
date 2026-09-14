@@ -17,7 +17,7 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 
 打开浏览器，访问 [QQ 开放平台](https://q.qq.com/qqbot/openclaw/login.html)，使用QQ扫码登录。
 
-![登录QQ开放平台](/docs/static/qq-guide-1.BSmYTk4-.png)
+![登录QQ开放平台](https://download.codebuddy.cn/web/docs/71c8722a08165ddedf566c5f1711bb0ec8ea991b/docs/static/qq-guide-1.BSmYTk4-.png)
 
 ### 2 创建机器人
 
