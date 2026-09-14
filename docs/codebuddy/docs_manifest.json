@@ -1026,6 +1026,12 @@
       "last_updated": "2026-07-02T12:03:08.297364",
       "source": "codebuddy"
     },
+    "workbuddy__Account-Cancellation.md": {
+      "original_url": "https://www.codebuddy.cn/docs/workbuddy/Account-Cancellation",
+      "hash": "4a52578b2537016d68e685f954814755bca995597adb6eefc43932e0fe5d87a7",
+      "last_updated": "2026-09-14T02:34:43.453468",
+      "source": "codebuddy"
+    },
     "workbuddy__Billing.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Billing",
       "hash": "869e28bf02f112372dec9a218b46276d6549434bc390693eebfb2705a2ef7150",
@@ -1100,8 +1106,8 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__FAQ.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/FAQ",
-      "hash": "89c1aca2e73bdd9cad65adb4ac0e24957fea2c81da70911c78a1e939cb0d01b4",
-      "last_updated": "2026-09-03T07:46:01.943045",
+      "hash": "d48eb8bf2a6269cd183fbd068a47286cdc93007c1f7575ccc2631e5e07d784bc",
+      "last_updated": "2026-09-14T02:34:56.240490",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Assistant.md": {
@@ -1484,8 +1490,8 @@
     },
     "workbuddyapp__Settings.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/Settings",
-      "hash": "ce7cac96fc17f295c008bfcbfb174b6b6b985aec0d982545c705e39de64416be",
-      "last_updated": "2026-08-13T07:24:26.171987",
+      "hash": "cadae9a7788d38cd4db7a9385469d38806710638c820b6602851ddd094024dc7",
+      "last_updated": "2026-09-14T02:35:56.258924",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Attachments-and-Skills.md": {
@@ -1598,8 +1604,8 @@
     },
     "workbuddymini__features__Settings.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Settings",
-      "hash": "4477b4463b51f460cf92cca3305fd9916fb77e98c0bbf9c415e952cb67786e95",
-      "last_updated": "2026-06-26T12:16:51.332334",
+      "hash": "4bd089d27934f8ec92602576d0fa3a3c76f3399413d7bc3ef52701313170b583",
+      "last_updated": "2026-09-14T02:36:13.852780",
       "source": "codebuddy"
     },
     "workbuddymini__features__Share.md": {
@@ -1641,19 +1647,19 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-09-13T22:56:40.898978",
+    "last_fetch_completed": "2026-09-14T02:36:19.427623",
     "docs_root_url": "https://www.codebuddy.cn/docs",
-    "pages_discovered": 275,
-    "pages_fetched_successfully": 273,
+    "pages_discovered": 276,
+    "pages_fetched_successfully": 274,
     "pages_failed": 2,
     "failed_pages": [
       "/plugin/\u76f8\u5173\u534f\u8bae/\u670d\u52a1\u7b49\u7ea7\u534f\u8bae",
       "/plugin/\u76f8\u5173\u534f\u8bae/\u8f6f\u4ef6\u8bb8\u53ef\u53ca\u670d\u52a1\u534f\u8bae"
     ],
-    "total_files": 273,
+    "total_files": 274,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-13T22:56:40.899000",
+  "last_updated": "2026-09-14T02:36:19.427641",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
