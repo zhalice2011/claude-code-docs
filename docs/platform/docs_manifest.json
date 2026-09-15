@@ -220,8 +220,8 @@
     "agents-and-tools__tool-use__browser-use-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool.md",
-      "hash": "8545d84d7c206cf2a3bb26bc3eb814efe827a4012e6330842f11b15a0a75b188",
-      "last_updated": "2026-09-11T18:02:35.079049",
+      "hash": "8119432f8aaee579c2a63b50183e20e46f9ccc6347ac780651ca55150497b558",
+      "last_updated": "2026-09-15T18:37:09.820151",
       "source": "platform"
     },
     "agents-and-tools__tool-use__build-a-tool-using-agent.md": {
@@ -241,8 +241,8 @@
     "agents-and-tools__tool-use__computer-use-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool.md",
-      "hash": "4de659db5a454a438de8f37a25742b665254c305624f55cfcc5b76491ae62d46",
-      "last_updated": "2026-09-01T18:07:21.772369",
+      "hash": "23aa6bf74b1040e9628082f6e64adaa89d9e448e9af03e78594c73deffd452b3",
+      "last_updated": "2026-09-15T18:37:11.833801",
       "source": "platform"
     },
     "agents-and-tools__tool-use__define-tools.md": {
@@ -3153,8 +3153,8 @@
     "build-with-claude__compaction.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/compaction.md",
-      "hash": "ef6ae7f3db36c52dbf64d94eb4e299753f9fbfa31984a8699ff31a69f9de801b",
-      "last_updated": "2026-09-01T18:18:53.495736",
+      "hash": "63ce04d34972106f552a31375a7c0e00b114cab9ba0475dc157a59c87066fa98",
+      "last_updated": "2026-09-15T18:42:01.689227",
       "source": "platform"
     },
     "build-with-claude__context-editing.md": {
@@ -3230,8 +3230,8 @@
     "build-with-claude__mid-conversation-system-messages.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages.md",
-      "hash": "df760c4030d37d545d7d610864982695777705ebe792bad1e2bac361376eef32",
-      "last_updated": "2026-09-09T18:20:13.684201",
+      "hash": "694c87e03757a6d03b2e39b10075240e2ed85b6433d89b753759d34a6bcacbae",
+      "last_updated": "2026-09-15T18:42:09.066401",
       "source": "platform"
     },
     "build-with-claude__multilingual-support.md": {
@@ -3258,8 +3258,8 @@
     "build-with-claude__preserved-thinking.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/preserved-thinking",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/preserved-thinking.md",
-      "hash": "99e447435262560913bf7bee7418902f3df352afe2fd532fd37d136eddd48c36",
-      "last_updated": "2026-09-14T21:18:02.978495",
+      "hash": "7f3a3c7c028b56d5e8ec459ff4bc662adae74f9bff71e3a64d7557bb30dd8e89",
+      "last_updated": "2026-09-15T18:42:11.745289",
       "source": "platform"
     },
     "build-with-claude__prompt-caching.md": {
@@ -4028,8 +4028,8 @@
     "models__fable-5-1__migration-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/models/fable-5-1/migration-guide",
       "original_md_url": "https://platform.claude.com/docs/en/models/fable-5-1/migration-guide.md",
-      "hash": "15dff47e55aa49162aed40b5d23ed8a618ffb4c0843e506abf68387ac0d8ece8",
-      "last_updated": "2026-09-11T18:09:05.333633",
+      "hash": "a890f3f0e81d6bc8354433c22bc2ee6917d3b8325a57714afcf7a5877b107ef7",
+      "last_updated": "2026-09-15T18:43:25.158497",
       "source": "platform"
     },
     "models__fable-5-1__overview.md": {
@@ -4189,8 +4189,8 @@
     "release-notes__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/overview",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/overview.md",
-      "hash": "5f80d2c55c8539d25cb2e16dd90a0bd654060b4155d9eec5ca6ea97924660f4d",
-      "last_updated": "2026-09-10T20:30:47.362157",
+      "hash": "22e8aaef098443055ac3c3ad3ac81a0f5f96a0511e98135f94fa7d724e244c56",
+      "last_updated": "2026-09-15T18:43:40.861502",
       "source": "platform"
     },
     "release-notes__system-prompts__claude-fable-5.md": {
@@ -4343,8 +4343,8 @@
     "test-and-evaluate__strengthen-guardrails__mitigate-jailbreaks.md": {
       "original_url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks",
       "original_md_url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks.md",
-      "hash": "07336594cc28a417d9f0cc36c86c72d53f2fd8fcb692529f2a8bfd5f90106e5b",
-      "last_updated": "2026-08-12T18:58:17.263161",
+      "hash": "5543541f08a4e6569693a952bfec8cc5b1eaee078d22e63f99087aeee254dc1f",
+      "last_updated": "2026-09-15T18:43:54.893435",
       "source": "platform"
     },
     "test-and-evaluate__strengthen-guardrails__reduce-hallucinations.md": {
@@ -4371,7 +4371,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-09-15T14:08:10.420650",
+    "last_fetch_completed": "2026-09-15T18:43:56.727799",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 628,
@@ -4386,7 +4386,7 @@
     "total_files": 624,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-15T14:08:10.420678",
+  "last_updated": "2026-09-15T18:43:56.727823",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
