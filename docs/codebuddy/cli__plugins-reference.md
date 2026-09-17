@@ -8,6 +8,8 @@
 
 ## 一、插件组件参考
 
+插件技能和代理的 Markdown 文件支持 LF、Windows CRLF 换行，以及带 UTF\-8 BOM 的文件头。YAML Frontmatter 必须从文件开头开始，以各自独立一行的 `---` 包围；结束标记之后为正文。
+
 ### 1\. Skills（技能）
 
 插件通过添加技能来扩展 CodeBuddy，创建 `/name` 快捷方式供用户或 AI 助手调用。

@@ -4,7 +4,7 @@
 
 任务发送后，WorkBuddy 自动拆解并逐步执行。
 
-![任务执行](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/image28.C6FRYO4b.png)## 二、步骤拆解
+![任务执行](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/image28.C6FRYO4b.png)## 二、步骤拆解
 
 任务被自动拆分为多个阶段，每个阶段以卡片形式展示：
 
@@ -12,7 +12,7 @@
 - **「已完成」**（绿色标签）：该步骤已执行完毕
 - 点击卡片右侧 **\>** 可展开查看详细过程
 
-![步骤拆解](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/image29.C-OOCsMI.png)## 三、继续追问
+![步骤拆解](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/image29.C-OOCsMI.png)## 三、继续追问
 
 任务完成后可在同一对话中继续追问，例如：
 
@@ -26,4 +26,4 @@
 
 任务进行中时，输入栏会显示停止按钮（■），点击可随时中断当前执行。中断后仍可继续补充说明或调整需求。
 
-![中断执行](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/image30.D8dCRWhI.png)
+![中断执行](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/image30.D8dCRWhI.png)

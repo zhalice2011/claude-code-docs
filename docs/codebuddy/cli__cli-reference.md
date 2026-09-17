@@ -2,6 +2,8 @@
 
 > CodeBuddy Code 命令行工具完整参考手册，包含所有命令和参数说明。
 
+启动排查可使用 `codebuddy --startup-prof-md`，在启动就绪后自动生成 Markdown 和 JSON 报告，当前会话无需退出。使用方法见[启动性能采集](./startup-profiling)。
+
 ## CLI 命令
 
 | 命令 | 说明 | 示例 |
@@ -15,6 +17,7 @@
 | `codebuddy -r "<session-id>" "查询"` | 通过 ID 恢复会话 | `codebuddy -r "abc123" "完成这个 MR"` |
 | `codebuddy update` | 更新到最新版本 | `codebuddy update` |
 | `codebuddy mcp` | 配置 Model Context Protocol (MCP) 服务器 | 参见 [CodeBuddy Code MCP 文档](./mcp) |
+| `codebuddy project purge [path]` | 清理项目本地状态（transcript、任务、日志、历史等） | `codebuddy project purge ~/work/repo --dry-run` |
 | `codebuddy agents [--json]` | 按来源分组列出全部已配置子代理 | `codebuddy agents --json` |
 | `codebuddy daemon start` | 启动 Daemon 守护进程 | `codebuddy daemon start --port 8080` |
 | `codebuddy daemon stop` | 停止 Daemon | `codebuddy daemon stop` |
@@ -30,6 +33,59 @@
 | `codebuddy attach <pid|name>` | 附加到后台 Worker | `codebuddy attach feature-x` |
 | `codebuddy kill <pid|name>` | 终止 Worker 进程 | `codebuddy kill feature-x` |
 
+## 清理项目本地数据
+
+`codebuddy project purge [path]` 用于删除 CodeBuddy 为项目保存在本机的运行时状态。省略 `[path]` 时，交互式终端会先弹出项目选择器；传 `--all` 则清理所有项目的本地状态。
+
+### 常用选项
+
+| 选项 | 说明 |
+| --- | --- |
+| `[path]` | 指定要清理的项目路径；省略时在交互式终端中选择项目 |
+| `--dry-run` | 只预览 purge plan，不执行删除 |
+| `-y`, `--yes` | 跳过最终确认，直接执行删除 |
+| `-i`, `--interactive` | 按清理类别逐项确认是否删除 |
+| `--all` | 清理所有项目的本地状态 |
+| `-h`, `--help` | 打印命令用法 |
+
+> **约束**：`-i/--interactive` 与 `--all` 不能同时使用。交互时最多按 Project state、Prompt history、Project configuration、Project trust 四个逻辑类别确认；每个类别内部仍逐个安全删除底层 target。项目选择器和逐项确认仅在完整交互式 CLI 中可用；headless 环境请显式传入 `[path]` 或 `--all`。非 TTY 环境执行实际删除时还需配合 `--yes`，也可先用 `--dry-run` 预览。
+
+### 单项目模式会清理什么
+
+- 已验证归属到该项目的 transcript、子代理 transcript 关联产物、任务列表、debug 日志、文件编辑历史和 file rollback sidecar
+- `~/.codebuddy/history.jsonl` 中属于该项目的输入历史行
+- `~/.codebuddy.json` 中该项目的 `projects[<path>]` 配置
+- `~/.codebuddy/settings.json` 中匹配该项目的 `trustedDirectories` 规则
+
+> **安全边界**：为避免误删，单项目模式只清理能可靠验证归属的数据。仅凭压缩路径推断出的旧格式项目记忆目录、未验证项目目录，以及与 `memory`、`sessions`、`storage.json` 项目级状态重名的异常 session 都会保守跳过并告警。
+
+### `--all` 会额外清理什么
+
+- `~/.codebuddy/projects/` 下的全部项目状态
+- 全部 session 任务列表、文件编辑历史、debug 日志与 `history.jsonl`
+- `~/.codebuddy.json` 中全部项目级配置项
+- `~/.codebuddy/settings.json` 中全部项目 trust rules
+- 旧格式项目记忆目录（保留 `~/.codebuddy/memories/global/`）
+
+### 示例
+
+bash
+```
+# 预览当前项目将删除哪些内容
+codebuddy project purge --dry-run
+
+# 清理指定项目，并跳过最终确认
+codebuddy project purge ~/work/repo --yes
+
+# 按清理类别逐项确认指定项目的 purge plan
+codebuddy project purge ~/work/repo --interactive
+
+# 预览所有项目的本地状态清理范围
+codebuddy project purge --all --dry-run
+```
+
+> `project purge` 只清理本地 CodeBuddy 状态，不会修改你的项目源码仓库，也不会删除全局 MCP 服务器配置或 `~/.codebuddy/memories/global/` 中的全局记忆。
+
 ## CLI 参数
 
 自定义 CodeBuddy Code 行为的命令行参数：
@@ -37,15 +93,15 @@
 | 参数 | 说明 | 示例 |
 | --- | --- | --- |
 | `--add-dir` | 添加额外的工作目录供 CodeBuddy 访问（验证每个路径是否存在） | `codebuddy --add-dir ../apps ../lib` |
-| `--agent` | 本进程新会话的主 Agent（TUI / `--serve` Web / ACP）。内置：`cli`、`ptc`、`minimal`、`create`、`multitask`，或自定义 agent 名。压过 `codebuddy.mainAgent.lastUsed`，**不写入** `codebuddy.mainAgent.default` 或 settings `agent`。标准模式请显式 `cli`。`multitask` **只允许交互 TUI**（stdout\+stdin 都是 TTY）；与 `-p` / stream\-json / `--acp` / `--serve` / 管道 stdin 互斥，进程非 0。ACP 宿主改走 [`session/set_multitask`](./acp#multitask-协调器sessionset-multitask)。对照表见 [Web UI](./web-ui#serve-启动-模式与权限) | `codebuddy --agent multitask` |
-| `--multitask` | 归一成 `--agent multitask` 后再盖章、再走同一套入口守卫。显式 `--multitask` 优先于其它 `--agent`。交互 TUI only | `codebuddy --multitask` |
+| `--agent` | 本进程新会话的主 Agent（TUI / `--serve` Web / ACP）。内置：`cli`、`ptc`、`minimal`、`create`，或自定义 agent 名。`multitask` **不是**站立 mode，只开 overlay（工具面走协调器，picker 身份仍是当前 mode）。**极简站立不能开 overlay**。压过 `codebuddy.mainAgent.lastUsed`，**不写入** `codebuddy.mainAgent.default` 或 settings `agent`。标准模式请显式 `cli`。TUI 运行中用 [`/agent-mode`](./slash-commands) 切换（仅空白会话）。`multitask` **只允许交互 TUI**（stdout\+stdin 都是 TTY）；与 `-p` / stream\-json / `--acp` / `--serve` / 管道 stdin 互斥，进程非 0。ACP 宿主改走 [`session/set_config_option`](./acp#multitask-协调器)（`configId=multitask`）。对照表见 [Web UI](./web-ui#serve-启动-模式与权限) | `codebuddy --agent multitask` |
+| `--multitask` | 归一成 `--agent multitask` 后再开 overlay、再走同一套入口守卫。不改当前 mode。极简站立不盖 overlay。显式 `--multitask` 优先于其它 `--agent`。交互 TUI only | `codebuddy --multitask` |
 | `--agents` | 通过 JSON 动态定义自定义[子代理](./sub-agents)（格式见下文） | `codebuddy --agents '{"reviewer":{"description":"审查代码","prompt":"你是代码审查员"}}'` |
 | `--allowedTools` | 除了[settings.json 文件](./settings)外,无需提示用户即可允许的工具列表 | `"Bash(git log:*)" "Bash(git diff:*)" "Read"` |
 | `--disallowedTools` | 除了[settings.json 文件](./settings)外,应禁止使用的工具列表 | `"Bash(git log:*)" "Bash(git diff:*)" "Edit"` |
 | `--tools` | 限制可用的内置工具集（白名单）。空字符串 `""` 禁用所有内置工具，`"default"` 使用全部工具，或指定逗号分隔的工具名。支持 `Defer(X)` / `NoDefer(X)` 修饰符按需调整工具的延迟加载状态，详见 [工具延迟加载覆盖](./tool-defer-overlay) | `codebuddy --tools "Bash,Read,Defer(Glob)"` |
 | `--mcp-config <fileOrString>` | 从 JSON 文件或 JSON 字符串加载 MCP 服务器配置 | `codebuddy --mcp-config ./mcp.json` |
 | `--strict-mcp-config` | 仅使用 `--mcp-config` 或 SDK 显式注入的 MCP，忽略 Plugin MCP 以及用户、项目和本地配置。显式 `--agents` / SDK Agent 仅保留内联 MCP 对象，名称字符串引用仍忽略；未传入时继续加载全部常规来源 | `codebuddy --serve --strict-mcp-config` |
-| `--no-session-persistence` | 仅在内存中保留会话上下文，不创建或更新本地 transcript；仍可以只读加载已有会话 | `codebuddy --serve --no-session-persistence` |
+| `--no-session-persistence` | 仅在内存中保留会话上下文，不创建或更新本地 transcript；仍可以只读加载已有会话，不影响 stream\-json 模式下已启用的 `--replay-user-messages` 用户消息回显 | `codebuddy --serve --no-session-persistence` |
 | `--print`, `-p` | 打印响应后退出,不进入交互模式 | `codebuddy -p "查询"` |
 | `--settings` | 从 JSON 文件或 JSON 字符串加载额外的设置配置 | `codebuddy --settings '{"model":"gpt-5"}' "查询"` |
 | `--setting-sources` | 指定要加载的设置源,逗号分隔（可选值: `user`, `project`, `local`）。默认: `user,project,local` | `codebuddy --setting-sources project,local "查询"` |
@@ -75,7 +131,7 @@
 | `--worktree [name]` | 在独立的 git worktree 中运行（详见 [Worktree 文档](./worktree)） | `codebuddy --worktree` 或 `codebuddy --worktree my-feature` |
 | `--tmux` | 在 tmux 会话中运行（与 `--worktree` 配合使用） | `codebuddy --worktree --tmux` |
 | `--plugin-dir <dirs...>` | 从本地目录加载插件（用于开发/测试），可指定多个路径。详见 [插件文档](./plugins) | `codebuddy --plugin-dir ./my-plugin ../other-plugin` |
-| `--bg` | 后台运行会话（detached 模式），日志输出到 `~/.codebuddy/logs/`。详见 [Daemon 文档](./daemon) | `codebuddy --bg "实现登录页面"` |
+| `--bg` | 后台运行会话（Windows 下仍随所属 CLI 退出），日志输出到 `~/.codebuddy/logs/`。详见 [Daemon 文档](./daemon) | `codebuddy --bg "实现登录页面"` |
 | `--name <name>` | 后台会话名称（与 `--bg` 配合使用，便于通过 `ps`/`logs`/`kill` 查找） | `codebuddy --bg --name feature-x "实现功能"` |
 | `--serve` | 启动 HTTP 服务（Web UI、REST API、ACP）。未叠加 `--acp` 时 ACP 走 `/api/v1/acp`，不会在进程 stdout 输出 `session/update` JSON\-RPC | `codebuddy --serve --port 8080` |
 | `--port <number>` | HTTP 监听端口（仅 `--serve`）。默认自动分配 | `codebuddy --serve --port 7890` |
@@ -85,6 +141,7 @@
 | `--open` | `--serve` 启动后打开浏览器 | `codebuddy --serve --open` |
 | `--acp` | 以 ACP 服务端启动（默认 stdio NDJSON）。不要与「仅 `--serve`」混淆：后者给 Web UI 用 HTTP ACP | `codebuddy --acp` |
 | `--acp-transport` | 仅在同时传了 `--acp` 时生效：`stdio`（默认）或 `streamable-http`。未传 `--acp` 时 commander 缺省 `stdio` **不会**覆盖 `--serve` 的 HTTP transport | `codebuddy --acp --acp-transport streamable-http` |
+| `--a2a` | 通过 stdio 接收 A2A JSON\-RPC 请求，支持 `SendMessage`，并通过进程内 TaskStore 支持 `GetTask`、`ListTasks` 和 `CancelTask`。其他方法由 A2A SDK 按服务端能力处理，未提供对应能力时返回协议错误。单独使用时 A2A 独占 stdio；与 `--input-format stream-json` 组合时，两种协议按行分流并复用同一会话。不能与 `--acp` 组合 | `codebuddy -p --a2a --input-format stream-json --output-format stream-json` |
 | `--prewarm` | 以预热待命模式启动：先完成启动初始化后挂起，等待外部通过 IPC 唤醒（唤醒时才绑定工作目录）。用于消除会话拉起时的冷启动等待。默认关闭。 | `codebuddy --prewarm --prewarm-id pool1` |
 | `--prewarm-id <id>` | 预热 IPC 端点标识（默认取进程 PID），用于构造本地 socket/管道地址。配合 `cbc-prewarm` 管理命令使用。 | `codebuddy --prewarm --prewarm-id pool1` |
 

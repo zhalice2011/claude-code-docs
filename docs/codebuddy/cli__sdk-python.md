@@ -441,6 +441,7 @@ HookEvent = (
     | Literal["Stop"]
     | Literal["SubagentStop"]
     | Literal["PreCompact"]
+    | Literal["PostCompact"]
     | Literal["WorktreeCreate"]
     | Literal["WorktreeRemove"]
 )

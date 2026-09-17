@@ -23,19 +23,19 @@
 
 输入机器人名称、头像、应用简介等基本信息。
 
-![填写基本信息](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom_create_bot_1.D5tSjnJQ.png)
+![填写基本信息](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/wecom_create_bot_1.D5tSjnJQ.png)
 
 ### 1\.3 切换到 API 模式
 
 在页面底部点击「API 模式创建」。
 
-![切换 API 模式](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom_create_bot_2.D6BjqJJ6.png)
+![切换 API 模式](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/wecom_create_bot_2.D6BjqJJ6.png)
 
 ### 1\.4 选择长连接方式
 
 在 API 模式创建页面，找到「API 配置」区域，将连接方式选择为「使用长连接」。
 
-![API 模式创建页面](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom_create_bot_3.DRlXQpTS.png)
+![API 模式创建页面](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/wecom_create_bot_3.DRlXQpTS.png)
 
 ### 1\.5 获取 Bot ID 和 Secret
 
@@ -44,7 +44,7 @@
 - **Bot ID**：机器人的唯一标识（示例：`aibVGv7I...`）
 - **Secret**：点击「获取」或「点击获取」获取访问密钥
 
-![API 配置 - 获取 Bot ID 和 Secret](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom_create_bot_4.mRGxr9uD.png)
+![API 配置 - 获取 Bot ID 和 Secret](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/wecom_create_bot_4.mRGxr9uD.png)
 
 > ⚠️ **重要**：Secret 仅显示一次。如丢失可在机器人详情页重新生成。
 
@@ -54,7 +54,13 @@
 
 ---
 
-## 2\. 配置环境变量
+## 2\. 接入方式
+
+推荐在 `/remote-control` 里选 **Add WeCom Bot → Scan QR**，用企业微信扫终端或网页上的码。扫完会自动拿到 Bot ID / Secret 并连上长连接。
+
+也可以继续手填（环境变量或 `~/.codebuddy/channels/wecom/instances.json`）：
+
+## 2\.1 配置环境变量
 
 在启动 CodeBuddy CLI 前，设置以下环境变量：
 
@@ -70,6 +76,10 @@ export CODEBUDDY_WECOM_BOT_SECRET="<你的 Bot Secret>"
 | `CODEBUDDY_WECOM_BOT_ID` | AI Bot ID（必填） | — |
 | `CODEBUDDY_WECOM_BOT_SECRET` | AI Bot Secret（必填） | — |
 | `CODEBUDDY_WECOM_BOT_WS_URL` | WebSocket 服务地址（私有化部署时使用） | `wss://openws.work.weixin.qq.com` |
+| `CODEBUDDY_WECOM_STREAMING_DEFAULT` | 全局默认流式开关（`1`/`0`，或 `true`/`false`） | 未设置 → 开（与逐机器人默认一致） |
+| `CODEBUDDY_WECOM_CARDS_DEFAULT` | 全局默认权限/建议卡片开关（`1`/`0`，或 `true`/`false`） | 未设置 → 开（与逐机器人默认一致） |
+
+**优先级**：单个机器人在操作页里显式设置的流式/卡片开关 \> 上面两个全局默认 \> 内置默认（开）。多个机器人共享一套全局默认时，只需设置一次，无需逐个机器人配置。
 
 ### 持久化配置（可选）
 
@@ -101,30 +111,33 @@ codebuddy
 
 ### 3\.3 连接 wecom\-bot
 
-使用方向键选择 `wecom-bot` 条目，按 `Enter` 发起连接：
+使用方向键选择企微条目，按 `Enter` 进入该机器人的操作页（连接 / 断开、流式开关、卡片开关）：
 
 ```
-Remote Control Clients
+Remote Control
 
-  1. • wecom-bot  [disconnected]  (Press Enter to connect)
-  2. • centrifugo [disconnected]
-  3. Cancel
+  • WeCom  [disconnected · stream]
+  • Add WeCom Bot
+  • Add WeChat Account
+  ✖ Cancel
 ```
-连接成功后面板会自动关闭。如果环境变量未配置，面板会停留并显示错误信息。
+未配置凭证时会先出企业微信绑定二维码；也可以在添加时选择手填 Bot ID / Secret。连接成功后面板会自动关闭。
+
+环境变量 `CODEBUDDY_WECOM_BOT_ID` / `CODEBUDDY_WECOM_BOT_SECRET` 拉起的 `default` 机器人同样可以进操作页改开关，选项会写入 `~/.codebuddy/channels/wecom/instances.json`。该实例不能从面板删除。
 
 ### 3\.4 查看连接状态
 
-再次执行 `/remote-control` 可查看连接状态：
+再次执行 `/remote-control` 可查看连接状态。企微条目会附带当前模式，例如 `[connected · stream]` 或 `[connected · reply · text]`。
 
-```
-  1. • wecom-bot  [connected]  (Press Enter to disconnect)
-  2. Cancel
-```
 状态说明：
 
-- `disconnected` — 未连接，可选择发起连接
+- `disconnected` — 未连接
 - `connecting` — 连接中，请稍候
-- `connected` — 已连接，可选择断开连接
+- `connected` — 已连接
+- `stream` / `reply` — 流式开 / 关（关则整段推送，不刷工具进度）
+- `text` — 已关掉卡片交互，确认改回回复 `y` / `n` 或编号
+
+Web UI 远程控制页也有同样的流式、卡片开关。
 
 ---
 
@@ -134,8 +147,8 @@ Remote Control Clients
 | --- | --- |
 | `↑` / `↓` | 选择客户端条目 |
 | `j` / `k` | Vim 风格导航（等同于上下方向键） |
-| `Enter` | 连接（`disconnected` 状态）或断开（`connected`/`connecting` 状态） |
-| `Esc` | 退出面板（操作进行中时不响应） |
+| `Enter` | 企微进入操作页（连接、流式、卡片）；其他默认实例直接连接或断开 |
+| `Esc` | 返回上一层或退出面板 |
 
 ---
 
@@ -168,38 +181,36 @@ Remote Control Clients
         ↓ WebSocket 长连接实时推送消息
 CodeBuddy CLI 接收消息
         ↓ 5 秒内回复（满足企微回调超时要求）
-发送流式消息 (stream finish=false)："正在处理，请稍候..."
-        ↓ 企微客户端展示流式消息
-Agent 处理中...（处理时间可能 1 秒到 5+ 分钟）
+流式开：立即建流（同一回调 req_id），边生成边全量替换当前气泡
+流式关：整段生成完再推一条回复，不刷工具进度和子代理感知
         ↓
-处理完成，发送流式消息 (stream finish=true)：最终结果
-        ↓ 企微客户端用最终结果全量替换"正在处理..."
-企业微信用户看到最终回复（聊天记录中仅保留最终结果）
+权限 / 提问 / 建议：默认竖排投票卡；关掉卡片后改回文字确认
+        ↓
+后续结论再开一条新气泡（流式）或再推一条文本（非流式）
 ```
-### 流式状态指示机制
+### 流式回复机制
 
-利用企微流式消息（`aibot_respond_msg` stream 类型）的全量替换特性：
+默认使用企微流式消息（`aibot_respond_msg` stream 类型）。可在 `/remote-control` 或 Web UI 为当前机器人关掉流式，改回整段 `WeComReply` 推送。
 
-1. **立即回复**：收到用户消息后，立即发送 `finish=false` 的流式消息，内容为"正在处理，请稍候..."
-2. **原位替换**：Agent 处理完成后，用同一个 `stream.id` 发送 `finish=true` \+ 最终结果
-3. 企微客户端收到 `finish=true` 后，用全量内容替换之前显示的"正在处理..."
+流式开启时：
 
-> 参考：[智能机器人长连接文档](https://developer.work.weixin.qq.com/document/path/101463) —— stream.content 为全量内容，每次发送替换上一次的显示。
+1. **立即建流**：收到用户消息后马上用回调里的 `req_id` 建流，满足 5 秒回复要求
+2. **原位替换**：同一 `stream.id` 的后续帧是全量内容，用来刷新当前这条气泡
+3. **一段一条**：一段正文结束后 `finish=true`，下一句换新的 `stream.id`，避免一轮回复全挤在一起
+4. **工具状态**：长工具和子代理执行时用单独状态条，不泄露命令、文件内容和任务 prompt
+5. **交互卡片**：权限确认、提问、下一步建议走竖排投票卡（`vote_interaction`）；点选后提交，卡片按官方协议在 5 秒内置灰。发卡片失败或关掉卡片时，改用原来的文字回复（`y` / `n` / 编号）
+
+> 参考：[智能机器人长连接文档](https://developer.work.weixin.qq.com/document/path/101463) —— `req_id` 关联同一次回调，`stream.id` 标识一条气泡，`stream.content` 为全量替换。
 
 #### 用户看到的效果
 
 | 阶段 | 聊天窗口显示 | 说明 |
 | --- | --- | --- |
-| 消息发送后 | "正在处理，请稍候..." | 流式消息占位，表示 Bot 正在处理 |
-| 处理完成后 | 最终回复内容 | "正在处理..."被最终结果原位替换 |
-
-#### 与之前方案的区别
-
-| 方面 | 旧方案（文本消息 ack） | 新方案（流式消息替换） |
-| --- | --- | --- |
-| "正在处理..." | 永久保留在聊天记录 | 被最终结果原位替换 |
-| 聊天记录 | 2 条消息（ack \+ 结果） | 1 条消息（仅最终结果） |
-| 状态指示 | 有 | 有 |
+| 消息发送后（流式开） | 开始出现回复，并随生成更新 | 同一条气泡全量替换，不是追加 |
+| 消息发送后（流式关） | 等整段完成后再出现一条回复 | 不刷工具进度和子代理感知 |
+| 需要确认时（卡片开） | 竖排选项 \+ 提交，权限卡会带上命令摘要 | 超长命令会再跟一条原文 |
+| 需要确认时（卡片关） | 纯文本，回复 `y` / `n` 或编号 | 与 2\.140\.0 一致 |
+| 一段结束 | 该条气泡锁定，下一段新开一条 | 一轮内多段回复分条展示 |
 
 ### 超时处理
 

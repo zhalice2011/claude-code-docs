@@ -121,7 +121,7 @@ json
 
 **解决方式**:在仓库根目录创建 `.worktreeinclude` 文件,列出需要复制的文件(语法与 `.gitignore` 相同):
 
-bash
+gitignore
 ```
 # .worktreeinclude
 # 列出需要复制到新 worktree 的本地文件

@@ -6,35 +6,35 @@
 
 每位专家都拥有独立的人设、方法论和工具链，针对所在领域的典型工作场景深度打磨——**召唤谁，就像真的请到了那个岗位的资深从业者**。
 
-![专家中心概览](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-2.D8qNS3-G.png)## 专家团
+![专家中心概览](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-2.D8qNS3-G.png)## 专家团
 
 专家团是一个有团长、有分工、有协作的多 Agent 团队。您只需要描述任务，团长会自动拆解、分配给最合适的团员并行执行，最后整合交付——**像一个真正的项目组在帮您干活**。
 
-![专家中心概览](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-3.C3AFa1sY.png)## 操作流程
+![专家中心概览](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-3.C3AFa1sY.png)## 操作流程
 
 ### 召唤专家/专家团
 
 选择对应的专家/专家团可以查看**专家详情**，点击**开始对话**即可添加到主页消息框：
 
-![专家中心概览](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-4.D09h8wIb.png)
+![专家中心概览](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-4.D09h8wIb.png)
 
-![专家中心概览](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-5.kP8FX29I.png)### 描述任务
+![专家中心概览](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-5.kP8FX29I.png)### 描述任务
 
 **专家：** 将任务告诉 WorkBuddy 将会按照该角色的专业视角和方法完成任务。
 
-![专家中心概览](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-6.xlFzKcO3.png)
+![专家中心概览](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-6.xlFzKcO3.png)
 
-![专家中心概览](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-7.DRIQQcRs.png)**专家团：** 用自然语言描述任务后，专家团团长自动拆解、分配、执行并返回完整结果：
+![专家中心概览](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-7.DRIQQcRs.png)**专家团：** 用自然语言描述任务后，专家团团长自动拆解、分配、执行并返回完整结果：
 
-![专家中心概览](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-8.BqiV13l_.png)
+![专家中心概览](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-8.BqiV13l_.png)
 
-![专家中心概览](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-9.BgGZ3KIn.png)## 分享
+![专家中心概览](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-9.BgGZ3KIn.png)## 分享
 
 支持将你喜欢的专家/专家团一键分享给好友:
 
-![专家分享](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-10.DTvdnuSk.png)## Skill VS 专家 VS 专家团
+![专家分享](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-10.DTvdnuSk.png)## Skill VS 专家 VS 专家团
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/expert-7.BQu7F5yM.png)
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-7.BQu7F5yM.png)
 
 | 维度 | Skill | 专家（Agent 型） | 专家团（Team 型） |
 | --- | --- | --- | --- |

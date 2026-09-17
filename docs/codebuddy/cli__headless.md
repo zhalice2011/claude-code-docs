@@ -195,6 +195,14 @@ printf '%s\n' \
   '{"type":"user","message":{"role":"user","content":[{"type":"text","text":"第二问"}]}}' \
   | codebuddy -p --input-format stream-json --output-format stream-json --verbose
 ```
+客户端可以为每个新用户轮次提供 `conversationRequestId`：
+
+json
+```
+{"type":"user","message":{"role":"user","content":"解释这段代码"},"_meta":{"codebuddy.ai/conversationRequestId":"0198a1b2c3d47e5f8a9b0c1d2e3f4a5b"}}
+```
+该值必须是小写、无连字符的 32 位 UUIDv7 十六进制字符串；省略时由 CLI 生成。CLI 不扫描 JSONL 历史做碰撞检测，调用方负责保证唯一性。接纳后的值会出现在本轮输出的 `_requestId` 中。
+
 \#\#会话回退（Rewind）
 
 回退能力让你把「工作区文件」和/或「对话历史」恢复到某条历史用户消息发送**之前**的状态。适用于自动化 Agent 在一次错误改动后重来、或 IDE/上游平台（如 CloudAgent）实现"撤销到某条消息"的场景。

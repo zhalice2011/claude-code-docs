@@ -79,7 +79,7 @@ json
 | `subagents` | 按内置子代理名称指定模型。格式为 `{"agents": {"<子代理名>": {"model": "..."}}}`；`model` 支持模型 ID、名称、别名、`lite` / `reasoning` 或 `inherit` / `default`。各子代理互不影响，支持用户全局和项目两种范围，可在 `/agents` 中编辑。优先级：`CODEBUDDY_CODE_SUBAGENT_MODEL` \> 本次 Agent 工具调用的 `model` 入参 \> 项目设置 \> 用户全局设置 \> 内置声明 \> 主模型。详见 [子代理文档](./sub-agents) | `{"agents": {"Explore": {"model": "lite"}, "Plan": {"model": "reasoning"}}}` |
 | `variantModels` | 将通用场景变体映射到模型，键为 `lite` 或 `reasoning`，值为模型 ID 或别名。该映射影响所有使用相应变体的逻辑，可通过 `/model:lite` / `/model:reasoning` 编辑。优先级：对应的变体环境变量 \> 项目设置 \> 用户全局设置 \> 主模型的 `relatedModels` \> 适用的产品内置默认 \> 主模型 | `{"lite": "<fast-model-id>", "reasoning": "<reasoning-model-id>"}` |
 | `agent` | 覆盖主线程使用的 agent 名称（内置或自定义 agent），应用该 agent 的 system prompt、工具限制和模型配置。优先级：`product.json default` → `plugin agent` → `settings.json agent` → `CLI --agent` | `"my-reviewer"` |
-| `codebuddy.mainAgent` | 四种主 Agent 模式（`cli` / `ptc` / `minimal` / `create`）与自定义智能体。子键：`enabled` 总闸（缺省开）；`allowUnopted` 未声明 `mainAgentSupport` 的 ACP 宿主（WorkBuddy）是否走模式解析（缺省关，始终原生 `cli`）；`default` 仅「设为默认」写入，作为新会话默认；`lastUsed` 为 Web chip / 新建智能体上次选择，**不覆盖** `default`。进程 `--agent` 压过 `lastUsed`，且不写 `default`。环境变量 `CODEBUDDY_MAIN_AGENT_ENABLED` / `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` 优先。CLI：`codebuddy config set codebuddy '{"mainAgent":{"enabled":true,"allowUnopted":false}}'` | `{"enabled": true, "allowUnopted": false, "default": "cli"}` |
+| `codebuddy.mainAgent` | 四种主 Agent 模式（`cli` / `ptc` / `minimal` / `create`）与自定义智能体。子键：`enabled` 总闸（缺省开）；`allowUnopted` 未声明 `mainAgentSupport` 的 ACP 宿主（WorkBuddy）是否走模式解析（缺省关，始终原生 `cli`）；`default` 仅「设为默认」写入，作为新会话默认；`lastUsed` 为 Web chip / TUI `/agent-mode` / 新建智能体上次选择，**不覆盖** `default`。进程 `--agent` 压过 `lastUsed`，且不写 `default`。环境变量 `CODEBUDDY_MAIN_AGENT_ENABLED` / `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` 优先。CLI：`codebuddy config set codebuddy '{"mainAgent":{"enabled":true,"allowUnopted":false}}'` | `{"enabled": true, "allowUnopted": false, "default": "cli"}` |
 | `statusLine` | 配置自定义状态行以显示上下文。见 \[statusLine 文档](\#状态行配置） | `{"type": "command", "command": "~/.codebuddy/statusline.sh"}` |
 | `enableAllProjectMcpServers` | 自动批准项目 `.mcp.json` 文件中定义的所有 MCP 服务器 | `false` |
 | `enabledMcpjsonServers` | 从 `.mcp.json` 文件批准的特定 MCP 服务器列表 | `["memory", "github"]` |
@@ -144,6 +144,24 @@ CodeBuddy 只会从以下来源读取 `autoMode`：
 - 共享项目配置 `.codebuddy/settings.json`
 
 原因是：`autoMode` 属于本地安全边界定义，仓库提交的配置不应该悄悄改变你本机对“哪些地方算内部、哪些动作算允许”的判断。
+
+#### 分类器用哪个模型？
+
+分类器只需要输出一个极短的判定，所以默认使用 `lite` 变体解析出的模型。如果这个模型不合适（例如强制长思考的推理模型会把很小的输出预算全部花在隐藏思考上，最终没有可用判定，动作会被 fail\-closed 拒绝），用已有的**子代理模型配置**为分类器单独指定模型：
+
+json
+```
+{
+  "subagents": {
+    "agents": {
+      "autoModeClassifier": { "model": "<fast-model-id>" }
+    }
+  }
+}
+```
+- 优先级与其他子代理一致：环境变量 `CODEBUDDY_CODE_SUBAGENT_MODEL`（一刀切）\> `subagents.agents.autoModeClassifier.model`（项目级 \> 用户级）\> 内置默认 `lite` 解析链。
+- 值可以是模型 ID / 别名，也可以是 `lite` / `reasoning` 变体名；填 `inherit` / `default` 或删掉该项即回到默认。
+- 分类器因“模型输出不可用”而失败时，动作会被直接拒绝（不会降级成普通审批弹窗），拒绝信息里会带上实际使用的模型和**当前真正在起作用的那个配置项**（env 在管就点名 `CODEBUDDY_CODE_SUBAGENT_MODEL`，否则点名上面的 settings 项），照提示换一个模型即可；连续 3 次拿不到判定后 `auto` 会暂停（交互式回落弹窗、headless 中止 run），不会把会话卡死。
 
 #### 与 `permissions.defaultMode: "auto"` 的区别
 
@@ -324,7 +342,7 @@ json
 | --- | --- | --- |
 | `enabled` | 启用 bash 沙箱(仅限 macOS/Linux)。默认:false | `true` |
 | `autoAllowBashIfSandboxed` | 在沙箱环境中自动批准 bash 命令。默认:true | `true` |
-| `excludedCommands` | 应在沙箱外运行的命令 | `["git", "docker"]` |
+| `excludedCommands` | 应在沙箱外运行的命令；WorkBuddy Desktop 忽略此项，命令继续走正常沙箱和审批流程 | `["git", "docker"]` |
 | `allowUnsandboxedCommands` | 允许通过 `dangerouslyDisableSandbox` 参数在沙箱外运行命令。设置为 `false` 时，完全禁用 |  |
 | `network.allowUnixSockets` | 沙箱中可访问的 Unix 套接字路径（用于 SSH 代理等） | `["~/.ssh/agent-socket"]` |
 | `network.allowLocalBinding` | 允许绑定到 localhost 端口(仅限 macOS)。默认: false | `true` |
@@ -735,6 +753,23 @@ codebuddy config set env '{"NODE_ENV": "development", "DEBUG": "true"}'
 # 设置全局专用配置（需要 -g 标志）
 codebuddy config set -g cleanupPeriodDays 30
 codebuddy config set -g includeCoAuthoredBy false
+```
+## 本地数据清理命令
+
+使用 `codebuddy cleanup` 手动清理过期的本地数据。默认按本地聊天记录保留天数清理；未配置时保留 30 天。
+
+会清理的内容包括：过期会话记录、会话生成文件、traces、logs、diagnostics 和 cache。
+
+bash
+```
+# 按默认保留天数清理
+codebuddy cleanup
+
+# 清理 7 天以前的本地数据
+codebuddy cleanup --days 7
+
+# 只预览，不删除
+codebuddy cleanup --days 7 --dry-run
 ```
 ## CodeBuddy 可用的工具
 

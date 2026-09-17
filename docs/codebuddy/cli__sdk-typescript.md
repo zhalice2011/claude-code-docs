@@ -118,6 +118,7 @@ const HOOK_EVENTS: readonly [
   'SubagentStart',
   'SubagentStop',
   'PreCompact',
+  'PostCompact',
   'PermissionRequest',
   'WorktreeCreate',
   'WorktreeRemove'
@@ -507,6 +508,7 @@ type HookEvent =
   | 'SubagentStart'
   | 'SubagentStop'
   | 'PreCompact'
+  | 'PostCompact'
   | 'PermissionRequest'
   | 'WorktreeCreate'
   | 'WorktreeRemove';

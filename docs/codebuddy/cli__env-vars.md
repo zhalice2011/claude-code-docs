@@ -13,6 +13,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_API_KEY` | API 密钥。设置此密钥用于模型接口调用。在非交互模式 (`-p`) 下始终使用此密钥 |
 | `CODEBUDDY_AUTH_TOKEN` | CodeBuddy 平台认证令牌，用于所有平台接口调用 |
 | `CODEBUDDY_CUSTOM_HEADERS` | 自定义 HTTP 请求头。格式：`Name: Value`，多个请求头用换行符或 `\n` 分隔 |
+| `CODEBUDDY_PASSTHROUGH_HEADER_PREFIXES` | 允许调用方（stream\-json / print 链路，经 `_meta['codebuddy.ai'].customPassthroughHeaders`）逐轮透传到官方 model gateway 的自定义 header 前缀白名单。逗号分隔、大小写不敏感（如 `x-wb-,x-mobile-`）。**默认空 \= 功能关闭**（安全 kill\-switch）；即安全边界，须选与内部 `X-*` header 命名空间不相交的前缀。仅对官方模型生效，第三方/自定义模型不下发 |
 
 ## API 端点和代理
 
@@ -88,17 +89,25 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_DEFER_TOOL_LOADING` | 设置为 `false` 或 `0` 禁用 MCP 工具延迟加载 |
 | `CODEBUDDY_SHOW_ALL_DEFERRED_TOOLS` | 设置为 `true` 或 `1` 显示所有延迟工具的完整描述 |
 | `CODEBUDDY_DISABLE_CRON` | 设置为 `1` 禁用计划任务 |
-| `CODEBUDDY_MAIN_AGENT_ENABLED` | 主 Agent 四种模式总闸。`0`/`false` 关闭（Web/CLI 无 picker，run 链不读 standing 主 agent）。未设置时看 `settings.json` 的 `codebuddy.mainAgent.enabled`，再缺省为开。覆盖 settings |
+| `CODEBUDDY_MAIN_AGENT_ENABLED` | 主 Agent 四种模式总闸。`0`/`false` 关闭（Web chip / TUI `/agent-mode` 无 picker，run 链不读 standing 主 agent）。未设置时看 `settings.json` 的 `codebuddy.mainAgent.enabled`，再缺省为开。覆盖 settings |
 | `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` | 允许未声明 `mainAgentSupport` 的 ACP 宿主（WorkBuddy Desktop / sidecar）也走模式解析。默认关：这些宿主始终原生 `cli`。`1`/`true` 打开（仍要求总闸开）。覆盖 `codebuddy.mainAgent.allowUnopted` |
 | `CODEBUDDY_REPL_ENABLED` | REPL 总闸。`1`/`true` 强开，`0`/`false` 强关，优先级最高。未设置时：`ptc` / `minimal` 默认开（REPL 是唯一直连工具，关掉等于工具面为空）；**标准 / 创造 / WorkBuddy 原生 `cli` 默认关**。WorkBuddy 将来要开：在 sidecar `managedEnv` 写死 `CODEBUDDY_REPL_ENABLED=1`（工具已在 overlay 的 `cli.tools` 里，只差这道闸）。不要翻 `codebuddy.mainAgent.allowUnopted`——那是让 WorkBuddy 走 PTC 模式解析，不是单独开 REPL |
 | `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | 是否把内置工具加载进 REPL 沙箱（成为顶层全局与 `tools.*` 成员）。`1`/`true` 强开，`0`/`false` 强关。未设置时：`ptc` / `minimal` 默认开（REPL 是唯一直连工具，沙箱必须有内置）；其余模式（含仅打开 `CODEBUDDY_REPL_ENABLED` 的标准 REPL）默认关，避免把全部内置塞进 REPL 挤占上下文、诱导模型用 REPL 调一次性原生工具。关闭后骨架目录与沙箱注入同时不含内置工具，MCP / bridge 编排不受影响 |
 | `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | 是否把骨架工具目录注入 REPL 的 `code` 参数描述。默认开。`0` 关闭后工具仍预加载，只是模型不提前知情，退化为纯渐进披露（靠 `REPL.searchTools` / `REPL.describeTool` 发现） |
 | `CODEBUDDY_DISABLE_FORK_SUBAGENT` | 设置为 `1` 禁用 Agent 工具的 Fork 子代理模式（`subagent_type="fork"`）。启用后 Agent 工具描述会自动隐藏 fork\-mode 段落，模型不会看到该功能；若模型仍然传 `subagent_type="fork"`，运行时会回落到名为 `fork` 的自定义代理（如用户在 `.codebuddy/agents/fork.md` 定义），否则改写为 `general-purpose` 普通子代理。适用于需要避免 fork 递归派生导致请求量放大的宿主场景 |
-| `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` | 设置为 `1` / `true` 禁用 Agent、Bash、PowerShell 工具的后台任务（`run_in_background=true`）。启用后这些工具 schema 中的 `run_in_background` 参数会被隐藏，模型不会看到该字段；即使历史/缓存 tool call 或直接调用方传入该参数，运行时也会兜底回退到同步（Agent）/前台（Bash、PowerShell）执行路径。适用于请求\-响应式 SDK / 一次性任务场景——这类场景主进程在主 turn 结束后立即退出，任何后台代理/后台命令的结果都无法回流到最终答复中。对齐 Claude Code 的 `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS`（同样统管 Agent \+ Bash \+ PowerShell）。默认未设置（后台任务保持可用）。与 print\-mode 守卫（`-p` 下始终阻断后台执行）相互独立。**同时拒绝 Multitask**：`--agent multitask` / `--multitask` 非 0；`/multitask` 与 `session/set_multitask` 返回失败；`initialize.multitaskSupport` 为 false；带站立键 `multitask` 的续聊**不**重盖协调器章（避免工具面锁死） |
+| `CODEBUDDY_DISABLE_BUILTIN_SUBAGENTS` | 设置为 `1` 仅屏蔽内置子代理（`general-purpose`/`fork`/`Explore`/`Plan`/`statusline-setup`），不影响自定义代理、插件代理、Teams 或其他工具（包括出站 A2A 工具，见 `ProductFeature.A2AOutbound`，两者完全独立生效）。启用后 Agent 工具描述会自动隐藏这些内置子代理段落；若模型仍传对应 `subagent_type` 且宿主/项目未定义同名自定义或插件代理覆盖它，运行时会拒绝执行并提示改用自身工具直接完成任务。默认未设置（内置子代理保持可用） |
+| `CODEBUDDY_A2A_OUTBOUND_ENABLED` | 设置为 `1`/`true`/`yes`/`on` 强制启用出站 A2A（`A2AGetAgentCard`/`A2ASendMessage`/`A2AGetTask`/`A2ACancelTask` 四个工具），无需等待云端 `ProductFeature.A2AOutbound` 配置下发即可在本地开发/手工验证时直接打开。仅"启用"单向生效：显式设为 `0`/`false` 等价于未设置，**不会**强制关闭——kill\-switch 权威仍归云端配置（运营方仍可远程下发 `false` 关停，即使某些宿主进程环境里残留了本变量）。判定顺序：本变量优先，命中则直接启用且不再发起 `AbTestService` 查询；未命中（含空值）时回落到 `ProductFeature.A2AOutbound`（默认关闭） |
+| `CODEBUDDY_A2A_DISCOVERY_PREWAIT_MS` | 出站 A2A 首轮发现"限界预等待"预算（毫秒，默认 `2000`）。启用出站 A2A 时，`A2AGetAgentCard` 工具描述里的 `<available_A2A_agents>` 列表由发现结果（`CODEBUDDY_REMOTE_AGENTS_URL`）动态渲染；为让首条消息也能看到该列表，首个模型请求前会**至多**等待本预算让发现落地（本机 localhost 发现通常远快于此）。超时/被取消即放弃等待并继续，随后发现真正落地时由响应式刷新补上——因此本变量只影响"首轮是否等得到"，不影响正确性。设为 `0` 关闭该等待（发现仍在后台进行，只是首轮可能先渲染空列表）。发现的 fetch 单飞复用，绝不会因预等待而多发一次网络请求 |
+| `CODEBUDDY_A2A_WAIT_IDLE_TIMEOUT_MS` | 入站 A2A `SendMessage` 等待会话空闲的超时（毫秒，默认 `600000`，即 10 分钟）。A2A 请求在提交执行前会先等当前会话没有在途的 run——混合模式（`--a2a --input-format stream-json`）下这个"在途 run"通常就是人类正在进行的一轮对话，所以默认值给得比较宽松。超时是异常兜底而非常规路径：stdio 传输上调用方没有 HTTP 超时可依赖，若不设上限，一个卡死的会话会让 A2A 调用方永久挂起。超时后该 `SendMessage` 返回失败态 Task。仅接受正数，非法值回落默认 |
+| `CODEBUDDY_A2A_CONTEXT_TTL_MS` | 出站 A2A 会话连续性的有效期（毫秒，默认 `86400000`，即 24 小时）。`A2ASendMessage` 会按「发现源 \+ 远端 Agent」记住上一次拿到的 `contextId`，并在同一会话后续调用中自动带上，使多轮对话在远端属于同一个上下文；该记录随会话持久化，`--resume` 续聊时仍然有效。远端有权回收过期上下文，且按 A2A 规范必须**拒绝**它不认识的 `contextId`（而非静默新建），因此本地超过本时长即主动弃用并开启新上下文，避免用一个已失效的 id 把后续每次调用都打成硬失败。计时基准是"最后一次使用"而非"创建"，持续活跃的对话不会中途过期。取值非正整数或无法解析时回落到默认值（失败即放行，坏的环境变量不应静默关闭连续性） |
+| `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` | 设置为 `1` / `true` 禁用 Agent、Bash、PowerShell 工具的后台任务（`run_in_background=true`）。启用后这些工具 schema 中的 `run_in_background` 参数会被隐藏，模型不会看到该字段；即使历史/缓存 tool call 或直接调用方传入该参数，运行时也会兜底回退到同步（Agent）/前台（Bash、PowerShell）执行路径。适用于请求\-响应式 SDK / 一次性任务场景——这类场景主进程在主 turn 结束后立即退出，任何后台代理/后台命令的结果都无法回流到最终答复中。对齐 Claude Code 的 `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS`（同样统管 Agent \+ Bash \+ PowerShell）。默认未设置（后台任务保持可用）。与 print\-mode 守卫（`-p` 下始终阻断后台执行）相互独立。**同时拒绝 Multitask**：`--agent multitask` / `--multitask` 非 0；`/multitask`、`session/set_config_option`（`configId=multitask`）与方言 `session/set_multitask` 返回失败；`initialize.multitaskSupport` 为 false；带站立键 `multitask` 的续聊**不**重盖协调器章（避免工具面锁死） |
+| `CODEBUDDY_A2A_DISCOVERY_TTL_MS` | 出站 A2A Agent Card 发现结果的缓存有效期（毫秒，默认 `43200000`）。每次 A2A 工具执行都会检查新鲜度；有效期内复用上次成功结果，过期后的首个调用按需刷新，并发调用共享同一个 fetch。发现 URL 变化会立即失效；成功的空列表同样缓存。设为 `0` 表示每次顺序执行工具都刷新（并发仍单飞）；空值、负数或非有限数值回落到默认值 |
+| `CODEBUDDY_A2A_INPUT_REQUIRED_TIMEOUT_MS` | 入站 A2A Task 进入 `input-required` 后等待调用方回答的超时（毫秒，默认 `600000`，即 10 分钟）。到期后终止原执行并把 Task 标记为失败，释放会话预约和事件总线，避免断连调用方永久占住 standalone 或 mixed 会话。仅接受正数，非法值回落默认 |
 | `CODEBUDDY_REHYDRATE_IMAGE_BLOB_REFS` | 设置为 `true` 在 `-p` 模式流式输出中将图片 blob 引用还原为完整 base64 数据。适用于需要直接获取图片数据的下游集成场景 |
 | `CODEBUDDY_REPL_ENABLED` | **实验功能**：REPL code mode 总闸。设置为 `1` 或 `true` 开启代码执行模式——模型可在隔离的 vm sandbox 中编写 JS 编排工具调用（内置工具直接 `Bash({...})`，MCP 工具统一挂 `mcp_<server>` 前缀全局），减少多工具任务的 LLM 往返次数。默认关闭 |
 | `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | REPL 工具目录注入细闸。默认开启，只有显式设置为 `0` 或 `false` 才关闭（工具仍预加载，只是模型不提前知情，退化为纯渐进披露） |
 | `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | REPL 内置工具注入开关。默认开启，`0` 或 `false` 关闭后内置工具不进 REPL 骨架目录与 sandbox 注入（仅保留 MCP 工具） |
+| `CODEBUDDY_SKILL_DESC_MAX_OVERRIDES` | 按 skill 名逐个覆盖 Skill 工具描述的单条字符上限（默认 `150`）。格式为 JSON 对象（skill 名 → 字符上限），例如 `{"tencent-docs-routing":300,"tencent-pptx":300}`；覆盖值完全替换该 skill 的默认上限（既可放宽也可收紧），并且不再参与 Skill 总字符预算的二次均分截断；因此内置 skill 经市场更新从 `bundled` 变为 `plugin` 来源后，显式覆盖仍保持生效。该配置对所有来源（含内置）一视同仁。skill 名作为 JSON key，天然支持含冒号的插件 skill（形如 `plugin:skill`）。值必须是正整数（非正整数 / 小数 / 字符串数字均被跳过），并忽略 `__proto__`/`constructor`/`prototype` 等危险 key；JSON 非法或顶层非对象时整体忽略并打一条 warn。未设置时所有 skill 使用默认上限，行为不变 |
 
 ## 沙箱 full pass（高危）
 
@@ -153,7 +162,7 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | --- | --- |
 | `CODEBUDDY_CODE_MAX_OUTPUT_TOKENS` | 设置大多数请求的最大输出 token 数 |
 | `CODEBUDDY_CODE_FILE_READ_MAX_OUTPUT_TOKENS` | 覆盖文件读取的默认 token 限制（默认：20000） |
-| `CODEBUDDY_STREAM_TIMEOUT_MS` | 流式响应中两个数据块之间允许的最大静默时间（毫秒）（默认：300000，即 5 分钟）。已开始吐 token 后中途静默通常意味着连接已断，故与首 token 超时解耦、取较短阈值 |
+| `CODEBUDDY_STREAM_TIMEOUT_MS` | 流式响应中两个数据块之间允许的最大静默时间（毫秒）（默认：1200000，即 20 分钟）。与首 token 超时结构解耦、可各自独立配置；如需为易半开的网关/代理链路更早识别僵死连接，可下调此值，首 token 超时不受影响 |
 | `CODEBUDDY_FIRST_TOKEN_TIMEOUT_MS` | 等待第一个模型输出的最大时间（毫秒）（默认：1200000，即 20 分钟）。长上下文 prefill 慢吐首 token 属合法情况 |
 | `CODEBUDDY_MAX_RETRIES` | 模型请求"生成开始前"失败（429 / 5xx / 请求超时 / 锁超时）的最大退避重试次数（默认：8，上限：15，超限自动收敛）。重试采用指数退避 \+ 抖动并尊重服务器 `retry-after`，严格发生在流式内容产出之前，不会重发已产出内容。额度耗尽类错误不重试（转由模型 fallback 处理） |
 | `CODEBUDDY_RETRY_WATCHDOG` | 置为 `1` / `true` / `yes` 开启无人值守 / CI 场景的无限重试模式，仅对上述"生成开始前"失败生效，单次退避封顶 5 分钟。默认关闭 |
@@ -176,6 +185,8 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | `CODEBUDDY_CODE_SHELL_PREFIX` | 包装所有 shell 命令的命令前缀（如用于日志或审计） |
 | `CODEBUDDY_CODE_GIT_BASH_PATH` | Windows 下显式指定 Git Bash 路径；若指定的路径无效则启动失败 |
 | `CODEBUDDY_SKIP_GIT_BASH_CHECK` | 设置为 `1` 跳过启动时的 Windows Git Bash 检测和提示（适用于上游已管理 shell 的场景） |
+| `CODEBUDDY_DISABLE_CHILD_PROCESS_CONTAINMENT` | Windows 退出时回收后代进程的启动开关。`1` / `true` 关闭，未设置 / 空串 / `0` / `false` 开启。仅启动时读取，修改后需重启 CLI（包括预热进程）。macOS/Linux 不受影响 |
+| `CODEBUDDY_INTERNAL_DAEMON_CHANNEL` | Windows daemon supervisor 使用的一次性内部 IPC 标记，启动时消费并删除；不是用户配置项，不向普通子进程传递 |
 | `CODEBUDDY_POWERSHELL_PATH` | 显式指定 PowerShell 可执行文件路径（优先于自动检测） |
 | `CODEBUDDY_USE_POWERSHELL_TOOL` | 控制 PowerShell 工具启用状态。Windows 上默认启用，设为 `0` 可禁用 |
 | `CODEBUDDY_ENV_FILE` | 在执行每个 shell 命令前自动 source 的环境文件路径 |
@@ -290,6 +301,8 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `CODEBUDDY_WECHAT_AUTO_CONNECT` | 设置为 `1` 或 `true` 启动时自动连接所有已配置的微信机器人实例 |
 | `CODEBUDDY_WECOM_BOT_ID` | 企微 AI 助手 Bot ID。设置后自动创建 default 实例并出现在 `/remote-control` 列表中 |
 | `CODEBUDDY_WECOM_BOT_SECRET` | 企微 AI 助手 Secret。需与 `CODEBUDDY_WECOM_BOT_ID` 配合使用 |
+| `CODEBUDDY_WECOM_STREAMING_DEFAULT` | 企微机器人全局默认流式开关（`1`/`0` 或 `true`/`false`），未单独设置的机器人继承此值 |
+| `CODEBUDDY_WECOM_CARDS_DEFAULT` | 企微机器人全局默认权限/建议卡片开关（`1`/`0` 或 `true`/`false`），未单独设置的机器人继承此值 |
 
 > **提示**：`CODEBUDDY_CHANNEL_AUTO_CONNECT` 是统一开关，`CODEBUDDY_WECOM_AUTO_CONNECT` 和 `CODEBUDDY_WECHAT_AUTO_CONNECT` 是分类型开关，三者任一匹配即生效。所有模式（交互、`--serve`、daemon）下均生效。
 
@@ -300,7 +313,7 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `CODEBUDDY_DEBUG` | 设置为 `1`/`true`/`yes`/`on` 启用调试模式（等同于 `--debug`） |
 | `CODEBUDDY_DEBUG_SDK` | 设置为 `1`/`true`/`yes`/`on` 启用 SDK 调试 |
 | `CODEBUDDY_DEBUG_REQUEST` | 设置为 `1` 启用请求调试 |
-| `CODEBUDDY_STARTUP_PROFILE` | 设置为 `1` 启用启动性能分析 |
+| `CODEBUDDY_STARTUP_PROFILE` | 设置为 `1` 时自动保存启动性能的 Markdown 和 JSON 报告；详见[启动性能采集](./startup-profiling) |
 | `CODEBUDDY_CODE_HEAP_SNAPSHOT_NEAR_LIMIT_PCT` | **OOM 取证**（默认关闭）。开启后当进程堆越过 V8 堆上限高水位时，自动写一份 heap snapshot 到 `~/.codebuddy/diagnostics/<date>/oom-nearlimit-<pid>-<ts>.heapsnapshot`（进程内只写一次）。取值：`on`/`true`/`1` 按默认 85% 水位；`0.9` 或 `90` 自定义水位；未设 / `0` / `off` / `false` 关闭。⚠️ 快照文件≈当时 heapUsed 的 1\.5 倍（GB 级堆会写出数 GB 文件），仅排查 OOM 时开启。详见[故障排查 · OOM](./troubleshooting#内存溢出-oom-排查) |
 | `CBC_HEAP_SNAPSHOT_ON_WORKFLOW_END` | 设置为 `1` 时，每个 workflow（`ultracode` 等）跑完后写一份 heap snapshot 到 `~/.codebuddy/diagnostics/<date>/`。默认关闭（会占磁盘），仅排查 workflow 残留内存时开启 |
 

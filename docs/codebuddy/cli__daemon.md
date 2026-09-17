@@ -4,6 +4,8 @@ Daemon 模式让 CodeBuddy Code 以**后台常驻服务**的方式运行，不�
 
 **核心价值**：把 CLI 从"用完即走"变成"随时待命"。
 
+在 Windows 上，只有通过 `daemon start` 启动的 daemon 独立于发起进程存活。其他后台会话、shell 命令、hooks 和隧道均随所属 CLI 退出而回收；`--bg` 和 `daemon stop --keep-workers` 不会解除这项生命周期约束。需要持续运行的任务应由常驻 daemon 承载。daemon 自重启时，旧进程的子进程会被回收，新 daemon 独立运行。macOS/Linux 保持原有行为。
+
 ## 概念
 
 | 概念 | 说明 |

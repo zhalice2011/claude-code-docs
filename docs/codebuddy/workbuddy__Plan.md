@@ -14,7 +14,7 @@
 
 在 WorkBuddy 内从用户头像处打开下拉框，在当前套餐处**升级**或进入**设置 \- 账户设置**操作升级套餐；也可以在**管理中心 \- 套餐与用量**板块升级当前订阅计划。
 
-![升级套餐入口](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/plan-1.BjNbeWF-.png)
+![升级套餐入口](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/plan-1.BjNbeWF-.png)
 
 #### 计费方式
 

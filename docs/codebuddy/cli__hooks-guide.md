@@ -37,6 +37,7 @@ CodeBuddy Code 提供了在工作流程不同阶段运行的多个 hook 事件�
 | Stop | 在 CodeBuddy Code 完成响应时运行 |
 | SubagentStop | 在子代理任务完成时运行 |
 | PreCompact | 在 CodeBuddy Code 即将运行压缩操作之前运行 |
+| PostCompact | 在 CodeBuddy Code 成功完成压缩操作后运行 |
 | SessionStart | 在 CodeBuddy Code 启动新会话或恢复现有会话时运行 |
 | SessionEnd | 在 CodeBuddy Code 会话结束时运行 |
 

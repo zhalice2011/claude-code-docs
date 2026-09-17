@@ -59,6 +59,20 @@ json
 
 ## ACP 协议特性
 
+### 客户端轮次 ID
+
+客户端可以在 `session/prompt` 请求的 `_meta` 中提供本轮 `conversationRequestId`：
+
+json
+```
+{
+  "_meta": {
+    "codebuddy.ai/conversationRequestId": "0198a1b2c3d47e5f8a9b0c1d2e3f4a5b"
+  }
+}
+```
+该值必须是小写、无连字符的 32 位 UUIDv7 十六进制字符串；省略时由 CLI 生成。CLI 不扫描会话历史做碰撞检测，调用方负责保证唯一性。普通 prompt 真正进入 history 后，相同值会写入本轮 `PromptResponse._meta`、语义消息的 `SessionUpdate._meta`、JSONL `providerData.conversationRequestId` 和模型请求头 `X-Conversation-Request-ID`。`/clear`、`/compact` 等短路命令或在 history 前被拒绝的 prompt 不保证产生这些输出。现有 `_meta['codebuddy.ai/requestId']` 语义保持不变。
+
 ### 认证信息扩展
 
 CodeBuddy Code 在 `authenticate` 响应的 `_meta` 字段中返回用户信息：
@@ -94,7 +108,7 @@ CodeBuddy Code 会在创建新会话时自动向客户端推送可用的 Slash �
 - 显示命令提示和帮助信息
 - 动态更新可用命令
 
-命令列表会自动过滤掉本地命令（如 `/clear`、`/exit`）和客户端专属命令（如 `/theme`、`/config`），只推送适用于 ACP 模式的命令。
+命令列表会包含当前可调用的项目级、用户级和插件 Skill，并在 Skill 加载完成或可见性配置变化后自动刷新。列表会过滤掉本地命令（如 `/clear`、`/exit`）和客户端专属命令（如 `/theme`、`/config`），只推送适用于 ACP 模式的命令。
 
 ### 上下文窗口档位配置
 
@@ -189,24 +203,78 @@ json
   }
 }
 ```
-## Multitask 协调器（`session/set_multitask`）
+## Multitask 协调器
 
-ACP / `--serve` **不要**加 `--agent multitask` 或 `--multitask`（入口守卫会拒，进程非 0）。会话内用扩展方法开关协调器，与 `mainAgentSupport` / `session/set_agent` 解耦。
+ACP / `--serve` **不要**加 `--agent multitask` 或 `--multitask`（入口守卫会拒，进程非 0）。Multitask 是会话级 **overlay**，不是 Scene Mode，也不是 `permissionMode`。盖章不改 `agentName` / `permissionMode`，也不走 `session/set_mode`。与 `mainAgentSupport` 独立：未 opt\-in 的宿主仍可发现并写入这条标准 boolean 配置。
 
-### 能力位
+### 1\. 发现能力位
 
-`initialize` 回包看 `agentCapabilities.multitaskSupport`。`CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 为真时为 `false`。不必为 Multitask 打开站立 picker。
+`initialize` 响应：
 
-### 方法
+json
+```
+{ "agentCapabilities": { "multitaskSupport": true } }
+```
+只认 `multitaskSupport === true`。字段缺失或 `false` 都不要画开关（例如 `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS`）。Helper：`isMultitaskSupportAdvertised`。
+
+### 2\. 发现配置项
+
+`session/new`、`session/load`、`session/resume` 的 `configOptions` 里按 **`id === 'multitask'`** 查找。`category` 是元数据（当前为 `_codebuddy.ai/multitask`），**不是主键**。
+
+json
+```
+{
+  "type": "boolean",
+  "id": "multitask",
+  "name": "Multitask",
+  "description": "Coordinate detached workers while keeping the current agent mode",
+  "category": "_codebuddy.ai/multitask",
+  "currentValue": false
+}
+```
+没有这一项：本会话不能开（极简站立、worker / 子会话、后台任务禁用）。客户端必须能消化未知 category；正确性只依赖 `id`、`type`、`currentValue`。
+
+### 3\. 标准写入（推荐）
+
+```
+session/set_config_option
+```
+json
+```
+{
+  "sessionId": "<id>",
+  "configId": "multitask",
+  "type": "boolean",
+  "value": true
+}
+```
+`value` 必须是 JSON boolean。`"true"` / `1` 会被拒，不会静默 toggle。成功返回更新后的 `{ "configOptions": [...] }`；`currentValue` 以这次返回和随后的 `session/update`（`sessionUpdate: config_option_update`，全量 `configOptions`）为准。两条写入路径共用 live\-session 解析、连接归属、落盘和 `config_option_update`。业务拒绝（Minimal / worker / 后台禁用）走 JSON\-RPC `-32602`，详细原因在 `error.data.details`，不要只读 `error.message`（常为 `Invalid params`）。
+
+ts
+```
+const response = await connection.setSessionConfigOption({
+    sessionId,
+    configId: 'multitask',
+    type: 'boolean',
+    value: true,
+});
+
+const option = response.configOptions.find(item => item.id === 'multitask');
+const enabled = option?.type === 'boolean' && option.currentValue === true;
+```
+只认本连接的 `acpConnectionId`。调用方缺 id fail\-closed；会话无 owner 时允许已识别连接认领；其他 owner 一律拒绝。
+
+### 4\. CodeBuddy 方言：`session/set_multitask`（兼容）
+
+旧客户端仍可经 `extMethod` 使用。新客户端走上一节的标准写入。方言保留 toggle 和结构化 `{ ok, on, already, agentName, message }`。
 
 |  |  |
 | --- | --- |
 | 方法名 | `session/set_multitask`（`ACP_METHOD_SESSION_SET_MULTITASK`） |
 | 参数 | `{ sessionId, enabled?: boolean }`：`true` 进入，`false` 退出，省略 toggle |
 | 响应 | `{ ok, on, already, agentName, message }` |
-| 约束 | 非空白可切；不要求 `mainAgentSupport`；worker / 子会话 / 后台禁用返回 `ok: false` |
-| 归属 | `--serve` 多连接只比 `session.meta.acpConnectionId` 与当前连接。无 owner 戳时 fail\-open（兼容非 serve 会话）。**不**走 `isSessionVisibleToMainAgentRpc`（unopted 宿主正是调用方） |
-| 校验 | `enabled` 出现但不是布尔 → `invalidParams`（`"true"` / `null` 不会静默 toggle） |
+| 约束 | 非空白可切；worker / 子会话 / 极简站立 / 后台禁用返回 `ok: false` |
+| 归属 / 校验 | 与标准写入相同；`enabled` 出现但不是布尔 → `invalidParams` |
 
 ts
 ```
@@ -220,9 +288,36 @@ if (isMultitaskSupportAdvertised(init.agentCapabilities)) {
     await conn.extMethod(ACP_METHOD_SESSION_SET_MULTITASK, buildSetMultitaskParams(sessionId, true));
 }
 ```
-常量与 builder 在 `@genie/agent-client-protocol`。TUI 斜杠 `/multitask` 走同一套盖章函数。Worker 审批依赖子会话继承协调器的 `acpConnectionId`；非 bypass 模式下缺这条会无人认领。
+TUI `/multitask` 复用同一套盖章语义。
+
+### 5\. 非用户发起的 drain 轮
+
+worker 完成后，协调器会在父会话 **idle**、且客户端没有再发 `session/prompt` 的情况下再跑一轮汇总。这一轮没有用户气泡，requestId 由 CLI 分配。
+
+开轮时先推一条标准 `session_info_update`，再发内容帧；收口仍是既有 `session_end`：
+
+json
+```
+{
+  "sessionUpdate": "session_info_update",
+  "_meta": {
+    "codebuddy.ai/unsolicitedTurn": {
+      "requestId": "cli-hex-request-id",
+      "reason": "background_drain"
+    },
+    "codebuddy.ai/requestId": "cli-hex-request-id"
+  }
+}
+```
+客户端应按 `requestId` 立刻开一轮空 user 的 Request，不要等 `user_message_chunk`，也不要把 idle 之后的陌生 requestId 当僵尸帧丢掉。后续同 requestId 的 `tool_call` / `agent_message_chunk` 归入这一轮；`session_end` 收口。
+
+Helper：`buildUnsolicitedTurnUpdate` / `readUnsolicitedTurn`（`ACP_META_UNSOLICITED_TURN`）。未知 `_meta` 必须忽略，不能当协议错误。
 
 假模型端到端：`packages/agent-cli/src/e2e/multitask-wakeup.spec.ts`（需先 `pnpm run bundle`）。
+
+### 6\. 子 worker 提问跨父轮
+
+协调器派工后 `end_turn`、父会话 idle 是预期行为。活着的 detached worker 的 `AskUserQuestion` / `ExitPlanMode` 仍走父会话的 `requestPermission`。宿主**不要**因为父轮 `session_end` 把这些提问标成已取消。只有用户停止该 worker，或关闭父会话，才收口。
 
 ## 故障排除
 

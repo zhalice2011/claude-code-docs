@@ -26,7 +26,7 @@ CodeBuddy 会自动识别并存储你的重要信息。当然，你想强调让 
 ```
 AI 会自动将这些信息保存为记忆，并在未来的对话中使用。
 
-![alt text](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/demo.w6FDYSZS.png)
+![alt text](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/demo.w6FDYSZS.png)
 
 ### 更新记忆
 
@@ -37,7 +37,7 @@ AI 会自动将这些信息保存为记忆，并在未来的对话中使用。
 ```
 AI 会自动更新相关的记忆。
 
-![alt text](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/demo2.BvlAEVl9.png)
+![alt text](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/demo2.BvlAEVl9.png)
 
 ### 删除记忆
 
@@ -46,7 +46,7 @@ AI 会自动更新相关的记忆。
 ```
 删除我喜欢英文回答的记忆
 ```
-![alt text](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/demo3.BZtA0ygQ.png)
+![alt text](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/demo3.BZtA0ygQ.png)
 
 ### 记忆的作用范围
 
@@ -54,7 +54,7 @@ AI 会自动更新相关的记忆。
 
 ## 查看和管理记忆
 
-![alt text](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/memory.KyMBWI5l.png)
+![alt text](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/memory.KyMBWI5l.png)
 
 如果你暂时不想使用记忆功能，可以关闭记忆功能的按钮，全局禁用。
 

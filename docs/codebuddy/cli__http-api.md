@@ -15,6 +15,8 @@ bash
 ```
 codebuddy --serve --port 8080 --session-id my-session
 ```
+若反向代理把实例挂在子路径下，启动时加 `--base-path`（或 `CODEBUDDY_GATEWAY_BASE_PATH`）。对外 URL 变成 `http://127.0.0.1:8080/<prefix>/api/v1/...`，进程内路由仍是 `/api/v1/...`。详见 [CLI 参考](./cli-reference) 与 [环境变量](./env-vars)。
+
 ### API 文档（Swagger UI）
 
 服务启动后访问：
@@ -370,6 +372,7 @@ curl -H "Authorization: Bearer $CODEBUDDY_GATEWAY_TOKEN" \
 | GET | `/api/v1/channels` | 获取客户端列表 |
 | POST | `/api/v1/channels/:type/:id/start` | 启动客户端 |
 | POST | `/api/v1/channels/:type/:id/stop` | 停止客户端 |
+| PATCH | `/api/v1/channels/:type/:id` | 更新企微选项（`streaming` / `cards`）。写盘失败返回 409 |
 | POST | `/api/v1/channels/wechat` | 创建微信实例 |
 | POST | `/api/v1/channels/wecom` | 创建企微实例 |
 
@@ -448,7 +451,8 @@ CBC 增强：
 | --- | --- | --- |
 | GET | `/api/v1/plugins` | 列出已安装插件（可选 `includeBuiltin=false` 过滤内置插件） |
 | POST | `/api/v1/plugins` | 安装插件 |
-| POST | `/api/v1/plugins/reconcile` | 幂等物化并投影 Product/settings 声明的插件状态；单次最多等待 120 秒 |
+| POST | `/api/v1/plugins/reconcile` | 幂等物化 Host Product/settings 声明的插件状态；单次最多等待 120 秒 |
+| POST | `/api/v1/plugins/reload` | 重新扫描并激活已提交的插件状态；请求 body 为空 |
 | POST | `/api/v1/plugins/validate` | 验证插件/市场清单文件 |
 | POST | `/api/v1/plugins/enable` | 启用插件 |
 | POST | `/api/v1/plugins/disable` | 禁用插件 |
@@ -747,12 +751,22 @@ curl -X POST http://127.0.0.1:8080/api/v1/plugins \
   -H "Content-Type: application/json" \
   -d '{"plugin": "my-plugin@my-marketplace"}'
 
-# 幂等物化并投影当前 Product/settings 声明的全部插件状态
+# 幂等物化当前 Host Product/settings 声明的全部插件状态
 curl -X POST http://127.0.0.1:8080/api/v1/plugins/reconcile
 
-# 204 表示严格物化与投影完成；409 表示 runtime 禁用了插件管理；
+# Host 也可以提交完整 Product 快照；多个快照按请求顺序处理
+curl -X POST http://127.0.0.1:8080/api/v1/plugins/reconcile \
+  -H "Content-Type: application/json" \
+  -d '{"reason":"product-update","productConfig":{"builtInMarketPlugins":[]}}'
+
+# 204 表示严格物化完成；409 表示 runtime 禁用了插件管理；
 # 503 表示本次严格物化部分失败，可幂等重试；504 只结束当前 HTTP 等待，
 # 已开始的共享物化仍在后台继续，后续请求会加入同一个进行中的操作。
+
+# 重新扫描并激活已提交状态；请求 body 为空
+curl -X POST http://127.0.0.1:8080/api/v1/plugins/reload \
+  -H "Content-Type: application/json" \
+  -d '{}'
 
 # 启用插件
 curl -X POST http://127.0.0.1:8080/api/v1/plugins/enable \

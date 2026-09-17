@@ -28,6 +28,8 @@ json
 - 命令输出的第一行 stdout 成为状态行文本
 - 支持 ANSI 颜色代码来设置状态行样式
 - CodeBuddy Code 通过 stdin 以 JSON 格式向您的脚本传递有关当前会话的上下文信息（模型、目录等）
+- `command` 是一整条系统 shell 命令，在当前工作目录中执行。相对路径直接使用 `./`（Windows 也支持 `.\`），路径包含空格时请加引号。
+- 参数和引号按系统 shell 语法处理。Windows 默认使用 cmd.exe；需要 Git Bash 时，在命令中显式调用 `bash`。例如 Node 脚本可配置为 `node "C:/Users/your-name/.codebuddy/statusline.js"`。
 
 ## JSON 输入结构
 

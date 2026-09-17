@@ -7,6 +7,7 @@ CodeBuddy Code 提供内置的 Web UI，在浏览器中提供完整的交互界�
 Web UI 提供与终端界面相同的核心能力，并针对浏览器进行了可视化布局优化：
 
 - **对话**：发送消息、查看对话、实时监控工具执行
+- **编辑器**：支持最多 4 个分组，可在分组间拖动文件或将终端停靠到编辑区
 - **终端**：内嵌终端，支持分屏布局（最多 4 个面板）
 - **Workers**：管理 CLI Worker 进程和 Daemon 守护进程
 - **日志**：独立日志查看器，支持多种日志类型和关键词搜索
@@ -71,7 +72,7 @@ codebuddy --serve --agent ptc --permission-mode bypassPermissions --auth none --
 
 也可以是自定义 id（`.codebuddy/agents/<name>.md` 的 `name`）。
 
-`multitask` **不是** `--serve` / Web UI 的启动值：入口守卫会拒，进程非 0。协调器在会话内用 `/multitask`（交互 TUI）或 [`session/set_multitask`](./acp#multitask-协调器sessionset-multitask)（ACP）。
+`multitask` **不是** `--serve` / Web UI 的启动值：入口守卫会拒，进程非 0。协调器在会话内用 `/multitask`（交互 TUI）或 [`session/set_config_option`](./acp#multitask-协调器)（`configId=multitask`）。
 
 ### `--permission-mode`
 
@@ -125,8 +126,11 @@ codebuddy --serve --agent create --permission-mode bypassPermissions --auth none
 | `--serve` | 无参 | HTTP \+ Web UI |
 | `--open` | 无参 | ACP 起来后再开浏览器 |
 | `--auth` | `password`（默认）/ `none` | 本机调试用 `none` |
+| `--base-path` | 如 `/cnb-5gg-1k09dqp5v-001` | 把 Web UI / API 挂到固定 path 下。也可用 `CODEBUDDY_GATEWAY_BASE_PATH` |
 | `--host` | 默认 `127.0.0.1` | 绑全接口再显式 `--host 0.0.0.0` |
 | `--port` | 数字 | 不写则自动选 |
+
+设置 `--base-path` 后，浏览器请打开带前缀的地址（启动日志里的 **Web UI** 行），例如 `http://127.0.0.1:8321/cnb-5gg-1k09dqp5v-001/`。此时 PWA 会关闭，避免 Service Worker 仍按站点根缓存。
 
 ## 认证方式
 
@@ -158,16 +162,27 @@ json
 
 默认视图，用于与 Agent 交互。核心功能：
 
-- **富文本消息渲染**：Markdown、语法高亮代码块、表格、图片
+- **富文本消息渲染**：Markdown、语法高亮代码块、表格、图片、Mermaid 图（流程图 / 时序图 / 状态图等，主题跟随浅色深色；流式输出时先按代码块展示，围栏闭合后自动替换成图；图上可复制源码或导出 SVG）
+- **嵌套围栏示例预览**：标注 markdown 的代码块里再包一层围栏时（演示 markdown 片段），外层按示例展示：普通文本原样保留、内层围栏按自己的语言语法高亮，复制仍取整段原文
+- **复制与导出**：模型输出、用户消息、频道来信、代码块、工具调用的参数与结果都提供一键复制；Markdown 表格可复制为 Markdown 或 TSV，Mermaid 图可复制源码或导出 SVG；右上角支持整轮对话导出为 Markdown / JSON（JSON 保留完整时间线）。复制类按钮在触屏与窄屏下常驻显示。
 - **工具执行展示**：内联查看工具调用、参数和结果
 - **权限管理**：在浏览器中直接批准或拒绝工具权限
 - **问答面板**：回答 Agent 的多选问题
 - **任务进度**：实时监控后台任务和 Team 进度
 - **会话管理**：新建对话、浏览历史、切换会话
 - **工作目录管理**：添加/移除附加工作目录，扩展 Agent 的文件访问范围。工作目录与智能体模式统一显示在输入卡片顶部；新会话可选择，会话开始后显示只读状态。
-- **主 Agent**：空白会话可切换 `cli` / `ptc` / `minimal` / `create` 或自定义智能体。chip 选择写入 `codebuddy.mainAgent.lastUsed`，不改 `default`。进程 `--agent` 压过 lastUsed。已有历史的会话锁定当前 Agent。
+- **主 Agent**：空白会话可切换 `cli` / `ptc` / `minimal` / `create` 或自定义智能体。chip 选择写入 `codebuddy.mainAgent.lastUsed`，不改 `default`。进程 `--agent` 压过 lastUsed。已有历史的会话锁定当前 Agent。TUI 对等入口是 `/agent-mode`；选择会记住；开聊后锁定。WorkBuddy 不展示、不解析。
 - **右侧工作台**：资源管理器、文件搜索、源代码管理、文件编辑和终端使用独立工具标签，可一键全屏并拖拽调整宽度；窄面板会自动切换文件树与编辑区布局，并隐藏编辑器 minimap。对话中的文件路径支持跳转到指定行或行号范围；普通点击 URL 会在工作台安全预览，`Cmd/Ctrl` 点击会在浏览器新标签打开；本地 HTML 文件可在源码与安全预览之间切换。编辑器、预览和文件树可以把当前文件下载到本地。
 - **目标**：输入 `/goal` 或从输入框进入目标模式，可设置进行中目标。暂停会立刻卸掉续跑并掐当前回合，目标条保留为已暂停；继续后按同一条件重新启动。垃圾桶清除目标并收起目标条。
+
+### 编辑器视图
+
+Web IDE 编辑区支持多分组工作流：
+
+- **分组布局**：将文件或终端标签拖到编辑区边缘，可横向或纵向拆分，最多创建 4 个分组
+- **跨组拖拽**：文件标签可在不同分组间移动并重新排序
+- **终端停靠**：终端标签可在底部面板与编辑器分组之间拖动，迁移时保留当前 PTY 会话
+- **布局恢复**：刷新页面后恢复分组结构、激活标签和分隔比例
 
 ### 终端视图
 
@@ -219,7 +234,7 @@ Web UI 的 Agent View 直接使用 `/api/v1/jobs` 管理后台 agent；外部 wo
 - **语言**：中文、英文或跟随系统（自动检测）
 - **模型**：从可用选项中选择 AI 模型
 - **权限模式**：默认、接受编辑、跳过权限或规划模式
-- **主 Agent**：总闸 `codebuddy.mainAgent.enabled`（缺省开）；「允许未声明宿主」`allowUnopted`（缺省关，WorkBuddy 保持原生 `cli`）；管理页可设 `default`、用 AI 创建自定义智能体。chip 选择只写 `lastUsed`。
+- **主 Agent**：总闸 `codebuddy.mainAgent.enabled`（缺省开）；「允许未声明宿主」`allowUnopted`（缺省关，WorkBuddy 保持原生 `cli`）；管理页可设 `default`、用 AI 创建自定义智能体。chip / TUI `/agent-mode` 选择只写 `lastUsed`。
 
 ## API 文档
 
@@ -261,7 +276,7 @@ Web UI 完全响应式，支持移动设备：
 - **样式**：Tailwind CSS \+ CSS 变量主题
 - **终端**：xterm.js \+ fit addon
 - **搜索**：MiniSearch 客户端全文搜索
-- **Markdown**：react\-markdown \+ remark\-gfm \+ 语法高亮
+- **Markdown**：react\-markdown \+ remark\-gfm \+ 语法高亮；Mermaid 图按需动态加载（只在消息里出现 mermaid 代码块时拉取，不增加首屏体积）
 
 ## 相关文档
 

@@ -17,7 +17,7 @@
 - 当前状态
 - 最近更新时间或创建时间
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/taskmanage-1.InLn2Uzo.png)## 搜索与筛选
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/taskmanage-1.InLn2Uzo.png)## 搜索与筛选
 
 在任务列表顶部，您可以使用搜索和筛选功能快速定位任务：
 
@@ -30,7 +30,7 @@
 - 按日期筛选：缩小到某一时间范围内的任务
 - 重置筛选：清空当前筛选条件，恢复查看全部任务
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/taskmanage-2.C68mO2fO.png)## 任务状态
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/taskmanage-2.C68mO2fO.png)## 任务状态
 
 任务会随着执行过程在不同状态之间变化。当前界面中常见的状态包括：
 
@@ -47,7 +47,7 @@
 
 **操作入口**：在任务行上悬停鼠标点击「⋯」按钮，或直接**右键点击任务行**——两种入口的菜单项完全一致，操作行为相同。置顶任务、临时任务、工作空间对话、项目任务、助理任务以及搜索结果中的任务均支持右键菜单。
 
-![任务右键菜单](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/taskmanage-context.C48mcD-q.png)
+![任务右键菜单](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/taskmanage-context.C48mcD-q.png)
 
 ### 任务列表
 

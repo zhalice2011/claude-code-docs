@@ -33,7 +33,7 @@
 1. 登录[企业管理后台](https://www.codebuddy.cn/admin)
 2. 在左侧导航栏中选择**自定义指令**，进入指令面板后单击**创建指令**
 
-![创建指令](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/panel-0.CRZWEb92.png)
+![创建指令](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/panel-0.CRZWEb92.png)
 
 3. 在创建页面填写以下配置：
 
@@ -46,7 +46,7 @@
 
 4. 单击**保存**。返回指令面板确认该指令已启用（默认开启）
 
-![创建指令](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/panel-1.ZyMM5tph.png)
+![创建指令](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/panel-1.ZyMM5tph.png)
 
 ### 配置知识库
 
@@ -55,7 +55,7 @@
 - 勾选添加知识库以启用功能
 - 单击 **\+ 选择** 添加知识库，从官方知识库和自定义知识库中选取
 
-![添加知识库](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/panel-2.BERGaKph.png)
+![添加知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/panel-2.BERGaKph.png)
 
 说明
 
@@ -69,7 +69,7 @@
 
 1. 在对话框输入 `/`，从指令列表中选择目标指令。
 
-![添加知识库](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/panel-3.DiwaD4_f.png)
+![添加知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/panel-3.DiwaD4_f.png)
 
 2. 按提示输入补充信息后发送，客户端根据指令配置生成响应。
 
@@ -93,7 +93,7 @@
 | 知识库 | 未关联 |
 | 引用文件 | 已开启 |
 
-![添加知识库](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/panel-4.08x3kC3T.png)
+![添加知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/panel-4.08x3kC3T.png)
 
 ## 注意事项与重点提示
 

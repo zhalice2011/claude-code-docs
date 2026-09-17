@@ -34,13 +34,13 @@
 1. 在微信聊天中点击收到的文件（如 `.md` 文件）
 2. 微信提示「暂不支持打开此类文件」时，在下方的打开方式列表中选择 **WorkBuddy 小程序**
 
-![微信内选择用 WorkBuddy 打开文件](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wechat-open-1.CFY35fiR.png)
+![微信内选择用 WorkBuddy 打开文件](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/wechat-open-1.CFY35fiR.png)
 
 ### 二、选择打开方式
 
 唤起小程序后，底部弹出操作选择：
 
-![选择查看文件或加入对话](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wechat-open-2.C6HYiXqp.png)
+![选择查看文件或加入对话](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/wechat-open-2.C6HYiXqp.png)
 
 | 选项 | 说明 |
 | --- | --- |
@@ -52,14 +52,14 @@
 1. 进入预览页后，文件内容按类型渲染展示。
 2. 点击左上角的 **返回** 图标可回到对话框，该文件会自动携带为对话附件。
 
-![在小程序内预览 Markdown 文件](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wechat-open-3.CHwy4GUX.png)
+![在小程序内预览 Markdown 文件](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/wechat-open-3.CHwy4GUX.png)
 
 #### 加入对话
 
 1. 文件以卡片形式显示在输入框（展示文件名、类型与大小）。
 2. 在输入框中补充任务要求（如「总结这份文档的要点」）后点击发送，WorkBuddy 将基于文件内容执行任务。
 
-![文件以附件卡片加入对话输入框](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wechat-open-4.B9ssQrxP.png)
+![文件以附件卡片加入对话输入框](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/wechat-open-4.B9ssQrxP.png)
 
 说明
 

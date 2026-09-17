@@ -6,10 +6,10 @@ Checkpoint，即 Restore to this checkpoint。在使用 CraftAgent 进行编码
 
 1. 在对话面板中，您可以根据实际场景需要，指定选择某个检查点进行恢复。选择某个对话右下放的 **回退** 按钮。
 
-![alt text](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/revert1.BJHKP_YK.png)
+![alt text](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/revert1.BJHKP_YK.png)
 2. 点击后，会跳出一个弹窗，向您请求是否确认回退。如果确认可以选择 **确认**，否则选择 **取消**。这里，您也可以勾选右侧的 **不再提示**，勾选后，后续不会再跳出这个弹窗，因此需要谨慎选择。
 
-![alt text](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/revert2.B5EBNdCz.png)
+![alt text](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/revert2.B5EBNdCz.png)
 3. 选择 **Confirm** 后，就会立即恢复到该检查点前的状态。此时，您可以基于该检查点，在对话框中，输入需求描述，继续之前的任务。点击恢复，即恢复到该检查点前的状态，该检查点对应进行的任务也会被取消。
 
-![alt text](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/revert3.BQEE-iuC.png)
+![alt text](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/revert3.BQEE-iuC.png)

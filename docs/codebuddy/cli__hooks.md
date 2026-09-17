@@ -347,6 +347,7 @@ json
 | `Stop` | 主代理响应结束时 | 不支持 | 要求继续执行、追加提醒 |
 | `SubagentStop` | 子代理（TaskTool）结束时 | 不支持 | 子任务继续执行或补充说明 |
 | `PreCompact` | 执行上下文压缩前 | 支持（`manual`/`auto`） | 保留关键信息、防止压缩 |
+| `PostCompact` | 成功完成上下文压缩后 | 不支持 | 记录压缩摘要、同步外部状态 |
 | `SessionStart` | 会话创建或恢复时 | 支持（`startup`/`resume`/`clear`/`compact`） | 环境初始化、变量注入 |
 | `SessionEnd` | 会话结束时 | 支持（`clear`/`logout`/`prompt_input_exit`/`other`） | 清理资源、持久化日志 |
 
@@ -432,6 +433,10 @@ json
 - `manual` \- 从 `/compact` 调用
 - `auto` \- 从自动压缩调用（由于上下文窗口已满）
 
+### PostCompact
+
+在 CodeBuddy Code 成功完成压缩操作后运行。该事件仅用于观察，不支持阻止或修改压缩结果。
+
 ### SessionStart
 
 在 CodeBuddy Code 启动新会话或恢复现有会话时运行。
@@ -466,6 +471,7 @@ jsonc
   "transcript_path": "string",  // 对话 JSON 的路径
   "cwd": "string",              // 调用 hook 时的当前工作目录
   "permission_mode": "string",  // 当前权限模式： "default"、"plan"、"acceptEdits" 或 "bypassPermissions"
+  "generation_id": "string",    // 可选；conversationRequestId 可用时等同 session Request ID，并在同一轮 UserPromptSubmit / Stop 等事件间共享；不可用时省略，不能用 messageId 或 traceId 替代
 
   // 事件特定字段
   "hook_event_name": "string"
@@ -534,6 +540,7 @@ json
   "cwd": "/Users/...",
   "permission_mode": "default",
   "hook_event_name": "UserPromptSubmit",
+  "generation_id": "a1b2c3d4e5f60718293a4b5c6d7e8f90",
   "prompt": "Write a function to calculate the factorial of a number"
 }
 ```
@@ -548,6 +555,7 @@ json
   "transcript_path": "/Users/xxx/.codebuddy/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl",
   "permission_mode": "default",
   "hook_event_name": "Stop",
+  "generation_id": "a1b2c3d4e5f60718293a4b5c6d7e8f90",
   "stop_hook_active": true
 }
 ```
@@ -564,6 +572,21 @@ json
   "hook_event_name": "PreCompact",
   "trigger": "manual",
   "custom_instructions": ""
+}
+```
+### PostCompact 输入
+
+`compact_summary` 是本次压缩产出的摘要或工程压缩内容。
+
+json
+```
+{
+  "session_id": "abc123",
+  "transcript_path": "/Users/xxx/.codebuddy/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl",
+  "permission_mode": "default",
+  "hook_event_name": "PostCompact",
+  "trigger": "manual",
+  "compact_summary": "本次压缩生成的摘要"
 }
 ```
 ### SessionStart 输入

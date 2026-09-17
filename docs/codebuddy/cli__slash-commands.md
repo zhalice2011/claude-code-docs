@@ -15,8 +15,8 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/doctor` |  | ✅ 支持 | 检查 CodeBuddy Code 的状态和环境。 |
 | `/status` |  | ✅ 支持 | 显示当前仓库和会话的状态。 |
 | `/add-dir` | `<path>` | ✅ 支持 | 添加工作目录。指定要添加的目录路径。 |
-| `/agents` |  | ✅ 支持 | 管理内置和自定义 AI 智能体；查看内置子代理的生效路由值及其来源，并将模型设置保存到 Global 或 Project 范围。具体场景模型可在 `/model` 中查看。 |
-| `/multitask` |  | ✅ 支持 | 开关 Multitask 协调器（少动手、派 worker）。再敲一次退出并还原进模式前的 agent。非空白会话可进；worker / 子会话 / `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 拒绝。不写 `lastUsed`。ACP 宿主用 [`session/set_multitask`](./acp#multitask-协调器sessionset-multitask)，不要给 `codebuddy --acp` 加 `--agent multitask`。 |
+| `/agents` |  | ✅ 支持 | 管理内置和自定义 AI 智能体；查看内置子代理的生效路由值及其来源，并将模型设置保存到 Global 或 Project 范围。具体场景模型可在 `/model` 中查看。 切换当前会话的主 Agent 模式请用 `/agent-mode`。 |
+| `/multitask` |  | ✅ 支持 | 开关 Multitask overlay（少动手、派 worker）。不改当前 Standard / PTC / Create。**极简模式不能开**，输入 `/multitask` 会提示先切到标准、PTC 或创造。再敲一次关掉 overlay。非空白会话可进；worker / 子会话 / `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 拒绝。不写 `lastUsed`。ACP 宿主用 [`session/set_config_option`](./acp#multitask-协调器)（`configId=multitask`），不要给 `codebuddy --acp` 加 `--agent multitask`。 |
 | `/branch` | `[name]` | ✅ 支持 | 在当前对话位置创建一个分支，复制活跃对话历史到新 session 并自动切换。可选指定分支名称。 |
 | `/btw` | `<question>` | ✅ 支持 | 快速提问，不中断当前 Agent 工作流。适用于在 Agent 执行任务时临时提出简短问题，答案基于已有上下文生成。 |
 | `/compact` |  | ✅ 支持 | 压缩上下文。 |
@@ -29,6 +29,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/model` | `[list | model-name]` | ✅ 支持 | 切换或查看主模型。不带参数时打开交互式界面。`list` 列出可用模型，带模型名称参数时直接切换主模型。 |
 | `/model:lite` | `[list | model-id]` | ✅ 支持 | 切换或查看 `lite` 场景变体（Explore 等轻量子任务使用）的生效模型、来源。不带参数时打开交互式选择界面（含 Global / Project 设置），`list` 列出可用模型，带模型 ID 参数时直接切换。 |
 | `/model:reasoning` | `[list | model-id]` | ✅ 支持 | 切换或查看 `reasoning` 场景变体（复杂分析任务使用）的生效模型、来源。不带参数时打开交互式选择界面（含 Global / Project 设置），`list` 列出可用模型，带模型 ID 参数时直接切换。 |
+| `/agent-mode` | `[list | cli | ptc | minimal | create]` | ✅ 支持 | 仅空白会话可切换主 Agent 模式（标准 / PTC / 极简 / 创造，或带 `mainAgent: true` 的自定义智能体）。无参数打开选择面板，`list` 列出选项，带模式名直接切换。选择写入 `lastUsed`，下次启动沿用。对话一旦开始即锁定：再执行 `/agent-mode` 只说明无法切换，需 `/clear` 新开会话。WorkBuddy 不受影响。 |
 | `/model:text-to-image` | `[list | model-id]` | ✅ 支持 | 切换或查看当前使用的文生图模型。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
 | `/model:image-to-image` | `[list | model-id]` | ✅ 支持 | 切换或查看当前使用的图生图模型。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
 | `/permissions` |  | ✅ 支持 | 管理工具权限和工作区目录访问权限。 |

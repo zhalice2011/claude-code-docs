@@ -14,7 +14,7 @@
 
 可查看已安排的任务及历史执行记录。
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/auto-1.CdwfDmc9.png)#### 添加任务
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/auto-1.CdwfDmc9.png)#### 添加任务
 
 点击 **添加自动化**，填写以下配置项：
 
@@ -38,30 +38,30 @@
 
 **经济数据推送**
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/auto-2.CFRG6yiq.png)#### 从模板入手
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/auto-2.CFRG6yiq.png)#### 从模板入手
 
 不想从零编写提示词？可直接使用 **任务模板**，覆盖新闻推送、周报生成、体检预约以及学习计划等常见场景，选择后按需修改即可。
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/auto-3.DOoTECOY.png)## 推送到WorkBuddy小程序
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/auto-3.DOoTECOY.png)## 推送到WorkBuddy小程序
 
 打开配置后，WorkBuddy 可在任务执行完成后自动将结果发送至**WorkBuddy小程序**，便于第一时间查看。
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/auto-4.DyJMkT-T.png)示例
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/auto-4.DyJMkT-T.png)示例
 
 **在小程序中查看推送结果**
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/auto-5.wV43mEPF.png)## 推送到企业微信bot
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/auto-5.wV43mEPF.png)## 推送到企业微信bot
 
 打开并选择已授权的企业微信 bot 后，WorkBuddy 可在任务执行完成后自动将结果发送至**企业微信**，便于第一时间查看。现支持两种机器人，配置成功将展示在开关下方：
 
 - **企微助理集成：** 在企业微信群「@机器人」下发任务，全员共享执行结果，适合团队协作。
 - **自动化通知 bot ：** 注册独立企微 bot，用于接收所有自动化任务结果通知。
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/auto-6.BeoLdkGv.png)示例
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/auto-6.BeoLdkGv.png)示例
 
 **绑定助理的企业微信 bot**
 
-![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/auto-7.DiswqZDQ.png)## 推送到企业微信 bot
+![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/auto-7.DiswqZDQ.png)## 推送到企业微信 bot
 
 除小程序外，自动化任务执行完成后还可将结果推送到**企业微信**。在任务详情页开启「**推送到企业微信 bot**」开关（位于「推送到小程序」下方）。
 
@@ -81,7 +81,7 @@
 
 使用助理的企业微信 bot 时，结果仅作为通知发送到企微，**不会写入助理上下文**，助理不会感知本次任务的执行内容。
 
-![推送到企业微信 bot](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/auto-wecom.BNZlG9EB.png)
+![推送到企业微信 bot](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/auto-wecom.BNZlG9EB.png)
 
 通过企微 bot 创建的任务
 

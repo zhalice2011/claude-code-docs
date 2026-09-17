@@ -30,7 +30,7 @@ text
 **步骤一：需求分析与规划**
 
 	- 打开 CodeBuddy，选择 Plan Mode
-	- 描述博客需求："我想创建一个个人技术博客，具有文章展示、分类管理和评论功能"![任务描述](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/task.B-aRWj9e.png)
+	- 描述博客需求："我想创建一个个人技术博客，具有文章展示、分类管理和评论功能"![任务描述](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/task.B-aRWj9e.png)
 	- AI 自动生成项目结构：前端（React/Vue）、后端（Node.js）、数据库（MongoDB）
 	- 确认技术栈选择和功能模块划分**步骤二：快速原型开发**
 
@@ -50,16 +50,16 @@ text
 
 - 使用 CloudStudio 或 CloudBase 一键部署
 
-	- 创建待办事项 Web 应用![部署成功](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/todo.BfGm17lb.png)
+	- 创建待办事项 Web 应用![部署成功](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/todo.BfGm17lb.png)
 
- \* 将待办事项 Web 应用部署到 CloudStudio ![部署成功](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/deploy.DIWb3RFl.png)
+ \* 将待办事项 Web 应用部署到 CloudStudio ![部署成功](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/deploy.DIWb3RFl.png)
 
-	- 创建待办事项 Web 应用链接![部署成功](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/cloudstudio.BqwYRU1-.png)
+	- 创建待办事项 Web 应用链接![部署成功](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/cloudstudio.BqwYRU1-.png)
 - 配置自定义域名和 HTTPS 证书
 - 设置 CDN 加速和性能优化
 - 获取可访问的在线博客地址
 
-![部署集成](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/cs.X63P7yIc.png)
+![部署集成](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/cs.X63P7yIc.png)
 
 ### 1\.2 产品验证与原型设计
 
@@ -135,7 +135,7 @@ text
 	- 半透明效果和柔和阴影营造层次空间感
 	- 现代、轻盈、专业的视觉体验**步骤二：内置组件生态快速开发**
 
-![UI 组件生态](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/ui-ecosystem.BTzv67iU.png)
+![UI 组件生态](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/ui-ecosystem.BTzv67iU.png)
 
 **技术栈配置：**
 
@@ -208,7 +208,7 @@ json
 
 **步骤二：创建项目级自定义指令**
 
-![创建自定义指令](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/project-command.8txhj6uH.png)
+![创建自定义指令](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/project-command.8txhj6uH.png)
 
 - 输入 `/` 调用 `Create Command` 指令
 - 定义指令名称（如 `kdy-report`、`tapd-todo`、`code-review`）
@@ -350,8 +350,8 @@ bash
 在 CodeBuddy IDE 中安装 document\-skills 包（适用于非专业开发者）：
 
 	- 下载安装包到本地并双击解压
-	- 打开 CodeBuddy IDE，创建本地文件夹![创建本地文件夹](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/ppt-img_1.P1-Z2Z5P.jpg)
-	- 进入配置页面，找到 Skill 配置路径（用户 Skill 是全局配置，配置一次在任何文件夹中都可使用）![创建本地文件夹](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/skills.DM5K9kO9.png)
+	- 打开 CodeBuddy IDE，创建本地文件夹![创建本地文件夹](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/ppt-img_1.P1-Z2Z5P.jpg)
+	- 进入配置页面，找到 Skill 配置路径（用户 Skill 是全局配置，配置一次在任何文件夹中都可使用）![创建本地文件夹](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skills.DM5K9kO9.png)
 
 	- 导入用户级 Skill
 	- 检查配置是否成功
@@ -366,7 +366,7 @@ text
 ```
 操作指南：
 
-![与 CodeBuddy Agent 交互](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/ppt-skill.BPeCrB0i.png)
+![与 CodeBuddy Agent 交互](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/ppt-skill.BPeCrB0i.png)
 
 效果示例：
 

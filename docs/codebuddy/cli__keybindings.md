@@ -105,7 +105,7 @@ json
 | `chat:cancel` | Escape | 取消当前输入，或中断当前前台请求 |
 | `chat:submit` | Enter | 发送消息 |
 | `chat:killAgents` | Ctrl\+X Ctrl\+K | 终止所有后台代理 |
-| `chat:cycleMode` | Shift\+Tab (Windows 同时支持 Alt\+M) | 切换权限模式 |
+| `chat:cycleMode` | Shift\+Tab (Windows 同时支持 Alt\+M) | 切换权限模式；在 Bash 模式（`!`）下改为在普通 Bash 与本地 shell 子模式间切换 |
 | `chat:modelPicker` | Meta\+P | 打开模型选择器 |
 | `chat:thinkingToggle` | Meta\+T | 切换扩展思考 |
 | `chat:undo` | Ctrl\+\_, Ctrl\+Shift\+\- | 撤销 |

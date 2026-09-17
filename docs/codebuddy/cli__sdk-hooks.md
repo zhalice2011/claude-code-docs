@@ -24,13 +24,14 @@ Hook 允许你在 CodeBuddy 的会话生命周期内插入自定义逻辑，实�
 | `Stop` | 主 Agent 响应结束时 |
 | `SubagentStop` | 子 Agent 结束时 |
 | `PreCompact` | 上下文压缩前 |
+| `PostCompact` | 上下文压缩成功后 |
 | `WorktreeCreate` | 创建隔离 `worktree` 时 |
 | `WorktreeRemove` | 删除隔离 `worktree` 时 |
 | `unstable_Checkpoint` | 文件修改后自动创建检查点时 |
 
 ## Hook 配置
 
-通过 `hooks` 选项配置 Hook。每个事件可以有多个 matcher，每个 matcher 可以有多个 hook 回调。
+通过 `hooks` 选项配置 Hook。支持 matcher 的事件可以配置多个 matcher，每个 matcher 可以包含多个 hook 回调。`PostCompact` 不支持 matcher，配置时应省略 `matcher`。
 
 ### 基本结构
 
