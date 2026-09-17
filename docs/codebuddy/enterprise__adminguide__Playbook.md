@@ -4,7 +4,7 @@
 
 Playbooks 展示了预配置的工作流模板，帮助你快速上手。面向**泛开发者**：产品经理、设计师以及任何希望借助 CodeBuddy / WorkBuddy 完成任务但未必精通提示词工程的用户。Playbooks 将上下文、工具和指令打包为可复用的模板，让你在处理常见任务时无需从零开始。
 
-![playbook列表](/docs/static/playbooks-1.BEZKCdQJ.png)
+![playbook列表](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/playbooks-1.BEZKCdQJ.png)
 
 一个 Playbook 由以下配置组成：
 

@@ -18,7 +18,7 @@ AI 辅助自评审功能，旨在提高 IDE 下的代码自我审查的效率和
 
 - 圈选代码区域后，将鼠标悬浮在所选代码区域上会出现功能面板，可以选择**代码评审**触发CR 自动评审功能。 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/5be93c6657b911f09c7652540044a08e.png)
 - 圈选代码区域后，也可以右键选择 **腾讯云代码助手 CodeBuddy** \> **代码评审**来触发评审功能。 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/d1d2930657bb11f0b3f05254001c06ec.png)
-- 圈选代码区域后，也可以单击代码操作的**小灯泡**来触发评审功能\*\*。\*\* ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/b50a090410fb11f0a9cd5254007c27c5.png)
+- 圈选代码区域后，也可以单击代码操作的**小灯泡**来触发评审功能**。**![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/b50a090410fb11f0a9cd5254007c27c5.png)
 - 对于方法级评审，可以直接单击方法上方的**代码评审**来触发评审功能。 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/596f1b6d57bc11f0ba94525400454e06.png)
 
 #### 评审文件或文件夹

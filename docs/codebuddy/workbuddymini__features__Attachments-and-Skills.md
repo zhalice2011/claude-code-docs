@@ -4,7 +4,7 @@
 
 点击输入栏**左侧的 \+ 按钮**，展开工具面板：
 
-![工具面板](/docs/static/attachments-1.DE74-ZoI.png)
+![工具面板](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/attachments-1.DE74-ZoI.png)
 
 | 入口 | 功能 | 适用场景 |
 | --- | --- | --- |
@@ -24,7 +24,7 @@
 - 照片会显示在输入框上方，点击 × 可移除
 - 如需拍摄多张，需再次点击 **\+** → **摄像头** 重复操作
 
-![摄像头拍照](/docs/static/image23.BvFbeSyw.png)**注意：**
+![摄像头拍照](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/image23.BvFbeSyw.png)**注意：**
 
 **使用摄像头或照片功能时，建议选择带「视觉」标签的模型（如 MiniMax\-M2\.7 或 Kimi\-K2\.5），否则 AI 无法理解图片内容。**
 
@@ -36,7 +36,7 @@
 - 选中的图片显示在输入框上方，可逐张预览和删除
 - 支持常见图片格式：JPG、PNG 等
 
-![选择照片](/docs/static/image24.DLVo-FTV.png)**摄像头 vs 照片**
+![选择照片](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/image24.DLVo-FTV.png)**摄像头 vs 照片**
 
 |  | 摄像头 | 照片 |
 | --- | --- | --- |
@@ -58,11 +58,11 @@ WorkBuddy小程序 支持添加本地文件、微信聊天中的文件、腾讯�
 
 1. 点击 **腾讯文档 / IMA 知识库** 前往小程序：
 
-![腾讯文档小程序](/docs/static/attachments-2.RfvayaUA.png)2. 勾选已阅读并同意协议后，点击**同意**授权完成连接：
+![腾讯文档小程序](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/attachments-2.RfvayaUA.png)2. 勾选已阅读并同意协议后，点击**同意**授权完成连接：
 
-![腾讯文档小程序](/docs/static/attachments-3.D3u8yZC7.png)3. 选择 **腾讯文档 / IMA 知识库** 中的文件，点击**添加**在新建对话中引用目标文件：
+![腾讯文档小程序](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/attachments-3.D3u8yZC7.png)3. 选择 **腾讯文档 / IMA 知识库** 中的文件，点击**添加**在新建对话中引用目标文件：
 
-![腾讯文档小程序](/docs/static/attachments-4.BVHFJ4qd.png)**支持的文件类型：**
+![腾讯文档小程序](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/attachments-4.BVHFJ4qd.png)**支持的文件类型：**
 
 | 类型 | 格式 |
 | --- | --- |
@@ -78,7 +78,7 @@ WorkBuddy小程序 支持添加本地文件、微信聊天中的文件、腾讯�
 
 点击 **添加技能** 后，打开技能选择面板。
 
-![技能选择面板](/docs/static/image26.D13aEEhR.png)### 1）什么时候需要手动添加技能？
+![技能选择面板](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/image26.D13aEEhR.png)### 1）什么时候需要手动添加技能？
 
 如果你希望明确指定使用某个技能，或者 AI 没有自动启用你需要的技能，可以通过此入口手动添加。
 
@@ -86,4 +86,4 @@ WorkBuddy小程序 支持添加本地文件、微信聊天中的文件、腾讯�
 
 如果技能列表中没有你需要的技能，可以通过 **SkillHub** 获取更多：[SkillHub \- 专为中国用户优化的 Skills 社区](https://skillhub.tencent.com/)，搜索所需 Skill 后复制其**安装指令**，将安装指令粘贴至 WorkBuddy 对话框中发送即可，安装成功后即可在技能列表中使用。
 
-![安装技能](/docs/static/image27.FdJyBnD6.png)
+![安装技能](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/image27.FdJyBnD6.png)

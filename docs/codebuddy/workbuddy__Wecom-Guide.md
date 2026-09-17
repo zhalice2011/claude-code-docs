@@ -39,14 +39,14 @@
 
 打开浏览器，访问 [企业微信管理后台](https://work.weixin.qq.com/wework_admin/frame)，使用管理员账号登录后，依次点击「安全与管理」→「管理工具」→「智能机器人」→「创建机器人」。
 
-![](/docs/static/wecom-guide-1.BEQ8dvDd.png)  
-![](/docs/static/wecom-guide-2.DlrX2Hk3.png)
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom-guide-1.BEQ8dvDd.png)  
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom-guide-2.DlrX2Hk3.png)
 
 如果先进入 AI 自动生成页面，请点击左下角的「手动创建」：
 
-![](/docs/static/2.D9E3GsWy.png)在创建页面直接选择「API 模式创建」：
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/2.D9E3GsWy.png)在创建页面直接选择「API 模式创建」：
 
-![](/docs/static/wecom-guide-3.oOi_9rH6.png)#### 第二步：填写基本信息
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom-guide-3.oOi_9rH6.png)#### 第二步：填写基本信息
 
 进入 API 模式页面后，请先完成以下公共配置：
 
@@ -57,7 +57,7 @@
 
 点击「可见范围」后的「添加」，选择需要使用机器人的成员、部门或标签。
 
-![](/docs/static/visible-range.DG0MoWc3.png)完成以上配置后，请先点击页面底部的「保存」，再在右侧「API 配置」区域选择「使用长连接」。
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/visible-range.DG0MoWc3.png)完成以上配置后，请先点击页面底部的「保存」，再在右侧「API 配置」区域选择「使用长连接」。
 
 #### 第三步：获取凭证并完成绑定
 
@@ -69,10 +69,10 @@
 
 打开企业微信客户端，进入「工作台」→「智能机器人应用」→「创建机器人」。
 
-![](/docs/static/1.DdHM-fev.png)如果先进入 AI 自动生成页面，请点击左下角的「手动创建」，再选择「API 模式创建」：
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/1.DdHM-fev.png)如果先进入 AI 自动生成页面，请点击左下角的「手动创建」，再选择「API 模式创建」：
 
-![](/docs/static/2.D9E3GsWy.png)  
-![](/docs/static/3.Ck217sUl.png)
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/2.D9E3GsWy.png)  
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/3.Ck217sUl.png)
 
 #### 第二步：填写基本信息
 
@@ -85,7 +85,7 @@
 
 点击「可使用成员」后的「修改」，选择需要使用机器人的成员、部门或标签。
 
-![](/docs/static/4.BuvAHCYe.png)完成以上配置后，再在下方「API 配置」区域选择「使用长连接」。
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/4.BuvAHCYe.png)完成以上配置后，再在下方「API 配置」区域选择「使用长连接」。
 
 #### 第三步：获取凭证并完成绑定
 
@@ -101,7 +101,7 @@
 2. 复制 `Bot ID`
 3. 点击 `点击获取` 获取 `Secret`，并妥善保存
 
-![](/docs/static/longlink-bot-credentials.CEJjnqsO.png)提示
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/longlink-bot-credentials.CEJjnqsO.png)提示
 
 长连接模式不需要再填写 URL、Token 或 `Encoding-AESKey`。
 
@@ -114,8 +114,8 @@
 	- 点击快捷绑定接入，使用企微扫码完成绑定
 	- 填入刚才复制的 `Bot ID` 和 `Secret`后点击「注册」完成绑定
 
-![](/docs/static/5.qWDtiT-D.png)  
-![](/docs/static/6.BZ55K463.png)
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/5.qWDtiT-D.png)  
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/6.BZ55K463.png)
 
 #### 私有化部署企业微信：填写自定义 WebSocket 地址
 
@@ -149,7 +149,7 @@ URL 回调模式配置指引见文末「使用 URL 回调接入（备选方案�
 
 在企业微信通讯录的「企业创建的」分组下找到刚刚创建的机器人，点击「发消息」即可开始下发任务。
 
-![](/docs/static/wecom-guide-10.DGuEDc4B.png)### 联通后对话效果
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom-guide-10.DGuEDc4B.png)### 联通后对话效果
 
 发送一条简单消息（例如"你好"）进行联通测试。如果配置正确，WorkBuddy 会接收到消息并在企业微信中返回回复。
 
@@ -198,7 +198,7 @@ URL 回调模式配置指引见文末「使用 URL 回调接入（备选方案�
 2. 点击 `Token` 和 `Encoding-AESKey` 输入框右侧的「随机获取」
 3. 保存这两个参数，后续需要在 WorkBuddy 中使用
 
-![](/docs/static/wecom-guide-4.lB4uC-vS.png)重要
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom-guide-4.lB4uC-vS.png)重要
 
 请务必保存好 `Token` 和 `Encoding-AESKey`，否则后续无法完成注册。
 
@@ -209,16 +209,16 @@ URL 回调模式配置指引见文末「使用 URL 回调接入（备选方案�
 3. 填入刚才获取的 `Token` 和 `Encoding-AESKey`，点击「注册」
 4. 注册成功后，复制生成的 Webhook URL
 
-![](/docs/static/7.BaLtfLWf.png)  
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/7.BaLtfLWf.png)  
 
-![](/docs/static/8.BRAyJKVS.png)### 回填 URL 并保存
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/8.BRAyJKVS.png)### 回填 URL 并保存
 
 回到企业微信的机器人创建页面：
 
 1. 将刚才复制的 Webhook 地址粘贴到 `URL` 输入框
 2. 点击「保存」完成配置
 
-![](/docs/static/wecom-guide-9.Jzv4lt7W.png)## 常见问题
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/wecom-guide-9.Jzv4lt7W.png)## 常见问题
 
 ### 机器人没有响应怎么办？
 

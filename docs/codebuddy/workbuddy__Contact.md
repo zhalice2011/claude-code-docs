@@ -12,10 +12,10 @@
 
 可以扫码加入 WorkBuddy 腾讯频道，与其他用户一起交流探讨。
 
-![WorkBuddy 腾讯频道二维码](/docs/static/contact-qq-channel.CxQVuS8p.png)
+![WorkBuddy 腾讯频道二维码](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/contact-qq-channel.CxQVuS8p.png)
 
 ## 官方公众号
 
 微信扫码关注官方公众号，获取最新资讯。
 
-![WorkBuddy 官方公众号二维码](/docs/static/contact-wechat-mp.QHyrKArB.png)
+![WorkBuddy 官方公众号二维码](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/contact-wechat-mp.QHyrKArB.png)

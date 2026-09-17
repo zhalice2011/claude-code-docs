@@ -4,7 +4,7 @@
 
 任务发送后，WorkBuddy 自动拆解并逐步执行，执行过程实时展示在对话区域中。
 
-![](/docs/static/task-1.CtqHb8-X.png)## 二、步骤拆解
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/task-1.CtqHb8-X.png)## 二、步骤拆解
 
 任务被自动拆分为多个阶段，每个阶段以卡片形式展示：
 
@@ -12,7 +12,7 @@
 - **「已完成」**（绿色标签）：该步骤已执行完毕
 - 点击卡片右侧 **\>** 可展开查看详细过程
 
-![](/docs/static/task-2.CUCfXiMk.png)![](/docs/static/task-3.BKtXymed.png)![](/docs/static/task-4.iiHQf-iF.png)## 三、继续追问
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/task-2.CUCfXiMk.png)![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/task-3.BKtXymed.png)![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/task-4.iiHQf-iF.png)## 三、继续追问
 
 任务完成后可在同一对话中继续追问，例如：
 
@@ -28,7 +28,7 @@
 
 中断后仍可继续补充说明或调整需求。
 
-![](/docs/static/task-5.BFiPXsS5.png)![](/docs/static/task-6.Ito9X07E.png)![](/docs/static/task-7.Cs4qyo0E.png)## 五、重新生成
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/task-5.BFiPXsS5.png)![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/task-6.Ito9X07E.png)![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/task-7.Cs4qyo0E.png)## 五、重新生成
 
 如果对执行结果不满意，可以：
 

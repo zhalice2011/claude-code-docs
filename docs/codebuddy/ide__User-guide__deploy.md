@@ -52,7 +52,7 @@ CodeBuddy 提供多种部署入口，帮助你将项目从开发预览、团队�
 - 如果你需要**快速展示给他人**，且不需要长期访问，使用 **Cloud Studio** 进行临时预览
 - 如果你需要**完整的服务器控制权**，或需要运行非静态的后端服务，选择 **Tencent Lighthouse** 或询问Codebuddy，获取智能建议
 
-![alt text](/docs/static/Pasted%20image%2020260112214445.COmaxnFm.png)
+![alt text](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/Pasted%20image%2020260112214445.COmaxnFm.png)
 
 你也可以根据团队习惯与项目实际情况选择合适的部署方式。
 
@@ -64,7 +64,7 @@ Cloud Studio 提供一键部署能力，可将应用快速发布至云端沙箱�
 
 1. 点击 Cloud Studio 触发 Deploy
 
-![alt text](/docs/static/Pasted%20image%2020260112195109.CSoNupAo.png)
+![alt text](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/Pasted%20image%2020260112195109.CSoNupAo.png)
 
 2. Agent 会先扫描整个代码库，分析项目类型，选择使用 Cloud Studio 沙盒环境进行部署
 
@@ -72,7 +72,7 @@ Cloud Studio 提供一键部署能力，可将应用快速发布至云端沙箱�
 
 部署成功后，最终生成一个 **可公开访问的临时地址**。
 
-![](/docs/static/Clipboard_Screenshot_1768219139.D0XH-Qqy.png)
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/Clipboard_Screenshot_1768219139.D0XH-Qqy.png)
 
 ### EdgeOne Pages
 
@@ -86,11 +86,11 @@ EdgeOne Pages 是高效的生产级站点部署平台，能快速构建并发布
 
 部署流程
 
-![](/docs/static/Pasted%20image%2020260112200314.B_OGRUw1.png)
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/Pasted%20image%2020260112200314.B_OGRUw1.png)
 
-![](/docs/static/Pasted%20image%2020260112200334.DJjl4liZ.png)
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/Pasted%20image%2020260112200334.DJjl4liZ.png)
 
-![](/docs/static/Pasted%20image%2020260112200423.Du6SdFcP.png)![](/docs/static/Pasted%20image%2020260112200451.DseYtYTe.png)
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/Pasted%20image%2020260112200423.Du6SdFcP.png)![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/Pasted%20image%2020260112200451.DseYtYTe.png)
 
 ### 常见问题
 

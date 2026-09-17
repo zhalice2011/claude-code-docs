@@ -12,7 +12,7 @@
 
 这意味着您不需要坐在电脑前，也能让 WorkBuddy 帮您处理工作。
 
-![](/docs/static/assistant-3.Btuye0hY.png)## 二、支持的平台
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/assistant-3.Btuye0hY.png)## 二、支持的平台
 
 助理支持国内主流的即时通讯平台：
 
@@ -53,7 +53,7 @@
 1. 打开 WorkBuddy，点击左下角头像，打开 **设置 → 助理设置**；
 2. 按需配置对应平台的集成接入（微信/企业微信/QQ/钉钉/飞书）。
 
-![](/docs/static/assistant-1.CelZeSps.png)
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/assistant-1.CelZeSps.png)
 3. 按照提示完成配置。
 
 ## 六、平台接入指南

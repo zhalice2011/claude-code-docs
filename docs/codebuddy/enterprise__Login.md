@@ -6,28 +6,28 @@
 
 1. 打开 CodeBuddy IDE，点击 **登录** 拉起浏览器验证窗口。
 
-![登录](/docs/static/%E7%99%BB%E5%BD%95-win.ipXFoPh0.png)
+![登录](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/%E7%99%BB%E5%BD%95-win.ipXFoPh0.png)
 
 2. 选择企业在「腾讯统一身份」配置支持的登录方式。
 - **手机验证码登录：** 输入在「腾讯统一身份」添加成员时填入的手机号，获取验证码登录。
 - **邮箱登录：** 输入在「腾讯统一身份」添加成员时填入的邮箱地址，获取验证码登录。
 - **SSO登录：** 输入企业域名，进入SSO登录页完成登录。
 
-![SaaS企业版登录](/docs/static/SaaS%E7%99%BB%E5%BD%95-1.BWQH0OdQ.png)### 企业专享版（专有云企业版）
+![SaaS企业版登录](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/SaaS%E7%99%BB%E5%BD%95-1.BWQH0OdQ.png)### 企业专享版（专有云企业版）
 
 专享版客户端请联系企业管理员获取，详情请参见[专享版快速入门](./PrivateQuickstart)。
 
 1. 打开 CodeBuddy IDE，点击 **登录** 拉起浏览器验证窗口。
 
-![登录](/docs/static/%E7%99%BB%E5%BD%95-win.ipXFoPh0.png)
+![登录](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/%E7%99%BB%E5%BD%95-win.ipXFoPh0.png)
 
 2. 拉起浏览器登录页，输入账号密码。
 
-![专有云企业版登录](/docs/static/%E4%B8%93%E6%9C%89%E4%BA%91%E7%99%BB%E5%BD%95-1.B7TWq5k4.png)3. 登录成功，即可返回 IDE 使用。
+![专有云企业版登录](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/%E4%B8%93%E6%9C%89%E4%BA%91%E7%99%BB%E5%BD%95-1.B7TWq5k4.png)3. 登录成功，即可返回 IDE 使用。
 
-![专有云企业版登录](/docs/static/%E4%B8%93%E6%9C%89%E4%BA%91%E7%99%BB%E5%BD%95-2._4m6Zj8J.png)## 更新
+![专有云企业版登录](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/%E4%B8%93%E6%9C%89%E4%BA%91%E7%99%BB%E5%BD%95-2._4m6Zj8J.png)## 更新
 
 1. 点击右上方的 **账户**，在菜单选项中选择 **检查更新**。
 
-![检查更新](/docs/static/%E6%A3%80%E6%9F%A5%E6%9B%B4%E6%96%B0.Ga-Rqxvj.png)
+![检查更新](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/%E6%A3%80%E6%9F%A5%E6%9B%B4%E6%96%B0.Ga-Rqxvj.png)
 2. 如果有新版本，左下方会有新版本的推送，直接点击 **立即安装** 按钮进行更新即可。

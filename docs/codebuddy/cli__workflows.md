@@ -2,9 +2,7 @@
 
 > Dynamic Workflows 让 CodeBuddy 写一段 JavaScript 编排脚本，由运行时在后台调度数十甚至数百个子代理协作完成任务。脚本本身可读、可改、可重跑，适合代码库审计、大型迁移、需要交叉验证的研究类任务。
 
-NOTE
-
- Dynamic Workflows 目前为研究预览阶段，要求 CodeBuddy Code v2\.105\.0 或更高版本，默认已启用。如需关闭，可在 \`/config\` 中关掉 "Dynamic workflows" 开关。 Dynamic Workflow 是一段由 CodeBuddy 为你的任务现场编写的 JavaScript 脚本，运行时在后台执行它，你的会话保持响应。脚本里包含一个或多个 [`agent()`](#脚本-api) 调用，每次调用都派出一个独立的子代理工作；脚本拿到中间结果后，可以分支、可以并行、可以再投递给下一批子代理。
+Dynamic Workflow 是一段由 CodeBuddy 为你的任务现场编写的 JavaScript 脚本，运行时在后台执行它，你的会话保持响应。脚本里包含一个或多个 [`agent()`](#脚本-api) 调用，每次调用都派出一个独立的子代理工作；脚本拿到中间结果后，可以分支、可以并行、可以再投递给下一批子代理。
 
 当一项任务大到一个会话装不下，或者你希望编排逻辑被记录成"可重跑的脚本"时，就该用 Workflow。典型场景：
 

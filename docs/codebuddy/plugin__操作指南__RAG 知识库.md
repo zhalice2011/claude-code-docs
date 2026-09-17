@@ -96,7 +96,7 @@ RAG（Retrieval\-Augmented Generation），这一检索增强生成技术，与�
 
 	- 文件内容命名要遵循 utf\-8、GBK 编码，暂时不支持其它格式的编码。 注意：限免期类型有限，会在近期新版本中逐步放开文件大小和类型的限制。 ![4de15f504a8e11f0b25352540099c741](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/4de15f504a8e11f0b25352540099c741.png)
 
-单击**添加数据**，进入添加文件页面。支持**文件拖拽**和单击**选择文件**两种交互。 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/33b95e2d4a8e11f0b25352540099c741.png) 以这个 [GitHub](https://github.com/leaferjs/draw) 仓库为例： 单击并下载成 ZIP 包后，然后拖拽到当前页面后，单击**确定**后，会进行后端解压，如果遇到限制会给出失败原因。没有问题后则上传成功，并返回到知识库的首页展示文件列表。每个文件都有直观的索引状态展示。
+                单击**添加数据**，进入添加文件页面。支持**文件拖拽**和单击**选择文件**两种交互。 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/33b95e2d4a8e11f0b25352540099c741.png) 以这个 [GitHub](https://github.com/leaferjs/draw) 仓库为例： 单击并下载成 ZIP 包后，然后拖拽到当前页面后，单击**确定**后，会进行后端解压，如果遇到限制会给出失败原因。没有问题后则上传成功，并返回到知识库的首页展示文件列表。每个文件都有直观的索引状态展示。
 
 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/851c96b34a8e11f08bfe5254005ef0f7.png)
 

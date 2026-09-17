@@ -21,7 +21,7 @@ file:///tmp/lib_demo/2026中国AI办公协作市场分析报告
 
 点击页面右上角的**分享**图标，在弹窗中切换到**发布**页签，打开**发布为网站**开关，页面即被发布为在线链接，任何获得链接的人都可以访问。
 
-![在分享弹窗的「发布」页签中开启「发布为网站」](/docs/static/publish-as-website.wn29MtFZ.png)
+![在分享弹窗的「发布」页签中开启「发布为网站」](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/publish-as-website.wn29MtFZ.png)
 
 开关下方会显示生成的链接，点击右侧按钮即可复制；弹窗底部还可以直接分享到微信等渠道，或生成二维码。发布后的链接使用 `workbuddy.link` 域名，形如 `https://workbuddy.link/p/{页面 ID}`。
 
@@ -43,13 +43,13 @@ file:///tmp/lib_demo/2026中国AI办公协作市场分析报告
 
 把经营指标、业务待办和操作流程做成直接可用的页面。HTML 负责呈现与操作，面向人——打开就是一个经营系统。
 
-![用 HTML 搭建的经营工作台页面](/docs/static/app-html-dashboard.eeMbubAk.png)
+![用 HTML 搭建的经营工作台页面](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/app-html-dashboard.eeMbubAk.png)
 
 ### CSV：业务数据底座
 
 用目录和多张 CSV 表持续管理商品、订单与库存数据。CSV 负责存储与更新，面向数据——结构清楚、持续可维护。
 
-![用多张 CSV 表管理业务数据](/docs/static/app-csv-library.DXpZTSNj.png)
+![用多张 CSV 表管理业务数据](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/app-csv-library.DXpZTSNj.png)
 
 ### 两者的配合方式
 

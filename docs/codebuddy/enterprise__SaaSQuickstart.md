@@ -5,7 +5,7 @@
 1. [登录购买页](https://buy.cloud.tencent.com/aipay?operation_type=new_buy&buy_type=exclusive1) 发起 WorkBuddy Enterprise 企业旗舰版新购，详见[购买方式](./price/Purchase)
 2. 购买完成后，进入[企业管理后台](https://copilot.tencent.com/admin)，使用下单时填写的**超管手机号**完成登录。
 
-![登录购买页](/docs/static/saasguide-1.D5KnWHAz.png)3. 登录完成后，进入管理后台。
+![登录购买页](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/saasguide-1.D5KnWHAz.png)3. 登录完成后，进入管理后台。
 
 ## 添加企业成员
 
@@ -13,17 +13,17 @@
 
 1. 企业旗舰版使用「腾讯统一身份」进行企业成员管理，您可以单击下图入口，快速跳转至「腾讯统一身份」添加成员；
 
-![](/docs/static/saasguide-4.Dy3iJMDG.png)2. 「腾讯统一身份」的成员管理页面如下，如何添加成员详见 [腾讯云统一身份 \> 成员添加指南](https://identity.tencent.com/docs/guides/Directory/)。
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/saasguide-4.Dy3iJMDG.png)2. 「腾讯统一身份」的成员管理页面如下，如何添加成员详见 [腾讯云统一身份 \> 成员添加指南](https://identity.tencent.com/docs/guides/Directory/)。
 
-![](/docs/static/saasguide-5.2OH-Fqwu.png)新增成员后，成员自动被同步至 WorkBuddy 企业管理后台。
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/saasguide-5.2OH-Fqwu.png)新增成员后，成员自动被同步至 WorkBuddy 企业管理后台。
 
-![](/docs/static/saasguide-6.CCyr1Nh8.png)#### 手动同步
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/saasguide-6.CCyr1Nh8.png)#### 手动同步
 
 在 [企业管理后台](https://copilot.tencent.com/admin) \> 开放与集成 \> 组织架构同步 中可以 **手动同步**「腾讯统一身份」平台上有 **应用管理** 权限的成员。
 
-![](/docs/static/saasguide-7.yYjkaaZm.png)  
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/saasguide-7.yYjkaaZm.png)  
 
-![](/docs/static/saasguide-8.Byzr_8Xp.png)### 邀请添加企业成员
+![](https://download.codebuddy.cn/web/docs/7033ab3f759261b384bb75b91065de873d4a3f44/docs/static/saasguide-8.Byzr_8Xp.png)### 邀请添加企业成员
 
 通过分发邀请链接的方式，快速邀请企业成员加入企业（获取邀请链接 / 成员受邀加入企业 / 审核加入申请，步骤同旧版）。
 

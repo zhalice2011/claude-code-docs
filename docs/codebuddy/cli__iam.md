@@ -332,16 +332,6 @@ CodeBuddy Code 支持多种权限模式，可在 [settings](./settings) 的 `per
 
 更完整的模式语义、切换方式、状态栏提示和子代理继承规则，请直接参考 [权限模式](./permission-modes)。
 
-WARNING
-
- \`bypassPermissions\` / \`\-y\` 应仅在安全、隔离的环境中使用，例如 Docker 容器或 VM。默认 \`\-y\` 仍可能对 HIGH/CRITICAL 危险命令询问。真正的 full pass 需要再设置进程环境变量 \`CODEBUDDY\_IS\_SANDBOX\=1\`，属于高危模式，仅限隔离无外网沙箱，故意不做成 CLI 参数。在生产环境或包含敏感数据的系统上使用可能会带来安全风险。详见\[沙箱 full pass（高危）](env\-vars.md\#沙箱\-full\-pass\-高危)。 NOTE
-
- \*\*\`trustAll\` / \`trustedDirectories\` 不是权限模式替代项。\*\* 这两个字段只影响启动时的\*\*目录信任授权提示\*\*（即"是否信任此目录并允许在其中运行 CodeBuddy"的一次性弹窗），和工具执行时是否弹审批无关。 - 免除工具审批请设置 `permissions.defaultMode` 或使用 `--permission-mode bypassPermissions` / `-y` / `--dangerously-skip-permissions`
-- 免除目录信任弹窗才用 `trustAll: true` 或把目录加入 `trustedDirectories`
-- 两个开关独立；`bypassPermissions` 开着时目录信任弹窗仍会正常出现，反之亦然
-
-所以"开了 `bypassPermissions` \+ `trustAll`，其他就不用配"这个说法是不准确的——前者控制工具审批，后者控制目录信任，两者解决的是不同的确认入口。
-
 #### 工作目录
 
 默认情况下，CodeBuddy 可以访问其启动目录中的文件。您可以扩展此访问权限：
@@ -362,25 +352,6 @@ WARNING
 - `Bash(npm run test:*)` 匹配以 `npm run test` 开头的 Bash 命令
 - `Bash(curl http://site.com/:*)` 匹配以 `curl http://site.com/` 开头的 curl 命令
 
-TIP
-
- CodeBuddy Code 能识别 shell 操作符（如 \`\&\&\`),因此前缀匹配规则如 \`Bash(safe\-cmd:\*)\` 不会授予它运行命令 \`safe\-cmd \&\& other\-cmd\` 的权限 WARNING
-
- Bash 权限模式的重要限制： 1. 此工具使用**前缀匹配**,而非正则表达式或 glob 模式
-2. 通配符 `:*` 仅在模式末尾有效，用于匹配任何后续内容
-3. 像 `Bash(curl http://github.com/:*)` 这样的模式可以通过多种方式绕过:
-	- URL 前的选项: `curl -X GET http://github.com/...` 不匹配
-	- 不同协议: `curl https://github.com/...` 不匹配
-	- 重定向: `curl -L http://bit.ly/xyz` (重定向到 github)
-	- 变量: `URL=http://github.com && curl $URL` 不匹配
-	- 额外空格: `curl http://github.com` 不匹配
-
-要更可靠地过滤 URL,请考虑：
-
-- 使用带 `WebFetch(domain:github.com)` 权限的 WebFetch 工具
-- 通过 CODEBUDDY.md 指示 CodeBuddy Code 您允许的 curl 模式
-- 使用 hooks 进行自定义权限验证
-
 **Read \& Edit**
 
 `Edit` 规则适用于所有编辑文件的内置工具。CodeBuddy 将尽力将 `Read` 规则应用于所有读取文件的内置工具，如 Grep、Glob 和 LS。
@@ -394,9 +365,7 @@ Read 和 Edit 规则都遵循 [gitignore](https://git-scm.com/docs/gitignore) �
 | `/path` | **相对于设置文件**的路径 | `Edit(/src/**/*.ts)` | `<设置文件路径>/src/**/*.ts` |
 | `path` 或 `./path` | **相对于当前目录**的路径 | `Read(*.env)` | `<cwd>/*.env` |
 
-WARNING
-
- 像 \`/Users/alice/file\` 这样的模式不是绝对路径 \- 它相对于您的设置文件！使用 \`//Users/alice/file\` 表示绝对路径。 **示例：**
+**示例：**
 
 - `Edit(/docs/**)` \- 在 `<项目>/docs/` 中编辑（不是 `/docs/`!)
 - `Read(~/.zshrc)` \- 读取家目录的 `.zshrc`
@@ -412,16 +381,6 @@ WARNING
 - `mcp__puppeteer` 匹配 `puppeteer` 服务器提供的任何工具（在 CodeBuddy Code 中配置的名称）
 - `mcp__puppeteer__*` 通配符语法,也匹配 `puppeteer` 服务器的所有工具
 - `mcp__puppeteer__puppeteer_navigate` 匹配 `puppeteer` 服务器提供的 `puppeteer_navigate` 工具
-
-TIP
-
- 要批准 MCP 服务器的所有工具，可以使用以下任一格式： - ✅ 使用： `mcp__github` （批准所有 GitHub 工具）
-- ✅ 使用： `mcp__github__*` （批准所有 GitHub 工具，与上一条等价）
-
-要仅批准特定工具，列出每一个：
-
-- ✅ 使用： `mcp__github__get_issue`
-- ✅ 使用： `mcp__github__list_issues`
 
 ### 权限配置示例
 
@@ -621,9 +580,7 @@ bash
 ```
 codebuddy --permission-mode bypassPermissions
 ```
-WARNING
-
- 仅在安全、隔离的环境中使用此选项！ ### 如何为特定项目设置不同的权限？
+### 如何为特定项目设置不同的权限？
 
 在项目根目录创建 `.codebuddy/settings.json`:
 

@@ -60,18 +60,14 @@ CodeBuddy Code 只拥有您授予它的权限。您有责任在批准之前审�
 - **自然语言描述**：复杂的 bash 命令包含解释以便用户理解
 - **安全凭据存储**: API 密钥和令牌经过加密。参见[凭据管理](./iam#凭据管理)
 
-WARNING
-
- \*\*Windows WebDAV 安全风险\*\*: 在 Windows 上运行 CodeBuddy Code 时,我们建议不要启用 WebDAV 或允许 CodeBuddy Code 访问可能包含 WebDAV 子目录的路径,如 \`\\\\\*\`。\[WebDAV 已被 Microsoft 弃用](https://learn.microsoft.com/en\-us/windows/whats\-new/deprecated\-features\#:\~:text\=The%20Webclient%20\\(WebDAV\\)%20service%20is%20deprecated)由于安全风险。启用 WebDAV 可能允许 CodeBuddy Code 触发对远程主机的网络请求,绕过权限系统。 **处理不受信任内容的最佳实践**:
+**处理不受信任内容的最佳实践**:
 
 1. 批准前审查建议的命令
 2. 避免将不受信任的内容直接传输到 CodeBuddy
 3. 验证对关键文件的建议更改
 4. 使用虚拟机(VM)运行脚本和进行工具调用，特别是在与外部 Web 服务交互时
 
-WARNING
-
- 虽然这些保护措施显著降低了风险，但没有系统能完全免疫所有攻击。在使用任何 AI 工具时，始终保持良好的安全实践。 ## MCP 安全
+## MCP 安全
 
 CodeBuddy Code 允许用户配置模型上下文协议(MCP)服务器。允许的 MCP 服务器列表在源代码中配置，作为工程师检入源代码控制的 CodeBuddy Code 设置的一部分。
 
@@ -384,15 +380,15 @@ find . -name "settings.json" -o -name "settings.local.json"
 
 在使用 CodeBuddy Code 之前，请确保：
 
-- \[ ] 已审查并配置适当的权限设置
-- \[ ] 敏感文件已添加到 deny 列表
-- \[ ] 危险命令已被阻止或需要确认
-- \[ ] 沙箱功能已根据需要启用
-- \[ ] API 密钥和令牌安全存储
-- \[ ] 团队成员已接受安全培训
-- \[ ] 已建立代码审查流程
-- \[ ] 定期审计权限使用情况
-- \[ ] 了解如何报告安全问题
+- 已审查并配置适当的权限设置
+- 敏感文件已添加到 deny 列表
+- 危险命令已被阻止或需要确认
+- 沙箱功能已根据需要启用
+- API 密钥和令牌安全存储
+- 团队成员已接受安全培训
+- 已建立代码审查流程
+- 定期审计权限使用情况
+- 了解如何报告安全问题
 
 ## 相关资源
 

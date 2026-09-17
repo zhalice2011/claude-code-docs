@@ -37,7 +37,7 @@
 | 参数 | 说明 | 示例 |
 | --- | --- | --- |
 | `--add-dir` | 添加额外的工作目录供 CodeBuddy 访问（验证每个路径是否存在） | `codebuddy --add-dir ../apps ../lib` |
-| `--agent` | 本进程新会话的主 Agent（TUI / `--serve` Web / ACP）。内置：`cli`、`ptc`、`minimal`、`create`、`multitask`，或自定义 agent 名。压过 `codebuddy.mainAgent.lastUsed`，**不写入** `codebuddy.mainAgent.default` 或 settings `agent`。标准模式请显式 `cli`。`multitask` **只允许交互 TUI**（stdout\+stdin 都是 TTY）；与 `-p` / stream\-json / `--acp` / `--serve` / 管道 stdin 互斥，进程非 0。ACP 宿主改走 [`session/set_multitask`](./acp#multitask-协调器sessionset_multitask)。对照表见 [Web UI](./web-ui#serve-启动-模式与权限) | `codebuddy --agent multitask` |
+| `--agent` | 本进程新会话的主 Agent（TUI / `--serve` Web / ACP）。内置：`cli`、`ptc`、`minimal`、`create`、`multitask`，或自定义 agent 名。压过 `codebuddy.mainAgent.lastUsed`，**不写入** `codebuddy.mainAgent.default` 或 settings `agent`。标准模式请显式 `cli`。`multitask` **只允许交互 TUI**（stdout\+stdin 都是 TTY）；与 `-p` / stream\-json / `--acp` / `--serve` / 管道 stdin 互斥，进程非 0。ACP 宿主改走 [`session/set_multitask`](./acp#multitask-协调器sessionset-multitask)。对照表见 [Web UI](./web-ui#serve-启动-模式与权限) | `codebuddy --agent multitask` |
 | `--multitask` | 归一成 `--agent multitask` 后再盖章、再走同一套入口守卫。显式 `--multitask` 优先于其它 `--agent`。交互 TUI only | `codebuddy --multitask` |
 | `--agents` | 通过 JSON 动态定义自定义[子代理](./sub-agents)（格式见下文） | `codebuddy --agents '{"reviewer":{"description":"审查代码","prompt":"你是代码审查员"}}'` |
 | `--allowedTools` | 除了[settings.json 文件](./settings)外,无需提示用户即可允许的工具列表 | `"Bash(git log:*)" "Bash(git diff:*)" "Read"` |
@@ -92,9 +92,7 @@
 > 
 > **⚠️ 风险声明**：`CODEBUDDY_IS_SANDBOX=1` \+ `-y` 会跳过危险命令确认，仅限隔离无外网沙箱。该变量只认进程环境，不会从 `settings.json` 的 `env` 注入。不要在本机或能访问生产密钥的环境使用。
 
-TIP
-
- \`\-\-output\-format json\` 参数特别适用于脚本和自动化，允许您以编程方式解析 CodeBuddy 的响应。 ### Agents 参数格式
+### Agents 参数格式
 
 `--agents` 参数接受定义一个或多个自定义子代理的 JSON 对象。每个子代理需要一个唯一的名称（作为键）和一个包含以下字段的定义对象：
 
@@ -161,11 +159,7 @@ bash
 codebuddy --append-system-prompt "始终使用 TypeScript 并包含 JSDoc 注释"
 ```
 
-NOTE
-
- \`\-\-system\-prompt\` 和 \`\-\-system\-prompt\-file\` 互斥。不能同时使用这两个参数。 TIP
-
- 对于大多数用例，建议使用 \`\-\-append\-system\-prompt\`,因为它在添加自定义需求的同时保留了 CodeBuddy Code 的内置功能。仅当需要完全控制系统提示词时才使用 \`\-\-system\-prompt\` 或 \`\-\-system\-prompt\-file\`。 ## 沙箱模式 （Beta)
+## 沙箱模式 （Beta)
 
 > **Beta 功能**: Sandbox 功能目前处于 Beta 阶段。
 > 
