@@ -1268,14 +1268,14 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Installation-Mac-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Installation-Mac-Guide",
-      "hash": "9093f787e136574e2b1063b20de8fc5f6ec1a3de53114d08c723c6811b77a23f",
-      "last_updated": "2026-09-03T07:46:24.416887",
+      "hash": "ac41cc407ac5077f5794cbc115d167a82a35b417423972e7200fc3180d1ca192",
+      "last_updated": "2026-09-17T08:21:35.276076",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Installation-Win-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Installation-Win-Guide",
-      "hash": "8259f8649376c95a8dafc5602f6852b6308e82264c2baf2e5b9d2d845dbf360c",
-      "last_updated": "2026-09-03T07:46:25.268605",
+      "hash": "b74b66167ffdb0a91a3c5508e6b9d2d1031dfd4f65afbcc85e87cfe5f2776425",
+      "last_updated": "2026-09-17T08:21:36.174503",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Eight.md": {
@@ -1647,7 +1647,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-09-17T02:38:58.442254",
+    "last_fetch_completed": "2026-09-17T08:22:29.358305",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 276,
     "pages_fetched_successfully": 274,
@@ -1659,7 +1659,7 @@
     "total_files": 274,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-17T02:38:58.442278",
+  "last_updated": "2026-09-17T08:22:29.358329",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

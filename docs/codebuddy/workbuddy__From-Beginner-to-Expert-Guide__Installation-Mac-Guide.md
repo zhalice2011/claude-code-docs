@@ -2,17 +2,19 @@
 
 ## 环境要求
 
-- macOS 12 (Monterey)及以上
+macOS 12 (Monterey)及以上
 
 TIP
 
 不满足上述要求的系统将无法启动 WorkBuddy。
 
-## 一、下载
+## 下载
 
-1. 访问 [WorkBuddy 官网](https://www.codebuddy.cn/work/)，点击 **下载 WorkBuddy**；
+1. 访问 [WorkBuddy 官网](https://www.workbuddy.cn/)，点击**立即下载**，选择 Mac，下载对应安装包。
 
-![](/docs/static/image-13.BpXsVrXL.png)版本选择
+![官网下载页选择 Mac 版本](/docs/static/download-page-mac.D5LqkNvp.png)
+
+版本选择
 
 **M 系列芯片** → 选择 `Mac ARM64` 版本；
 
@@ -31,36 +33,39 @@ TIP
 
 ![](/docs/static/image-14.BhZn1kDP.png)
 
-## 二、安装
+## 安装
 
-1. 双击已下载的 `.dmg` 磁盘映像文件，打开安装窗口；
+1. 双击已下载的 `.dmg` 磁盘映像文件，打开安装窗口。
 
 ![](/docs/static/image-15.sG7k4Kcf.png)
-2. 将 **WorkBuddy** 图标拖入 **Applications** 文件夹；
+2. 将 **WorkBuddy** 图标拖入 **Applications** 文件夹。
 
 ![](/docs/static/image-16.2oor8hng.png)![](/docs/static/image-17.BxSolkQv.png)
-3. 等待拷贝完成；
+3. 等待拷贝完成。
 
 ![](/docs/static/image-18.B8WzN7p9.png)
 4. 推出已挂载的 WorkBuddy 磁盘映像；如不再需要，可删除下载目录中的 `.dmg` 安装包。
 
 ![](/docs/static/image-19.BnT816LK.png)
 
-## 三、登录
+## 登录
 
-1. 通过 **启动台** 或 `Command + 空格` 搜索打开 WorkBuddy；
-2. 点击 **登录** 按钮，浏览器将自动打开登录页面（WorkBuddy 官网 **workbuddy.cn**）；
+1. 通过**启动台**或 `Command + 空格` 搜索打开 WorkBuddy。
+2. 点击**登录**按钮，浏览器将自动打开登录页面（WorkBuddy 官网 **workbuddy.cn**）。
 
-![](/docs/static/image-20.CSF6dln-.png)
-3. 在登录页面的弹窗中勾选《用户服务协议》与《隐私政策》，使用**微信扫码**完成登录；也支持**手机号、邮箱、SSO** 等登录方式，登录全程在当前页面完成，无需跳转；
+![WorkBuddy 登录界面](/docs/static/login-screen-mac.Cxv9RDCa.png)
+3. 在登录页面的弹窗中勾选《用户服务协议》与《隐私政策》，使用**微信扫码**完成登录；也支持**手机号、邮箱、SSO** 等登录方式，登录全程在当前页面完成，无需跳转。
 
-![登录弹窗](/docs/static/login-popup.Vnh_2lK9.png)
-4. 登录成功后自动返回客户端，即可开始使用。
+![微信扫码登录](/docs/static/login-wechat-qr-mac.Dm1NdEdO.png)
+4. 页面显示登录成功后，返回客户端即可开始使用。首次使用可参考[开启你的第一个任务](https://www.workbuddy.cn/docs/workbuddy/FirstTask)。
 
-![](/docs/static/image-22.Da1Lz-Ry.png)
+![登录成功进入 WorkBuddy](/docs/static/login-success-home-mac.yZ_ZMdxq.png)
 
-## 四、版本更新
+语言设置
 
-点击左下角 **个人中心** → **检查更新**，系统将自动检测并完成升级。
+	- 如需切换界面语言，点击左下角**头像** \> **设置** \> **通用** \> **语言**，进行切换。
+	- 如果点击登录后无法打开浏览器、登录失败或客户端无响应，可参见 [常见问题](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/FAQ)。
 
-![](/docs/static/image-23.C3iiE_yZ.png)
+## 版本更新
+
+点击左下角**头像** \> **检查更新**，系统将自动检测版本。若已是最新版本则无需操作；若存在新版本，系统将自动下载并完成升级。
