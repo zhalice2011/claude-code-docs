@@ -42,7 +42,7 @@
 1. 进入 **AI 资源管理 \- Skill 管理 \- Skill 列表**
 2. 点击右上角 **\+ 上传 Skill** 按钮
 
-![上传 Skill](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-1.B4c7lmX8.png)
+![上传 Skill](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-1.B4c7lmX8.png)
 
 3. 填写 Skill 基本信息，点击或拖拽上传本地 Skill 包文件（支持 `.zip` 格式）
 	- Skill 标识（必填）：用于显示的唯一标识
@@ -51,7 +51,7 @@
 	- 版本（选填）：Skill 版本号
 	- 描述（选填）：Skill 的简要说明
 
-![上传 Skill](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-2.pj1bddmp.png)
+![上传 Skill](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-2.pj1bddmp.png)
 
 4. 确认**权限配置\-可见范围**后，点击**保存并启用**完成上传
 
@@ -67,7 +67,7 @@
 | 分类描述 | 辅助理解的文字说明 | "用于自动化代码质量检测" |
 | 排序位置 | 决定客户端展示顺序 | 可设置**追加到末尾**或**置顶到首位** |
 
-![上传 Skill](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-3.DUd010Dz.png)
+![上传 Skill](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-3.DUd010Dz.png)
 
 ### 第三步：设置下发策略
 
@@ -82,7 +82,7 @@
 	- 作用范围：选择策略生效的成员或部门
 4. 保存后策略即时生效
 
-![上传 Skill](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-4.CQfIlyIh.png)
+![上传 Skill](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-4.CQfIlyIh.png)
 
 ## Skill 列表
 
@@ -214,7 +214,7 @@ author: enterprise-admin
 | 关联 Skill | 列表 | 策略涉及的 Skill 集合 |
 | 修改时间 | 时间戳 | 最近一次更新时间 |
 
-![上传 Skill](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-5.DpJwQJKz.png)
+![上传 Skill](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-5.DpJwQJKz.png)
 
 ## 成员自定义 Skill
 
@@ -237,7 +237,7 @@ author: enterprise-admin
 2. 点击 **修改策略** 按钮。
 3. 在弹窗中选择新的策略模式，确认保存。
 
-![上传 Skill](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-6.Cr17JOl4.png)
+![上传 Skill](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-6.Cr17JOl4.png)
 
 ## 注意事项与重点提示
 

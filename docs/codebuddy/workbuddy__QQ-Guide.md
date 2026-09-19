@@ -23,7 +23,7 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 
 点击创建机器人：
 
-![创建机器人](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/qq-guide-2.DdeZxWeY.png)
+![创建机器人](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/qq-guide-2.DdeZxWeY.png)
 
 点击后会立刻成功，此时机器人会给你的QQ发一条成功消息，头像昵称可按喜好自定义编辑。
 
@@ -31,7 +31,7 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 
 复制机器人的 AppID 和 AppSecret :
 
-![复制AppID和AppSecret](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/qq-guide-3.B1fiLS6i.png)
+![复制AppID和AppSecret](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/qq-guide-3.B1fiLS6i.png)
 
 重要提示
 
@@ -41,27 +41,27 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 
 1. 打开 WorkBuddy，点击助理的**设置** ⚙️图标后进入 **助理设置**
 
-![打开助理设置](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/qq-guide-4.Bk0lght0.png)
+![打开助理设置](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/qq-guide-4.Bk0lght0.png)
 
 2. 配置 **QQ 机器人集成**
 
-![QQ机器人集成配置](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/qq-guide-5.BvQUJ5Mx.png)
+![QQ机器人集成配置](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/qq-guide-5.BvQUJ5Mx.png)
 
 3. **QQ 扫码**连接已创建的机器人；或选择 WebSocket 长连接 / 使用 URL 回调 填入刚才复制的 AppID 和 AppSecret 后点击**注册**，完成连接：
 
-![WebSocket长连接注册](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/qq-guide-6.wvwumEf6.png)
+![WebSocket长连接注册](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/qq-guide-6.wvwumEf6.png)
 
-![URL回调注册](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/qq-guide-7.4x4mHzrF.png)
+![URL回调注册](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/qq-guide-7.4x4mHzrF.png)
 
 4. 配置成功
 
 在**助理设置中**，**QQ 机器人集成**显示已连接
 
-![配置成功](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/qq-guide-8.BdH1Jyn4.png)
+![配置成功](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/qq-guide-8.BdH1Jyn4.png)
 
 在**助理**中可以看到QQ图标
 
-![助理QQ图标](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/qq-guide-9.xHpaPG6L.png)
+![助理QQ图标](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/qq-guide-9.xHpaPG6L.png)
 
 恭喜
 

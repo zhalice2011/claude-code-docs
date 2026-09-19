@@ -30,7 +30,7 @@
 
 使用顶部的搜索框可以按**专家名称**或**专家标识**快速定位专家。
 
-![专家列表](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-1.Na3TgnUu.png)
+![专家列表](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/expert-1.Na3TgnUu.png)
 
 ## 上传企业专家
 
@@ -53,7 +53,7 @@
 
 专家标识在创建后不可修改，建议采用语义化命名，如 `code-reviewer`、`data-analyst`。
 
-![新建专家](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-2.DRx_sbaa.png)
+![新建专家](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/expert-2.DRx_sbaa.png)
 
 ### 上传专家包
 
@@ -95,7 +95,7 @@
 | 分类描述 | 可选 | 仅企业管理员可见的内部备注，用于标识分类用途，最多 500 字 |
 | 排序位置 | 必填 | 选择「追加到末尾」或「置顶到首位」，决定分类在企业市场中的展示顺序 |
 
-![新增分类](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-3.C41jtIJK.png)
+![新增分类](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/expert-3.C41jtIJK.png)
 
 ### 管理现有分类
 
@@ -127,7 +127,7 @@
 
 **优先级规则：** 当同一专家同时存在白名单和黑名单策略时，**黑名单优先级高于白名单**。即被黑名单禁止的用户无法通过白名单获得访问权限。
 
-![策略类型](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-4.eBIpra3r.png)
+![策略类型](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/expert-4.eBIpra3r.png)
 
 ### 创建策略
 
@@ -140,7 +140,7 @@
 | 目标专家 | 必填 | 选择本策略作用的专家，支持多选 |
 | 作用范围 | 必填 | 选择策略生效的成员或部门 |
 
-![策略类型](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-5.D-KLX12y.png)
+![策略类型](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/expert-5.D-KLX12y.png)
 
 ### 查询与管理
 

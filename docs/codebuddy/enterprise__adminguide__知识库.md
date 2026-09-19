@@ -7,7 +7,7 @@
 | 官方知识库 | 平台预置的开源框架与技术规范知识库 | 快速接入常用技术栈 |
 | 自定义知识库 | 企业/团队创建的私有知识库 | 沉淀企业内部文档与代码资产 |
 
-![知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/knowledgebase-1.Cc-mlgz1.png)
+![知识库](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/knowledgebase-1.Cc-mlgz1.png)
 
 ## 官方知识库
 
@@ -47,7 +47,7 @@
 
 进入 **知识库管理** 页面，切换至 **官方知识库** 标签页。
 
-![知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/knowledgebase-2.A86OZlwT.png)
+![知识库](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/knowledgebase-2.A86OZlwT.png)
 
 说明
 
@@ -81,7 +81,7 @@
 | 描述 | ❌ | ≤ 30 个英文字符 或 ≤ 15 个中文字符 |
 | 可见范围 | ✅ | 默认全部成员；支持指定部分成员 |
 
-![知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/knowledgebase-3.BCTH1AiL.png)
+![知识库](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/knowledgebase-3.BCTH1AiL.png)
 
 单击 **确定** 完成创建。
 
@@ -102,7 +102,7 @@ bash
 ```
 上传成功后返回首页，文件列表展示每条数据的 **索引状态**。
 
-![知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/knowledgebase-4.CqW_WRsZ.png)
+![知识库](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/knowledgebase-4.CqW_WRsZ.png)
 
 #### 配置检索参数
 
@@ -117,7 +117,7 @@ bash
 - 较低的 Score Threshold → 更多结果（召回率更高）
 - 较高的 Score Threshold → 仅高度相关的结果（精度更高）
 
-![知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/knowledgebase-5.Bx8AiZ5h.png)
+![知识库](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/knowledgebase-5.Bx8AiZ5h.png)
 
 #### 启用知识库
 
@@ -131,7 +131,7 @@ bash
 
 返回知识库首页，开启知识库。
 
-![知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/knowledgebase-6.WugUmvqV.png)
+![知识库](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/knowledgebase-6.WugUmvqV.png)
 
 ### 更新知识库
 
@@ -141,7 +141,7 @@ bash
 
 在知识库列表中定位目标知识库，单击 **编辑** 按钮，修改名称、描述等基本信息。
 
-![知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/knowledgebase-7.C8GaqlUA.png)
+![知识库](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/knowledgebase-7.C8GaqlUA.png)
 
 #### 方式二：从详情页编辑
 
@@ -152,7 +152,7 @@ bash
 - **添加数据** — 上传新的文档或代码
 - **设置** — 调整知识库检索参数
 
-![知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/knowledgebase-8.ZEs_yaXs.png)
+![知识库](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/knowledgebase-8.ZEs_yaXs.png)
 
 ## 在客户端中使用知识库
 
@@ -175,7 +175,7 @@ bash
 2. 在对话框 `@` 中选择 Docs 打开账号下的知识库列表。
 3. 点击引用知识库。
 
-![知识库](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/knowledgebase-9.BCTjgCUh.png)
+![知识库](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/knowledgebase-9.BCTjgCUh.png)
 
 ## 场景示例
 

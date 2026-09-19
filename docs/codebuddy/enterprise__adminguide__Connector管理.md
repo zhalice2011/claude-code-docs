@@ -8,7 +8,7 @@ Connector 管理为企业提供统一的外部服务接入能力。通过配置�
 
 每个连接器封装了认证凭证、MCP（Model Context Protocol）服务端配置、工具权限过滤、超时策略以及自定义请求头等完整接入配置。创建后，连接器在组织内可用，成员无需单独配置即可通过 Agent 使用对应的外部服务能力。
 
-![新建连接器基础信息](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/connect-2.C4DEPzlE.png)
+![新建连接器基础信息](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/connect-2.C4DEPzlE.png)
 
 ## 快速开始
 
@@ -26,7 +26,7 @@ Connector 管理为企业提供统一的外部服务接入能力。通过配置�
 
 ### 步骤一：填写基础信息
 
-![新建连接器基础信息](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/connect-3.tMB9Qn-A.png)
+![新建连接器基础信息](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/connect-3.tMB9Qn-A.png)
 
 填写连接器的身份信息：
 
@@ -47,11 +47,11 @@ Connector 管理为企业提供统一的外部服务接入能力。通过配置�
 
 **适用于：已实现 MCP OAuth 2\.1 规范的服务端。**
 
-![MCP OAuth 2.1 认证](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/mcp-oauth.DLQvWCHJ.png)
+![MCP OAuth 2.1 认证](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/mcp-oauth.DLQvWCHJ.png)
 
 #### OAuth 2\.0（Authorization Code）
 
-![OAuth 2.0 认证详细配置](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/oauth.BOE1hNUv.png)
+![OAuth 2.0 认证详细配置](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/oauth.BOE1hNUv.png)
 
 适用于标准 OAuth 2\.0 授权码流程。将底部的`Redirect URL`填入第三方应用所需的**回调链接**条目（回调白名单）中。
 
@@ -73,7 +73,7 @@ Connector 管理为企业提供统一的外部服务接入能力。通过配置�
 
 适用于：使用静态 API Key 进行认证的服务（如部分内部 API 网关）。
 
-![API Key 认证](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/paikey.DUXvwkJ4.png)
+![API Key 认证](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/paikey.DUXvwkJ4.png)
 
 ### 步骤三：配置 MCP 服务端
 
@@ -85,15 +85,15 @@ MCP Server URL： `https://docs.qq.com/openapi/mcp`
 
 系统将基于此地址自动生成 Gateway 和 MCP 相关配置。
 
-![mcp配置](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/mcp-1.CWZLtMNl.png)
+![mcp配置](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/mcp-1.CWZLtMNl.png)
 
 填写完成后点击 **保存**，连接器创建完成。
 
-![自定义连接器](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/mcp-2.B0GhqYsZ.png)
+![自定义连接器](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/mcp-2.B0GhqYsZ.png)
 
 ## 管理已有连接器
 
-![连接器列表](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/connect-2.C4DEPzlE.png)
+![连接器列表](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/connect-2.C4DEPzlE.png)
 
 进入 **Connector 管理** 页面可查看所有已配置的连接器。页面以卡片形式呈现每个连接器的基本信息：
 
@@ -112,7 +112,7 @@ MCP Server URL： `https://docs.qq.com/openapi/mcp`
 
 ## 查看连接器详情
 
-![连接器详情](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/connect-1.DFxKQzqz.png)
+![连接器详情](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/connect-1.DFxKQzqz.png)
 
 点击连接器卡片上的 **详情** 进入详情页，以双栏布局展示完整的配置信息：
 

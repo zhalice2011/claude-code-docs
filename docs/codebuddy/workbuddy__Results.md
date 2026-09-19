@@ -26,15 +26,15 @@
 - 分析报告
 - 自动生成的交付文件
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/results-1.1p-6Qvw_.png)#### 产物分享
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/results-1.1p-6Qvw_.png)#### 产物分享
 
 在预览产物文件时，点击右上角分享图标：
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/results-2.CHN1y69w.png)#### 上传到云端
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/results-2.CHN1y69w.png)#### 上传到云端
 
 支持上传到**我的云端网盘**、**腾讯文档**、**ima 知识库**、**乐享知识库**，在其他端的应用内也可以查看。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/results-3.PA3T0X1N.png)## 网页预览
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/results-3.PA3T0X1N.png)## 网页预览
 
 如果任务生成的是网页、页面原型或本地启动的 Web 应用，您可以在内置浏览器中直接查看效果。
 
@@ -46,7 +46,7 @@
 
 这适合用于确认页面结构、样式和交互结果是否符合预期。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/results-4.DQxfaWoG.png)### 多浏览器页签
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/results-4.DQxfaWoG.png)### 多浏览器页签
 
 产物栏支持同时打开**多个浏览器页签**：
 
@@ -54,7 +54,7 @@
 - 页签可点击切换、可单独关闭，每个页签保持**独立的浏览状态**（当前网址、前进 / 后退历史）；
 - 关闭当前页签后自动选中相邻页签；关闭全部页签后产物栏恢复默认状态。
 
-![多浏览器页签](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/results-multi-browser.Csb5NPOL.png)
+![多浏览器页签](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/results-multi-browser.Csb5NPOL.png)
 
 ## 工作空间文件
 
@@ -72,7 +72,7 @@
 - 对照不同文件之间的关系
 - 检查任务是否写入了正确的位置
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/results-5.BQcGOAhv.png)## 变更
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/results-5.BQcGOAhv.png)## 变更
 
 **变更** 视图用于查看当前任务带来的文件修改，方便您在接受结果前先做一轮检查。
 
@@ -84,4 +84,4 @@
 
 如果任务涉及代码开发、脚本生成或配置调整，建议优先在这里确认改动是否符合预期。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/results-6.CgDwNO45.png)
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/results-6.CgDwNO45.png)

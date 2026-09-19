@@ -6,7 +6,7 @@
 
 任务执行完成后，产物文件会直接展示在对话中，可以点击 **「查看文件」** 查看：
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/share-1.aMgZ6mTl.png)![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/share-2.BAz5vuLm.png)提示
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/share-1.aMgZ6mTl.png)![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/share-2.BAz5vuLm.png)提示
 
 产物文件支持预览**PDF、DOCX、Markdown**等格式。
 
@@ -16,9 +16,9 @@
 
 1. 弹出分享确认弹窗
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/share-3.I6ptWFze.png)2. 点击**确认分享**后生成分享链接
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/share-3.I6ptWFze.png)2. 点击**确认分享**后生成分享链接
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/share-4.BoA3l7h6.png)3. 可将链接分享到微信、QQ 等其他系统显示的渠道
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/share-4.BoA3l7h6.png)3. 可将链接分享到微信、QQ 等其他系统显示的渠道
 
 ## 三、导出产物文件
 
@@ -28,7 +28,7 @@ App 端支持将产物直接保存到手机本地：
 2. 点击预览页面右上角的 **「分享」**按钮
 3. 可以将产物导出为PDF、DOCX、Markdown或导出到腾讯文档。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/share-5.25IsRCNn.png)
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/share-5.25IsRCNn.png)
 
 ## 四、重新生成产物
 

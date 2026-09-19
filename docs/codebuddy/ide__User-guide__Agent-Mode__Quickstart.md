@@ -44,7 +44,7 @@ CodeBuddy Agents 是 CodeBuddy IDE 中的 Agents 模式，面向智能体开发�
 3. 也可以在 IDE 首页点击工作模式卡片底部的 **开始工作** 按钮进入智能体模式。
 4. 如果您尚未登录，系统会显示登录引导页面。点击登录按钮完成登录。
 
-![进入智能体模式的两个入口](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/open-agents-entry.ZcQ7zgxA.png)
+![进入智能体模式的两个入口](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/open-agents-entry.ZcQ7zgxA.png)
 
 ## 发起您的第一个任务
 
@@ -56,7 +56,7 @@ CodeBuddy Agents 是 CodeBuddy IDE 中的 Agents 模式，面向智能体开发�
 6. 智能体会自动使用您当前 IDE 打开的项目和分支作为工作上下文，无需额外配置。
 7. 您可以继续新建其他任务，让多个智能体任务并行推进，并在侧边栏中随时切换查看。
 
-![新建任务页面示例](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/new-task-page.BbKreyp0.png)
+![新建任务页面示例](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/new-task-page.BbKreyp0.png)
 
 ---
 

@@ -4,7 +4,7 @@
 
 点击输入栏**左侧的 \+ 按钮**，展开工具面板：
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-1.B-7QC7Qo.png)![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-2.B0ByURll.png)**工具面板功能一览：**
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-1.B-7QC7Qo.png)![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-2.B0ByURll.png)**工具面板功能一览：**
 
 | 入口 | 功能 | 适用场景 |
 | --- | --- | --- |
@@ -23,7 +23,7 @@
 - 照片会显示在输入框上方，点击 × 可移除
 - 如需拍摄多张，需再次点击 **\+** → **拍照** 重复操作
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-3.B8FBT8hd.png)![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-4.BmGAMlUA.png)![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-5.ZYnfZiDe.png)
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-3.B8FBT8hd.png)![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-4.BmGAMlUA.png)![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-5.ZYnfZiDe.png)
 > **⚠️ 注意**：使用拍照或照片功能时，建议选择带「视觉」标签的模型（如 DeepSeek\-V4\-Flash、Kimi\-K2\.5 等），否则 AI 无法理解图片内容。
 
 ## 照片/视频
@@ -34,7 +34,7 @@
 - 选中的图片显示在输入框上方，可逐张预览和删除
 - 支持常见图片格式：JPG、PNG 等
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-6.Bgcs97AT.png)![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-7.DKmWlq_U.png)![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-8.EviPAcd1.png)**拍照 vs 照片 对比：**
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-6.Bgcs97AT.png)![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-7.DKmWlq_U.png)![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-8.EviPAcd1.png)**拍照 vs 照片 对比：**
 
 | 对比维度 | 拍照 | 照片 |
 | --- | --- | --- |
@@ -67,13 +67,13 @@ App 登录后自动连接相同账号的腾讯文档。未连接时，按以下�
 
 1. 点击 **腾讯文档**
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-9.BWs78Yfd.png)
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-9.BWs78Yfd.png)
 2. 勾选同意协议后，点击**同意**授权完成连接
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-10.Bq3UdXb5.png)
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-10.Bq3UdXb5.png)
 3. 选择目标文件，点击**添加**引用到当前对话
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-11.U6ag5wh9.png)![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-12.D6nMGsNO.png)
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-11.U6ag5wh9.png)![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-12.D6nMGsNO.png)
 
 ## 定时任务
 
@@ -86,7 +86,7 @@ App 登录后自动连接相同账号的腾讯文档。未连接时，按以下�
 
 例如："每天早上 9 点推送昨日 AI 行业新闻摘要"、"每周五下午 5 点生成本周工作总结"
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/skill-13.DaNSxZFO.png)
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/skill-13.DaNSxZFO.png)
 
 ## 专家
 

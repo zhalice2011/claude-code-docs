@@ -26,7 +26,7 @@
 
 想让 `WorkBuddy` 精准执行，记住这个“三要素公式”：
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/tip-01-clear-expression.DsXEpbRf.png)**示例**：
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/tip-01-clear-expression.DsXEpbRf.png)**示例**：
 
 - **反面示范**：帮我把上次的会议纪要整理一下。
 - **正面示范**：把 `D:/会议纪要/0320产品评审.docx` 里的会议纪要整理成一份清单，包含：`1）` 每个议题的结论；`2）` 对应的责任人和截止日期；`3）` 标记有争议、未决的事项。用表格输出，不需要开场白。
@@ -43,7 +43,7 @@
 
 更好的做法是：把大任务拆解成独立的小目标，一次只推进一步。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/tip-02-small-steps.BDfpjjT3.png)**示例**：
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/tip-02-small-steps.BDfpjjT3.png)**示例**：
 
 - **反面示范**：帮我把这份 `50` 页的行业报告读一遍，写一份内部汇报 `PPT` 发给领导的邮箱。
 - **正面示范**（拆成三轮）：
@@ -66,7 +66,7 @@
 - **补充限制条件**：加入受众、场景、格式、篇幅等要求。
 - **切换角色视角**：让WorkBuddy站在老板、客户、产品经理、分析师等身份思考。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/tip-03-iterate.BYENPM8s.png)**示例**：
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/tip-03-iterate.BYENPM8s.png)**示例**：
 
 - **第 `1` 轮**：帮我写一封给客户的道歉邮件，原因是上期交付的报表数据有误。
 - **WorkBuddy的回复**：给出了一封正式、偏长的道歉信，语气过于严肃。
@@ -84,7 +84,7 @@
 
 但远程遥控意味着WorkBuddy会在你看不见的地方自主行动。一旦它执行了超出预期的操作，你未必来得及叫停。因此更建议新手先在桌面端边看边用，先摸清楚它的执行方式、理解习惯和风险边界，再逐步放手给它远程跑。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/tip-04-local-first.CjXsLapH.png)**示例**：
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/tip-04-local-first.CjXsLapH.png)**示例**：
 
 - **第 `1` 步**（本地桌面端）：帮我列出 `D:/下载` 文件夹里的所有文件，按类型分组显示。
 - **第 `2` 步**（本地桌面端）：把其中的 `.pdf` 文件移到 `D:/文档/PDF归档`，`.xlsx` 文件移到 `D:/文档/表格归档`，其他不动。执行前先列出待移动清单让我确认。
@@ -96,7 +96,7 @@
 
 `WorkBuddy` 内置了“专家”能力，提供了各行各业的预设角色，例如法律顾问、产品经理、数据分析师、营销文案等。选择合适的专家后，WorkBuddy会优先沿着该角色的思路来组织回答。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/tip-05-expert-role.DbPksfrL.png)本质上，这相当于给WorkBuddy预先设置了一层“角色提示”，可以让它的表达框架、关注重点和专业术语更快对齐对应领域。对于专业性较强、输出风格要求明确的任务，效果通常会更稳定。
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/tip-05-expert-role.DbPksfrL.png)本质上，这相当于给WorkBuddy预先设置了一层“角色提示”，可以让它的表达框架、关注重点和专业术语更快对齐对应领域。对于专业性较强、输出风格要求明确的任务，效果通常会更稳定。
 
 ### 6）给WorkBuddy看例子，比说一堆要求更管用
 
@@ -104,7 +104,7 @@
 
 语言描述有时很难精确表达你想要的“感觉”。这时候，最省力也最有效的方式，往往就是直接把一个你满意的样本给WorkBuddy，并告诉它：“照这个来。”
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/tip-06-show-examples.Bf-mQe0J.png)相比从零猜测，你给出的样本就是一个非常明确的锚点。无论是语气、结构、格式，还是表达风格，只要参照物足够清晰，WorkBuddy通常都能发挥得更稳定。
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/tip-06-show-examples.Bf-mQe0J.png)相比从零猜测，你给出的样本就是一个非常明确的锚点。无论是语气、结构、格式，还是表达风格，只要参照物足够清晰，WorkBuddy通常都能发挥得更稳定。
 
 ### 7）善用多任务，别在烂上下文里死磕
 
@@ -112,7 +112,7 @@
 
 你可以把每个会话理解为一张独立的工作台：写方案一个窗口、整理数据一个窗口、回邮件一个窗口，彼此互不干扰，同时推进，效率会高很多。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/tip-07-multitask.CocYVaM8.png)另一方面，如果一个会话过长，WorkBuddy开始出现“前说后忘”“越聊越跑偏”的情况，就不要硬撑。直接开一个新任务，把关键背景重新简洁说一遍，往往比在旧上下文里反复修补更有效。
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/tip-07-multitask.CocYVaM8.png)另一方面，如果一个会话过长，WorkBuddy开始出现“前说后忘”“越聊越跑偏”的情况，就不要硬撑。直接开一个新任务，把关键背景重新简洁说一遍，往往比在旧上下文里反复修补更有效。
 
 ### 8）记得频繁备份和做版本管理
 
@@ -122,7 +122,7 @@
 
 WorkBuddy有时会改过头：删掉你想保留的内容、打乱原有格式，或者把方向越改越偏。等你发现不对劲时，原始版本可能已经被覆盖掉了。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/tip-08-backup.DKdkELiI.png)真正成熟的使用方式，不是期待它永远不出错，而是提前准备好回退方案。这样就算出错，也不会影响你的主版本成果。
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/tip-08-backup.DKdkELiI.png)真正成熟的使用方式，不是期待它永远不出错，而是提前准备好回退方案。这样就算出错，也不会影响你的主版本成果。
 
 ### 9）用好自动化，让WorkBuddy自己持续干活
 
@@ -136,7 +136,7 @@ WorkBuddy有时会改过头：删掉你想保留的内容、打乱原有格式�
 - **定期检查代码规范**
 - **定期抓取并整理行业资讯**
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/tip-09-automation.Cgdmj7NA.png)这才是 `AI` 助手更高阶的使用方式：不需要你每次守着屏幕，它也能持续帮你把事情推进下去。
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/tip-09-automation.Cgdmj7NA.png)这才是 `AI` 助手更高阶的使用方式：不需要你每次守着屏幕，它也能持续帮你把事情推进下去。
 
 **示例**：
 

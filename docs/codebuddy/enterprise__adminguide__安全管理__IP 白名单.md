@@ -4,7 +4,7 @@
 
 > 适用版本：旗舰版、专享版、企业版。
 
-在 [企业设置](https://copilot.tencent.com/admin) \> **网络设置**菜单当中，配置企业的 IP 白名单，IP 白名单作用于代码助手插件，被限制的 IP 将无法登录插件并使用。
+在 [企业设置](https://www.workbuddy.cn/admin) \> **网络设置**菜单当中，配置企业的 IP 白名单，IP 白名单作用于代码助手插件，被限制的 IP 将无法登录插件并使用。
 
 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/28f10aae113511f0aaa3525400e889b2.png)
 

@@ -20,14 +20,14 @@
 	- "帮我生成一份 PPT"
 3. 点击**发送按钮**，WorkBuddy 即开始自主执行任务
 
-![直接输入](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/image18.7GFrVnrO.png)## 三、查看执行过程
+![直接输入](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image18.7GFrVnrO.png)## 三、查看执行过程
 
 任务发送后，WorkBuddy 会自动拆解为多个步骤并逐步执行：
 
 - 每个步骤以卡片形式展示，点击 **\>** 可展开查看详情
 - 完成的步骤会标记为 **「已完成」** （绿色标签）
 
-![任务执行](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/image28.C6FRYO4b.png)## 四、继续追问或下达新任务
+![任务执行](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image28.C6FRYO4b.png)## 四、继续追问或下达新任务
 
 - 在同一任务中继续输入，即可追问或调整需求，WorkBuddy 会保持上下文
 - 打开侧边栏点击 **\+ 新建任务**，可发起新的独立任务

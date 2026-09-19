@@ -45,7 +45,7 @@
 
 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/3883349c113011f09b3252540044a08e.png)
 
-1. 进入 [腾讯云代码助手管理端](https://copilot.tencent.com/admin/setting/base)，选择**企业设置** \> **登录认证**，单击**添加认证源。**  
+1. 进入 [腾讯云代码助手管理端](https://www.workbuddy.cn/admin/setting/base)，选择**企业设置** \> **登录认证**，单击**添加认证源。**  
 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/6fd023dd113011f09b3252540044a08e.png)
 2. 选择**企业微信**并添加。 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100032954869/02413d84abe311efba3e5254002693fd.png)
 3. 进入认证源配置流程，将企微企业 ID、企微自建应用的的 Agent ID 和 Secret 填入输入框，并复制回调地址，填写至企微自建应用的**企业微信授权登录**处。 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100032954869/4dff6b2dabe311ef9b4c525400bdab9d.png)
@@ -74,10 +74,10 @@
 
 ### 步骤四：启用认证源登录
 
-进入[企业管理后台](https://copilot.tencent.com/admin)的**成员授权\-成员与部门**版块，点击**前往 腾讯统一身份/通讯录**跳转至「腾讯统一身份」平台：
+进入[企业管理后台](https://www.workbuddy.cn/admin)的**成员授权\-成员与部门**版块，点击**前往 腾讯统一身份/通讯录**跳转至「腾讯统一身份」平台：
 
-![企业后台](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/login-1.CAoW5mjy.png)在侧边栏打开**登录\-认证源**，在**我的认证源**中将企微打开即可。若不需要其它认证源则将其关闭，仅保留企微认证源。
+![企业后台](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/login-1.CAoW5mjy.png)在侧边栏打开**登录\-认证源**，在**我的认证源**中将企微打开即可。若不需要其它认证源则将其关闭，仅保留企微认证源。
 
-![企业后台](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/login-2.GkkK9E8i.png)## 用户登录
+![企业后台](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/login-2.GkkK9E8i.png)## 用户登录
 
 企业用户可通过 SSO 登录，选择企微登录方式，即可登录至企业账号，详情请参见 [登录及更新](./../../Login)。

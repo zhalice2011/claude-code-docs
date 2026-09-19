@@ -10,11 +10,11 @@
 - 支持按**行业分类**浏览专家
 - 支持**分享**喜欢的专家给好友
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-1.DlEZ6LSY.png)## 专家团
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/expert-1.DlEZ6LSY.png)## 专家团
 
 专家团是一个有团长、有分工、有协作的多 Agent 团队。您只需要描述任务，团长会自动拆解、分配给最合适的团员并行执行，最后整合交付——**像一个真正的项目组在帮您干活**。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-2.6k-k_-2K.png)## 操作流程
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/expert-2.6k-k_-2K.png)## 操作流程
 
 ### 召唤专家/专家团
 
@@ -22,11 +22,11 @@
 2. 点击进入**专家详情**页，查看专家擅长领域和简介
 3. 点击**开始对话**，专家将添加到对话中
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-3.DgiZil9H.png)### 描述任务
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/expert-3.DgiZil9H.png)### 描述任务
 
 **使用专家**：将任务告诉 WorkBuddy，专家会按照该角色的专业视角和方法完成任务。
 
-![](https://download.codebuddy.cn/web/docs/fdb54ae7a76f5fb476804e1f89963b8955255255/docs/static/expert-4.DVdB0Ezo.png)**使用专家团**：用自然语言描述任务后，专家团团长自动拆解、分配、执行并返回完整结果。
+![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/expert-4.DVdB0Ezo.png)**使用专家团**：用自然语言描述任务后，专家团团长自动拆解、分配、执行并返回完整结果。
 
 ## Skill VS 专家 VS 专家团
 

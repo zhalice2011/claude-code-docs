@@ -2,7 +2,7 @@
 
 ## 登录企业后台
 
-企业管理员可以登录[企业后台](https://copilot.tencent.com/admin/overview)进行日志管理。
+企业管理员可以登录[企业后台](https://www.workbuddy.cn/admin/overview)进行日志管理。
 
 ![](https://write-document-release-1258344699.cos.ap-guangzhou.tencentcos.cn/100039847436/063df2305b1211f094cd52540099c741.png)
 
