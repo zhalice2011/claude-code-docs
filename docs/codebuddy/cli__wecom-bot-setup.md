@@ -23,19 +23,19 @@
 
 输入机器人名称、头像、应用简介等基本信息。
 
-![填写基本信息](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/wecom_create_bot_1.D5tSjnJQ.png)
+![填写基本信息](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/wecom_create_bot_1.D5tSjnJQ.png)
 
 ### 1\.3 切换到 API 模式
 
 在页面底部点击「API 模式创建」。
 
-![切换 API 模式](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/wecom_create_bot_2.D6BjqJJ6.png)
+![切换 API 模式](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/wecom_create_bot_2.D6BjqJJ6.png)
 
 ### 1\.4 选择长连接方式
 
 在 API 模式创建页面，找到「API 配置」区域，将连接方式选择为「使用长连接」。
 
-![API 模式创建页面](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/wecom_create_bot_3.DRlXQpTS.png)
+![API 模式创建页面](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/wecom_create_bot_3.DRlXQpTS.png)
 
 ### 1\.5 获取 Bot ID 和 Secret
 
@@ -44,7 +44,7 @@
 - **Bot ID**：机器人的唯一标识（示例：`aibVGv7I...`）
 - **Secret**：点击「获取」或「点击获取」获取访问密钥
 
-![API 配置 - 获取 Bot ID 和 Secret](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/wecom_create_bot_4.mRGxr9uD.png)
+![API 配置 - 获取 Bot ID 和 Secret](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/wecom_create_bot_4.mRGxr9uD.png)
 
 > ⚠️ **重要**：Secret 仅显示一次。如丢失可在机器人详情页重新生成。
 

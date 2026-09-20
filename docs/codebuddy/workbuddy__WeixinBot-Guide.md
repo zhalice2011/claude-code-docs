@@ -35,10 +35,10 @@
 1. 打开 WorkBuddy
 2. 在左侧 **助理** 栏点击齿轮图标，进入「助理设置」
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/1.m1V5GY4g.png)3. 在集成列表中找到「微信助理集成」
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/1.m1V5GY4g.png)3. 在集成列表中找到「微信助理集成」
 4. 点击右侧的「配置」按钮
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/2.B3o7ZTse.png)### 第二步：生成绑定二维码
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/2.B3o7ZTse.png)### 第二步：生成绑定二维码
 
 点击「配置」后，按钮会短暂显示为「绑定中...」，WorkBuddy 正在生成用于绑定的二维码。
 
@@ -46,7 +46,7 @@
 
 二维码生成后会直接显示在卡片下方。打开手机微信，扫描该二维码即可完成绑定。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/3.B4pImZpI.png)注意
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/3.B4pImZpI.png)注意
 
 二维码有时效限制。如果二维码过期或扫码失败，请重新点击「配置」生成新的二维码。
 
@@ -54,7 +54,7 @@
 
 扫码完成后，卡片状态会变为「已绑定」。如果后续需要更换账号，可以点击「解绑」后重新绑定。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/4.BsCR3lH2.png)## 使用场景与连接方式
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/4.BsCR3lH2.png)## 使用场景与连接方式
 
 WorkBuddy 微信助理支持以下几种使用场景：
 

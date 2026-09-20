@@ -6,11 +6,11 @@
 
 1. 登录 [腾讯云控制台](https://console.cloud.tencent.com/?Is=sdk-topnav)，选择顶部的 **费用\-费用中心**
 
-![费用中心](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/ctrol-voucher-1.CR7gaXkx.png)
+![费用中心](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/ctrol-voucher-1.CR7gaXkx.png)
 
 2. 在费用中心页面，选择**优惠管理**，点击**代金券**即可查看账户的代金券列表
 
-![代金券](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/ctrol-voucher-2.CFm5dk99.png)
+![代金券](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/ctrol-voucher-2.CFm5dk99.png)
 
 注意
 
@@ -22,15 +22,15 @@
 
 1. 进入[企业管理后台](https://www.codebuddy.cn/admin/overview)的**组织概览页面**
 
-![购买加量包](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/voucher-1.DsxEJ2hZ.png)
+![购买加量包](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/voucher-1.DsxEJ2hZ.png)
 
 2. 点击**购买加量包**跳转至购买页，选择产品规格后点击**立即购买**
 
-![购买页](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/voucher-2.DU8wcKKZ.png)
+![购买页](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/voucher-2.DU8wcKKZ.png)
 
 3. 在跳转页核对信息，页面底部的**选择优惠券**板块展示了账户内可用的代金券，勾选对应代金券后**去支付**即可使用。
 
-![选择优惠券](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/voucher-3.Bg7JhSbw.png)
+![选择优惠券](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/voucher-3.Bg7JhSbw.png)
 
 ## 自动用券开关
 
@@ -38,7 +38,7 @@
 
 该开关默认为打开状态，即默认支持自动用券。如需屏蔽自动用券场景，请手动单击关闭，并在弹窗中确认即可关闭；如需恢复自动用券再次单击开启即可。
 
-![自动用券](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/voucher-4.Be52aiWy.png)
+![自动用券](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/voucher-4.Be52aiWy.png)
 
 ## 使用限制
 

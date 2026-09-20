@@ -20,25 +20,25 @@ CodeBuddy IDE 提供强大的设计到代码转换功能，通过内置集成的
 
 在 Craft Agent 界面中，点击 **Figma** 按钮开始导入流程。
 
-![启动 Figma 集成](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/add_from_figma_1.DrUnbAds.png)
+![启动 Figma 集成](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add_from_figma_1.DrUnbAds.png)
 
 ### 2\. 授权登录 Figma
 
 系统将跳转至 Figma 官网，请使用您的 Figma 账户进行登录授权。
 
-![Figma 登录授权](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/add_from_figma_2.B3IMsLX4.png)
+![Figma 登录授权](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add_from_figma_2.B3IMsLX4.png)
 
 ### 3\. 确认授权成功
 
 登录完成后，您将看到授权成功的确认页面。
 
-![授权成功确认](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/add_from_figma_3.DdBk_dbv.png)
+![授权成功确认](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add_from_figma_3.DdBk_dbv.png)
 
 ### 4\. 选择设计文件
 
 从您的 Figma 工作区中选择需要的设计文件，点击打开进入编辑界面。
 
-![选择设计文件](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/add_from_figma_4.D7nBHnh0.png)
+![选择设计文件](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add_from_figma_4.D7nBHnh0.png)
 
 ### 5\. 选择设计组件
 
@@ -48,7 +48,7 @@ CodeBuddy IDE 提供强大的设计到代码转换功能，通过内置集成的
 - 点击右上角的 **Add to Conversation** 按钮
 - 所选设计将被导入到 CodeBuddy IDE 中
 
-![选择设计组件](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/add_from_figma_5.DXGQyWK_.png)
+![选择设计组件](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add_from_figma_5.DXGQyWK_.png)
 
 ### 6\. 开始代码生成
 
@@ -57,13 +57,13 @@ CodeBuddy IDE 提供强大的设计到代码转换功能，通过内置集成的
 - 在输入框中描述具体的开发需求
 - AI 将基于设计稿自动生成对应的代码
 
-![开始代码生成](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/add_from_figma_6.DwJbSSjF.png)
+![开始代码生成](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add_from_figma_6.DwJbSSjF.png)
 
 ### 7\. 预览生成结果
 
 代码生成完成后，您可以在 Preview 面板中查看效果。如图所示，生成的代码与原设计稿保持了极高的还原度。
 
-![预览生成结果](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/add_from_figma_7.DXXYNAgZ.png)
+![预览生成结果](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add_from_figma_7.DXXYNAgZ.png)
 
 ## 使用技巧
 

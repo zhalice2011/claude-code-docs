@@ -47,4 +47,4 @@ WorkBuddy 的核心优势是理解自然语言。您只需用一句话描述需�
 3. 右侧结果区会根据任务类型展示产物、全部文件、变更和预览等结果
 4. 您可以继续补充消息，或同时创建其他任务并行推进
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/createtask-1.CJulLJlb.png)
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/createtask-1.CJulLJlb.png)

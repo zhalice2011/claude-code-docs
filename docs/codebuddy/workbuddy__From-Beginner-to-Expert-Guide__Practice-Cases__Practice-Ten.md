@@ -13,7 +13,7 @@
 
 ## 三、核心功能
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image-38.BKtneyC2.png)## 四、获取并安装腾讯会议 `Skill`
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-38.BKtneyC2.png)## 四、获取并安装腾讯会议 `Skill`
 
 ### 1）获取个人 `Token`
 
@@ -21,9 +21,9 @@
 
 在授权页面中，可直接获取并复制个人专属 `Token`。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image-16.BlW2baVu.png)登录后，参考页面中的"WorkBuddy 原生接入流程"，按步骤完成授权与配置。
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-16.BlW2baVu.png)登录后，参考页面中的"WorkBuddy 原生接入流程"，按步骤完成授权与配置。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image-17.CmUaAgh8.png)- **注意事项**：`Token` 属于个人凭证，请妥善保管。
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-17.CmUaAgh8.png)- **注意事项**：`Token` 属于个人凭证，请妥善保管。
 - **补充说明**：如 `Token` 失效，可重新访问授权页面获取新凭证。
 
 ### 2）在 `WorkBuddy` 中发起安装
@@ -32,11 +32,11 @@
 
 **示例指令，如下图所示**：
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image-18.BPXz_56d.png)安装过程中，`WorkBuddy` 会自动创建任务，并完成下载、解析和配置等步骤。
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-18.BPXz_56d.png)安装过程中，`WorkBuddy` 会自动创建任务，并完成下载、解析和配置等步骤。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image-19.DxQg4vfa.png)安装完成后，可在已安装技能列表中看到腾讯会议 `Skill`。
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-19.DxQg4vfa.png)安装完成后，可在已安装技能列表中看到腾讯会议 `Skill`。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image-20.TU0BBeI2.png)### 3）安装完成后的效果
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-20.TU0BBeI2.png)### 3）安装完成后的效果
 
 安装成功后，即可在 `WorkBuddy` 中通过自然语言管理腾讯会议相关流程，无需手动记忆复杂参数。
 
@@ -46,11 +46,11 @@
 
 创建会议示例，如下图所示：
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image-21.C3B_hT2W.png)#### b）示例 2
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-21.C3B_hT2W.png)#### b）示例 2
 
 针对会议进行会后总结，如下图所示：
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/image-22.C1ZCX2NY.png)可支持的方向通常包括：
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-22.C1ZCX2NY.png)可支持的方向通常包括：
 
 - 创建普通会议与周期性会议。
 - 修改会议主题、时间、密码等信息。

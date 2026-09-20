@@ -48,7 +48,7 @@ WorkBuddy 是腾讯推出的全场景职场 AI 智能体桌面工作台。您只
 
 ## 各区域功能简介
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/quickstart-1.DGnw1yR0.png)
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/quickstart-1.DGnw1yR0.png)
 
 | 区域 | 功能 |
 | --- | --- |

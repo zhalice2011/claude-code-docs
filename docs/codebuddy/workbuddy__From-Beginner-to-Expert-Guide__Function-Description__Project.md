@@ -20,7 +20,7 @@
 
 成员在项目中创建任务时，WorkBuddy 会自动从项目配置中拉取必要的信息注入到任务上下文。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-1.F71YBzZ9.png)## 项目级代码开发配置
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-1.F71YBzZ9.png)## 项目级代码开发配置
 
 进行代码开发时，WorkBuddy 支持读取项目工作目录下的 `.codebuddy/` 项目级配置，行为与 CodeBuddy Code 保持一致。项目级配置可提交到版本控制，随项目共享给团队：
 
@@ -77,7 +77,7 @@
 
 资料库内容以 **RAG** 形式注入任务上下文。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-2.CO1Yhu7U.png)### 连接器
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-2.CO1Yhu7U.png)### 连接器
 
 项目里的连接器按授权方式分为两类：
 
@@ -86,7 +86,7 @@
 | **公共授权** | 管理员配置一次、全员共用同一套票据，适合团队共享的服务账号 |
 | **个人授权** | 每位成员各自授权自己的账号，票据不共享，适合个人私有服务 |
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-3.BylNWPFp.png)TIP
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-3.BylNWPFp.png)TIP
 
 同一个连接器可以同时以两种方式存在。
 
@@ -98,7 +98,7 @@
 
 当前仅支持**定时执行**一种触发形态，到点自动执行一段 prompt 并推送通知。自动化是**个人级别**的，仅创建者本人可见、可管理。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-4.DBLseDhA.png)## 如何使用
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-4.DBLseDhA.png)## 如何使用
 
 ### 创建项目
 
@@ -114,9 +114,9 @@
 | 技能（Skill） | 可选，项目可调用的技能包 |
 | 专家 | 可选，项目可召唤的领域专家 |
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-1.F71YBzZ9.png)也可以使用模板创建，覆盖常见的工作场景。在指令上方打开**选择模版**下拉框，选择预设模板后，表单会自动预填模板中的配置项，你可以在模板基础上继续修改。
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-1.F71YBzZ9.png)也可以使用模板创建，覆盖常见的工作场景。在指令上方打开**选择模版**下拉框，选择预设模板后，表单会自动预填模板中的配置项，你可以在模板基础上继续修改。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-5.COLQMrfu.png)### 管理项目
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-5.COLQMrfu.png)### 管理项目
 
 在客户端项目页面可以查看所有已加入的项目，支持搜索。每个项目卡片点击后进入项目详情页。
 
@@ -131,7 +131,7 @@ TIP
 
 任何项目成员都可以发起邀请，但最终是否放人进项目由管理员审批决定。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-6.BcTIdW0u.png)### 发起任务
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-6.BcTIdW0u.png)### 发起任务
 
 在项目详情页底部的任务输入框直接输入即可创建任务。创建任务时，以下内容会自动注入上下文：
 
@@ -147,11 +147,11 @@ TIP
 | Skill | 项目 Skill \+ 已安装的 Skill \+ 现场导入的 Skill | 项目 Skill 置顶 |
 | 连接器 | 已连接的公共授权 \+ 项目个人授权 \+ 连接器管理页 | 公共授权置顶 |
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-7.D0JXsUq4.png)#### 分享任务
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-7.D0JXsUq4.png)#### 分享任务
 
 在任务对话页顶栏点击**邀请成员**按钮，复制链接发送给他人。成员打开链接即可进入当前任务会话。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-8.BCpf4KGA.png)#### 任务流转
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-8.BCpf4KGA.png)#### 任务流转
 
 **任务流转**是将任务产出物连同上下文一起移交给他人的功能。
 
@@ -166,13 +166,13 @@ TIP
 
 接收方打开流转内容后，可基于完整的任务上下文继续推进工作，无需重复沟通背景信息。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-9.CVPHyLwD.png)### 资产库管理
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-9.CVPHyLwD.png)### 资产库管理
 
 项目资产（资料库）是项目的**统一文件管理中心**。所有与项目相关的文档、代码产物、参考资料都可以在这里集中存储和管理，让 WorkBuddy 在执行任务时能直接访问上下文资料。
 
 进入方式：在项目详情页顶部标签栏点击**资产**。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-2.CO1Yhu7U.png)#### 存储配额
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-2.CO1Yhu7U.png)#### 存储配额
 
 每个项目拥有独立的存储空间（默认 **5 GB**）。工具栏实时显示已用空间，例如：
 
@@ -224,7 +224,7 @@ TIP
 
 自动化在创建者本人的会话中运行，仅创建者可见。
 
-![](https://download.codebuddy.cn/web/docs/b59261153a07e588aebcf9cd16cba1bc45ad81f9/docs/static/project-10.3Htzvdlq.png)## 注意事项与重点提示
+![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/project-10.3Htzvdlq.png)## 注意事项与重点提示
 
 ### 信息收集与使用
 
