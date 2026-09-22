@@ -5,4 +5,4 @@
 1. 登录 [WorkBuddy 官网](https://www.workbuddy.cn/) ；
 2. 点击右上角头像，进入 **个人主页 \- 账单与发票**。
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image.DJRl2hev.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image.DJRl2hev.png)

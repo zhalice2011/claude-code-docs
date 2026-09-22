@@ -13,47 +13,47 @@ TIP
 
 访问 [WorkBuddy 官网](https://www.workbuddy.cn/)，点击**立即下载**，选择 Windows，下载对应安装包。
 
-![WorkBuddy 官网下载页](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/download-page.DZ4QT3Pt.png)
+![WorkBuddy 官网下载页](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/download-page.DZ4QT3Pt.png)
 
 ## 安装
 
 1. 等待安装包下载完成后，双击已下载的安装包，启动安装程序。
 
-![下载文件夹中的安装包](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/downloaded-installer.C0rVfq07.png)
+![下载文件夹中的安装包](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/downloaded-installer.C0rVfq07.png)
 
 2. 勾选 **"我同意此协议"**，点击**下一步**。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-2.nX8V0i5W.png)
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-2.nX8V0i5W.png)
 3. 选择安装路径（默认路径可直接点击下一步），点击**下一步**。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-3.C1dI3tJz.png)
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-3.C1dI3tJz.png)
 4. 确认开始菜单文件夹，点击**下一步**。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-4.B1FHUmlf.png)
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-4.B1FHUmlf.png)
 5. 建议勾选 **"创建桌面快捷方式"**，点击**下一步**。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-5.BlN7t4Co.png)
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-5.BlN7t4Co.png)
 6. 确认配置无误，点击**安装**。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-6.BqsUqnLs.png)
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-6.BqsUqnLs.png)
 7. 安装完成后，点击**完成**退出安装向导。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-7.O4VQi_-H.png)
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-7.O4VQi_-H.png)
 
 ## 登录
 
 1. 启动 WorkBuddy，点击**登录**按钮。
 
-![WorkBuddy 登录界面](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/login-screen.Dxuj6Li0.png)
+![WorkBuddy 登录界面](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/login-screen.Dxuj6Li0.png)
 2. 浏览器自动打开登录页面（WorkBuddy 官网 **workbuddy.cn**），在当前页面的登录弹窗中勾选《用户服务协议》与《隐私政策》，使用**微信扫码**完成登录；也支持**手机号、邮箱、SSO** 等登录方式，登录全程在当前页面完成，无需跳转。
 
-![微信扫码登录](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/login-wechat-qr.Ci-o675k.png)
+![微信扫码登录](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/login-wechat-qr.Ci-o675k.png)
 3. 页面显示登录成功后，返回客户端即可开始使用。首次使用可参考[开启你的第一个任务](https://www.workbuddy.cn/docs/workbuddy/FirstTask)。
 
 语言设置
 
 	- 如需切换界面语言，点击左下角**头像** \> **设置** \> **通用** \> **语言**，进行切换。
-	- 如果点击登录后无法打开浏览器、登录失败或客户端无响应，可参见 [常见问题](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/FAQ)。![登录成功进入 WorkBuddy](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/login-success-home.Cy4H-gxN.png)
+	- 如果点击登录后无法打开浏览器、登录失败或客户端无响应，可参见 [常见问题](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/FAQ)。![登录成功进入 WorkBuddy](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/login-success-home.Cy4H-gxN.png)
 
 ## 版本更新
 
@@ -61,4 +61,4 @@ TIP
 
 提示
 
-若已是最新版本则无需操作；若存在新版本，系统将自动下载并完成升级。 ![已是最新版本提示](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/update-latest.BP_i_XeX.png)
+若已是最新版本则无需操作；若存在新版本，系统将自动下载并完成升级。 ![已是最新版本提示](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/update-latest.BP_i_XeX.png)

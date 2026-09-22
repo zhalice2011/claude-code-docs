@@ -10,7 +10,7 @@
 
 当你已经拥有 `Excel`、`CSV` 等数据文件时，可直接将文件拖入对话，或明确告诉 `WorkBuddy` 文件所在路径。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-3.0L6YKmy5.png)### 2）描述分析需求
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-3.0L6YKmy5.png)### 2）描述分析需求
 
 建议一次说明以下信息：
 
@@ -27,7 +27,7 @@
 
 `WorkBuddy` 会根据你的要求读取数据、完成统计并生成图表。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-4.XNjLoI4M.png)![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-5.CQWn-zB2.png)## 三、搜集数据并生成可视化报告
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-4.XNjLoI4M.png)![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-5.CQWn-zB2.png)## 三、搜集数据并生成可视化报告
 
 ### 1）描述数据需求
 

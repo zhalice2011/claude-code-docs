@@ -5,7 +5,7 @@
 1. [登录购买页](https://buy.cloud.tencent.com/aipay?operation_type=new_buy&buy_type=exclusive1) 发起 WorkBuddy Enterprise 企业旗舰版新购，详见[购买方式](./price/Purchase)
 2. 购买完成后，进入[企业管理后台](https://www.workbuddy.cn/admin/overview)，使用下单时填写的**超管手机号**完成登录。
 
-![企业管理后台登录页](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/saasguide-1.D5KnWHAz.png)
+![企业管理后台登录页](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/saasguide-1.D5KnWHAz.png)
 
 3. 登录完成后，进入管理后台。
 
@@ -15,23 +15,23 @@
 
 1. 企业旗舰版使用「腾讯统一身份」进行企业成员管理，您可以单击下图入口，快速跳转至「腾讯统一身份」添加成员；
 
-![跳转至腾讯统一身份的入口](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/saasguide-4.Dy3iJMDG.png)
+![跳转至腾讯统一身份的入口](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/saasguide-4.Dy3iJMDG.png)
 
 2. 「腾讯统一身份」的成员管理页面如下，如何添加成员详见 [腾讯云统一身份 \> 成员添加指南](https://identity.tencent.com/docs/guides/Directory/)。
 
-![腾讯统一身份成员管理页面](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/saasguide-5.2OH-Fqwu.png)
+![腾讯统一身份成员管理页面](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/saasguide-5.2OH-Fqwu.png)
 
 新增成员后，成员自动被同步至 WorkBuddy 企业管理后台。
 
-![成员同步至企业管理后台](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/saasguide-6.CCyr1Nh8.png)
+![成员同步至企业管理后台](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/saasguide-6.CCyr1Nh8.png)
 
 #### 手动同步
 
 在 [企业管理后台](https://www.workbuddy.cn/admin/overview) \> 开放与集成 \> 组织架构同步 中可以 **手动同步**「腾讯统一身份」平台上有 **应用管理** 权限的成员。
 
-![开放与集成下的组织架构同步入口](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/saasguide-7.yYjkaaZm.png)
+![开放与集成下的组织架构同步入口](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/saasguide-7.yYjkaaZm.png)
 
-![组织架构同步操作](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/saasguide-8.Byzr_8Xp.png)
+![组织架构同步操作](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/saasguide-8.Byzr_8Xp.png)
 
 ### 邀请添加企业成员
 
@@ -70,7 +70,7 @@
 
 	- **指定成员分配**：分配后立即占用席位，适合需要精确控制到人的场景，如管理层、核心项目组；
 	- **指定部门 \- 自动分配**：配置后立即为部门全部成员占用席位，适合部门成员均需使用的情况；
-	- **指定部门 \- 登录分配**：部门成员首次登录应用时才占用席位，适合部门人数多、实际使用人数少的情况，可避免席位闲置。![选择分配方式与分配策略](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/seat-4.CcpJbBo_.png)
+	- **指定部门 \- 登录分配**：部门成员首次登录应用时才占用席位，适合部门人数多、实际使用人数少的情况，可避免席位闲置。![选择分配方式与分配策略](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/seat-4.CcpJbBo_.png)
 3. 分配完成后，可在**席位管理**页面的「席位概览」卡片中查看已分配数与剩余可分配数。
 
 > **说明：**

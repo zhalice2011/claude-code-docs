@@ -14,7 +14,7 @@ Subagents 通过专业化分工提升任务处理效果：每个 Subagents 专�
 
 在 CodeBuddy IDE 中存在两种模式，分别是 agentic 和 manual，他们都会在设置页中 Subagents 名称的后面展示出来。
 
-![Subagents 模式展示](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/subagents_1.p1tO9sLz.png)
+![Subagents 模式展示](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/subagents_1.p1tO9sLz.png)
 
 #### agentic
 
@@ -24,7 +24,7 @@ Subagents 通过专业化分工提升任务处理效果：每个 Subagents 专�
 
 manual 模式允许用户手动选择并完全替代主 Agent，适用于需要深度定制交互流程的专业场景。创建完成后，可在 Agent 选择框中选中使用。
 
-![manual 模式选择](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/subagents_2.DEbsHx15.png)
+![manual 模式选择](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/subagents_2.DEbsHx15.png)
 
 ### 作用范围
 
@@ -34,7 +34,7 @@ Subagents 中分为 project 和 user 两个级别。其中 project 级别（位�
 
 Subagents 在本地存储为 Markdown 文件，也可以在对应路径下创建文件来配置 Subagents，不过在 IDE 中推荐使用设置页 Agent Tab 下的 Create Agent 按钮创建不同模式的 Subagents。点击按钮时选中的是 User Agent Tab 则会创建 user 级别的 Subagents，反之则为 project 级别。
 
-![创建 Subagents](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/subagents_3.8vJ2ttia.png)
+![创建 Subagents](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/subagents_3.8vJ2ttia.png)
 
 下面两张图分别为创建 agentic 模式和 manual 模式的 Subagents 可以自定义的配置。
 
@@ -90,7 +90,7 @@ Always verify your timezone calculations and ensure accuracy. If you encounter a
 ```
 运行效果如下所示
 
-![agentic 模式运行效果](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/subagents_6.rSsCfxI-.png)
+![agentic 模式运行效果](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/subagents_6.rSsCfxI-.png)
 
 ### manual
 
@@ -125,7 +125,7 @@ If weather data is unavailable for a requested location or time period, clearly 
 ```
 执行效果如下图所示：
 
-![manual 模式运行效果](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/subagents_7.DnEUDrFn.png)
+![manual 模式运行效果](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/subagents_7.DnEUDrFn.png)
 
 ## Tips
 

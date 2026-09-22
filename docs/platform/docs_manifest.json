@@ -45,8 +45,8 @@
     "about-claude__models__optimizing-for-cost-and-intelligence.md": {
       "original_url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
       "original_md_url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence.md",
-      "hash": "801adca1f41ef7e5f12a6e9198121350114bceb898403c3e9cfa28440dcd2db5",
-      "last_updated": "2026-09-21T21:26:13.547238",
+      "hash": "ceae92d140192f085bbc9463e1f2aaa834f0872844a56c1cb55901a35f3eb08a",
+      "last_updated": "2026-09-22T08:05:53.975913",
       "source": "platform"
     },
     "about-claude__pricing.md": {
@@ -3209,8 +3209,8 @@
     "build-with-claude__effort.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/effort",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/effort.md",
-      "hash": "1c559778b55f378d7367ac0faf2c19acc33be1a0299fcf6e06ba832e3c96203f",
-      "last_updated": "2026-09-22T02:31:57.088982",
+      "hash": "00c938b973a309315c52a5e2505da3541b4eac4b0f507a6cb6af744c828bb743",
+      "last_updated": "2026-09-22T08:11:18.421668",
       "source": "platform"
     },
     "build-with-claude__embeddings.md": {
@@ -3293,8 +3293,8 @@
     "build-with-claude__preserved-thinking.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/preserved-thinking",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/preserved-thinking.md",
-      "hash": "887f0d95d5be818a835021178d45afcf3d543377b3f3964f347e2a64223b512b",
-      "last_updated": "2026-09-21T21:31:52.965772",
+      "hash": "3bd02a20d5a9a47297b9d06f37774bf9dfe8ef212a0426e6d629be701f7df512",
+      "last_updated": "2026-09-22T08:11:27.199824",
       "source": "platform"
     },
     "build-with-claude__prompt-caching.md": {
@@ -3398,15 +3398,15 @@
     "build-with-claude__thinking.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/thinking",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/thinking.md",
-      "hash": "4eb6ec1207cbdc12be344a6c7f2c58a945cb74f5cb68d6f8eec7438e0c4ee30b",
-      "last_updated": "2026-09-18T20:29:00.339077",
+      "hash": "f3ee142de3857278889d5c6bea9195b8a7f85423c6f7f88076424c7ba77f98a5",
+      "last_updated": "2026-09-22T08:11:38.350766",
       "source": "platform"
     },
     "build-with-claude__thinking-steering-and-cost.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost.md",
-      "hash": "4c9186b0826656ab962c5b36753dbffe2033c50e369ce0c53218131356c76ba1",
-      "last_updated": "2026-09-01T00:22:59.361036",
+      "hash": "ad43b4725c38325984b335352cef5aa55da597e805285c02d9a2505624132376",
+      "last_updated": "2026-09-22T08:11:39.140878",
       "source": "platform"
     },
     "build-with-claude__thinking-tool-workflows.md": {
@@ -3993,8 +3993,8 @@
     "managed-agents__quickstart.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/quickstart",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/quickstart.md",
-      "hash": "30008b06408358efed1010bded0a3279cc0ccbfeddebf1863b6217d4593fdf81",
-      "last_updated": "2026-09-22T02:33:13.224804",
+      "hash": "4b34b642ced568d2e7f86c550c20b46e548855c15e4ef3c730d557eaf5e0868e",
+      "last_updated": "2026-09-22T08:12:39.739951",
       "source": "platform"
     },
     "managed-agents__reference.md": {
@@ -4070,8 +4070,8 @@
     "models__fable-5-1__migration-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/models/fable-5-1/migration-guide",
       "original_md_url": "https://platform.claude.com/docs/en/models/fable-5-1/migration-guide.md",
-      "hash": "2591dd97045eec6d098efc13b877ad651bdf73aa9b9b89132ce4ddf890662f4f",
-      "last_updated": "2026-09-21T21:33:13.509525",
+      "hash": "4ac52883cb3b18b646dd458c194f97483a2883a8231e53dc8ee50a315b66131d",
+      "last_updated": "2026-09-22T08:12:47.951881",
       "source": "platform"
     },
     "models__fable-5-1__overview.md": {
@@ -4231,8 +4231,8 @@
     "release-notes__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/overview",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/overview.md",
-      "hash": "1341e592634fe9ba5dccb842bd5ca4f82bf86e59b168e63120ef72c7cb7c8b00",
-      "last_updated": "2026-09-21T21:33:30.302404",
+      "hash": "a43998175195216ab798c55da380312da343185717d740c267d2be86c2324737",
+      "last_updated": "2026-09-22T08:13:04.574156",
       "source": "platform"
     },
     "release-notes__system-prompts__claude-fable-5.md": {
@@ -4413,7 +4413,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-09-22T02:33:51.673772",
+    "last_fetch_completed": "2026-09-22T08:13:21.672079",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 634,
@@ -4428,7 +4428,7 @@
     "total_files": 630,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-22T02:33:51.673793",
+  "last_updated": "2026-09-22T08:13:21.672103",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

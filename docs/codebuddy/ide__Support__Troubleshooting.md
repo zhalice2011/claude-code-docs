@@ -9,7 +9,7 @@
 1. 选择**在浏览器中打开**尝试再次拉起登录验证窗口
 2. 选择**复制链接**后自行打开浏览器，ctrl \+ v 或右键粘贴链接到浏览器，完成登录验证
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E7%99%BB%E5%BD%95%E5%A2%9E%E5%BC%BAcode.DKUCCP_j.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E7%99%BB%E5%BD%95%E5%A2%9E%E5%BC%BAcode.DKUCCP_j.png)
 
 ## 日志问题
 
@@ -17,7 +17,7 @@
 
 MAC：打开 CodeBuddy IDE，点击顶部帮助 \-\-\-\> 打开日志文件夹，找到对应的日志 （.zip） 包
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97.946D9IBc.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97.946D9IBc.png)
 
 Windows：
 
@@ -34,7 +34,7 @@ Windows：
 
 退出当前账号，通过 `手机号` 重新登录到旗舰版账号
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95.cvlSimDS.png)![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%99%BB%E5%BD%95.C-rd4__z.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95.cvlSimDS.png)![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%99%BB%E5%BD%95.C-rd4__z.png)
 
 ## 远程开发（ SSH 常见问题）
 
@@ -44,7 +44,7 @@ Windows：
 
 需测试下本地IDE是否正常登录, 如果是远程服务器上的请求问题,要确认远程服务器的外网是否可访问, 如使用`ping+网址`来判断
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E7%99%BB%E5%BD%95%E6%8A%A5%E9%94%99.DOnLrBSE.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E7%99%BB%E5%BD%95%E6%8A%A5%E9%94%99.DOnLrBSE.png)
 
 如果无法登录，排查如下：
 
@@ -53,13 +53,13 @@ Windows：
 3. 取消勾选这个选项(设置为 false)
 4. 重新连接 SSH
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE.CzJmv-n4.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE.CzJmv-n4.png)
 
 **打开容器报错**
 
 原因是 Codebuddy 上使用的 Vscode 的 `Remotessh` 和 `dev-container` 插件, 报错是 Vscode 的插件报错。 使用 Codebuddy IDE 不需要额外安装 Vscode 官方的 `Remotessh` 和 `dev-container` 插件, IDE 内置了这两个插件，需要卸载掉 Vscode 的插件使用内置插件连接即可。
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E5%AE%B9%E5%99%A8%E6%8A%A5%E9%94%99.BmKlx2zC.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E5%AE%B9%E5%99%A8%E6%8A%A5%E9%94%99.BmKlx2zC.png)
 
 ## 网络检查
 
@@ -184,9 +184,9 @@ Windows：
 
 卸载插件，查询一下 `Vscode 1.100.0` 对应的插件版本，安装指定版本插件
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%851.Dkpa-rJS.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%851.Dkpa-rJS.png)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%852.BIFBycWN.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%852.BIFBycWN.png)
 
 #### Q: Python 没有语法高亮, 无法跳转定义
 
@@ -197,9 +197,9 @@ Windows：
 
 `basedpyright.analysis.typeCheckingMode`
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E9%AB%98%E4%BA%AE1.ETnHlYnN.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E9%AB%98%E4%BA%AE1.ETnHlYnN.png)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E9%AB%98%E4%BA%AE2.DW-twDrY.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E9%AB%98%E4%BA%AE2.DW-twDrY.png)
 
 #### Q: C/C\+\+ 无法跳转/高亮
 
@@ -219,11 +219,11 @@ Windows：
 
 操作方法如下：点击顶部CodeBuddy IDE ，查看首选项，选择设置。
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E6%89%93%E5%BC%80%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE.BvVwhlVf.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E6%89%93%E5%BC%80%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE.BvVwhlVf.png)
 
 在设置中所搜 `Shell`，开启 `Terminal › Integrated › Shell Integration: Decorations` 为 `Enabled`
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/shell%E8%AE%BE%E7%BD%AE.DhhTzeYh.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/shell%E8%AE%BE%E7%BD%AE.DhhTzeYh.png)
 
 #### Q: 终端无法复用
 
@@ -233,13 +233,13 @@ Windows：
 
 - 对 `zsh` 没有诉求的用户，可以考虑更换 `bash` 主题
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/bash%E4%B8%BB%E9%A2%981.DaI8nv5X.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/bash%E4%B8%BB%E9%A2%981.DaI8nv5X.png)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/bash%E4%B8%BB%E9%A2%982.B47AyiC5.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/bash%E4%B8%BB%E9%A2%982.B47AyiC5.png)
 
 - 对 `zsh` 有诉求的用户，可以排查下 `~/.zshrc` 有没有配置类似的主题
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/zshrc%E4%B8%BB%E9%A2%98%20.BtPnwX4D.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/zshrc%E4%B8%BB%E9%A2%98%20.BtPnwX4D.png)
 
 ## MCP
 
@@ -251,7 +251,7 @@ Windows：
 
 将配置文件内名称有空格的位置删除
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/MCP%E9%93%BE%E6%8E%A5.m-20yMV4.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/MCP%E9%93%BE%E6%8E%A5.m-20yMV4.png)
 
 ## 语言
 
@@ -259,7 +259,7 @@ Windows：
 
 配置 `Rules` 切换语言，示例如下图：
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/%E8%AF%AD%E8%A8%80rules%E7%A4%BA%E4%BE%8B.BIxMtln_.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/%E8%AF%AD%E8%A8%80rules%E7%A4%BA%E4%BE%8B.BIxMtln_.png)
 
 ## 文件与工作空间
 

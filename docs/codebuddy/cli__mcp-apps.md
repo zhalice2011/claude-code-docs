@@ -11,7 +11,7 @@
 - 第一条「查看 Tokyo 的天气」调起 `show_weather`，对话气泡里直接渲染了一个**天气仪表盘**：可以点选城市牙牌切换、底部展示当前选中城市的温度与天气状况。
 - 第二条「查看有哪些 todo」调起 `show_todos`，气泡里出现了一个**Todo 列表 widget**：可以勾选已完成、在输入框里直接添加新条目。
 
-![MCP Apps 预览：天气与 Todo widget](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/preview-todo-weather.C4La9ewR.png)
+![MCP Apps 预览：天气与 Todo widget](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/preview-todo-weather.C4La9ewR.png)
 
 整个交互过程**不需要离开对话窗口**——widget 就是工具的"返回值"，用户在 widget 里的操作还能反向调起工具，让模型拿到更新后的状态继续往下走。
 

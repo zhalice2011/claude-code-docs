@@ -39,7 +39,7 @@ Session 代表一个用户与 Agent 之间的完整会话过程。一个 Runtime
 
 在 WorkBuddy 中登录分配了企业坐席的个人账号，点击右上角**企业智能体**进入**企业后台\-企业智能体**开始创建 Agent。填写以下配置项后点击右上角**发布**完成 Agent 创建。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-1.CNWxHzdA.png)#### 填写基础配置
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-1.CNWxHzdA.png)#### 填写基础配置
 
 在**新建Agent\-基础配置**完成以下配置：
 
@@ -47,11 +47,11 @@ Session 代表一个用户与 Agent 之间的完整会话过程。一个 Runtime
 2. 选择模型：支持采用Auto模式自动选择或选择**模型管理\-模型列表**中的内置模型。
 3. System Prompt：在输入框中定义 Agent 的角色、行为规范和约束条件。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-2.0M8_nlv8.png)#### 配置技能/专家/MCP
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-2.0M8_nlv8.png)#### 配置技能/专家/MCP
 
 可以为Agent添加技能/专家/MCP，这些配置项会自动同步到 Agent 的 Manifest 中。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-3.oOHs3nkA.png)- **技能：** 为 Agent 挂载技能包，扩充特定领域能力。
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-3.oOHs3nkA.png)- **技能：** 为 Agent 挂载技能包，扩充特定领域能力。
 - **专家：** 为 Agent 绑定专家，扩展领域能力。
 - **MCP：** 填写 MCP Server 配置，发布时与连接器合并生效。
 
@@ -60,7 +60,7 @@ Session 代表一个用户与 Agent 之间的完整会话过程。一个 Runtime
 - **记忆：** 开启后 Agent 会记住多轮对话中的重要信息，跨轮次保持上下文。
 - **知识库：** 关联官方知识库和企业在后台配置的自定义知识库，Agent 可通过 RAG 检索获取知识库中的相关信息。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-4.DrgiWev9.png)#### Manifest
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-4.DrgiWev9.png)#### Manifest
 
 Manifest 是 Agent 的声明式配置，在创建 Agent 时传入，可在企业后台编辑管理。
 
@@ -122,7 +122,7 @@ secrets 支持 `${VAR_NAME}` 引用环境变量，避免硬编码密钥。系统
 
 在左侧对话框切换**Test Run**模式，使用当前配置对话测试 Agent 的响应效果。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-5.VISJar_9.png)### 凭据管理
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-5.VISJar_9.png)### 凭据管理
 
 凭据管理为 Agent 提供安全的凭据存储和代理注入能力。当 Agent 调用 **MCP 服务、Skill 技能或外部 API**时，系统会自动将对应的认证凭据注入请求中，无需在代码或配置中明文暴露密钥。
 
@@ -134,13 +134,13 @@ TIP
 
 进入企业后台，在**企业智能体\-凭据管理**右上角点击**添加凭据**，填写以下信息后点击**下一步**完成凭据添加。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-6.BudprfUG.png)## 管理 Agent
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-6.BudprfUG.png)## 管理 Agent
 
 ### Agent
 
 进入企业后台的**企业智能体\-Agent**板块可以查看已创建的Agent信息，对Agent进行接入、版本管理、编辑、克隆、删除等操作。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-9._pjHASVR.png)TIP
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-9._pjHASVR.png)TIP
 
 「Session 数」表示当前基于该 Agent 运行的 Session 总数，包含用户通过分享链接创建的和通过 API 创建的。
 
@@ -148,15 +148,15 @@ TIP
 
 将 Agent 通过**接入**操作，**复制链接**分享给团队成员后，每个人打开链接都会自动获得一个专属的独立 Session。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-10.BT3TLln4.png)- 接入链接：团队成员打开链接可见的独立 Session：
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-10.BT3TLln4.png)- 接入链接：团队成员打开链接可见的独立 Session：
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-12.SVySMDaT.png)- 开发集成\-API集成：通过企业 API Key 调用，可将 Agent 能力集成到企业自有系统中。
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-12.SVySMDaT.png)- 开发集成\-API集成：通过企业 API Key 调用，可将 Agent 能力集成到企业自有系统中。
 
 #### 版本管理
 
 点击对应Agent的**版本发布**操作，进入版本管理页面，查看和编辑版本历史。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-11.o9ULe8Dn.png)### Runtime
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-11.o9ULe8Dn.png)### Runtime
 
 Runtime 页面面向运维管理，展示沙箱的真实运行状态。
 
@@ -166,7 +166,7 @@ Runtime 页面面向运维管理，展示沙箱的真实运行状态。
 
 当 Session 出现问题时，可在此排查沙箱模板、状态和错误原因。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-13.BDLbu4zS.png)TIP
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-13.BDLbu4zS.png)TIP
 
 通常 Session 与 Runtime 一一对应。如果 Runtime 没有关联的 Session，可能是 Session 已删除但沙箱资源未回收，建议及时清理以释放资源。
 
@@ -177,7 +177,7 @@ Runtime 页面面向运维管理，展示沙箱的真实运行状态。
 - **对话历史独立：** 每个 Session 拥有独立的对话历史和文件存储，用户下次打开可以继续上次的工作。
 - **自动休眠机制：** Session 超过 10 分钟无访问会自动休眠以节省资源，再次访问时自动唤醒。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-14.BYRfzGrU.png)#### 列表字段说明
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-14.BYRfzGrU.png)#### 列表字段说明
 
 - 调用方：标识该 Session 由谁发起。
 - 用户：表示通过分享链接创建。
@@ -191,6 +191,6 @@ WARNING
 
 通过标准化的评测任务衡量 Agent 的回答质量。选择目标 Agent 和评测数据集，系统会自动逐条运行测试用例并按照指定的评分方式计算得分，帮助你量化 Agent 的能力表现。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/cloudagent-7.BDxItbj8.png)TIP
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudagent-7.BDxItbj8.png)TIP
 
 启动评测将消耗你的个人积分。

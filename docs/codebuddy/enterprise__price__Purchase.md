@@ -40,13 +40,13 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 
 > **建议**：购买时勾选「自动续费」，避免到期影响业务使用
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/1.fRr303hf.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/1.fRr303hf.png)
 
 #### 第二步：确认订单
 
 点击「立即购买」确认订单信息。
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/2.4T5Usz6d.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/2.4T5Usz6d.png)
 
 #### 第三步：完成支付
 
@@ -55,7 +55,7 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 - 腾讯云账户余额
 - 在线支付
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/3.wwKF-91D.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/3.wwKF-91D.png)
 
 #### 第四步：进入管理后台
 
@@ -64,17 +64,17 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 1. 根据页面提示点击跳转至旗舰版管理后台
 2. 或使用超管手机号登录 [管理后台](https://www.workbuddy.cn/admin/)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/4.CIaitU50.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/4.CIaitU50.png)
 
 > **注意**：
 > 
 > - 后台需要 3\-5 分钟配置产品资源，若后台未刷新资源请耐心等待
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/5.CVEBegnQ.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/5.CVEBegnQ.png)
 
 > - 若关联多个企业后台，需选择刚刚支付成功的账号进行登录
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/6.B8h9EThl.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/6.B8h9EThl.png)
 
 ## 账单管理
 
@@ -83,7 +83,7 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 1. 登录企业管理后台；
 2. 在左侧导航栏中，选择 **订单管理**。
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-1.CCyswbSL.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-1.CCyswbSL.png)
 
 ## 团队管理
 
@@ -93,17 +93,17 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 
 1. 登录 [企业后台](https://www.workbuddy.cn/admin/)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add1.BVHRSCef.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/add1.BVHRSCef.png)
 
 2. 点击「添加成员」跳转至腾讯统一身份平台
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add2.gh6LScc2.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/add2.gh6LScc2.png)
 
 #### 第二步：录入成员信息
 
 点击「添加成员」，填写成员相关信息。
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add3.BKbkwKgZ.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/add3.BKbkwKgZ.png)
 
 #### 第三步：成员激活
 
@@ -113,17 +113,17 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 
 1. 成员收到短信通知
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add4.DH6Sge6g.jpg)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/add4.DH6Sge6g.jpg)
 
 2. 点击短信链接进行验证
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add5.mGavzgNk.jpg)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/add5.mGavzgNk.jpg)
 
 3. 提示「加入成功」后即为激活状态
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add6.BX5IrvaH.jpg)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/add6.BX5IrvaH.jpg)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/add7.CWT532A-.jpg)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/add7.CWT532A-.jpg)
 
 ## 用量管理
 
@@ -136,7 +136,7 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 1. 登录 [官网](https://www.codebuddy.cn/home/)。
 2. 点击右上角头像，进入 个人主页/用量管理。
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-5.Do31LegI.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-5.Do31LegI.png)
 
 在这里，你可以查看当前订阅情况，以及资源包中可用与已使用的积分信息。
 
@@ -147,7 +147,7 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 1. 登录 [管理后台](https://www.workbuddy.cn/admin/)
 2. 进入「用量管理」→「成员用量」，在这里，你可以查看企业中所有成员的积分使用情况，以及资源包中可用与已使用的积分信息。
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/usage1.DF3VoBD7.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/usage1.DF3VoBD7.png)
 
 可查看：
 
@@ -155,9 +155,9 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 - 剩余用量
 - 用量明细（包含使用模型、客户端、使用时间等）
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/usage2.BbkjCB3l.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/usage2.BbkjCB3l.png)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/usage3.DhV2ctY_.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/usage3.DhV2ctY_.png)
 
 ### 分配用量
 
@@ -173,9 +173,9 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 
 选择单个成员，点击**调整限量**。
 
-![批量调整成员用量配额](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/usage4.Dkp5hUCG.png)
+![批量调整成员用量配额](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/usage4.Dkp5hUCG.png)
 
-![单成员调整用量限额](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/usage5.DGyr-xuJ.png)
+![单成员调整用量限额](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/usage5.DGyr-xuJ.png)
 
 ### 用量不足提示
 
@@ -183,11 +183,11 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 
 - **客户端**：会显示用量不足提示
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/credit.CY6cZFru.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/credit.CY6cZFru.png)
 
 - **企业后台**：用量余额展示区域会有提醒
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/credit-1.Y4NcBX9Q.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/credit-1.Y4NcBX9Q.png)
 
 ### 购买加量包
 
@@ -198,11 +198,11 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 ```
 企业后台 → 用量管理 → 成员用量 → 加量包
 ```
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/package1.CS9v6l34.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/package1.CS9v6l34.png)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/package2.CwNyoCRd.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/package2.CwNyoCRd.png)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/package3.CHyLOBMw.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/package3.CHyLOBMw.png)
 
 ## 变配与续费
 
@@ -213,9 +213,9 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 ```
 企业后台 → 用量管理 → 成员用量 → 许可证
 ```
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/expand1.Biye66Sf.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expand1.Biye66Sf.png)
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/expand2.CN_rEkPO.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expand2.CN_rEkPO.png)
 
 ### 缩容（减少许可证）
 
@@ -226,7 +226,7 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 ```
 企业后台 → 订阅与用量 → 订阅管理 → 席位管理 → 变配席位
 ```
-![订阅管理页的变配席位入口](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/downsize-seats.CuzSngmT.png)
+![订阅管理页的变配席位入口](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/downsize-seats.CuzSngmT.png)
 
 点击「变配席位」进入购买页「变配」页签后，将变配方向切换为「缩容」，填写希望减少的许可证数量并确认订单。
 
@@ -264,4 +264,4 @@ CodeBuddy \& WorkBuddy 企业版可满足个人、团队及企业在 AI 研发�
 2. 在左侧导航栏中，选择 **订单管理**。
 3. 点击 **发票管理**，前往腾讯云控制台查看发票，注意请使用企业绑定的腾讯云 uin 登录腾讯云控制台。
 
-![alt text](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/image-2.BPLlgsdS.png)
+![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image-2.BPLlgsdS.png)

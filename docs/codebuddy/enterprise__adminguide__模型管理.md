@@ -10,19 +10,19 @@
 
 列表中展示所有模型，包含内置官方模型与企业自定义模型。
 
-![模型管理](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/adminmodel-2.DuPvTsUa.png)
+![模型管理](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/adminmodel-2.DuPvTsUa.png)
 
 ### 新增自定义模型
 
 点击 **新增自定义模型** 进入配置页面。
 
-![自定义模型配置页](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/adminmodel-3.D2Dohj9h.png)
+![自定义模型配置页](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/adminmodel-3.D2Dohj9h.png)
 
 ### 配置项说明
 
 以部署混元模型为例：
 
-![自定义模型示例](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/adminmodel-4.bK0g9rN_.png)
+![自定义模型示例](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/adminmodel-4.bK0g9rN_.png)
 
 | 配置项 | 必填 | 说明 |
 | --- | --- | --- |
@@ -48,11 +48,11 @@ API Key 和模型部署地址需前往模型服务商获取。例如部署混元
 
 填写完成后，点击 **测试** 验证配置是否连通：
 
-![模型测试](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/adminmodel-5.BIGXv2_-.png)
+![模型测试](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/adminmodel-5.BIGXv2_-.png)
 
 提示
 
-配置未通过时将提示错误信息，请检查各配置项是否正确： ![错误信息](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/adminmodel-6.SNVKfBTA.png)
+配置未通过时将提示错误信息，请检查各配置项是否正确： ![错误信息](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/adminmodel-6.SNVKfBTA.png)
 
 验证通过后，点击 **保存并启用** 完成部署。企业成员可在客户端切换到该模型开始使用。
 
@@ -60,7 +60,7 @@ API Key 和模型部署地址需前往模型服务商获取。例如部署混元
 
 在模型列表页可对已有模型进行操作：
 
-![模型操作](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/adminmodel-7.DW5mYDcL.png)
+![模型操作](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/adminmodel-7.DW5mYDcL.png)
 
 | 操作 | 说明 | 适用模型 |
 | --- | --- | --- |
@@ -77,7 +77,7 @@ API Key 和模型部署地址需前往模型服务商获取。例如部署混元
 
 控制企业成员自行添加大模型的权限。
 
-![成员自定义模型](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/adminmodel-8.DS4IOKy0.png)
+![成员自定义模型](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/adminmodel-8.DS4IOKy0.png)
 
 | 策略模式 | 效果 |
 | --- | --- |

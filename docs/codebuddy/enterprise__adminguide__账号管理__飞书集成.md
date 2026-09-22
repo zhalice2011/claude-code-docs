@@ -75,8 +75,8 @@
 
 进入[企业管理后台](https://www.workbuddy.cn/admin)的**成员授权\-成员与部门**版块，点击**前往 腾讯统一身份/通讯录**跳转至「腾讯统一身份」平台：
 
-![企业后台](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/login-1.CAoW5mjy.png)在侧边栏打开**登录\-认证源**，在**我的认证源**中将飞书打开即可。若不需要其它认证源则将其关闭，仅保留飞书认证源。
+![企业后台](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/login-1.CAoW5mjy.png)在侧边栏打开**登录\-认证源**，在**我的认证源**中将飞书打开即可。若不需要其它认证源则将其关闭，仅保留飞书认证源。
 
-![企业后台](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/login-2.GkkK9E8i.png)## 用户登录
+![企业后台](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/login-2.GkkK9E8i.png)## 用户登录
 
 企业用户可通过 SSO 登录，选择飞书登录方式，即可登录至企业账号，详情请参见 [登录及更新](./../../Login)。

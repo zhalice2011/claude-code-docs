@@ -10,11 +10,11 @@
 
 1. 前往[企业管理后台](https://www.workbuddy.cn/admin/overview)登录账号，可以使用微信扫码、手机验证码登录、邮箱登录或 SSO 登录（企微及其他第三方集成的身份提供商）。
 
-![登录企业管理后台](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/seat-1.DCeyTXyd.png)
+![登录企业管理后台](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/seat-1.DCeyTXyd.png)
 
 2. 登录完成后进入企业控制台，在左侧菜单栏中选择**席位管理**。
 
-![企业控制台左侧菜单中的席位管理](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/seat-2.DSXp2c7I.png)
+![企业控制台左侧菜单中的席位管理](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/seat-2.DSXp2c7I.png)
 
 注意
 
@@ -22,7 +22,7 @@
 
 ## 页面介绍
 
-![席位管理页面](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/seat-3.BJEoL6fy.png)
+![席位管理页面](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/seat-3.BJEoL6fy.png)
 
 | 区域 | 说明 |
 | --- | --- |
@@ -43,7 +43,7 @@
 | 指定部门 | 自动分配 | 配置后立即为部门全部成员占用席位 | 部门成员均需使用，希望立即分配占用席位 |
 | 指定部门 | 登录分配 | 部门成员首次登录应用时才占用席位 | 部门人数多、实际使用人数少，希望按需占用、避免席位闲置 |
 
-![选择分配方式与分配策略](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/seat-4.CcpJbBo_.png)
+![选择分配方式与分配策略](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/seat-4.CcpJbBo_.png)
 
 注意
 
@@ -55,7 +55,7 @@
 
 1. 找到目标成员记录，在列表最右侧**操作**列单击**释放**。
 
-![释放指定成员分配的席位](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/seat-5.D4KmqTHY.png)
+![释放指定成员分配的席位](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/seat-5.D4KmqTHY.png)
 
 2. 在二次确认弹窗中单击**释放**，即完成释放。
 
@@ -63,7 +63,7 @@
 
 1. 找到目标部门记录，在**操作**列单击**释放**。
 
-![释放指定部门分配的席位](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/seat-6.DKqi4myC.png)
+![释放指定部门分配的席位](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/seat-6.DKqi4myC.png)
 
 2. 阅读提示后，按需勾选**同时释放已分配成员**或**保留已分配成员**。
 3. 单击**释放**完成释放。
@@ -74,7 +74,7 @@
 2. 单击列表上方的**批量释放**按钮。
 3. 阅读释放提示，按需勾选释放策略，核实后单击**释放**。
 
-![批量释放的三种形态](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/seat-7.BBipeV8Q.png)
+![批量释放的三种形态](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/seat-7.BBipeV8Q.png)
 
 ## 席位变配
 
@@ -82,7 +82,7 @@
 
 入口：「席位概览」卡片中的**变配席位**或**立即扩容**按钮。
 
-![席位不足提示与变配席位入口](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/seat-8.cGVUL10-.png)
+![席位不足提示与变配席位入口](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/seat-8.cGVUL10-.png)
 
 缩容规则：
 

@@ -11,11 +11,11 @@
 - 在已有任务中继续追问，让 WorkBuddy 接着上一次的上下文继续处理
 - 在任务执行过程中查看回复、结果和中间步骤
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/conversation-1.BOk_JNJk.png)## 顶部操作
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/conversation-1.BOk_JNJk.png)## 顶部操作
 
 对话区顶部除了显示当前任务标题，还提供一些常用操作。
 
-![](https://download.codebuddy.cn/web/docs/54ac211dccfe7d64a5ad85a9ca3853c7ea99895e/docs/static/conversation-2.BO9dQ6Vs.png)从左到右依次是：
+![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/conversation-2.BO9dQ6Vs.png)从左到右依次是：
 
 1. **对话内搜索**：输入关键词快速查找目标对话内容。
 2. **分享任务**：自动生成公开链接，分享到任意渠道。
