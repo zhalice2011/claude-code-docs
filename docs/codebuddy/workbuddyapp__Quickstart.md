@@ -13,7 +13,7 @@
 
 1. 打开 App，可选择「**手机号**」「**QQ**」「**微信**」及**其他**方式登录
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/quickstart-1.BGdQxvRS.png)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/quickstart-1.BGdQxvRS.png)
 2. 浏览并勾选 **《用户协议》** 和 **《隐私政策》**
 3. 确认授权后自动进入主页面
 
@@ -38,7 +38,7 @@ App 会请求以下权限：
 	- "帮我生成一份 PPT"
 3. 点击**发送按钮**，WorkBuddy 即开始自主执行任务
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/quickstart-2.Clgm0aUX.jpg)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/quickstart-2.Clgm0aUX.jpg)
 
 ## 四、查看执行过程
 
@@ -47,7 +47,7 @@ App 会请求以下权限：
 - 每个步骤以卡片形式展示，点击 **\>** 可展开查看详情
 - 完成的步骤会标记为 **「已完成」**（绿色标签）
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/quickstart-3.BF-kaC1N.jpg)## 五、继续追问或下达新任务
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/quickstart-3.BF-kaC1N.jpg)## 五、继续追问或下达新任务
 
 - 在同一任务中继续输入，即可追问或调整需求，WorkBuddy 会保持上下文
 - 点击顶部导航中的 **「\+」新建任务**，可发起新的独立任务

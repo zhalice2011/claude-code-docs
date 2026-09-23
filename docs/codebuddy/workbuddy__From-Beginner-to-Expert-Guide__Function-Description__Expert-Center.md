@@ -24,22 +24,22 @@
 
 在左侧边栏点击**专家**，找到感兴趣的专家/专家团。
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expert-1.BA6k1jXp.png)**专家**卡片展示能力介绍、擅长领域和任务示例，例如：
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/expert-1.BA6k1jXp.png)**专家**卡片展示能力介绍、擅长领域和任务示例，例如：
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expert-3.Cs6ALLf6.png)**专家团**卡片展示能力介绍、擅长领域、团队成员和任务示例，例如：
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/expert-3.Cs6ALLf6.png)**专家团**卡片展示能力介绍、擅长领域、团队成员和任务示例，例如：
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expert-2.740DUHnV.png)### 2\. 召唤专家/专家团
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/expert-2.740DUHnV.png)### 2\. 召唤专家/专家团
 
 点击召唤专家/专家团，进入对话界面：
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expert-4.QgFUYxUQ.png)### 3\. 快速找到专家：置顶与搜索
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/expert-4.QgFUYxUQ.png)### 3\. 快速找到专家：置顶与搜索
 
 在对话中点击专家入口，会展开**最近使用**的专家下拉列表，提供两种快捷方式：
 
 - **搜索**：输入名称关键字快速查找专家，点击即可召唤；搜索暂时不可用时会提示「搜索暂不可用，请稍后重试」；
 - **置顶**：将常用专家置顶，置顶结果会持久保存，下次打开时排在列表前部，无需反复翻找。
 
-![专家置顶与搜索](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expert-search.B2WjrOY8.png)
+![专家置顶与搜索](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/expert-search.B2WjrOY8.png)
 
 说明
 
@@ -49,11 +49,11 @@
 
 **专家：** 将任务告诉 WorkBuddy 将会按照该角色的专业视角和方法完成任务。
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expert-6.CK34ordK.png)**专家团：** 用自然语言描述任务后，专家团团长自动拆解、分配、执行并返回完整结果：
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/expert-6.CK34ordK.png)**专家团：** 用自然语言描述任务后，专家团团长自动拆解、分配、执行并返回完整结果：
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expert-5.B92oXCrK.png)## Skill VS 专家 VS 专家团
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/expert-5.B92oXCrK.png)## Skill VS 专家 VS 专家团
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expert-7.BQu7F5yM.png)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/expert-7.BQu7F5yM.png)
 
 | 维度 | Skill | 专家（Agent 型） | 专家团（Team 型） |
 | --- | --- | --- | --- |

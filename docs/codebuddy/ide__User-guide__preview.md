@@ -16,13 +16,13 @@ CodeBuddy IDE 支持通过浏览器内核自动渲染代码修改后的运行效
 
 在 CraftAgent 下代码生成或修改执行完后，Agent 自动调用工具打开 Preview。
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112184935.NoLNxqAU.png)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112184935.NoLNxqAU.png)
 
 #### 方式二：手动触发
 
 - 手动点击 Chat 面板右上角 Preview 工具进行预览
 
-![自动预览](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/preview-1.Cpp7n2Nh.png)
+![自动预览](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/preview-1.Cpp7n2Nh.png)
 
 - 或者手动输入 Prompt 来触发 Agent 打开 Preview，实时预览运行效果
 
@@ -32,13 +32,13 @@ text
 ```
 请打开预览，让我看看当前页面的效果
 ```
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112192437.DC6nBZfA.png)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112192437.DC6nBZfA.png)
 
 #### 预览效果
 
 预览效果如下图所示：
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112194052.BsxRBtky.png)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112194052.BsxRBtky.png)
 
 ### AI 视觉优化
 
@@ -53,22 +53,22 @@ text
 ```
 请把这个按钮改成蓝色背景
 ```
-![AI 视觉优化输入](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112194510.BJXqIw60.png)
+![AI 视觉优化输入](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112194510.BJXqIw60.png)
 3. 查看优化效果。如果还不满意，可以继续进行样式优化
 
-![优化效果](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112193338.2FyUQNFk.png)
+![优化效果](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112193338.2FyUQNFk.png)
 
 #### 方式二：DOM 编辑器
 
 您也可以使用 DOM 编辑器直接修改组件样式。
 
-![DOM 编辑器](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112194549.DhE0LfXy.png)
+![DOM 编辑器](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112194549.DhE0LfXy.png)
 
 #### 修复错误
 
 点击 send errors，将错误发送到对话，由AI自动修复。
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112214932.PcOvAxzy.png)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112214932.PcOvAxzy.png)
 
 ### 常见问题
 

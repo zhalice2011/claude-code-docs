@@ -28,7 +28,7 @@
 - 表格类结果
 - 自动生成的交付文件
 
-![产物区示例](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/artifacts-view.HJSC1a34.png)
+![产物区示例](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/artifacts-view.HJSC1a34.png)
 
 ### 表格预览
 
@@ -40,13 +40,13 @@
 - 数据是否完整
 - 排版和格式是否符合预期
 
-![表格预览示例](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/spreadsheet-preview.F2IaDRmv.png)
+![表格预览示例](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/spreadsheet-preview.F2IaDRmv.png)
 
 ### 文档预览
 
 如果任务生成的是文档文件，您也可以直接在结果区中查看内容。这样在交付前，可以先快速检查版式、标题和正文内容是否符合预期。
 
-![文档预览示例](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/document-preview.C67nWXl9.png)
+![文档预览示例](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/document-preview.C67nWXl9.png)
 
 ## 网页预览
 
@@ -60,7 +60,7 @@
 
 这适合用于确认页面结构、样式和交互结果是否符合预期。
 
-![网页预览示例](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/webpage-preview.5roS4B5L.png)
+![网页预览示例](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/webpage-preview.5roS4B5L.png)
 
 ## 全部文件
 
@@ -78,7 +78,7 @@
 - 对照不同文件之间的关系
 - 检查任务是否写入了正确的位置
 
-![全部文件示例](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/all-files-view.DzoUe72r.png)
+![全部文件示例](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/all-files-view.DzoUe72r.png)
 
 ## 变更
 
@@ -92,4 +92,4 @@
 
 如果任务涉及代码开发、脚本生成或配置调整，建议优先在这里确认改动是否符合预期。
 
-![变更视图示例](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/code-changes-view.CeiLIWSI.png)
+![变更视图示例](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/code-changes-view.CeiLIWSI.png)

@@ -15,21 +15,21 @@
 
 默认开启，允许 WorkBuddy 从对话中提取并记住相关上下文，以便在未来对话中提供更连贯、个性化的回应。
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/memory-1.CDu342Tk.png)### 管理记忆
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/memory-1.CDu342Tk.png)### 管理记忆
 
 - **查看：** 记忆摘要每晚重新生成，打开已生成的记忆，可查看记忆内容
 - **编辑：** 点击右上角编辑图标，唤起对话框通过对话的方式告诉WorkBuddy要记住或忘记什么。
 - **删除：** 点击右上角删除图标，可以清空当前记忆。
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/memory-2.CmT1pEqr.png)### 导入记忆
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/memory-2.CmT1pEqr.png)### 导入记忆
 
 支持同步您在其他AI上的使用习惯，点击**开始导入**：
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/memory-3.BlGnpqWG.png)复制示例提示词到其他AI产品的对话中：
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/memory-3.BlGnpqWG.png)复制示例提示词到其他AI产品的对话中：
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/memory-4.DKRpUtm6.png)将结果粘贴到下方，点击**添加到记忆**完成导入：
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/memory-4.DKRpUtm6.png)将结果粘贴到下方，点击**添加到记忆**完成导入：
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/memory-5.C_ezZjzz.png)## 注意事项与重点提示
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/memory-5.C_ezZjzz.png)## 注意事项与重点提示
 
 ### 信息收集与使用
 

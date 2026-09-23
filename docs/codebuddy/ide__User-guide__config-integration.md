@@ -22,13 +22,13 @@ Supabase 是一个开源的 Firebase 替代方案，主要提供以下后端服�
 
 1. 在侧栏对话框中，按路径找到并点击 **Supabase** 进行连接
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112204400.qEKtjWNi.png)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112204400.qEKtjWNi.png)
 2. 登录或注册 Supabase 账号
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112204630.4gkNjt-Z.png)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112204630.4gkNjt-Z.png)
 3. 完成 API 授权即可
 
-![](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Pasted%20image%2020260112204855.Baf7-GTl.png)
+![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Pasted%20image%2020260112204855.Baf7-GTl.png)
 
 #### 在项目中使用 Supabase
 
@@ -42,10 +42,10 @@ Supabase 是一个开源的 Firebase 替代方案，主要提供以下后端服�
 1. 在侧栏对话框中，单击 **Integration** 右侧的设置，进入 CodeBuddy 的配置页
 2. 在设置页中，切换到 **Integrations** 标签
 
-![切换标签](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/config-integration-disconnect-tcb-2.EjLxOSv4.png)
+![切换标签](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/config-integration-disconnect-tcb-2.EjLxOSv4.png)
 3. 点击所连接的 Supabase 项目右侧的 **DisableConnect** 即可
 
-![断开连接](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/config-integration-disconnect-supabase-3.DMhOo6FO.png)
+![断开连接](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/config-integration-disconnect-supabase-3.DMhOo6FO.png)
 
 ### Tencent CloudBase
 
@@ -58,7 +58,7 @@ Tencent CloudBase（简称 TCB）是腾讯云提供的云原生一体化开发�
 | **云函数** | 无需管理服务器即可运行后端代码 |
 | **云存储** | 支持图片、文档、音视频等非结构化数据存储 |
 
-![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/cloudbase.DjnO-MXB.png)
+![alt text](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/cloudbase.DjnO-MXB.png)
 
 ### 常见问题
 

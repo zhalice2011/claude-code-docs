@@ -18,7 +18,7 @@ WorkBuddy 微信小程序是 WorkBuddy 的移动端入口，您可以在手机�
 
 使用微信扫描下方小程序码，即可直接打开 WorkBuddy 小程序：
 
-![小程序码](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image1.BvkfUo9Q.png)### 2）搜索进入
+![小程序码](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image1.BvkfUo9Q.png)### 2）搜索进入
 
 1. 打开微信，下拉进入 **「小程序」** 搜索栏；
 2. 搜索 **腾讯 WorkBuddy**；
@@ -32,14 +32,14 @@ WorkBuddy 微信小程序是 WorkBuddy 的移动端入口，您可以在手机�
 
 首次打开小程序时，系统会请求微信授权登录。
 
-![登录页面](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image2.DQSvp7ii.png)1. 浏览并勾选 **《用户协议》** 和 **《隐私政策》** ；
+![登录页面](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image2.DQSvp7ii.png)1. 浏览并勾选 **《用户协议》** 和 **《隐私政策》** ；
 2. 点击 **「授权手机号登录」** 按钮；
 
-![授权手机号登录](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image3.Bnv0JK3K.png)3. 选择所需授权的手机号；
+![授权手机号登录](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image3.Bnv0JK3K.png)3. 选择所需授权的手机号；
 
-![选择手机号](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image4.BccP2dz7.png)4. 登录成功后自动进入主页面。
+![选择手机号](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image4.BccP2dz7.png)4. 登录成功后自动进入主页面。
 
-![登录成功](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/image5.ijuzMrQ8.png)**注意：**
+![登录成功](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image5.ijuzMrQ8.png)**注意：**
 
 **小程序登录的微信账号需与电脑端登录的微信账号保持一致，否则无法连接到本机。**
 

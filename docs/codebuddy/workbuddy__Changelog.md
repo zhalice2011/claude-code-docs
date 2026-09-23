@@ -1,5 +1,25 @@
 # WorkBuddy 更新日志
 
+## 5\.6\.2 版本发布 🚀（2026\-09\-21）
+
+- 优化文档预览窗口的打开、保存、主题与关闭，未登录也可预览 PPT
+- 优化连接器授权与开关：授权完成后才显示图标，关闭后对话中不再残留可用工具
+- 优化技能安装、更新检测与闲置提醒，不同来源的同名技能不再误标已安装，套件内技能不再被误关
+- 减少对话中反复确认专家身份的追问
+- 修复项目新建本地任务长时间停在准备中，以及删除会话后本地助理打不开的问题
+- 修复超长本地会话「查看更多」无法翻到更早记录的问题
+- 修复历史会话专家身份丢失、任务结束后仍显示处理中、问答误显示「已跳过」的问题
+- 修复新建任务后工作空间选择丢失，以及输入框模型名称空白的问题
+- 修复推荐安装卡片超时后关不掉，以及新建会话后仍停留在分享勾选状态的问题
+- 修复从分享页返回需点两次才能继续对话的问题
+- 修复企业微信 / 微信转发聊天记录识别失败、卡片一直显示「准备中」的问题
+- 修复网页产物预览无法播放内嵌音频，以及对话中搜索文件结果为空的问题
+- 修复连接器授权成功后一直显示「连接中」，以及解除授权后无法重新连接的问题
+- 修复定时任务企业微信通知延迟或漏发、没有运行记录却反复执行，以及分享链接中途变化的问题
+- 修复快捷键重设后必须重启才生效的问题
+- 修复购买积分弹窗无法打开、取消发布的应用从列表消失，以及腾讯文档创建 PPT 失败的问题
+- 修复对话没有回复或服务异常后会话卡住，以及网页端偶发退出登录的问题
+
 ## 5\.6\.0 版本发布 🚀（2026\-09\-19）
 
 - 新增设置「应用管理」，可查看已授权的第三方应用与 Buddy 应用，并支持一键撤销授权
@@ -1354,7 +1374,7 @@
 
 安装 Skill 前自动进行安全扫描，检测潜在的恶意脚本和风险行为，保障你的数据安全。
 
-![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
+![alt text](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
 
 - 🆕 产物区整体交互与展示优化
 - 🆕 新增产物回传开关，可控制是否回传产物到云端
@@ -1374,7 +1394,7 @@
 
 支持 MCP 标准 OAuth 授权认证流程，连接第三方服务更安全便捷。
 
-![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/expert-center-473.CgggC1ig.png)
+![alt text](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/expert-center-473.CgggC1ig.png)
 
 - 🆕 插件收入技能页面，连接器独立为菜单项，结构更清晰
 - 🆕 任务支持置顶/取消置顶
@@ -1410,7 +1430,7 @@
 
 专家中心新增排行榜功能，展示热门专家排行，帮助你快速发现最受欢迎的领域专家。
 
-![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/zhuanjia.BtS4ODCf.png)
+![alt text](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/zhuanjia.BtS4ODCf.png)
 
 - 🆕 对话窗口内支持通过选择器快速切换专家
 - 🆕 本地任务支持归档
@@ -1430,7 +1450,7 @@
 
 支持在设置页通过可视化界面配置自定义模型（API Key、端点、参数等），无需手动编辑 JSON 文件。
 
-![alt text](https://download.codebuddy.cn/web/docs/b8be01454d01231d2f211ac94f535f8b9a6712db/docs/static/custom-model.C4ubf5Jp.png)
+![alt text](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/custom-model.C4ubf5Jp.png)
 
 - 🆕 产物支持分享链接并提供在线预览渲染
 - 🆕 自动化支持单次执行任务
