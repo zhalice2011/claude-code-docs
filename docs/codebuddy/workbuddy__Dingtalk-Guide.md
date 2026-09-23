@@ -19,19 +19,19 @@
 
 打开浏览器，访问 [钉钉开发者后台](https://open.dingtalk.com/)，使用管理员账号登录。
 
-![登录开发者后台](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/login-developer-console.CLo2owy8.png)
+![登录开发者后台](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/login-developer-console.CLo2owy8.png)
 
 首次使用
 
 如果系统提示「该账号还未加入组织」，您可以创建一个个人企业，按需填写信息即可。
 
-![创建个人企业](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/create-personal-org.CCdsgAJ_.png)
+![创建个人企业](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/create-personal-org.CCdsgAJ_.png)
 
 ### 2）创建应用
 
 1. 在开发者后台首页，点击「应用开发」，并点击「创建应用」
 
-![创建应用](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/create-app.BYp0m06K.png)
+![创建应用](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/create-app.BYp0m06K.png)
 
 2. 在弹出的创建窗口中，填写以下信息：
 
@@ -41,7 +41,7 @@
 | 应用描述 | （内容随便写） | 简单描述用途 |
 | 应用类型 | 可以暂时不传 |  |
 
-![填写应用信息](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/fill-app-info.BYBmvoBC.png)
+![填写应用信息](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/fill-app-info.BYBmvoBC.png)
 
 3. 填写完成后，点击「保存」
 
@@ -51,18 +51,18 @@
 
 1. 找到「机器人」选项，点击「添加机器人」
 
-![添加机器人能力](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/add-robot-capability.CZkfvmyl.png)
+![添加机器人能力](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/add-robot-capability.CZkfvmyl.png)
 
 2. 填写机器人的基本信息：
 	- **机器人名称**：给机器人起一个名字
 	- **机器人描述**：简单描述功能
 	- **预览图**：上传一张机器人头像
 
-![配置机器人信息](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/config-robot-info.DY4EBXm0.png)
+![配置机器人信息](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/config-robot-info.DY4EBXm0.png)
 
 3. 点击「确认发布」
 
-![确认发布机器人](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/confirm-publish-robot.gisNfn0e.png)
+![确认发布机器人](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/confirm-publish-robot.gisNfn0e.png)
 
 ## 三、配置应用权限
 
@@ -74,7 +74,7 @@
 	- `Card.Instance.Write`
 	- `qyapi_robot_sendmsg`
 
-![添加权限](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/add-permissions.DF98JOdW.png)
+![添加权限](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/add-permissions.DF98JOdW.png)
 
 ## 四、获取应用凭证
 
@@ -89,7 +89,7 @@
 
 这两个凭证非常重要，请务必妥善保存，不要泄露给他人！
 
-![获取凭证](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/get-credentials.GWm559Bt.png)
+![获取凭证](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/get-credentials.GWm559Bt.png)
 
 ### 2）获取 AES Key 和 Token
 
@@ -97,7 +97,7 @@
 
 您可以点击刷新按钮自动生成您的 AES Key 和 Token。
 
-![AES Key 和 Token](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/dingtalk-aes-token.C5mRmrgS.png)
+![AES Key 和 Token](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/dingtalk-aes-token.C5mRmrgS.png)
 
 重要
 
@@ -109,27 +109,27 @@
 
 打开 WorkBuddy，点击助理的**设置⚙️**图标后进入**助理设置**，选择**钉钉集成**：
 
-![钉钉集成入口](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/dingtalk-1.HLe1RdDx.png)
+![钉钉集成入口](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/dingtalk-1.HLe1RdDx.png)
 
 将刚才获取的 Client ID 和 Client Secret 填入对应输入框：
 
 - **WebSocket 长连接**模式 适用于个人/家庭/办公室用户（没有公网 IP）。配置更简单，不需要公网地址，开箱即用。
 
-![WebSocket长连接模式](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/dingtalk-2.BlZP-Yfa.png)
+![WebSocket长连接模式](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/dingtalk-2.BlZP-Yfa.png)
 
 - **使用 URL 回调**模式 适用于有服务器、有公网 IP 的用户，需要额外在钉钉开发者后台填写生成的 Webhook 地址。
 
-![URL回调模式](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/dingtalk-3.BWbUQV9Z.png)
+![URL回调模式](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/dingtalk-3.BWbUQV9Z.png)
 
 ### 2）注册
 
 - WebSocket 长连接：点击「注册」配置成功后显示「已连接」：
 
-![WebSocket已连接](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/dingtalk-4.B5dZu0o2.png)
+![WebSocket已连接](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/dingtalk-4.B5dZu0o2.png)
 
 - 使用 URL 回调：点击注册后显示「已注册」，系统会生成一个 Webhook 地址，点击复制保存：
 
-![URL回调已注册](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/dingtalk-5.CfyUyl-J.png)
+![URL回调已注册](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/dingtalk-5.CfyUyl-J.png)
 
 选择「使用 URL 回调」，还需要返回钉钉开发者后台，配置钉钉消息接收地址：
 
@@ -137,13 +137,13 @@
 2. 下滑到页面底部，找到消息接收配置
 3. 将「Stream 模式」切换为「**HTTP 模式**」
 
-![切换HTTP模式](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/switch-http-mode.BA2uojja.png)
+![切换HTTP模式](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/switch-http-mode.BA2uojja.png)
 
 4. 在「消息接收地址」中粘贴 Webhook 地址
 5. **重要**：将地址中的 `http` 改为 `https`
 6. 点击「发布」保存配置
 
-![配置Webhook地址](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/config-webhook.UDh3FyeJ.png)
+![配置Webhook地址](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/config-webhook.UDh3FyeJ.png)
 
 ## 六、发布应用
 
@@ -153,21 +153,21 @@
 
 1. 点击页面上方的「查看版本详情」
 
-![查看版本详情](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/view-version-details.0yAIXXq8.png)
+![查看版本详情](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/view-version-details.0yAIXXq8.png)
 
 2. 填写版本描述信息
 
-![填写版本描述](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/fill-version-desc._FOw3HqW.png)
+![填写版本描述](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/fill-version-desc._FOw3HqW.png)
 
 ### 2）提交发布
 
 1. 点击「确认发布」提交审核
 
-![确认发布版本](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/confirm-publish-version.nHnfEK4L.png)
+![确认发布版本](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/confirm-publish-version.nHnfEK4L.png)
 
 2. 等待审核通过（通常会很快自动审批）
 
-![审批通过](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/approval-passed.Cg9e4SLR.png)
+![审批通过](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/approval-passed.Cg9e4SLR.png)
 
 ## 七、开始使用
 
@@ -185,29 +185,29 @@
 
 1. 点击群右上角的设置按钮
 
-![群聊设置](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/group-settings.Dnq0n7SX.png)
+![群聊设置](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/group-settings.Dnq0n7SX.png)
 
 2. 选择「机器人」
 
-![机器人设置](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/robot-settings.DLLx4rNs.png)
+![机器人设置](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/robot-settings.DLLx4rNs.png)
 
 3. 点击「添加机器人」
 
-![添加机器人到群聊](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/add-robot-to-group.hm8ha6Sf.png)
+![添加机器人到群聊](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/add-robot-to-group.hm8ha6Sf.png)
 
 4. 搜索并选择您创建的机器人
 
-![搜索机器人](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/search-robot-group.LpBU0LAt.png)
+![搜索机器人](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/search-robot-group.LpBU0LAt.png)
 
 5. 确认添加
 
-![确认添加机器人](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/confirm-add-robot.C3aLkqs-.png)
+![确认添加机器人](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/confirm-add-robot.C3aLkqs-.png)
 
 **第三步**：开始使用
 
 在群里 @机器人 并发送您的需求，WorkBuddy 会自动执行任务并回复结果。
 
-![群聊使用效果](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/chat-usage.BdwPRh3l.png)
+![群聊使用效果](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/chat-usage.BdwPRh3l.png)
 
 ### 2）单聊使用
 
@@ -215,11 +215,11 @@
 
 1. 在钉钉顶部搜索框中，搜索机器人的名称
 
-![搜索机器人私聊](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/search-robot-private.DzOR9AIx.png)
+![搜索机器人私聊](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/search-robot-private.DzOR9AIx.png)
 
 2. 点击机器人进入对话窗口，直接发送消息即可
 
-![单聊使用效果](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/chat-usage.BdwPRh3l.png)
+![单聊使用效果](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/chat-usage.BdwPRh3l.png)
 
 恭喜
 

@@ -36,7 +36,7 @@
 3. 在集成列表中找到「微信客服号集成」
 4. 点击右侧的「配置」按钮
 
-![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/1.QOtyZZkt.png)### 第二步：等待绑定初始化
+![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/1.QOtyZZkt.png)### 第二步：等待绑定初始化
 
 点击配置后，WorkBuddy 按钮会短暂显示为「绑定中...」，WorkBuddy 正在生成用于绑定的二维码。
 
@@ -44,7 +44,7 @@
 
 初始化完成后，页面会展示一个二维码。使用手机微信扫描该二维码，即可将当前微信账号与 WorkBuddy 绑定。
 
-![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/2.C4nBZYa3.png)注意
+![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/2.C4nBZYa3.png)注意
 
 二维码有时效限制。如果二维码过期或扫码失败，请重新点击「配置」生成新的二维码后再试。
 
@@ -52,7 +52,7 @@
 
 扫码完成后，WorkBuddy 会展示当前已绑定的微信头像和昵称，右侧状态会变为「已绑定」。如果后续需要更换账号，也可以在这里点击「解绑」后重新绑定。
 
-![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/3.BXkDaLnV.png)## 使用示例
+![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/3.BXkDaLnV.png)## 使用示例
 
 绑定完成后，您就可以直接在微信里和 WorkBuddy 对话，例如：
 
@@ -62,7 +62,7 @@
 
 WorkBuddy 会在电脑上自动执行任务，并把执行过程和最终结果同步回微信聊天窗口。
 
-![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/4.DxZSAsJc.png)## 跨设备接续工作
+![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/4.DxZSAsJc.png)## 跨设备接续工作
 
 微信客服号支持与 WorkBuddy 桌面端无缝衔接：
 

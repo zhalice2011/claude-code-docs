@@ -34,7 +34,7 @@
 
 在 WorkBuddy 左侧边栏的**更多**中，「我的邮箱」位于「我的文件」下方，点击即可进入。
 
-![账号菜单中的「我的邮箱」入口](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/mailbox-1.WuLrR02D.png)
+![账号菜单中的「我的邮箱」入口](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/mailbox-1.WuLrR02D.png)
 
 ### 开通规则
 
@@ -45,9 +45,9 @@
 - 在「我的邮箱」界面开通：进入「我的邮箱」，按界面提示同意补充协议即可开通。
 - 在对话里开通：当您第一次让 AI 发邮件、而邮箱还没开通时，会直接在对话内弹出开通卡片，同意后在后台开通，并继续把这封邮件发出去。不打断当前任务，不再弹外层设置窗口。
 
-![开通邮箱](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/mailbox-6.DlTaJ6cZ.png)
+![开通邮箱](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/mailbox-6.DlTaJ6cZ.png)
 
-![对话中开通邮箱](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/mailbox-2.hjMFoi6D.png)
+![对话中开通邮箱](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/mailbox-2.hjMFoi6D.png)
 
 ## 「我的邮箱」界面能做什么
 
@@ -60,7 +60,7 @@
 - **管理邮箱**：列表页右上角入口，点击后跳转到邮箱管理页面进行更多设置
 - **添加到对话**：在邮件列表和详情页均可使用，将整封邮件（标题、正文、发件人、时间、附件）作为上下文传入对话，让 WorkBuddy 进行总结、提取信息、起草回复等处理
 
-![邮件详情页](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/mailbox-3.Cd55uKeb.png)
+![邮件详情页](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/mailbox-3.Cd55uKeb.png)
 
 说明
 
@@ -72,7 +72,7 @@
 
 新邮件通知展开后，可直接「添加邮件到对话」或「前往邮箱」。
 
-![邮件通知中心](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/mailbox-4.BYd1e7f4.png)
+![邮件通知中心](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/mailbox-4.BYd1e7f4.png)
 
 ## 邮箱状态
 
@@ -84,7 +84,7 @@
 | 已停用 | 用户主动停用，支持一键打开设置 |
 | 已封禁/冻结 | 显示错误码和原因，请前往邮箱管理页面处理 |
 
-![邮箱状态](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/mailbox-5.DHhiftgC.png)
+![邮箱状态](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/mailbox-5.DHhiftgC.png)
 
 ## 在对话里收发邮件
 

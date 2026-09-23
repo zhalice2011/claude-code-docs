@@ -2,13 +2,13 @@
 
 本地任务的统一入口如下：
 
-![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/task-1.H0Sit-qs.png)## 一、界面介绍
+![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/task-1.H0Sit-qs.png)## 一、界面介绍
 
 ### 工作模式
 
 WorkBuddy 提供三种工作模式，对应不同的执行方式：
 
-![工作模式](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/task-mode.zukHuTdD.png)
+![工作模式](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/task-mode.zukHuTdD.png)
 
 | 模式 | 说明 | 适用场景 |
 | --- | --- | --- |
@@ -62,7 +62,7 @@ WorkBuddy 内置多个主流模型，可按需灵活切换：
 
 **使用前建议先设置工作空间。** WorkBuddy 将在该空间中读取和保存文件，未指定路径的任务也会优先在此空间内执行。
 
-![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image-6.CGRDyKxH.png)什么是文件路径？
+![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/image-6.CGRDyKxH.png)什么是文件路径？
 
 路径即文件或文件夹在电脑中的位置，示例：
 
@@ -81,7 +81,7 @@ WorkBuddy 内置多个主流模型，可按需灵活切换：
 
 ![](https://download.codebuddy.cn/web/docs/71c8722a08165ddedf566c5f1711bb0ec8ea991b/docs/static/image-7.C15-_p58.png)在对话框中选择已安装技能，WorkBuddy 执行任务时将自动调用对应能力：
 
-![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image-8.CcNU1SIQ.png)
+![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/image-8.CcNU1SIQ.png)
 
 | 技能示例 | 效果 |
 | --- | --- |
@@ -97,7 +97,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 
 快捷管理连接器，连接外部服务，扩展 AI 能力。
 
-![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/task-2.tDwz7B76.png)### 权限管理
+![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/task-2.tDwz7B76.png)### 权限管理
 
 - **默认权限：** 涉及敏感操作，如文件修改或工作空间外执行时，需要用户确认执行或自行操作。
 - **完全访问权限：** 开启后**当前客户端内所有任务统一生效**：减少确认步骤，允许**WorkBuddy**直接执行更多操作，可能涉及敏感操作、文件修改或外部执行；关闭后所有任务恢复默认确认流程。仅建议在用户信任当前任务时使用。
@@ -106,7 +106,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 
 前往[两个权限模式](./Permission-Modes)了解详情。
 
-![](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/task-3.cefGJHYz.png)### 输入框交互
+![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/task-3.cefGJHYz.png)### 输入框交互
 
 #### 拖拽添加文件
 
@@ -115,7 +115,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - 最多支持上传 **50 个文件**，单个文件大小不限，格式规则与附件按钮上传一致；不合规文件会在页面顶部给出具体错误提示（如不支持的文件类型）；
 - 拖出页面或按 ESC 可取消，输入框内容不受影响。
 
-![拖拽添加文件](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/drag-upload.ZJh9WiEf.png)
+![拖拽添加文件](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/drag-upload.ZJh9WiEf.png)
 
 #### 超长粘贴自动压缩为 Chip
 
@@ -124,7 +124,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - 鼠标悬停 Chip 可预览原文内容，并看到「点击胶囊可展开内容进行编辑」提示；点击后原文完整展开到输入框中，可继续编辑，Chip 自动移除；
 - 不超过 3000 字符的粘贴保持原样，不触发压缩。
 
-![超长粘贴压缩为 Chip](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/paste-chip.BbAZO2Nv.png)
+![超长粘贴压缩为 Chip](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/paste-chip.BbAZO2Nv.png)
 
 #### 添加微信聊天记录
 

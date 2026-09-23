@@ -13,7 +13,7 @@
 
 你可以从列表中选择所需的指令，然后根据提示输入相关参数。
 
-![alt text](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image.C9MejaBb.png)
+![alt text](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/image.C9MejaBb.png)
 
 注意：
 

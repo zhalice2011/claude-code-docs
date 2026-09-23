@@ -12,7 +12,7 @@
 
 > 请根据我提供的产品卖点，帮我写 `3` 个适合小红书发布的选题，并为其中 `1` 个选题生成标题、正文、话题标签和封面文案，语气自然、真实、适合种草场景。
 
-![小红书内容示例](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image-43.DTFIjFjd.png)
+![小红书内容示例](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/image-43.DTFIjFjd.png)
 
 ## 三、视频内容生成
 
@@ -22,7 +22,7 @@
 
 > 请帮我生成一份 `60` 秒短视频脚本，包含开头钩子、口播文案、镜头建议和结尾行动引导，整体节奏适合信息密度较高的内容账号。
 
-![短视频脚本示例](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/image-44.BUUHL6TV.png)
+![短视频脚本示例](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/image-44.BUUHL6TV.png)
 
 ## 四、使用建议
 

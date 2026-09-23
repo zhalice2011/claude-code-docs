@@ -10,7 +10,7 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 
 点击首页**左上角的应用入口**，展开 Buddy 应用列表：列表中展示各个应用的名称与简介，点击即可进入对应应用。
 
-![首页左上角发现应用入口](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/buddy-app-discover.BZfaTnxX.png)
+![首页左上角发现应用入口](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/buddy-app-discover.BZfaTnxX.png)
 
 ## 二、授权
 
@@ -18,25 +18,25 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 
 1. **确认授权**：弹出授权确认框，展示应用将读取的信息（如任务列表与详情），点击**确认授权**继续。
 
-![确认授权](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/buddy-app-auth.CNAT61VD.png)
+![确认授权](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/buddy-app-auth.CNAT61VD.png)
 
 2. **绑定账号**：部分应用需要绑定第三方账号。绑定后即可获取该应用的专业能力并开启连接器服务；也可以先**跳过**，稍后再绑定。
 
-![绑定账号](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/buddy-app-bind.CPS-AU-Q.png)
+![绑定账号](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/buddy-app-bind.CPS-AU-Q.png)
 
 3. **第三方授权**：页面会跳转到应用方的授权页（支持微信扫码 / 手机号等方式），授权 WorkBuddy 访问该应用的 MCP 服务后即完成。
 
-![第三方授权页](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/buddy-app-thirdparty-auth.B542q_bI.png)
+![第三方授权页](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/buddy-app-thirdparty-auth.B542q_bI.png)
 
 **取消授权**：在**设置 → Buddy 应用**中可查看已连接的应用，并随时取消授权；取消后该应用将无法继续读取你的信息，不影响你已产生的会话记录。
 
-![设置中的 Buddy 应用管理页](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/buddy-app-setting.CJODWiCF.png)
+![设置中的 Buddy 应用管理页](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/buddy-app-setting.CJODWiCF.png)
 
 ## 三、新建任务首页
 
 进入 Buddy 应用后，首页即该应用专属的新建任务界面：
 
-![Buddy 应用首页示例](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/buddy-app-home.DDKmeuGv.png)
+![Buddy 应用首页示例](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/buddy-app-home.DDKmeuGv.png)
 
 - **工作模式**（首页大胶囊）：由应用方定制，决定本次会话的业务角色与可用工具组合；首次进入默认选中第一个，可手动切换。
 - **场景胶囊**（输入框上方）：对应具体预置任务，点击后可自动召唤绑定的专家，并提供预设指令卡片供快捷输入。
@@ -46,7 +46,7 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 
 每个 Buddy 应用都有**定制的专家、技能和连接器**：进入应用后，可使用该应用专属的专家处理业务任务，对话中也可调用为其定制的技能与连接器。
 
-![Buddy 应用专家页面](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/buddy-app-experts.bIc4adtI.png)
+![Buddy 应用专家页面](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/buddy-app-experts.bIc4adtI.png)
 
 说明
 

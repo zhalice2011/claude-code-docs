@@ -23,7 +23,7 @@
 
 在空间菜单中选择**邀请和管理成员**，打开分享面板：可以查看当前协作成员，通过**复制链接**邀请他人加入，也可以分享到微信等渠道或生成二维码。
 
-![分享空间面板：查看协作成员并复制邀请链接](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/team-space-permission.mRiGW7qR.png)
+![分享空间面板：查看协作成员并复制邀请链接](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/team-space-permission.mRiGW7qR.png)
 
 成员权限分为四档，按角色灵活授权：
 
@@ -46,7 +46,7 @@
 
 把空间或文档带入任务后，Agent 只读取当前用户有权访问的内容。
 
-![Agent 在任务中按当前用户权限读取空间内容](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/task-run-with-space.DJ9ZA9AU.png)
+![Agent 在任务中按当前用户权限读取空间内容](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/task-run-with-space.DJ9ZA9AU.png)
 
 > 这意味着不必为 Agent 单独维护一套权限：人看不到的内容，Agent 也读不到。
 
@@ -58,7 +58,7 @@
 
 随时划词评论，并在原文旁继续讨论，评论与正文位置一一对应。每条评论都是一个讨论线程，支持多轮回复、@ 提及和状态流转。
 
-![划词评论后在原文旁展开讨论线程](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/md-comment-discussion.DGPDgb76.png)
+![划词评论后在原文旁展开讨论线程](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/md-comment-discussion.DGPDgb76.png)
 
 ### 修订建议：每处改动都看得见、可审阅
 
@@ -95,7 +95,7 @@
 
 在 HTML 中划词调用 AI，直接修改当前选中的内容。
 
-![在 HTML 页面中划词调用 AI 修改选中内容](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/html-ai-selection.B58ksPx4.png)
+![在 HTML 页面中划词调用 AI 修改选中内容](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/html-ai-selection.B58ksPx4.png)
 
 ### 多人一起编辑 HTML
 
@@ -122,11 +122,11 @@ MD 决定内容，CSV 存储数据，HTML 负责表达；数据与视觉分离�
 
 先在 MD 中把内容和结构写清楚：
 
-![在 MD 编辑器中撰写内容](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/editor-md.Clks4dR2.png)
+![在 MD 编辑器中撰写内容](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/editor-md.Clks4dR2.png)
 
 再由 MD 生成 HTML 页面用于对外呈现，同一份内容获得面向读者的版式：
 
-![由 MD 生成的 HTML 页面](https://download.codebuddy.cn/web/docs/1142dcef067e3ef8d87b58a22940d87f7c63a724/docs/static/editor-md-to-html.BdKdBjE4.png)
+![由 MD 生成的 HTML 页面](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/editor-md-to-html.BdKdBjE4.png)
 
 CSV 由 WorkBuddy 在线表格承载，多人可以同时维护；HTML 页面通过表格 ID 读取数据并实时渲染，因此 CSV 更新后页面随之刷新，无需重新导出。内容、数据和呈现各自独立，改一处不影响其他部分。
 
