@@ -1436,8 +1436,8 @@
     },
     "workbuddymini__features__Attachments-and-Skills.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Attachments-and-Skills",
-      "hash": "fb072997888e736348ae7babc4b7da53a4cc84208fa8424d02b79fba1e0d2ec4",
-      "last_updated": "2026-09-23T14:11:36.903472",
+      "hash": "d4b0797bf10e1208ebe1ccfb05cf12adf5cdc206336c4c3c2b8f7468470ccc48",
+      "last_updated": "2026-09-24T02:27:01.087387",
       "source": "codebuddy"
     },
     "workbuddymini__features__Auto.md": {
@@ -1454,8 +1454,8 @@
     },
     "workbuddymini__features__Expert.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Expert",
-      "hash": "ec4c506646a601086d777e2a0f268d4b395181c7b315eb8b12714a770e81e022",
-      "last_updated": "2026-09-23T14:11:39.880020",
+      "hash": "adc332e3513b0ad30eb9bc938cfa3cd2d07d9c8d2f32137d04ea6e50c145eb13",
+      "last_updated": "2026-09-24T02:27:03.712885",
       "source": "codebuddy"
     },
     "workbuddymini__features__Homepage.md": {
@@ -1508,8 +1508,8 @@
     },
     "workbuddymini__quick-start__Overview.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/quick-start/Overview",
-      "hash": "2cc4ced8bf51a1332f8af0ebbae88c3c8d23cb6407b8105f54e5a76678c964ad",
-      "last_updated": "2026-09-23T14:11:48.507736",
+      "hash": "0018dc258229d27ecf9352cb44d2f57d5f25e05a03f2de8226afdafdb8d0443b",
+      "last_updated": "2026-09-24T02:27:12.062274",
       "source": "codebuddy"
     },
     "workbuddymini__quick-start__Quickstart.md": {
@@ -1521,7 +1521,7 @@
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-09-23T23:33:50.127601",
+    "last_fetch_completed": "2026-09-24T02:27:13.399650",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 278,
     "pages_fetched_successfully": 253,
@@ -1556,7 +1556,7 @@
     "total_files": 253,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-23T23:33:50.127625",
+  "last_updated": "2026-09-24T02:27:13.399694",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
