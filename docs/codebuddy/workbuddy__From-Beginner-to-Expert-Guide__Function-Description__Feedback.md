@@ -6,8 +6,8 @@
 
 点击WorkBuddy左下角头像处，找到**帮助与反馈\-意见反馈**：
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/helpfeedback-1.Cew6iqC5.png)
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/helpfeedback-1.Cew6iqC5.png)
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/helpfeedback-2.D9Xjx8B_.png)在输入框描述您的需求，建议**上传图片并勾选上传日志**，以便团队更准确地理解您的需求和问题:
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/helpfeedback-2.D9Xjx8B_.png)在输入框描述您的需求，建议**上传图片并勾选上传日志**，以便团队更准确地理解您的需求和问题:
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/helpfeedback-3.Bou86RYx.png)
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/helpfeedback-3.Bou86RYx.png)

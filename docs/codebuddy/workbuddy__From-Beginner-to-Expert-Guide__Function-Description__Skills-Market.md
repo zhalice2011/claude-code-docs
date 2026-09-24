@@ -17,21 +17,21 @@ Skill 可能根据其能力与指令使用**信息收集与使用**中提到的�
 | 技能市场 | 推荐技能，可按需一键安装 |
 | 已安装 | 已安装的本地技能，可直接在对话中调用 |
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/skill-1.BLRwED0h.png)## 如何使用技能（Skill）
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/skill-1.BLRwED0h.png)## 如何使用技能（Skill）
 
 ### 安装技能
 
 点击**添加技能**通过导入本地技能包或向WorkBuddy描述任务需求查找和创建技能：
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/skill-2.DIhokP9-.png)- 上传技能：导入本地技能包安装。选择**上传技能**，拖拽或点击 **选择文件**，选中本地技能包即可完成导入。
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/skill-2.DIhokP9-.png)- 上传技能：导入本地技能包安装。选择**上传技能**，拖拽或点击 **选择文件**，选中本地技能包即可完成导入。
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/image-17-1.CL2d5GKX.png)导入后系统将自动完成配置，无需额外操作。
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/image-17-1.CL2d5GKX.png)导入后系统将自动完成配置，无需额外操作。
 
 - 查找技能：选择**查找技能**，输入任务描述，WorkBuddy将自动查找相关技能。
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/skill-3.PTyavE2s.png)- 创建技能：选择**创建技能**，输入任务描述，WorkBuddy将自动创建相关技能。
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/skill-3.PTyavE2s.png)- 创建技能：选择**创建技能**，输入任务描述，WorkBuddy将自动创建相关技能。
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/skill-4.Ce9uwHkT.png)### 启用 / 关闭技能
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/skill-4.Ce9uwHkT.png)### 启用 / 关闭技能
 
 已安装技能支持随时关闭或重新启用，**无需卸载**。关闭后技能仍保留在已安装列表中，但不会参与对话中的模型自动调用；重新开启后立即恢复。
 
@@ -39,7 +39,7 @@ Skill 可能根据其能力与指令使用**信息收集与使用**中提到的�
 - **不改动技能原文件**：开关状态仅记录在你的配置中，不会修改技能包本身的 `SKILL.md` 文件——从 `.agents` 等目录复制安装的技能始终保持原始内容；
 - **关闭 ≠ 卸载**：关闭只是暂停模型调用，技能文件与配置都会保留；卸载则会彻底删除技能及其开关记录。
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/skill-5.DXH8Vvpw.png)建议
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/skill-5.DXH8Vvpw.png)建议
 
 仅启用当前任务所需的技能，减少无关干扰并降低误调用概率。
 
@@ -47,13 +47,13 @@ Skill 可能根据其能力与指令使用**信息收集与使用**中提到的�
 
 技能较多时，通过搜索框输入关键词可快速定位目标技能。
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/skill-6.DUKl69US.png)### 卸载技能
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/skill-6.DUKl69US.png)### 卸载技能
 
 需要在本机完全卸载技能时，可选择**卸载技能**：
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/skilluninstall-20.Decy0AWJ.png)支持批量操作卸载：
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/skilluninstall-20.Decy0AWJ.png)支持批量操作卸载：
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/skilluninstall-21.BwJOjhUv.png)![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/skilluninstall-22.CqbPcSmz.png)## 注意事项与重点提示
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/skilluninstall-21.BwJOjhUv.png)![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/skilluninstall-22.CqbPcSmz.png)## 注意事项与重点提示
 
 ### 信息收集与使用
 

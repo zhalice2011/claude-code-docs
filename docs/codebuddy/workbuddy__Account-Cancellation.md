@@ -36,35 +36,35 @@ PC 客户端内不直接提供注销入口，需前往网页个人主页操作�
 1. 在 PC 客户端点击左侧边栏底部的**头像**，选择**个人主页**，点击**前往管理中心**（或直接登录[官网](https://www.codebuddy.cn/work/)后点击右上角头像进入个人主页）；
 2. 在左侧导航栏选择 **账号设置**，在页面底部的「注销账号」区域点击 **注销**，进入注销流程：
 
-![注销账号入口](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/web-1-%E5%85%A5%E5%8F%A3.C58Pwwg5.png)
+![注销账号入口](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/web-1-%E5%85%A5%E5%8F%A3.C58Pwwg5.png)
 3. 注销流程共三步，前一步通过才能进入下一步：
 
 **Step 1 风险确认**：弹窗会列出注销后将被永久删除的数据（个人资料、账号名称、头像等基本信息；订阅套餐、订单记录、Credits 余额与充值凭证；Skill 配置、模型偏好、使用历史与生成内容；已授权的第三方集成 GitHub / CNB / TAPD 等），并提示本账号注销将**同步注销关联的 CodeBuddy 与 WorkBuddy 账号**、**15 天内不支持重复注册**。勾选「我已阅读并同意《账号注销服务协议》」后，点击 **下一步，验证手机号**：
 
-![注销账号-风险确认](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/web-2-%E9%A3%8E%E9%99%A9%E7%A1%AE%E8%AE%A4.Hd0mWHhI.png)
+![注销账号-风险确认](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/web-2-%E9%A3%8E%E9%99%A9%E7%A1%AE%E8%AE%A4.Hd0mWHhI.png)
 
 **Step 2 验证手机号**：系统会向账号绑定的手机号发送短信验证码，填写后点击 **下一步**。若收不到验证码，请检查手机号或稍后重试；手机号已停用可联系在线客服进行人工核验：
 
-![注销账号-验证手机号](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/web-3-%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7.C1wEY5V6.png)
+![注销账号-验证手机号](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/web-3-%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7.C1wEY5V6.png)
 
 **Step 3 最后一次确认**：在输入框中键入「**确认注销**」四个字激活注销按钮（需精确输入，多字、错字或多余空格均无法通过），点击 **永久注销账号** 提交注销申请：
 
-![注销账号-最后一次确认](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/web-4-%E6%9C%80%E5%90%8E%E7%A1%AE%E8%AE%A4.Cg0UKT5S.png)
+![注销账号-最后一次确认](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/web-4-%E6%9C%80%E5%90%8E%E7%A1%AE%E8%AE%A4.Cg0UKT5S.png)
 
 ### 移动端 App
 
 1. 点击左上角菜单（≡）打开侧边栏 → 点击用户名称旁的 **⚙ 齿轮图标**，进入**账号设置**，点击页面底部的**注销账号**：
 
-![账号设置-注销账号](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/app-1-%E8%B4%A6%E5%8F%B7%E8%AE%BE%E7%BD%AE.C0-bhnQj.png)
+![账号设置-注销账号](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/app-1-%E8%B4%A6%E5%8F%B7%E8%AE%BE%E7%BD%AE.C0-bhnQj.png)
 2. 进入「申请注销 WorkBuddy 账号」页，页面会说明注销状态将保持 15 天、期间如需恢复账号请联系客服处理、付费资源未使用完将无法完成注销，并逐条列出注销后果。确认后点击**申请注销**：
 
-![申请注销](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/app-2-%E7%94%B3%E8%AF%B7%E6%B3%A8%E9%94%80.WJ-JNHyg.png)
+![申请注销](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/app-2-%E7%94%B3%E8%AF%B7%E6%B3%A8%E9%94%80.WJ-JNHyg.png)
 3. 阅读《WorkBuddy 账号注销协议》，阅读完成后点击**同意注销协议并确认注销**：
 
-![阅读并同意注销协议](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/app-3-%E6%B3%A8%E9%94%80%E5%8D%8F%E8%AE%AE.BN6XzIuc.png)
+![阅读并同意注销协议](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/app-3-%E6%B3%A8%E9%94%80%E5%8D%8F%E8%AE%AE.BN6XzIuc.png)
 4. 在「身份验证」页填写发送到绑定手机号的短信验证码（验证码 5 分钟内有效），点击**确认注销**提交注销申请：
 
-![身份验证-验证绑定手机号](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/app-4-%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7.C3OXD8Dv.png)
+![身份验证-验证绑定手机号](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/app-4-%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7.C3OXD8Dv.png)
 
 > 提交注销后，该账号将无法继续登录 App，并进入 15 天注销冷静期，冷静期结束后完成注销。
 

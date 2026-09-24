@@ -6,7 +6,7 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等全部�
 
 点击左侧边栏底部的**头像**，弹出用户菜单，点击**设置**打开设置面板。
 
-![用户菜单](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/user-menu.BeSSfC0s.png)
+![用户菜单](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/user-menu.BeSSfC0s.png)
 
 用户菜单浮层同时提供几个快捷入口，可直接进入对应功能：
 
@@ -24,7 +24,7 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等全部�
 
 设置面板采用**左侧导航 \+ 右侧内容区**结构，左侧为设置项导航，右侧为对应配置内容，**修改即时生效、无需重启**。
 
-![设置面板](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/setting-panel.CMBi956S.png)
+![设置面板](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/setting-panel.CMBi956S.png)
 
 ### 设置项一览
 

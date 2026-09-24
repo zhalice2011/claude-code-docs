@@ -20,7 +20,7 @@ Plan Mode 致力于让「计划」本身成为研发流中的第一公民：在 
 - 你专属于自己的 MCP、Skill、SubAgent 等没有在你的预期内使用
 - 最关键的是，它漏掉了优惠券功能
 
-![AI开发痛点场景图](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/AI%E5%BC%80%E5%8F%91%E7%97%9B%E7%82%B9%E5%9C%BA%E6%99%AF%E5%9B%BE.B2vs2hm8.png)
+![AI开发痛点场景图](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/AI%E5%BC%80%E5%8F%91%E7%97%9B%E7%82%B9%E5%9C%BA%E6%99%AF%E5%9B%BE.B2vs2hm8.png)
 
 **问题的根源是什么？** AI 收到指令就立即动手，没有先对齐需求、拆解任务、确认方向——缺少一个关键环节：**规划**。
 
@@ -104,7 +104,7 @@ flowchart LR
   style D fill:#ffe6e6
   style E fill:#f3e6ff
 ```
-![Plan Mode 概览](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/newplan-overview.C0zzK41I.png)
+![Plan Mode 概览](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/newplan-overview.C0zzK41I.png)
 
 ### 第一步：需求澄清（Prepare 状态）
 
@@ -134,7 +134,7 @@ flowchart LR
 
 Plan 会根据你提供的任务要求，先给出实施大纲，再在已有的项目中搜索相关的代码、设计、文档等，生成方案草稿。
 
-![方案生成中](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/newplan-generating.C2nReRJ0.png)
+![方案生成中](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/newplan-generating.C2nReRJ0.png)
 
 **方案包含的内容：**
 
@@ -191,7 +191,7 @@ Plan 会根据你提供的任务要求，先给出实施大纲，再在已有的
 3. **中断处理** \- 执行中可以随时暂停，提出新需求或调整方向
 4. **深度调用扩展** \- AI 会按照方案中的规划，深度调用 MCP、Skill 等扩展能力
 
-![方案执行状态](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/newplan-build.BZwhbCV6.png)
+![方案执行状态](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/newplan-build.BZwhbCV6.png)
 
 | 执行状态 | 过程结果 |
 | --- | --- |
@@ -203,7 +203,7 @@ Plan 会根据你提供的任务要求，先给出实施大纲，再在已有的
 - **切换 Craft** \- 对于局部问题，切换到 Craft Mode 快速修复更高效
 - **中断恢复** \- 遇到新需求时，AI 会暂停当前计划，处理完后再恢复
 
-![Diff 高亮显示修改](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/newplan-diff.BxfxndpG.png)
+![Diff 高亮显示修改](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/newplan-diff.BxfxndpG.png)
 
 ### 第五步：方案完成（Finished 状态）
 

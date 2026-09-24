@@ -11,7 +11,7 @@
 
 1. 进入自动化页面，点击 **\+** 图标添加定时任务
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/auto-1.CxTEJoQC.png)2. 填写以下信息：
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/auto-1.CxTEJoQC.png)2. 填写以下信息：
 
 | 字段 | 说明 |
 | --- | --- |
@@ -20,7 +20,7 @@
 | **执行频率** | 每天、每周、每月等 |
 | **执行时间** | 具体的执行时刻 |
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/auto-2.B2SMUr_q.png)3. 填写完成后点击**创建**，定时任务将自动添加到列表中
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/auto-2.B2SMUr_q.png)3. 填写完成后点击**创建**，定时任务将自动添加到列表中
 
 ### 方式二：对话创建
 
@@ -29,7 +29,7 @@
 - "每天早上 9 点推送昨日 AI 行业新闻摘要"
 - "每周五下午 5 点生成本周工作总结"
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/auto-3.DYoF8tRQ.png)## 定时任务管理
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/auto-3.DYoF8tRQ.png)## 定时任务管理
 
 创建完成后，定时任务显示在列表中。点击任务右上角的 **...** 菜单，可以进行以下操作：
 
@@ -40,7 +40,7 @@
 | **暂停/恢复** | 暂停定时执行，或恢复已暂停的任务 |
 | **删除** | 删除该定时任务 |
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/auto-4.DasBkjBA.png)点击任务卡片可跳转至**任务详情**，查看历史执行记录和测试结果。
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/auto-4.DasBkjBA.png)点击任务卡片可跳转至**任务详情**，查看历史执行记录和测试结果。
 
 ## 查看执行结果
 

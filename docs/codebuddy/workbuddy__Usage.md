@@ -7,4 +7,4 @@
 1. 登录 [WorkBuddy 官网](https://www.workbuddy.cn/) 。
 2. 点击右上角头像，进入 **个人主页 \- 套餐与用量**。
 
-![alt text](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/image-5.ZLgjMqYa.png) 在这里，你可以查看当前订阅情况，以及资源包中可用与已使用的积分信息。
+![alt text](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/image-5.ZLgjMqYa.png) 在这里，你可以查看当前订阅情况，以及资源包中可用与已使用的积分信息。

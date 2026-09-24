@@ -87,7 +87,18 @@ Bash 工具支持[沙箱隔离](./bash-sandboxing)，可限制文件系统和网
 
 ### 后台执行
 
-通过 `run_in_background` 参数可将命令在后台运行，使用 `TaskOutput` 工具读取输出。适用于长时间运行的构建、测试等场景。
+通过 `run_in_background` 参数可将命令在后台运行，使用 `TaskOutput` 工具读取输出，并通过 `TaskStop` 终止任务。适用于长时间运行的构建、测试、开发服务器和 watch 任务。
+
+不要用 `nohup`、`setsid` 或命令末尾的 `&` 模拟受管理的后台任务。这类进程不属于 CodeBuddy Code 的任务协议，可能在 shell、沙箱、会话或 CLI 退出时被回收，也不会获得任务 ID、输出采集和完成通知。PTC / Code Mode 中同样应在 REPL 内调用 `Bash({ command: "...", run_in_background: true })`。
+
+如果进程必须独立于 CodeBuddy Code 会话长期存活，Linux systemd user 环境可由系统服务管理器托管：
+
+bash
+```
+systemd-run --user --unit=<name> --collect <command>
+systemctl --user stop <name>
+```
+这种方式不再由 CodeBuddy Code 自动跟踪或清理，请使用唯一单元名并在完成后显式停止。
 
 ## PowerShell 工具行为
 

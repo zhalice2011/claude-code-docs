@@ -7,7 +7,7 @@
 
 两项能力都建立在 **Git 原生语义**之上——不引入额外概念，熟悉 Git 的你能够直接推断系统的真实行为。
 
-![并行任务](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/worktree-1.CGByyFvu.png)
+![并行任务](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/worktree-1.CGByyFvu.png)
 
 ## 一、Git 分支显示与切换
 
@@ -26,7 +26,7 @@
 | 普通文件夹（非 Git 仓库） | 不可操作（置灰） |
 | 正常 Git 仓库 | 可操作 |
 
-![创建任务时选择分支](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/worktree-2.Cd-yjlrs.png)
+![创建任务时选择分支](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/worktree-2.Cd-yjlrs.png)
 
 ### 切换分支时的变更处理
 
@@ -47,7 +47,7 @@
 
 在已有任务的对话界面中，工作区状态栏会实时显示当前检出的分支名，分支发生变化后自动刷新。
 
-![任务执行中的分支显示](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/worktree-6.BlaZZH6c.png)
+![任务执行中的分支显示](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/worktree-6.BlaZZH6c.png)
 
 ## 二、Worktree 并行任务
 
@@ -65,7 +65,7 @@
 4. 发送任务指令，系统开始创建 Worktree Task，界面会实时展示创建进度（大型项目可能需要数十秒到一分钟）；
 5. 创建完成后，Agent 自动启动并执行任务指令。
 
-![创建 Worktree Task](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/worktree-3.CtWRq8NY.png)
+![创建 Worktree Task](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/worktree-3.CtWRq8NY.png)
 
 创建时系统会自动完成以下动作：
 
@@ -84,11 +84,11 @@ Worktree Task 在任务列表和详情页中有明确标识：
 
 - **类型标识**：任务列表标题前展示独特的 fork 类型图标，与普通任务明确区分；任务在列表中仍按原项目分组。
 
-![类型标识 fork 图标](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/worktree-7.Bv3Sacix.png)
+![类型标识 fork 图标](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/worktree-7.Bv3Sacix.png)
 
 - **分支标识**：任务卡片与任务标题旁展示当前分支 Badge（如 `workbuddy/main-a3f8c2b1`），为只读展示，hover 可查看详情，点击可复制分支名。
 
-![Worktree 任务标识](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/worktree-4.D8OLge1o.png)
+![Worktree 任务标识](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/worktree-4.D8OLge1o.png)
 
 ### 自动清理机制
 
@@ -97,7 +97,7 @@ Worktree Task 在任务列表和详情页中有明确标识：
 - **达到 25 个**：在首页创建新 Worktree Task 时展示数量较多的提示，建议清理；
 - **达到 50 个**：勾选 Worktree 后弹出「任务工作区已达上限」清理确认弹窗，需选择清理范围（清理超过 7 / 15 / 30 天前的任务工作区分支和文件），确认清理后才能继续创建；取消则阻塞创建。
 
-![自动清理](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/worktree-5.UusY3L3Z.png)
+![自动清理](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/worktree-5.UusY3L3Z.png)
 
 ## 三、使用建议与注意事项
 

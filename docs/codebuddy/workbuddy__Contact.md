@@ -12,16 +12,16 @@
 
 如需咨询 WorkBuddy 相关事宜，欢迎扫码添加企业微信，与我们一起交流。
 
-![授前咨询企业微信群二维码](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/contact-auth-consult.CWM6on8b.png)
+![授前咨询企业微信群二维码](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/contact-auth-consult.CWM6on8b.png)
 
 ## WorkBuddy 腾讯频道
 
 可以扫码加入 WorkBuddy 腾讯频道，与其他用户一起交流探讨。
 
-![WorkBuddy 腾讯频道二维码](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/contact-qq-channel.CxQVuS8p.png)
+![WorkBuddy 腾讯频道二维码](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/contact-qq-channel.CxQVuS8p.png)
 
 ## 官方公众号
 
 微信扫码关注官方公众号，获取最新资讯。
 
-![WorkBuddy 官方公众号二维码](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/contact-wechat-mp.QHyrKArB.png)
+![WorkBuddy 官方公众号二维码](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/contact-wechat-mp.QHyrKArB.png)

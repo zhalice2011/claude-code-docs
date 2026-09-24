@@ -30,7 +30,7 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 - **熄屏后保持唤醒**：屏幕正常熄灭，后台任务与远程操控照常执行，较省电；
 - **保持屏幕常亮**：屏幕不会熄灭，可随时查看任务，较耗电。
 
-![系统设置中的「允许锁屏运行」，可选关闭 / 熄屏后保持唤醒 / 保持屏幕常亮](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-3.JujadBNx.png)
+![系统设置中的「允许锁屏运行」，可选关闭 / 熄屏后保持唤醒 / 保持屏幕常亮](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-3.JujadBNx.png)
 
 ## 连接设备
 
@@ -40,12 +40,12 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 
 在 WorkBuddy 桌面端，将鼠标悬停在**侧边栏底部**的「连接移动端」图标上，弹出「连接移动端」面板，打开「**允许移动端连接此设备**」开关。
 
-![桌面端「连接移动端」面板（小程序分页）：二维码与两个连接开关](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-1.BtGjjYNv.png)
+![桌面端「连接移动端」面板（小程序分页）：二维码与两个连接开关](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-1.BtGjjYNv.png)
 2. **小程序端连接电脑**
 
 面板中选中「**小程序**」分页，扫描二维码打开（或下载）WorkBuddy 小程序——**二维码仅作打开 / 下载引导，不参与配对**。登录与桌面端相同的账号后进入主页，点击侧边栏顶部的设备入口，在「**选择设备**」面板中选择要连接的电脑，即可连上该设备。
 
-![小程序端设备入口与「选择设备」面板](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-2.DfYAjZ0J.png)
+![小程序端设备入口与「选择设备」面板](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-2.DfYAjZ0J.png)
 
 建联完成后，设备关系将持久保留，无需每次重复配对。后续打开小程序端即可直接查看已连接电脑的任务状态。
 
@@ -62,9 +62,9 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 | 在线 | 绿色「在线」标签 | 桌面端在线可正常交互 |
 | 离线 | 灰色「离线」标签 | 桌面端离线或网络不可达 |
 
-![设备在线状态：设备名后显示绿色「在线」标签](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-4.DkToxfD3.png)
+![设备在线状态：设备名后显示绿色「在线」标签](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-4.DkToxfD3.png)
 
-![设备离线状态：设备名后显示灰色「离线」标签](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-4.1.D3wNLN5_.png)
+![设备离线状态：设备名后显示灰色「离线」标签](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-4.1.D3wNLN5_.png)
 
 **对话级状态**：
 
@@ -85,11 +85,11 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 3. 在输入框发送指令，如「继续」「把刚才的改动加上日志」
 4. 指令自动路由到桌面端继续执行
 
-![小程序端对话页：任务执行中，输入框显示「正在回复中」，可直接继续发送消息](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-5.HcI3N0lK.png)
+![小程序端对话页：任务执行中，输入框显示「正在回复中」，可直接继续发送消息](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-5.HcI3N0lK.png)
 
 在任务中通过左上角的新建图标新建任务，可以使**新建的任务在当前工作空间下执行**。
 
-![点击对话页左上角的新建图标，新建任务在当前工作空间下执行](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-5.1.B3AJvDao.png)
+![点击对话页左上角的新建图标，新建任务在当前工作空间下执行](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-5.1.B3AJvDao.png)
 
 ### 远程停止任务
 
@@ -99,7 +99,7 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 2. 点击右侧的发送按钮（运行中变为停止按钮），桌面端 Agent 立即终止执行
 3. 对话状态更新为「本轮任务已停止，电脑端已同步终止运行」
 
-![远程停止后，对话提示「本轮任务已停止，电脑端已同步终止运行」](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-6.CgYi7tVE.png)
+![远程停止后，对话提示「本轮任务已停止，电脑端已同步终止运行」](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-6.CgYi7tVE.png)
 
 已完成的步骤结果保留在对话中，不受影响。
 
@@ -107,7 +107,7 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 
 连接电脑后，除了发送文字指令，还可以把手机上的内容交给电脑端的 WorkBuddy 处理，并把电脑产出的文件拿回手机查看。
 
-- **发送手机内容**：点击输入框**旁边**的 `+` 展开工具面板—— ![左：输入框旁边的 + 按钮；右：展开后的工具面板（拍照 / 图片 / 手机文件 / 微信文件，腾讯文档 / ima 知识库 / 添加技能 / 定时任务）](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-7.CbPQcqiu.png)
+- **发送手机内容**：点击输入框**旁边**的 `+` 展开工具面板—— ![左：输入框旁边的 + 按钮；右：展开后的工具面板（拍照 / 图片 / 手机文件 / 微信文件，腾讯文档 / ima 知识库 / 添加技能 / 定时任务）](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-7.CbPQcqiu.png)
 	- **拍照 / 图片 / 手机文件**：直接拍照，或从相册、手机文件里选择内容；
 	- **微信文件**：直接将微信聊天中的文件上传到对话中；
 
@@ -115,27 +115,27 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 
 WorkBuddy 在电脑上产出的文件会自动回传到小程序端，以产物卡片展示在对话中：点击卡片可预览，点「全部产物」可打开产物列表，在列表里保存、分享单个产物，底部的「批量操作」可一次处理多个。
 
-![上：对话中的产物卡片与「全部产物」入口；下：「全部产物」列表（支持保存 / 分享 / 批量操作）](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-12.DNFn5-UY.png)
+![上：对话中的产物卡片与「全部产物」入口；下：「全部产物」列表（支持保存 / 分享 / 批量操作）](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-12.DNFn5-UY.png)
 
 **连接腾讯文档**
 
 点击「腾讯文档」后，微信会先弹出「即将打开『腾讯文档』小程序」，点「允许」跳转到腾讯文档小程序；在授权页勾选并同意《开放平台服务协议》《服务协议》和《隐私政策》，点「同意」完成授权；随后在「选择腾讯文档」面板里切换「最近访问 / 我的文档」、勾选要用的文件，点底部「添加」，文件即被引用到当前对话。
 
-![左：腾讯文档授权页；右：选择腾讯文档并添加文件](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-8.CwhkoqsR.png)
+![左：腾讯文档授权页；右：选择腾讯文档并添加文件](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-8.CwhkoqsR.png)
 
 **连接 ima 知识库**
 
-点击「ima 知识库」同样会跳转到 ima 知识库小程序：在授权页点「同意」，允许 WorkBuddy 访问你的知识库列表与资料；之后在「选择 ima 知识」里选择知识库、勾选文件，点「添加」引用到当前对话。 ![左：ima 知识库授权页；右：选择 ima 知识并添加文件](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-9.ulsQzVsE.png)
+点击「ima 知识库」同样会跳转到 ima 知识库小程序：在授权页点「同意」，允许 WorkBuddy 访问你的知识库列表与资料；之后在「选择 ima 知识」里选择知识库、勾选文件，点「添加」引用到当前对话。 ![左：ima 知识库授权页；右：选择 ima 知识并添加文件](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-9.ulsQzVsE.png)
 
 授权完成后，工具面板里的「腾讯文档」「ima 知识库」会显示「**已连接**」，之后再点可跳过授权，直接从文件列表里选。
 
-![工具面板中「腾讯文档」「ima 知识库」显示「已连接」](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-10.CN7CzU0X.png)
+![工具面板中「腾讯文档」「ima 知识库」显示「已连接」](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-10.CN7CzU0X.png)
 
 **添加技能**
 
 点击「添加技能」可以选择**电脑上已安装的技能**（如 C 盘清理管家、公众号文章订阅等），也可以按名称搜索；选中后在当前对话中生效。
 
-![添加技能：搜索技能面板](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/multidevice-11.Cf-kFyGZ.png)
+![添加技能：搜索技能面板](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/multidevice-11.Cf-kFyGZ.png)
 
 **定时任务**
 

@@ -23,7 +23,7 @@
 - **选择场景胶囊后**：案例区切换为该场景对应的案例；取消选择或回到默认态时，恢复展示默认案例；
 - 点击案例卡即可查看预览并**一键做同款**，也可以点击**换一批**刷新案例。
 
-![首页最佳实践案例](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/inspiration-home.DEuM-817.png)
+![首页最佳实践案例](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/inspiration-home.DEuM-817.png)
 
 ## 如何使用灵感
 
@@ -31,11 +31,11 @@
 
 在左侧边栏点击**更多**进入**灵感**，可在精选板块随机选择热门案例，或按场景分类搜索案例。灵感卡片会展示**作者头像与昵称**，进入详情前即可判断内容来源。
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/inspiration-1.0rShJH9f.png)### 2\. 浏览灵感详情
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/inspiration-1.0rShJH9f.png)### 2\. 浏览灵感详情
 
 点击案例进入详情页，默认**双栏布局**：左侧直接查看灵感的相关产物，右侧展示基础信息、使用的专家信息与提示词（Prompt）。
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/explore-2.Bhbgvwgx.png)### 3\. 发送到任务 / 一键做同款
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/explore-2.Bhbgvwgx.png)### 3\. 发送到任务 / 一键做同款
 
 看中哪个，点击**一键做同款**，WorkBuddy 基于案例**套版复刻**：自动预填 Prompt、加载关联的 Skill 和专家配置，可以直接生成，或修改细节生成你的专属版本。套版复刻保留原版式结构，比从零生成**更省积分、效果更稳定**（减少模型自由发挥带来的偏差）。
 
@@ -45,11 +45,11 @@
 - **发送到任务**：支持把灵感的**全部有效产物**或**单个产物**添加到任务（文件类产物作为附件、链接类作为链接挂载），挂载成功后进入任务，可继续补充指令；
 - 发送失败时会停留在详情页并保留原因，可直接重试。
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/explore-3.B-b95Qd6.png)### 4\. 成果查看
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/explore-3.B-b95Qd6.png)### 4\. 成果查看
 
 在右侧产物页面查看生成结果，生成网页文件时自动打开内置浏览器预览效果:
 
-![](https://download.codebuddy.cn/web/docs/b470245b0164accb3ce221fdb91b4fdc621a6b15/docs/static/explore-4.COhbkeGJ.png)## 灵感和 Skill、专家的区别
+![](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/explore-4.COhbkeGJ.png)## 灵感和 Skill、专家的区别
 
 Skill 和专家是工具箱里的工具，灵感是用工具做出来的真实作品集。
 
