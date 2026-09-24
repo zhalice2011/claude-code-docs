@@ -3363,8 +3363,8 @@
     "build-with-claude__refusals-and-fallback.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback.md",
-      "hash": "3fe9d2fb0ad062126b2269e871a5d78bbe63749b33bb189f5c6e64c423911e78",
-      "last_updated": "2026-09-24T18:52:35.233244",
+      "hash": "ba1b1973722c22a06a59cbe21abb3531c998b25661e8b16eb8e2ad30b6b232f5",
+      "last_updated": "2026-09-24T23:48:13.253505",
       "source": "platform"
     },
     "build-with-claude__search-results.md": {
@@ -4091,22 +4091,22 @@
     "models__fable-5-1__whats-new-fable-5-1.md": {
       "original_url": "https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1",
       "original_md_url": "https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1.md",
-      "hash": "d0865b3a3f03c114ebbb5922f66ae2b058f0fa9658617600ad2ffb018e3945f1",
-      "last_updated": "2026-09-24T18:53:49.509097",
+      "hash": "59d2a26f6e123d009a9e86aac9283705f7bfd15549b185dc07aa1858241baf19",
+      "last_updated": "2026-09-24T23:49:23.920765",
       "source": "platform"
     },
     "models__fable-5__introducing-claude-fable-5-and-claude-mythos-5.md": {
       "original_url": "https://platform.claude.com/docs/en/models/fable-5/introducing-claude-fable-5-and-claude-mythos-5",
       "original_md_url": "https://platform.claude.com/docs/en/models/fable-5/introducing-claude-fable-5-and-claude-mythos-5.md",
-      "hash": "ef578afa7326a00d19811b597daace9b06909d0d3a0fdf1c9cbbc56d8eed03d4",
-      "last_updated": "2026-09-24T18:53:50.221429",
+      "hash": "b9b9f1515b90003c25852524ffeb5db8ec4f90decea4be130f5233648f955c5d",
+      "last_updated": "2026-09-24T23:49:24.620021",
       "source": "platform"
     },
     "models__fable-5__migration-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/models/fable-5/migration-guide",
       "original_md_url": "https://platform.claude.com/docs/en/models/fable-5/migration-guide.md",
-      "hash": "fc74ee89803f7bc716f002db12b5084d4f7e22bd7c3f5024e5b84d8d145d45c0",
-      "last_updated": "2026-09-24T18:53:51.034994",
+      "hash": "88a8c6bf920e69dc0b9420af99bb09ac5a72d631761abbc0c78c0b7028e644eb",
+      "last_updated": "2026-09-24T23:49:25.445734",
       "source": "platform"
     },
     "models__fable-5__overview.md": {
@@ -4189,8 +4189,8 @@
     "models__opus-5-5__whats-new-opus-5-5.md": {
       "original_url": "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5",
       "original_md_url": "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5.md",
-      "hash": "6ba1ff350b0ced73d0eeba0330b37f14cd516a7100f3eb404410f82e6826d546",
-      "last_updated": "2026-09-24T18:53:59.500876",
+      "hash": "90fb6efa547a193cbf1eb4b836ef5310234da054f2e83abbe15ce41b0d4c5a6a",
+      "last_updated": "2026-09-24T23:49:33.791141",
       "source": "platform"
     },
     "models__opus-5__overview.md": {
@@ -4245,8 +4245,8 @@
     "release-notes__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/overview",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/overview.md",
-      "hash": "62f890350b58e6da475adcc09e72e9a16dbad42f99c96e39f3d2543575c3423c",
-      "last_updated": "2026-09-24T18:54:05.149737",
+      "hash": "fb9e92972ef2c2b473ae0de58abf6ff698decca65386af86631813cda8e0c986",
+      "last_updated": "2026-09-24T23:49:39.307083",
       "source": "platform"
     },
     "release-notes__system-prompts__claude-fable-5.md": {
@@ -4434,7 +4434,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-09-24T18:54:23.212073",
+    "last_fetch_completed": "2026-09-24T23:49:56.020016",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 637,
@@ -4449,7 +4449,7 @@
     "total_files": 633,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-24T18:54:23.212094",
+  "last_updated": "2026-09-24T23:49:56.020040",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
