@@ -1,9 +1,18 @@
-# 发票
+# 账单与发票
 
-用户可通过 [WorkBuddy 官网](https://www.workbuddy.cn/) **个人主页** 查看发票：
+用户可在账单与发票中查看套餐订阅、续费等消费记录，并在需要报销或留存消费凭证时开具发票，具体操作如下。
 
-1. 登录 [WorkBuddy 官网](https://www.workbuddy.cn/) ，进入个人主页；
-2. 在左侧导航栏中，选择 **账单与发票**；
-3. 点击 **查看发票**，前往腾讯云控制台发票管理 **开发票**。
+1. 登录 [WorkBuddy 官网](https://www.workbuddy.cn/)，进入个人主页。
+2. 单击右上角头像，选择**个人中心**，在左侧导航栏选择**账单与发票**。
+3. 在账单页面查看相关消费记录及费用信息。
+4. 如需开具发票，单击**查看发票**，前往腾讯云控制台的发票管理页面开具发票。
 
-![alt text](https://download.codebuddy.cn/web/docs/729f1aaad145b1c8092712d0da1c125fe9ebc748/docs/static/image-6.Zq7JX85f.png)
+![账单与发票页面，单击查看发票前往开具](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/invoice-view-invoices.BZb4NsVJ.png)
+
+TIP
+
+- 账单可用于核对套餐订阅、续费等费用记录。
+- 发票可用于报销或作为消费凭证，具体可开具项目及开票规则以腾讯云发票管理页面展示为准。
+## 声明
+
+本节说明，构成[服务协议](https://rule.tencent.com/rule/202603180001)和[隐私保护](https://privacy.qq.com/document/preview/771d9a58551449e9a7e7445ebfe04966)指引的组成部分，具有同等法律效力。 如有不一致之处，以前述协议原文为准。
