@@ -12,6 +12,18 @@ WorkBuddy 的核心优势是理解自然语言。您只需用一句话描述需�
 - "分析这份简历，提取关键信息生成表格"
 - "调研一下 2024 年 AI 行业趋势，写一份报告"
 
+## 使用提示词模板
+
+创建任务页按场景（日常办公、代码开发、设计创意）提供了一组提示词模板，帮助您快速组织需求。
+
+将鼠标悬停在模板上（或用键盘聚焦模板按钮），输入框会即时显示该模板的**灰色预览文案**，方便先看清模板内容再决定是否使用：
+
+- 输入框已有文字时，预览接在已有内容末尾，黑色原文保持不变；
+- 切换悬停的模板，预览会随之更新；移开鼠标、失去焦点或切换场景后，预览自动清除；
+- 灰字仅供预览，不会进入草稿、撤销记录，也不会被发送；确认合适后点击模板，才会把内容真正填入输入框。
+
+![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/createtask-template-preview.tNJnCxJ-.png)
+
 ## 选择工作空间
 
 您可以为任务指定工作目录：
@@ -47,4 +59,8 @@ WorkBuddy 的核心优势是理解自然语言。您只需用一句话描述需�
 3. 右侧结果区会根据任务类型展示产物、全部文件、变更和预览等结果
 4. 您可以继续补充消息，或同时创建其他任务并行推进
 
-![](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/createtask-1.CJulLJlb.png)
+![任务创建成功后的界面](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/createtask-1.CJulLJlb.png)
+
+## 声明
+
+本节说明，构成[服务协议](https://rule.tencent.com/rule/202603180001)和[隐私保护](https://privacy.qq.com/document/preview/771d9a58551449e9a7e7445ebfe04966)指引的组成部分，具有同等法律效力。如有不一致之处，以前述协议原文为准。

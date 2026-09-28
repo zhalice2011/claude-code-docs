@@ -6,55 +6,90 @@ Buddy 应用是 WorkBuddy 面向企业与行业场景推出的**专属 AI 工作
 
 Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你在首页看不到某个应用入口，说明你的账号暂不在可见范围内，属正常现象。
 
-## 一、进入 Buddy 应用
+## Buddy 应用授权
 
-点击首页**左上角的应用入口**，展开 Buddy 应用列表：列表中展示各个应用的名称与简介，点击即可进入对应应用。
+首次使用未授权的 Buddy 应用时，需要完成授权，如果当前账号尚未授权，会进入该 Buddy 应用的授权页面。
 
-![首页左上角发现应用入口](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/buddy-app-discover.BZfaTnxX.png)
+完成授权后，即可使用该 Buddy 应用。已授权的 Buddy 应用再次进入时，无需重复授权，可以直接进入该 Buddy 应用的「新建任务」页面开始使用。
 
-## 二、授权
+### 授权前须知
 
-首次进入某个 Buddy 应用时，需要完成授权：
+授权 Buddy 应用前，请注意以下事项：
 
-1. **确认授权**：弹出授权确认框，展示应用将读取的信息（如任务列表与详情），点击**确认授权**继续。
+- 授权前请确认 Buddy 应用的提供方身份，**仅向你信任的应用授权**。
+- 涉及企业数据的会话请遵守所在组织的合规要求，**注意保护他人个人信息与商业秘密**。
+- 如不再需要某个应用，可在**设置** \> **应用管理**\> **Buddy 应用**中取消授权。
 
-![确认授权](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/buddy-app-auth.CNAT61VD.png)
+### 授权步骤
 
-2. **绑定账号**：部分应用需要绑定第三方账号。绑定后即可获取该应用的专业能力并开启连接器服务；也可以先**跳过**，稍后再绑定。
+1. 点击页面左上角的**发现应用**，展开 Buddy 应用列表，列表中展示各个应用的名称与简介，选择需要授权的应用，点击**进入**。
 
-![绑定账号](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/buddy-app-bind.CPS-AU-Q.png)
+![Buddy 应用列表，点击进入已授权的应用](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/buddy-app-discover.BZfaTnxX.png)
 
-3. **第三方授权**：页面会跳转到应用方的授权页（支持微信扫码 / 手机号等方式），授权 WorkBuddy 访问该应用的 MCP 服务后即完成。
+2. **确认授权**：弹出授权确认框，展示应用将读取的信息（如任务列表与详情），点击**确认授权**继续。
 
-![第三方授权页](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/buddy-app-thirdparty-auth.B542q_bI.png)
+![确认授权](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/buddy-app-auth.CNAT61VD.png)
 
-**取消授权**：在**设置 → Buddy 应用**中可查看已连接的应用，并随时取消授权；取消后该应用将无法继续读取你的信息，不影响你已产生的会话记录。
+3. **绑定账号**：部分应用需要绑定第三方账号。绑定后即可获取该应用的专业能力并开启连接器服务；也可以先**跳过**，稍后再绑定。
 
-![设置中的 Buddy 应用管理页](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/buddy-app-setting.CJODWiCF.png)
+![绑定账号](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/buddy-app-bind.CPS-AU-Q.png)
 
-## 三、新建任务首页
+4. **第三方授权**：页面会跳转到应用方的授权页（支持微信扫码 / 手机号等方式），授权 WorkBuddy 访问该应用的 MCP 服务后即完成。
 
-进入 Buddy 应用后，首页即该应用专属的新建任务界面：
+![第三方授权页](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/buddy-app-thirdparty-auth.B542q_bI.png)
 
-![Buddy 应用首页示例](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/buddy-app-home.DDKmeuGv.png)
+## 使用 Buddy 应用
+
+### 进入 Buddy 应用
+
+完成 Buddy 应用授权后，可以点击左上角**发现应用**，展开 Buddy 应用列表，从 Buddy 应用列表中选择已授权的应用，即可进入对应的新建任务页面。进入后，发现应用处会显示当前使用的 Buddy 应用名称。
+
+![进入 Buddy 应用后的新建任务首页](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/buddy-app-entered-home.KMeqbOlY.png)
+
+### 新建任务
+
+进入 Buddy 应用后，首页即为该应用专属的新建任务界面，可以选择对应的工作模式和场景，并使用该应用提供的专家、技能和连接器创建任务。
+
+![Buddy 应用首页示例](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/buddy-app-home.DDKmeuGv.png)
 
 - **工作模式**（首页大胶囊）：由应用方定制，决定本次会话的业务角色与可用工具组合；首次进入默认选中第一个，可手动切换。
 - **场景胶囊**（输入框上方）：对应具体预置任务，点击后可自动召唤绑定的专家，并提供预设指令卡片供快捷输入。
 - **输入框**：与通用版一致，支持 `+` 添加内容、选择工作空间等；其中专家 / 技能 / 连接器列表与该应用定制的能力相关（见下节）。
 
-## 四、专家 / 技能 / 连接器
+### 使用专家 / 技能 / 连接器
 
 每个 Buddy 应用都有**定制的专家、技能和连接器**：进入应用后，可使用该应用专属的专家处理业务任务，对话中也可调用为其定制的技能与连接器。
 
-![Buddy 应用专家页面](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/buddy-app-experts.bIc4adtI.png)
+![Buddy 应用专家页面](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/buddy-app-experts.bIc4adtI.png)
 
 说明
 
 在 Buddy 应用中产生的会话，若应用方配置了"不允许在其他版本中使用"，该会话在其他应用或通用版中将**可见但不可用**（输入框置灰，提示"本任务仅支持在 XXX Buddy 应用中使用"），切回来源应用即可继续。
 
-## 五、开放平台审核通知
+## 管理 Buddy 应用
 
-如果你是 Buddy 应用或专家、技能、连接器的提供方，可以在 [WorkBuddy 开放平台](https://open.workbuddy.cn) 提交和管理资产；资产在开放平台的审核结果会通过**消息通知**及时触达你，无需反复到后台查询状态。
+### 切换或暂停使用 Buddy 应用
+
+当你需要使用其他业务场景，或暂时不希望某个已授权的 Buddy 应用参与当前使用时，可以在应用列表中切换或暂停对应应用。
+
+- **切换应用**：点击页面左上角的**发现应用**或当前 Buddy 应用名称，展开应用列表后，选择需要使用的 Buddy 应用即可。
+- **暂停使用**：点击页面左上角的**发现应用**或当前 Buddy 应用名称，展开应用列表后，点击应用右侧开关按钮即可暂停使用。
+
+![当前使用应用右侧的暂停按钮](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/buddy-app-switch-button.Dau35BJ-.png)
+
+### 查看已授权的 Buddy 应用
+
+进入**设置** \> **应用管理**\> **Buddy应用**页面，可以查看当前已授权的 Buddy 应用，了解你已授权使用的应用。
+
+### 取消 Buddy 应用授权
+
+如果不再需要使用某个 Buddy 应用，可进入**设置** \> **应用管理**\> **Buddy应用**页面，找到应用，点击**撤销授权**并二次确认后即可取消授权，取消后该应用将无法继续读取你的信息，不影响你已产生的会话记录。
+
+![设置 > 应用管理中撤销 Buddy 应用授权](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/buddy-app-setting.CJODWiCF.png)
+
+## Buddy 应用审核
+
+如果你是 Buddy 应用或专家、技能、连接器的提供方，开放平台将发送审核通知，可以在 [WorkBuddy 开放平台](https://open.workbuddy.cn) 提交和管理资产；资产在开放平台的审核结果会通过**消息通知**及时触达你，无需反复到后台查询状态。
 
 ### 会收到哪些通知
 
@@ -77,14 +112,14 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 2. **WorkBuddy 端内消息中心**：客户端消息中心内收到卡片提醒（标题 \+ 摘要 \+ 来源 \+ 查看按钮）；
 3. **开发者邮箱**：发往主体设置中验真的通知邮箱，作为离线兜底（发件人为 `openworkbuddy@tencent.com`）。
 
-### 查看规则
+### 相关规则
 
 - **账号级聚合**：站内两个通知入口按账号聚合展示你名下所有主体的通知，每条消息会标注所属开发者；
 - **未读红点**：有未读消息时入口显示红点（不带数字计数），查看后置为已读，也可一键「全部已读」；
 - **跨主体切换确认**：点击的通知不属于当前主体时，会弹出确认「即将切换至「{目标主体名}」开发者账号查看详情」，确认后才会切换并跳转；
 - **不可退订**：以上通知为合规/事务类消息，强制送达、不提供退订开关。
 
-## 注意事项与重点提示
+## 使用与安全说明
 
 ### 信息收集与使用
 
@@ -94,10 +129,6 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 | 授权信息 | 必要 | 你主动授权后，应用方可读取约定的信息用于提供服务 |
 | 对话内容 | 必要 | 你在应用内输入的文本与指令，用于生成回复、完成任务 |
 | 会话标识 | 必要 | 会话会携带来源应用标识，用于应用维度的数据统计与处理 |
-
-说明
-
-你可以在**设置 → Buddy 应用**中随时取消授权；取消授权不影响你已产生的会话记录。
 
 ### 积分消耗提醒
 
@@ -110,12 +141,6 @@ Buddy 应用由第三方企业或行业运营方提供，其配置的连接器�
 ### 免责声明
 
 Buddy 应用中业务相关的内容与输出规范由应用提供方配置，WorkBuddy 生成内容仅供参考，不构成专业意见；涉及医疗、法律、投资、合规等重大决策建议咨询专业人士。
-
-### 使用建议
-
-- 授权前请确认 Buddy 应用的提供方身份，**仅向你信任的应用授权**；
-- 涉及企业数据的会话请遵守所在组织的合规要求，**注意保护他人个人信息与商业秘密**；
-- 如不再需要某个应用，及时在设置中取消授权。
 
 ## 声明
 

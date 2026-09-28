@@ -26,7 +26,7 @@
 
 ## 五、效果示意
 
-![视频下载效果示意](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/image-4.QXD5M9lS.png)
+![视频下载效果示意](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/image-4.QXD5M9lS.png)
 
 ## 六、使用建议
 

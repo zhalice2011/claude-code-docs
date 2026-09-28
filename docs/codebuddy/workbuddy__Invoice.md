@@ -7,7 +7,7 @@
 3. 在账单页面查看相关消费记录及费用信息。
 4. 如需开具发票，单击**查看发票**，前往腾讯云控制台的发票管理页面开具发票。
 
-![账单与发票页面，单击查看发票前往开具](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/invoice-view-invoices.BZb4NsVJ.png)
+![账单与发票页面，单击查看发票前往开具](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/invoice-view-invoices.BZb4NsVJ.png)
 
 TIP
 

@@ -4,21 +4,30 @@
 
 本篇教程将带你学习 WorkBuddy × Ardot 的基础操作。
 
-## 一、连接
+活动说明
 
-1. 打开 WorkBuddy 首页，点击「新建任务」，选择最右侧的 **设计创意** Tab。
+参与「体验设计创意模式」活动，完成任务后即可获得对应的 Credits \+ 能量奖励。
 
-![](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/ardot-02.bprgeS8Q.png)2. 首次使用时，系统会弹出授权确认窗口。WorkBuddy 通过登录手机号自动完成与 Ardot 的身份关联，无需单独注册腾讯设计账号，点击确认后即可使用。
+可通过以下方式进入任务：
 
-**权限详情：**
+- **客户端**：登录 WorkBuddy，点击左侧边栏底部的头像，选择**成长计划**，找到「体验设计创意模式」任务。
+- **官网**：登录 [WorkBuddy 官网](https://www.workbuddy.cn/)，点击右上角头像进入**个人中心**，在左侧导航栏选择**成长计划**，找到「体验设计创意模式」任务。
 
-- **读取画布内容：** 读取设计稿中的元素、样式、布局信息
-- **编辑画布：** 代表您在 Ardot 画布上执行新增、修改、删除等设计操作
-- **云端同步：** 与 Ardot 浏览器端保持实时双向同步
+具体活动规则及奖励内容以成长计划页面下方的**活动细则**为准。
 
-连接后，WorkBuddy 获得当前登录用户的 Ardot 画布操作权限，所有设计稿存储在云端，换电脑、重新登录均不会丢失。
+## 开始使用设计创意
 
-## 二、使用
+1. 打开 WorkBuddy 首页，点击**新建任务**，选择最右侧的**设计创意**Tab。
+
+![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/ardot-02.bprgeS8Q.png)2. 首次使用时，需要完成 Ardot 授权连接。系统会弹出授权确认窗口，WorkBuddy 通过登录手机号自动完成与 Ardot 的身份关联，无需单独注册腾讯设计账号。
+3. 点击**确认**完成授权，即可开始使用设计创意模式。授权后，WorkBuddy 获得当前登录用户的 Ardot 画布操作权限，可以读取、编辑并同步当前 Ardot 画布中的设计内容，所有设计稿存储在云端，换设备或重新登录后仍可继续编辑。
+
+权限详情
+
+- **读取画布内容：** 读取设计稿中的元素、样式、布局信息。
+- **编辑画布：** 代表您在 Ardot 画布上执行新增、修改、删除等设计操作。
+- **云端同步：** 与 Ardot 浏览器端保持实时双向同步。
+## 生成与修改设计稿
 
 ### 选择图片素材处理方式
 
@@ -29,7 +38,7 @@
 | **色块占位** | 生成色块占位，方便后续替换 | 已有图片素材稍后手动替换，或只需快速确认版式 |
 | **AI 生图** | 根据使用场景自动生成图片，效果更佳 | 没有现成素材，希望一次出稿即为成品 |
 
-![选择图片素材处理方式](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/design-image-strategy.QfL4F919.png)
+![选择图片素材处理方式](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/design-image-strategy.QfL4F919.png)
 
 ### 选择设计风格模板
 
@@ -40,7 +49,7 @@
 3. 若先选择了设计类型（如 **PPT设计**），列表会切换为该类型的**专属风格模板**（如优雅杂志、高级黑灰、创意橙黑、极简灰白等）；
 4. 输入设计需求并发送，AI 将按所选风格生成设计稿。
 
-![选择设计风格模板](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/design-style-template.D3tWt9g2.png)
+![选择设计风格模板](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/design-style-template.D3tWt9g2.png)
 
 TIP
 
@@ -56,7 +65,7 @@ TIP
 - 「帮我设计一张产品发布会的宣传海报，主题是 XX」
 - 「帮我制作一份 AI 硬件产品发布会 PPT，风格是XX」
 
-![](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/ardot-01.bMnnRA1n.png)支持的设计类型包括：移动端 App 界面、网站页面/Landing Page、品牌 Logo、海报/Banner、PPT 演示文稿等。
+![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/ardot-01.bMnnRA1n.png)支持的设计类型包括：移动端 App 界面、网站页面/Landing Page、品牌 Logo、海报/Banner、PPT 演示文稿等。
 
 ### 对话驱动修改
 
@@ -74,7 +83,9 @@ TIP
 - 「首页背景改成渐变蓝色」
 - 「参考这个网页链接的视觉风格进行优化」
 
-![](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/ardot-04.BZk9STbI.png)每轮修改后，Agent 会告知本轮具体改动内容，过程可追溯。
+![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/ardot-04.BZk9STbI.png)每轮修改后，Agent 会告知本轮具体改动内容，过程可追溯。
+
+## 精修与交付设计
 
 ### 跳转 Ardot 精细化编辑
 
@@ -99,15 +110,17 @@ AI 对话擅长快速出稿和批量调整，但设计落地的"最后一公里"
 
 **如何跳转：**
 
+跳转 Ardot 编辑器进行精细化编辑需要使用浏览器环境。
+
 1. 点击画布 Tab 顶部的「用浏览器打开进行编辑」按钮
 
-![](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/ardot-05.D2s06LTu.png)2. 跳转后进入 Ardot 完整编辑器，体验专业设计工具的编辑能力
+![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/ardot-05.D2s06LTu.png)2. 跳转后进入 Ardot 完整编辑器，体验专业设计工具的编辑能力
 
-![](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/ardot-06.Didz9awO.png)双向实时同步：在 Ardot 浏览器端做的任何修改会实时回流 WorkBuddy 画布 Tab，无需手动刷新。回到 WorkBuddy 后 Agent 也能读取浏览器端的最新状态继续对话修改。改完回来继续对话，Agent 能接着你的最新版本往下走。
+![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/ardot-06.Didz9awO.png)双向实时同步：在 Ardot 浏览器端做的任何修改会实时回流 WorkBuddy 画布 Tab，无需手动刷新。回到 WorkBuddy 后 Agent 也能读取浏览器端的最新状态继续对话修改。改完回来继续对话，Agent 能接着你的最新版本往下走。
 
 **PPT 导出下载：** 对于 PPT 类设计产物，Ardot 编辑器右上角提供**下载**入口，可导出为 **PPTX**（可用 PowerPoint / WPS 继续编辑）或 **PDF**（适合分享与打印），打通生成 → 精修 → 交付的完整链路。
 
-![PPT 导出下载](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/design-ppt-export.CPaQlnD2.png)
+![PPT 导出下载](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/design-ppt-export.CPaQlnD2.png)
 
 **推荐工作流：** 对话快速出稿（3 分钟）→ 跳转 Ardot 精修交付（5 分钟）→ 回到 WorkBuddy 生成代码（1 分钟）
 
@@ -115,19 +128,31 @@ AI 对话擅长快速出稿和批量调整，但设计落地的"最后一公里"
 
 ### 从设计稿生成应用代码
 
-设计稿修改满意后，可以一键生成可运行的应用代码。
+生成应用代码的功能依赖当前画布中的设计稿状态,设计稿修改满意后，可以一键生成可运行的应用代码。
 
 **两种触发方式：**
 
 - 在对话中说「将当前画布中的设计稿生成应用」
 - 或点击画布 Tab 顶部的「生成应用」按钮
 
-![](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/ardot-07.BOVE09ca.png)生成后可继续用对话调整代码细节：「用 React 重写」「加一个 dark mode」「改成 Tailwind 样式」等。
+![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/ardot-07.BOVE09ca.png)生成后可继续用对话调整代码细节：「用 React 重写」「加一个 dark mode」「改成 Tailwind 样式」等。
 
-## 三、注意事项
+## 成长计划与积分奖励
 
-- 使用设计创意模式需要先完成 Ardot 授权连接
-- 设计稿存储在云端，换设备登录后可继续编辑
-- 跳转 Ardot 编辑器需要浏览器环境
-- 生成应用代码的功能依赖当前画布中的设计稿状态
-- 使用 Ardot 服务需遵守 [用户协议](https://ardot.tencent.com/drive/policy) 和 [隐私协议](https://ardot.tencent.com/drive/privacy)
+完成成长中心中的体验**设计创意模式**任务，即可获得对应的 Credits \+ 能量奖励。
+
+任务规则如下：
+
+- 根据成长中心的任务要求，在设计创意模式下完成对应操作，即可完成任务，例如成功创建 1 个画布、成功生成图片或视频等。
+- 取消或生成失败的任务不计入任务进度，也不会发放奖励。
+- 同一用户同一任务仅可获得一次奖励，重复完成不会重复发放。
+- 任务完成后，奖励将自动结算，参与范围、开放时间、奖励内容及数值等规则如有调整，以**成长中心**实际显示为准。
+
+TIP
+
+快捷入口：点击左侧边栏底部的头像，弹出用户菜单，点击**成长中心**，即可找到「体验设计创意模式」任务。
+
+## 声明
+
+- 使用 Ardot 服务需遵守[用户协议](https://ardot.tencent.com/drive/policy)和[隐私协议](https://ardot.tencent.com/drive/privacy)。
+- 本节说明，构成[服务协议](https://rule.tencent.com/rule/202603180001)和[隐私保护](https://privacy.qq.com/document/preview/771d9a58551449e9a7e7445ebfe04966)指引的组成部分，具有同等法律效力。如有不一致之处，以前述协议原文为准。

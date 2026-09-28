@@ -26,13 +26,13 @@
 
 根据手上产物的形态，有两种方式：
 
-### 路径一：在会话中让 Agent 保存
+### 在会话中让 Agent 保存
 
 适合和 Agent 一起写的 MD 文档、HTML 网页。在生成该产物的会话中要求 Agent 把内容存入资料库，Agent 会通过资料库能力完成上传，并告知存放位置。会话里有多个产物时，可以指定要保存哪一个。
 
 > 这条路径的好处：不用手动导出再上传，产物直接从"会话里的内容"变成"资料库里可管理的文档"。
 
-### 路径二：分享即存入
+### 分享即存入
 
 适合已经生成、准备发给别人看的内容（尤其是网页、报告这类）。在产物上点击**分享**，在**发布**页签中开启**发布为网站**，系统会把它发布为在线链接：对方打开链接就能查看，你自己也能在资料库中找到这份内容。
 
@@ -56,29 +56,47 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 
 资料库是 WorkBuddy 的原生能力，可在任务中随时读取、修改资料库内容，**Agent 拥有与人一样的权限**。资料不是一次上传就结束，而是进入持续工作的闭环。
 
-### 1\. 从空间或文档添加到任务
+### 从空间或文档添加到任务
 
 - **文件详情页：** 点击所需文档查看详情，在详情页右上方点击 **···** 打开更多菜单，选择**添加到任务**。同一菜单中还可以选择用浏览器打开、投屏展示、查看文档信息和控制评论显示开关。
 
-![在详情页菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/add-to-task.Cm81svAS.png)
+![在详情页菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/add-to-task.Cm81svAS.png)
 
 - **资料库侧边栏：** 在资料库目录中选中空间或文档，点击 **···** 打开菜单，选择**添加到任务**。同一菜单中还可以重命名、复制链接、邀请和管理成员。
 
-![在资料库目录菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/task-add-to-task.ZmtLAs8j.png)
+![在资料库目录菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/task-add-to-task.ZmtLAs8j.png)
 
-### 2\. 基于资料提问，让 Agent 执行
+### 基于资料提问，让 Agent 执行
 
 所选空间进入任务上下文后，直接基于其中的资料提问，让 Agent 执行。因为背景已在上下文中，不必反复解释项目情况。
 
-![所选空间进入任务上下文后直接提问](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/task-run-with-space.DJ9ZA9AU.png)
+![所选空间进入任务上下文后直接提问](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/task-run-with-space.DJ9ZA9AU.png)
 
-### 3\. 把成果保存回资料库
+### 把成果保存回资料库
 
 任务完成后，把新的分析成果直接保存回资料库，后续可以继续查找和调用。
 
-![把任务成果保存回资料库](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/task-save-to-library.DTsNhJKl.png)
+![把任务成果保存回资料库](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/task-save-to-library.DTsNhJKl.png)
 
 > 这个闭环让历史成果可以被后续任务反复利用：下一次分析时 Agent 直接读取已沉淀的资料，沿着已有结论继续，而不必从零开始，也不需要翻找历史会话。
+
+## 刷新 HTML 产物
+
+查看 HTML 产物时，可以通过**更多（…）→ 刷新**重新加载当前产物，无需关闭后重新打开。在线产物和本地文件的入口略有差异，分别说明如下。
+
+### 在线 HTML 产物
+
+在资料库中打开在线 HTML 产物，在该产物的工具栏中点击**更多（…）**，选择**刷新**。
+
+![在线 HTML 产物的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/html-refresh-online.A4PW1LM5.png)
+
+### 本地 HTML 文件
+
+预览本地 HTML 文件时，在预览界面的工具栏中点击**更多（…）**，选择**刷新**。
+
+![本地 HTML 预览的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/html-refresh-local.DDCmIQrk.png)
+
+刷新后页面会回到该 HTML 的入口页顶部，已进入的子页面及打开的弹层等会一并重置。刷新只作用于当前 HTML，不会返回 WorkBuddy 首页，也不会切换到其他标签页。
 
 ## 本地 HTML 可视化编辑
 
@@ -100,7 +118,7 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 
 **撤销与重做**：连续编辑操作可逐步撤销、重做，放心试改。
 
-![本地 HTML 可视化编辑](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/html-visual-editor.co2vInlt.png)
+![本地 HTML 可视化编辑](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/html-visual-editor.co2vInlt.png)
 
 ## 本地 Markdown 编辑器
 
@@ -113,7 +131,7 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 - 菜单按钮：**AI 编辑**｜**加粗** / **斜体** / **下划线** / **删除线** / **链接** / **行内代码**
 - 点击即时生效；复杂的内容调整仍可交给 AI 编辑
 
-![划词菜单](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/md-editor-selection-menu.CPvzmiPs.png)
+![划词菜单](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/md-editor-selection-menu.CPvzmiPs.png)
 
 ### 悬浮快捷菜单
 
@@ -129,7 +147,7 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 | 视频 / 文件 | AI 编辑、预览 / 全屏、下载、删除 |
 | 链接 | 打开、复制、编辑、取消链接 |
 
-![链接悬浮菜单示例](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/md-editor-hover-menu.Gf63krE9.png)
+![链接悬浮菜单示例](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/md-editor-hover-menu.Gf63krE9.png)
 
 说明
 
@@ -144,7 +162,7 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 - 滚动正文时，目录会**自动高亮**当前所在章节；
 - 文档没有标题时不显示目录入口。
 
-![文档目录导航](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/md-editor-toc.C0a_I6xz.png)
+![文档目录导航](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/md-editor-toc.C0a_I6xz.png)
 
 ### 智能复制
 

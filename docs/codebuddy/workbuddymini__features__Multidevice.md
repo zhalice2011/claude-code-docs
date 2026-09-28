@@ -12,6 +12,8 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 - [远程续聊](#远程继续任务)：小程序端进入对话继续发送指令，指令将在桌面端 WorkBuddy 执行
 - [远程停止](#远程停止任务)：任务偏离预期或等待确认时，小程序端一键终止任务
 - [状态可视化](#查看任务状态)：设备级 \+ 对话级双层状态标识，随时掌握 WorkBuddy 任务进度
+- [远程配置](#远程配置会话)：技能、专家、连接器、权限、模型在小程序里也能配置，均以电脑端为准
+- [任务通知](#任务通知)：任务完成、等待回答、等待审批时通过微信订阅通知提醒您，点击直达处理
 
 ## 前置条件
 
@@ -30,7 +32,7 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 - **熄屏后保持唤醒**：屏幕正常熄灭，后台任务与远程操控照常执行，较省电；
 - **保持屏幕常亮**：屏幕不会熄灭，可随时查看任务，较耗电。
 
-![系统设置中的「允许锁屏运行」，可选关闭 / 熄屏后保持唤醒 / 保持屏幕常亮](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-3.JujadBNx.png)
+![系统设置中的「允许锁屏运行」，可选关闭 / 熄屏后保持唤醒 / 保持屏幕常亮](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-3.JujadBNx.png)
 
 ## 连接设备
 
@@ -40,12 +42,12 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 
 在 WorkBuddy 桌面端，将鼠标悬停在**侧边栏底部**的「连接移动端」图标上，弹出「连接移动端」面板，打开「**允许移动端连接此设备**」开关。
 
-![桌面端「连接移动端」面板（小程序分页）：二维码与两个连接开关](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-1.BtGjjYNv.png)
+![桌面端「连接移动端」面板（小程序分页）：二维码与两个连接开关](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-1.BtGjjYNv.png)
 2. **小程序端连接电脑**
 
 面板中选中「**小程序**」分页，扫描二维码打开（或下载）WorkBuddy 小程序——**二维码仅作打开 / 下载引导，不参与配对**。登录与桌面端相同的账号后进入主页，点击侧边栏顶部的设备入口，在「**选择设备**」面板中选择要连接的电脑，即可连上该设备。
 
-![小程序端设备入口与「选择设备」面板](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-2.DfYAjZ0J.png)
+![小程序端设备入口与「选择设备」面板](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-2.DfYAjZ0J.png)
 
 建联完成后，设备关系将持久保留，无需每次重复配对。后续打开小程序端即可直接查看已连接电脑的任务状态。
 
@@ -62,9 +64,9 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 | 在线 | 绿色「在线」标签 | 桌面端在线可正常交互 |
 | 离线 | 灰色「离线」标签 | 桌面端离线或网络不可达 |
 
-![设备在线状态：设备名后显示绿色「在线」标签](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-4.DkToxfD3.png)
+![设备在线状态：设备名后显示绿色「在线」标签](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-4.DkToxfD3.png)
 
-![设备离线状态：设备名后显示灰色「离线」标签](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-4.1.D3wNLN5_.png)
+![设备离线状态：设备名后显示灰色「离线」标签](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-4.1.D3wNLN5_.png)
 
 **对话级状态**：
 
@@ -76,6 +78,18 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 | 已停止 | 任务被手动停止，显示当前完成步数 |
 | 失败 | 任务执行异常中断，可查看错误原因 |
 
+**侧边栏状态标识**：置顶区、任务列表与工作空间下的会话使用同一套状态标识，扫一眼就知道哪个任务在跑、哪个在等您：
+
+| 标识 | 含义 |
+| --- | --- |
+| 加载动效 | 处理中：任务正在电脑端执行 |
+| 绿点 | 已完成未读：点开任务后即消除，不再出现 |
+| 无标识 | 已完成且已读 |
+| 「待确认」胶囊 | 任务在等您回答或审批 |
+| 红色感叹号 | 会话异常：任务失败或被中止 |
+
+同一任务同一时刻只显示一种标识，并随任务进展实时更新。
+
 ### 远程继续任务
 
 当桌面端 WorkBuddy 执行过程中需要补充指令时，在小程序端进入对应对话，直接发送消息即可继续。
@@ -85,11 +99,11 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 3. 在输入框发送指令，如「继续」「把刚才的改动加上日志」
 4. 指令自动路由到桌面端继续执行
 
-![小程序端对话页：任务执行中，输入框显示「正在回复中」，可直接继续发送消息](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-5.HcI3N0lK.png)
+![小程序端对话页：任务执行中，输入框显示「正在回复中」，可直接继续发送消息](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-5.HcI3N0lK.png)
 
 在任务中通过左上角的新建图标新建任务，可以使**新建的任务在当前工作空间下执行**。
 
-![点击对话页左上角的新建图标，新建任务在当前工作空间下执行](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-5.1.B3AJvDao.png)
+![点击对话页左上角的新建图标，新建任务在当前工作空间下执行](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-5.1.B3AJvDao.png)
 
 ### 远程停止任务
 
@@ -99,15 +113,67 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 2. 点击右侧的发送按钮（运行中变为停止按钮），桌面端 Agent 立即终止执行
 3. 对话状态更新为「本轮任务已停止，电脑端已同步终止运行」
 
-![远程停止后，对话提示「本轮任务已停止，电脑端已同步终止运行」](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-6.CgYi7tVE.png)
+![远程停止后，对话提示「本轮任务已停止，电脑端已同步终止运行」](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-6.CgYi7tVE.png)
 
 已完成的步骤结果保留在对话中，不受影响。
+
+### 远程配置会话
+
+连接电脑后，小程序里也能像在电脑前一样配置本次对话——技能、专家、连接器、权限和模型都以电脑端为准：
+
+![「+」面板：专家中心 / 使用技能 / 连接器 / 定时任务](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-plus-panel.ecU3Epl2.png)
+
+- **使用技能**：点击输入框旁的 `+`，在面板中选择「使用技能」，从电脑端已安装并启用的技能中选用，支持搜索；选中后以标签显示在输入框，可随时移除；
+
+![使用技能面板：搜索并选用电脑端已安装的技能](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-skill-picker.TaDL2JGZ.png)
+- **召唤专家**：在 `+` 面板选择「专家中心」，点击底部的「召唤专家」进入专家面板——支持搜索，专家与专家团混排展示；选中后本次对话由该专家执行，输入框以标签显示当前专家、可移除。电脑端已召唤专家的会话，小程序里会同步显示对应的专家标识；
+
+![专家中心面板：浏览与搜索可用专家](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-expert-picker.DgM884qb.png)
+
+- **连接器**：在 `+` 面板选择「连接器」，开关本次对话要用的连接器，清单与连接状态以电脑端为准；已开启的连接器会在面板入口上以图标汇总展示。小程序里只做选用——未授权的连接器会提示您到电脑端完成授权；
+
+![连接器面板：开关本次对话要用的连接器](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-connector-panel.UdmSu2AS.png)
+- **权限模式**：输入框 `+` 左侧的权限图标显示当前档位，点击打开「选择权限模式」面板，可在「默认权限」与「允许完全访问」之间切换；后者会减少确认步骤、允许 Agent 连续执行敏感操作，切换前会给出风险提示，确认后才生效；
+
+![选择权限模式面板：默认权限 / 允许完全访问两档切换](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-permission-panel.BxbEYWia.png)
+
+![切换到「允许完全访问」时的确认提示](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-permission-risk.C3Tjne_K.png)
+- **自定义模型**：模型选择面板在内置模型之外，会分组展示您在电脑端配置的自定义模型（带「自定义」标识）；小程序里只能选用，新增与配置仍在电脑端完成，不展示密钥等敏感信息。
+
+以上清单都从电脑端实时拉取：拉取失败时会提示重试、不会显示成空列表；电脑端卸载或禁用的条目，下次拉取时会自动移除并提示。设备断连时这些配置不可修改。
+
+### 任务通知
+
+电脑上运行的任务需要您处理时，会主动通知到手机，不必反复打开查看：
+
+| 事件 | 说明 |
+| --- | --- |
+| **任务完成** | 任务在电脑端执行完成。仅小程序端发起的任务会通知；电脑端发起的由电脑自行通知，不重复打扰 |
+| **等待回答** | Agent 向您提问，等您回复（电脑端发起的任务同样通知） |
+| **等待审批** | Agent 申请敏感操作权限，等您批准（电脑端发起的任务同样通知） |
+
+- 通知发出前会留一段缓冲：这期间您在电脑或小程序里处理了，就不再推送；您正停留在该会话页面时也不打扰；
+- 点击通知直接进入对应对话——任务完成落到最新进展处，等待类会直接拉起对应的问答或审批面板；若该请求已在电脑端处理完，会提示「该请求已处理」；
+- 小程序走**微信订阅通知**，一次授权只能推送一次：会话中会出现订阅提示，可选「通知我」或「不用了」（选了「不用了」本次任务不再打扰）；选「通知我」后微信会弹出授权窗口，可分别勾选「任务完成提醒」和「任务确认通知」，授权成功后提示「订阅成功」。您每次在小程序里与该会话互动（发消息、回答问题、批准权限）都会自动补充下一次推送机会，额度用完时不推送、也不会弹窗打断您。
+
+![会话内的任务通知订阅提示：通知我 / 不用了](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-notify-prompt.CP_eRIro.png)
+
+![微信授权弹窗：可勾选任务完成提醒与任务确认通知](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-notify-auth.BjO48FzG.png)
+
+![授权成功后提示「订阅成功」](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-notify-subscribed.BQarea3r.png)
+
+### 两端同步
+
+- **置顶任务**：任务列表上方显示电脑端设置的「置顶」分组，顺序与电脑端一致；小程序里仅查看，置顶与调序在电脑端操作；
+- **新建工作空间**：对话详情页点击「任务 / 工作空间」筛选项，面板底部提供「新建工作空间」入口，创建成功即选中该空间，可立即发消息；设备离线时该入口不可用；
+- **工作空间移除同步**：电脑端移除工作空间后，小程序端列表同步移除；若它正被用作当前上下文，会自动退出并提示您；
+- **设备名称**：小程序里显示的是电脑系统里设置的设备名称（与电脑的「关于本机 / 关于」一致），电脑上改名后下次连接自动同步。
 
 ### 发送内容与查看产物
 
 连接电脑后，除了发送文字指令，还可以把手机上的内容交给电脑端的 WorkBuddy 处理，并把电脑产出的文件拿回手机查看。
 
-- **发送手机内容**：点击输入框**旁边**的 `+` 展开工具面板—— ![左：输入框旁边的 + 按钮；右：展开后的工具面板（拍照 / 图片 / 手机文件 / 微信文件，腾讯文档 / ima 知识库 / 添加技能 / 定时任务）](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-7.CbPQcqiu.png)
+- **发送手机内容**：点击输入框**旁边**的 `+` 展开工具面板—— ![左：输入框旁边的 + 按钮；右：展开后的工具面板（拍照 / 图片 / 手机文件 / 微信文件，腾讯文档 / ima 知识库 / 添加技能 / 定时任务）](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-7.CbPQcqiu.png)
 	- **拍照 / 图片 / 手机文件**：直接拍照，或从相册、手机文件里选择内容；
 	- **微信文件**：直接将微信聊天中的文件上传到对话中；
 
@@ -115,27 +181,27 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 
 WorkBuddy 在电脑上产出的文件会自动回传到小程序端，以产物卡片展示在对话中：点击卡片可预览，点「全部产物」可打开产物列表，在列表里保存、分享单个产物，底部的「批量操作」可一次处理多个。
 
-![上：对话中的产物卡片与「全部产物」入口；下：「全部产物」列表（支持保存 / 分享 / 批量操作）](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-12.DNFn5-UY.png)
+![上：对话中的产物卡片与「全部产物」入口；下：「全部产物」列表（支持保存 / 分享 / 批量操作）](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-12.DNFn5-UY.png)
 
 **连接腾讯文档**
 
 点击「腾讯文档」后，微信会先弹出「即将打开『腾讯文档』小程序」，点「允许」跳转到腾讯文档小程序；在授权页勾选并同意《开放平台服务协议》《服务协议》和《隐私政策》，点「同意」完成授权；随后在「选择腾讯文档」面板里切换「最近访问 / 我的文档」、勾选要用的文件，点底部「添加」，文件即被引用到当前对话。
 
-![左：腾讯文档授权页；右：选择腾讯文档并添加文件](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-8.CwhkoqsR.png)
+![左：腾讯文档授权页；右：选择腾讯文档并添加文件](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-8.CwhkoqsR.png)
 
 **连接 ima 知识库**
 
-点击「ima 知识库」同样会跳转到 ima 知识库小程序：在授权页点「同意」，允许 WorkBuddy 访问你的知识库列表与资料；之后在「选择 ima 知识」里选择知识库、勾选文件，点「添加」引用到当前对话。 ![左：ima 知识库授权页；右：选择 ima 知识并添加文件](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-9.ulsQzVsE.png)
+点击「ima 知识库」同样会跳转到 ima 知识库小程序：在授权页点「同意」，允许 WorkBuddy 访问你的知识库列表与资料；之后在「选择 ima 知识」里选择知识库、勾选文件，点「添加」引用到当前对话。 ![左：ima 知识库授权页；右：选择 ima 知识并添加文件](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-9.ulsQzVsE.png)
 
 授权完成后，工具面板里的「腾讯文档」「ima 知识库」会显示「**已连接**」，之后再点可跳过授权，直接从文件列表里选。
 
-![工具面板中「腾讯文档」「ima 知识库」显示「已连接」](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-10.CN7CzU0X.png)
+![工具面板中「腾讯文档」「ima 知识库」显示「已连接」](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-10.CN7CzU0X.png)
 
-**添加技能**
+**使用技能**
 
-点击「添加技能」可以选择**电脑上已安装的技能**（如 C 盘清理管家、公众号文章订阅等），也可以按名称搜索；选中后在当前对话中生效。
+点击「使用技能」可从**电脑上已安装的技能**中选用，支持搜索；选中后以标签显示在输入框、可移除，详见[远程配置会话](#远程配置会话)。
 
-![添加技能：搜索技能面板](https://download.codebuddy.cn/web/docs/1e3d5ff8a2707d96830781a756f3b8a80d30091b/docs/static/multidevice-11.Cf-kFyGZ.png)
+![使用技能：搜索技能面板](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/multidevice-11.Cf-kFyGZ.png)
 
 **定时任务**
 
@@ -191,6 +257,7 @@ WorkBuddy 在电脑上产出的文件会自动回传到小程序端，以产物�
 - 远程续聊时发送的指令将直接推送到桌面端 WorkBuddy 执行，涉及文件修改或对外发送的指令建议在确认前仔细核对
 - 如果发现小程序端状态与桌面端不一致（如显示离线但电脑实际在线），可尝试重新连接或检查网络
 - WorkBuddy 执行过程中遇到等待确认时，小程序端会显示「等待输入」状态，及时响应可避免任务长时间挂起
+- 想让任务等待您处理时通知到微信，在订阅提示中选择「通知我」；每次在小程序内互动会自动补充下一次推送机会
 
 ## 声明
 
