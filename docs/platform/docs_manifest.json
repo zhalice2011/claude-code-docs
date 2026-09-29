@@ -3608,8 +3608,15 @@
     "manage-claude__access-transparency.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/access-transparency",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/access-transparency.md",
-      "hash": "b7e7a828694a5259a153c8d92650135ce4e94e1863d07ab763a2d27655b8b238",
-      "last_updated": "2026-09-02T23:03:18.343175",
+      "hash": "b00db8869d8c0301b2a059c395cae6b0ca22d941c5e3b5a78316f61bf3cfde61",
+      "last_updated": "2026-09-29T00:52:36.941357",
+      "source": "platform"
+    },
+    "manage-claude__access-transparency-log.md": {
+      "original_url": "https://platform.claude.com/docs/en/manage-claude/access-transparency-log",
+      "original_md_url": "https://platform.claude.com/docs/en/manage-claude/access-transparency-log.md",
+      "hash": "3b897f307ea92beb3a500ee71fefc87e3026d66fcfd574a38f2b29ebe55fca30",
+      "last_updated": "2026-09-29T00:52:37.619146",
       "source": "platform"
     },
     "manage-claude__admin-api.md": {
@@ -3692,8 +3699,8 @@
     "manage-claude__compliance-activity-feed.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/compliance-activity-feed",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/compliance-activity-feed.md",
-      "hash": "fd751d12d84cca61efec25250c9e507ca827e28f3b953ea10d5db2cbd02335b8",
-      "last_updated": "2026-09-25T19:10:57.561426",
+      "hash": "241474e01d61b916c2ddfad6e8809b5488f71f27f6613fe4d318f9505a0c8488",
+      "last_updated": "2026-09-29T00:52:46.075424",
       "source": "platform"
     },
     "manage-claude__compliance-api.md": {
@@ -3727,8 +3734,8 @@
     "manage-claude__compliance-faq.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/compliance-faq",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/compliance-faq.md",
-      "hash": "a4edd8b9215c6b85c51e036f459d92fb46c9a73f26cb394ab89df7d7d40731da",
-      "last_updated": "2026-09-25T19:11:00.985705",
+      "hash": "afbf0ae2f441b7f49078f08e69fddb39da03a10f2947b9acc163dedb9d1bb2b8",
+      "last_updated": "2026-09-29T00:52:49.361401",
       "source": "platform"
     },
     "manage-claude__compliance-integration-patterns.md": {
@@ -4382,6 +4389,13 @@
       "last_updated": "2026-08-24T21:29:30.415116",
       "source": "platform"
     },
+    "release-notes__system-prompts__claude-sonnet-5.md": {
+      "original_url": "https://platform.claude.com/docs/en/release-notes/system-prompts/claude-sonnet-5",
+      "original_md_url": "https://platform.claude.com/docs/en/release-notes/system-prompts/claude-sonnet-5.md",
+      "hash": "1e0e6aab05c4c1f014f27c3125d10850011500729cd5ba3dc932d5b5f9a2ce3e",
+      "last_updated": "2026-09-29T00:53:53.437727",
+      "source": "platform"
+    },
     "test-and-evaluate__develop-tests.md": {
       "original_url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
       "original_md_url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests.md",
@@ -4434,11 +4448,11 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-09-28T19:07:02.438438",
+    "last_fetch_completed": "2026-09-29T00:53:58.299749",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
-    "pages_discovered": 637,
-    "pages_fetched_successfully": 633,
+    "pages_discovered": 639,
+    "pages_fetched_successfully": 635,
     "pages_failed": 4,
     "failed_pages": [
       "/docs/en/about-claude/use-case-guides/overview",
@@ -4446,10 +4460,10 @@
       "/docs/en/release-notes/system-prompts/overview",
       "/docs/en/resources/overview"
     ],
-    "total_files": 633,
+    "total_files": 635,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-28T19:07:02.438463",
+  "last_updated": "2026-09-29T00:53:58.299764",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
