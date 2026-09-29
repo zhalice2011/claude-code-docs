@@ -290,8 +290,8 @@
     "authentication.md": {
       "original_url": "https://code.claude.com/docs/en/authentication",
       "original_md_url": "https://code.claude.com/docs/en/authentication.md",
-      "hash": "265ebd5df6ffc6bfc0e0e7c904cd113ab5de8c55d290956b6f996657d8c6aa94",
-      "last_updated": "2026-09-29T00:44:33.353289",
+      "hash": "bbe9415eba2aee489d5dfab25fcca10bcc1f3465ffba6dd59fe20ede952b9a25",
+      "last_updated": "2026-09-29T09:16:43.203265",
       "source": "claude-code"
     },
     "auto-mode-config.md": {
@@ -1032,8 +1032,8 @@
     "quickstart.md": {
       "original_url": "https://code.claude.com/docs/en/quickstart",
       "original_md_url": "https://code.claude.com/docs/en/quickstart.md",
-      "hash": "81a5e238fbb4d93bdd2a2a6cede0a6bb01c9e34e026c19ca010c70a6954d27fe",
-      "last_updated": "2026-09-29T00:45:46.385349",
+      "hash": "744bda8fa5213cbc3d08b3e5e5afb22a2c88f9925d1b8df0b1e79b6125e23f8f",
+      "last_updated": "2026-09-29T09:17:51.647835",
       "source": "claude-code"
     },
     "remote-control.md": {
@@ -1466,7 +1466,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-09-29T00:46:28.380245",
+    "last_fetch_completed": "2026-09-29T09:18:30.710906",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 209,
@@ -1476,7 +1476,7 @@
     "total_files": 209,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-09-29T00:46:28.380261",
+  "last_updated": "2026-09-29T09:18:30.710929",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
