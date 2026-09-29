@@ -31,7 +31,7 @@ Windows:
 	2. 设置默认浏览器为 Chrome 或 Safari。
 	3. 重启应用后重新登录。
 
-![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/%E7%99%BB%E5%BD%95%E5%A2%9E%E5%BC%BAwork.DWixAFfl.png)- **常见原因(2\)**：用户没有WorkBuddy账号文件夹操作权限。
+![](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/%E7%99%BB%E5%BD%95%E5%A2%9E%E5%BC%BAwork.DWixAFfl.png)- **常见原因(2\)**：用户没有WorkBuddy账号文件夹操作权限。
 - **建议处理**
 
 	1. 确认目录权限
@@ -123,13 +123,13 @@ TIP
 - 个人账号与海外版仅展示「网络」分组；企业账号及内网版 / 专享版展示全部检查项。
 - 报告已脱敏（IP 仅保留前两段、用户名替换为 \*\*\*），可安全提供给支持团队。
 - 检测到安全软件拦截时，会展示需要加入白名单的路径；失败项会给出方向性修复建议。
-![诊断工具](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/self-check.zbT-hAIU.png)
+![诊断工具](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/self-check.zbT-hAIU.png)
 
 ### 2）日志在哪里查看
 
 - **建议处理**：
-	- **MAC：** 打开 **WorkBuddy**，点击顶部**帮助 \-\> 打开日志文件夹**，找到对应的日志 （.zip） 包。 ![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/logmac.C9iZYyhZ.png)
-	- **Windows：** 打开 **WorkBuddy**，在左上角**帮助**的下拉框中找到**打开日志目录**，其中的压缩包就是日志文件。 ![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/logwin.afumbHyx.png)
+	- **MAC：** 打开 **WorkBuddy**，点击顶部**帮助 \-\> 打开日志文件夹**，找到对应的日志 （.zip） 包。 ![](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/logmac.C9iZYyhZ.png)
+	- **Windows：** 打开 **WorkBuddy**，在左上角**帮助**的下拉框中找到**打开日志目录**，其中的压缩包就是日志文件。 ![](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/logwin.afumbHyx.png)
 
 ### 3）在日志中发现产品问题或使用时出现产品功能异常在哪里反馈
 
@@ -141,7 +141,7 @@ TIP
 
 日志仅于排查问题，可能包含对话记录、设备信息等数据。详情请查阅[隐私保护声明](https://privacy.qq.com/document/preview/771d9a58551449e9a7e7445ebfe04966)
 
-![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88.B70drvin.png)## Bot 连接问题
+![](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88.B70drvin.png)## Bot 连接问题
 
 ### 1）已完成接入，但发送消息后没有响应
 
@@ -234,11 +234,11 @@ TIP
 
 ### 1）是否支持自定义模型
 
-- **结论**：支持，配置方法参考[模型配置](./../From-Beginner-to-Expert-Guide/Function-Description/Model)。
+支持，配置方法参考[模型配置](./../From-Beginner-to-Expert-Guide/Function-Description/Model)。
 
 ### 2）助理功能为什么不能修改默认文件夹
 
-- **问题说明**：助理专门适用于远程任务，不支持修改。
+助理专门适用于远程任务，不支持修改。
 
 ### 3）是否支持云端部署或服务器安装
 
@@ -263,62 +263,54 @@ TIP
 
 ### 3）`WorkBuddy` 运行缓慢，一个任务执行很久
 
-- **建议处理**：
-	1. 优先确认网络环境是否稳定。
-	2. 尽量减少一次性过长、过大的复合任务。
-	3. 必要时切换模型，或拆分为多个独立任务并行处理。
+1. 优先确认网络环境是否稳定。
+2. 尽量减少一次性过长、过大的复合任务。
+3. 必要时切换模型，或拆分为多个独立任务并行处理。
 
 ### 4）`WorkBuddy` 任务执行卡住，没有响应
 
-- **建议处理**：
-	1. 点击右下角发送任务处的按钮**停止任务**。
-	2. 切换到其他模型。
-	3. 重新执行历史任务。
+1. 点击右下角发送任务处的按钮**停止任务**。
+2. 切换到其他模型。
+3. 重新执行历史任务。
 
 ## 账户相关问题
 
 ### 1）如何申请退款
 
-- **建议处理**：
-	1. 发起工单退货退款前，请先确定是否满足退费说明的条件。
-	2. 登录 [腾讯云官网](https://console.cloud.tencent.com/workorder/category)，进入**提交工单**页面，找到**腾讯云代码助手**，填写退还原因和问题描述后提交工单。
-	3. 提交退款工单后，工单将进入审核阶段，腾讯云客服人员将会在两个工作日内处理您提交的申请。
-	4. 工单审核通过后，系统将执行退货操作。
-	5. 可在**订单管理**页面查看退货订单，订单状态为**已退款**，可在**费用中心**页面查看款项。若审核不通过，可在**工单**里查看审核结果。
+1. 发起工单退货退款前，请先确定是否满足退费说明的条件。
+2. 登录 [腾讯云官网](https://console.cloud.tencent.com/workorder/category)，进入**提交工单**页面，找到**腾讯云代码助手**，填写退还原因和问题描述后提交工单。
+3. 提交退款工单后，工单将进入审核阶段，腾讯云客服人员将会在两个工作日内处理您提交的申请。
+4. 工单审核通过后，系统将执行退货操作。
+5. 可在**订单管理**页面查看退货订单，订单状态为**已退款**，可在**费用中心**页面查看款项。若审核不通过，可在**工单**里查看审核结果。
 
 ### 2）如何查询最新套餐价格
 
-- **建议处理**：WorkBuddy 套餐定价可在[价格方案](https://www.codebuddy.cn/pricing/)查看并下单购买。
+WorkBuddy 套餐定价可在[价格方案](https://www.codebuddy.cn/pricing/)查看并下单购买。
 
 ### 3）补偿积分领取
 
-- **建议处理**：登录[官网](https://www.codebuddy.cn/work/)，点击右上角头像账户，前往**个人主页\-用量管理**领取。
+登录[官网](https://www.codebuddy.cn/work/)，点击右上角头像账户，前往**个人中心** \> **套餐与用量**领取。
 
 ### 4）积分未到账或消耗异常
 
-- **建议处理**
-	1. 登录[官网](https://www.codebuddy.cn/work/)，点击右上角头像账户，前往**个人主页\-用量管理**查询积分余额和用量明细。
-	2. 将异常截图发送至 **[workbuddy@tencent.com](mailto:workbuddy@tencent.com)** ，团队将核实后回复。
+1. 登录[官网](https://www.codebuddy.cn/work/)，点击右上角头像账户，前往**个人中心** \> **套餐与用量**查询积分余额和用量明细。
+2. 将异常截图发送至 **[workbuddy@tencent.com](mailto:workbuddy@tencent.com)** ，团队将核实后回复。
 
 ### 5）企业用户售前咨询、商务对接
 
-- **建议处理**：前往[价格方案](https://www.codebuddy.cn/pricing/)查看企业版定价信息和售前渠道。
+前往[价格方案](https://www.codebuddy.cn/pricing/)查看企业版定价信息和售前渠道。
 
 ### 6）如何开具发票
 
-- **建议处理**：
-	- **个人版**：可通过 WorkBuddy 官网 **个人主页** 查看发票。
-		1. 登录 WorkBuddy 官网，进入个人主页；
-		2. 在左侧导航栏中，选择 **账单与发票**；
-		3. 点击 **查看发票**，前往腾讯云控制台发票管理 **开发票**。
-	- **SaaS企业版/专有云企业版**：企业管理员可以登录 WorkBuddy 企业管理后台查看订单记录。
-		1. 登录 WorkBuddy 企业管理后台；
-		2. 在左侧导航栏中，选择 **订单管理**。
-		3. 点击 **发票管理**，前往腾讯云控制台查看发票，注意请使用企业绑定的腾讯云 uin 登录腾讯云控制台。
+- **个人版**：可通过 WorkBuddy 官网**账单与发票**查看或开具发票。
 
-![alt text](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/%E5%8F%91%E7%A5%A8-1.wGOnDyAN.png)
+	1. 登录 [WorkBuddy 官网](https://www.workbuddy.cn/)，进入个人主页。
+	2. 单击右上角头像，选择**个人中心**，在左侧导航栏选择**账单与发票**。
+	3. 单击**开票管理**，在**可申请**页签中选择需要开票的订单，单击**去开票**。![发票申请弹窗，在可申请页签中选择订单后单击去开票](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/invoice-apply-dialog.DSmWjSZ3.png)
+- **SaaS企业版/专有云企业版**：企业管理员可以登录 WorkBuddy 企业管理后台查看订单记录。
 
-![alt text](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/image-2.BPLlgsdS.png)
+	1. 登录 [WorkBuddy 企业管理](https://www.codebuddy.cn/admin/)后台，单击页面右上角**订单管理**。
+	2. 点击**发票管理**，前往腾讯云控制台查看或开具发票，注意请使用企业绑定的腾讯云 uin 登录腾讯云控制台。 ![企业管理后台订单列表，点击发票管理](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/%E5%8F%91%E7%A5%A8-2.Iu_sULV-.png)
 
 ### 7）升级专业版后仍显示体验版
 

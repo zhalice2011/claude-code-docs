@@ -24,9 +24,9 @@
 
 以下示意展示了在安装 `web-search` 时生成的审计结果。
 
-![技能扫描效果示意](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/image-8.BYo6CS9e.png)
+![技能扫描效果示意](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/image-8.BYo6CS9e.png)
 
-![技能扫描结果示意](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/image-9.Dv9VDQJT.png)
+![技能扫描结果示意](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/image-9.Dv9VDQJT.png)
 
 ## 五、使用建议
 

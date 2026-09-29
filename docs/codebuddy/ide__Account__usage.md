@@ -7,4 +7,4 @@
 1. 登录 CodeBuddy 官网。
 2. 点击右上角头像，进入 **个人主页 \- 套餐与用量**。
 
-![alt text](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/image-5.CowwNT9S.png) 在这里，你可以查看当前订阅情况，以及资源包中可用与已使用的积分信息。
+![alt text](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/image-5.CowwNT9S.png) 在这里，你可以查看当前订阅情况，以及资源包中可用与已使用的积分信息。

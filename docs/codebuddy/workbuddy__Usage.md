@@ -4,7 +4,7 @@
 
 打开 WorkBuddy 应用，点击头像，进入**设置** \> **套餐与积分**，可查看当前套餐、订阅状态、到期时间等信息。
 
-![设置-套餐与积分页面，展示套餐信息与积分明细](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/usage-plan-credits.CqvP8MYe.png)
+![设置-套餐与积分页面，展示套餐信息与积分明细](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/usage-plan-credits.CqvP8MYe.png)
 
 TIP
 
@@ -14,7 +14,7 @@ TIP
 
 如需查看具体任务或模型的积分消耗情况，可登录 [WorkBuddy 官网](https://www.workbuddy.cn/)，单击右上角头像，选择**个人中心** \> **套餐与用量**，在**积分消耗明细**中查看。企业旗舰版（SaaS 企业版）或企业专享版（专有云企业版）的企业成员，还可查看企业为其添加的额度信息。
 
-![个人中心-套餐与用量页面，查看平台奖励积分与积分消耗明细](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/usage-credits-detail.C8LYe76Q.png)
+![个人中心-套餐与用量页面，查看平台奖励积分与积分消耗明细](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/usage-credits-detail.C8LYe76Q.png)
 
 ## 声明
 

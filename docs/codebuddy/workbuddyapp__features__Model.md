@@ -4,7 +4,7 @@
 
 点击输入栏中的模型名称（如「Auto ▾」），弹出模型选择面板。
 
-![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/model-1.Ck4A_TNP.png)![](https://download.codebuddy.cn/web/docs/0c6eecdbb4e15781e51229882560e9ea0b367fe3/docs/static/model-2.BaaTiMKw.png)## 二、可用模型一览
+![](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/model-1.Ck4A_TNP.png)![](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/model-2.BaaTiMKw.png)## 二、可用模型一览
 
 | 模型 | 能力标签 | 推荐场景 |
 | --- | --- | --- |
