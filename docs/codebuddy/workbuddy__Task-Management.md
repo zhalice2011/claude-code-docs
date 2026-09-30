@@ -19,7 +19,7 @@
 - 当前状态
 - 最近更新时间或创建时间
 
-![任务列表](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/taskmanage-1.InLn2Uzo.png)
+![任务列表](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/taskmanage-1.InLn2Uzo.png)
 
 ## 搜索与筛选
 
@@ -34,7 +34,7 @@
 - 按日期筛选：缩小到某一时间范围内的任务
 - 重置筛选：清空当前筛选条件，恢复查看全部任务
 
-![筛选面板](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/taskmanage-2.C68mO2fO.png)
+![筛选面板](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/taskmanage-2.C68mO2fO.png)
 
 ## 全局搜索
 
@@ -45,7 +45,7 @@
 - 点击窗口**左上方**的**搜索**按钮（与侧栏折叠、筛选按钮同排）；
 - 或使用快捷键 `Cmd+K`（Windows 对应 `Ctrl+K`）。
 
-![搜索入口](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/taskmanage-search-entry.CdCF5OP2.png)
+![搜索入口](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/taskmanage-search-entry.CdCF5OP2.png)
 
 搜索窗口打开后默认停在「全部」页，底部常驻快捷键提示条。
 
@@ -56,7 +56,7 @@
 - **全部**：把任务、空间、产物分组展示；某组结果较多时，组尾会出现「查看全部」，点击后跳到对应分类；
 - **任务 / 空间 / 产物**：分别展示对应类型的检索结果，产物还支持按文件类型进一步筛选。
 
-![全局搜索窗口：分类分组展示结果](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/taskmanage-global-search.BvTeL6NV.png)
+![全局搜索窗口：分类分组展示结果](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/taskmanage-global-search.BvTeL6NV.png)
 
 命中的关键词会高亮显示。没有输入搜索词时，「全部」页会展示**最近浏览记录**，按浏览时间倒序排列。
 
@@ -104,7 +104,7 @@
 
 **操作入口**：在任务行上悬停鼠标点击「⋯」按钮，或直接**右键点击任务行**——两种入口的菜单项完全一致，操作行为相同。置顶任务、临时任务、工作空间对话、项目任务、助理任务以及搜索结果中的任务均支持右键菜单。
 
-![任务右键菜单](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/taskmanage-context.C48mcD-q.png)
+![任务右键菜单](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/taskmanage-context.C48mcD-q.png)
 
 ### 键盘与快捷键
 
@@ -155,9 +155,9 @@
 
 **批量删除**：在任务行上点击右键，选择**批量操作**，勾选要删除的任务，再点击底部**删除**并在弹窗中确认。弹窗标题与结果提示都会带上数量（如「确认删除 5 项任务？」「已删除 5 项任务」）。
 
-![右键菜单中的批量操作入口](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/taskmanage-batch-entry.MF2fuFRx.png)
+![右键菜单中的批量操作入口](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/taskmanage-batch-entry.MF2fuFRx.png)
 
-![批量操作：勾选任务后点击底部删除](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/taskmanage-batch-bar.CwRMmDOW.png)
+![批量操作：勾选任务后点击底部删除](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/taskmanage-batch-bar.CwRMmDOW.png)
 
 **正在运行的任务无法勾选**，需要等它结束或先停止后，再一起删除。
 

@@ -24,19 +24,19 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 
 1. 点击页面左上角的**发现应用**，展开 Buddy 应用列表，列表中展示各个应用的名称与简介，选择需要授权的应用，点击**进入**。
 
-![Buddy 应用列表，点击进入已授权的应用](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/buddy-app-discover.BZfaTnxX.png)
+![Buddy 应用列表，点击进入已授权的应用](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/buddy-app-discover.BZfaTnxX.png)
 
 2. **确认授权**：弹出授权确认框，展示应用将读取的信息（如任务列表与详情），点击**确认授权**继续。
 
-![确认授权](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/buddy-app-auth.CNAT61VD.png)
+![确认授权](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/buddy-app-auth.CNAT61VD.png)
 
 3. **绑定账号**：部分应用需要绑定第三方账号。绑定后即可获取该应用的专业能力并开启连接器服务；也可以先**跳过**，稍后再绑定。
 
-![绑定账号](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/buddy-app-bind.CPS-AU-Q.png)
+![绑定账号](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/buddy-app-bind.CPS-AU-Q.png)
 
 4. **第三方授权**：页面会跳转到应用方的授权页（支持微信扫码 / 手机号等方式），授权 WorkBuddy 访问该应用的 MCP 服务后即完成。
 
-![第三方授权页](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/buddy-app-thirdparty-auth.B542q_bI.png)
+![第三方授权页](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/buddy-app-thirdparty-auth.B542q_bI.png)
 
 ## 使用 Buddy 应用
 
@@ -44,13 +44,13 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 
 完成 Buddy 应用授权后，可以点击左上角**发现应用**，展开 Buddy 应用列表，从 Buddy 应用列表中选择已授权的应用，即可进入对应的新建任务页面。进入后，发现应用处会显示当前使用的 Buddy 应用名称。
 
-![进入 Buddy 应用后的新建任务首页](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/buddy-app-entered-home.KMeqbOlY.png)
+![进入 Buddy 应用后的新建任务首页](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/buddy-app-entered-home.KMeqbOlY.png)
 
 ### 新建任务
 
 进入 Buddy 应用后，首页即为该应用专属的新建任务界面，可以选择对应的工作模式和场景，并使用该应用提供的专家、技能和连接器创建任务。
 
-![Buddy 应用首页示例](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/buddy-app-home.DDKmeuGv.png)
+![Buddy 应用首页示例](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/buddy-app-home.DDKmeuGv.png)
 
 - **工作模式**（首页大胶囊）：由应用方定制，决定本次会话的业务角色与可用工具组合；首次进入默认选中第一个，可手动切换。
 - **场景胶囊**（输入框上方）：对应具体预置任务，点击后可自动召唤绑定的专家，并提供预设指令卡片供快捷输入。
@@ -60,7 +60,7 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 
 每个 Buddy 应用都有**定制的专家、技能和连接器**：进入应用后，可使用该应用专属的专家处理业务任务，对话中也可调用为其定制的技能与连接器。
 
-![Buddy 应用专家页面](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/buddy-app-experts.bIc4adtI.png)
+![Buddy 应用专家页面](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/buddy-app-experts.bIc4adtI.png)
 
 说明
 
@@ -75,7 +75,7 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 - **切换应用**：点击页面左上角的**发现应用**或当前 Buddy 应用名称，展开应用列表后，选择需要使用的 Buddy 应用即可。
 - **暂停使用**：点击页面左上角的**发现应用**或当前 Buddy 应用名称，展开应用列表后，点击应用右侧开关按钮即可暂停使用。
 
-![当前使用应用右侧的暂停按钮](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/buddy-app-switch-button.Dau35BJ-.png)
+![当前使用应用右侧的暂停按钮](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/buddy-app-switch-button.Dau35BJ-.png)
 
 ### 查看已授权的 Buddy 应用
 
@@ -85,7 +85,7 @@ Buddy 应用在灰度或内测阶段可能仅对部分用户开放。如果你�
 
 如果不再需要使用某个 Buddy 应用，可进入**设置** \> **应用管理**\> **Buddy应用**页面，找到应用，点击**撤销授权**并二次确认后即可取消授权，取消后该应用将无法继续读取你的信息，不影响你已产生的会话记录。
 
-![设置 > 应用管理中撤销 Buddy 应用授权](https://download.codebuddy.cn/web/docs/b97a46fbba41bb475c1e4fa74fd7c71b738874e5/docs/static/buddy-app-setting.CJODWiCF.png)
+![设置 > 应用管理中撤销 Buddy 应用授权](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/buddy-app-setting.CJODWiCF.png)
 
 ## Buddy 应用审核
 

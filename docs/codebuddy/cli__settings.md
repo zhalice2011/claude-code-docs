@@ -89,6 +89,7 @@ json
 | `autoUpdates` | 自动更新设置 | `false` |
 | `alwaysThinkingEnabled` | 始终启用思考模式 | `true` |
 | `showTokensCounter` | 是否在界面中显示 Tokens 计数器 | `false` |
+| `showContextUsage` | 是否始终在 TUI 输入区显示当前会话上下文窗口使用率（默认仅在达到提醒阈值后显示） | `false` |
 | `showTurnDuration` | 是否在每轮回复结束后展示本轮耗时，形如 `✔ Worked for 1m 31s`；被中断或以报错收场的回合本就不展示（默认：`true`） | `false` |
 | `endpoint` | 自定义服务端点地址 | `"https://api.example.com"` |
 | `envRouteMode` | 环境路由模式配置 | `"production"` |

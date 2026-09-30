@@ -199,6 +199,7 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | 环境变量 | 说明 |
 | --- | --- |
 | `CODEBUDDY_CODE_DISABLE_TERMINAL_TITLE` | 设置为 `1` 禁用自动终端标题更新 |
+| `CODEBUDDY_SHOW_CONTEXT_USAGE` | 设置为 `1`、`true`、`yes` 或 `on`，常驻显示 TUI 输入区中的当前上下文窗口使用率（覆盖默认的阈值显示行为） |
 | `CODEBUDDY_INCLUDE_PROMPT_SUGGESTION` | 显式启用提示建议，覆盖 headless 默认关闭和 `promptSuggestionEnabled=false` 配置 |
 | `CODEBUDDY_PROMPT_SUGGESTION_DISABLED` | 设置为 `1` / `true` 禁用提示建议，优先级高于 `CODEBUDDY_INCLUDE_PROMPT_SUGGESTION` |
 | `CODEBUDDY_ENABLE_ASK_USER_FOR_STRUCTURED_INPUT` | 设置为 `1` / `true` 启用 `AskUserForStructuredInput` 工具（默认关闭）；仅当运行在 ACP 或 stream\-json 模式且客户端声明 `elicitation.form` capability 时才实际生效 |

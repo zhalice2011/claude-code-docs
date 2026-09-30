@@ -18,7 +18,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/agents` |  | ✅ 支持 | 管理内置和自定义 AI 智能体；查看内置子代理的生效路由值及其来源，并将模型设置保存到 Global 或 Project 范围。具体场景模型可在 `/model` 中查看。 切换当前会话的主 Agent 模式请用 `/agent-mode`。 |
 | `/multitask` |  | ✅ 支持 | 开关 Multitask overlay（少动手、派 worker）。不改当前 Standard / PTC / Create。**极简模式不能开**，输入 `/multitask` 会提示先切到标准、PTC 或创造。再敲一次关掉 overlay。非空白会话可进；worker / 子会话 / `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 拒绝。不写 `lastUsed`。ACP 宿主用 [`session/set_config_option`](./acp#multitask-协调器)（`configId=multitask`），不要给 `codebuddy --acp` 加 `--agent multitask`。 |
 | `/branch` | `[name]` | ✅ 支持 | 在当前对话位置创建一个分支，复制活跃对话历史到新 session 并自动切换。可选指定分支名称。 |
-| `/btw` | `<question>` | ✅ 支持 | 快速提问，不中断当前 Agent 工作流。适用于在 Agent 执行任务时临时提出简短问题，答案基于已有上下文生成。 |
+| `/btw` | `[question]` | ✅ 支持 | 打开独立侧问浮层；每次 `/btw <question>` 都从主会话 fork，侧问记录单独保留并支持连续追问（浮层内按 `i` 进入输入，`Tab` 返回浏览）、最近 5 条浏览、`c` 复制、`x` 清空、`f` 升级为带工具的后台任务，主会话不被写入或打断。 |
 | `/compact` |  | ✅ 支持 | 压缩上下文。 |
 | `/config` | `[list | get | set]` | ✅ 支持 | 查看或修改本地配置。不带参数时打开交互式面板，`list` 列出当前设置，`get <key>` 读取设置，`set <key> <value>` 修改设置。 |
 | `/context` | `[all]` | ✅ 支持 | 计算当前会话的上下文 token 分布。默认折叠 Memory / Skills / Agents 明细，`/context all` 展开。 |
