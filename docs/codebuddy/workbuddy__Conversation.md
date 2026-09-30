@@ -11,13 +11,13 @@
 - 在已有任务中继续追问，让 WorkBuddy 接着上一次的上下文继续处理
 - 在任务执行过程中查看回复、结果和中间步骤
 
-![任务对话界面](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/conversation-1.BOk_JNJk.png)
+![任务对话界面](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/conversation-1.BOk_JNJk.png)
 
 ## 顶部操作
 
 对话区顶部除了显示当前任务标题，还提供一些常用操作。
 
-![对话区顶部操作入口](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/conversation-2.BO9dQ6Vs.png)
+![对话区顶部操作入口](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/conversation-2.BO9dQ6Vs.png)
 
 从左到右依次是：
 
@@ -40,7 +40,7 @@ WorkBuddy 会基于之前的对话上下文继续处理，无需重复描述背�
 
 模型正在执行时，您也可以继续发送消息：消息会先进入输入框上方的**队列**，不需要等上一轮回复。
 
-![执行中继续发送：消息进入输入框上方的队列](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/conversation-queue.B_XM2oXw.png)
+![执行中继续发送：消息进入输入框上方的队列](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/conversation-queue.B_XM2oXw.png)
 
 队列中的每条消息都可以**编辑**、**删除**，也可以拖动调整先后顺序；点击发送按钮可让消息立即发出、引导当前会话，但不会打断正在进行的模型输出。当前一轮输出（包括工具调用）结束后，队列里的消息会按顺序依次交给模型接着处理；已经进入对话流的消息会显示发送时间并支持复制，不提供回退、编辑。
 
@@ -54,7 +54,7 @@ WorkBuddy 会基于之前的对话上下文继续处理，无需重复描述背�
 | **在浏览器打开** | 在系统默认浏览器中打开 |
 | **复制链接** | 复制地址，便于粘贴或分享 |
 
-![右键对话中的链接：选择打开方式](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/conversation-link-context-menu.D4OAz6si.png)
+![右键对话中的链接：选择打开方式](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/conversation-link-context-menu.D4OAz6si.png)
 
 也可以按住 `Command`（macOS）或 `Ctrl`（Windows）再点击链接，单次使用系统浏览器打开。
 
@@ -64,7 +64,7 @@ WorkBuddy 会基于之前的对话上下文继续处理，无需重复描述背�
 - **始终内置**：普通网页链接在 WorkBuddy 内置浏览器打开；
 - **始终外部**：普通网页链接使用系统浏览器打开。
 
-![设置 → 通用 → 链接打开方式](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/settings-link-open-mode.CULnmgSA.png)
+![设置 → 通用 → 链接打开方式](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/settings-link-open-mode.CULnmgSA.png)
 
 本地预览和腾讯文档链接默认仍在 WorkBuddy 内打开；需要改用系统浏览器时，可使用上述右键菜单或按键点击。
 
@@ -78,11 +78,11 @@ WorkBuddy 会基于之前的对话上下文继续处理，无需重复描述背�
 
 1. 在模型回复中**选中要引用的文本**，选区上方会出现操作栏；
 
-![选中文本后，选区上方出现操作栏，提供「复制」与「添加到对话」](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/conversation-quote-actionbar.Df5p9YNH.png)
+![选中文本后，选区上方出现操作栏，提供「复制」与「添加到对话」](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/conversation-quote-actionbar.Df5p9YNH.png)
 2. 点击**添加到对话**，选中的内容会作为一条**引用**加入输入框；
 3. 此时选中内容旁会出现**批注输入框**（选填），可以写下想让 WorkBuddy 怎么改，也可以不写、直接在输入框里继续补充；
 
-![点击后可在选区旁填写批注（选填），确认即加入输入框](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/conversation-quote-annotation.tjsvmGP9.png)
+![点击后可在选区旁填写批注（选填），确认即加入输入框](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/conversation-quote-annotation.tjsvmGP9.png)
 4. 鼠标悬停在引用上，可以查看被引用的**完整原文**（有批注时一并显示）。
 
 ### 引用表格与组件
@@ -131,7 +131,7 @@ WorkBuddy 在执行任务时，会把关键步骤和结果展示在对话区中�
 
 这样做的好处是，您不需要离开当前任务，就能在同一处持续查看输入、过程和输出。
 
-![执行过程中的阶段说明与消耗展示](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/conversation-exec-progress.DHoekDQp.png)
+![执行过程中的阶段说明与消耗展示](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/conversation-exec-progress.DHoekDQp.png)
 
 ### MCP 服务加载
 
@@ -142,7 +142,7 @@ WorkBuddy 在执行任务时，会把关键步骤和结果展示在对话区中�
 - 全部连接完成后，展示「所有 MCP 服务已就绪」；
 - 这段进度只在加载阶段临时出现，加载完成后就会从对话流中消失，不作为历史消息保留。
 
-![MCP 服务连接进度，显示已连接数与服务总数](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/conversation-mcp-loading.Bmrz04gS.png)
+![MCP 服务连接进度，显示已连接数与服务总数](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/conversation-mcp-loading.Bmrz04gS.png)
 
 ### 使用 MCP 应用界面
 

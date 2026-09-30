@@ -4,7 +4,7 @@ WorkBuddy 支持根据你的需求生成带后端的网页应用，并直接发�
 
 ## 选择网页应用还是轻量发布
 
-[轻量发布](./Library/Lightweight-Publish)和网页应用都可以快速发布为在线链接。下面可以根据内容的创建方式和后续使用需求进行选择。
+[轻量发布](./../Library/Lightweight-Publish)和网页应用都可以快速发布为在线链接。下面可以根据内容的创建方式和后续使用需求进行选择。
 
 | 你的需求 | 可以选择 |
 | --- | --- |
@@ -22,7 +22,7 @@ WorkBuddy 支持根据你的需求生成带后端的网页应用，并直接发�
 
 1. 在 WorkBuddy 首页进入「代码开发」，选择「网站开发」或「Agent 应用」，使用推荐提示词开始创建；
 
-![首页代码开发中选择 Agent 应用](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/webapp-create-scene.C4zk7VQm.png)
+![首页代码开发中选择 Agent 应用](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/webapp-create-scene.C4zk7VQm.png)
 
 2. 直接用自然语言描述需求，并明确说明要制作网页应用。
 
@@ -46,7 +46,7 @@ WorkBuddy 支持根据你的需求生成带后端的网页应用，并直接发�
 
 ## 开启云服务
 
-当应用需要保存数据、用户登录或上传文件时，WorkBuddy 会在生成过程中提示是否开启对应云服务。确认开启后，WorkBuddy 会继续完成相关配置，无需你手动填写技术参数。具体的功能介绍和使用方式请参见[云服务](https://doc.weixin.qq.com/smartpage/a1_AfwA9wYMAH8CNTyc4tTLUSbC0o6tU?scode=AJEAIQdfAAoCaGIPU2AfwA9wYMAH8&templateId=ww_n3czde6tzbnuibektwroa5pdia&p=vWKrxu&client_hint=0)。
+当应用需要保存数据、用户登录或上传文件时，WorkBuddy 会在生成过程中提示是否开启对应云服务。确认开启后，WorkBuddy 会继续完成相关配置，无需你手动填写技术参数。具体的功能介绍和使用方式请参见[云服务](./Cloud-Services)。
 
 | 对应能力 | 使用场景 |
 | --- | --- |
@@ -57,15 +57,15 @@ WorkBuddy 支持根据你的需求生成带后端的网页应用，并直接发�
 
 你可以点击应用标题旁的「云服务」继续管理。
 
-![点击应用标题旁的云服务](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/webapp-cloud-entry.BYkfGfvj.png)
+![点击应用标题旁的云服务](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/webapp-cloud-entry.BYkfGfvj.png)
 
-![云服务管理面板](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/webapp-cloud-panel.Cccy6ONU.png)
+![云服务管理面板](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/webapp-cloud-panel.Cccy6ONU.png)
 
 ## 发布网页应用
 
-![点击预览区工具栏中的分享](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/webapp-publish-share.CYsjb0rG.png)
+![点击预览区工具栏中的分享](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/webapp-publish-share.CYsjb0rG.png)
 
-![网页应用发布面板](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/webapp-publish-panel.CigFdgNM.png)
+![网页应用发布面板](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/webapp-publish-panel.CigFdgNM.png)
 
 应用制作完成后，点击预览区工具栏中的「分享」，也可以直接在对话中说「发布」、「上线」，即可获得一个独立的网站链接。
 
@@ -75,13 +75,13 @@ WorkBuddy 支持根据你的需求生成带后端的网页应用，并直接发�
 
 修改应用后，线上版本不会自动变化。重新打开发布面板点击「更新」，或者直接在对话中说「更新发布」，即可同步修改。更新后访问链接保持不变，已经分享出去的链接会直接打开新版本。
 
-![已发布应用的分享面板，支持更新和下线](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/webapp-publish-update.Bjh1cc-s.png)
+![已发布应用的分享面板，支持更新和下线](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/webapp-publish-update.Bjh1cc-s.png)
 
 如果暂时不希望别人继续访问，可以在发布面板中点击「下线」，或者直接在对话中说「下线这个应用」。下线后，原链接将无法打开，但应用和云服务中的数据仍会保留。
 
 ## 管理已发布的应用
 
-![在设置的数据管理中查看已发布的应用](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/webapp-manage-apps.Db7zSTYT.png)
+![在设置的数据管理中查看已发布的应用](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/webapp-manage-apps.Db7zSTYT.png)
 
 进入「设置 \> 数据管理 \> 应用」，可以集中查看所有应用，并管理云服务或处理发布状态。已发布的应用可以复制访问链接，不再需要的应用也可以在这里删除。需要继续修改时，点击对应的任务名，回到任务后直接在对话中提出修改要求。
 

@@ -11,7 +11,7 @@
 3. 按下 `Enter` 进行选择
 4. 如果选择的是类别项（如 Files \& Folders），列表会被筛选，显示该类别中最相关的项目
 
-![alt text](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/at.BsBNKbO6.png)
+![alt text](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/at.BsBNKbO6.png)
 
 > **注意**：@ 文件或代码块后，内容会一直保留在对话上下文中。模型能够持续看到你之前发送的内容，因此无需在每条消息中重复 @ 同一文件。合理利用这个特性可以有效节省 token 消耗。
 

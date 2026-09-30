@@ -39,7 +39,7 @@ WorkBuddy 支持多种工作场景，可用于日常办公、代码开发、设�
 
 ### 小程序补充说明
 
-小程序支持通过对话生成，并可直接预览、测试和托管发布。完整操作指引见[小程序开发与发布](./From-Beginner-to-Expert-Guide/Function-Description/Mini-Program)。
+小程序支持通过对话生成，并可直接预览、测试和托管发布。完整操作指引见[小程序开发与发布](./From-Beginner-to-Expert-Guide/Function-Description/App-Publishing/Mini-Program)。
 
 - **生成方式**：对话中明确说明“开发微信小程序”或“发布到微信小程序”即可生成；如有数据存储、文件存储、登录认证、数据分析等云服务需求，也可一并说明。
 - **预览和测试**：程序生成后，可先在 WorkBuddy 中预览。正式上线前，建议发布体验版并进行真机测试。

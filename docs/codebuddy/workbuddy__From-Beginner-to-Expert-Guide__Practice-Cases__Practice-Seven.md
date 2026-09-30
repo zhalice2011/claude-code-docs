@@ -10,7 +10,7 @@
 
 为了让 `AI` 更好地完成应用开发工作，建议在新建任务时，选择代码开发模式开启新的对话。
 
-![](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/image-11.DHE-MbN5.png)### 2）示例指令
+![](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/image-11.DHE-MbN5.png)### 2）示例指令
 
 > 请帮我设计一个本地可运行的知识管理小工具，支持新增、搜索、编辑和分类，界面简洁，适合个人日常记录使用，并直接生成可运行的代码。
 
@@ -18,7 +18,7 @@
 
 `WorkBuddy` 会理解需求，自动生成完整代码并尝试运行，最终效果如下：
 
-![](https://download.codebuddy.cn/web/docs/59627aa83a521ce15e8397f23b45ea83b3a15b19/docs/static/image-12.ebzuuDIW.png)## 三、让 `AI` 帮你解决报错
+![](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/image-12.ebzuuDIW.png)## 三、让 `AI` 帮你解决报错
 
 ### 1）操作说明
 
