@@ -248,8 +248,8 @@
     "agent-teams.md": {
       "original_url": "https://code.claude.com/docs/en/agent-teams",
       "original_md_url": "https://code.claude.com/docs/en/agent-teams.md",
-      "hash": "d18a41b9ddc4ecdf3668165265321fedfe9c9bbe96ea071d8fc0e6ef2dafb19b",
-      "last_updated": "2026-10-03T02:54:49.799573",
+      "hash": "a2ed185b716d2550240752d988bfd1875cb2cad3f803be3a795f14054f3c0549",
+      "last_updated": "2026-10-03T18:25:46.732297",
       "source": "claude-code"
     },
     "agent-view.md": {
@@ -1536,7 +1536,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-10-03T14:06:23.639743",
+    "last_fetch_completed": "2026-10-03T18:27:38.884701",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 219,
@@ -1546,7 +1546,7 @@
     "total_files": 219,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-03T14:06:23.639770",
+  "last_updated": "2026-10-03T18:27:38.884727",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
