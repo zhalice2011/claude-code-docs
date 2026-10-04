@@ -703,8 +703,8 @@
     "interactive-mode.md": {
       "original_url": "https://code.claude.com/docs/en/interactive-mode",
       "original_md_url": "https://code.claude.com/docs/en/interactive-mode.md",
-      "hash": "f6aa6815403332525b727f08fbc466c089ca031137b11c77293813ad5db19f9e",
-      "last_updated": "2026-10-04T11:31:40.607081",
+      "hash": "b9755bd87299d0d9e7d4216cfcfb484700ec0c6e70d9df8a1b69635f1748f81b",
+      "last_updated": "2026-10-04T23:43:19.419690",
       "source": "claude-code"
     },
     "jetbrains.md": {
@@ -717,8 +717,8 @@
     "keybindings.md": {
       "original_url": "https://code.claude.com/docs/en/keybindings",
       "original_md_url": "https://code.claude.com/docs/en/keybindings.md",
-      "hash": "df193c4e07dc91d43be2221e52edfb17663d0da8983b7bf23d6fea925850465a",
-      "last_updated": "2026-10-04T11:31:41.738340",
+      "hash": "ea0fa18b42e013af104d8676d92bee6a1500299c75b96ab095f5cc3ec3b26c31",
+      "last_updated": "2026-10-04T23:43:20.647143",
       "source": "claude-code"
     },
     "large-codebases.md": {
@@ -1536,7 +1536,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-10-04T20:41:14.888486",
+    "last_fetch_completed": "2026-10-04T23:44:33.831946",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 219,
@@ -1546,7 +1546,7 @@
     "total_files": 219,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-04T20:41:14.888515",
+  "last_updated": "2026-10-04T23:44:33.831968",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
