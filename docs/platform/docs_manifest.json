@@ -4518,8 +4518,8 @@
     "manage-claude__inference-hooks.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks.md",
-      "hash": "b6144eb88cfc456bece45833b430b5f18748404611ea27779b39bcaf495c2067",
-      "last_updated": "2026-10-06T04:00:51.542722",
+      "hash": "3f1726e47099b10fb80bd8af3e4bbf9d1677450920c891a429db67a2d1b1a063",
+      "last_updated": "2026-10-06T12:35:09.045755",
       "source": "platform"
     },
     "manage-claude__inference-hooks-configuration.md": {
@@ -4973,8 +4973,8 @@
     "models__opus-5-5__migration-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide",
       "original_md_url": "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide.md",
-      "hash": "163b24c6ff9c51434db34cf55775ec1eca01c823883f66cb8d0b2a1af34de59a",
-      "last_updated": "2026-10-02T00:30:43.638103",
+      "hash": "6ec738f7f68ebdcdd07812fb2201ea4f8290157633f2305f8826201ba74a383c",
+      "last_updated": "2026-10-06T12:35:53.837283",
       "source": "platform"
     },
     "models__opus-5-5__overview.md": {
@@ -5022,8 +5022,8 @@
     "models__sonnet-5-5__migration-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide",
       "original_md_url": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide.md",
-      "hash": "7db37f2b75ab87963cf72fce15a6e66672241b3632b358d764c9172876248a8c",
-      "last_updated": "2026-10-01T03:16:14.048424",
+      "hash": "423b7740889ddbb4545176070afbe5842e4b526023c4cd569825a0f43eb5ddb1",
+      "last_updated": "2026-10-06T12:35:58.662221",
       "source": "platform"
     },
     "models__sonnet-5-5__overview.md": {
@@ -5253,7 +5253,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-10-06T04:02:06.286152",
+    "last_fetch_completed": "2026-10-06T12:36:19.499326",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 753,
@@ -5267,7 +5267,7 @@
     "total_files": 750,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-06T04:02:06.286173",
+  "last_updated": "2026-10-06T12:36:19.499348",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

@@ -6,7 +6,7 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等全部�
 
 点击左侧边栏底部的**头像**，弹出用户菜单，点击**设置**打开设置面板。
 
-![用户菜单](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/user-menu.BeSSfC0s.png)
+![用户菜单](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/user-menu.BeSSfC0s.png)
 
 桌面端的设置会以**独立窗口**打开，不再占用主窗口——主窗口可以继续正常使用，设置窗口内也能自由切换各个设置项。再次点击**设置**会聚焦到已经打开的窗口，不会重复打开多个；关闭设置窗口不影响主窗口和正在执行的任务。
 
@@ -26,7 +26,7 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等全部�
 
 设置面板采用**左侧导航 \+ 右侧内容区**结构，左侧为设置项导航，右侧为对应配置内容，**修改即时生效、无需重启**。
 
-![设置面板](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/setting-panel.Cu4oTrre.png)
+![设置面板](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/setting-panel.Cu4oTrre.png)
 
 ### 设置项一览
 
@@ -58,7 +58,7 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等全部�
 
 查看当前版本并检查更新、前往官网，也可以扫码关注公众号、视频号与腾讯频道，获取实用技巧与产品动态。
 
-![关于](https://download.codebuddy.cn/web/docs/0c7c3272facedbcbcfc0375d0a2cf1155b0c9d60/docs/static/setting-about.BqzUZcOa.png)
+![关于](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/setting-about.BqzUZcOa.png)
 
 ## 代码开发的用户级配置兼容
 
