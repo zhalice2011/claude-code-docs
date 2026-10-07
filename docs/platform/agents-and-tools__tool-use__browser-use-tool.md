@@ -17,6 +17,7 @@ featureMetadata:
     - claude-sonnet-5-5
     - claude-sonnet-5
     - claude-opus-4-8
+    - claude-haiku-5-5
   supportedPlatforms:
     Claude API: ga
     Claude Platform on AWS: not available
