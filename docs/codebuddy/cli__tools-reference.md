@@ -12,7 +12,7 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `AskUserQuestion` | 向用户提出多选问题，收集需求或澄清歧义 | 是 |
 | `AskUserForStructuredInput` | 让客户端把一段受限 JSON Schema 渲染成表单，收集结构化答复（多字段、每字段独立控件）。适合"多个 MCP 授权 / 多字段表单"等超出单/多选表达能力的场景。需 env `CODEBUDDY_ENABLE_ASK_USER_FOR_STRUCTURED_INPUT=1` 且客户端声明 `elicitation.form` capability，否则模型看不到该工具 | 是 |
 | `Bash` | 在你的环境中执行 Shell 命令。参见 [Bash 工具行为](#bash-工具行为) | 是 |
-| `CronCreate` | 在当前会话内调度定时或一次性任务（退出后失效）。参见[定时任务](./scheduled-tasks) | 否 |
+| `CronCreate` | 调度定时或一次性任务。默认仅当前会话有效（退出后失效）；传 `durable: true` 会写盘并在专属任务会话中持续执行，此时需要一次授权。参见[定时任务](./scheduled-tasks) | durable 任务需要 |
 | `CronDelete` | 按 ID 取消定时任务 | 否 |
 | `CronList` | 列出当前会话中所有定时任务 | 否 |
 | `DeferExecuteTool` | 执行通过 `ToolSearch` 发现的延迟加载工具 | 否 |
@@ -87,18 +87,7 @@ Bash 工具支持[沙箱隔离](./bash-sandboxing)，可限制文件系统和网
 
 ### 后台执行
 
-通过 `run_in_background` 参数可将命令在后台运行，使用 `TaskOutput` 工具读取输出，并通过 `TaskStop` 终止任务。适用于长时间运行的构建、测试、开发服务器和 watch 任务。
-
-不要用 `nohup`、`setsid` 或命令末尾的 `&` 模拟受管理的后台任务。这类进程不属于 CodeBuddy Code 的任务协议，可能在 shell、沙箱、会话或 CLI 退出时被回收，也不会获得任务 ID、输出采集和完成通知。PTC / Code Mode 中同样应在 REPL 内调用 `Bash({ command: "...", run_in_background: true })`。
-
-如果进程必须独立于 CodeBuddy Code 会话长期存活，Linux systemd user 环境可由系统服务管理器托管：
-
-bash
-```
-systemd-run --user --unit=<name> --collect <command>
-systemctl --user stop <name>
-```
-这种方式不再由 CodeBuddy Code 自动跟踪或清理，请使用唯一单元名并在完成后显式停止。
+通过 `run_in_background` 参数可将命令在后台运行，使用 `TaskOutput` 工具读取输出。适用于长时间运行的构建、测试等场景。
 
 ## PowerShell 工具行为
 

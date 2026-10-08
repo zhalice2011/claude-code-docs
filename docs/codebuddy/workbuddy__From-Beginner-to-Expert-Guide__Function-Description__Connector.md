@@ -23,7 +23,7 @@
 
 1. 在左侧边栏点击**专家·技能·连接器**，选中**连接器**页签，即可进入连接器管理页面。
 
-![连接器管理页面](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/connector-management-page.1yj5GbzF.png)
+![连接器管理页面](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/connector-management-page.1yj5GbzF.png)
 
 2. 找到需要使用的连接器，点击卡片右上方的 **\+** 。
 3. 按页面提示完成登录、授权或其他配置。
@@ -35,11 +35,11 @@
 
 - **方式一：从连接器页面发起对话**：在**连接器管理**页面中，找到已授权使用的连接器，点击卡片右上方的**去对话**，即可直接开始使用。
 
-![点击已授权连接器卡片右上方的去对话](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/connector-go-chat.ChygmyRK.png)
+![点击已授权连接器卡片右上方的去对话](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/connector-go-chat.ChygmyRK.png)
 
 - **方式二：创建任务时启用**：新建任务时，点击输入框左下角的 **\+** \> **连接器**，在弹窗中开启需要使用的连接器。尚未完成授权的连接器，需要先完成授权后才能使用。
 
-![通过输入框左下角 + > 连接器启用连接器](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/connector-plus-enable.aVAh6S_5.png)
+![通过输入框左下角 + > 连接器启用连接器](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/connector-plus-enable.aVAh6S_5.png)
 
 - **方式三：执行任务时按需连接**：任务执行过程中，如果需要使用尚未连接的连接器，输入框上方会自动显示连接引导卡片。点击卡片并按提示完成授权后，WorkBuddy 将自动继续执行当前任务，无需重新发起对话。
 
@@ -53,7 +53,7 @@
 
 1. 在左侧边栏点击**专家·技能·连接器**，选中**连接器**页签，进入连接器管理页面。选中已连接且需要解绑的连接器，在弹窗中点击**解绑**。
 
-![连接器弹窗中的解绑按钮](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/connector-unbind-dialog.SexuuKN0.png)
+![连接器弹窗中的解绑按钮](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/connector-unbind-dialog.SexuuKN0.png)
 
 2. 解绑完成后，系统会提示该连接器已解绑，并恢复为未连接状态。具体提示信息以页面实际显示为准。
 
@@ -67,9 +67,9 @@ QQ 邮箱连接器支持收发、搜索和整理 QQ 邮件，用自然语言读�
 
 1. 点击添加，在连接器管理页面找到**QQ 邮箱**卡片，点击右侧的 **\+** 按钮发起连接。
 
-![点击添加 QQ 邮箱连接器](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/qq-mail-add-button.T1d9y0w3.png)2. 扫码授权，系统会跳转到 QQ 邮箱授权页面，显示二维码。使用 **QQ 邮箱 App**（7\.1\.5 / 鸿蒙 0\.2\.9 及更新版本）扫码进行授权。
+![点击添加 QQ 邮箱连接器](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-mail-add-button.T1d9y0w3.png)2. 扫码授权，系统会跳转到 QQ 邮箱授权页面，显示二维码。使用 **QQ 邮箱 App**（7\.1\.5 / 鸿蒙 0\.2\.9 及更新版本）扫码进行授权。
 
-![QQ 邮箱扫码授权页面](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/qq-mail-qrcode-auth.CpvZGV-q.png)3. 确认权限，在手机端确认 WorkBuddy 申请的访问权限，包括：
+![QQ 邮箱扫码授权页面](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-mail-qrcode-auth.CpvZGV-q.png)3. 确认权限，在手机端确认 WorkBuddy 申请的访问权限，包括：
 - **账号信息**：获取邮箱账号基础信息
 - **读取邮件**：读取收件箱内近一个月的邮件
 - **发送邮件**：代为发送邮件
@@ -77,34 +77,34 @@ QQ 邮箱连接器支持收发、搜索和整理 QQ 邮件，用自然语言读�
 
 确认无误后点击 **同意授权**。
 
-![手机端确认授权权限](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/qq-mail-confirm-permission.DqVZH-62.png)4. 授权成功，手机端显示**授权成功**，可在「设置 \- 账号 \- 安全管理 \- 登录设备和授权码 \- 应用授权」中管理授权应用。
+![手机端确认授权权限](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-mail-confirm-permission.DqVZH-62.png)4. 授权成功，手机端显示**授权成功**，可在「设置 \- 账号 \- 安全管理 \- 登录设备和授权码 \- 应用授权」中管理授权应用。
 
-![手机端授权成功提示](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/qq-mail-auth-success-mobile.BMvQVrZs.png)提示
+![手机端授权成功提示](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-mail-auth-success-mobile.BMvQVrZs.png)提示
 
 授权成功时点击浏览器弹窗中的**打开**完成连接，取消或者直接关闭网页可能会导致操作中断，需要重新配置连接器。
 
 5. 连接完成，回到 WorkBuddy，QQ 邮箱卡片名称旁会出现绿色圆点，并提示**连接器 QQ 邮箱 已连接**，右侧显示去对话按钮。
 
-![QQ 邮箱连接成功状态 - 已连接](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/qq-mail-connected.BaJxHxs7.png)### 连接腾讯乐享
+![QQ 邮箱连接成功状态 - 已连接](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-mail-connected.BaJxHxs7.png)### 连接腾讯乐享
 
 腾讯乐享连接器支持搜索、创建和管理乐享知识库中的文档，支持导入 Markdown、按标签整理内容、追踪团队文档的更新动态。
 
 1. 点击添加，在连接器管理页面找到**腾讯乐享**卡片，点击右侧的 **\+** 按钮发起连接。
 
-![点击添加腾讯乐享连接器](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/tencent-lexiang-add-button.vVxkvA4y.png)2. 确认授权，发起连接后进入授权确认页面，通过乐享知识库 MCP，WorkBuddy 将能够：
+![点击添加腾讯乐享连接器](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/tencent-lexiang-add-button.vVxkvA4y.png)2. 确认授权，发起连接后进入授权确认页面，通过乐享知识库 MCP，WorkBuddy 将能够：
 - 按你拥有的权限访问知识库
 - 搜索、查询知识库中的内容
 - 协助创建与管理知识库中的内容
 
 确认无误后点击**立即前往授权**。
 
-![乐享知识库授权确认页面](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/tencent-lexiang-confirm-auth.DaOIXsj1.png)3. 登录乐享知识库，系统会跳转到腾讯乐享登录页面，支持**微信登录**、**手机号登录**两种方式。
+![乐享知识库授权确认页面](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/tencent-lexiang-confirm-auth.DaOIXsj1.png)3. 登录乐享知识库，系统会跳转到腾讯乐享登录页面，支持**微信登录**、**手机号登录**两种方式。
 
-![乐享知识库登录页面](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/tencent-lexiang-login.YEb9sDqM.png)4. 授权成功，页面显示乐享知识库的账号信息，并且展示 WorkBuddy 将要从乐享知识库获取的权限，确认无误后点击**继续**。
+![乐享知识库登录页面](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/tencent-lexiang-login.YEb9sDqM.png)4. 授权成功，页面显示乐享知识库的账号信息，并且展示 WorkBuddy 将要从乐享知识库获取的权限，确认无误后点击**继续**。
 
-![乐享授权成功提示](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/tencent-lexiang-auth-success.CH3C8Spp.png)5. 连接完成，回到 WorkBuddy，腾讯乐享卡片名称旁会出现绿色圆点，右侧显示去对话按钮，表示连接已就绪。
+![乐享授权成功提示](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/tencent-lexiang-auth-success.CH3C8Spp.png)5. 连接完成，回到 WorkBuddy，腾讯乐享卡片名称旁会出现绿色圆点，右侧显示去对话按钮，表示连接已就绪。
 
-![腾讯乐享连接成功状态](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/tencent-lexiang-connected.BEYAqnnZ.png)## 自定义连接器
+![腾讯乐享连接成功状态](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/tencent-lexiang-connected.BEYAqnnZ.png)## 自定义连接器
 
 如需接入其他外部服务，可点击连接器管理页面右上角的**自定义连接器** 按钮，安装自定义的 MCP 服务。
 

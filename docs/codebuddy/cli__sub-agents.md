@@ -145,9 +145,11 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 | `initialPrompt` | 否 | 该 agent 作为主会话 agent（`--agent` 或 settings `agent`）运行时，自动作为首条用户消息的前缀，仅主会话首轮注入 |
 | `memory` | 否 | 持久记忆作用域：`user`（`~/.codebuddy/agent-memory/<name>/`）、`project`（`<cwd>/.codebuddy/agent-memory/<name>/`）、`local`（不进版本库）。启用后 spawn 时自动注入 MEMORY.md（截断 200 行 / 25KB），显式 `tools` 白名单自动补 Read/Write/Edit |
 
-#### 嵌套深度与会话预算
+#### 并发、嵌套深度与会话预算
 
 - 子代理嵌套深度封顶 **5 层**（主会话为第 0 层，不可配置），超限时 Agent 工具返回错误并提示改用自身工具完成剩余工作。子代理默认不持有 Agent 工具，定义中显式列出 `tools: Agent` 的 agent 才能继续嵌套。
+- 每个根会话树默认最多同时执行 **20** 个子代理，可用 `CODEBUDDY_CODE_MAX_CONCURRENT_SUBAGENTS` 上下调整（正整数，不可关闭）。同步、后台、Team member、Skill 和 Workflow 的 AgentTask 共享该限制；任务进入完成、失败、取消或终止状态后立即释放槽位。
+- 同步前台 Agent 工具调用**默认不限时**（卡住的子 Agent 会一直等）。用正整数毫秒的 `CODEBUDDY_SUBAGENT_TIMEOUT_MS` 才为其启用墙钟超时；不设、留空、非法值或超过 `2147483647`（Node 定时器上限）均不启用。超时会终止子 Agent，并把超时结果交回主 Agent 继续处理。后台、detached 和 Team member 不应用此超时。
 - 每会话 spawn 预算默认 **200** 次，可用 `CODEBUDDY_CODE_MAX_SUBAGENTS_PER_SESSION` 上下调整（正整数，不可关闭）；嵌套 spawn 共享同一份预算，`/clear` 后重置。预算只对 Agent 工具路径的 spawn 计数；workflow / skill 路径直接构造 AgentTask，不过该闸门。
 
 #### 子代理输出扫描

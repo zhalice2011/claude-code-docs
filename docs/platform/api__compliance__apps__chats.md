@@ -155,7 +155,7 @@ no time filter) with the default `order_by`. `user_ids[]` with
 
   - `name: string`
 
-    Chat name/title
+    Chat name. Empty when `deleted_at` is set.
 
   - `organization_uuid: string`
 
@@ -243,6 +243,11 @@ curl https://api.anthropic.com/v1/compliance/apps/chats \
 Permanently deletes a chat and all associated messages and
 files. This is a destructive operation that cannot be undone.
 
+A chat's remote sessions are deleted first. If that deletion cannot be
+confirmed, the request returns a 503 with error code
+`chat_delete_remote_sessions_unconfirmed` and leaves the chat unchanged.
+You can retry the request.
+
 ### Path parameters
 
 - `claude_chat_id: string`
@@ -317,7 +322,7 @@ curl https://api.anthropic.com/v1/compliance/apps/chats/$CLAUDE_CHAT_ID \
 
   - `name: string`
 
-    Chat name/title
+    Chat name. Empty when `deleted_at` is set.
 
   - `organization_uuid: string`
 
@@ -721,7 +726,7 @@ Retrieves message history and file metadata for a specific chat.
 
 - `name: string`
 
-  Chat name
+  Chat name. Empty when `deleted_at` is set.
 
 - `organization_uuid: string`
 

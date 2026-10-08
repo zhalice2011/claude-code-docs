@@ -17,7 +17,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/add-dir` | `<path>` | ✅ 支持 | 添加工作目录。指定要添加的目录路径。 |
 | `/agents` |  | ✅ 支持 | 管理内置和自定义 AI 智能体；查看内置子代理的生效路由值及其来源，并将模型设置保存到 Global 或 Project 范围。具体场景模型可在 `/model` 中查看。 切换当前会话的主 Agent 模式请用 `/agent-mode`。 |
 | `/multitask` |  | ✅ 支持 | 开关 Multitask overlay（少动手、派 worker）。不改当前 Standard / PTC / Create。**极简模式不能开**，输入 `/multitask` 会提示先切到标准、PTC 或创造。再敲一次关掉 overlay。非空白会话可进；worker / 子会话 / `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 拒绝。不写 `lastUsed`。ACP 宿主用 [`session/set_config_option`](./acp#multitask-协调器)（`configId=multitask`），不要给 `codebuddy --acp` 加 `--agent multitask`。 |
-| `/branch` | `[name]` | ✅ 支持 | 在当前对话位置创建一个分支，复制活跃对话历史到新 session 并自动切换。可选指定分支名称。 |
+| `/branch` | `[name]` | ✅ 支持 | 在当前对话位置创建分支，沿用主 Agent 模式、模型、输出风格和附加目录，并自动切换。含子代理历史的对话暂不支持分支；可选指定分支名称。 |
 | `/btw` | `[question]` | ✅ 支持 | 打开独立侧问浮层；每次 `/btw <question>` 都从主会话 fork，侧问记录单独保留并支持连续追问（浮层内按 `i` 进入输入，`Tab` 返回浏览）、最近 5 条浏览、`c` 复制、`x` 清空、`f` 升级为带工具的后台任务，主会话不被写入或打断。 |
 | `/compact` |  | ✅ 支持 | 压缩上下文。 |
 | `/config` | `[list | get | set]` | ✅ 支持 | 查看或修改本地配置。不带参数时打开交互式面板，`list` 列出当前设置，`get <key>` 读取设置，`set <key> <value>` 修改设置。 |
@@ -26,7 +26,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/init` |  | ✅ 支持 | 初始化一个新的 CodeBuddy 存储库。 |
 | `/mcp` |  | ✅ 支持 | 管理 MCP 连接。 |
 | `/memory` |  | ✅ 支持 | 管理长期记忆 |
-| `/model` | `[list | model-name]` | ✅ 支持 | 切换或查看主模型。不带参数时打开交互式界面。`list` 列出可用模型，带模型名称参数时直接切换主模型。 |
+| `/model` | `[list | model-name]` | ✅ 支持 | 切换或查看主模型。不带参数时打开交互式界面。`list` 列出可用模型，带模型名称参数时直接切换主模型；运行中会拒绝切换。上下文超过目标模型窗口时会先执行标准 `/compact`，压缩后仍无法适配时才拒绝切换。 |
 | `/model:lite` | `[list | model-id]` | ✅ 支持 | 切换或查看 `lite` 场景变体（Explore 等轻量子任务使用）的生效模型、来源。不带参数时打开交互式选择界面（含 Global / Project 设置），`list` 列出可用模型，带模型 ID 参数时直接切换。 |
 | `/model:reasoning` | `[list | model-id]` | ✅ 支持 | 切换或查看 `reasoning` 场景变体（复杂分析任务使用）的生效模型、来源。不带参数时打开交互式选择界面（含 Global / Project 设置），`list` 列出可用模型，带模型 ID 参数时直接切换。 |
 | `/agent-mode` | `[list | cli | ptc | minimal | create]` | ✅ 支持 | 仅空白会话可切换主 Agent 模式（标准 / PTC / 极简 / 创造，或带 `mainAgent: true` 的自定义智能体）。无参数打开选择面板，`list` 列出选项，带模式名直接切换。选择写入 `lastUsed`，下次启动沿用。对话一旦开始即锁定：再执行 `/agent-mode` 只说明无法切换，需 `/clear` 新开会话。WorkBuddy 不受影响。 |
@@ -42,9 +42,9 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/statusline` |  | ✅ 支持 | 配置终端状态行显示，可以显示会话信息、模型状态等。 |
 | `/security-review` |  | ✅ 支持 | 执行当前分支的代码安全审查，由高级安全工程师进行焦点式的安全审查以识别高置信度的安全漏洞。 |
 | `/theme` |  | ✅ 支持 | 打开主题选择面板，可选择和预览不同的终端主题(dark、light、colorblind\-friendly、ANSI 等）。 |
-| `/export` |  | ✅ 支持 | 导出当前对话到文件或剪贴板。 |
+| `/export` |  | ✅ 支持 | 终端中导出当前对话到文件或剪贴板；Web UI 中下载当前会话的对话记录与可用调试日志 ZIP。归档可能包含敏感信息，分享前请检查。 |
 | `/feedback` |  | ✅ 支持 | 打开反馈页面，提交 Bug 报告或功能建议。 |
-| `/fork` | `[name]` | ✅ 支持 | 在当前对话位置创建一个分支（`/branch` 的别名）。复制活跃对话历史到新 session 并自动切换，可通过 `/resume` 返回原对话。 |
+| `/fork` | `[name]` | ✅ 支持 | `/branch` 的别名；复制活跃对话历史并沿用会话设置，自动切换到新分支。含子代理历史的对话会提示暂不支持；可通过 `/resume` 返回原对话。 |
 | `/resume` | `[list | session-id]` | ✅ 支持 | 恢复之前的会话。不带参数时打开交互式面板，`list` 列出所有会话，带 session\-id 时直接切换到指定会话。 |
 | `/rewind` |  | ✅ 支持 | 回退对话到之前的某个消息点，可选择仅回退对话、仅回退代码或同时回退两者。详见 [检查点](./checkpointing)。 |
 | `/sandbox` |  | ✅ 支持 | 管理 Bash 命令沙箱模式，控制命令执行的安全策略。详见 [沙箱文档](./bash-sandboxing)。 |

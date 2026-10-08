@@ -70,6 +70,7 @@ json
 | `maxInputTokens` | number | \- | 最大输入 token 数 |
 | `maxOutputTokens` | number | \- | 最大输出 token 数 |
 | `url` | string | \- | API 端点 URL，支持环境变量引用 (必须是接口完整路径,一般以 `/chat/completions` 结尾） |
+| `api` | string | \- | 请求协议，取值同 pi 的 `api`。设为 `openai-responses` 时改走 OpenAI Responses API，`url` 填 base URL，见 [OpenAI Responses API 配置示例](#openai-responses-api-配置示例) |
 | `temperature` | number | \- | 采样温度，范围 0\-2，值越高输出越随机，值越低输出越确定 |
 | `supportsToolCall` | boolean | \- | 是否支持工具调用 |
 | `supportsImages` | boolean | \- | 是否支持图片输入 |
@@ -336,6 +337,42 @@ codebuddy --model deepseek-v4-pro
 ```
 
 > **提示**：如果不希望维护 `models.json`，也可以完全通过环境变量对接 DeepSeek，见 [env\-vars.md 对接 DeepSeek 示例](./env-vars#对接-deepseek-示例)。
+
+### OpenAI Responses API 配置示例
+
+`api` 设为 `openai-responses` 后，该模型改用 OpenAI Responses API：请求发往 `{url}/responses`，多轮对话会原样回放上一轮返回的加密推理（`encrypted_content`）。以 aihub 上的 `gpt-6-sol` 为例：
+
+json
+```
+{
+  "models": [
+    {
+      "id": "gpt-6-sol",
+      "name": "GPT-6 Sol",
+      "api": "openai-responses",
+      "url": "http://api.aihub.woa.com/openai/v1",
+      "apiKey": "${AIHUB_KEY}?provider=azure&cache_task_id=${CODEBUDDY_SESSION_ID}&timeout=3600",
+      "supportsReasoning": true,
+      "supportsToolCall": true,
+      "maxOutputTokens": 128000,
+      "reasoning": { "defaultEffort": "max", "supportedEfforts": ["low", "medium", "high", "xhigh", "max"] }
+    }
+  ]
+}
+```
+- `url` 填 base URL，末尾带不带 `/responses` 都可以。
+- 只有模型配置里显式写的 `api` 会切换协议；模型目录里标注为 `openai-responses` 的内置模型仍走原有链路。
+- apiKey 里的 `${CODEBUDDY_SESSION_ID}`（或 `${CLAUDE_SESSION_ID}`）在每次请求时替换为主会话 id。subagent、标题和 WebFetch 摘要等一次性辅助调用、`/btw`，以及 fork 出的会话（`/fork`、`--fork-session`、ACP fork）都沿用来源会话的值，这样回放的加密推理始终落在能解密它的上游账号上；会话 JSONL 里每条 Responses 条目的 `providerData.upstream.rootSessionId` 记录了这个值，fork 和 `--resume` 据此沿用。加载期的 `${ENV}` 展开会跳过这两个名字，即使进程环境里有同名变量（例如从另一个会话的 shell 启动 CLI）也不会被提前写死。aihub 用它作 `cache_task_id`，把同一任务的所有请求固定在同一个上游账号；需要固定会话 id 时配合 `--session-id` 使用。
+- aihub 限流时返回 HTTP 200，在流里下发 `error` / `response.failed`。CLI 把输出开始前的流内错误还原成 OpenAI 普通接口返回的 HTTP 状态，重试与模型切换和 chat completions 一致：限流按 429 退避重试；额度耗尽（`insufficient_quota`）同为 429，但不重试，直接交给备用模型；上下文超长、请求内容或图片无效按 400，不重试（上下文超长会触发自动压缩）；`server_error` 按 500，不重试。其他流内错误仍按原有的流式错误处理。无人值守跑批建议设 `CODEBUDDY_RETRY_WATCHDOG=1`（或调大 `CODEBUDDY_MAX_RETRIES`）。
+- 与 pi 一致，只有声明了 `supportsReasoning: true` 的模型、且这次请求带推理参数（开启了思考）时，才携带 `include: ["reasoning.encrypted_content"]`，与 `store` 无关。
+- 工具结果与用户消息里的图片（含会话恢复后的 blob 引用）会还原为 `input_image`，`detail` 默认 `auto`；工具结果的形状与 pi 一致：文本合并成一段放在前面，图片随后，没有图片时仍是字符串。`supportsImages: false` 时替换为省略提示。
+- 回放历史时，其他模型产生的条目、以及推理条目无法回放的那次调用，都不带上游 `fc_` / `msg_` id，避免 API 的 reasoning 配对校验报错；call id 规范为 `[A-Za-z0-9_-]`、最长 64 字符，空工具输出发送 `(no tool output)`。
+- 执行中途插入的消息（`steer` 控制请求、后台任务通知等排队消息）在 Responses 下同样生效。stream\-json 输入的普通 user 消息按独立一轮排队，不做中途插入。
+- `max` / `xhigh` 档位要在 `reasoning.supportedEfforts` 里声明，否则会降级为 `high`。
+- 请求总是显式携带 `store`：默认 `false`，产品特性 `ResponsesStore` 开启时为 `true`。wb 用 `--features '{"rollout":true}'` 打开；直接运行 CLI 时设 `CODEBUDDY_RESPONSES_STORE_ENABLED=1`。
+- 推理耗时较长时调大 `CODEBUDDY_FIRST_TOKEN_TIMEOUT_MS` 和 `CODEBUDDY_STREAM_TIMEOUT_MS`（单位毫秒）。
+- 会话 JSONL 中 reasoning 条目的 `providerData.encrypted_content` 是原样保存的密文，`providerData.upstream` 记录 `model`、`region`（`x-ms-region`）、`accountId`（`x-account-id`）和 `rootSessionId`（这次调用的 `cache_task_id`）。
+- 需要每次调用实际发出的完整请求（`instructions`、`tools`、`input`）时，设 `OTEL_LOG_RAW_API_BODIES=file:<dir>`，见 [Monitoring](./monitoring)。
 
 ### 配置关联模型
 

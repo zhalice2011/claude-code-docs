@@ -13,7 +13,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_API_KEY` | API 密钥。设置此密钥用于模型接口调用。在非交互模式 (`-p`) 下始终使用此密钥 |
 | `CODEBUDDY_AUTH_TOKEN` | CodeBuddy 平台认证令牌，用于所有平台接口调用 |
 | `CODEBUDDY_CUSTOM_HEADERS` | 自定义 HTTP 请求头。格式：`Name: Value`，多个请求头用换行符或 `\n` 分隔 |
-| `CODEBUDDY_PASSTHROUGH_HEADER_PREFIXES` | 允许调用方（stream\-json / print 链路，经 `_meta['codebuddy.ai'].customPassthroughHeaders`）逐轮透传到官方 model gateway 的自定义 header 前缀白名单。逗号分隔、大小写不敏感（如 `x-wb-,x-mobile-`）。**默认空 \= 功能关闭**（安全 kill\-switch）；即安全边界，须选与内部 `X-*` header 命名空间不相交的前缀。仅对官方模型生效，第三方/自定义模型不下发 |
+| `CODEBUDDY_PASSTHROUGH_HEADER_PREFIXES` | 允许调用方（stream\-json / print 链路，及 ACP 链路——workbuddy 端侧 spawn cbc 子进程后经 ACP `session/prompt` 驱动，均经 `_meta['codebuddy.ai'].customPassthroughHeaders`）逐轮透传到官方 model gateway 的自定义 header 前缀白名单。逗号分隔、大小写不敏感（如 `x-wb-,x-mobile-`）。**默认空 \= 功能关闭**（安全 kill\-switch）；即安全边界，须选与内部 `X-*` header 命名空间不相交的前缀。仅对官方模型生效，第三方/自定义模型不下发 |
 
 ## API 端点和代理
 
@@ -75,6 +75,8 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_MARKETPLACE_AUTO_UPDATE_INTERVAL_MS` | 覆盖插件市场自动更新的刷新窗口（毫秒），默认 `86400000`（24 小时）。设为更小的值（如 `3600000` 即 1 小时）可缩短自动更新检测间隔，便于测试/调试；非法值（非数字或 ≤0）回退默认值 |
 | `CODEBUDDY_PLUGIN_DIRS` | 冒号分隔的本地插件目录路径列表（等同于 `--plugin-dir`），插件的 `bin/` 目录会自动注入到 `PATH` |
 | `CODEBUDDY_DISABLE_EXTENDED_PLUGIN_HOOKS` | 设置为 `1` 或 `true` 时，插件 Hook 配置仅接受 `command` 类型；包含 `prompt`、`agent` 或 `http` 类型的配置会按不兼容处理。用于宿主临时回退插件 Hook 契约；默认不设置 |
+| `CODEBUDDY_PLUGIN_STATUS_REPORT_ENABLED` | 设置为 `true` 或 `1` 开启 `plugin_status` 状态上报。默认关闭，仅 CLI UI 版本在未显式配置时默认开启；开启时同一账号在同一台机器上每个自然日最多成功上报一次 |
+| `CODEBUDDY_SHOW_CONTEXT_USAGE` | 设置为 `1`、`true`、`yes` 或 `on`，常驻显示当前会话上下文窗口使用率（覆盖默认的阈值显示行为） |
 | `CODEBUDDY_IMAGE_GEN_ENABLED` | 设置为 `false` 或 `0` 禁用图片生成功能 |
 | `CODEBUDDY_BRIEF` | 设置为 `1` / `true` / `yes` 启用 `SendUserMessage` 工具（等同 `--brief`），让 Agent 通过该工具向用户发送消息；未设置时该工具不可见 |
 | `CODEBUDDY_IS_SANDBOX` | **仅进程环境变量**。设为 `1` / `true` / `yes` / `on` 时，配合 `-y` 跳过 HIGH/CRITICAL 审批。单独设置不会改默认模式。详见[沙箱 full pass（高危）](#沙箱-full-pass-高危)。默认未设置 |
@@ -89,6 +91,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_DEFER_TOOL_LOADING` | 设置为 `false` 或 `0` 禁用 MCP 工具延迟加载 |
 | `CODEBUDDY_SHOW_ALL_DEFERRED_TOOLS` | 设置为 `true` 或 `1` 显示所有延迟工具的完整描述 |
 | `CODEBUDDY_DISABLE_CRON` | 设置为 `1` 禁用计划任务 |
+| `CODEBUDDY_DISABLE_TASK_REMINDERS` | 设置为 `1` 关闭长任务运行中的任务列表提醒（包括恢复会话中已保存的提醒）；默认开启。标准模式直连任务工具、PTC 模式 REPL 沙箱内的 `TaskCreate` / `TaskUpdate`（或旧版 `TodoWrite`）长期未更新时会收到隐藏提醒，不改变任务状态或强制执行顺序。Minimal 和沙箱未开放任务工具的模式不触发。用于对照实验与临时回滚 |
 | `CODEBUDDY_MAIN_AGENT_ENABLED` | 主 Agent 四种模式总闸。`0`/`false` 关闭（Web chip / TUI `/agent-mode` 无 picker，run 链不读 standing 主 agent）。未设置时看 `settings.json` 的 `codebuddy.mainAgent.enabled`，再缺省为开。覆盖 settings |
 | `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` | 允许未声明 `mainAgentSupport` 的 ACP 宿主（WorkBuddy Desktop / sidecar）也走模式解析。默认关：这些宿主始终原生 `cli`。`1`/`true` 打开（仍要求总闸开）。覆盖 `codebuddy.mainAgent.allowUnopted` |
 | `CODEBUDDY_REPL_ENABLED` | REPL 总闸。`1`/`true` 强开，`0`/`false` 强关，优先级最高。未设置时：`ptc` / `minimal` 默认开（REPL 是唯一直连工具，关掉等于工具面为空）；**标准 / 创造 / WorkBuddy 原生 `cli` 默认关**。WorkBuddy 将来要开：在 sidecar `managedEnv` 写死 `CODEBUDDY_REPL_ENABLED=1`（工具已在 overlay 的 `cli.tools` 里，只差这道闸）。不要翻 `codebuddy.mainAgent.allowUnopted`——那是让 WorkBuddy 走 PTC 模式解析，不是单独开 REPL |
@@ -97,6 +100,8 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_DISABLE_FORK_SUBAGENT` | 设置为 `1` 禁用 Agent 工具的 Fork 子代理模式（`subagent_type="fork"`）。启用后 Agent 工具描述会自动隐藏 fork\-mode 段落，模型不会看到该功能；若模型仍然传 `subagent_type="fork"`，运行时会回落到名为 `fork` 的自定义代理（如用户在 `.codebuddy/agents/fork.md` 定义），否则改写为 `general-purpose` 普通子代理。适用于需要避免 fork 递归派生导致请求量放大的宿主场景 |
 | `CODEBUDDY_DISABLE_BUILTIN_SUBAGENTS` | 设置为 `1` 仅屏蔽内置子代理（`general-purpose`/`fork`/`Explore`/`Plan`/`statusline-setup`），不影响自定义代理、插件代理、Teams 或其他工具（包括出站 A2A 工具，见 `ProductFeature.A2AOutbound`，两者完全独立生效）。启用后 Agent 工具描述会自动隐藏这些内置子代理段落；若模型仍传对应 `subagent_type` 且宿主/项目未定义同名自定义或插件代理覆盖它，运行时会拒绝执行并提示改用自身工具直接完成任务。默认未设置（内置子代理保持可用） |
 | `CODEBUDDY_A2A_OUTBOUND_ENABLED` | 设置为 `1`/`true`/`yes`/`on` 强制启用出站 A2A（`A2AGetAgentCard`/`A2ASendMessage`/`A2AGetTask`/`A2ACancelTask` 四个工具），无需等待云端 `ProductFeature.A2AOutbound` 配置下发即可在本地开发/手工验证时直接打开。仅"启用"单向生效：显式设为 `0`/`false` 等价于未设置，**不会**强制关闭——kill\-switch 权威仍归云端配置（运营方仍可远程下发 `false` 关停，即使某些宿主进程环境里残留了本变量）。判定顺序：本变量优先，命中则直接启用且不再发起 `AbTestService` 查询；未命中（含空值）时回落到 `ProductFeature.A2AOutbound`（默认关闭） |
+| `CODEBUDDY_RESPONSES_STORE_ENABLED` | 设置为 `1`/`true`/`yes`/`on` 强制开启产品特性 `ResponsesStore`：`api: "openai-responses"` 的模型请求由默认的 `store: false` 改为 `store: true`。wb 的 `--features '{"rollout":true}'` 即通过它传给 agent |
+| `CODEBUDDY_DISABLE_SENSITIVE_PROTECTION` | 设置为 `1`/`true`/`yes`/`on` 关闭本进程的敏感数据防护，效果同 `settings.json` 的 `sensitiveProtection.enabled: false`，但不改共享的设置文件；企业托管策略下发的值仍然优先。wb 的 `--features '{"rollout":true}'` 即通过它传给 agent |
 | `CODEBUDDY_A2A_DISCOVERY_PREWAIT_MS` | 出站 A2A 首轮发现"限界预等待"预算（毫秒，默认 `2000`）。启用出站 A2A 时，`A2AGetAgentCard` 工具描述里的 `<available_A2A_agents>` 列表由发现结果（`CODEBUDDY_REMOTE_AGENTS_URL`）动态渲染；为让首条消息也能看到该列表，首个模型请求前会**至多**等待本预算让发现落地（本机 localhost 发现通常远快于此）。超时/被取消即放弃等待并继续，随后发现真正落地时由响应式刷新补上——因此本变量只影响"首轮是否等得到"，不影响正确性。设为 `0` 关闭该等待（发现仍在后台进行，只是首轮可能先渲染空列表）。发现的 fetch 单飞复用，绝不会因预等待而多发一次网络请求 |
 | `CODEBUDDY_A2A_WAIT_IDLE_TIMEOUT_MS` | 入站 A2A `SendMessage` 等待会话空闲的超时（毫秒，默认 `600000`，即 10 分钟）。A2A 请求在提交执行前会先等当前会话没有在途的 run——混合模式（`--a2a --input-format stream-json`）下这个"在途 run"通常就是人类正在进行的一轮对话，所以默认值给得比较宽松。超时是异常兜底而非常规路径：stdio 传输上调用方没有 HTTP 超时可依赖，若不设上限，一个卡死的会话会让 A2A 调用方永久挂起。超时后该 `SendMessage` 返回失败态 Task。仅接受正数，非法值回落默认 |
 | `CODEBUDDY_A2A_CONTEXT_TTL_MS` | 出站 A2A 会话连续性的有效期（毫秒，默认 `86400000`，即 24 小时）。`A2ASendMessage` 会按「发现源 \+ 远端 Agent」记住上一次拿到的 `contextId`，并在同一会话后续调用中自动带上，使多轮对话在远端属于同一个上下文；该记录随会话持久化，`--resume` 续聊时仍然有效。远端有权回收过期上下文，且按 A2A 规范必须**拒绝**它不认识的 `contextId`（而非静默新建），因此本地超过本时长即主动弃用并开启新上下文，避免用一个已失效的 id 把后续每次调用都打成硬失败。计时基准是"最后一次使用"而非"创建"，持续活跃的对话不会中途过期。取值非正整数或无法解析时回落到默认值（失败即放行，坏的环境变量不应静默关闭连续性） |
@@ -105,10 +110,13 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_A2A_INPUT_REQUIRED_TIMEOUT_MS` | 入站 A2A Task 进入 `input-required` 后等待调用方回答的超时（毫秒，默认 `600000`，即 10 分钟）。到期后终止原执行并把 Task 标记为失败，释放会话预约和事件总线，避免断连调用方永久占住 standalone 或 mixed 会话。仅接受正数，非法值回落默认 |
 | `CODEBUDDY_A2A_SEND_MAX_RETRIES` | 出站 A2A `A2ASendMessage` 在**瞬时网络失败**时的自动重试次数（默认 `2`，即最多 1\+2\=3 次尝试）。重试全部发生在同一次工具调用内，且每次都**复发同一条消息与同一个 `messageId`**——这样即使因连接问题失败，远端 Agent 看到的仍是同一个请求（对按 `messageId` 去重的远端具备幂等性），而不是模型重新发起、`messageId` 每次都变的重复请求。采用指数退避（500ms、1000ms…，带抖动）。**仅重试几乎可以确定"请求从未落地"的失败**：连接层错误（ECONNREFUSED/DNS/连接重置/socket 中断等）与网关/限流状态码 429/502/503/504；4xx、500 及其他 5xx、用户取消、整体超时预算耗尽都**不**重试。设为 `0` 关闭重试（单次尝试）；上限钳制到 `10`；空值、负数、非整数回落到默认 `2` |
 | `CODEBUDDY_REHYDRATE_IMAGE_BLOB_REFS` | 设置为 `true` 在 `-p` 模式流式输出中将图片 blob 引用还原为完整 base64 数据。适用于需要直接获取图片数据的下游集成场景 |
+| `CODEBUDDY_SKIP_READ_TOOL_IMAGE_REHYDRATION_IN_HISTORY` | 设置为 `true` 时，即使开启通用图片 blob 复水，`-p` 历史回放中的 `Read` 工具图片仍保留 blob 引用，不内联 base64。实时 `Read` 输出和模型上下文不受影响 |
 | `CODEBUDDY_REPL_ENABLED` | **实验功能**：REPL code mode 总闸。设置为 `1` 或 `true` 开启代码执行模式——模型可在隔离的 vm sandbox 中编写 JS 编排工具调用（内置工具直接 `Bash({...})`，MCP 工具统一挂 `mcp_<server>` 前缀全局），减少多工具任务的 LLM 往返次数。默认关闭 |
 | `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | REPL 工具目录注入细闸。默认开启，只有显式设置为 `0` 或 `false` 才关闭（工具仍预加载，只是模型不提前知情，退化为纯渐进披露） |
 | `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | REPL 内置工具注入开关。默认开启，`0` 或 `false` 关闭后内置工具不进 REPL 骨架目录与 sandbox 注入（仅保留 MCP 工具） |
 | `CODEBUDDY_SKILL_DESC_MAX_OVERRIDES` | 按 skill 名逐个覆盖 Skill 工具描述的单条字符上限（默认 `150`）。格式为 JSON 对象（skill 名 → 字符上限），例如 `{"workbuddy-office-routing":300,"tencent-pptx":300}`；覆盖值完全替换该 skill 的默认上限（既可放宽也可收紧），并且不再参与 Skill 总字符预算的二次均分截断；因此内置 skill 经市场更新从 `bundled` 变为 `plugin` 来源后，显式覆盖仍保持生效。该配置对所有来源（含内置）一视同仁。skill 名作为 JSON key，天然支持含冒号的插件 skill（形如 `plugin:skill`）。值必须是正整数（非正整数 / 小数 / 字符串数字均被跳过），并忽略 `__proto__`/`constructor`/`prototype` 等危险 key；JSON 非法或顶层非对象时整体忽略并打一条 warn。未设置时所有 skill 使用默认上限，行为不变 |
+| `CODEBUDDY_TOOL_SEARCH_MIN_SCORE_RATIO` | ToolSearch 检索的相关性下限：相对最高分的比例（0–1），得分低于 `最高分 × 该比例` 的结果被视为低相关噪音丢弃，减少返回的无关工具；默认 `0.3`，设为 `0` 关闭该过滤 |
+| `CODEBUDDY_TOOL_SEARCH_CAMEL_SPLIT` | ToolSearch 对工具名的 camelCase 拆词索引开关（如 `getWorkspaceConfig` 额外索引为 `get`/`Workspace`/`Config`），提升按单词检索的召回；默认开启，设为 `0`/`false`/`off`/`no` 关闭后回落默认分词。临时回滚开关，稳定后计划下线 |
 
 ## 沙箱 full pass（高危）
 
@@ -165,8 +173,13 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | `CODEBUDDY_CODE_FILE_READ_MAX_OUTPUT_TOKENS` | 覆盖文件读取的默认 token 限制（默认：20000） |
 | `CODEBUDDY_STREAM_TIMEOUT_MS` | 流式响应中两个数据块之间允许的最大静默时间（毫秒）（默认：1200000，即 20 分钟）。与首 token 超时结构解耦、可各自独立配置；如需为易半开的网关/代理链路更早识别僵死连接，可下调此值，首 token 超时不受影响 |
 | `CODEBUDDY_FIRST_TOKEN_TIMEOUT_MS` | 等待第一个模型输出的最大时间（毫秒）（默认：1200000，即 20 分钟）。长上下文 prefill 慢吐首 token 属合法情况 |
-| `CODEBUDDY_MAX_RETRIES` | 模型请求"生成开始前"失败（429 / 5xx / 请求超时 / 锁超时）的最大退避重试次数（默认：8，上限：15，超限自动收敛）。重试采用指数退避 \+ 抖动并尊重服务器 `retry-after`，严格发生在流式内容产出之前，不会重发已产出内容。额度耗尽类错误不重试（转由模型 fallback 处理） |
-| `CODEBUDDY_RETRY_WATCHDOG` | 置为 `1` / `true` / `yes` 开启无人值守 / CI 场景的无限重试模式，仅对上述"生成开始前"失败生效，单次退避封顶 5 分钟。默认关闭 |
+| `CODEBUDDY_RECOVERY_FIRST_TOKEN_TIMEOUT_MS` | 自动恢复轮（网络错误 / 流超时 / 首 token 超时 / 模型 `finish_reason=error` 之后的续跑）首个请求等待首个模型输出的最大时间（毫秒）（默认：300000，即 5 分钟），同时覆盖等待响应头的阶段；永远不超过 `CODEBUDDY_FIRST_TOKEN_TIMEOUT_MS` |
+| `CODEBUDDY_EMPTY_STREAM_RETRY_MAX_ELAPSED_MS` | 空流（上游 `finish_reason=error` 且零模型输出）还允许会话层自动重试的最长已耗时（毫秒）（默认：300000，即 5 分钟）；传 `0` 关闭该闸门、回到只按重试预算判定。流已经跑了超过这个时长才收到 error，说明撞的是上游自身的硬时限而非瞬时抖动，重跑同一段 prompt 必然再次跑满，只会把静默时长成倍放大，故不再自动重试、直接把终态交给调用方 |
+| `CODEBUDDY_REASONING_KEEPALIVE_INTERVAL_MS` | 「长推理不收口」保活信号的推送间隔（毫秒）。**默认未设置\=完全关闭，行为零变化**；设为正数才启用。仅在「模型持续吐 reasoning、但迟迟不产出实质内容（text/tool\_call/refusal）、且上游仍在持续发包」这一特定场景下，按此间隔向调用方推送一个**不含推理正文**的存活/进度通知（stream\-json 复用 `keepalive` 帧并带 `reason=reasoning_in_progress`），使调用方把「长推理」与「真卡死」区分开、并喂活 sandbox\-proxy 存活水位。只观察不中断，与首 token / 流间空闲超时解耦 |
+| `CODEBUDDY_MAX_RETRIES` | 模型请求"生成开始前"失败（429 / 502 / 503 / 529 / 请求超时 / 锁超时）的最大退避重试次数（默认：1，上限：15，超限自动收敛）。重试采用 500ms 起步的指数退避 \+ 抖动并尊重服务器 `retry-after`，严格发生在流式内容产出之前，不会重发已产出内容。额度耗尽类错误不重试（转由模型 fallback 处理）。连接级传输失败（响应头之前、非 DNS）另有独立的 3 次重试，不受此变量控制。错误体带模型网关 `retry_policy` 时以网关为准：`retry` 为 `false` 不重试；否则在上述状态范围内固定重试 3 次、1s 起步，覆盖本变量 |
+| `CODEBUDDY_RETRY_WATCHDOG` | 置为 `1` / `true` / `yes` 开启无人值守 / CI 场景的无限重试模式，仅对上述"生成开始前"失败生效，单次退避封顶 5 分钟。错误体带网关 `retry_policy` 时不生效（按网关策略处理）。默认关闭 |
+| `CODEBUDDY_MODEL_401_MAX_RETRIES` | 模型请求返回 HTTP 401 时的无脑重试次数（**默认 0 即关闭**，上限 15，超限自动收敛）。仅用于「CLI 前面挂了替它注入 `Authorization: Bearer` 的鉴权代理」的部署：这类链路里 token 由代理持有并续期，CLI 本地凭据只是占位，代理换 token 期间的 401 是可恢复抖动，不代表需要重新登录。开启后 401 会按固定间隔原样重发（重试严格发生在流式内容产出之前，不会重发已产出内容）。仅对内置/官方模型生效；自定义第三方模型的 401 说明用户自管的 API Key 失效，一律不重试。网关 `retry_policy` 的 `retry: false` 与请求取消的优先级高于本变量 |
+| `CODEBUDDY_MODEL_401_RETRY_DELAY_MS` | 上述 401 重试的固定间隔（毫秒）（默认：2000，上限：32000）。刻意是固定间隔而非指数退避——401 无 `retry-after` 语义，代理换 token 是个近似常量的窗口。仅在 `CODEBUDDY_MODEL_401_MAX_RETRIES` 大于 0 时有意义 |
 | `CODEBUDDY_SESSION_MAX_ITEMS` | `session/load` 回放时历史消息的最大条数（默认：1000）。达到阈值且遇到 user message 时停止逆序读取 JSONL。需要支持超长会话（如沙箱场景）时可调大（例如 2000 或更多）；零/负数/非数字会回退到默认值 |
 
 ## 文件系统和配置
@@ -199,7 +212,6 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | 环境变量 | 说明 |
 | --- | --- |
 | `CODEBUDDY_CODE_DISABLE_TERMINAL_TITLE` | 设置为 `1` 禁用自动终端标题更新 |
-| `CODEBUDDY_SHOW_CONTEXT_USAGE` | 设置为 `1`、`true`、`yes` 或 `on`，常驻显示 TUI 输入区中的当前上下文窗口使用率（覆盖默认的阈值显示行为） |
 | `CODEBUDDY_INCLUDE_PROMPT_SUGGESTION` | 显式启用提示建议，覆盖 headless 默认关闭和 `promptSuggestionEnabled=false` 配置 |
 | `CODEBUDDY_PROMPT_SUGGESTION_DISABLED` | 设置为 `1` / `true` 禁用提示建议，优先级高于 `CODEBUDDY_INCLUDE_PROMPT_SUGGESTION` |
 | `CODEBUDDY_ENABLE_ASK_USER_FOR_STRUCTURED_INPUT` | 设置为 `1` / `true` 启用 `AskUserForStructuredInput` 工具（默认关闭）；仅当运行在 ACP 或 stream\-json 模式且客户端声明 `elicitation.form` capability 时才实际生效 |
@@ -237,6 +249,7 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `OTEL_EXPORTER_OTLP_PROTOCOL` | 仅支持 `http/protobuf`（默认）；其他值（如 `grpc`、`http/json`）会回退并打告警 |
 | `OTEL_SERVICE_NAME` | 覆盖默认 `service.name` |
 | `OTEL_RESOURCE_ATTRIBUTES` | 资源属性，格式 `k1=v1,k2=v2`，会合并进 trace resource |
+| `OTEL_LOG_RAW_API_BODIES` | 记录完整模型 API 请求/响应体（同 Claude Code）：`file:<dir>` 写入本地目录（`*.request.json` / `*.response.json` \+ `index.jsonl`），其他真值记为 span events（60KB 截断）。详见 [Monitoring](./monitoring) |
 
 > 当 `DISABLE_TELEMETRY=1` 时，无论上述变量如何设置，OTel 上报均关闭。
 
@@ -252,7 +265,15 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | --- | --- |
 | `CODEBUDDY_DAEMON_ALLOW_SLEEP` | 设置为 `1` 或 `true` 禁用 daemon 的防休眠功能（允许系统正常进入 idle sleep）。唤醒后的自动重连不受影响 |
 | `CODEBUDDY_DAEMON_AUTO_CONNECT_CHANNELS` | 设置为 `0` 或 `false` 禁用 daemon 启动时自动连接微信/企微 channel。也可通过 `settings.json` 的 `daemonAutoConnectChannels: false` 配置。单个实例可在 `instances.json` 中设置 `autoConnect: false` |
+| `CODEBUDDY_DAEMON_AUTO_RESTART_DISABLED` | 设置为 `1` 或 `true` 时，允许 daemon 继续检查并安装更新，但不在安装后自行重启；适合由 systemd timer 或外部值守统一安排切换 |
+| `CODEBUDDY_DAEMON_SERVICE_MANAGER` | 系统服务安装器自动写入 `systemd`。自重启时 daemon 不在旧 cgroup 内 fork，而以专用失败码退出并交由 `Restart=on-failure` 串行拉起；用户通常无需手动设置 |
 | `CODEBUDDY_DAEMON_RESTORE_CHANNELS` | daemon 自动重启时由系统设置，包含需要恢复的 channel 列表（逗号分隔，如 `wechat:abc,wecom:default`）。用户通常无需手动设置 |
+
+## Agent Home
+
+| 环境变量 | 说明 |
+| --- | --- |
+| `CODEBUDDY_AGENT_HOME_TASK_RECEIPTS` | 自动任务回执：`all`（每项及整批，默认）、`batch`（仅整批）、`off`（关闭自动主 Agent 邮件，频道任务事件与 lead 收口仍保留）。也可配置 `codebuddy.agentHome.taskReceipts` |
 
 ## Agent 执行控制
 
@@ -260,6 +281,8 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | --- | --- |
 | `CODEBUDDY_CODE_MAX_TURNS` | 主 Agent 的最大执行轮次。优先级：CLI `--max-turns` \> 此环境变量 \> 默认值 (500\) |
 | `CODEBUDDY_CODE_SUBAGENT_MAX_TURNS` | 子 Agent 的最大执行轮次。优先级：CLI `--max-turns` \> 此环境变量 \> 模型动态传入的 `max_turns` \> 默认值 (500\) |
+| `CODEBUDDY_SUBAGENT_TIMEOUT_MS` | 同步前台 Agent 工具调用的墙钟超时（正整数毫秒，上限 `2147483647`）。**不设 / 留空 / 非法值 / 超过上限 \= 不启用**（无限等待），与 `CODEBUDDY_CODE_SUBAGENT_MAX_TURNS` 同类的算子护栏；上限取 Node `setTimeout` 的 32 位上限，超过会被钳成 1ms 反而立即超时。超时后终止子 Agent 并把结果交回主 Agent；后台、detached 和 Team member 不受此项影响 |
+| `CODEBUDDY_CODE_MAX_CONCURRENT_SUBAGENTS` | 每个根会话树同时执行的子 Agent 上限（正整数，默认 20，可上下调整，不可关闭）。同步、后台、Team member、Skill 和 Workflow 的 AgentTask 共享同一限制；任务完成、失败、取消或终止后释放槽位 |
 | `CODEBUDDY_CODE_MAX_SUBAGENTS_PER_SESSION` | 每会话子代理 spawn 预算上限（正整数，默认 200，可上下调整，不可关闭）。嵌套 spawn 共享同一份预算；超限时 Agent 工具返回错误并提示改用自身工具完成剩余工作；`/clear` 新建会话后重置 |
 | `CODEBUDDY_CODE_DISABLE_AUTO_MEMORY` | 设为 truthy 关闭 agent 级持久记忆（frontmatter `memory` 字段不再注入记忆段落）。默认未设置（启用） |
 | `CODEBUDDY_SUBAGENT_PERMISSION_MODE` | 子 Agent/团队成员的默认权限模式（如 `bypassPermissions`、`acceptEdits`、`default`、`plan`）。优先级：Agent 工具 `mode` 参数 \> CLI `--subagent-permission-mode` \> 此环境变量 \> Settings `permissions.subagentPermissionMode` \> 映射表默认值 |

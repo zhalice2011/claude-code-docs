@@ -108,7 +108,7 @@ CodeBuddy Code 会在创建新会话时自动向客户端推送可用的 Slash �
 - 显示命令提示和帮助信息
 - 动态更新可用命令
 
-命令列表会包含当前可调用的项目级、用户级和插件 Skill，并在 Skill 加载完成或可见性配置变化后自动刷新。列表会过滤掉本地命令（如 `/clear`、`/exit`）和客户端专属命令（如 `/theme`、`/config`），只推送适用于 ACP 模式的命令。
+命令列表会包含当前可调用的项目级、用户级和插件 Skill，并在 Skill 加载完成或可见性配置变化后自动刷新。列表会过滤掉客户端专属命令（如 `/theme`、`/config`）和终端面板专属命令（如 `/stats`、`/rewind`），只推送适用于 ACP 模式的命令。`/clear`、`/compact` 等会话控制命令会下发，由 ACP 客户端触发后由服务端执行。
 
 ### 上下文窗口档位配置
 
@@ -118,6 +118,7 @@ CodeBuddy Code 通过 `getConfigOptions` / `setSessionConfigOption` 的 `context
 - **档位校验**：`setSessionConfigOption('context_window', value)` 只接受当前模型已声明的档位，非法值会被拒绝。
 - **生效范围**：档位是会话级临时配置，进程内有效；切换会话时保持，重启进程后回落模型默认档。
 - **分母联动**：选择档位后，上下文环（`usage_update.size`）与压缩阈值均按该档位计算。
+- **subagent 继承**：主 Agent 切换档位后，新建/唤醒的 subagent（含 Agent Team 成员）会自动继承主会话当前的显式档位选择；主会话没有显式档位时 subagent 回落自身模型的默认档，不会继承主会话按其模型算出的有效预算。若继承到的档位不属于 subagent 实际模型支持的档位集合，会按模型默认/最小合法档位 fail\-closed（\#133811）。
 
 ### Agent Teams 协议扩展
 

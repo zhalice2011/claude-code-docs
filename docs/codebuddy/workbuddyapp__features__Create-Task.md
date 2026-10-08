@@ -6,15 +6,15 @@
 
 在**底部输入框**中用**自然语言描述需求**，**点击发送按钮**即可。
 
-![](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/create-1.OowvJft0.png)## 二、使用快捷入口
+![](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/create-1.OowvJft0.png)## 二、使用快捷入口
 
 点击**输入框上方**的**场景标签**（如「深度研究」「文档处理」），输入框会自动填入引导提示，直接发送即可进入对应场景。
 
-![](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/create-2.Dn0zxBc7.png)![](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/create-3.CbdjY4T9.png)## 三、从侧边栏新建
+![](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/create-2.Dn0zxBc7.png)![](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/create-3.CbdjY4T9.png)## 三、从侧边栏新建
 
 打开侧边栏 → 点击 **\+ 新建任务**，进入新的空白对话
 
-![](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/create-4.C6Ilu2l2.png)![](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/create-5.fgPu03TU.png)## 四、通过系统分享入口发起（App 独有）
+![](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/create-4.C6Ilu2l2.png)![](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/create-5.fgPu03TU.png)## 四、通过系统分享入口发起（App 独有）
 
 WorkBuddy 移动端 App 支持系统级分享入口：
 

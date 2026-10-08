@@ -49,7 +49,8 @@ Span 默认不记录任何敏感信息（prompt 内容、工具参数、工具�
 | `OTEL_LOG_USER_PROMPTS=1` | 记录用户 prompt | `user_prompt` 属性（默认为不记录，仅记录 `user_prompt_length`） |
 | `OTEL_LOG_TOOL_DETAILS=1` | 记录工具参数 | `tool_input` 属性（\~4KB 截断）\+ 工具特定属性（`file.path`、`command` 等） |
 | `OTEL_LOG_TOOL_CONTENT=1` | 记录工具输入输出全文 | `tool_input`/`tool_result` span events（60KB 截断） |
-| `OTEL_LOG_RAW_API_BODIES=1` | 记录完整 API 请求/响应体 | 预留，暂未实现 |
+| `OTEL_LOG_RAW_API_BODIES=1` | 记录完整 API 请求/响应体 | 本轮根 span 上的 `api_request_body` / `api_response_body` span events（`body` 60KB 截断，附 `body_length`、`body_truncated`） |
+| `OTEL_LOG_RAW_API_BODIES=file:<dir>` | 把完整请求/响应体写到本地目录（同 Claude Code） | `<dir>/<request_body_id>.request.json`、`<dir>/<request_body_id>.response.json`（部分上游的 response id 不唯一，因此按调用命名），`<dir>/index.jsonl` 每次响应一行关联二者与会话（`message_id` 即会话 JSONL 条目上的 `messageId`）；span events 改带 `body_ref` 文件路径。不记录请求头 |
 
 ## Span 结构
 

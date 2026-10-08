@@ -29,15 +29,15 @@ codebuddy daemon start --port 8080
 # 指定绑定地址（允许远程访问）
 codebuddy daemon start --host 0.0.0.0
 
-# 指定权限模式（默认为 delegate 委托模式）
-codebuddy daemon start --permission-mode default
+# 指定权限模式（默认为普通 default 模式）
+codebuddy daemon start --permission-mode plan
 
 # 传递其他标准参数（model、mcp-config 等会自动继承）
 codebuddy daemon start --model claude-sonnet-4-20250514 --mcp-config ./.mcp.json
 ```
 Daemon 启动后以 detached 进程运行，父进程立即退出。本地地址默认免密访问，非本地地址自动开启密码认证。
 
-> **默认委托模式**：Daemon 默认以委托（delegate）模式运行——主 agent 只负责协调调度，不直接修改代码。所有实现工作通过 subagent 完成。可通过 `--permission-mode` 切换为其他模式。
+> **默认权限模式**：Daemon 默认使用普通 `default` 模式，不再隐式进入委托（delegate）模式。需要自动放行时可显式传 `-y` 或 `--permission-mode bypassPermissions`，其他公开模式也可通过 `--permission-mode` 指定。
 
 > **参数继承**：`daemon start` 时指定的标准 CLI 参数（`--model`、`--permission-mode`、`--mcp-config`、`--tools`、`--agent`、`--settings` 等）会自动继承到 daemon 子进程中。
 
@@ -218,10 +218,10 @@ json
 
 1. **系统登录** → 系统服务自动启动 daemon
 2. **每小时** → 后台检查新版本并静默安装
-3. **空闲时** → fork 新 daemon 进程 → 旧进程正常退出（不触发崩溃重启）
+3. **空闲时** → 非托管进程自行 fork 新 daemon；systemd 托管进程退出并由 supervisor 串行拉起
 4. **崩溃时** → 系统服务自动恢复（`KeepAlive` / `Restart=on-failure`）
 
-> **设计细节**：系统服务配置为仅在非正常退出时重启。自动更新的 graceful restart 以 exit code 0 退出，不会触发系统服务的重启机制——新进程已经由更新流程自行 fork 出来了。
+> **设计细节**：systemd 默认会在主进程退出后执行 `ExecStop` 并清理 unit cgroup，因此 daemon 不会在旧 cgroup 内 fork replacement，而是以专用非零状态退出，交给 `Restart=on-failure` 拉起。其他运行方式保留进程内 graceful restart。若希望继续自动安装更新、但由外部值守决定重启时机，可设置 `CODEBUDDY_DAEMON_AUTO_RESTART_DISABLED=1`。升级自旧版 systemd unit 后需重新执行 `cbc daemon install` 写入安全的 `ExecStop`、`KillMode` 与托管标记；未迁移的旧 unit 会拒绝进程内自重启，避免静默全停。
 
 ### 管理命令对照
 

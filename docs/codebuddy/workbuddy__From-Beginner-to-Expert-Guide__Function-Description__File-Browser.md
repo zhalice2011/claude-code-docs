@@ -4,16 +4,15 @@
 
 独立文件浏览器是 WorkBuddy 提供的**独立文件窗口**：一个窗口就能打开本机的文件，支持多开文件、用标签页快速切换；窗口右侧内置 AI 对话栏，支持「**人机双写**」——一边看文件，一边让 AI 帮你总结、改写、润色。
 
-它让 WorkBuddy 成为本地文件的「打开方式」：在系统里双击文件，或用右键「打开方式」选择 WorkBuddy，即可进入独立文件窗口。**不需要安装任何插件，开箱即用。**
+它让 WorkBuddy 成为本地文件的「打开方式」：在系统里双击文件，或用右键「打开方式」选择 WorkBuddy，即可进入独立文件窗口。
 
 ### 和普通文件查看器有什么不一样
 
 | 对比项 | WorkBuddy 独立文件浏览器 |
 | --- | --- |
 | 覆盖格式 | 一个窗口打开 Word / Excel / PPT / PDF / Markdown / HTML / 图片 / 音频 / TXT，不用来回切应用 |
-| AI 能力 | 支持 WorkBuddy 原生能力，无需安装任何插件，开箱即用；Word、Excel、PPT、Markdown、HTML 均支持人机双写，边看边改 |
+| AI 能力 | 支持 WorkBuddy 原生能力；Word、Excel、PPT、Markdown、HTML 均支持人机双写，边看边改 |
 | Markdown | 可视化查看和编辑，所见即所得；支持 md 语法写作。 |
-| 使用成本 | 轻量、免费、无广告。 |
 
 ## 打开方式
 
@@ -36,7 +35,7 @@
 - 快捷键 `Ctrl / Cmd + W` 关闭当前标签；
 - 点击标签右侧的 **\+**：可以新建文件、打开文件，也会展示**最近打开**的文件列表。
 
-![同一个窗口打开多个文件，标签可切换、拖动排序](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/file-browser-tabs.C2jOva1C.png)
+![同一个窗口打开多个文件，标签可切换、拖动排序](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/file-browser-tabs.C2jOva1C.png)
 
 ## AI 人机双写
 
@@ -46,11 +45,11 @@
 
 窗口右侧的 AI 对话栏**默认收起**——打开文件时先保证你安静看文档；点右上角的「**和 WorkBuddy 对话**」按钮即可展开。在对话框收起状态下使用「**AI 编辑**」，也会自动展开侧边栏。AI 对话面板与正文之间的分隔条可拖拽，自由调整宽度。
 
-![默认收起状态，点右上角「和 WorkBuddy 对话」按钮展开](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/file-browser-ai-collapsed.CuOnjPrT.png)
+![默认收起状态，点右上角「和 WorkBuddy 对话」按钮展开](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/file-browser-ai-collapsed.CuOnjPrT.png)
 
 **AI 能帮你做什么：**围绕当前打开的这个文件工作——总结要点、改写润色、续写补充、按要求调整内容等。你可以选中正文内容**引用后再提问**，AI 会精准修改对应位置，并把结果落到文档里，详见[人机双写](./Knowledge-Base/Cowriting)。
 
-![展开 AI 对话栏，围绕当前文件提问和修改](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/file-browser-ai-expanded.CqOD3CAx.png)
+![展开 AI 对话栏，围绕当前文件提问和修改](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/file-browser-ai-expanded.CqOD3CAx.png)
 
 **对话与文件的关系：**
 
@@ -72,7 +71,7 @@
 
 各入口的功能说明见[系统设置 → 打开设置面板](./Setting#一、打开设置面板)。
 
-![账号面板：入口与主窗口内一致](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/file-browser-account.DxlmhTAN.png)
+![账号面板：入口与主窗口内一致](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/file-browser-account.DxlmhTAN.png)
 
 ### 不登录能用吗
 
@@ -80,13 +79,13 @@
 - **Office 文档（Word / Excel / PPT）编辑需要登录**；
 - **Markdown 不登录也能看、能编辑**。
 
-![未登录：只读预览提示，不展示编辑工具栏](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/file-browser-not-logged-in.WZ0uRyqO.png)
+![未登录：只读预览提示，不展示编辑工具栏](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/file-browser-not-logged-in.WZ0uRyqO.png)
 
 ## 编辑与保存
 
 文件打开后可直接查看和编辑，顶部工具栏会**按文件类型**提供不同功能。
 
-![工具栏按文件类型提供不同功能，底部显示当前页码与字数](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/file-browser-editor.sC_13NR4.png)
+![工具栏按文件类型提供不同功能，底部显示当前页码与字数](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/file-browser-editor.sC_13NR4.png)
 
 **各文件类型的保存方式：**
 
@@ -114,7 +113,7 @@
 - **上传**：点上传可选择上传渠道（资料库、腾讯文档、ima 知识库、乐享知识库等）；
 - **更多（…）**：提供**打开文件夹**与**另存为**等功能，后续还会支持更多。
 
-![分享：文件会自动上传到资料库，并提供在线版本与访问权限设置](https://download.codebuddy.cn/web/docs/63debd8671c5b9424df08b3bac939eb1242f82c2/docs/static/file-browser-share.WgtvHc8Q.png)
+![分享：文件会自动上传到资料库，并提供在线版本与访问权限设置](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/file-browser-share.WgtvHc8Q.png)
 
 ## 注意事项与重点提示
 

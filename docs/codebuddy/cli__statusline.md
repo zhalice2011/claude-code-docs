@@ -60,9 +60,24 @@ json
     "total_api_duration_ms": 2300,
     "total_lines_added": 156,
     "total_lines_removed": 23
+  },
+  "context_window": {
+    "total_input_tokens": 1200000,
+    "total_output_tokens": 42000,
+    "context_window_size": 1000000,
+    "current_usage": {
+      "input_tokens": 12000,
+      "output_tokens": 800,
+      "cache_creation_input_tokens": 3000,
+      "cache_read_input_tokens": 185000
+    },
+    "used_percentage": 20,
+    "remaining_percentage": 80
   }
 }
 ```
+`total_input_tokens` / `total_output_tokens` 是整个会话的累计消耗； `current_usage` 只表示最新一次模型请求，并按 Claude Code 协议拆分为互不重叠的 普通输入、缓存写入和缓存读取。当前上下文长度应使用 `input_tokens + cache_creation_input_tokens + cache_read_input_tokens`，不要使用累计字段计算。
+
 ## 示例脚本
 
 ### 简单状态行

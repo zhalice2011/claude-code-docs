@@ -519,6 +519,8 @@ CBC 增强：
 | --- | --- | --- |
 | GET | `/api/v1/scheduled-tasks` | 获取定时任务列表 |
 | POST | `/api/v1/scheduled-tasks` | 创建定时任务 |
+| PATCH | `/api/v1/scheduled-tasks/:id` | 编辑、暂停或恢复定时任务 |
+| GET | `/api/v1/scheduled-tasks/:id/executions` | 获取执行记录（含 durable、queued/running 状态及 ownerKind、ownerId、ownerPid、sessionId、runId） |
 | DELETE | `/api/v1/scheduled-tasks/:id` | 删除定时任务 |
 
 **定时任务查询参数**:
@@ -928,6 +930,14 @@ curl -X POST http://127.0.0.1:8080/api/v1/scheduled-tasks \
 curl -X POST http://127.0.0.1:8080/api/v1/scheduled-tasks \
   -H "Content-Type: application/json" \
   -d '{"cron": "0 0 * * *", "prompt": "每日清理", "durable": true, "sessionId": "SESSION_ID"}'
+
+# 暂停定时任务
+curl -X PATCH http://127.0.0.1:8080/api/v1/scheduled-tasks/TASK_ID \
+  -H "Content-Type: application/json" \
+  -d '{"enabled": false, "sessionId": "SESSION_ID"}'
+
+# 查看执行记录
+curl "http://127.0.0.1:8080/api/v1/scheduled-tasks/TASK_ID/executions?sessionId=SESSION_ID"
 
 # 删除定时任务
 curl -X DELETE "http://127.0.0.1:8080/api/v1/scheduled-tasks/TASK_ID?sessionId=SESSION_ID"
