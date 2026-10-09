@@ -26,9 +26,9 @@
 
 ## 五、效果示意
 
-![Obsidian 效果示意](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/image-6.CtUxfxZF.png)
+![Obsidian 效果示意](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/image-6.CtUxfxZF.png)
 
-![Obsidian 效果示意](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/image-7.CIxvEmxO.png)
+![Obsidian 效果示意](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/image-7.CIxvEmxO.png)
 
 ## 六、使用建议
 

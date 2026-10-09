@@ -10,19 +10,19 @@
 
 点击左下角头像，在用户菜单中点击**帮助与反馈**。
 
-![头像菜单中的帮助与反馈入口](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/helpfeedback-1.Cew6iqC5.png)
+![头像菜单中的帮助与反馈入口](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/helpfeedback-1.Cew6iqC5.png)
 
 ### 入口二：设置 → 获取帮助
 
 点击左下角头像打开**设置**，在左侧导航底部点击**获取帮助**，再点击右侧**意见反馈**的**填写反馈**。
 
-![设置中的获取帮助入口](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/setting-get-help.C4bKxAne.png)
+![设置中的获取帮助入口](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/setting-get-help.C4bKxAne.png)
 
 ### 填写反馈
 
 在输入框描述您的需求，建议**上传图片并勾选上传日志**，以便团队更准确地理解您的需求和问题：
 
-![意见反馈填写页](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/helpfeedback-3.D-kfS8ix.png)
+![意见反馈填写页](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/helpfeedback-3.D-kfS8ix.png)
 
 ## 帮助文档
 

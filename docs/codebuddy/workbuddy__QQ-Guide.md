@@ -36,7 +36,7 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 
 点击创建机器人：
 
-![创建机器人](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-guide-2.DdeZxWeY.png)
+![创建机器人](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/qq-guide-2.DdeZxWeY.png)
 
 点击后会立刻成功，此时机器人会给你的QQ发一条成功消息，头像昵称可按喜好自定义编辑。
 
@@ -44,7 +44,7 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 
 复制并保存机器人的 AppID 和 AppSecret 。
 
-![复制AppID和AppSecret](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-guide-3.B1fiLS6i.png)
+![复制AppID和AppSecret](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/qq-guide-3.B1fiLS6i.png)
 
 重要提示
 
@@ -55,20 +55,20 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 1. 打开 WorkBuddy，点击助理的**设置**⚙️图标后进入**助理设置**页面。
 2. 点击QQ机器人卡片右边的**连接**按钮。
 
-![QQ机器人集成配置](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-guide-5.CppvIKbu.png)
+![QQ机器人集成配置](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/qq-guide-5.CppvIKbu.png)
 
 3. 选择一种方式连接已创建的 QQ 机器人
 - **QQ 扫码**：扫码连接已创建的机器人。
 
-![QQ 扫码连接](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-guide-6.BqAWhxq9.png)
+![QQ 扫码连接](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/qq-guide-6.BqAWhxq9.png)
 
 - **更多连接方式**：选择 WebSocket 长连接或使用 URL 回调，填入上方复制保存的 AppID 和 AppSecret ，点击**连接**按钮。
 
-![更多连接方式](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-guide-7.CsjQmu3T.png)
+![更多连接方式](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/qq-guide-7.CsjQmu3T.png)
 
 4. 连接成功后，在**助理**页面上方会显示 QQ 图标。
 
-![助理QQ图标](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/qq-guide-9.2UbTr9Lp.png)
+![助理QQ图标](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/qq-guide-9.2UbTr9Lp.png)
 
 ## 开始使用
 

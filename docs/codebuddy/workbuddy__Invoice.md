@@ -9,7 +9,7 @@
 3. 在账单页面查看相关消费记录及费用信息。
 4. 如需开具发票，单击**开票管理**，在**可申请**页签中选择需要开票的订单，单击**去开票**。
 
-![账单与发票页面，单击开票管理](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/invoice-view-invoices.BZajw34o.png)
+![账单与发票页面，单击开票管理](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/invoice-view-invoices.BZajw34o.png)
 
 5. 填写开票信息，包括抬头类型、发票类型、发票抬头、纳税人识别号、基本开户账户、邮箱等，单击**提交**。
 6. 页面提示开票申请提交成功后，单击**确认**，可在填写的邮箱中查看发票详情，发票将在 24 小时内发送至邮箱。
@@ -25,7 +25,7 @@ TIP
 1. 登录 [WorkBuddy 企业管理](https://www.codebuddy.cn/admin/)后台，单击页面右上角**订单管理**。
 2. 点击**发票管理**，前往腾讯云控制台查看或开具发票，注意请使用企业绑定的腾讯云 uin 登录腾讯云控制台。
 
-![企业管理后台订单列表，点击发票管理](https://download.codebuddy.cn/web/docs/0651900dd6f47586785a7d59e0343091e59f5f0f/docs/static/invoice-manage-enterprise.C74agYGQ.png)
+![企业管理后台订单列表，点击发票管理](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/invoice-manage-enterprise.C74agYGQ.png)
 
 ## 声明
 
