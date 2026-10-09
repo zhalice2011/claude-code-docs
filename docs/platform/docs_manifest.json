@@ -52,8 +52,8 @@
     "about-claude__pricing.md": {
       "original_url": "https://platform.claude.com/docs/en/about-claude/pricing",
       "original_md_url": "https://platform.claude.com/docs/en/about-claude/pricing.md",
-      "hash": "a3ec70f7d95205b2de6f177e470c4b2445c6628dffc415dce25362d4e3c901c5",
-      "last_updated": "2026-10-08T09:44:40.064809",
+      "hash": "c7839126109bc538fa84e674e91fe1410458ae22337f1b53632d7c0ad454ddfd",
+      "last_updated": "2026-10-09T00:52:10.720606",
       "source": "platform"
     },
     "about-claude__use-case-guides__commerce-agents.md": {
@@ -4399,8 +4399,8 @@
     "manage-claude__api-and-data-retention.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention.md",
-      "hash": "c45b4c95445a462b56f52c22fa16cb1bfbcfeac1d8b3065a014da90641e341a8",
-      "last_updated": "2026-10-01T20:07:39.785215",
+      "hash": "40900400de1749c16e6867957e7ec4c1c91afd8b15dc0447133ca616e98cabce",
+      "last_updated": "2026-10-09T00:59:30.670997",
       "source": "platform"
     },
     "manage-claude__app-attest.md": {
@@ -4651,8 +4651,8 @@
     "manage-claude__workspaces.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/workspaces",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/workspaces.md",
-      "hash": "33f8d9bf5ff2826a0deee5c0ecd77ec4b34e3bdb8adfb65b7b1466f85e055a0c",
-      "last_updated": "2026-10-08T09:51:57.560798",
+      "hash": "f946f65160fbcbd00d7fb61ce266ba3a0a5b95d2867af010c770b1712a1f5036",
+      "last_updated": "2026-10-09T00:59:56.819445",
       "source": "platform"
     },
     "managed-agents__agent-setup.md": {
@@ -5302,7 +5302,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-10-08T18:21:54.423094",
+    "last_fetch_completed": "2026-10-09T01:01:04.800520",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 760,
@@ -5316,7 +5316,7 @@
     "total_files": 757,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-08T18:21:54.423111",
+  "last_updated": "2026-10-09T01:01:04.800534",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
