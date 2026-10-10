@@ -6,7 +6,7 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等全部�
 
 点击左侧边栏底部的**头像**，弹出用户菜单，点击**设置**打开设置面板。
 
-![用户菜单](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/user-menu.BeSSfC0s.png)
+![用户菜单](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/user-menu.BeSSfC0s.png)
 
 桌面端的设置会以**独立窗口**打开，不再占用主窗口——主窗口可以继续正常使用，设置窗口内也能自由切换各个设置项。再次点击**设置**会聚焦到已经打开的窗口，不会重复打开多个；关闭设置窗口不影响主窗口和正在执行的任务。
 
@@ -26,7 +26,7 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等全部�
 
 设置面板采用**左侧导航 \+ 右侧内容区**结构，左侧为设置项导航，右侧为对应配置内容，**修改即时生效、无需重启**。
 
-![设置面板](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/setting-panel.Cu4oTrre.png)
+![设置面板](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/setting-panel.Cu4oTrre.png)
 
 ### 设置项一览
 
@@ -34,7 +34,7 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等全部�
 
 | 分组 | 设置项 | 说明 |
 | --- | --- | --- |
-| **设置** | 通用 | 语言、链接打开方式、字体大小、锁屏运行、开机自启、网络代理等基础选项 |
+| **设置** | 通用 | 语言、链接打开方式、字体大小、锁屏运行、开机自启、网络代理、通知等基础选项 |
 |  | 个人主页 | 账号资料与个人中心入口 |
 |  | 套餐与积分 | 当前套餐与积分用量查看 |
 |  | 外观 | 主题与外观设置 |
@@ -54,11 +54,39 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等全部�
 
 功能型设置项（外观、记忆、模型、助理、数据管理等）的详细说明见其独立文档，可在上表点击跳转。
 
+### 通知
+
+任务完成、需要你确认或中断时，WorkBuddy 会通过系统通知提醒你，不必一直盯着窗口。在**设置 → 通用 → 通知**中管理：
+
+![设置 → 通用 → 通知](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/setting-notification.CJINdn9N.png)
+
+| 设置项 | 说明 |
+| --- | --- |
+| **桌面通知** | 点击**前往系统设置**，在系统的通知设置中允许 WorkBuddy 发送通知（macOS、Windows） |
+| **通知提示音** | 收到通知时播放的提示音，可选灵动、晴朗、沉稳，默认无音效。提示音与桌面通知相互独立 |
+| **定时任务产物通知** | 定时任务生成产物时通过系统通知提醒，点击通知即可打开对应产物，默认开启 |
+
+**授权引导**：任务完成时，如果系统通知权限尚未开启，窗口右上角会出现「开启桌面通知」提示，点击**前往系统设置**即可开启。关闭提示后一段时间内不会重复打扰，不开启也不影响正常使用，之后随时可以回到这里开启。
+
+**通知内容**：通知标题显示任务状态，内容显示对应的任务名称，多个任务同时运行时也能分清是哪一个；点击通知即可回到对应任务。
+
+| 任务状态 | 通知标题 |
+| --- | --- |
+| 完成 | 任务已完成 |
+| 需要确认 | 任务等待确认，请处理 |
+| 中断 | 任务中断，请重试 |
+
+定时任务的通知标题会带上「定时任务」，任务名称前也会加上「定时任务：」。
+
+提示
+
+如果 WorkBuddy App 已关联当前电脑，电脑上任务的完成、待确认、中断通知也会同步推送到手机，详见 [App 多端协同](./../../../workbuddyapp/features/Multidevice)。
+
 ### 关于
 
 查看当前版本并检查更新、前往官网，也可以扫码关注公众号、视频号与腾讯频道，获取实用技巧与产品动态。
 
-![关于](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/setting-about.BqzUZcOa.png)
+![关于](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/setting-about.BqzUZcOa.png)
 
 ## 代码开发的用户级配置兼容
 

@@ -33,13 +33,13 @@ WorkBuddy 主界面的最左侧是导航栏，把新建任务、历史任务和�
 
 在左侧菜单栏的**任意位置点击右键**，在右键菜单中点击**自定义菜单**，即可打开「自定义菜单栏」面板。
 
-![自定义菜单入口](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/sidebar-context-menu.C6bdyaOO.png)
+![自定义菜单入口](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/sidebar-context-menu.C6bdyaOO.png)
 
 ### 调整顺序与分组
 
 面板中分为**一级菜单**与**更多**两组：
 
-![自定义菜单栏面板](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/sidebar-custom-panel.DRRDux7D.png)
+![自定义菜单栏面板](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/sidebar-custom-panel.DRRDux7D.png)
 
 - **组内调整顺序**：按住条目右侧的手柄上下拖动，可以改变同一组内的先后；
 - **跨组移动**：把条目拖到另一组，即可让它在一级菜单和「更多」之间切换；

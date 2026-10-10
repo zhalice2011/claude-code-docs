@@ -15,7 +15,7 @@
 - 当前状态
 - 最近更新时间或创建时间
 
-![任务列表与工作空间分组示例](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/task-list-overview.CPzFjJWp.png)
+![任务列表与工作空间分组示例](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/task-list-overview.CPzFjJWp.png)
 
 ## 搜索与筛选
 
@@ -30,7 +30,7 @@
 - 按日期筛选：缩小到某一时间范围内的任务。
 - 重置筛选：清空当前筛选条件，恢复查看全部任务。
 
-![任务筛选面板示例](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/task-filter-panel.CYG4NMAy.png)
+![任务筛选面板示例](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/task-filter-panel.CYG4NMAy.png)
 
 ## 任务状态
 

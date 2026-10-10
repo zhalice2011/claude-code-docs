@@ -13,7 +13,7 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 - [远程停止](#远程停止任务)：任务偏离预期或等待确认时，移动端一键终止任务
 - [状态可视化](#查看任务状态)：设备级 \+ 对话级双层状态标识，随时掌握 WorkBuddy 任务进度
 - [远程配置](#远程配置会话)：技能、专家、连接器、权限、模型在手机上也能配置，均以电脑端为准
-- [任务通知](#任务通知)：任务完成、等待回答、等待审批时主动通知到手机，点击直达处理
+- [任务通知](#任务通知)：任务完成、中断、等待回答、等待审批时主动通知到手机，点击直达处理
 
 ## 前置条件
 
@@ -32,7 +32,7 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 - **熄屏后保持唤醒**：屏幕正常熄灭，后台任务与远程操控照常执行，较省电；
 - **保持屏幕常亮**：屏幕不会熄灭，可随时查看任务，较耗电。
 
-![系统设置中的「允许锁屏运行」，可选关闭 / 熄屏后保持唤醒 / 保持屏幕常亮](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-3.JujadBNx.png)
+![系统设置中的「允许锁屏运行」，可选关闭 / 熄屏后保持唤醒 / 保持屏幕常亮](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-3.JujadBNx.png)
 
 ## 连接设备
 
@@ -42,12 +42,12 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 
 在 WorkBuddy 桌面端，将鼠标悬停在**侧边栏底部**的「连接移动端」图标上，弹出「连接移动端」面板，打开「**允许移动端连接此设备**」开关。
 
-![桌面端侧边栏底部的「连接移动端」图标（图中高亮处），悬停后弹出「连接移动端」面板（App 分页）：二维码与两个连接开关](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-1.BAdZ-Qq4.png)
+![桌面端侧边栏底部的「连接移动端」图标（图中高亮处），悬停后弹出「连接移动端」面板（App 分页）：二维码与两个连接开关](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-1.BAdZ-Qq4.png)
 2. **移动端连接电脑**
 
 面板中选中「**App**」分页，扫描二维码打开（或下载安装）WorkBuddy App——**二维码仅作打开 / 下载引导，不参与配对**。登录与桌面端相同的账号后进入主页，点击侧边栏顶部的设备入口，在「**选择设备**」面板中选择要连接的电脑，即可连上该设备。
 
-![App 端设备入口与「选择设备」面板](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-2.N42dQtKf.png)
+![App 端设备入口与「选择设备」面板](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-2.N42dQtKf.png)
 
 建联完成后，设备关系将持久保留，无需每次重复配对。后续打开移动端即可直接查看已连接电脑的任务状态。
 
@@ -64,9 +64,9 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 | 在线 | 绿色「在线」标签 | 桌面端在线可正常交互 |
 | 离线 | 灰色「离线」标签 | 桌面端离线或网络不可达 |
 
-![设备在线状态：设备名后显示绿色「在线」标签](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-4.DkToxfD3.png)
+![设备在线状态：设备名后显示绿色「在线」标签](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-4.DkToxfD3.png)
 
-![设备离线状态：设备名后显示灰色「离线」标签](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-4.1.D3wNLN5_.png)
+![设备离线状态：设备名后显示灰色「离线」标签](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-4.1.D3wNLN5_.png)
 
 **对话级状态**：
 
@@ -99,11 +99,11 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 3. 在输入框发送指令，如「继续」「把刚才的改动加上日志」
 4. 指令自动路由到桌面端继续执行
 
-![App 端对话页：任务执行中，输入框显示「正在回复中」，可直接继续发送消息](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-5.CNVzQQal.png)
+![App 端对话页：任务执行中，输入框显示「正在回复中」，可直接继续发送消息](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-5.CNVzQQal.png)
 
 在任务中通过右上角的新建图标新建任务，可以使**新建的任务在当前工作空间下执行**。
 
-![点击对话页右上角的新建图标，新建任务在当前工作空间下执行](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-5.1.5yoR52UY.png)
+![点击对话页右上角的新建图标，新建任务在当前工作空间下执行](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-5.1.5yoR52UY.png)
 
 ### 远程停止任务
 
@@ -113,7 +113,7 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 2. 点击右侧的发送按钮（运行中变为停止按钮），桌面端 Agent 立即终止执行
 3. 对话状态更新为「本轮任务已停止，电脑端已同步终止运行」
 
-![远程停止后，对话提示「本轮任务已停止，电脑端已同步终止运行」](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-6.C0eJsY38.png)
+![远程停止后，对话提示「本轮任务已停止，电脑端已同步终止运行」](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-6.C0eJsY38.png)
 
 已完成的步骤结果保留在对话中，不受影响。
 
@@ -121,23 +121,23 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 
 连接电脑后，手机上也能像在电脑前一样配置本次对话——技能、专家、连接器、权限和模型都以电脑端为准：
 
-![「+」面板：专家中心 / 使用技能 / 连接器 / 定时任务](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-plus-panel.CgbSEDrF.png)
+![「+」面板：专家中心 / 使用技能 / 连接器 / 定时任务](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-plus-panel.CgbSEDrF.png)
 
 - **使用技能**：点击输入框旁的 `+`，在面板中选择「使用技能」，从电脑端已安装并启用的技能中选用，支持搜索；选中后以标签显示在输入框，可随时移除；
 
-![使用技能面板：搜索并选用电脑端已安装的技能](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-skill-picker.TaDL2JGZ.png)
+![使用技能面板：搜索并选用电脑端已安装的技能](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-skill-picker.TaDL2JGZ.png)
 - **召唤专家**：在 `+` 面板选择「专家中心」，点击底部的「召唤专家」进入专家面板——支持搜索，专家与专家团混排展示；选中后本次对话由该专家执行，输入框以标签显示当前专家、可移除。电脑端已召唤专家的会话，手机上会同步显示对应的专家标识；
 
-![专家中心面板：浏览与搜索可用专家](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-expert-picker.DgM884qb.png)
+![专家中心面板：浏览与搜索可用专家](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-expert-picker.DgM884qb.png)
 
 - **连接器**：在 `+` 面板选择「连接器」，开关本次对话要用的连接器，清单与连接状态以电脑端为准；已开启的连接器会在面板入口上以图标汇总展示。手机上只做选用——未授权的连接器会提示您到电脑端完成授权；
 
-![连接器面板：开关本次对话要用的连接器](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-connector-panel.UdmSu2AS.png)
+![连接器面板：开关本次对话要用的连接器](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-connector-panel.UdmSu2AS.png)
 - **权限模式**：输入框 `+` 左侧的权限图标显示当前档位，点击打开「选择权限模式」面板，可在「默认权限」与「允许完全访问」之间切换；后者会减少确认步骤、允许 Agent 连续执行敏感操作，切换前会给出风险提示，确认后才生效；
 
-![选择权限模式面板：默认权限 / 允许完全访问两档切换](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-permission-panel.BxbEYWia.png)
+![选择权限模式面板：默认权限 / 允许完全访问两档切换](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-permission-panel.BxbEYWia.png)
 
-![切换到「允许完全访问」时的确认提示](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-permission-risk.C3Tjne_K.png)
+![切换到「允许完全访问」时的确认提示](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-permission-risk.C3Tjne_K.png)
 - **自定义模型**：模型选择面板在内置模型之外，会分组展示您在电脑端配置的自定义模型（带「自定义」标识）；手机上只能选用，新增与配置仍在电脑端完成，不展示密钥等敏感信息。
 
 以上清单都从电脑端实时拉取：拉取失败时会提示重试、不会显示成空列表；电脑端卸载或禁用的条目，下次拉取时会自动移除并提示。设备断连时这些配置不可修改。
@@ -148,15 +148,18 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 
 | 事件 | 说明 |
 | --- | --- |
-| **任务完成** | 任务在电脑端执行完成。仅手机端发起的任务会通知；电脑端发起的由电脑自行通知，不重复打扰 |
-| **等待回答** | Agent 向您提问，等您回复（电脑端发起的任务同样通知） |
-| **等待审批** | Agent 申请敏感操作权限，等您批准（电脑端发起的任务同样通知） |
+| **任务完成** | 任务在电脑端执行完成 |
+| **任务中断** | 任务执行失败或中断，需要您重试 |
+| **等待回答** | Agent 向您提问，等您回复 |
+| **等待审批** | Agent 申请敏感操作权限，等您批准 |
+
+无论任务是在手机上发起、还是在电脑上直接发起（包括定时任务），只要手机已关联这台电脑，都会收到以上通知；同一账号下的多台手机会同时收到。
 
 - 通知发出前会留一段缓冲：这期间您在电脑或手机上处理了，就不再推送；您正停留在该会话页面时也不打扰；
 - 点击通知直接进入对应对话——任务完成落到最新进展处，等待类会直接拉起对应的问答或审批面板；若该请求已在电脑端处理完，会提示「该请求已处理」；
 - App 走系统通知，在手机系统设置中开启通知权限即可收到，无需逐个订阅。
 
-![App 系统通知：任务已完成 / 任务等待确认](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-notify-system.CjKvvA7c.jpg)
+![App 系统通知：任务已完成 / 任务等待确认](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-notify-system.CjKvvA7c.jpg)
 
 ### 两端同步
 
@@ -171,13 +174,13 @@ WorkBuddy 多端协同让您的手机成为桌面端 Agent 的「远程控制台
 
 - **发送手机内容**：点击输入框**旁边**的 `+`，可拍照、选照片 / 视频、选手机文件，也可以直接设置定时任务。
 
-![左：输入框旁边的 + 按钮；右：展开后的工具面板（拍照 / 照片 / 视频 / 手机文件，定时任务）](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-7.ffuCVxie.png)
+![左：输入框旁边的 + 按钮；右：展开后的工具面板（拍照 / 照片 / 视频 / 手机文件，定时任务）](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-7.ffuCVxie.png)
 
 **查看产物**
 
 WorkBuddy 在电脑上产出的文件会自动回传到 App，以产物卡片展示在对话中（文档产物、可视化报告等）：点击卡片可预览，点「全部产物」可打开产物列表，在列表里保存、分享单个产物，底部的「批量操作」可一次处理多个；产物也支持导出到手机（PDF / DOCX / Markdown）或导出到腾讯文档。
 
-![「产物」列表：可保存 / 分享单个产物，底部支持批量操作](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/multidevice-8.I0o_8Lgn.png)
+![「产物」列表：可保存 / 分享单个产物，底部支持批量操作](https://download.codebuddy.cn/web/docs/58cb23ac03eddfd4f57622ab247bb99af32bf29e/docs/static/multidevice-8.I0o_8Lgn.png)
 
 **定时任务**
 
