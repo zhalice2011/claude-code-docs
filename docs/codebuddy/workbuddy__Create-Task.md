@@ -22,7 +22,7 @@ WorkBuddy 的核心优势是理解自然语言。您只需用一句话描述需�
 - 切换悬停的模板，预览会随之更新；移开鼠标、失去焦点或切换场景后，预览自动清除；
 - 灰字仅供预览，不会进入草稿、撤销记录，也不会被发送；确认合适后点击模板，才会把内容真正填入输入框。
 
-![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/createtask-template-preview.tNJnCxJ-.png)
+![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/createtask-template-preview.tNJnCxJ-.png)
 
 ## 选择工作空间
 
@@ -59,7 +59,7 @@ WorkBuddy 的核心优势是理解自然语言。您只需用一句话描述需�
 3. 右侧结果区会根据任务类型展示产物、全部文件、变更和预览等结果
 4. 您可以继续补充消息，或同时创建其他任务并行推进
 
-![任务创建成功后的界面](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/createtask-1.CJulLJlb.png)
+![任务创建成功后的界面](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/createtask-1.CJulLJlb.png)
 
 ## 声明
 

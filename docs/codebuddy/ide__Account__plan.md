@@ -14,7 +14,7 @@
 
 在 CodeBuddy 内从用户头像处打开下拉框，选择**管理账号 \- 用量**进入**管理中心 \- 套餐与用量**板块操作升级套餐。
 
-![升级套餐入口](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/plan-1.CE6OCmXD.png)
+![升级套餐入口](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/plan-1.CE6OCmXD.png)
 
 #### 计费方式
 

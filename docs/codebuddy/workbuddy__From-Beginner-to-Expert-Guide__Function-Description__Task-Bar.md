@@ -2,7 +2,7 @@
 
 新建任务栏是 WorkBuddy 创建和执行本地任务的工作入口，支持任务创建、任务配置和多种输入方式。
 
-![新建任务栏主界面](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/task-bar-overview.B1Tf-pb3.png)
+![新建任务栏主界面](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/task-bar-overview.B1Tf-pb3.png)
 
 ## 新建任务
 
@@ -36,7 +36,7 @@
 
 WorkBuddy 提供三种工作模式，可根据任务复杂程度和是否需要实际执行操作进行选择。
 
-![工作模式菜单](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/task-mode-menu.C-D1U6_A.png)
+![工作模式菜单](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/task-mode-menu.C-D1U6_A.png)
 
 | 模式 | 说明 | 适用场景 |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Plan 模式的核心是「先出方案，再动手执行」。开启后，模型
 
 **使用前建议先设置工作空间。** WorkBuddy 将在该空间中读取和保存文件，未指定路径的任务也会优先在此空间内执行。
 
-![选择工作空间](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/workspace-select.DvwU3Fid.png)
+![选择工作空间](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/workspace-select.DvwU3Fid.png)
 
 什么是文件路径？
 
@@ -119,7 +119,7 @@ Plan 模式的核心是「先出方案，再动手执行」。开启后，模型
 
 ![](https://download.codebuddy.cn/web/docs/71c8722a08165ddedf566c5f1711bb0ec8ea991b/docs/static/image-7.C15-_p58.png)在对话框中选择已安装技能，WorkBuddy 执行任务时将自动调用对应能力：
 
-![选择技能](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/skill-select.PLLHy_nP.png)
+![选择技能](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/skill-select.PLLHy_nP.png)
 
 | 技能示例 | 效果 |
 | --- | --- |
@@ -135,7 +135,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 
 快捷管理连接器，连接外部服务，扩展 AI 能力。当任务需要使用外部服务中的数据或能力时，可以通过连接器将第三方应用接入任务。连接后，可直接在任务中通过自然语言调用对应服务。实际可使用的能力和数据范围取决于服务本身提供的能力及你的授权范围。
 
-![连接器列表](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/connector-select.DAbSUBAG.png)
+![连接器列表](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/connector-select.DAbSUBAG.png)
 
 ### 权限管理
 
@@ -144,7 +144,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - **默认权限：** 涉及敏感操作，如文件修改或工作空间外执行时，需要用户确认执行或由用户自行完成操作。
 - **完全访问权限：** 开启后**当前客户端内所有任务统一生效**：减少确认步骤，允许**WorkBuddy**直接执行更多操作，可能涉及敏感操作、文件修改或外部执行；关闭后所有任务恢复默认确认流程。仅建议在用户信任当前任务时使用。
 
-![默认权限](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/permission-select.Cx8CN6Pr.png)
+![默认权限](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/permission-select.Cx8CN6Pr.png)
 
 ## 提供任务输入
 
@@ -154,7 +154,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 
 预览不会改变已有输入，也不会作为消息发送。移开鼠标或切换模板后，预览会消失或更新；**点击模板后才会正式填入输入框**，可继续修改后发送。
 
-![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/createtask-template-preview.tNJnCxJ-.png)
+![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/createtask-template-preview.tNJnCxJ-.png)
 
 ### 拖拽添加文件
 
@@ -163,7 +163,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - 最多支持上传 **50 个文件**，单个文件大小不限，格式规则与附件按钮上传一致；不合规文件会在页面顶部给出具体错误提示（如不支持的文件类型）；
 - 拖出页面或按 ESC 可取消，输入框内容不受影响。
 
-![拖拽添加文件](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/drag-upload.ZJh9WiEf.png)
+![拖拽添加文件](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/drag-upload.ZJh9WiEf.png)
 
 ### 超长粘贴自动收起
 
@@ -172,7 +172,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - 鼠标悬停在条目上可预览原文，并看到「点击胶囊可展开内容进行编辑」提示；点击后原文完整展开到输入框中，可继续编辑，条目自动移除；
 - 不超过 3000 字符的粘贴保持原样，不触发收起。
 
-![超长粘贴自动收起](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/paste-chip.BbAZO2Nv.png)
+![超长粘贴自动收起](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/paste-chip.BbAZO2Nv.png)
 
 ### 添加微信聊天记录
 

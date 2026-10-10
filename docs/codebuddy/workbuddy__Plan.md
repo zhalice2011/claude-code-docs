@@ -8,13 +8,13 @@
 
 	- **官网订阅**：登录 [WorkBuddy 官网](https://www.workbuddy.cn/) 后，单击右上角头像，选择**个人中心**，在左侧导航栏选择**套餐与用量**，在订阅计划中点击**升级套餐**按钮。
 	
-	![官网个人中心-套餐与用量的升级套餐入口](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/plan-upgrade-website.FXpJx_Vg.png)
+	![官网个人中心-套餐与用量的升级套餐入口](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/plan-upgrade-website.FXpJx_Vg.png)
 	- **客户端订阅**：下载并安装 WorkBuddy 客户端，登录账号后，点击头像，在弹窗中点击用户名下方的**升级套餐**或进入**设置** \> **套餐与积分**，点击**升级套餐**。
 	
-	![客户端设置-套餐与积分的升级套餐入口](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/plan-upgrade-client.CyP_KxHk.png)
+	![客户端设置-套餐与积分的升级套餐入口](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/plan-upgrade-client.CyP_KxHk.png)
 2. **选择套餐**：页面展示标准版、高级版、旗舰版套餐卡片（高级版为推荐版本），默认选中连续包月计费项，根据实际需求选择套餐及计费项。
 
-![选择套餐并生成支付二维码](https://download.codebuddy.cn/web/docs/3754a028cd26c05d858852b7fbcedeb54159906e/docs/static/plan-subscribe-payment.CxlutSfi.png)
+![选择套餐并生成支付二维码](https://download.codebuddy.cn/web/docs/1fd9c48bbf93dc8e5bc5a2622d78cebdfa6a21d4/docs/static/plan-subscribe-payment.CxlutSfi.png)
 3. **支付套餐**：单击同意协议，或勾选二维码旁的同意服务协议，页面将直接生成支付二维码。使用微信扫码完成支付，支付成功后即可使用对应套餐权益。
 
 ## 升级后的计费方式
