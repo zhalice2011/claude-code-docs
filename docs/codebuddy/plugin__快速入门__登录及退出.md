@@ -9,8 +9,8 @@
 1. 单击底部 icon，或在 CodeBuddy 插件登录页触发登录。
 - VS Code
 
-![](https://download.codebuddy.cn/web/docs/336b41d6723c54ee9b23f824a66171548b5ccdfc/docs/static/%E7%99%BB%E9%99%86%E5%8F%8A%E9%80%80%E5%87%BA-1.Cds2LBUO.png)- JetBrains IDEs
+![](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/%E7%99%BB%E9%99%86%E5%8F%8A%E9%80%80%E5%87%BA-1.Cds2LBUO.png)- JetBrains IDEs
 
-![扫码登录](https://download.codebuddy.cn/web/docs/336b41d6723c54ee9b23f824a66171548b5ccdfc/docs/static/%E7%99%BB%E9%99%86%E5%8F%8A%E9%80%80%E5%87%BA-3.CawjWzBi.png)2. 可以使用手机号或手机微信扫码，授权成功即可登录完成。
+![扫码登录](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/%E7%99%BB%E9%99%86%E5%8F%8A%E9%80%80%E5%87%BA-3.CawjWzBi.png)2. 可以使用手机号或手机微信扫码，授权成功即可登录完成。
 
-![扫码登录](https://download.codebuddy.cn/web/docs/336b41d6723c54ee9b23f824a66171548b5ccdfc/docs/static/%E7%99%BB%E9%99%86%E5%8F%8A%E9%80%80%E5%87%BA-2.C-uWQwyV.png)
+![扫码登录](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/%E7%99%BB%E9%99%86%E5%8F%8A%E9%80%80%E5%87%BA-2.C-uWQwyV.png)
