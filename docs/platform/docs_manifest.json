@@ -2621,22 +2621,22 @@
     "api__compliance.md": {
       "original_url": "https://platform.claude.com/docs/en/api/compliance",
       "original_md_url": "https://platform.claude.com/docs/en/api/compliance.md",
-      "hash": "51d960ff97ee856b55ba9600ccae4d1259a6328bdb0a81498518e9b29965f1b0",
-      "last_updated": "2026-10-12T22:25:09.596646",
+      "hash": "2773fe09ce155ac31d16a92a3844d861d3ee068a494c245a2a5f6607b503a67c",
+      "last_updated": "2026-10-13T20:36:35.596390",
       "source": "platform"
     },
     "api__compliance__activities.md": {
       "original_url": "https://platform.claude.com/docs/en/api/compliance/activities",
       "original_md_url": "https://platform.claude.com/docs/en/api/compliance/activities.md",
-      "hash": "989537802a849fa2516a76053784534d48ceac8cebb1c22eb0b4ebe7bda0c6b3",
-      "last_updated": "2026-10-12T22:25:10.729195",
+      "hash": "d884f5aeaa64b7d3c8c1d63b2e993614b5e0b876285f8bc86503c1706008bc30",
+      "last_updated": "2026-10-13T20:36:36.923775",
       "source": "platform"
     },
     "api__compliance__activities__list.md": {
       "original_url": "https://platform.claude.com/docs/en/api/compliance/activities/list",
       "original_md_url": "https://platform.claude.com/docs/en/api/compliance/activities/list.md",
-      "hash": "8611f11b0b6d9d1480df0a717a5197979349b886d159cd4ff630d9d2c795515d",
-      "last_updated": "2026-10-12T22:25:11.558886",
+      "hash": "635435d14d1df29d91950f8d15e66b0cdb298bf9c7fdc31bac5958751bd91a8a",
+      "last_updated": "2026-10-13T20:36:37.839251",
       "source": "platform"
     },
     "api__compliance__apps.md": {
@@ -5302,7 +5302,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-10-13T13:20:50.330214",
+    "last_fetch_completed": "2026-10-13T20:41:10.064900",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 760,
@@ -5316,7 +5316,7 @@
     "total_files": 757,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-13T13:20:50.330240",
+  "last_updated": "2026-10-13T20:41:10.064924",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

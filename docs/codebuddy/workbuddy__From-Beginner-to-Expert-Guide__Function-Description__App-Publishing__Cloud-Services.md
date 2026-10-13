@@ -4,7 +4,7 @@
 
 应用还可以按需支持用户登录和数据统计，无需自行搭建数据库、部署服务器或维护运行环境。
 
-![云服务概览](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/cloud-overview.BKsT43NE.png)
+![云服务概览](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/cloud-overview.BKsT43NE.png)
 
 不确定是否需要云服务，或需要查询数据、调整设置、排查问题时，可以直接告诉 WorkBuddy。WorkBuddy 会根据当前能力协助处理，并在需要你确认或操作时说明下一步。
 
@@ -14,11 +14,11 @@
 
 数据库用于保存报名、预约、订单和打卡等业务记录。需要核对、补录或导出时，可以在「数据」页找到对应的数据表。「函数」和「权限」页则用于了解应用如何处理数据，以及不同用户可以访问哪些内容。
 
-![数据库数据页](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/cloud-database-data.BWgScMsK.png)
+![数据库数据页](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/cloud-database-data.BWgScMsK.png)
 
-![数据库函数页](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/cloud-database-function.DQI7mEeI.png)
+![数据库函数页](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/cloud-database-function.DQI7mEeI.png)
 
-![数据库权限页](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/cloud-database-permission.yK0NJSne.png)
+![数据库权限页](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/cloud-database-permission.yK0NJSne.png)
 
 ### 身份认证
 
@@ -26,21 +26,21 @@
 
 在页面开启登录方式，不会自动在应用中添加登录功能。需要用户登录时，直接告诉 WorkBuddy 使用场景和登录方式，让它帮你添加。
 
-![身份认证页面查看登录方式开启状态](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/cloud-auth-status.DyZOSqxR.png)
+![身份认证页面查看登录方式开启状态](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/cloud-auth-status.DyZOSqxR.png)
 
-![配置登录方式](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/cloud-auth-config.CmVabOhP.png)
+![配置登录方式](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/cloud-auth-config.CmVabOhP.png)
 
 ### 文件存储
 
 文件存储让应用能够保存用户上传的图片和文档，适合作品征集、资料提交和报修等场景。在页面可以新建文件夹，上传单个不超过 20 MB 的文件，用于预置共享资料和分类整理内容。
 
-![文件存储管理页](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/cloud-storage.SK84rwDx.png)
+![文件存储管理页](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/cloud-storage.SK84rwDx.png)
 
 ### 数据统计
 
 数据统计用于了解应用的用户增长和注册情况。你可以查看总用户数、新增用户数、注册趋势和用户列表。
 
-![数据统计页面](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/cloud-stats.h2HXcXa7.png)
+![数据统计页面](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/cloud-stats.h2HXcXa7.png)
 
 ## 云服务额度
 
@@ -106,9 +106,9 @@
 - 在对话中打开应用预览，点击应用标题旁的「云服务」；
 - 进入「设置 \> 数据管理 \> 应用」，点击已开启应用的云服务图标。
 
-![应用预览标题旁的云服务入口](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/webapp-cloud-entry.BYkfGfvj.png)
+![应用预览标题旁的云服务入口](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/webapp-cloud-entry.BYkfGfvj.png)
 
-![数据管理的应用列表中点击云服务图标](https://download.codebuddy.cn/web/docs/16a58635119da0d07e409e57215fb69de1f01186/docs/static/cloud-manage-list.CgeYY4Ib.png)
+![数据管理的应用列表中点击云服务图标](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/cloud-manage-list.CgeYY4Ib.png)
 
 使用和管理云服务时，请注意：
 
