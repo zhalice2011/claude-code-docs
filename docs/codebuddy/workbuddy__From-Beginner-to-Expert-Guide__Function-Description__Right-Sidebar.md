@@ -15,35 +15,35 @@
 | **变更** | 记录并对比 WorkBuddy 对文件的修改 |
 | **浏览器** | 内置浏览器预览开发中的网页 |
 
-![右侧边栏展开](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/right-sidebar-1.B4zO-GkC.png)
+![右侧边栏展开](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/right-sidebar-1.B4zO-GkC.png)
 
-![右侧边栏概览展开](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/right-sidebar-2.C4qCVUNh.png)
+![右侧边栏概览展开](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/right-sidebar-2.C4qCVUNh.png)
 
 ## 产物
 
 展示当前对话中新生成的文件（PPT、PDF、文档等），点击可查看任务列表及生成内容。
 
-![产物标签页](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/image-42.Coht1O8L.png)
+![产物标签页](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/image-42.Coht1O8L.png)
 
 右键选择**打开文件夹**，可在系统文件管理器（macOS Finder / Windows 文件资源管理器）中打开文件所在位置。
 
-![在文件管理器中打开](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/image-43.Bd-Q6UDE.png)
+![在文件管理器中打开](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/image-43.Bd-Q6UDE.png)
 
 ## 工作空间文件
 
 以树状结构展示当前工作目录下的所有文件，便于直接浏览。
 
-![工作空间文件](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/image-44.B3YM_-Da.png)
+![工作空间文件](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/image-44.B3YM_-Da.png)
 
 在右侧栏打开**本地 Excel** 后，选中单元格区域并**右键**，菜单第一行提供**「AI 编辑」**：点击即可直接对选中区域发起 AI 修改，不必再翻到选区右下角找入口（原入口仍然保留）。
 
-![本地 Excel 的右键菜单第一行「AI 编辑」](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/right-sidebar-excel-ai-edit.Bl-lmRkH.png)
+![本地 Excel 的右键菜单第一行「AI 编辑」](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/right-sidebar-excel-ai-edit.Bl-lmRkH.png)
 
 ## 变更
 
 记录 WorkBuddy 对文件的所有修改，展开可查看具体变更文件，通过差异对比快速确认改动。
 
-![变更标签页](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/image-45.FKMyYQIE.png)
+![变更标签页](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/image-45.FKMyYQIE.png)
 
 ## 浏览器
 
@@ -53,7 +53,7 @@
 
 也可以使用 `Cmd+T` / `Ctrl+T` 新建标签页（右侧边栏收起时会先展开），用鼠标中键点击标签页即可关闭。
 
-![多标签浏览](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/browser-multitab.sf_Mas5P.png)
+![多标签浏览](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/browser-multitab.sf_Mas5P.png)
 
 ### 网址栏访问与搜索
 
@@ -62,7 +62,7 @@
 - 输入的是网址（如 `example.com`、`localhost:3000`）：直接访问；
 - 输入的是其他内容：使用搜狗搜索，并打开搜索结果页。
 
-![在网址栏输入关键词后，下方出现搜索入口](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/browser-omnibox-search.qfQFlqXh.png)
+![在网址栏输入关键词后，下方出现搜索入口](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/browser-omnibox-search.qfQFlqXh.png)
 
 输入过程中，网址栏下方首行是「搜索网页」，选择后即用搜狗搜索当前输入；使用一段时间后，下方还会列出匹配的**浏览历史**和**搜索历史**。可用鼠标点选，或用 `↑` `↓` 选择后按 `Enter`：选择浏览历史会直接打开该页面，选择搜索历史会用该关键词重新搜索。
 
@@ -75,13 +75,13 @@
 - 登录态**按账号隔离**：同一台电脑切换不同 WorkBuddy 账号，不会串用彼此的网站登录态；
 - 支持**主动清除**登录 Cookie 与缓存，清除后相关网站的登录状态将失效。
 
-![清除浏览数据](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/browser-clear-data.C69aA4u2.png)
+![清除浏览数据](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/browser-clear-data.C69aA4u2.png)
 
 ### 页面查找、缩放与截图
 
 点击浏览器右上角的**更多（⋯）**，菜单中提供以下页面工具：
 
-![浏览器右上角「更多」菜单](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/browser-more-menu.kuwScFtl.png)
+![浏览器右上角「更多」菜单](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/browser-more-menu.kuwScFtl.png)
 
 | 菜单项 | 说明 |
 | --- | --- |
@@ -106,7 +106,7 @@
 
 点击浏览器右上角的**更多（⋯）→ 显示设备工具栏**，即可在浏览器顶部打开设备工具栏，一键切换**手机 / 平板 / 桌面**视口，或自定义宽高，方便验证页面在不同设备下的响应式表现。
 
-![设备调试工具栏](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/browser-device-toolbar.CW3QxART.png)
+![设备调试工具栏](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/browser-device-toolbar.CW3QxART.png)
 
 ## 消息中心
 
@@ -119,7 +119,7 @@
 | **任务操作待您确认** | 任务有操作需要你的确认，请点击查看 | 点击直接跳转到对应任务 |
 | **任务已成功完成** | 任务执行完成，请点击查看结果 | 点击直接跳转到对应任务 |
 
-![消息中心](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/right-sidebar-notification.B0am2Q5Q.png)
+![消息中心](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/right-sidebar-notification.B0am2Q5Q.png)
 
 ## 声明
 

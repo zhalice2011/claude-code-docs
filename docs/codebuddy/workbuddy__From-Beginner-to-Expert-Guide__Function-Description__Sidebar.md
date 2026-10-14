@@ -9,7 +9,7 @@ WorkBuddy 主界面的最左侧是导航栏，把新建任务、历史任务和�
 | 区域 | 内容 | 说明 |
 | --- | --- | --- |
 | **顶部** | 版本号、「发现应用」 | 显示当前版本，并可从这里发现更多应用 |
-| **一级入口** | 新建任务、助理、项目、专家·技能·连接器、定时任务、资料库、更多 | 主要功能入口，点击进入对应页面 |
+| **一级入口** | 新建任务、助理、项目、专家·技能·连接器、自动化、资料库、更多 | 主要功能入口，点击进入对应页面 |
 | **任务与空间** | 任务、空间 | 历史任务与工作空间列表，详见[任务管理](./../../Task-Management) |
 | **底部** | 消息中心、多端协同、账号头像 | 消息、设备与账号入口，详见[右侧边栏](./Right-Sidebar)、[系统设置](./Setting) |
 
@@ -21,7 +21,7 @@ WorkBuddy 主界面的最左侧是导航栏，把新建任务、历史任务和�
 | **助理** | 云端助理，可远程接任务、推送消息 | [助理](./Assistant) |
 | **项目** | 按项目组织任务，支持团队协作 | [项目](./Project) |
 | **专家·技能·连接器** | 调用专家、安装技能、连接外部服务 | [专家](./Expert-Center)、[技能](./Skills-Market)、[连接器](./Connector) |
-| **定时任务** | 配置定时任务，让 WorkBuddy 按计划执行 | [定时任务](./Automation-Guide) |
+| **自动化** | 配置定时任务，让 WorkBuddy 按计划执行 | [自动化](./Automation-Guide) |
 | **资料库** | 文档、表格、网页等资料的统一管理 | [资料库](./Library) |
 | **更多** | 收纳低频入口：我的邮箱、腾讯文档、ima、乐享知识库、灵感、Genie BaaS | [我的邮箱](./Mailbox)、[腾讯文档](./Knowledge-Base/Tencent-Doc)、[乐享知识库](./Knowledge-Base/Lexiang)、[灵感](./Ispiration) |
 
@@ -33,13 +33,13 @@ WorkBuddy 主界面的最左侧是导航栏，把新建任务、历史任务和�
 
 在左侧菜单栏的**任意位置点击右键**，在右键菜单中点击**自定义菜单**，即可打开「自定义菜单栏」面板。
 
-![自定义菜单入口](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/sidebar-context-menu.C6bdyaOO.png)
+![自定义菜单入口](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/sidebar-context-menu.C6bdyaOO.png)
 
 ### 调整顺序与分组
 
 面板中分为**一级菜单**与**更多**两组：
 
-![自定义菜单栏面板](https://download.codebuddy.cn/web/docs/0b5fcf54a97e6867761bd47360a1578da6fcdc15/docs/static/sidebar-custom-panel.DRRDux7D.png)
+![自定义菜单栏面板](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/sidebar-custom-panel.DRRDux7D.png)
 
 - **组内调整顺序**：按住条目右侧的手柄上下拖动，可以改变同一组内的先后；
 - **跨组移动**：把条目拖到另一组，即可让它在一级菜单和「更多」之间切换；

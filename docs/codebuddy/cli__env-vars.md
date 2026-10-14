@@ -91,7 +91,6 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_DEFER_TOOL_LOADING` | 设置为 `false` 或 `0` 禁用 MCP 工具延迟加载 |
 | `CODEBUDDY_SHOW_ALL_DEFERRED_TOOLS` | 设置为 `true` 或 `1` 显示所有延迟工具的完整描述 |
 | `CODEBUDDY_DISABLE_CRON` | 设置为 `1` 禁用计划任务 |
-| `CODEBUDDY_DISABLE_TASK_REMINDERS` | 设置为 `1` 关闭长任务运行中的任务列表提醒（包括恢复会话中已保存的提醒）；默认开启。标准模式直连任务工具、PTC 模式 REPL 沙箱内的 `TaskCreate` / `TaskUpdate`（或旧版 `TodoWrite`）长期未更新时会收到隐藏提醒，不改变任务状态或强制执行顺序。Minimal 和沙箱未开放任务工具的模式不触发。用于对照实验与临时回滚 |
 | `CODEBUDDY_MAIN_AGENT_ENABLED` | 主 Agent 四种模式总闸。`0`/`false` 关闭（Web chip / TUI `/agent-mode` 无 picker，run 链不读 standing 主 agent）。未设置时看 `settings.json` 的 `codebuddy.mainAgent.enabled`，再缺省为开。覆盖 settings |
 | `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` | 允许未声明 `mainAgentSupport` 的 ACP 宿主（WorkBuddy Desktop / sidecar）也走模式解析。默认关：这些宿主始终原生 `cli`。`1`/`true` 打开（仍要求总闸开）。覆盖 `codebuddy.mainAgent.allowUnopted` |
 | `CODEBUDDY_REPL_ENABLED` | REPL 总闸。`1`/`true` 强开，`0`/`false` 强关，优先级最高。未设置时：`ptc` / `minimal` 默认开（REPL 是唯一直连工具，关掉等于工具面为空）；**标准 / 创造 / WorkBuddy 原生 `cli` 默认关**。WorkBuddy 将来要开：在 sidecar `managedEnv` 写死 `CODEBUDDY_REPL_ENABLED=1`（工具已在 overlay 的 `cli.tools` 里，只差这道闸）。不要翻 `codebuddy.mainAgent.allowUnopted`——那是让 WorkBuddy 走 PTC 模式解析，不是单独开 REPL |
@@ -151,7 +150,6 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | `CODEBUDDY_PRE_MESSAGE_COMPACT` | 强制控制 pre\-message 压缩开关。`true`/`1` 启用，`false`/`0` 禁用。优先级高于产品配置的 `enablePreMessageCompact` 和 `ContextSummaryAgent` 开关 |
 | `CODEBUDDY_PRE_MESSAGE_COMPACT_PCT` | 设置用户发消息前预检压缩的上下文容量百分比（1\-100）。默认 10%。当上下文超过此阈值时，在处理用户新消息前自动压缩 |
 | `CODEBUDDY_DISABLE_AUTO_MEMORY` | 设置为 `1` 禁用自动内存，设置为 `0` 启用 |
-| `CODEBUDDY_SESSION_HISTORY_CLEANUP` | 控制会话历史自动清理（按 `cleanupPeriodDays` 删除过期会话、记忆与 Trace）。仅 `1`/`true` 开启，其他值或未设置均不清理。交互式启动（TUI、`--serve` Web UI、`codebuddy cleanup`）默认设为 `1`；`-p`、`--acp`、SDK 等非交互启动默认不清理。取代已移除的 `CODEBUDDY_DISABLE_SESSION_HISTORY_CLEANUP` |
 | `CODEBUDDY_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用记忆功能 |
 | `CODEBUDDY_TYPED_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用分类记忆模式 |
 | `CODEBUDDY_TEAM_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用团队记忆模式 |

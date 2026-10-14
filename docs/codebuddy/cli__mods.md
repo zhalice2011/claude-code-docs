@@ -1,6 +1,6 @@
 # Mods
 
-> **状态**：Beta。API 与运行时约束仍在演进；默认开启，无需任何环境变量，`--plugin-dir` 装载即可使用；如需关闭，可用环境变量显式关闭。 **与传统 Hooks 的关系**：不替换。传统 shell / prompt hooks（见 [`hooks.md`](./hooks)）继续可用；Mods 是并行的、类型化的中间件层，两者可同时启用。
+> **状态**：Beta。API 与运行时约束仍在演进；默认开启，无需任何环境变量，`--plugin-dir` 装载即可使用。 **与传统 Hooks 的关系**：不替换。传统 shell / prompt hooks（见 [`hooks.md`](./hooks)）继续可用；Mods 是并行的、类型化的中间件层，两者可同时启用。
 
 ![Mods](https://iili.io/nEwXhpR.png)
 
@@ -239,7 +239,7 @@ on('tool.call', { tool: 'genui_order_place' }, async ($, e) => { /* 同一份状
 
 ## 快速开始
 
-Mods 默认开启，不需要设置任何环境变量。如需关闭，见[装载与运行](#装载与运行)。
+Mods 默认开启，不需要设置任何环境变量。
 
 ### 1\. 创建一个最小 Mod
 
@@ -367,7 +367,7 @@ type Hook<E> = ($: EngineInterface, e: E, next: Next<E>) => Result | Promise<Res
 | `return { value: ... }` | **短路替换**（op 事件专用） |
 | `return { result: ... }` | 顶替 middleware 事件结果 |
 | `next.to(e, 'append')` | 跳到指定 tier（只能往内跳） |
-| `next.origin` | **调用方**身份 `{ plugin, tier, root? }`，root 是宿主解析的包根，不能通过事件 input 伪造；不是自己的 tier |
+| `next.origin` | **调用方**身份 `{ plugin, tier }`，不是自己的 tier |
 | `next.signal` | `AbortSignal`：超时 / 短路时被 abort |
 | `next.trace` | 每层的执行轨迹（plugin / tier / outcome / ms） |
 | `next.budget` | `{ ms, remainingMs }` 剩余预算 |
@@ -450,7 +450,7 @@ codebuddy --plugin-dir <dir> [--plugin-dir <dir2> ...]
 - `--plugin-dir` 可以重复，按声明顺序装载。
 - 目录须包含 `.codebuddy-plugin/plugin.json` 或 `.claude-plugin/plugin.json`（两者同存以前者优先）。
 - 用户手动装载的 Mod 全部落到 **`user` tier**。
-- 无需额外开关或环境变量。如需关闭 Mods，设置 `CBC_ENABLE_FUNCTION_HOOKS` 或官方兼容别名 `CLAUDE_CODE_ENABLE_FUNCTION_HOOKS` 为 `0` / `false` / `no` / `off`；任一变量显式关闭即整体关闭，未设、空值或未识别值按默认开启处理。
+- 无需额外开关或环境变量。
 
 ### 运行时通道
 
@@ -682,8 +682,6 @@ Mods **不替换**传统 hooks。两者协作：
 | `HookOutput` JSON 协议（`decision:'block'` / `continue:false` / exit 2） | 老脚本继续解析 | Legacy adapter 保留完整 JSON 序列化路径；`decision:'block'` / exit 2 会被翻译成 `{ deny }` |
 | `--plugin-dir` 的老 shell hook 目录 | `hooks/hooks.json` 里没有 `modules` | 走老通道 |
 | `--plugin-dir` 的 Mod | `hooks/hooks.json.modules` 存在 | 走 Mods 通道 |
-
-`CBC_ENABLE_FUNCTION_HOOKS` 显式关闭时，整个 Mods 引擎不加载。
 
 ---
 
