@@ -444,15 +444,15 @@
     "cloud-environments.md": {
       "original_url": "https://code.claude.com/docs/en/cloud-environments",
       "original_md_url": "https://code.claude.com/docs/en/cloud-environments.md",
-      "hash": "8a249b9094768984a50cd4d13bdac75ddf96bc719ad43f3f2cb02a2b44cb1a7d",
-      "last_updated": "2026-10-10T03:21:39.081003",
+      "hash": "774cc0bf17c6f6f3d6a57d2b660d61c3dcb763fabb8da9063e0cb4caaf332328",
+      "last_updated": "2026-10-14T00:02:32.828109",
       "source": "claude-code"
     },
     "code-review.md": {
       "original_url": "https://code.claude.com/docs/en/code-review",
       "original_md_url": "https://code.claude.com/docs/en/code-review.md",
-      "hash": "dee0c99cda361d89a25b7e8457aa97094e3d852abbb392db41195539939683cb",
-      "last_updated": "2026-10-10T20:52:53.320414",
+      "hash": "c8bc1fe46d475ad3b585de89661f4ba8c6ca1400923877b4cae4eda4fe8efebe",
+      "last_updated": "2026-10-14T00:02:33.583533",
       "source": "claude-code"
     },
     "commands.md": {
@@ -1550,7 +1550,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-10-13T20:29:16.826944",
+    "last_fetch_completed": "2026-10-14T00:04:24.376328",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 221,
@@ -1560,7 +1560,7 @@
     "total_files": 221,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-13T20:29:16.826974",
+  "last_updated": "2026-10-14T00:04:24.376358",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
