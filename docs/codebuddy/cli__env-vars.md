@@ -150,6 +150,7 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | `CODEBUDDY_PRE_MESSAGE_COMPACT` | 强制控制 pre\-message 压缩开关。`true`/`1` 启用，`false`/`0` 禁用。优先级高于产品配置的 `enablePreMessageCompact` 和 `ContextSummaryAgent` 开关 |
 | `CODEBUDDY_PRE_MESSAGE_COMPACT_PCT` | 设置用户发消息前预检压缩的上下文容量百分比（1\-100）。默认 10%。当上下文超过此阈值时，在处理用户新消息前自动压缩 |
 | `CODEBUDDY_DISABLE_AUTO_MEMORY` | 设置为 `1` 禁用自动内存，设置为 `0` 启用 |
+| `CODEBUDDY_SESSION_HISTORY_CLEANUP` | 控制会话历史自动清理（按 `cleanupPeriodDays` 删除过期会话、记忆与 Trace）。仅 `1`/`true` 开启，其他值或未设置均不清理。交互式启动（TUI、`--serve` Web UI、`codebuddy cleanup`）默认设为 `1`；`-p`、`--acp`、SDK 等非交互启动默认不清理。取代已移除的 `CODEBUDDY_DISABLE_SESSION_HISTORY_CLEANUP` |
 | `CODEBUDDY_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用记忆功能 |
 | `CODEBUDDY_TYPED_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用分类记忆模式 |
 | `CODEBUDDY_TEAM_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用团队记忆模式 |

@@ -60,23 +60,23 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 
 - **文件详情页：** 点击所需文档查看详情，在详情页右上方点击 **···** 打开更多菜单，选择**添加到任务**。同一菜单中还可以选择用浏览器打开、投屏展示、查看文档信息和控制评论显示开关。
 
-![在详情页菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/add-to-task.Cm81svAS.png)
+![在详情页菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/add-to-task.Cm81svAS.png)
 
 - **资料库侧边栏：** 在资料库目录中选中空间或文档，点击 **···** 打开菜单，选择**添加到任务**。同一菜单中还可以重命名、复制链接、邀请和管理成员。
 
-![在资料库目录菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/task-add-to-task.ZmtLAs8j.png)
+![在资料库目录菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/task-add-to-task.ZmtLAs8j.png)
 
 ### 基于资料提问，让 Agent 执行
 
 所选空间进入任务上下文后，直接基于其中的资料提问，让 Agent 执行。因为背景已在上下文中，不必反复解释项目情况。
 
-![所选空间进入任务上下文后直接提问](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/task-run-with-space.DJ9ZA9AU.png)
+![所选空间进入任务上下文后直接提问](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/task-run-with-space.DJ9ZA9AU.png)
 
 ### 把成果保存回资料库
 
 任务完成后，把新的分析成果直接保存回资料库，后续可以继续查找和调用。
 
-![把任务成果保存回资料库](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/task-save-to-library.DTsNhJKl.png)
+![把任务成果保存回资料库](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/task-save-to-library.DTsNhJKl.png)
 
 > 这个闭环让历史成果可以被后续任务反复利用：下一次分析时 Agent 直接读取已沉淀的资料，沿着已有结论继续，而不必从零开始，也不需要翻找历史会话。
 
@@ -92,13 +92,13 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 
 在资料库中打开在线 HTML 产物，在该产物的工具栏中点击**更多（…）**，选择**刷新**。
 
-![在线 HTML 产物的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/html-refresh-online.A4PW1LM5.png)
+![在线 HTML 产物的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/html-refresh-online.A4PW1LM5.png)
 
 #### 本地 HTML 文件
 
 预览本地 HTML 文件时，在预览界面的工具栏中点击**更多（…）**，选择**刷新**。
 
-![本地 HTML 预览的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/html-refresh-local.DDCmIQrk.png)
+![本地 HTML 预览的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/html-refresh-local.DDCmIQrk.png)
 
 刷新后页面会回到该 HTML 的入口页顶部，已进入的子页面及打开的弹层等会一并重置。刷新只作用于当前 HTML，不会返回 WorkBuddy 首页，也不会切换到其他标签页。
 
@@ -135,7 +135,7 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 
 **撤销与重做**：连续编辑操作可逐步撤销、重做，放心试改。
 
-![本地 HTML 可视化编辑](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/html-visual-editor.co2vInlt.png)
+![本地 HTML 可视化编辑](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/html-visual-editor.co2vInlt.png)
 
 ## 本地 Markdown 编辑器
 
@@ -148,7 +148,7 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 - 菜单按钮：**AI 编辑**｜**加粗** / **斜体** / **下划线** / **删除线** / **链接** / **行内代码**
 - 点击即时生效；复杂的内容调整仍可交给 AI 编辑
 
-![划词菜单](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/md-editor-selection-menu.CPvzmiPs.png)
+![划词菜单](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/md-editor-selection-menu.CPvzmiPs.png)
 
 ### 悬浮快捷菜单
 
@@ -164,7 +164,7 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 | 视频 / 文件 | AI 编辑、预览 / 全屏、下载、删除 |
 | 链接 | 打开、复制、编辑、取消链接 |
 
-![链接悬浮菜单示例](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/md-editor-hover-menu.Gf63krE9.png)
+![链接悬浮菜单示例](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/md-editor-hover-menu.Gf63krE9.png)
 
 说明
 
@@ -179,7 +179,30 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 - 滚动正文时，目录会**自动高亮**当前所在章节；
 - 文档没有标题时不显示目录入口。
 
-![文档目录导航](https://download.codebuddy.cn/web/docs/a4480d6166946754226779a4b54a029155a96cd1/docs/static/md-editor-toc.C0a_I6xz.png)
+![文档目录导航](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/md-editor-toc.C0a_I6xz.png)
+
+### 查找与替换
+
+在文档中按 `Cmd+F` / `Ctrl+F` 打开查找面板，输入关键词后可在匹配项之间逐处跳转；按 `Cmd+H` / `Ctrl+H` 则直接进入「查找 \+ 替换」。
+
+- 面板显示当前命中位置与总数，可开关「区分大小写」；
+- 替换可只替换当前一处，也可**全部替换**；
+- 文档处于只读状态时只能查找，不能替换；
+- 按 `Esc` 或点击关闭按钮收起面板。
+
+![本地 Markdown 的查找与替换面板](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/md-editor-find-replace.DMuhlFTj.png)
+
+提示
+
+`Cmd+F` / `Ctrl+F` 在对话区搜索的是对话内容；焦点在文档里时，同样的快捷键查找的是当前文档。
+
+### 内容缩放
+
+点击预览区的**更多**菜单，在「缩放」一行用 **−** / **\+** 缩小或放大文档内容，点击重置按钮恢复原始大小。缩放只作用于文档内容，不会改变客户端界面和字号。
+
+![本地 Markdown 预览「更多」菜单中的缩放](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/md-editor-zoom-menu.B5M5yXGo.png)
+
+也可以在光标位于文档内时，用 `Cmd` / `Ctrl` 加 `+`、`-`、`0` 缩放，或按住 `Cmd` / `Ctrl` 滚动鼠标滚轮。使用快捷键或滚轮缩放时，预览区顶部会短暂浮出缩放提示，可直接点击其中的按钮继续调整。
 
 ### 智能复制
 
