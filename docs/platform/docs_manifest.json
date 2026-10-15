@@ -2684,8 +2684,8 @@
     "api__claude-platform-on-aws-iam-actions.md": {
       "original_url": "https://platform.claude.com/docs/en/api/claude-platform-on-aws-iam-actions",
       "original_md_url": "https://platform.claude.com/docs/en/api/claude-platform-on-aws-iam-actions.md",
-      "hash": "46c056ab748e95e5c4d7cb6da5b9222ef2bee21047bfc2ae3b038d36cd074d4b",
-      "last_updated": "2026-10-14T19:10:32.412852",
+      "hash": "cdab47a48fba79d40feafd978d9b9e54306b337694bcf3119508aeb578c10264",
+      "last_updated": "2026-10-15T02:28:55.606553",
       "source": "platform"
     },
     "api__completions.md": {
@@ -3972,8 +3972,8 @@
     "build-with-claude__claude-platform-on-aws.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws.md",
-      "hash": "97c763f7ae548739b48dfc81f1222af1037c4d10aca1beaf9b9d5d3c1aa0774f",
-      "last_updated": "2026-10-14T23:41:52.022262",
+      "hash": "a6a9e2ece98885b55fd0f8fe5b07da56c6afbf68a7d9a9fc6763981ee9303c5a",
+      "last_updated": "2026-10-15T02:31:13.786210",
       "source": "platform"
     },
     "build-with-claude__compaction.md": {
@@ -5435,7 +5435,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-10-14T23:44:22.605653",
+    "last_fetch_completed": "2026-10-15T02:33:43.166791",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 779,
@@ -5449,7 +5449,7 @@
     "total_files": 776,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-14T23:44:22.605676",
+  "last_updated": "2026-10-15T02:33:43.166811",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
