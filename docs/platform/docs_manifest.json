@@ -4560,8 +4560,8 @@
     "manage-claude__compliance-api-access.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/compliance-api-access",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/compliance-api-access.md",
-      "hash": "237f56e6abef72f5fdebbce7267549560025b05e79fc59665e3125a743a00d13",
-      "last_updated": "2026-10-14T23:42:55.353733",
+      "hash": "099995a689bda9984bc87b2fdb072a0d2836a91b47970d4e1ceecb49bfcf5e82",
+      "last_updated": "2026-10-15T18:56:20.605578",
       "source": "platform"
     },
     "manage-claude__compliance-content-data.md": {
@@ -4595,8 +4595,8 @@
     "manage-claude__compliance-org-data.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/compliance-org-data",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/compliance-org-data.md",
-      "hash": "36d98d1737821f6f6bd831981205ff529c6193fb28bd7092df135e42e2b7a25e",
-      "last_updated": "2026-10-01T20:07:49.767038",
+      "hash": "3b853646932e720d96d3a662a0ce574592ac4f94fb969064bd7188fd894c62e1",
+      "last_updated": "2026-10-15T18:56:24.083457",
       "source": "platform"
     },
     "manage-claude__compliance-sessions.md": {
@@ -5225,8 +5225,8 @@
     "release-notes__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/overview",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/overview.md",
-      "hash": "6c6fecbbba21f4066ac02c61c86e960d44350332817b4f85545c166f76a0f807",
-      "last_updated": "2026-10-14T23:44:03.658473",
+      "hash": "ef354793667f589b1fe96f58cadeb0de28091f82b93a42ecccafe9f11da2daf3",
+      "last_updated": "2026-10-15T18:57:28.338075",
       "source": "platform"
     },
     "release-notes__system-prompts__claude-fable-5.md": {
@@ -5435,7 +5435,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-10-15T13:58:40.957864",
+    "last_fetch_completed": "2026-10-15T18:57:47.401769",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 779,
@@ -5449,7 +5449,7 @@
     "total_files": 776,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-15T13:58:40.957888",
+  "last_updated": "2026-10-15T18:57:47.401785",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
