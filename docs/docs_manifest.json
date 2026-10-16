@@ -1032,8 +1032,8 @@
     "plugins__mods__admin.md": {
       "original_url": "https://code.claude.com/docs/en/plugins/mods/admin",
       "original_md_url": "https://code.claude.com/docs/en/plugins/mods/admin.md",
-      "hash": "cebdf7526de9a2653ee570efd1f47667d69a4095f16f27e4d07c38ef04e5a1e5",
-      "last_updated": "2026-10-15T18:47:27.443378",
+      "hash": "6a59b1d78310187847b1154dd76af53dea43ca49cd7564699e9a5c44e738cf68",
+      "last_updated": "2026-10-16T02:16:28.164659",
       "source": "claude-code"
     },
     "plugins__mods__api.md": {
@@ -1592,7 +1592,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-10-15T23:27:38.256598",
+    "last_fetch_completed": "2026-10-16T02:17:23.011520",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 227,
@@ -1602,7 +1602,7 @@
     "total_files": 227,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-15T23:27:38.256615",
+  "last_updated": "2026-10-16T02:17:23.011551",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

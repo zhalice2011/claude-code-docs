@@ -86123,7 +86123,7 @@ compliance activities that can be filtered by various criteria.
 
         - `user_agent: optional string or null`
 
-    - `updates: array of Name or Capabilities or RedactContent or 103 more`
+    - `updates: array of Name or Capabilities or RedactContent or 104 more`
 
       - `Name object`
 
@@ -87900,7 +87900,7 @@ compliance activities that can be filtered by various criteria.
 
       - `ClaudeScienceLocalWorkImportEnabled object`
 
-        The Claude Science setting that lets members import projects, sessions, and artifacts saved on their computer under other sign-ins was changed for the organization.
+        The Claude Science setting that lets members access projects, sessions, and artifacts previously saved on their computer under other sign-ins, and add them to their account in the organization, was changed for the organization.
 
         - `type: optional "claude_science_local_work_import_enabled"`
 
@@ -88001,6 +88001,22 @@ compliance activities that can be filtered by various criteria.
         - `type: optional "artifact_type_motion_enabled"`
 
           default: artifact_type_motion_enabled
+
+        - `current_value: optional boolean or null`
+
+          Setting value immediately after this change
+
+        - `previous_value: optional boolean or null`
+
+          Setting value immediately before this change. Null means the setting had not been set for the organization, so the plan default applied.
+
+      - `ArtifactTypeDashboardsEnabled object`
+
+        The setting that lets members create Dashboards, one of Anthropic's built-in Artifact types, was changed for the organization.
+
+        - `type: optional "artifact_type_dashboards_enabled"`
+
+          default: artifact_type_dashboards_enabled
 
         - `current_value: optional boolean or null`
 
