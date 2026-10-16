@@ -27,11 +27,11 @@ Skill 和专家是工具箱里的工具，灵感是用工具做出来的真实�
 
 在左侧边栏点击**更多**进入**灵感**，可在精选板块随机选择热门案例，或按场景分类搜索案例。灵感卡片会展示**作者头像与昵称**，进入详情前即可判断内容来源。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/inspiration-1.0rShJH9f.png)### 浏览灵感详情
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/inspiration-1.0rShJH9f.png)### 浏览灵感详情
 
 点击案例进入详情页，默认**双栏布局**：左侧直接查看灵感的相关产物，右侧展示基础信息、使用的专家信息与提示词（Prompt）。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/explore-2.BeW6EOCc.png)### 复用灵感
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/explore-2.BeW6EOCc.png)### 复用灵感
 
 看中哪个，点击**做同款**，WorkBuddy 基于案例**套版复刻**：自动预填 Prompt、加载关联的 Skill 和专家配置，可以直接生成，或修改细节生成你的专属版本。套版复刻保留原版式结构，比从零生成**更省积分、效果更稳定**（减少模型自由发挥带来的偏差）。
 
@@ -41,11 +41,11 @@ Skill 和专家是工具箱里的工具，灵感是用工具做出来的真实�
 - **发送到任务**：支持把灵感的**全部有效产物**或**单个产物**添加到任务（文件类产物作为附件、链接类作为链接挂载），挂载成功后进入任务，可继续补充指令；
 - 发送失败时会停留在详情页并保留原因，可直接重试。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/explore-3.B-b95Qd6.png)### 查看生成成果
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/explore-3.B-b95Qd6.png)### 查看生成成果
 
 在右侧产物页面查看生成结果，生成网页文件时自动打开内置浏览器预览效果:
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/explore-4.COhbkeGJ.png)## 注意事项与重点提示
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/explore-4.COhbkeGJ.png)## 注意事项与重点提示
 
 ### 信息收集与使用
 

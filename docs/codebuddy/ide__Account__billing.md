@@ -5,4 +5,4 @@
 1. 登录官网；
 2. 点击右上角头像，进入 **个人主页 \- 账单与发票**。
 
-![alt text](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/image.aDZ2aja3.png)
+![alt text](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/image.aDZ2aja3.png)

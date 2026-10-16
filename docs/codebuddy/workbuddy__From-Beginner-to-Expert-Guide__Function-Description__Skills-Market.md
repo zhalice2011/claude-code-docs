@@ -1,59 +1,73 @@
 # 技能
 
-配置**技能**能够扩展 WorkBuddy 的能力范围，赋予 WorkBuddy 更强大的能力。
+技能（Skill）用于扩展 WorkBuddy 的能力，通过封装脚本与工作流，帮助你完成发送邮件、读写文件、查询信息等特定任务（如发送邮件、订外卖、查询股价、读写文件、调用第三方 API 等）。
 
-## 概述
-
-**技能（Skill）** 为 WorkBuddy 增加「特定工具能力」—— 封装一组可执行的脚本与工作流，使 AI 在您的授权下完成具体动作（如发送邮件、订外卖、查询股价、读写文件、调用第三方 API 等）。
+注意事项
 
 Skill 可能根据其能力与指令使用**信息收集与使用**中提到的任意数据，也可能将您的输入内容发往第三方。建议**优先使用官方推荐 Skill**；安装第三方 Skill 前请审慎校验来源、权限申请与脚本内容。
 
-## 页面概览
+## 查看技能
+
+在左侧边栏点击**专家·技能·连接器**，选中**技能**页签，即可进入技能板块中，您可以在这里查找和安装技能，也可以在「已安装」中查看已安装的技能。
 
 技能板块分为两个内容：
 
 | 区域 | 内容 |
 | --- | --- |
-| 技能市场 | 推荐技能，可按需一键安装 |
+| 技能市场 | 按推荐、SkillHub、套件分类展示技能，可按需一键安装 |
 | 已安装 | 已安装的本地技能，可直接在对话中调用 |
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/skill-1.BLRwED0h.png)## 如何使用技能（Skill）
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/skill-1.CIWtUwfL.png)技能市场卡片会展示每个技能的**使用量**与**安装量**，帮助你快速判断技能的热度。
+
+## 获取技能
 
 ### 安装技能
 
-点击**添加技能**通过导入本地技能包或向WorkBuddy描述任务需求查找和创建技能：
+你可以通过技能页面或对话安装技能。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/skill-2.DIhokP9-.png)- 上传技能：导入本地技能包安装。选择**上传技能**，拖拽或点击 **选择文件**，选中本地技能包即可完成导入。
+- **通过技能页面添加**：在技能板块中，点击想要添加的技能卡片右上方的 \+ 号，技能安装成功后，窗口上方提示安装成功。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/image-17-1.CL2d5GKX.png)导入后系统将自动完成配置，无需额外操作。
+![通过技能卡片右上方的 + 号安装技能](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/skill-install-plus.Cwc-dxdr.png)
 
-- 查找技能：选择**查找技能**，输入任务描述，WorkBuddy将自动查找相关技能。
+- **对话安装**：直接在对话中描述需求（如“帮我找一个能把网页转成 PDF 的技能”），WorkBuddy 会自动搜索技能市场并展示候选技能，确认后即可完成安装。此方式仅支持安装技能市场中的技能。自行上传的技能包需通过「上传技能」导入。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/skill-3.PTyavE2s.png)- 创建技能：选择**创建技能**，输入任务描述，WorkBuddy将自动创建相关技能。
+### 上传技能
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/skill-4.Ce9uwHkT.png)### 启用 / 关闭技能
+在技能板块中，点击**添加技能** \> **上传技能**，拖拽或点击**选择文件**，选中本地技能包即可完成导入。导入后系统将自动完成配置，无需额外操作。
 
-已安装技能支持随时关闭或重新启用，**无需卸载**。关闭后技能仍保留在已安装列表中，但不会参与对话中的模型自动调用；重新开启后立即恢复。
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/image-17-1.CL2d5GKX.png)### 创建技能
+
+在技能板块中，点击**添加技能** \> **创建技能**，输入任务描述，WorkBuddy将自动创建相关技能。
+
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/skill-4.Ce9uwHkT.png)### 查找并安装技能
+
+在技能板块中，点击**添加技能** \> **查找技能**，输入任务描述，WorkBuddy将自动查找相关技能并完成安装。
+
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/skill-3.PTyavE2s.png)## 管理技能
+
+### 启用 / 关闭技能
+
+关闭后技能仍保留在已安装列表中，不再参与新任务的调用；已加载到当前会话的技能在本会话内仍可使用，新发起的会话才会完全生效。重新开启后立即恢复。
 
 - **开关状态多端同步**：技能的启用 / 关闭状态记录在你的用户全局配置中，可随账号配置在不同设备间同步；
 - **不改动技能原文件**：开关状态仅记录在你的配置中，不会修改技能包本身的 `SKILL.md` 文件——从 `.agents` 等目录复制安装的技能始终保持原始内容；
 - **关闭 ≠ 卸载**：关闭只是暂停模型调用，技能文件与配置都会保留；卸载则会彻底删除技能及其开关记录。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/skill-5.DXH8Vvpw.png)建议
+建议
 
-仅启用当前任务所需的技能，减少无关干扰并降低误调用概率。
-
+- 仅启用当前任务所需的技能，减少无关干扰并降低误调用概率。
+- 已关闭的技能不会出现在对话查询结果中。若询问某项技能时 WorkBuddy 表示没有，可到「已安装」列表确认——它可能只是处于关闭状态。
 ### 搜索技能
 
 技能较多时，通过搜索框输入关键词可快速定位目标技能。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/skill-6.DUKl69US.png)### 卸载技能
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/skill-6.CooXdGGr.png)### 卸载技能
 
-需要在本机完全卸载技能时，可选择**卸载技能**：
+需要在本机完全卸载技能时，在技能板块中，点击**已安装**，选择需要卸载的技能，点击「...」\> **卸载**，确认卸载已选技能后，即可完成技能卸载。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/skilluninstall-20.Decy0AWJ.png)支持批量操作卸载：
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/skilluninstall-20.C5wF-vEj.png)也支持批量操作卸载，在已安装的技能列表页面，点击**批量管理**，选中多个需要卸载的技能，点击右上角的**卸载**，确认卸载已选技能后，即可完成批量技能卸载。
 
-![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/skilluninstall-21.BwJOjhUv.png)![](https://download.codebuddy.cn/web/docs/b7f283f4204e98a9aa485a96d810a2ee8be37650/docs/static/skilluninstall-22.CqbPcSmz.png)## 注意事项与重点提示
+![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/skilluninstall-21.BmujGp47.png)## 注意事项与重点提示
 
 ### 信息收集与使用
 
