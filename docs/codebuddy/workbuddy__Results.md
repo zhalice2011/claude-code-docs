@@ -23,11 +23,11 @@
 - 分析报告
 - 自动生成的交付文件
 
-![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/results-1.1p-6Qvw_.png)### 操作文件与链接
+![](https://download.codebuddy.cn/web/docs/6392fa186d1020d47d1b5ae089a91b9dcd06f06f/docs/static/results-1.1p-6Qvw_.png)### 操作文件与链接
 
 查看结果中的文件、链接等内容时，可单击产物卡片右边的「⋯」按钮进行操作；也可以直接点击链接，自动在结果区展示内容。
 
-![结果内容操作菜单](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/conversation-link-context-menu.Bi45owNT.png)
+![结果内容操作菜单](https://download.codebuddy.cn/web/docs/6392fa186d1020d47d1b5ae089a91b9dcd06f06f/docs/static/conversation-link-context-menu.Bi45owNT.png)
 
 菜单项包括：
 
@@ -46,17 +46,17 @@
 - **内置打开**：所有链接在 WorkBuddy 内置浏览器打开；
 - **外部打开**：所有链接在系统默认浏览器打开。
 
-![设置 → 通用 → 链接打开方式](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/settings-link-open-mode.ztWlGEym.png)
+![设置 → 通用 → 链接打开方式](https://download.codebuddy.cn/web/docs/6392fa186d1020d47d1b5ae089a91b9dcd06f06f/docs/static/settings-link-open-mode.ztWlGEym.png)
 
 ### 分享产物
 
 在预览产物文件时，点击右上角分享图标：
 
-![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/results-2.CHN1y69w.png)### 上传产物到云端
+![](https://download.codebuddy.cn/web/docs/6392fa186d1020d47d1b5ae089a91b9dcd06f06f/docs/static/results-2.CHN1y69w.png)### 上传产物到云端
 
 支持上传到**我的云端网盘**、**腾讯文档**、**ima 知识库**、**乐享知识库**，在其他端的应用内也可以查看。
 
-![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/results-3.PA3T0X1N.png)## 网页
+![](https://download.codebuddy.cn/web/docs/6392fa186d1020d47d1b5ae089a91b9dcd06f06f/docs/static/results-3.PA3T0X1N.png)## 网页
 
 如果任务生成的是网页、页面原型或本地启动的 Web 应用，您可以在内置浏览器中直接查看效果。
 
@@ -68,13 +68,13 @@
 
 这适合用于确认页面结构、样式和交互结果是否符合预期。
 
-![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/results-4.DQxfaWoG.png)产物栏支持同时打开**多个网页页签**：
+![](https://download.codebuddy.cn/web/docs/6392fa186d1020d47d1b5ae089a91b9dcd06f06f/docs/static/results-4.DQxfaWoG.png)产物栏支持同时打开**多个网页页签**：
 
 - 网页产物打开时，导航栏右侧展示 **\+ 号按钮**，点击即可新建页签（默认为新标签页，可搜索或输入网址）；
 - 页签可点击切换、可单独关闭，每个页签保持**独立的浏览状态**（当前网址、前进 / 后退历史）；
 - 关闭当前页签后自动选中相邻页签；关闭全部页签后产物栏恢复默认状态。
 
-![多个网页页签](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/results-multi-browser.Csb5NPOL.png)
+![多个网页页签](https://download.codebuddy.cn/web/docs/6392fa186d1020d47d1b5ae089a91b9dcd06f06f/docs/static/results-multi-browser.Csb5NPOL.png)
 
 ## 工作空间文件
 
@@ -92,7 +92,7 @@
 - 对照不同文件之间的关系
 - 检查任务是否写入了正确的位置
 
-![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/results-5.BQcGOAhv.png)## 变更
+![](https://download.codebuddy.cn/web/docs/6392fa186d1020d47d1b5ae089a91b9dcd06f06f/docs/static/results-5.BQcGOAhv.png)## 变更
 
 **变更**视图用于查看当前任务带来的文件修改，方便您在接受结果前先做一轮检查。
 
@@ -104,4 +104,4 @@
 
 如果任务涉及代码开发、脚本生成或配置调整，建议优先在这里确认改动是否符合预期。
 
-![](https://download.codebuddy.cn/web/docs/1be2a928a28b9ba7746ea1477fabcc4310911418/docs/static/results-6.CgDwNO45.png)
+![](https://download.codebuddy.cn/web/docs/6392fa186d1020d47d1b5ae089a91b9dcd06f06f/docs/static/results-6.CgDwNO45.png)
