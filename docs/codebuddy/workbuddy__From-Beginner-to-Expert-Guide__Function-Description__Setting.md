@@ -8,16 +8,16 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等配置�
 
 设置面板在**登录前后均可打开**。点击顶部工具栏的**帮助** \> **设置**是登录前后均可使用的通用入口。
 
-![顶部工具栏帮助菜单中的设置入口](https://download.codebuddy.cn/web/docs/aafbbf51beede9ed92e891325729f1e61074e0a4/docs/static/help-menu-setting.DD15JgED.png)
+![顶部工具栏帮助菜单中的设置入口](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/help-menu-setting.DD15JgED.png)
 
 此外，登录前后还有各自的专属入口：
 
 - **已登录**：点击左侧边栏底部的**头像**，弹出用户菜单，点击**设置**打开设置面板。
 
-![用户菜单](https://download.codebuddy.cn/web/docs/aafbbf51beede9ed92e891325729f1e61074e0a4/docs/static/user-menu.Bc8d0fWL.png)
+![用户菜单](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/user-menu.Bc8d0fWL.png)
 - **未登录状态**：在登录界面点击底部的**网络代理**，可进入设置面板。默认定位到**通用** \> **网络代理**，便于登录前排查网络与代理问题，调整完成后可返回登录界面重试；同时也可以调整其他无需登录的通用设置，依赖登录的设置项暂不可用。
 
-![登录界面点击底部网络代理进入设置](https://download.codebuddy.cn/web/docs/aafbbf51beede9ed92e891325729f1e61074e0a4/docs/static/login-network-proxy.BsX8zQIk.png)
+![登录界面点击底部网络代理进入设置](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/login-network-proxy.BsX8zQIk.png)
 
 TIP
 
@@ -46,7 +46,7 @@ TIP
 
 设置面板采用**左侧导航 \+ 右侧内容区**结构，左侧为设置项导航，右侧为对应配置内容，**修改即时生效、无需重启**。
 
-![设置面板](https://download.codebuddy.cn/web/docs/aafbbf51beede9ed92e891325729f1e61074e0a4/docs/static/setting-panel.DMOGw4qt.png)
+![设置面板](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/setting-panel.DMOGw4qt.png)
 
 左侧导航按照功能分为设置、功能、数据与安全三组，选择对应设置项后，可在右侧查看和修改相关配置。
 
@@ -75,7 +75,7 @@ TIP
 
 任务完成、需要你确认或中断时，WorkBuddy 会通过系统通知提醒你，不必一直盯着窗口。在**设置** \> **通用** \> **通知**中管理。
 
-![设置 → 通用 → 通知](https://download.codebuddy.cn/web/docs/aafbbf51beede9ed92e891325729f1e61074e0a4/docs/static/setting-notification.CJINdn9N.png)
+![设置 → 通用 → 通知](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/setting-notification.CJINdn9N.png)
 
 | 设置项 | 说明 |
 | --- | --- |
@@ -103,7 +103,7 @@ TIP
 
 查看当前版本并检查更新、前往官网，也可以扫码关注公众号、视频号与腾讯频道，获取实用技巧与产品动态。
 
-![关于](https://download.codebuddy.cn/web/docs/aafbbf51beede9ed92e891325729f1e61074e0a4/docs/static/setting-about.BqzUZcOa.png)
+![关于](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/setting-about.BqzUZcOa.png)
 
 ## 代码开发的用户级配置兼容说明
 

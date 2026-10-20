@@ -8,10 +8,10 @@
 
 在IDE内点击右上角的头像图标，选择**帮助与反馈**：
 
-![](https://download.codebuddy.cn/web/docs/aafbbf51beede9ed92e891325729f1e61074e0a4/docs/static/contact-1.kmLLvOJY.png)在**意见反馈**处描述您的需求，建议上传图片并勾选上传日志，以便团队更准确地理解您的需求和问题:
+![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/contact-1.kmLLvOJY.png)在**意见反馈**处描述您的需求，建议上传图片并勾选上传日志，以便团队更准确地理解您的需求和问题:
 
-![](https://download.codebuddy.cn/web/docs/aafbbf51beede9ed92e891325729f1e61074e0a4/docs/static/contact-2.DeC4EwWt.png)## 售前咨询
+![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/contact-2.DeC4EwWt.png)## 售前咨询
 
 当您需要购买咨询时可以扫描下方二维码，会有专属客户经理在线为您解答。
 
-![售前咨询二维码](https://download.codebuddy.cn/web/docs/aafbbf51beede9ed92e891325729f1e61074e0a4/docs/static/sales-qrcode.BNy2Grnu.png)
+![售前咨询二维码](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/sales-qrcode.BNy2Grnu.png)

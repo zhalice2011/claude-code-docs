@@ -363,7 +363,7 @@ json
 - `url` 填 base URL，末尾带不带 `/responses` 都可以。
 - 只有模型配置里显式写的 `api` 会切换协议；模型目录里标注为 `openai-responses` 的内置模型仍走原有链路。
 - apiKey 里的 `${CODEBUDDY_SESSION_ID}`（或 `${CLAUDE_SESSION_ID}`）在每次请求时替换为主会话 id。subagent、标题和 WebFetch 摘要等一次性辅助调用、`/btw`，以及 fork 出的会话（`/fork`、`--fork-session`、ACP fork）都沿用来源会话的值，这样回放的加密推理始终落在能解密它的上游账号上；会话 JSONL 里每条 Responses 条目的 `providerData.upstream.rootSessionId` 记录了这个值，fork 和 `--resume` 据此沿用。加载期的 `${ENV}` 展开会跳过这两个名字，即使进程环境里有同名变量（例如从另一个会话的 shell 启动 CLI）也不会被提前写死。aihub 用它作 `cache_task_id`，把同一任务的所有请求固定在同一个上游账号；需要固定会话 id 时配合 `--session-id` 使用。
-- aihub 限流时返回 HTTP 200，在流里下发 `error` / `response.failed`。CLI 把输出开始前的流内错误还原成 OpenAI 普通接口返回的 HTTP 状态，重试与模型切换和 chat completions 一致：限流按 429 退避重试；额度耗尽（`insufficient_quota`）同为 429，但不重试，直接交给备用模型；上下文超长、请求内容或图片无效按 400，不重试（上下文超长会触发自动压缩）；`server_error` 按 500，不重试。其他流内错误仍按原有的流式错误处理。无人值守跑批建议设 `CODEBUDDY_RETRY_WATCHDOG=1`（或调大 `CODEBUDDY_MAX_RETRIES`）。
+- aihub 限流时返回 HTTP 200，在流里下发 `error` / `response.failed`。CLI 把输出开始前的流内错误还原成 OpenAI 普通接口返回的 HTTP 状态，重试与模型切换和 chat completions 一致：限流按 429 退避重试；额度耗尽（`insufficient_quota`）同为 429，但不重试，直接交给备用模型；上下文超长、请求内容或图片无效按 400，不重试（上下文超长会触发自动压缩）；`server_error` 虽按 500 归类，但上游已返回 200 开始推流，不做请求级重试。其他流内错误仍按原有的流式错误处理。无人值守跑批建议设 `CODEBUDDY_RETRY_WATCHDOG=1`（或调大 `CODEBUDDY_MAX_RETRIES`）。
 - 与 pi 一致，只有声明了 `supportsReasoning: true` 的模型、且这次请求带推理参数（开启了思考）时，才携带 `include: ["reasoning.encrypted_content"]`，与 `store` 无关。
 - 工具结果与用户消息里的图片（含会话恢复后的 blob 引用）会还原为 `input_image`，`detail` 默认 `auto`；工具结果的形状与 pi 一致：文本合并成一段放在前面，图片随后，没有图片时仍是字符串。`supportsImages: false` 时替换为省略提示。
 - 回放历史时，其他模型产生的条目、以及推理条目无法回放的那次调用，都不带上游 `fc_` / `msg_` id，避免 API 的 reasoning 配对校验报错；call id 规范为 `[A-Za-z0-9_-]`、最长 64 字符，空工具输出发送 `(no tool output)`。
