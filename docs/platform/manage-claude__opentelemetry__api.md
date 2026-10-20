@@ -63,7 +63,7 @@ You can also add a destination with the [Admin API](https://platform.claude.com/
 
 <CodeGroup>
   ```bash CLI
-  # Sign in once as an admin, which opens a browser. Leave ANTHROPIC_API_KEY unset, because it overrides the profile.
+  # Sign in once as an admin, which opens a browser.
   ant auth login --profile admin --scope "org:admin"
   ant --profile admin beta:organization:telemetry-destinations create \
     --endpoint-url https://gateway.example.com/otlp \
