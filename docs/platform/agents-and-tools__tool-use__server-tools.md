@@ -164,8 +164,7 @@ Here's how to handle the `pause_turn` stop reason:
       Model = Model.ClaudeOpus5_5,
       MaxTokens = 1024,
       Messages = [
-          new() {
-              Role = Role.User,
+          new UserMessageParam {
               Content = "Search for comprehensive information about quantum computing breakthroughs in 2025"
           }
       ],
@@ -182,12 +181,10 @@ Here's how to handle the `pause_turn` stop reason:
           Model = Model.ClaudeOpus5_5,
           MaxTokens = 1024,
           Messages = [
-              new() {
-                  Role = Role.User,
+              new UserMessageParam {
                   Content = "Search for comprehensive information about quantum computing breakthroughs in 2025"
               },
-              new() {
-                  Role = Role.Assistant,
+              new AssistantMessageParam {
                   Content = response.Content.Select(block => new ContentBlockParam(block.Json)).ToList()
               }
           ],
@@ -703,9 +700,8 @@ The following example enables web fetch together with a user-defined `run_comman
           },
       }),
   ];
-  MessageParam userMessage = new()
+  MessageParam userMessage = new UserMessageParam
   {
-      Role = Role.User,
       Content = "Summarize https://example.com/article and run uname -a to tell me what system this is on."
   };
 
@@ -743,12 +739,11 @@ The following example enables web fetch together with a user-defined `run_comman
           Messages =
           [
               userMessage,
-              new()
+              new AssistantMessageParam
               {
-                  Role = Role.Assistant,
                   Content = response.Content.Select(block => new ContentBlockParam(block.Json)).ToList()
               },
-              new() { Role = Role.User, Content = new MessageParamContent(toolResults) }
+              new UserMessageParam { Content = toolResults }
           ]
       });
       // If a web_fetch was deferred, it runs on this request and its
@@ -875,7 +870,7 @@ The following example enables web fetch together with a user-defined `run_comman
               .addTool(runCommandTool)
               .addUserMessage(prompt)
               .addMessage(response)
-              .addUserMessageOfBlockParams(toolResults)
+              .addUserMessageOfContentBlockParams(toolResults)
               .build());
           // If a web_fetch was deferred, it runs on this request and its
           // web_fetch_tool_result is the first block of continuation.content().
