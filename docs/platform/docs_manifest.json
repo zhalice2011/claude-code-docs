@@ -3335,8 +3335,8 @@
     "api__opentelemetry__spans.md": {
       "original_url": "https://platform.claude.com/docs/en/api/opentelemetry/spans",
       "original_md_url": "https://platform.claude.com/docs/en/api/opentelemetry/spans.md",
-      "hash": "2be70cad118b673be529867672e3bfb4529a6485023a14b12ab8944e0a23c964",
-      "last_updated": "2026-10-16T07:48:18.779987",
+      "hash": "51c48d8a60b60fc70b73e49a96abfb59f103422e2882a738d4945ac7c75b6fa6",
+      "last_updated": "2026-10-21T02:39:26.153308",
       "source": "platform"
     },
     "api__organization.md": {
@@ -4756,8 +4756,8 @@
     "manage-claude__opentelemetry__api.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry/api",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry/api.md",
-      "hash": "5d968183531ff144ee8dffca8de9553711bc2f4b97b88df68dc45b3233a3b7b4",
-      "last_updated": "2026-10-20T23:42:02.650827",
+      "hash": "fd1e299abad3d4324050cf3b5d6cecb94d42ed0c2d58a6983dd6e8c8a2f2e577",
+      "last_updated": "2026-10-21T02:42:04.607548",
       "source": "platform"
     },
     "manage-claude__opentelemetry__sdk.md": {
@@ -4765,6 +4765,13 @@
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry/sdk.md",
       "hash": "42faae98024ba44db62b1eee11823c7e9ced0f4d205d52ca4fe53bbb10156574",
       "last_updated": "2026-10-20T23:42:03.340889",
+      "source": "platform"
+    },
+    "manage-claude__organization-webhooks.md": {
+      "original_url": "https://platform.claude.com/docs/en/manage-claude/organization-webhooks",
+      "original_md_url": "https://platform.claude.com/docs/en/manage-claude/organization-webhooks.md",
+      "hash": "c43238133f8d2406dd988def87251ca784ec95dbb9dfa95ef97a9088669a53e1",
+      "last_updated": "2026-10-21T02:42:06.140600",
       "source": "platform"
     },
     "manage-claude__plugins-api.md": {
@@ -4777,8 +4784,8 @@
     "manage-claude__rate-limits-api.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/rate-limits-api",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/rate-limits-api.md",
-      "hash": "6f6b3c4364f8259eb08e0d498352def60c07f6c074ad41d7af9f80c93ef9d227",
-      "last_updated": "2026-10-20T19:00:34.313903",
+      "hash": "670a4cfbc51983902c924f5a6012af83b72aece8bf8bfb4a7ee817a21009401d",
+      "last_updated": "2026-10-21T02:42:07.796086",
       "source": "platform"
     },
     "manage-claude__spend-limits-api.md": {
@@ -4805,15 +4812,15 @@
     "manage-claude__user-profiles.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/user-profiles",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/user-profiles.md",
-      "hash": "1f1cb2a55e47954c760a49a5ab93fdf1f98fb375da5ebb4af5707c2b09ba40f6",
-      "last_updated": "2026-10-20T19:00:37.423731",
+      "hash": "e8d0e322c3f97083b5d6ffd113ba6dda6617fefd0760426adb69e916d753cbe3",
+      "last_updated": "2026-10-21T02:42:11.000438",
       "source": "platform"
     },
     "manage-claude__user-profiles-verification-portal.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/user-profiles-verification-portal",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/user-profiles-verification-portal.md",
-      "hash": "3c07d93661b1dae94fbd53faad8d012654b2e49cd6023e792adeae5ed16eac8e",
-      "last_updated": "2026-10-20T19:00:38.196386",
+      "hash": "84213edc87ad7fd50405bd3e9bc54f7bcd9c8b3b70f879059548be8bc0c3ccdd",
+      "last_updated": "2026-10-21T02:42:11.657960",
       "source": "platform"
     },
     "manage-claude__wif-admin-api.md": {
@@ -5358,8 +5365,8 @@
     "release-notes__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/overview",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/overview.md",
-      "hash": "3fbb221d699bf95b8d9f30822dcc20a2d192a16ad04f41961f6955cb1d0e8f4d",
-      "last_updated": "2026-10-20T19:01:37.188401",
+      "hash": "4c77f4c1ccb16d2197174f89f873920f63c564ef5a1085dc98d015c657530e64",
+      "last_updated": "2026-10-21T02:43:13.528303",
       "source": "platform"
     },
     "release-notes__system-prompts__claude-fable-5.md": {
@@ -5568,21 +5575,21 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-10-20T23:43:20.179161",
+    "last_fetch_completed": "2026-10-21T02:43:33.369125",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
-    "pages_discovered": 798,
-    "pages_fetched_successfully": 795,
+    "pages_discovered": 799,
+    "pages_fetched_successfully": 796,
     "pages_failed": 3,
     "failed_pages": [
       "/docs/en/about-claude/use-case-guides/overview",
       "/docs/en/release-notes/system-prompts/overview",
       "/docs/en/resources/overview"
     ],
-    "total_files": 795,
+    "total_files": 796,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-20T23:43:20.179184",
+  "last_updated": "2026-10-21T02:43:33.369154",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
