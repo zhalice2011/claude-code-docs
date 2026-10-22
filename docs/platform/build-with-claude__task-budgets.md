@@ -58,8 +58,7 @@ Add `task_budget` to `output_config` and include the beta header:
   ```
 
   ```bash CLI
-  ant beta:messages create --beta task-budgets-2026-03-13 \
-    --stream <<'YAML'
+  ant beta:messages create --beta task-budgets-2026-03-13 --stream <<'YAML'
   model: claude-opus-5-5
   max_tokens: 128000
   messages:
@@ -224,7 +223,7 @@ Add `task_budget` to `output_config` and include the beta header:
   client = Anthropic::Client.new
 
   stream = client.beta.messages.stream(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 128_000,
     messages: [
       { role: "user", content: "Review the codebase and propose a refactor plan." }
@@ -634,7 +633,7 @@ Run a representative sample of tasks **without** `task_budget` set and record th
   client = Anthropic::Client.new
 
   response = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 4096,
     messages: [
       { role: "user", content: "Review the codebase and propose a refactor plan." }

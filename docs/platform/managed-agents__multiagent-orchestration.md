@@ -318,7 +318,7 @@ When [defining your agent](https://platform.claude.com/docs/en/managed-agents/ag
   ```ruby Ruby
   lead_agent = client.beta.agents.create(
     name: "Engineering Lead",
-    model: "claude-opus-5-5",
+    model: Anthropic::Beta::BetaManagedAgentsModel::CLAUDE_OPUS_5_5,
     system: "You coordinate engineering work. Delegate code review to the reviewer agent and test writing to the test agent.",
     tools: [
       {type: "agent_toolset_20260401"}
@@ -457,7 +457,7 @@ Create the researcher, which declares the GitHub MCP server, and the agent that 
       "tools": [{"type": "mcp_toolset", "mcp_server_name": "github"}]
     }'
 
-  # Create the agent that delegates to it: research_agent_id is the id from the first response
+  # Create the agent that delegates to it: research_agent_id is the ID from the first response
   curl --fail-with-body -sS https://api.anthropic.com/v1/agents \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
     -H "anthropic-version: 2023-06-01" \
@@ -976,7 +976,7 @@ Before you change an existing agent's `multiagent.type`, see [how to move an age
   ```ruby Ruby
   agent = client.beta.agents.create(
     name: "Contract Reviewer",
-    model: "claude-opus-5-5",
+    model: Anthropic::Beta::BetaManagedAgentsModel::CLAUDE_OPUS_5_5,
     system_: "You review contracts. When you're asked to review more than a few contracts, start a workflow run that reads them in parallel and combines the findings. Review one or two contracts yourself, without a run.",
     tools: [
       {type: "agent_toolset_20260401"}
@@ -1197,7 +1197,7 @@ An enabled `advisor` setting in the agent's `multiagent` (csharp, go: `Multiagen
   ```ruby Ruby
   agent = client.beta.agents.create(
     name: "Backend engineer",
-    model: "claude-sonnet-5",
+    model: Anthropic::Beta::BetaManagedAgentsModel::CLAUDE_SONNET_5,
     system_: "You implement backend features end to end. Consult the advisor before major backend design decisions.",
     multiagent: {
       type: "multiagent_20261001",

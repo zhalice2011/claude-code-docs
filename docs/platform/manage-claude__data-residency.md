@@ -188,7 +188,7 @@ The `inference_geo` parameter controls where model inference runs for a specific
   client = Anthropic::Client.new
 
   response = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 1024,
     inference_geo: "us",
     messages: [

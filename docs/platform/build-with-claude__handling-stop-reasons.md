@@ -191,7 +191,7 @@ The most common stop reason. Indicates Claude completed its response naturally.
   client = Anthropic::Client.new
 
   response = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 1024,
     messages: [{ role: "user", content: "Hello!" }]
   )
@@ -862,7 +862,7 @@ Claude stopped because it reached the `max_tokens` limit specified in your reque
 
   # Request with limited tokens
   response = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 10,
     messages: [{ role: "user", content: "Explain quantum physics" }]
   )
@@ -1015,7 +1015,7 @@ Claude stopped because it reached the `max_tokens` limit specified in your reque
 
     ```ruby Ruby
     response = client.messages.create(
-      model: "claude-opus-5-5",
+      model: Anthropic::Model::CLAUDE_OPUS_5_5,
       max_tokens: 1024,
       messages: messages,
       tools: tools
@@ -1025,7 +1025,7 @@ Claude stopped because it reached the `max_tokens` limit specified in your reque
       last_block = response.content.last
       if last_block.type == :tool_use
         response = client.messages.create(
-          model: "claude-opus-5-5",
+          model: Anthropic::Model::CLAUDE_OPUS_5_5,
           max_tokens: 4096,
           messages: messages,
           tools: tools
@@ -1164,7 +1164,7 @@ Claude encountered one of your custom stop sequences.
   client = Anthropic::Client.new
 
   response = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 1024,
     stop_sequences: ["END", "STOP"],
     messages: [{ role: "user", content: "Generate text until you say END" }]
@@ -1872,7 +1872,7 @@ Claude declined to generate a response. Safety classifiers return this stop reas
   client = Anthropic::Client.new
 
   response = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 1024,
     messages: [{ role: "user", content: "[Unsafe request]" }]
   )
@@ -2777,7 +2777,7 @@ It's important to distinguish between `stop_reason` values and actual errors:
 
   begin
     response = client.messages.create(
-      model: "claude-opus-5-5",
+      model: Anthropic::Model::CLAUDE_OPUS_5_5,
       max_tokens: 1024,
       messages: [{ role: "user", content: "Hello!" }]
     )
@@ -2946,7 +2946,7 @@ When using streaming, `stop_reason` is:
   client = Anthropic::Client.new
 
   stream = client.messages.stream(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 1024,
     messages: [{ role: "user", content: "Hello!" }]
   )

@@ -279,7 +279,7 @@ The structure is identical for both Anthropic and custom Skills. Specify the req
   client = Anthropic::Client.new
 
   message = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 4096,
     container: {
       skills: [
@@ -712,8 +712,7 @@ To provide input files for Skills to work on, [upload them with the Files API](h
 
   ```bash CLI
   # Get file metadata
-  ant files retrieve-metadata \
-    --file-id "$FILE_ID"
+  ant files retrieve-metadata --file-id "$FILE_ID"
 
   # List all files
   ant files list
@@ -2602,7 +2601,7 @@ A new version is a complete snapshot, not a delta: upload the Skill's full file 
     -F "files[]=@financial_skill/SKILL.md;filename=financial_skill/SKILL.md" \
     -F "files[]=@financial_skill/analyze.py;filename=financial_skill/analyze.py"
 
-  # Use a specific version: the id from the create response
+  # Use a specific version: the ID from the create response
   curl https://api.anthropic.com/v1/messages \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
     -H "anthropic-version: 2023-06-01" \
@@ -2647,7 +2646,7 @@ A new version is a complete snapshot, not a delta: upload the Skill's full file 
     --skill-id skill_01AbCdEfGhIjKlMnOpQrStUv \
     --file financial_skill.zip
 
-  # Use a specific version: the id from the create response
+  # Use a specific version: the ID from the create response
   ant messages create <<YAML
   model: claude-opus-5-5
   max_tokens: 4096
@@ -3076,7 +3075,7 @@ A new version is a complete snapshot, not a delta: upload the Skill's full file 
 
   # Use specific version
   response = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 4096,
     container: {
       skills: [{
@@ -3092,7 +3091,7 @@ A new version is a complete snapshot, not a delta: upload the Skill's full file 
 
   # Use latest version
   latest_response = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 4096,
     container: {
       skills: [{
@@ -4231,7 +4230,7 @@ If you use [Prompt caching](https://platform.claude.com/docs/en/build-with-claud
 
   # Skills render into the system prompt in a fixed, cache-friendly order
   response1 = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 4096,
     container: {
       skills: [{ type: "anthropic", skill_id: "xlsx", version: "latest" }]
@@ -4243,7 +4242,7 @@ If you use [Prompt caching](https://platform.claude.com/docs/en/build-with-claud
 
   # Changing the Skills list ([xlsx] vs [xlsx, pptx]) changes the prefix: a cache miss, while an identical list is a cache hit
   response2 = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 4096,
     container: {
       skills: [

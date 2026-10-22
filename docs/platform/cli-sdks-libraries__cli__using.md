@@ -71,9 +71,7 @@ ant models list --format explore
 Use `--transform` to reshape responses before printing. The expression is a [GJSON path](https://github.com/tidwall/gjson/blob/master/SYNTAX.md). For list endpoints the transform runs against each item individually, not the envelope:
 
 ```bash
-ant beta:agents list \
-  --transform "{id,name,model}" \
-  --format jsonl
+ant beta:agents list --transform "{id,name,model}" --format jsonl
 ```
 
 ```jsonl Output

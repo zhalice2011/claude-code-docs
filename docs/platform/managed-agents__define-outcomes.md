@@ -300,7 +300,7 @@ The following examples create a [session](https://platform.claude.com/docs/en/ma
       "title": "Financial analysis on Costco"
     }'
 
-  # Define the outcome: SESSION_ID is the id from the create response
+  # Define the outcome: SESSION_ID is the ID from the create response
   # The agent starts working when it receives the event
   curl -fsSL "https://api.anthropic.com/v1/sessions/$SESSION_ID/events" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
@@ -327,7 +327,7 @@ The following examples create a [session](https://platform.claude.com/docs/en/ma
     --environment-id "$ENVIRONMENT_ID" \
     --title "Financial analysis on Costco"
 
-  # Define the outcome: SESSION_ID is the id from the create response
+  # Define the outcome: SESSION_ID is the ID from the create response
   # The agent starts working when it receives the event
   ant beta:sessions:events send --session-id "$SESSION_ID" <<YAML
   events:

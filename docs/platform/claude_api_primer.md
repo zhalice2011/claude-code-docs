@@ -146,7 +146,8 @@ Claude can read both text and images in requests. Both `base64` and `url` source
 <CodeGroup exclude="shell:cURL, typescript, csharp, go, java, php, ruby">
   ```bash CLI
   # Option 1: Base64-encoded image (@ prefix auto-encodes binary files as base64)
-  curl -sSo vision-example.jpg https://platform.claude.com/docs/images/vision-example.jpg
+  curl -sSo vision-example.jpg \
+    https://platform.claude.com/docs/images/vision-example.jpg
 
   ant messages create <<'YAML'
   model: claude-opus-5-5

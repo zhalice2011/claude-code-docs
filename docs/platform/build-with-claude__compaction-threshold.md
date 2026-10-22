@@ -2320,8 +2320,7 @@ The token counting endpoint (`/v1/messages/count_tokens`) applies existing `comp
   ```
 
   ```bash CLI
-  ant beta:messages count-tokens \
-    --beta compact-2026-01-12 <<'YAML'
+  ant beta:messages count-tokens --beta compact-2026-01-12 <<'YAML'
   model: claude-opus-5-5
   messages:
     - role: user

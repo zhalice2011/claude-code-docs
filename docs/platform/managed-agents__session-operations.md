@@ -277,10 +277,7 @@ A `page` cursor is opaque and encodes the `order` of the request that produced i
   ```bash CLI
   # --format raw returns one page envelope with its prev_page and next_page
   # cursors; the default output auto-paginates and emits only the sessions.
-  ant beta:sessions list \
-    --agent-id "$AGENT_ID" \
-    --limit 1 \
-    --format raw
+  ant beta:sessions list --agent-id "$AGENT_ID" --limit 1 --format raw
   # Pass next_page back as --page to fetch the next page, or prev_page to go back.
   ```
 
@@ -504,8 +501,7 @@ Archive a session to prevent new events from being sent while preserving its his
   ```
 
   ```bash CLI
-  ant beta:sessions archive \
-    --session-id "$SESSION_ID"
+  ant beta:sessions archive --session-id "$SESSION_ID"
   ```
 
   ```python Python
@@ -555,8 +551,7 @@ Memory stores, vaults, skills, environments, and agents are independent resource
   ```
 
   ```bash CLI
-  ant beta:sessions delete \
-    --session-id "$SESSION_ID"
+  ant beta:sessions delete --session-id "$SESSION_ID"
   ```
 
   ```python Python

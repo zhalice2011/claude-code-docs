@@ -362,7 +362,8 @@ Archive a workspace:
   ```
 
   ```bash CLI
-  ant organization:workspaces archive --workspace-id wrkspc_01JwQvzr7rXLA5AGx3HKfFUJ
+  ant organization:workspaces archive \
+    --workspace-id wrkspc_01JwQvzr7rXLA5AGx3HKfFUJ
   ```
 
   ```python Python

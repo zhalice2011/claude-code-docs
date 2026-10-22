@@ -23,6 +23,8 @@ Each tool carries its own list, so `web_search` and `web_fetch` can have differe
 
 Your organization's web search settings on the [**Capabilities**](https://platform.claude.com/settings/capabilities) page of the Claude Console also apply to `web_search` in a session. If an administrator disables web search, `web_search` calls return an error result to the agent, and the session continues. If the organization restricts web search domains, the agent receives only the search results that both the organization's domain restrictions and the agent's per-tool lists allow.
 
+Your organization's web fetch settings on the same page also apply to `web_fetch` in a session. If an administrator turns off web fetch, `web_fetch` calls return an error result to the agent, and the session continues. If the organization sets allowed or blocked domains for web fetch, a URL must pass the organization's list and the agent's per-tool lists, and so must any URL a redirect leads to. A `web_fetch` call for a URL that any of them excludes also returns an error result to the agent.
+
 ## Set domain lists on an agent
 
 The following example creates an agent that limits `web_search` to two sites and blocks one host for `web_fetch`. It also sets `user_location` (java, php: `userLocation`; csharp, go: `UserLocation`) and `max_content_tokens` (java, php: `maxContentTokens`; csharp, go: `MaxContentTokens`), which [Settings](https://platform.claude.com/docs/en/managed-agents/tools-web-restrictions#settings) describes. The response echoes the `configs` (csharp, go: `Configs`) array.

@@ -175,7 +175,7 @@ All [active models](https://platform.claude.com/docs/en/models/overview) support
   client = Anthropic::Client.new
 
   response = client.messages.count_tokens(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     system: "You are a scientist",
     messages: [
       { role: "user", content: "Hello, Claude" }
@@ -443,7 +443,7 @@ All [active models](https://platform.claude.com/docs/en/models/overview) support
   client = Anthropic::Client.new
 
   response = client.messages.count_tokens(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     tools: [
       {
         name: "get_weather",
@@ -503,7 +503,8 @@ All [active models](https://platform.claude.com/docs/en/models/overview) support
   ```
 
   ```bash CLI
-  curl -s "https://platform.claude.com/docs/images/vision-example.jpg" -o ./vision-example.jpg
+  curl -s "https://platform.claude.com/docs/images/vision-example.jpg" \
+    -o ./vision-example.jpg
 
   ant messages count-tokens <<'YAML'
   model: claude-opus-5-5
@@ -751,7 +752,7 @@ All [active models](https://platform.claude.com/docs/en/models/overview) support
   client = Anthropic::Client.new
 
   response = client.messages.count_tokens(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     messages: [
       {
         role: "user",
@@ -1354,7 +1355,7 @@ An embedded image block that sets [`"oversized_image": "error"`](https://platfor
   pdf_base64 = Base64.strict_encode64(File.binread("/path/to/document.pdf"))
 
   response = client.messages.count_tokens(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     messages: [
       {
         role: "user",

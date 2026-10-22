@@ -85,10 +85,10 @@ Each workload that calls the Claude API needs a SPIRE registration entry that ma
 # Replace NODE_UID with the node's UID:
 #   kubectl get node <node-name> -o jsonpath='{.metadata.uid}'
 spire-server entry create \
-    -spiffeID spiffe://prod.example.com/ns/inference/sa/worker \
-    -parentID spiffe://prod.example.com/spire/agent/k8s_psat/prod-cluster/NODE_UID \
-    -selector k8s:ns:inference \
-    -selector k8s:sa:worker
+  -spiffeID spiffe://prod.example.com/ns/inference/sa/worker \
+  -parentID spiffe://prod.example.com/spire/agent/k8s_psat/prod-cluster/NODE_UID \
+  -selector k8s:ns:inference \
+  -selector k8s:sa:worker
 ```
 
 <Note>
@@ -453,9 +453,9 @@ Before integrating the SDK, fetch a JWT-SVID directly from SPIRE Agent and confi
 
 ```bash CLI
 spire-agent api fetch jwt \
-    -audience https://api.anthropic.com \
-    -socketPath /run/spire/sockets/agent.sock \
-    -output json \
+  -audience https://api.anthropic.com \
+  -socketPath /run/spire/sockets/agent.sock \
+  -output json \
   | jq -r '.[0].svids[0].svid' \
   | jq -rR 'split(".")[1] | gsub("-";"+") | gsub("_";"/") | @base64d | fromjson'
 ```

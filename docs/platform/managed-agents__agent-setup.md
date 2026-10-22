@@ -145,7 +145,7 @@ The examples use curl, the `ant` CLI, or the SDK. If you haven't set one up, the
   ```ruby Ruby
   agent = client.beta.agents.create(
     name: "Coding Assistant",
-    model: "claude-opus-5-5",
+    model: Anthropic::Beta::BetaManagedAgentsModel::CLAUDE_OPUS_5_5,
     system_: "You are a helpful coding agent.",
     tools: [{type: "agent_toolset_20260401"}]
   )

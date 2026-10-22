@@ -580,7 +580,7 @@ A thread stream's path ends in `/threads/{thread_id}/stream`. `/events/stream` e
 
   ```bash CLI
   # The thread stream takes the same event_deltas parameter as the session stream,
-  # one --event-delta flag per event type to preview.
+  # one --event-delta flag for each event type to preview.
   ant beta:sessions:threads:events stream \
     --session-id "$SESSION_ID" \
     --thread-id "$THREAD_ID" \

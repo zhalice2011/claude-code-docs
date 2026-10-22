@@ -956,8 +956,7 @@ model = "claude-mythos-5-1"  # After
      ```
 
      ```bash CLI
-     ant beta:messages create \
-       --beta thinking-binding-controls-2026-08-01 <<'YAML'
+     ant beta:messages create --beta thinking-binding-controls-2026-08-01 <<'YAML'
      model: claude-fable-5-1
      max_tokens: 16000
      thinking:

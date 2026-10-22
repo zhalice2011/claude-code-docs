@@ -2114,7 +2114,8 @@ Through the SDK, set `clear_at` (csharp, go: `ClearAt`; java: `.clearAt()`; php:
   ```
 
   ```bash CLI
-  ant beta:messages create --beta mid-conversation-system-clear-at-2026-08-21 <<'YAML'
+  ant beta:messages create \
+    --beta mid-conversation-system-clear-at-2026-08-21 <<'YAML'
   model: claude-fable-5-1
   max_tokens: 4096
   messages:

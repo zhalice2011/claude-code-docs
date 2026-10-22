@@ -30,9 +30,7 @@ A session requires an `agent` ID and an `environment` ID. Agents are versioned r
   ```
 
   ```bash CLI
-  ant beta:sessions create \
-    --agent "$AGENT_ID" \
-    --environment-id "$ENVIRONMENT_ID"
+  ant beta:sessions create --agent "$AGENT_ID" --environment-id "$ENVIRONMENT_ID"
   ```
 
   ```python Python
@@ -468,7 +466,7 @@ The following example starts a session that overrides the model and clears the s
 
   ```bash CLI
   # The response's `agent` is the resolved snapshot: each override replaces that
-  # field for this session only, and the agent resource keeps its id and version.
+  # field for this session only, and the agent resource keeps its ID and version.
   ant beta:sessions create <<YAML
   agent:
     type: agent_with_overrides
@@ -995,8 +993,7 @@ Creating a session without `initial_events` (java, php: `initialEvents`; csharp,
   ```
 
   ```bash CLI
-  ant beta:sessions:events send \
-    --session-id "$SESSION_ID" <<'YAML'
+  ant beta:sessions:events send --session-id "$SESSION_ID" <<'YAML'
   events:
     - type: user.message
       content:

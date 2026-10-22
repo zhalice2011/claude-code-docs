@@ -117,7 +117,11 @@ Send `user.interrupt` with `session_thread_id` (java: `sessionThreadId`; php: `s
     -H "anthropic-version: 2023-06-01" \
     -H "anthropic-beta: managed-agents-2026-04-01" \
     -H "content-type: application/json" \
-    -d '{"events": [{"type": "user.interrupt", "session_thread_id": "'"$THREAD_ID"'"}]}'
+    -d '{
+      "events": [
+        {"type": "user.interrupt", "session_thread_id": "'"$THREAD_ID"'"}
+      ]
+    }'
   ```
 
   ```bash CLI
@@ -263,7 +267,11 @@ Archive only succeeds if the thread is `idle`. A thread parked on `requires_acti
     -H "anthropic-version: 2023-06-01" \
     -H "anthropic-beta: managed-agents-2026-04-01" \
     -H "content-type: application/json" \
-    -d '{"events": [{"type": "user.interrupt", "session_thread_id": "'"$THREAD_ID"'"}]}'
+    -d '{
+      "events": [
+        {"type": "user.interrupt", "session_thread_id": "'"$THREAD_ID"'"}
+      ]
+    }'
 
   curl -fsS -X POST "https://api.anthropic.com/v1/sessions/$SESSION_ID/threads/$THREAD_ID/archive" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \

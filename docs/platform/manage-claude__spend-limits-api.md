@@ -511,7 +511,10 @@ For complete parameter details and response schemas, see [Create a spend limit](
     -H "content-type: application/json" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
     -H "anthropic-version: 2023-06-01" \
-    -d '{"scope": {"type": "user", "user_id": "user_01AbCdEfGh"}, "amount": "75000"}'
+    -d '{
+      "scope": {"type": "user", "user_id": "user_01AbCdEfGh"},
+      "amount": "75000"
+    }'
   ```
 
   ```bash CLI
@@ -2016,7 +2019,11 @@ Give an incident responder room to work while an incident is open: raise their s
        -H "content-type: application/json" \
        -H "x-api-key: $ANTHROPIC_API_KEY" \
        -H "anthropic-version: 2023-06-01" \
-       -d '{"scope": {"type": "user", "user_id": "user_01AbCdEfGh"}, "amount": "500000", "period": "monthly"}'
+       -d '{
+         "scope": {"type": "user", "user_id": "user_01AbCdEfGh"},
+         "amount": "500000",
+         "period": "monthly"
+       }'
      ```
 
      ```bash CLI

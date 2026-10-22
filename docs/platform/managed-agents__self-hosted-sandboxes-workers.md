@@ -437,7 +437,7 @@ A poller on the host claims work and calls your script once for each work item. 
 
     ```dockerfile
     FROM your-base-image
-    ARG ANT_VERSION=2.0.0
+    ARG ANT_VERSION=2.1.0
     ARG TARGETARCH
     RUN ARCH=$([ "$TARGETARCH" = "arm64" ] && echo arm64 || echo amd64) && \
         curl -fsSL "https://github.com/anthropics/anthropic-cli/releases/download/v${ANT_VERSION}/ant_${ANT_VERSION}_linux_${ARCH}.tar.gz" \
@@ -453,7 +453,7 @@ A poller on the host claims work and calls your script once for each work item. 
 
     ```bash
     #!/bin/bash
-    # spawn.sh: called once per claimed work item
+    # spawn.sh: called once for each claimed work item
     # The claimed work item arrives as JSON on stdin.
     ANTHROPIC_WORK_SECRET="$(jq -r '.secret // empty')"
     export ANTHROPIC_WORK_SECRET

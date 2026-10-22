@@ -77,9 +77,7 @@ The CLI is designed to compose with standard shell tooling.
 ```bash
 FIRST_AGENT=$(ant beta:agents list --transform id --raw-output | head -1)
 
-ant beta:agents:versions list \
-  --agent-id "$FIRST_AGENT" \
-  --format jsonl
+ant beta:agents:versions list --agent-id "$FIRST_AGENT" --format jsonl
 ```
 
 ### Inspect errors
