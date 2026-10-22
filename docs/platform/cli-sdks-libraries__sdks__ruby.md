@@ -80,7 +80,7 @@ Streaming with `anthropic.messages.stream(...)` exposes various helpers includin
 
 ## Input schema and tool calling
 
-The SDK provides helper mechanisms to define structured data classes for tools and let Claude automatically run them. For detailed documentation on tool use patterns including the tool runner, see [Tool Runner (SDK)](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner).
+The SDK provides helper mechanisms to define structured data classes for tools and let Claude automatically run them. For detailed documentation on tool use patterns including the tool runner, see [Tool runner (SDK)](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner).
 
 ```ruby
 anthropic = Anthropic::Client.new

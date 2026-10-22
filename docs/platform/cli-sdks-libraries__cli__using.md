@@ -48,7 +48,7 @@ ant beta:sessions:events list --session-id session_01...
 ant models retrieve --model-id claude-opus-5-5 --format yaml
 ```
 
-```yaml Output
+```text Output wrap
 type: model
 id: claude-opus-5-5
 display_name: Claude Opus 5.5
@@ -74,7 +74,7 @@ Use `--transform` to reshape responses before printing. The expression is a [GJS
 ant beta:agents list --transform "{id,name,model}" --format jsonl
 ```
 
-```jsonl Output
+```text Output
 {"id": "agent_011CYm1BLqPX...", "name": "Docs CLI Test Agent", "model": "claude-opus-5-5"}
 {"id": "agent_011CYkVwfaEt...", "name": "Coffee Making Assistant", "model": "claude-opus-5-5"}
 {"id": "agent_011CYixHhtUP...", "name": "Coding Assistant", "model": "claude-opus-5-5"}

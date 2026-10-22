@@ -25,7 +25,7 @@ Evaluate each Skill against these risk indicators before approving deployment:
 | Network access patterns  | URLs, API endpoints, `fetch`, `curl`, or `requests` calls                                            | High: potential data exfiltration vector                |
 | Hardcoded credentials    | API keys, tokens, or passwords in Skill files or scripts                                             | High: secrets exposed in Git history and context window |
 | Filesystem access scope  | Paths outside the Skill directory, broad glob patterns, path traversal (`../`)                       | Medium: might access unintended data                    |
-| Tool invocations         | Instructions directing Claude to use bash, file operations, or other tools                           | Medium: review what operations are performed            |
+| Tool calls               | Instructions directing Claude to use bash, file operations, or other tools                           | Medium: review what operations are performed            |
 
 ### Review checklist
 
