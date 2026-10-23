@@ -4427,8 +4427,8 @@
     "build-with-claude__structured-outputs.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs.md",
-      "hash": "16a91ab7cfcdc7fb3ed9bf5c03c3babf85455bf17e06c69d5067951899b4d14a",
-      "last_updated": "2026-10-23T14:06:31.433014",
+      "hash": "3cd62f7e1c6e8f85643427496488379efdf4cd1cbcd4749e2a6c5a89df85f70a",
+      "last_updated": "2026-10-23T18:57:59.968512",
       "source": "platform"
     },
     "build-with-claude__task-budgets.md": {
@@ -4567,8 +4567,8 @@
     "cli-sdks-libraries__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/cli-sdks-libraries/overview",
       "original_md_url": "https://platform.claude.com/docs/en/cli-sdks-libraries/overview.md",
-      "hash": "5401d0d544d0a557fcfc83725f932e933260e88a5a657fc36238c689b783182d",
-      "last_updated": "2026-10-23T14:06:47.946123",
+      "hash": "59cf39d76844939cc780947c34d0d67102e78dbf538a507a04f883d0c3fde077",
+      "last_updated": "2026-10-23T18:58:14.301260",
       "source": "platform"
     },
     "cli-sdks-libraries__sdks__csharp.md": {
@@ -5722,7 +5722,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-10-23T14:08:54.845760",
+    "last_fetch_completed": "2026-10-23T19:00:19.765662",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 820,
@@ -5736,7 +5736,7 @@
     "total_files": 817,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-23T14:08:54.845778",
+  "last_updated": "2026-10-23T19:00:19.765684",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
