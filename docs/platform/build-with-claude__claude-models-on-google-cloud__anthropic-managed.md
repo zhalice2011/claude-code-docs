@@ -140,7 +140,7 @@ export ANTHROPIC_GOOGLE_CLOUD_WORKSPACE_ID="wrkspc_01AbCdEf23GhIj"
 
 ### Install an SDK
 
-The [SDK client](https://platform.claude.com/docs/en/cli-sdks-libraries/overview) for Claude Models on Google Cloud (Anthropic managed) is `AnthropicGoogleCloud` (csharp: `AnthropicGoogleCloudClient`; go: `googlecloud.NewClient`; java: `GoogleCloudBackend`; php: `Anthropic\GoogleCloud\Client`; ruby: `Anthropic::GoogleCloudClient`). The client resolves your Google credentials. It also builds the base URL from your project, location, and workspace ID.
+The [SDK client](https://platform.claude.com/docs/en/cli-sdks-libraries/overview) for Claude Models on Google Cloud (Anthropic managed) is `AnthropicGoogleCloud` (csharp: `AnthropicGoogleCloudClient`; go: `googlecloud.NewClient()`; java: `GoogleCloudBackend`; php: `Anthropic\GoogleCloud\Client`; ruby: `Anthropic::GoogleCloudClient`). The client resolves your Google credentials. It also builds the base URL from your project, location, and workspace ID.
 
 <Note>
   The SDK client for Claude Models on Google Cloud (Anthropic managed) is in beta.
@@ -631,7 +631,7 @@ To move to Claude Models on Google Cloud (Anthropic managed), complete the follo
   </Step>
 
   <Step title="Replace the import and the client">
-    Change the code that imports and creates your client. Use `AnthropicGoogleCloud` (csharp: `AnthropicGoogleCloudClient`; go: `googlecloud.NewClient`; java: `GoogleCloudBackend`; php: `Anthropic\GoogleCloud\Client`; ruby: `Anthropic::GoogleCloudClient`) in place of `AnthropicVertex` (csharp: `AnthropicVertexClient`; go: `vertex.WithGoogleAuth`; java: `VertexBackend`; php: `Anthropic\Vertex\Client`; ruby: `Anthropic::VertexClient`). In a cURL request, change the URL, the headers, and the body. Your current code creates a client for Claude Models on Google Cloud (Google managed). For example, the following code creates that client with the global endpoint:
+    Change the code that imports and creates your client. Use `AnthropicGoogleCloud` (csharp: `AnthropicGoogleCloudClient`; go: `googlecloud.NewClient()`; java: `GoogleCloudBackend`; php: `Anthropic\GoogleCloud\Client`; ruby: `Anthropic::GoogleCloudClient`) in place of `AnthropicVertex` (csharp: `AnthropicVertexClient`; go: `vertex.WithGoogleAuth()`; java: `VertexBackend`; php: `Anthropic\Vertex\Client`; ruby: `Anthropic::VertexClient`). In a cURL request, change the URL, the headers, and the body. Your current code creates a client for Claude Models on Google Cloud (Google managed). For example, the following code creates that client with the global endpoint:
 
     <CodeGroup exclude="shell:CLI">
       ```bash cURL
