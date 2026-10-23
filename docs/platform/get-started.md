@@ -44,7 +44,7 @@ description: Make your first API call to Claude and build a simple web search as
 
         Claude returns a JSON response containing the assistant's message:
 
-        ```text Output
+        ```json Output
         {
           "model": "claude-opus-5-5",
           "id": "msg_013mHbppMPd2PrVJzGMZPt2D",
@@ -112,7 +112,7 @@ description: Make your first API call to Claude and build a simple web search as
 
         The CLI prints the JSON response:
 
-        ```text Output
+        ```json Output
         {
           "model": "claude-opus-5-5",
           "id": "msg_01N1ycuCkM5Mzd7WhTU4fwST",
@@ -435,7 +435,7 @@ description: Make your first API call to Claude and build a simple web search as
             }
 
             dependencies {
-                implementation("com.anthropic:anthropic-java:3.1.0")
+                implementation("com.anthropic:anthropic-java:3.2.0")
             }
 
             application {
@@ -461,7 +461,7 @@ description: Make your first API call to Claude and build a simple web search as
                 <dependency>
                   <groupId>com.anthropic</groupId>
                   <artifactId>anthropic-java</artifactId>
-                  <version>3.1.0</version>
+                  <version>3.2.0</version>
                 </dependency>
               </dependencies>
             </project>

@@ -76,7 +76,8 @@ json
 | --- | --- | --- |
 | `app:interrupt` | Ctrl\+C | 中断当前操作 |
 | `app:exit` | Ctrl\+D | 退出 CodeBuddy Code |
-| `app:redraw` | Ctrl\+L | 刷新终端屏幕 |
+| `app:clearScreen` | Ctrl\+L | 清除终端屏幕，保留当前会话 |
+| `app:redraw` | — | 重绘终端屏幕（重新输出全部历史） |
 | `app:toggleTodos` | Ctrl\+T | 切换待办事项列表 |
 | `app:toggleTranscript` | Ctrl\+O | 切换详细转录 |
 | `app:toggleSidebar` | Cmd\+B | 切换侧边栏（Web UI） |

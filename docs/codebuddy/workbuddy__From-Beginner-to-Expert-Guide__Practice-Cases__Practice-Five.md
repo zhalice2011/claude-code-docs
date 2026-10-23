@@ -20,17 +20,17 @@
 
 执行过程中，`WorkBuddy` 通常会完成搜索、整理、生成和发送等步骤，整体耗时约 `2` 到 `3` 分钟。
 
-![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/image-7.DB88Cppa.png)![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/image-8.Cwga7sex.jpeg)## 四、设置每日定时发送
+![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/image-7.DB88Cppa.png)![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/image-8.Cwga7sex.jpeg)## 四、设置每日定时发送
 
-手动跑通后，可继续创建自动化任务，让简报按固定时间自动发送。
+手动跑通后，可继续创建定时任务，让简报按固定时间自动发送。
 
 **示例指令**：
 
-> 请创建一个自动化任务，每天早上 `8` 点 `30` 分为我生成资讯简报并发送到 `QQ` 邮箱，内容包括天气、行业资讯和任务摘要。
+> 请创建一个定时任务，每天早上 `8` 点 `30` 分为我生成资讯简报并发送到 `QQ` 邮箱，内容包括天气、行业资讯和任务摘要。
 
-创建成功后，可在左侧边栏的自动化目录中统一管理所有定时任务。
+创建成功后，可在左侧导航栏的**定时任务**中统一管理所有定时任务。
 
-![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/image-9.27UIKvuI.png)![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/image-10.1KKJP4Aa.png)## 五、个性化调整
+![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/image-9.27UIKvuI.png)![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/image-10.1KKJP4Aa.png)## 五、个性化调整
 
 简报内容可以通过自然语言持续调整，常见方向包括：
 
@@ -45,6 +45,6 @@
 
 ## 六、使用建议
 
-- **先验证发送链路**：务必先手动发送成功，再开启自动化。
+- **先验证发送链路**：务必先手动发送成功，再创建定时任务。
 - **控制内容长度**：简报内容越聚焦，越适合长期阅读。
 - **逐步细化规则**：建议先跑通基础版本，再补充节假日、频道来源等个性化要求。

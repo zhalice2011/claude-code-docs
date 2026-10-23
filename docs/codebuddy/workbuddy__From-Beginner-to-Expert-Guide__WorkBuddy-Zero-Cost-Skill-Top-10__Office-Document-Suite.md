@@ -30,8 +30,8 @@
 
 ## 六、PPT优化效果示意
 
-![办公文档套件效果示意](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/pptskill-1.Df_mo19q.png)
+![办公文档套件效果示意](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/pptskill-1.Df_mo19q.png)
 
-![办公文档套件效果示意](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/pptskill-2.5a-83C8K.png)
+![办公文档套件效果示意](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/pptskill-2.5a-83C8K.png)
 
-![办公文档套件效果示意](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/pptskill-3.De9-2-VX.png)
+![办公文档套件效果示意](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/pptskill-3.De9-2-VX.png)

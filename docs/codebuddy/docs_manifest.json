@@ -146,8 +146,8 @@
     },
     "cli__keybindings.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/keybindings",
-      "hash": "ff9aaf50b919e4e7d95bc56f3c6ceb1b80d9daf41c2518baa207c306224efae5",
-      "last_updated": "2026-09-17T18:50:47.350427",
+      "hash": "4325acc920bfcbd3e00d7727bda108b69f47b748b1bfe6cb01c19b9c3863f86f",
+      "last_updated": "2026-10-23T14:09:22.319419",
       "source": "codebuddy"
     },
     "cli__large-codebases.md": {
@@ -164,8 +164,8 @@
     },
     "cli__mcp-apps.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/mcp-apps",
-      "hash": "49979caf077c25d081978eab6363f4e9e4e973b488146568d228314b1e935c6d",
-      "last_updated": "2026-10-20T19:02:28.619969",
+      "hash": "738f108c94d411d391c31a3da3fee5328923e70f6b138ee4e2ab950a21b0d562",
+      "last_updated": "2026-10-23T14:09:25.414973",
       "source": "codebuddy"
     },
     "cli__mcp-first-run-status.md": {
@@ -386,8 +386,8 @@
     },
     "cli__wecom-bot-setup.md": {
       "original_url": "https://www.codebuddy.cn/docs/cli/wecom-bot-setup",
-      "hash": "90a01384293b02ce6b211895c2f6c4aeace92f402c776a23b637b8f037820a33",
-      "last_updated": "2026-10-20T19:03:07.782531",
+      "hash": "242137875695518bc7ad07bd18bb4ade4058ee248be81467c70ee48b88b5c4c5",
+      "last_updated": "2026-10-23T14:10:04.979001",
       "source": "codebuddy"
     },
     "cli__workflow-stdio-protocol.md": {
@@ -410,8 +410,8 @@
     },
     "ide__Account__billing.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Account/billing",
-      "hash": "6ebe73fe915dda457fe152f3c438a183d81d4d768eb53c06c3d10ad470ffa08c",
-      "last_updated": "2026-10-20T19:03:22.261296",
+      "hash": "638ade4e145eeb2c5851fbf91e101d5f5d62d09b00d1a2846c39ca2f533d782f",
+      "last_updated": "2026-10-23T14:10:19.321530",
       "source": "codebuddy"
     },
     "ide__Account__credits.md": {
@@ -422,14 +422,14 @@
     },
     "ide__Account__invoice.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Account/invoice",
-      "hash": "4caf865aff6b228ab48b27ec8857c90a376ee746bebfe8fed6276920fd1ac070",
-      "last_updated": "2026-10-20T19:03:24.186578",
+      "hash": "5c9b02a784b20290eb0ea40ce356fcf81392e878dc00a8069307c7d60a330eee",
+      "last_updated": "2026-10-23T14:10:21.231791",
       "source": "codebuddy"
     },
     "ide__Account__plan.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Account/plan",
-      "hash": "3aa9e8cbc83c19418e4cd268dcb539b152f936cfdfa05f544faaa474ca35535a",
-      "last_updated": "2026-10-20T19:03:25.117801",
+      "hash": "3f43584687b255b71870a98e8056c1803805255a1731e5d13e7bc47158b2cbff",
+      "last_updated": "2026-10-23T14:10:22.216725",
       "source": "codebuddy"
     },
     "ide__Account__pricing.md": {
@@ -440,14 +440,14 @@
     },
     "ide__Account__usage.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Account/usage",
-      "hash": "4f8812e2c733d6a4f9866d22847dda57f2520d99b376741c972fe3c486827c4e",
-      "last_updated": "2026-10-20T19:03:27.077586",
+      "hash": "ffd5fb26f73fed224129582651ba3addf3d31cfb755dce2bae48865be630d578",
+      "last_updated": "2026-10-23T14:10:24.146427",
       "source": "codebuddy"
     },
     "ide__Best-practice__best-practice.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Best-practice/best-practice",
-      "hash": "05e0ec1aab2d9e8aa9529baa5ed97736aabc4cb297ce1e14f8bf4eeb6ab88f45",
-      "last_updated": "2026-10-20T19:03:28.109015",
+      "hash": "fb6b2d0e9caf67462cb36edf19e7643e2ec60f86aab5d3b032ed7930ad10bc04",
+      "last_updated": "2026-10-23T14:10:25.152436",
       "source": "codebuddy"
     },
     "ide__Features__Hooks.md": {
@@ -458,8 +458,8 @@
     },
     "ide__Features__Plan-Mode.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Features/Plan-Mode",
-      "hash": "f595dad1835c8bbe573516aca080567bc168607c7c52b7bcfb343841625cf6fe",
-      "last_updated": "2026-10-20T19:03:30.365672",
+      "hash": "aad2be545e40231dc714025915a967b6a5fd9d6ae3bf5756267eb2c1c9fcf94b",
+      "last_updated": "2026-10-23T14:10:27.292432",
       "source": "codebuddy"
     },
     "ide__Features__Skills.md": {
@@ -470,26 +470,26 @@
     },
     "ide__Features__Subagents.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Features/Subagents",
-      "hash": "a9eaf9eff1fdc4afc63698804c569694da269c82309246ab3c731643b8e7a260",
-      "last_updated": "2026-10-20T19:03:32.241190",
+      "hash": "45c3187adf662e3001468d0fc52374c5cc9381ada3a9371311ef87fb08adfb1c",
+      "last_updated": "2026-10-23T14:10:29.224893",
       "source": "codebuddy"
     },
     "ide__Features__models.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Features/models",
-      "hash": "e3c984bc38fe542fb7e33c7171aeb3942fe5626630a46c4d8fb24e57b8d7875f",
-      "last_updated": "2026-10-20T19:03:33.245689",
+      "hash": "159f5e9e31e6a693d64bbad5a0977d6004cb56e1493038db856dd5ac24c2da4a",
+      "last_updated": "2026-10-23T14:10:30.222208",
       "source": "codebuddy"
     },
     "ide__Getting-Started__Installation.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Getting-Started/Installation",
-      "hash": "5a75fd2cb7848be1fce9a14fca43a237f182f35ecf7f2166d75a1958da56499e",
-      "last_updated": "2026-10-20T19:03:34.165094",
+      "hash": "2a33dd9924140382332f56cf86b48b0403851e3478a92052068c65c06dc06809",
+      "last_updated": "2026-10-23T14:10:31.148899",
       "source": "codebuddy"
     },
     "ide__Getting-Started__Quickstart.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Getting-Started/Quickstart",
-      "hash": "c340d2386eeb386c12902bd29e6eb59a36119cf727d303b06c55024fcc9ea2c5",
-      "last_updated": "2026-10-20T19:03:35.137371",
+      "hash": "9f817a2684e6bf4e0bc40bf23367be0f129d8865ead01c0993bd818ee3f68191",
+      "last_updated": "2026-10-23T14:10:32.089202",
       "source": "codebuddy"
     },
     "ide__Introduction.md": {
@@ -500,20 +500,20 @@
     },
     "ide__Platform-integration__weixinbot-guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Platform-integration/weixinbot-guide",
-      "hash": "d6ff9955b58b8dfe55d8ee7e04ca96b4b786aa53bc9ead7433a77a51f1013be3",
-      "last_updated": "2026-10-20T19:03:37.111286",
+      "hash": "246fb45ac8c98707ced5d0d31e459880c86dc1254f9dd8fcb5c91458d9991dca",
+      "last_updated": "2026-10-23T14:10:34.066849",
       "source": "codebuddy"
     },
     "ide__Support__Contact.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Support/Contact",
-      "hash": "bdbb0dac6940ef2e05c34cae733d161f927ba03ada6637c4737d005850f62b8b",
-      "last_updated": "2026-10-20T19:03:38.069430",
+      "hash": "58929f96bce4c7bdcc9280b8401372f68a56d1bf8d56a5f69ef3b99256aceb52",
+      "last_updated": "2026-10-23T14:10:35.013761",
       "source": "codebuddy"
     },
     "ide__Support__Troubleshooting.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/Support/Troubleshooting",
-      "hash": "c673306ce4473d8b44d56103927b1a2a7577a95381b3a838aa6fa16f264377b0",
-      "last_updated": "2026-10-20T19:03:39.058622",
+      "hash": "bf567ca80d7d5f0928ad93c68e0be3bac6e336b8a367d886d8e8d7dc51e743ae",
+      "last_updated": "2026-10-23T14:10:35.980526",
       "source": "codebuddy"
     },
     "ide__Support__security-privacy.md": {
@@ -524,14 +524,14 @@
     },
     "ide__User-guide__Agent-Mode__Conversation.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Agent-Mode/Conversation",
-      "hash": "c7bbe4a1c3771fc40caf1c3c564d47b9190aefe2cc68fc2ea4b346bb0c0a5e3d",
-      "last_updated": "2026-10-20T19:03:40.969400",
+      "hash": "993d648814cf24fdd3dbdca3a67782984ef3daad6396ca188313c86ad2e87375",
+      "last_updated": "2026-10-23T14:10:37.915756",
       "source": "codebuddy"
     },
     "ide__User-guide__Agent-Mode__Create-Task.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Agent-Mode/Create-Task",
-      "hash": "09cdaaaf65905fd8f2091dd40d48fe87074a2cc606eb5ffc4d78ffebf8b672b4",
-      "last_updated": "2026-10-20T19:03:41.929271",
+      "hash": "4374c9bd33a74d37e5dd78a87ebb7b34db22825dcf3b477294fae774499019ed",
+      "last_updated": "2026-10-23T14:10:38.866473",
       "source": "codebuddy"
     },
     "ide__User-guide__Agent-Mode__Overview.md": {
@@ -542,62 +542,62 @@
     },
     "ide__User-guide__Agent-Mode__Quickstart.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Agent-Mode/Quickstart",
-      "hash": "3804f76a1e18569626060fbfae07c81d40e84d0c1cef23ae53741fc57fe757b1",
-      "last_updated": "2026-10-20T19:03:43.817436",
+      "hash": "9042a76c5d1c99db7a1e154b9e542711d21eca24142c4dbd08bc0d3810ff5fae",
+      "last_updated": "2026-10-23T14:10:40.787375",
       "source": "codebuddy"
     },
     "ide__User-guide__Agent-Mode__Results.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Agent-Mode/Results",
-      "hash": "44f3977cb1a85ede2bc97da653f226a55519a666099f55196a59bc78e433833c",
-      "last_updated": "2026-10-20T19:03:44.726731",
+      "hash": "0ae5144bdecc0a0acf0af327e446cb00ad5d44e2377c93e533ee1db040ac9ae6",
+      "last_updated": "2026-10-23T14:10:41.760519",
       "source": "codebuddy"
     },
     "ide__User-guide__Agent-Mode__Task-Management.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Agent-Mode/Task-Management",
-      "hash": "dedba19dabad7593a669f02edc9d5c577dba94219847cb4397e26568338efeb8",
-      "last_updated": "2026-10-20T19:03:45.669665",
+      "hash": "12931457039441b1881a1b1315ef5e4a0f1290c191327633695d08f4ee3c6f3c",
+      "last_updated": "2026-10-23T14:10:42.733730",
       "source": "codebuddy"
     },
     "ide__User-guide__Checkpoint.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Checkpoint",
-      "hash": "edbbbf3b5730f37ef221b1f1c5d2056ad2cacce8e55c2cae15197666bcdd4d1e",
-      "last_updated": "2026-10-20T19:03:46.581788",
+      "hash": "e69c820fa7712f5c262a0a26fcd89c1dd8a7dbb4d0c835f43516c5fe388d6250",
+      "last_updated": "2026-10-23T14:10:43.641968",
       "source": "codebuddy"
     },
     "ide__User-guide__Code-Completion.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Code-Completion",
-      "hash": "05f6cfb5521cfead9325aaf8c7de14eb3a1cce3c46b9fd452fa68e9b2c6ac5a2",
-      "last_updated": "2026-10-20T19:03:47.561499",
+      "hash": "95b0f99a7cf445cfe24fcef7cc3c945c7a39600da1e14d163163e9473e8a041f",
+      "last_updated": "2026-10-23T14:10:44.619910",
       "source": "codebuddy"
     },
     "ide__User-guide__Context.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Context",
-      "hash": "44910f6bc211e2eee8a0df42ac0fb81b142c3a0f5ee6a31e96df2167417efe7a",
-      "last_updated": "2026-10-20T19:03:48.537152",
+      "hash": "0c066a775047c518d22ca39950997d20f20a06d67c53f5cfada305c257f17991",
+      "last_updated": "2026-10-23T14:10:45.596686",
       "source": "codebuddy"
     },
     "ide__User-guide__Figma.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Figma",
-      "hash": "3cd5eb4b06d34d64502c7a33c10634273d15fecc285d4145ee1af06f7af4d920",
-      "last_updated": "2026-10-20T19:03:49.470821",
+      "hash": "437588a630183307749528e1326b2d44149454837a229dcd6831b316c6c9f983",
+      "last_updated": "2026-10-23T14:10:46.549420",
       "source": "codebuddy"
     },
     "ide__User-guide__History.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/History",
-      "hash": "a1d345a9f2afc534508a11a2009b967bef401d71a20fb5de3755fe73e943d1fc",
-      "last_updated": "2026-10-20T19:03:50.409603",
+      "hash": "4ff9aab15da689977848eb8aa3d0ead92942ecea34b24a6bd8147c1bc5a4d02f",
+      "last_updated": "2026-10-23T14:10:47.949654",
       "source": "codebuddy"
     },
     "ide__User-guide__MCP.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/MCP",
-      "hash": "560dec9c1d20ee72d06aa38bcf6c517dcb3bf84166925621a809b80269c5e791",
-      "last_updated": "2026-10-20T19:03:51.443747",
+      "hash": "fe89244a40f9c7402cf4a6322ce75f2588f9fcd67eac6e4e56e0a7eb185c5281",
+      "last_updated": "2026-10-23T14:10:48.918764",
       "source": "codebuddy"
     },
     "ide__User-guide__Memory.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Memory",
-      "hash": "906aafee33e2cc20f91ddedc86c74ce41fb002a8c6dcaa175f33d58ef797ccb0",
-      "last_updated": "2026-10-20T19:03:52.352886",
+      "hash": "6c922ab7cf61c43d1588c2552d99582c4982c565f90c47a4347b343d189b31cc",
+      "last_updated": "2026-10-23T14:10:49.908715",
       "source": "codebuddy"
     },
     "ide__User-guide__Overview.md": {
@@ -608,44 +608,44 @@
     },
     "ide__User-guide__Rules.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Rules",
-      "hash": "233528fbc22ee151bfc6da2f9906dd71baa42b56dd9d9e9e67624601c7728257",
-      "last_updated": "2026-10-20T19:03:54.306262",
+      "hash": "2b1106be3eea5ffd7969c2cbb8fed92dd7a8f62af845786c657ead50811138d5",
+      "last_updated": "2026-10-23T14:10:51.836820",
       "source": "codebuddy"
     },
     "ide__User-guide__Slash-Commands.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/Slash-Commands",
-      "hash": "3a43a4f16984c11306431075ded9bd4b91dbd7b2ce13b69de07f0b198c788dd4",
-      "last_updated": "2026-10-20T19:03:55.231576",
+      "hash": "e910ecc8148c80c051e5f83381b666392f075c9e3874be08a59fa810eb7e0796",
+      "last_updated": "2026-10-23T14:10:52.747854",
       "source": "codebuddy"
     },
     "ide__User-guide__config-integration.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/config-integration",
-      "hash": "b96a402b6e1b975061bd648e43b2c75699cea7b3bf4dca7b4d29a59cfdf6e099",
-      "last_updated": "2026-10-20T19:03:56.191928",
+      "hash": "59c895fa4ae2eda70a9b2b726d546a3dfd79bbe1cf281a953092cb18ed61d311",
+      "last_updated": "2026-10-23T14:10:53.728360",
       "source": "codebuddy"
     },
     "ide__User-guide__deploy.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/deploy",
-      "hash": "322b6815c3cd14dbeb391e253895d4c8feef3ccbf049ea6db1aa8b5703d68dc7",
-      "last_updated": "2026-10-20T19:03:57.159957",
+      "hash": "be9c2645e3acc9e48f2983705aa51282bcfbc0c7693781ff5008111b6de88faa",
+      "last_updated": "2026-10-23T14:10:54.708527",
       "source": "codebuddy"
     },
     "ide__User-guide__inline-chat.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/inline-chat",
-      "hash": "3647f14be93eeb61ee44dea28fce6b8137194281bedf8b65125e17f928e14a0f",
-      "last_updated": "2026-10-20T19:03:58.098398",
+      "hash": "0b175e60e539d3e1699f82d9d2feb26d9f83e2c5650209b0a3262f1dce73b827",
+      "last_updated": "2026-10-23T14:10:55.719510",
       "source": "codebuddy"
     },
     "ide__User-guide__preview.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/preview",
-      "hash": "4400e5cbb71c49cbc2b7d893c784cfcd0fe249d294064b266621ec7371e45cd9",
-      "last_updated": "2026-10-20T19:03:59.054463",
+      "hash": "bd4d54b42fdd49471d8483fdff1e0a8619fdc13dd98971667b9c7642f9cb4f9b",
+      "last_updated": "2026-10-23T14:10:56.678742",
       "source": "codebuddy"
     },
     "ide__User-guide__smart-commit-.md": {
       "original_url": "https://www.codebuddy.cn/docs/ide/User-guide/smart-commit-",
-      "hash": "7f597072107fed13da70649169dd490220cb27fd83c2e3f6852102a5dcaf5106",
-      "last_updated": "2026-10-20T19:04:00.029213",
+      "hash": "03ade1b34eafcb26e15ee8cbdbbc62124b8b0ac1c9db81465a3feb386ad7c5c3",
+      "last_updated": "2026-10-23T14:10:57.646838",
       "source": "codebuddy"
     },
     "plugin__\u5b9e\u8df5\u6559\u7a0b__\u4f01\u4e1a\u7ba1\u7406\u5b9e\u8df5__\u6784\u5efa\u4f01\u4e1a\u4e13\u5c5e\u77e5\u8bc6\u5e93.md": {
@@ -740,8 +740,8 @@
     },
     "plugin__\u5feb\u901f\u5165\u95e8__\u767b\u5f55\u53ca\u9000\u51fa.md": {
       "original_url": "https://www.codebuddy.cn/docs/plugin/\u5feb\u901f\u5165\u95e8/\u767b\u5f55\u53ca\u9000\u51fa",
-      "hash": "f5805fa52f637d76c8fd38dd591a33f5d5f8ad5486f1d6719587429c7dff33e0",
-      "last_updated": "2026-10-20T19:04:15.904966",
+      "hash": "51eaf059e659fa0bbbf355f2d90255133f27f6cd7d0dca5a9d1824166773ae31",
+      "last_updated": "2026-10-23T14:11:13.096484",
       "source": "codebuddy"
     },
     "plugin__\u64cd\u4f5c\u6307\u5357__Craft \u667a\u80fd\u4f53__Craft \u64a4\u56de\u68c0\u67e5\u70b9.md": {
@@ -854,14 +854,14 @@
     },
     "plugin__\u64cd\u4f5c\u6307\u5357__\u6280\u672f\u5bf9\u8bdd.md": {
       "original_url": "https://www.codebuddy.cn/docs/plugin/\u64cd\u4f5c\u6307\u5357/\u6280\u672f\u5bf9\u8bdd",
-      "hash": "d43e77980e2e5de8dc34122ef9c6d971551622877b90221e52b0a253dc94f5f7",
-      "last_updated": "2026-10-20T19:04:34.225740",
+      "hash": "f3abdf51d6e8c601dd8dc5b7fa9313d13ea1b211d7631962ad5a90ba2b417cac",
+      "last_updated": "2026-10-23T14:11:32.029449",
       "source": "codebuddy"
     },
     "plugin__\u64cd\u4f5c\u6307\u5357__\u6a21\u578b\u914d\u7f6e.md": {
       "original_url": "https://www.codebuddy.cn/docs/plugin/\u64cd\u4f5c\u6307\u5357/\u6a21\u578b\u914d\u7f6e",
-      "hash": "994da9c157c2dbb7bff81f181240435224d43fb88b4a5c25dfe4a6277cf2873f",
-      "last_updated": "2026-10-20T19:04:35.266802",
+      "hash": "6435a2a3e3d806be5015017914c63aa989d206292127062987e43acd3bada4a3",
+      "last_updated": "2026-10-23T14:11:32.956596",
       "source": "codebuddy"
     },
     "plugin__\u64cd\u4f5c\u6307\u5357__\u7f51\u7edc\u4ee3\u7406\u914d\u7f6e.md": {
@@ -902,38 +902,38 @@
     },
     "plugin__\u8054\u7cfb\u6211\u4eec.md": {
       "original_url": "https://www.codebuddy.cn/docs/plugin/\u8054\u7cfb\u6211\u4eec",
-      "hash": "56ef590e9e52d7aa79f40ff2da1031c0af43f307f36f4da164e3e4e0df8f9e93",
-      "last_updated": "2026-10-20T19:04:43.104107",
+      "hash": "4f044da56540b2ba245733cdfac02a28c46c28a53bee395ee63bcdf8a1a3139d",
+      "last_updated": "2026-10-23T14:11:40.754052",
       "source": "codebuddy"
     },
     "workbuddy__Account-Cancellation.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Account-Cancellation",
-      "hash": "5c9f93b5bf165944691943147768235dafe13b22ad4c38eb58458b3fbb8e2efa",
-      "last_updated": "2026-10-20T19:04:44.026481",
+      "hash": "11fee84a4a46cd3de99de0b70f8f3e751729690d1ac6a2c4e57eb41f29e14eac",
+      "last_updated": "2026-10-23T14:11:41.728051",
       "source": "codebuddy"
     },
     "workbuddy__Changelog.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Changelog",
-      "hash": "99125fbae603d0dec4646fc63f6f455afe1496c8fb561d3781bedc558a80095e",
-      "last_updated": "2026-10-20T19:04:45.221720",
+      "hash": "23ff35a9fa9246129f95fb65c494c0c14021258069a75398bd654dfd812c9e4b",
+      "last_updated": "2026-10-23T14:11:42.817048",
       "source": "codebuddy"
     },
     "workbuddy__Contact.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Contact",
-      "hash": "a5d22de977a8e4a89cefea8dc120b0632c1b189bec95a7917aad1e1b47ab5895",
-      "last_updated": "2026-10-20T19:04:46.231761",
+      "hash": "9de83279b9e209b3dbd0bacf91cb094cf310d31e2417f7f1246280c5478fcb4b",
+      "last_updated": "2026-10-23T14:11:43.771198",
       "source": "codebuddy"
     },
     "workbuddy__Conversation.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Conversation",
-      "hash": "4806048c2cd9c0d049975f94ae1c452f15eb17397a58f6033df9af0941b4ed44",
-      "last_updated": "2026-10-20T19:04:47.186635",
+      "hash": "70a5963be94f3ee1a74b65c2d3b8f7b0549d875409151c809a6b51a4fb82b990",
+      "last_updated": "2026-10-23T14:11:44.755331",
       "source": "codebuddy"
     },
     "workbuddy__Create-Task.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Create-Task",
-      "hash": "c53871038012608cc1ccc46e29f875259dd8ab1cb45f650148fffe75f3debe5b",
-      "last_updated": "2026-10-20T19:04:48.152218",
+      "hash": "a31bff09c1566106459190c300965a83d6ace54f5e53305b47452b94e9543539",
+      "last_updated": "2026-10-23T14:11:45.686251",
       "source": "codebuddy"
     },
     "workbuddy__Credits.md": {
@@ -944,8 +944,8 @@
     },
     "workbuddy__Dingtalk-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Dingtalk-Guide",
-      "hash": "8930103e3b9de137b51a3f7710e92d02c9e21ee2cb3f25a8c33eeb745021264e",
-      "last_updated": "2026-10-20T19:04:50.097799",
+      "hash": "3823b15295e8bc1286c5a9c86eecd44bf95a55d6576985f6c8f36336c540d7be",
+      "last_updated": "2026-10-23T14:11:47.614935",
       "source": "codebuddy"
     },
     "workbuddy__Download-History.md": {
@@ -956,266 +956,266 @@
     },
     "workbuddy__Feishu-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Feishu-Guide",
-      "hash": "91137f86b6495dbce98db362887c378c1ada013a7f793bfff9733a74094881a8",
-      "last_updated": "2026-10-20T19:04:52.123924",
+      "hash": "928519210b75d1b5771808b584d4a84d452b68f0764ccce255a27cef5bf11a8a",
+      "last_updated": "2026-10-23T14:11:49.596530",
       "source": "codebuddy"
     },
     "workbuddy__FirstTask.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/FirstTask",
-      "hash": "631a8063b5536405e9ff068ca213d0887233e297de752efcf598b5fd0ed4bb70",
-      "last_updated": "2026-10-20T19:04:53.080184",
+      "hash": "56e6ac1d376300f973ba9d128a5e8f0a36d6d7e886b0a251e3f33b94d102c71f",
+      "last_updated": "2026-10-23T14:11:50.562049",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Efficient-Tips.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Efficient-Tips",
-      "hash": "720e4c224d9c7e6f348bb20bff6291c023f67a74e8517eb78244bba21ae3a9b6",
-      "last_updated": "2026-10-20T19:04:54.034981",
+      "hash": "5206288f27fdd22ca9c55102e53f2edb19df4cc78ee6b2b66aa91c87ee63f27e",
+      "last_updated": "2026-10-23T14:11:51.535805",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Error-Code.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Error-Code",
-      "hash": "5678007b0ca46788c70835b33a734bc02ef0f16b309333b2efede6f0cc07dbf5",
-      "last_updated": "2026-10-20T19:04:55.030521",
+      "hash": "8ed5fa6ee02378d8eb7fac2bdc39ad987ee80ac43ced9a57152fe50343dd7d9f",
+      "last_updated": "2026-10-23T14:11:52.462150",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__FAQ.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/FAQ",
-      "hash": "e5885174010affed15a6672b69948491bd7eac140776c4424e825f626642c3a8",
-      "last_updated": "2026-10-20T19:04:56.116180",
+      "hash": "d2abe27bfc7377caae88d9f973ead66458f193c2f3aacefe23ea85d9c4bf8e94",
+      "last_updated": "2026-10-23T14:11:53.450381",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__App-Publishing__Cloud-Services.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/App-Publishing/Cloud-Services",
-      "hash": "2d47624d69ea14a5d72ee5ae0427abf5d348f192f7f54841c13c17fe539611c2",
-      "last_updated": "2026-10-20T19:04:57.117513",
+      "hash": "6959f85b779d601470354b351c0ccdb86f403a7da6dbe672e28689e35b630bca",
+      "last_updated": "2026-10-23T14:11:54.429250",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__App-Publishing__Mini-Program.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/App-Publishing/Mini-Program",
-      "hash": "925e031a9dd5cb85cc3858483d8f398c2210808a24243002aed9681abce93baf",
-      "last_updated": "2026-10-20T19:04:58.073639",
+      "hash": "3b3ab69ff1758b994f733072e5979329ee70749d4518a08a92d7efb5b893a084",
+      "last_updated": "2026-10-23T14:11:55.362490",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__App-Publishing__Web-App.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/App-Publishing/Web-App",
-      "hash": "be1c723945c3a78b7ea3ef01bb18c81a0951c386105563bd0a6cae1717c34e19",
-      "last_updated": "2026-10-20T19:04:59.028955",
+      "hash": "a9b9989689736821478481709c85d6ba8f38e425de9f706cbbfbe4ccbd42e8e1",
+      "last_updated": "2026-10-23T14:11:56.330469",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Assistant.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Assistant",
-      "hash": "65f6808afbd01d71680e6b8a0da59f5648d94506fab41bd0e5328e7a3c5db3bb",
-      "last_updated": "2026-10-20T19:04:59.940095",
+      "hash": "1709becbd88429b9429400a5f768c235caff5535bdfc4a5d0c6c1b2c141ae777",
+      "last_updated": "2026-10-23T14:11:57.308654",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Automation-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Automation-Guide",
-      "hash": "94ad2fdfe28ed8ec9de7fc06608b00560fcf2c66311bff0f71b9d60c4b731371",
-      "last_updated": "2026-10-20T19:05:00.921528",
+      "hash": "964922f35207d5ca696bb0e47ab283f37a95cd3ed376b61e66d6a363485cb057",
+      "last_updated": "2026-10-23T14:11:58.284201",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Buddy-App.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Buddy-App",
-      "hash": "49d5c5bf0957462d7ed0105345042b1cf424148935b0bd03f2154fa3b8d47f0a",
-      "last_updated": "2026-10-20T19:05:01.966043",
+      "hash": "3f7dedd4faa1688b507354c5300a10f736bb8256b9c5e0e351e3aa065d05c877",
+      "last_updated": "2026-10-23T14:11:59.222681",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Connector.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Connector",
-      "hash": "3eab40956692e2bc7e6047e03f05c60fbdb3e030a1dcdeb1ec70636c2b69ac07",
-      "last_updated": "2026-10-20T19:05:02.919659",
+      "hash": "36886f915d3eeed36569ab7c4217d2eb229bd78db484d7b21553b8f523d3f5c1",
+      "last_updated": "2026-10-23T14:12:00.223197",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Data.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Data",
-      "hash": "a65dfa4cc2ed1d9023ad1a24a42878081b62d1af4b69d3e82816fb134be61ac0",
-      "last_updated": "2026-10-20T19:05:03.875294",
+      "hash": "989972aeac892f22927ce363716397e8960def375648815acfe2f7e3dccce73f",
+      "last_updated": "2026-10-23T14:12:01.184392",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Design-Idea.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Design-Idea",
-      "hash": "cbaa6999886ad04b1c1fd0e664873885e96bad50f18cccaa748fe6e594001361",
-      "last_updated": "2026-10-20T19:05:04.861047",
+      "hash": "190d7a7d530a9fe2d5650729fab60943a53bedb9e7240f476a1f5e0563cd8b04",
+      "last_updated": "2026-10-23T14:12:02.180392",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Expert-Center.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Expert-Center",
-      "hash": "3d9efe9719fdc7d6b56d673ba7abc7468a733ef5437fc59800ffab8237010e07",
-      "last_updated": "2026-10-20T19:05:06.241400",
+      "hash": "17a7f407b00883ce20e850e27e3840c27f23d12c9a6962998e315d3630d521c6",
+      "last_updated": "2026-10-23T14:12:03.169009",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Feedback.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Feedback",
-      "hash": "b35aa299fbadd8a9b6705092e898544f0fc91588a09e7e4b1f64c62d402ae919",
-      "last_updated": "2026-10-20T19:05:07.204225",
+      "hash": "c4ed8c366f7aedafc5ed695f5077aeaca6fddebdd349759caed9ba1934eab1b6",
+      "last_updated": "2026-10-23T14:12:04.126934",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__File-Browser.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/File-Browser",
-      "hash": "c75b9522543b96623edd181dd14de517a268b1d3507d64570142579b5596b107",
-      "last_updated": "2026-10-20T19:05:08.238563",
+      "hash": "c15eb7230437b92c280eb2740dda3f797bdc9156dfd08178742dcbf75c017b11",
+      "last_updated": "2026-10-23T14:12:05.072638",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Ispiration.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Ispiration",
-      "hash": "2e07007ecd5ae08ad27cbf534d4dfc931684c07afe22d2823cd2e48292ed818a",
-      "last_updated": "2026-10-20T19:05:09.148704",
+      "hash": "afac08f921a6c84509b14922df9df4747eabe4858ecd3d078f354a1aaccea188",
+      "last_updated": "2026-10-23T14:12:06.049626",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Knowledge-Base__Cowriting.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Knowledge-Base/Cowriting",
-      "hash": "5e0eaae0d0cc212501fe0f6444fb2f86e5caf5964216c50a7bc13be73a754a71",
-      "last_updated": "2026-10-20T19:05:10.124240",
+      "hash": "161dc121fec04a1322180b6fa292346809b7e8b63526a04ab30f2190fdaac5a9",
+      "last_updated": "2026-10-23T14:12:07.003568",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Knowledge-Base__Lexiang.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Knowledge-Base/Lexiang",
-      "hash": "cb3951d5acbbdf03868a57495e9fb266a409efef2be844184368576826efb352",
-      "last_updated": "2026-10-20T19:05:11.278477",
+      "hash": "5c7f4e657d0b4ab389d33071a84dc32b2f3bcdd128c50f0156599322dce88d8e",
+      "last_updated": "2026-10-23T14:12:07.954386",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Knowledge-Base__Tencent-Doc.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Knowledge-Base/Tencent-Doc",
-      "hash": "4ae3e297efd8229caa38baacd39fad33e2939f3ef315d07ea440426775786dd0",
-      "last_updated": "2026-10-20T19:05:12.270391",
+      "hash": "6d96665dc019e116484b4c3f7115f47d676ce3f6c9c96b3bec10eb1927437bef",
+      "last_updated": "2026-10-23T14:12:08.861421",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Library.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Library",
-      "hash": "33d44f0b7e8807250cde4e814c6d41d400990ad67e67629b90493f4680c6b1bc",
-      "last_updated": "2026-10-20T19:05:13.243948",
+      "hash": "c59e630182cbf4e1b472ae5433be8b22bf80007f064bd566b2ddf05e8e07d8c6",
+      "last_updated": "2026-10-23T14:12:09.821327",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Library__Collaboration.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Library/Collaboration",
-      "hash": "744b146dc1b1663171ecac54b99883c41e7fe87d3b0cef05fd13d6331174758b",
-      "last_updated": "2026-10-20T19:05:14.292761",
+      "hash": "4a220c1b86195bf5f915ae5c71b301b815e14cf5241158d0ab9b42268a294e27",
+      "last_updated": "2026-10-23T14:12:10.828630",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Library__Content-Management.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Library/Content-Management",
-      "hash": "d11cd38dc681f5841dbe175130302d9cc69d7e50ee18d2b6256de31c612c8de5",
-      "last_updated": "2026-10-20T19:05:15.244104",
+      "hash": "0967aa49843fd8c9bed698b3044a98d20c312a57988f5f5a2c4fb76fd090d17e",
+      "last_updated": "2026-10-23T14:12:11.794631",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Library__Lightweight-Publish.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Library/Lightweight-Publish",
-      "hash": "e8cb7c367bcc4a232647da897759788f8d2d4d94201153ccc60eadb01cdbb9f2",
-      "last_updated": "2026-10-20T19:05:16.216673",
+      "hash": "fb0f8aa7b20b20f8fd29a37f66fe17135a244cba67a191ec2e9baaaf65605873",
+      "last_updated": "2026-10-23T14:12:12.762004",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Mailbox.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Mailbox",
-      "hash": "4d8777ffc8f31e867fddd7a2be9098f53823d50e06d30f8c62cd8e84da9f690d",
-      "last_updated": "2026-10-20T19:05:17.209591",
+      "hash": "8d888e6e21dc149d62487c374fc3bbb96c8ab9ffb7f91cdc5a2745437aea3e61",
+      "last_updated": "2026-10-23T14:12:13.739302",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Memory.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Memory",
-      "hash": "f4be3ed7a990fd8d296febaf866e77d421e81d4f2ba9d599353b0692b9fb9c35",
-      "last_updated": "2026-10-20T19:05:18.113465",
+      "hash": "27cc7ebd3014172aa766ef8b66caf5c521027803450dd88770006e12d99cf045",
+      "last_updated": "2026-10-23T14:12:14.704171",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Model.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Model",
-      "hash": "082f9c7f858c1f0693c90aa255856cbe55835f59dd592e70ea1874e8e4bae8d2",
-      "last_updated": "2026-10-20T19:05:19.138849",
+      "hash": "d7146df511ea45df14e67b87533d5cd647f9eb20ed0483027630514c8662d5d0",
+      "last_updated": "2026-10-23T14:12:15.681367",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Permission-Modes.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Permission-Modes",
-      "hash": "ce1ddda569d879b5f2afa73da295452d72e33db792a3cb6225a3e4fb0e42b4d4",
-      "last_updated": "2026-10-20T19:05:20.133422",
+      "hash": "10ddf481aefc49906a70708f30785d584cbb2fb213762ddce23fd4749e7cf6bf",
+      "last_updated": "2026-10-23T14:12:16.657436",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Project.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Project",
-      "hash": "7573912c6d2a3e473310fe500f8adffac6962909d66d6756e0d2ed6b3e95a05c",
-      "last_updated": "2026-10-20T19:05:21.130829",
+      "hash": "c157dfd31a41631798686cda051a514d450e77c6765a6c0159c025c73ee68956",
+      "last_updated": "2026-10-23T14:12:17.630974",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Right-Sidebar.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Right-Sidebar",
-      "hash": "2287f4dde8903119078f79a6e27a60f53b5e60cd507e15b55ae87e7c43b4db4b",
-      "last_updated": "2026-10-20T19:05:22.095517",
+      "hash": "6b25e6fe76827fa2687354fe3f66bbdcc9a7f94c3038eab549acabf206ac98a6",
+      "last_updated": "2026-10-23T14:12:18.655374",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Setting.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Setting",
-      "hash": "f7f6e4731527ff275a91f8e3296a1eb50b93a8626411cf6de576eeda37da760f",
-      "last_updated": "2026-10-20T19:05:23.069132",
+      "hash": "101ec4186494f18d4db47bc059f672569cc6e347edaa3da492d6b4c08a1638ad",
+      "last_updated": "2026-10-23T14:12:19.574757",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Sidebar.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Sidebar",
-      "hash": "b749f2867c01cea596fac678db7402ef45fd283377845c32dfe720d670af19aa",
-      "last_updated": "2026-10-20T19:05:24.060545",
+      "hash": "2a74b3c6a674eece94347067e660aaa2a918658ef8928df5bb1fc3cc0215415c",
+      "last_updated": "2026-10-23T14:12:20.488667",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Skills-Market.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market",
-      "hash": "41074c5ce6663651dae9b6d0a96bc72c41fad899202ad6ffa0da670ed9aaef8d",
-      "last_updated": "2026-10-20T19:05:25.043372",
+      "hash": "c273d9195d2f027df3590564803a2f18bf0c54990e8a5a45c4e042fbde51f88b",
+      "last_updated": "2026-10-23T14:12:21.457471",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Task-Bar.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Task-Bar",
-      "hash": "d50dcccd59afdbb3572b334a1572bcd285ecf27a4e71558dc9cfd8f8e0dda4f6",
-      "last_updated": "2026-10-20T19:05:26.014586",
+      "hash": "d06f3d4bee6b7112e261e3e7b68cabef88a467e19eba816cafec9b2497715a51",
+      "last_updated": "2026-10-23T14:12:22.869333",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Function-Description__Worktree-Task.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Worktree-Task",
-      "hash": "cf0ed56a3cf9ca43028580dda8c028d8d9bca90745acfffcd0fec138c76d1a6d",
-      "last_updated": "2026-10-20T19:05:26.933670",
+      "hash": "64f920db1fd1ec15be0e7165e00ed00baa56d16e42071a538cabfe37e4f4f49f",
+      "last_updated": "2026-10-23T14:12:23.833898",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Installation-Kylin-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Installation-Kylin-Guide",
-      "hash": "2e251e5dd59d1366022f2d814e48c9f3f6e94447fe9ad3db3704b040ffd574a6",
-      "last_updated": "2026-10-20T19:05:27.884115",
+      "hash": "40ab5b28fe069497ac2f560fdbda72cfeddb4dea27bb21ded6a42cde0e9fb761",
+      "last_updated": "2026-10-23T14:12:24.890798",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Installation-Mac-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Installation-Mac-Guide",
-      "hash": "29bc9acc672f2ee0328b73b44ba74e8ef2bbcc6458e24c72b58d929327e87e95",
-      "last_updated": "2026-10-20T19:05:28.839832",
+      "hash": "16ba257c44e1cc4642ed6a4e57ad06d1562fdda165fdb931066b7bca86c621c0",
+      "last_updated": "2026-10-23T14:12:25.805838",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Installation-UOS-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Installation-UOS-Guide",
-      "hash": "bcd5706658af37d86538dcbd2413008b4e67d33eda0c2ac962bac62750f6a5fa",
-      "last_updated": "2026-10-20T19:05:29.754457",
+      "hash": "218a6710b9b012c5eaa736012a3f972f0dd44a5ab112cdf3bd187d159ed21c77",
+      "last_updated": "2026-10-23T14:12:26.766532",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Installation-Win-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Installation-Win-Guide",
-      "hash": "ebeab38d3fa5ada74eff00fd991c32f92a16c2388d98feb88e27f7080e504fc1",
-      "last_updated": "2026-10-20T19:05:31.164674",
+      "hash": "2fcc5afca0e780eba96ddfa2ff10698bc29302030520eb89e9bb6db542bc8501",
+      "last_updated": "2026-10-23T14:12:27.723578",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Eight.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Practice-Cases/Practice-Eight",
-      "hash": "1d2f426f694ec3ea6866fec284ba1d5eeaca4a69379af50550f30bfacfcddc86",
-      "last_updated": "2026-10-20T19:05:32.241928",
+      "hash": "5f71e23970278629f8f8cacfd640c6baebc94fd3d5ddc9012e4984b31b5e0951",
+      "last_updated": "2026-10-23T14:12:28.648675",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Eleven.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Practice-Cases/Practice-Eleven",
-      "hash": "efe78b2964094d5d7ed55974fddc9b406a6b44c4ce212c140c695b0769fb5dc4",
-      "last_updated": "2026-10-20T19:05:33.158592",
+      "hash": "c7d287a5d1b02584f1b199d2cbd41b28f573ae1a17bc231bce581dc9a6865233",
+      "last_updated": "2026-10-23T14:12:29.611039",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Five.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Practice-Cases/Practice-Five",
-      "hash": "bce170d39ffb6ac2ff69b5c34a1db9b960eeeb0bd12420c8187a7ec6e7759045",
-      "last_updated": "2026-10-20T19:05:34.120462",
+      "hash": "375a99fb6c031aea38ecdb9bc106143268f293c8b0f3f599389844d22b368cda",
+      "last_updated": "2026-10-23T14:12:30.574427",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Four.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Practice-Cases/Practice-Four",
-      "hash": "4587577ff5c04fb8fc906d388d7c0dbcc79bb9ed44b13ec6f7dc42b3884553c0",
-      "last_updated": "2026-10-20T19:05:35.145400",
+      "hash": "81fcfec8b728c979e9f79cca4e8c1ecbe1f54b26e68c8ddae03d3b62b77239e6",
+      "last_updated": "2026-10-23T14:12:31.480006",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Nine.md": {
@@ -1226,14 +1226,14 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-One.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Practice-Cases/Practice-One",
-      "hash": "fd724bd0b387a2ddd1f55efd5253cb706afdccc064f4072df14a45ddb7c454e7",
-      "last_updated": "2026-10-20T19:05:37.048358",
+      "hash": "b8490d9c71d2e933502fbdecc280f1bffc9abc03a26517f55ba0e05c6cb2e8fa",
+      "last_updated": "2026-10-23T14:12:33.883052",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Seven.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Practice-Cases/Practice-Seven",
-      "hash": "c3d31cc1e0133996eb4424d3184ddba82d8a080248096ef1ba991b4099d06b82",
-      "last_updated": "2026-10-20T19:05:38.018234",
+      "hash": "fee32e846eca58937d50c1de29ff6dcbab5f1ad7a99351c4d6e01598950602ef",
+      "last_updated": "2026-10-23T14:12:34.877634",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Six.md": {
@@ -1244,98 +1244,98 @@
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Ten.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Practice-Cases/Practice-Ten",
-      "hash": "23c1d914c93ca3b6ec4a487bc508cb7826c072bcb2b2197b893ef7d370e5a146",
-      "last_updated": "2026-10-20T19:05:40.066102",
+      "hash": "a2ae527d6976c81ee9a21046abbc6def9edb2ef1633b49276ac7c0c583a0df11",
+      "last_updated": "2026-10-23T14:12:37.240905",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Three.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Practice-Cases/Practice-Three",
-      "hash": "ab62b4bb67c68b996ee262357b0d1d6f1463a2a5cf9be61f293e80a8beedf2ea",
-      "last_updated": "2026-10-20T19:05:41.021844",
+      "hash": "49ccf09eac097d8fa47a4061a0ef4f404a6b21c62a561613f112924f257e6a5c",
+      "last_updated": "2026-10-23T14:12:38.156623",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__Practice-Cases__Practice-Two.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Practice-Cases/Practice-Two",
-      "hash": "5227e4e82ea48ee339f3e1446b51856c7c2be8e69c87733e6750f69ac7c00989",
-      "last_updated": "2026-10-20T19:05:41.936399",
+      "hash": "ff4c9c2024abb819460e3dfc363708e0c41e81f2b079c22c6c79949e7e7e6506",
+      "last_updated": "2026-10-23T14:12:39.124721",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Agent-Browser.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/Agent-Browser",
-      "hash": "e434d5299356ef6cb6ea37d9d63c5614d8a895f975797ffb034a453bbc155d53",
-      "last_updated": "2026-10-20T19:05:42.895217",
+      "hash": "ee6495658d0486ab40573c7a2ca7dfb00c951195aa18ec0f31eefb9e15c14c3e",
+      "last_updated": "2026-10-23T14:12:40.048067",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Find-Skills.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/Find-Skills",
-      "hash": "8af3584ba05519aa75e96c8dd6b901f15b84eb6bfb75c6e5a2b0dc1845448bf8",
-      "last_updated": "2026-10-20T19:05:43.848385",
+      "hash": "383b9034c242cc354e9462aa48faf0b20665cce1c2c20df0f6f5eb65495a3ee9",
+      "last_updated": "2026-10-23T14:12:40.961783",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Frontend-Design.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/Frontend-Design",
-      "hash": "5393f05e90b0685e61c581fc5b565e25777581e631999b049ef7a78e5e3e4622",
-      "last_updated": "2026-10-20T19:05:44.762595",
+      "hash": "81b08857f91739a6e01b6e029522588bc21c649b924e1101b3f1b42b4dd79cc0",
+      "last_updated": "2026-10-23T14:12:41.994585",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Local-Whisper.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/Local-Whisper",
-      "hash": "0f837629e1c1232ada8c55846d96d1d4f87c5281618a0cd0a825c1303ca8f52f",
-      "last_updated": "2026-10-20T19:05:45.717007",
+      "hash": "604f96b51606d60ffefce3ec08b2c3cf532cbf4e05587409d51ed38abc7f4fa0",
+      "last_updated": "2026-10-23T14:12:43.026334",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Obsidian.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/Obsidian",
-      "hash": "a9667976ba8baa3a6cc4fd313df6ec7f1ed20770192f838ef26a6c156468927b",
-      "last_updated": "2026-10-20T19:05:46.733723",
+      "hash": "da2de0c0f3c0d55494938b358de2282c1657463a1f7d203e5676ff18d0cfaa2a",
+      "last_updated": "2026-10-23T14:12:43.974380",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Office-Document-Suite.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/Office-Document-Suite",
-      "hash": "29c148fc6ff3a9e89ca0060931b51c4c7cc24c5e90b96bda64e79f58f52a9d02",
-      "last_updated": "2026-10-20T19:05:47.701518",
+      "hash": "ece75b2fd70a64b89d02da4211c7586c5f785b84dc42c0712287e5549161415d",
+      "last_updated": "2026-10-23T14:12:44.930684",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Skill-Scanner.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/Skill-Scanner",
-      "hash": "e1dfa92bfa81b5dcfb2c0e613f9ed5c0e07f1e40602bd470b4f85ab2783cb500",
-      "last_updated": "2026-10-20T19:05:48.692064",
+      "hash": "10241d6f07b44b13eb439c925e5630a7c1e72db0fbd0614dd5ff8b74c9b5f92a",
+      "last_updated": "2026-10-23T14:12:45.892016",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__Web-Search.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/Web-Search",
-      "hash": "bc39ed71783512e8fb52a3cbef78b347832747c2b47cf80997f2b131887a8852",
-      "last_updated": "2026-10-20T19:05:49.611738",
+      "hash": "388e1bb7b91834fda022a4d9ec315d69c824e32dbe9cf2905a33463d9fed4468",
+      "last_updated": "2026-10-23T14:12:46.807692",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__self-improvement.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/self-improvement",
-      "hash": "4c704efb57f7cf93f97a09b651b1f60bdf7b308ecec8688c2bef3e6624ed91e2",
-      "last_updated": "2026-10-20T19:05:50.522061",
+      "hash": "0735c7e356d75a451629bbf25862048bcd1f9d1435c4ccc42b167a4d6a349d61",
+      "last_updated": "2026-10-23T14:12:47.871578",
       "source": "codebuddy"
     },
     "workbuddy__From-Beginner-to-Expert-Guide__WorkBuddy-Zero-Cost-Skill-Top-10__tl_video_downloader.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/WorkBuddy-Zero-Cost-Skill-Top-10/tl_video_downloader",
-      "hash": "de8b96f5d5aebfa1a6ef63cc6e4dc67fef22e823cd6ad0675b5c7ea3014a5608",
-      "last_updated": "2026-10-20T19:05:51.533656",
+      "hash": "2921e15f8b4ed7a0fd91273bd859506b7b0b067074039d0a89ead93b16a45851",
+      "last_updated": "2026-10-23T14:12:48.833926",
       "source": "codebuddy"
     },
     "workbuddy__Invoice.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Invoice",
-      "hash": "ab28291d4df91e0697a8abbfa73cbc55550845fd113216e017da595bccaec8c2",
-      "last_updated": "2026-10-20T19:05:52.498660",
+      "hash": "e3959d0728298045eb4700b795d4aec84562fb6f94311d9dd5f7154b00388d77",
+      "last_updated": "2026-10-23T14:12:49.755703",
       "source": "codebuddy"
     },
     "workbuddy__Overview.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Overview",
-      "hash": "4ccdcc3e13baead532233c9e74003fad1bfdc04e3ace951dd03d45d68fdb3e8d",
-      "last_updated": "2026-10-20T19:05:53.412397",
+      "hash": "aef9579acd0646629cf5831e8ff47b9323ba2d11b346f8ee5ed9989081c2e012",
+      "last_updated": "2026-10-23T14:12:50.726854",
       "source": "codebuddy"
     },
     "workbuddy__Plan.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Plan",
-      "hash": "929d619aa9023f5710614ce03508cb7a4b0dff6d4a120b0705b72607407927a5",
-      "last_updated": "2026-10-20T19:05:54.396759",
+      "hash": "89cd99ac486956b61c670cbf435b230a964c2b4f70020fc8e5aaf00929d47f65",
+      "last_updated": "2026-10-23T14:12:51.681436",
       "source": "codebuddy"
     },
     "workbuddy__Pricing.md": {
@@ -1346,14 +1346,14 @@
     },
     "workbuddy__QQ-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/QQ-Guide",
-      "hash": "cf271169d2a8e16d113447c2afeff0cda8694256b9f5df94df14c97669a2a84b",
-      "last_updated": "2026-10-20T19:05:56.295203",
+      "hash": "99563a12c0ff2a75f74b67811f2bd3722aade7211239c13803e5245bebe16cc8",
+      "last_updated": "2026-10-23T14:12:53.606474",
       "source": "codebuddy"
     },
     "workbuddy__Results.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Results",
-      "hash": "c14c06ea087fe71bec109484446ee507fc6a86272edc0c906d05296ebdcdab7b",
-      "last_updated": "2026-10-20T19:05:57.265731",
+      "hash": "170c12334c07afb9afa9ec18fff26082513462f30b62ca7e13f14ea1dcb5daea",
+      "last_updated": "2026-10-23T14:12:54.529022",
       "source": "codebuddy"
     },
     "workbuddy__Scenarios.md": {
@@ -1364,32 +1364,32 @@
     },
     "workbuddy__Task-Management.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Task-Management",
-      "hash": "e389a9ee1fab68a05aaf16f6c9406bdc9fe7834b1297038db3ea4bda471e70d3",
-      "last_updated": "2026-10-20T19:05:59.851944",
+      "hash": "019eb82966df8f52eec542969467c22416f38f21c897e2efed799dbec48c3d6e",
+      "last_updated": "2026-10-23T14:12:56.373491",
       "source": "codebuddy"
     },
     "workbuddy__Usage.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Usage",
-      "hash": "6a94439629aa7a92c7e584b85411afa6c2055f0cbf4cce55731a362ed0321507",
-      "last_updated": "2026-10-20T19:06:00.766531",
+      "hash": "f8035db6f6e41dbaddccc3b891becf7a0cd003f30044d9fac68c14e2ba3c43ee",
+      "last_updated": "2026-10-23T14:12:57.277455",
       "source": "codebuddy"
     },
     "workbuddy__Wechat-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Wechat-Guide",
-      "hash": "0d28b36e5ea0456ca6c89e11e7a36fad928c3e522d2d9b9916ce14b85168ff37",
-      "last_updated": "2026-10-20T19:06:01.730620",
+      "hash": "25975380ba13620f8cf7a2b9e456c1db83d60453e3f7c8f2c938367e2b92fda5",
+      "last_updated": "2026-10-23T14:12:58.265820",
       "source": "codebuddy"
     },
     "workbuddy__Wecom-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/Wecom-Guide",
-      "hash": "3f2268fca7be067ef58e7a0e60da23572ab7a717d160f8ab45e115d5ed6fea0f",
-      "last_updated": "2026-10-20T19:06:02.716887",
+      "hash": "1f1ec679c97939e2ea5a86f50a192d6acd022b7f6ab72a689b0fbade5df0a629",
+      "last_updated": "2026-10-23T14:12:59.241518",
       "source": "codebuddy"
     },
     "workbuddy__WeixinBot-Guide.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddy/WeixinBot-Guide",
-      "hash": "a90c2d82ee776499fb7f6baf3c4344711d1aab93316d904ccddcf399b78e775e",
-      "last_updated": "2026-10-20T19:06:03.627545",
+      "hash": "0db386f5f40be1e65e73e463230e9d7c6ecbbcfdeb1bf584d84f6d077171826a",
+      "last_updated": "2026-10-23T14:13:00.153350",
       "source": "codebuddy"
     },
     "workbuddyapp__Overview.md": {
@@ -1400,38 +1400,38 @@
     },
     "workbuddyapp__Quickstart.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/Quickstart",
-      "hash": "ae35346cf7162db8fe782c2b5ee6636dd413346593538948fec16a8e11701356",
-      "last_updated": "2026-10-20T19:06:05.502524",
+      "hash": "b35b1c10e82af0fa0bbf5ae2dfc08e9ef4f4bd31228bc4eddab5815ee4effd44",
+      "last_updated": "2026-10-23T14:13:02.028979",
       "source": "codebuddy"
     },
     "workbuddyapp__Settings.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/Settings",
-      "hash": "500629079f15475fb799223fb8d72382885a26ae6d6ab2938e4cff3cb56640e6",
-      "last_updated": "2026-10-20T19:06:06.423462",
+      "hash": "2b3df9ca37506ad2b49030adab8fea4d8e434613c09fe948bd178f83fc9ac06b",
+      "last_updated": "2026-10-23T14:13:02.931750",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Attachments-and-Skills.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Attachments-and-Skills",
-      "hash": "71b627753ccefc55ad69926d7f09a86ade65cc582b1290119fda6f2becf6e5c2",
-      "last_updated": "2026-10-20T19:06:07.870161",
+      "hash": "d48f076b09cd65b8b184b7b578c6c95fd9d72a612665071f86b36f4c56f44bca",
+      "last_updated": "2026-10-23T14:13:04.005153",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Auto.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Auto",
-      "hash": "4953851ae7ec020c657cd2aa7b2df1bb491def0b1dab25be39855d83a363be99",
-      "last_updated": "2026-10-20T19:06:08.838849",
+      "hash": "6447b976e8f5e117d1b5cc467ef33d4614fe96b3a76cbe816709425a9436e17f",
+      "last_updated": "2026-10-23T14:13:04.976333",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Create-Task.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Create-Task",
-      "hash": "6810cf078bf98c3e6200583a7cac5fe8d23743c8882a67e459cd87c9d4b96c1e",
-      "last_updated": "2026-10-20T19:06:09.793535",
+      "hash": "6b45d74a708fd5001399de538c5e0849d4fee7708b9490a3287a822857bd32b3",
+      "last_updated": "2026-10-23T14:13:05.885107",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Expert.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Expert",
-      "hash": "014f30d1517b1c94a55f1d011a0ea9dfc0cea499d0767d9507b631605653b1b7",
-      "last_updated": "2026-10-20T19:06:11.201975",
+      "hash": "19c79269307a2e1accfb02a73b2523e88c5ad73248bf14c21c8171e1c9880b8a",
+      "last_updated": "2026-10-23T14:13:06.793026",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Homepage.md": {
@@ -1442,62 +1442,62 @@
     },
     "workbuddyapp__features__Model.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Model",
-      "hash": "4721e08632f140fff0a6c31780ba41417d274c29dec841abca04b5c90b3c7757",
-      "last_updated": "2026-10-20T19:06:13.079134",
+      "hash": "57f735d6e1fbb2516f22b1d525ce63b7398f74a9c644b9aca1ad24e9cce48cce",
+      "last_updated": "2026-10-23T14:13:09.155625",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Multidevice.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Multidevice",
-      "hash": "19a9d4b7cd01d20990b5031c6db233f418331617280dad136b615dfe5a78b930",
-      "last_updated": "2026-10-20T19:06:14.048191",
+      "hash": "0ce4926d4cd0f6f99ff86e87f650981f8b536d5b1267d0a52b0da39e9a7d4e24",
+      "last_updated": "2026-10-23T14:13:10.131060",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Share.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Share",
-      "hash": "646d370a8613f36c7eef5e5f8ed184a02ddbcc565f70aba91f29105d2c4ced57",
-      "last_updated": "2026-10-20T19:06:15.474848",
+      "hash": "f399b29aa025bd0f2dfa02aedb4096bb48e905f7ceac912e1674c4c5c27cba5f",
+      "last_updated": "2026-10-23T14:13:11.093697",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Sidebar.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Sidebar",
-      "hash": "30d40abc1c863f7ae96f2d2ee1218e457b6f105a29906bbf0e354ebf5d0a5366",
-      "last_updated": "2026-10-20T19:06:16.386968",
+      "hash": "e8ec370a5bddc80d006b91dff82cc38c16eabe0cb2ebaaa1a75246a690759ea2",
+      "last_updated": "2026-10-23T14:13:12.506505",
       "source": "codebuddy"
     },
     "workbuddyapp__features__Task-Execution.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/Task-Execution",
-      "hash": "d7be8accdbe535d8f571bc70f14c79d870afa1f2e95cacca6e04bbb02ff68dcc",
-      "last_updated": "2026-10-20T19:06:17.298580",
+      "hash": "fbde72a406d5935fc510a615ed687fe6063887f3a3fa10b9439614f4fde2fd81",
+      "last_updated": "2026-10-23T14:13:13.475700",
       "source": "codebuddy"
     },
     "workbuddyapp__features__WeChat-Open.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddyapp/features/WeChat-Open",
-      "hash": "71019fa451d199c7269cd7881be4a7ed2a6b833b6de94f62c05caef3b76c89de",
-      "last_updated": "2026-10-20T19:06:18.262628",
+      "hash": "18636ba2969b404e891c148c6a9a44b661597eda75c37fe6f93e712d2fef9e93",
+      "last_updated": "2026-10-23T14:13:15.069356",
       "source": "codebuddy"
     },
     "workbuddymini__features__Attachments-and-Skills.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Attachments-and-Skills",
-      "hash": "8959bcff1409f29cb046672526a0c1b035b1b80dbd34114b28e4d9717c35fe83",
-      "last_updated": "2026-10-20T19:06:19.181979",
+      "hash": "757e33f22496fef0681c0ea956cfe55d81ce936926113228126a9377033fb790",
+      "last_updated": "2026-10-23T14:13:16.091866",
       "source": "codebuddy"
     },
     "workbuddymini__features__Auto.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Auto",
-      "hash": "217ae443d19fc8cd312aa4fa66592534d4524f9b5eb9171fd64239bb8fba16a4",
-      "last_updated": "2026-10-20T19:06:20.127917",
+      "hash": "3b4f41249d992854812935ca48d74049131dd919d19a7ca3b50b5079bc0bb669",
+      "last_updated": "2026-10-23T14:13:17.003317",
       "source": "codebuddy"
     },
     "workbuddymini__features__Create-Task.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Create-Task",
-      "hash": "664a80b519ea33a9801c1ba06bda86ee9298361a9ea6c4a0888f77c84b4bdc73",
-      "last_updated": "2026-10-20T19:06:21.035108",
+      "hash": "e4bafe00a90ebf1bda2d617b33dc2b6a9951c2ea690f176be913636d1cedd1ed",
+      "last_updated": "2026-10-23T14:13:17.921336",
       "source": "codebuddy"
     },
     "workbuddymini__features__Expert.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Expert",
-      "hash": "638c7b665eac612f5ab89e38b25862a798fbec692c46c3b88ff8650e62cd244c",
-      "last_updated": "2026-10-20T19:06:21.946416",
+      "hash": "ab99e81521b96e263e9e80c225692bd7aeb635d5396d3a2eedff8d0551aee7f4",
+      "last_updated": "2026-10-23T14:13:18.833579",
       "source": "codebuddy"
     },
     "workbuddymini__features__Homepage.md": {
@@ -1508,62 +1508,62 @@
     },
     "workbuddymini__features__Multidevice.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Multidevice",
-      "hash": "0f09af33c0b44f671dc4400b17d61181d4e3457d3af00925efce07a83746a206",
-      "last_updated": "2026-10-20T19:06:23.964282",
+      "hash": "e26da45ffeaee035ecb2a907a1eb14439668dc4f23f8e21de7a89fe86c704c0c",
+      "last_updated": "2026-10-23T14:13:20.806361",
       "source": "codebuddy"
     },
     "workbuddymini__features__Select-Model.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Select-Model",
-      "hash": "5746c78116ee3bc83bede7eecb9a75e578ec86bdc689088ec7c98ca7878d2386",
-      "last_updated": "2026-10-20T19:06:24.892943",
+      "hash": "6197b26c84351b2a120c9a53bcd8a16f38b5ea7fbc4c72dac1e1dfb2529696df",
+      "last_updated": "2026-10-23T14:13:21.715837",
       "source": "codebuddy"
     },
     "workbuddymini__features__Settings.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Settings",
-      "hash": "8907846b4d616c35dbf1880f17c25f3938d73ca6e945ad8b715e579e7973d68c",
-      "last_updated": "2026-10-20T19:06:25.812434",
+      "hash": "ace733a828fd6a9e30d8dfd54fd9d36c2c36e2b7683246bbc7c70c39e63d20ca",
+      "last_updated": "2026-10-23T14:13:22.673406",
       "source": "codebuddy"
     },
     "workbuddymini__features__Share.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Share",
-      "hash": "f4b64ec9e99fa365772cbbe9e8b44c96fa92b2107d88a1ee7c5429120681ff8b",
-      "last_updated": "2026-10-20T19:06:26.750523",
+      "hash": "772e5114f595eb47f56df3e10dc6486c222100a2d6a75a138212132a981f0e3e",
+      "last_updated": "2026-10-23T14:13:23.594656",
       "source": "codebuddy"
     },
     "workbuddymini__features__Sidebar.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Sidebar",
-      "hash": "684c62ceaab6ee5da5930fec3c5b2e6a7d7ce015849b0136ad3703631f626510",
-      "last_updated": "2026-10-20T19:06:27.657690",
+      "hash": "ba2d20dfa9b1676953c0c66edc6666802d5c316243c43e7c1b2054084ac1c487",
+      "last_updated": "2026-10-23T14:13:24.504202",
       "source": "codebuddy"
     },
     "workbuddymini__features__Task-Execution.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/Task-Execution",
-      "hash": "1219087fd58294cb0e4c777c9eceaff182816383b9bf9374c12076d04e961e14",
-      "last_updated": "2026-10-20T19:06:28.633789",
+      "hash": "8584b754fc6ae8392cd26b9f7b9194997ffeb46ee4c5104efe3489f041a3659f",
+      "last_updated": "2026-10-23T14:13:25.438703",
       "source": "codebuddy"
     },
     "workbuddymini__features__WeChat-Open.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/features/WeChat-Open",
-      "hash": "d5251f20ce2bb3f8e6dea1b14e0cb35663cd5719190b941e44627df881f8e5df",
-      "last_updated": "2026-10-20T19:06:29.603620",
+      "hash": "1d714e324a6394fa2b57c61b67ccbe3c31200406cfe30bb739bcf268df73ce18",
+      "last_updated": "2026-10-23T14:13:26.345205",
       "source": "codebuddy"
     },
     "workbuddymini__quick-start__Overview.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/quick-start/Overview",
-      "hash": "b10e3b80c93e4ce682be3df829aca8e1f87b1058531ee06f7d5e02ebbca79b0b",
-      "last_updated": "2026-10-20T19:06:30.550056",
+      "hash": "b980090532f2b18573c1fe8fb602a478a14b1ef2196813349ce58d98fda92993",
+      "last_updated": "2026-10-23T14:13:27.314641",
       "source": "codebuddy"
     },
     "workbuddymini__quick-start__Quickstart.md": {
       "original_url": "https://www.codebuddy.cn/docs/workbuddymini/quick-start/Quickstart",
-      "hash": "908b0d4422af439fc59ba1d9590361691e27bfd788bb81d9f17c8ee4680f3dbd",
-      "last_updated": "2026-10-20T19:06:31.507003",
+      "hash": "2eccd9d3df2c2f124fe0227a4e947b3dccf977c2dd5cf9092ee4b3fc93e86adc",
+      "last_updated": "2026-10-23T14:13:28.234274",
       "source": "codebuddy"
     }
   },
   "fetch_metadata": {
     "source_name": "codebuddy",
-    "last_fetch_completed": "2026-10-23T08:21:31.084366",
+    "last_fetch_completed": "2026-10-23T14:13:28.234350",
     "docs_root_url": "https://www.codebuddy.cn/docs",
     "pages_discovered": 285,
     "pages_fetched_successfully": 260,
@@ -1598,7 +1598,7 @@
     "total_files": 260,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-23T08:21:31.084392",
+  "last_updated": "2026-10-23T14:13:28.234376",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/codebuddy/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

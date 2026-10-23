@@ -21,7 +21,7 @@
 - **定时任务**：查看和管理全部任务，首次进入时会推荐常用任务模板。
 - **运行记录**：查看所有任务的历次运行情况。
 
-![左侧导航栏的定时任务入口](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/automation-entry.uAPrbN_G.png)
+![左侧导航栏的定时任务入口](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/automation-entry.uAPrbN_G.png)
 
 ## 创建定时任务
 
@@ -33,7 +33,7 @@
 | **从任务新建** | 用一句话描述需求，由 WorkBuddy 帮你创建 |
 | **从模版新建** | 不确定能做什么，想从常见场景快速上手 |
 
-![定时任务列表与「新建」下拉菜单](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/automation-new-menu.dlgvaOLy.png)
+![定时任务列表与「新建」下拉菜单](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/automation-new-menu.dlgvaOLy.png)
 
 ### 手动新建
 
@@ -51,7 +51,7 @@
 | **有效期** | 任务生效的日期范围（单次任务无需设置） |
 | **消息推送到企业微信** | 任务完成后将结果推送到企业微信，详见下方[推送到企业微信](#推送到企业微信) |
 
-![新建定时任务编辑窗口](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/automation-create-dialog.D4IM2z-F.png)
+![新建定时任务编辑窗口](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/automation-create-dialog.D4IM2z-F.png)
 
 **重复规则说明：**
 
@@ -75,7 +75,7 @@ WorkBuddy 会根据描述自动创建定时任务，对话中会展示创建结�
 
 选择 **从模版新建**，或在空白页面点击推荐的任务模板（如每日 AI 新闻推送、每周工作周报、会议前准备等），编辑窗口会自动填好名称、提示词和执行时间，按需修改后点击 **确定** 即可。
 
-![定时任务模板](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/auto-3.hygxPDZL.png)
+![定时任务模板](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/auto-3.hygxPDZL.png)
 
 ## 管理定时任务
 
@@ -151,16 +151,51 @@ WorkBuddy 会根据描述自动创建定时任务，对话中会展示创建结�
 
 ## 推送到企业微信
 
-在编辑窗口中打开 **消息推送到企业微信**，任务完成后会将结果推送到企业微信。可选择两种机器人：
+在编辑窗口中打开 **消息推送到企业微信**，任务完成后会把结果推送到企业微信。推送使用助理已绑定的企业微信机器人。
 
-| 机器人 | 说明 |
-| --- | --- |
-| **助理的企业微信 bot** | 复用「企微助理集成」已绑定的 bot 推送结果 |
-| **独立的企业微信 bot** | 单独注册一个 bot，仅用于接收定时任务结果 |
+### 开启推送
 
-- 尚未绑定时，按界面引导完成绑定即可；
-- 使用助理的企业微信 bot 时，请选择 **WebSocket 长连接**方式绑定，URL 回调方式无法推送结果；
-- 推送仅作为结果通知，不会写入助理的对话上下文；
+1. 在新建或编辑窗口左下角，打开 **消息推送到企业微信** 开关。
+
+![新建定时任务窗口中的「消息推送到企业微信」开关](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/automation-wecom-switch.CcFKNX4c.png)
+2. 如果助理已通过 **WebSocket 长连接** 绑定企业微信机器人，开关会直接开启，无需其他操作。
+3. 如果尚未绑定，开关旁会弹出「尚未连接企业微信机器人，请先完成连接」的提示：
+
+![尚未连接企业微信机器人的提示](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/automation-wecom-not-connected.DfGzUihU.png)
+
+	- 点击 **取消**：开关恢复为关闭；
+	- 点击 **连接**：打开「连接企业微信机器人」窗口。
+4. 在「连接企业微信机器人」窗口中点击 **获取企业微信二维码**。
+
+![连接企业微信机器人窗口](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/automation-wecom-connect-dialog.DyJCLuyq.png)
+5. 使用企业微信扫描二维码，完成机器人接入。没有企业微信账号时，可点击二维码下方的 **去注册**。
+
+![企业微信扫码接入智能机器人](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/automation-wecom-qrcode.D85jFTpZ.png)
+6. 绑定成功后会提示「绑定成功，还差一步」。请打开企业微信，向这个机器人发送任意一条消息，完成最终确认，然后点击 **已发送**。
+
+![绑定成功，还差一步](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/automation-wecom-last-step.CYZYD0N_.png)
+
+![在企业微信中向机器人发送任意消息](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/automation-wecom-bot-chat.CU_YwKLj.png)
+7. 点击 **已发送** 或 **下次再说** 后会自动回到定时任务，推送开关自动打开，已填写的任务内容不会丢失。
+
+注意
+
+没有在企业微信里给机器人发送过消息时，定时任务找不到接收推送的对象，结果无法推送。绑定后请务必完成第 6 步。
+
+### 已使用 URL 回调连接的情况
+
+定时任务推送只支持 **WebSocket 长连接**，不支持 URL 回调方式。如果助理当前是用 URL 回调连接的，开启开关时会提示「URL 回调连接暂不支持消息推送，需解绑后重新连接」：
+
+- 点击 **重新连接**：会自动取消现有的 URL 回调连接，并提示「已自动帮你取消 URL 回调连接，请重新连接」，然后按引导重新连接；
+- 在「连接企业微信机器人」窗口中，从定时任务进入时 **更多连接方式** 里的 URL 回调不可选，悬停会提示「定时任务消息推送不支持 URL 回调配置」。
+
+注意
+
+取消 URL 回调连接后，助理在企业微信里原来通过 URL 回调接收消息的能力也会随之断开，重新连接后改为 WebSocket 长连接方式。
+
+### 其他说明
+
+- 之前已经使用「独立的企业微信机器人」推送的定时任务，保持原有推送方式不变；
 - 推送失败不会影响任务本身的执行。
 
 ## 云端定时任务

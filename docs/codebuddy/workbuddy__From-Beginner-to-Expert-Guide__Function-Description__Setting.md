@@ -8,16 +8,16 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等配置�
 
 设置面板在**登录前后均可打开**。点击顶部工具栏的**帮助** \> **设置**是登录前后均可使用的通用入口。
 
-![顶部工具栏帮助菜单中的设置入口](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/help-menu-setting.DD15JgED.png)
+![顶部工具栏帮助菜单中的设置入口](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/help-menu-setting.DD15JgED.png)
 
 此外，登录前后还有各自的专属入口：
 
 - **已登录**：点击左侧边栏底部的**头像**，弹出用户菜单，点击**设置**打开设置面板。
 
-![用户菜单](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/user-menu.Bc8d0fWL.png)
-- **未登录状态**：在登录界面点击底部的**网络代理**，可进入设置面板。默认定位到**通用** \> **网络代理**，便于登录前排查网络与代理问题，调整完成后可返回登录界面重试；同时也可以调整其他无需登录的通用设置，依赖登录的设置项暂不可用。
+![用户菜单](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/user-menu.Bc8d0fWL.png)
+- **未登录状态**：在登录界面点击底部的**网络代理**，可进入设置面板。默认定位到**通用** \> **网络代理**，便于登录前排查网络与代理问题，调整完成后可返回登录界面重试。未登录时，设置导航仅提供**通用**、**快捷键**和**获取帮助**，依赖登录的设置项需登录后才能使用。
 
-![登录界面点击底部网络代理进入设置](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/login-network-proxy.BsX8zQIk.png)
+![登录界面点击底部网络代理进入设置](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/login-network-proxy.BsX8zQIk.png)
 
 TIP
 
@@ -46,13 +46,13 @@ TIP
 
 设置面板采用**左侧导航 \+ 右侧内容区**结构，左侧为设置项导航，右侧为对应配置内容，**修改即时生效、无需重启**。
 
-![设置面板](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/setting-panel.DMOGw4qt.png)
+![设置面板](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/setting-panel.DMOGw4qt.png)
 
 左侧导航按照功能分为设置、功能、数据与安全三组，选择对应设置项后，可在右侧查看和修改相关配置。
 
 | 分组 | 设置项 | 说明 |
 | --- | --- | --- |
-| **设置** | 通用 | 语言、字体大小、锁屏运行、开机自启、网络代理、通知等基础设置 |
+| **设置** | 通用 | 语言、字体大小、锁屏运行、运行时防止系统休眠、开机自启、网络代理、通知等基础设置 |
 | 个人主页 | 管理账号资料与个人信息 |
 | 套餐与积分 | 查看套餐、用量及积分信息 |
 | 外观 | 切换软件主题 |
@@ -71,11 +71,41 @@ TIP
 
 功能型设置项（外观、记忆、模型、助理、数据管理等）的详细说明见其独立文档，可在上表点击跳转。
 
+## 搜索设置项
+
+不记得某个设置项在哪时，可以使用左侧导航顶部的 **搜索设置项**。
+
+![设置面板左上角的「搜索设置项」](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/setting-search.BzaE9-zm.png)
+
+使用方法：
+
+1. 输入设置项名称或相关关键词，支持中文、英文和常用别名，例如输入「代理」或 `proxy` 查找网络代理。
+2. 左侧导航会显示匹配的设置分类和设置项，命中的名称会高亮；通过别名匹配时，会标明匹配词。
+3. 点击结果跳转到对应页面；点击具体设置项时，会定位并短暂高亮该项。
+
+也可以按 **↑ / ↓** 选择结果，再按 **Enter** 跳转；按 **Esc** 或点击搜索框的清除按钮可清空搜索，恢复设置导航。没有结果时，尝试更简短的关键词。
+
+搜索只查找设置项，不搜索已填写的代理地址、文件路径等内容；未登录时只搜索当前可用的设置。
+
+## 运行时防止系统休眠
+
+桌面端在 **设置 → 通用 → 权限** 中提供 **运行时防止系统休眠** 开关，默认开启。
+
+![设置 → 通用 → 权限 中的「运行时防止系统休眠」开关](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/setting-prevent-sleep.D85vPeaf.png)
+
+开启后，本地任务执行期间电脑会保持唤醒，避免因空闲自动休眠导致任务中断，屏幕仍可正常熄灭。任务结束后，该功能不再阻止系统休眠；关闭开关则不提供这项任务运行期间的保护。开关修改立即生效，重启 WorkBuddy 后保留你的选择。
+
+这项设置与 **允许锁屏运行** 相互独立：如果已在后者选择保持唤醒或屏幕常亮，关闭「运行时防止系统休眠」不会取消那项设置的效果。
+
+注意
+
+此功能防止的是系统因空闲自动休眠，不阻止你主动让电脑睡眠或关机。
+
 ## 通知
 
 任务完成、需要你确认或中断时，WorkBuddy 会通过系统通知提醒你，不必一直盯着窗口。在**设置** \> **通用** \> **通知**中管理。
 
-![设置 → 通用 → 通知](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/setting-notification.CJINdn9N.png)
+![设置 → 通用 → 通知](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/setting-notification.CJINdn9N.png)
 
 | 设置项 | 说明 |
 | --- | --- |
@@ -103,7 +133,7 @@ TIP
 
 查看当前版本并检查更新、前往官网，也可以扫码关注公众号、视频号与腾讯频道，获取实用技巧与产品动态。
 
-![关于](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/setting-about.BqzUZcOa.png)
+![关于](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/setting-about.BqzUZcOa.png)
 
 ## 代码开发的用户级配置兼容说明
 

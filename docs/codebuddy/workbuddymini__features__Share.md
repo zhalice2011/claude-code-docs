@@ -2,8 +2,8 @@
 
 1. 任务产生的文件可以分享给好友，点击产物文件右上方的**分享**：
 
-![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/share-1.gt6vCuwf.png)2. 点击**确认分享**后进入分享详情：
+![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/share-1.gt6vCuwf.png)2. 点击**确认分享**后进入分享详情：
 
-![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/share-2.V-S2NNrY.png)TIP
+![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/share-2.V-S2NNrY.png)TIP
 
 每次新建的分享链接有效期为30天，30天后已分享的链接将失效

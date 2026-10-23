@@ -10,7 +10,7 @@
 
 为了让 `AI` 更好地完成应用开发工作，建议在新建任务时，选择代码开发模式开启新的对话。
 
-![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/image-11.DHE-MbN5.png)### 2）示例指令
+![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/image-11.DHE-MbN5.png)### 2）示例指令
 
 > 请帮我设计一个本地可运行的知识管理小工具，支持新增、搜索、编辑和分类，界面简洁，适合个人日常记录使用，并直接生成可运行的代码。
 
@@ -18,7 +18,7 @@
 
 `WorkBuddy` 会理解需求，自动生成完整代码并尝试运行，最终效果如下：
 
-![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/image-12.ebzuuDIW.png)## 三、让 `AI` 帮你解决报错
+![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/image-12.ebzuuDIW.png)## 三、让 `AI` 帮你解决报错
 
 ### 1）操作说明
 
@@ -43,7 +43,7 @@
 | 需求描述 | `AI` 可能执行的动作 |
 | --- | --- |
 | 希望支持模糊搜索，不依赖精确关键词 | 接入本地向量或语义检索能力 |
-| 每天早上自动推送待处理任务 | 配置自动化任务并汇总待办 |
+| 每天早上自动推送待处理任务 | 配置定时任务并汇总待办 |
 | 通过 `QQ` 或微信随时录入内容 | 对接消息平台并增加移动端输入通道 |
 | 新增内容时自动关联已有记录 | 增加关联分析与知识整理能力 |
 

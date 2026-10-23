@@ -8,6 +8,6 @@
 
 在IDE内点击右上角的头像图标，选择**帮助与反馈**：
 
-![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/contact-1.kmLLvOJY.png)在**意见反馈**处描述您的需求，建议上传图片并勾选上传日志，以便团队更准确地理解您的需求和问题:
+![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/contact-1.kmLLvOJY.png)在**意见反馈**处描述您的需求，建议上传图片并勾选上传日志，以便团队更准确地理解您的需求和问题:
 
-![](https://download.codebuddy.cn/web/docs/6f76a2f2aa17f550fb03da596b1c8a63724364e2/docs/static/contact-2.DeC4EwWt.png)
+![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/contact-2.DeC4EwWt.png)
