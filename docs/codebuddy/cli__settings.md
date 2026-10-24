@@ -306,6 +306,7 @@ json
 | `typedMemory` | 是否启用 Typed Memory 模式（默认：`true`）。启用后使用 4 种记忆类型（user/feedback/project/reference）\+ YAML frontmatter 格式管理记忆 | `true` |
 | `relevanceSelection` | 是否启用记忆相关性选择（默认：`true`）。启用后根据用户查询自动选择最多 5 个相关记忆注入上下文 | `true` |
 | `memoryExtraction` | 是否启用后台记忆提取（默认：`false`）。启用后在对话结束时自动从对话中提取值得记住的信息 | `true` |
+| `parentDiscovery` | 是否越过启动目录向上递归查找项目指令文件 `CODEBUDDY.md`/`AGENTS.md`（默认：`true`）。设为 `false` 时只加载启动目录本身的主文件与规则目录，不继承上级目录（含工作区之外）的指令 | `false` |
 | `teamMemory.enabled` | 是否启用团队记忆模式（默认：`false`）。启用后，项目记忆存储在项目目录下，便于团队共享 | `true` |
 | `teamMemory.userId` | 团队用户 ID，用于隔离不同用户的记忆。默认自动获取（git user.name \> 系统用户名） | `"yangsubo"` |
 
@@ -319,6 +320,7 @@ json
     "typedMemory": true,
     "relevanceSelection": true,
     "memoryExtraction": false,
+    "parentDiscovery": true,
     "teamMemory": {
       "enabled": true,
       "userId": "yangsubo"

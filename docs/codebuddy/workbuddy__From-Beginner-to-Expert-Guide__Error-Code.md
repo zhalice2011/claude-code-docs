@@ -68,13 +68,13 @@
 
 Workbuddy 内部从 5\.3\.0 版本之后，内置了网络代理切换的功能。
 
-![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/setting-proxy.BeePFMya.png)
+![](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/setting-proxy.BeePFMya.png)
 > 注：如果您不了解这三者的区别，可以使用 **跟随系统**。
 
 下面将介绍 Windows 和 Mac 两个平台的系统代理配置如何关闭。
 
 ### Mac
 
-![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/mac-proxy.SQtn0rkB.png)### Windows
+![](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/mac-proxy.SQtn0rkB.png)### Windows
 
-![](https://download.codebuddy.cn/web/docs/2da5081f4ce2ee0d138e3a4466d87ba5d1a1716b/docs/static/win-proxy.CDCaFTMK.png)
+![](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/win-proxy.CDCaFTMK.png)

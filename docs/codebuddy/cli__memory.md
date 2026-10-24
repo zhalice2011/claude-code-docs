@@ -26,6 +26,15 @@ CodeBuddy Code 提供四种分层结构的记忆位置，每种都有不同的�
 
 > **提示**：CODEBUDDY.local.md 文件会自动添加到 .gitignore，非常适合存储不应提交到版本控制的私有项目特定偏好。
 
+### 关闭向上递归查找
+
+默认情况下，项目级主文件的查找会越过启动目录逐级向上直到文件系统根（对齐 Claude Code）。如果不希望子目录会话继承上级目录（甚至工作区之外）的 `CODEBUDDY.md` / `AGENTS.md`，可以通过以下任一方式关闭：
+
+- settings.json：`"memory": { "parentDiscovery": false }`
+- 环境变量：`CODEBUDDY_DISABLE_PARENT_MEMORY=1`（优先级高于 settings）
+
+关闭后只加载启动目录本身的主文件与规则目录；启动目录自己的 `CODEBUDDY.md` / `AGENTS.md` / `.codebuddy/rules/` 不受影响。
+
 ## CODEBUDDY.md 导入
 
 CODEBUDDY.md 文件可以使用 `@path/to/import` 语法导入其他文件。以下示例导入了 3 个文件：
