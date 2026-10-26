@@ -17,13 +17,13 @@ CodeBuddy Code 的权限不是“只看当前 mode”，而是一条分层求值
 | 6 | **不可信 Allow 规则**（未信任项目规则、command / sandbox 来源） | 可放行，但**不能**越过上一步危险命令检查 |
 | 7 | **权限模式基线策略** | 由当前 [权限模式](./permission-modes) 决定默认是 allow 还是 ask |
 | 8 | **非交互兜底** | 无法弹审批框时，把 unresolved `ask` 转成 `deny` |
-| 9 | **`dontAsk` / `auto` 最终收口** | `dontAsk` 把 ask 改写为 deny；`auto` 只接管 ask 并交给分类器 |
+| 9 | **`dontAsk` / `auto` 最终收口** | `dontAsk` 把 ask 改写为 deny；`auto` 只接管 ask 并交给审查员逐个动作判定 |
 
 > **要点 1**：`deny` 永远优先。
 > 
 > **要点 2**：CodeBuddy 把 `allow` 分成“可信 allow”和“不可信 allow”两层。项目目录在你显式信任前，仓库内 `.codebuddy/settings.json` / `.codebuddy/settings.local.json` 的 allow 规则**不能越过危险命令检查**，目的是防止恶意仓库把自己的 settings 提交进来后悄悄放宽本地安全边界。
 > 
-> **要点 3**：`auto` 不是整条链的替代品，它只处理“最后仍然会 ask 的动作”；显式 `ask` 规则不会进入 classifier。
+> **要点 3**：`auto` 不是整条链的替代品，它只处理“最后仍然会 ask 的动作”；显式 `ask` 规则不会进入审查员。
 
 读类工具（Read / Grep / Glob 等）默认在信任目录内不弹审批；Edit、Bash 与大多数副作用工具会走完整判定链。
 

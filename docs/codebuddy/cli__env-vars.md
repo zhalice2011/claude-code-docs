@@ -287,7 +287,6 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `CODEBUDDY_CODE_MAX_SUBAGENTS_PER_SESSION` | 每会话子代理 spawn 预算上限（正整数，默认 200，可上下调整，不可关闭）。嵌套 spawn 共享同一份预算；超限时 Agent 工具返回错误并提示改用自身工具完成剩余工作；`/clear` 新建会话后重置 |
 | `CODEBUDDY_CODE_DISABLE_AUTO_MEMORY` | 设为 truthy 关闭 agent 级持久记忆（frontmatter `memory` 字段不再注入记忆段落）。默认未设置（启用） |
 | `CODEBUDDY_SUBAGENT_PERMISSION_MODE` | 子 Agent/团队成员的默认权限模式（如 `bypassPermissions`、`acceptEdits`、`default`、`plan`）。优先级：Agent 工具 `mode` 参数 \> CLI `--subagent-permission-mode` \> 此环境变量 \> Settings `permissions.subagentPermissionMode` \> 映射表默认值 |
-| `CODEBUDDY_TEAM_IDLE_DETECTION_DISABLED` | 设为 `1` 关闭队员空闲感知（默认启用）。关闭后"等待队员空闲"类 API 立即返回 `true` 不阻塞，进度快照也不再记录 |
 | `CODEBUDDY_TEAM_SHUTDOWN_GRACEFUL_TIMEOUT_MS` | 团队成员优雅关停的兜底超时毫秒数，默认 `15000`。超过此时长仍未收到队员响应将强制终止进程。设为 `0` 禁用强制兜底（纯等待响应） |
 
 ## Gateway 和远程访问

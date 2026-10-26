@@ -6,7 +6,7 @@
 
 应用还可以按需支持用户登录和数据统计，无需自行搭建数据库、部署服务器或维护运行环境。
 
-![云服务概览](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-overview.BKsT43NE.png)
+![云服务概览](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-overview.BKsT43NE.png)
 
 不确定是否需要云服务，或需要查询数据、调整设置、排查问题时，可以直接告诉 WorkBuddy。WorkBuddy 会根据当前能力协助处理，并在需要你确认或操作时说明下一步。
 
@@ -16,11 +16,11 @@
 
 数据库用于保存报名、预约、订单和打卡等业务记录。需要核对、补录或导出时，可以在「数据」页找到对应的数据表。「函数」和「权限」页则用于了解应用如何处理数据，以及不同用户可以访问哪些内容。
 
-![数据库数据页](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-database-data.BWgScMsK.png)
+![数据库数据页](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-database-data.BWgScMsK.png)
 
-![数据库函数页](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-database-function.DQI7mEeI.png)
+![数据库函数页](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-database-function.DQI7mEeI.png)
 
-![数据库权限页](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-database-permission.yK0NJSne.png)
+![数据库权限页](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-database-permission.yK0NJSne.png)
 
 ### 身份认证
 
@@ -28,21 +28,21 @@
 
 在页面开启登录方式，不会自动在应用中添加登录功能。需要用户登录时，直接告诉 WorkBuddy 使用场景和登录方式，让它帮你添加。
 
-![身份认证页面查看登录方式开启状态](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-auth-status.DyZOSqxR.png)
+![身份认证页面查看登录方式开启状态](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-auth-status.DyZOSqxR.png)
 
-![配置登录方式](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-auth-config.CmVabOhP.png)
+![配置登录方式](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-auth-config.CmVabOhP.png)
 
 ### 文件存储
 
 文件存储让应用能够保存用户上传的图片和文档，适合作品征集、资料提交和报修等场景。在页面可以新建文件夹，上传单个不超过 20 MB 的文件，用于预置共享资料和分类整理内容。
 
-![文件存储管理页](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-storage.SK84rwDx.png)
+![文件存储管理页](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-storage.SK84rwDx.png)
 
 ### 数据统计
 
 数据统计用于了解应用的用户增长和注册情况。你可以查看总用户数、新增用户数、注册趋势和用户列表。
 
-![数据统计页面](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-stats.h2HXcXa7.png)
+![数据统计页面](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-stats.h2HXcXa7.png)
 
 ## 云服务额度
 
@@ -59,14 +59,24 @@
 
 - 应用独立：每个应用的资源点独立计算、独立消耗，不会影响其他应用。
 - 按月刷新：从应用开启云服务当天起，每月自动刷新资源点。
-- 会员变更：升级或降级会员后，资源点额度将按新版本调整，已消耗的资源点不会清零，刷新时间也不会改变。
+- 会员变更：升级或降级会员后，当前周期的资源点额度按新版本调整，已消耗的资源点不会清零，刷新时间不变。
 - 按量消耗：使用数据库、服务调用、文件存储等云服务能力时，会根据实际用量消耗资源点。
+- 暂停不消耗：资源点用尽后，云服务自动暂停，暂停期间不消耗资源点。
+
+**查看云服务用量**
+
+可在应用的「云服务」管理页面查看当前周期的资源点使用情况，包括已用资源点、各项资源消耗明细及距离下一次额度刷新的剩余天数。
+
+- 数据更新：用量数据每小时更新一次，可能存在一定延迟。
+- 周期剩余天数：表示距离下一次资源点刷新的时间。刷新时已用量清零，重新开始计算，未使用的额度不会累积至下一周期。
+
+![云服务管理页查看资源点用量](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-usage.DQY1uF1W.png)
 
 ### 资源点计费项
 
 说明
 
-具体资源点单价及计量单位，以[资源点价格文档](https://cloud.tencent.com/document/product/876/127357)（腾讯云云开发 CloudBase 文档）为准。
+云服务资源点按腾讯云官方规则计量和扣减，具体资源点单价及计量单位以[资源点价格文档](https://cloud.tencent.com/document/product/876/127357)（腾讯云云开发 CloudBase 文档）为准。
 
 | 用量分类 | 计费项 | 计费说明 |
 | --- | --- | --- |
@@ -94,27 +104,10 @@
 
 你可以通过以下方式恢复云服务：
 
-- **升级恢复**：升级会员版本可提高资源点额度，额度充足后云服务自动恢复，已消耗的资源点不会清零。
-- **等待恢复**：如果资源点将在会员到期和数据保留期结束前刷新，可以等待资源点刷新，云服务会自动恢复。
+- **升级恢复**：升级会员，提高当前周期的资源点额度。额度充足后，云服务自动恢复；已消耗的资源点不清零，刷新时间不变。
+- **等待恢复**：等待下一次资源点刷新，云服务自动恢复，原有数据可继续使用。具体刷新时间请查看云服务页面。
 
-#### 数据保留规则
-
-云服务暂停后，数据保留时间由会员版本决定：
-
-| 会员版本 | 数据保留时间 |
-| --- | --- |
-| 体验版 | 15 天 |
-| 标准版 | 30 天 |
-| 高级版 | 30 天 |
-| 旗舰版 | 60 天 |
-
-**数据保留时间从应用资源点用尽、云服务暂停当天开始计算。** 会员到期后将恢复为体验版，数据保留时间也会相应调整，不会从会员到期当天重新计算，例如：
-
-> 标准版的数据保留时间为 30 天。如果云服务暂停 20 天后会员到期，数据保留时间将缩短至体验版的 15 天。由于此时已超过新的保留期限，相关数据可能立即进入删除流程，删除后无法恢复。
-
-如果云服务在数据保留期结束前恢复，原有数据可以继续使用；**如果超过保留期限仍未恢复，相关数据将进入删除流程，删除后无法找回。**
-
-资源点刷新、会员到期及数据删除均由系统定期处理，实际执行时间可能存在延迟。建议以页面最新提示为准，并提前处理，避免数据丢失。
+暂停后，体验版、标准版和高级版的数据保留 30 天，旗舰版保留 60 天，从本次暂停当天起计算。会员变更后，保留时间按新版本调整，不重新起算。若保留期结束时仍未恢复，相关云数据将被永久删除，应用本身保留。建议定期备份重要数据。
 
 ## 开启云服务
 
@@ -143,9 +136,9 @@
 - 在对话中打开应用预览，点击应用标题旁的「云服务」；
 - 进入「设置 \> 数据管理 \> 应用」，点击已开启应用的云服务图标。
 
-![应用预览标题旁的云服务入口](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/webapp-cloud-entry.BYkfGfvj.png)
+![应用预览标题旁的云服务入口](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/webapp-cloud-entry.BYkfGfvj.png)
 
-![数据管理的应用列表中点击云服务图标](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-manage-list.CgeYY4Ib.png)
+![数据管理的应用列表中点击云服务图标](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-manage-list.CgeYY4Ib.png)
 
 使用和管理云服务时，请注意：
 
@@ -162,51 +155,37 @@
 
 ### 资源点用完后，数据会丢失吗
 
-不会立即删除。资源点用完后，云服务将暂停，相关数据、文件和注册用户仍会暂时保留，但无法访问或导出。
+不会丢失。资源点用完后，云服务将暂停，期间不消耗资源点，相关数据暂时保留。升级至额度充足的会员版本，或等待资源点刷新后，云服务将自动恢复。
 
 如果应用已经发布，用户登录、数据保存、文件上传等依赖云服务的功能将无法使用，不依赖云服务的内容展示等功能不受影响。
 
-数据保留时间由会员版本决定，体验版为 15 天。例如高级版会员到期后将恢复为体验版，数据保留时间也会缩短至 15 天。
-
-如果在数据保留期结束前恢复云服务，原有数据可以继续使用；**逾期未恢复，相关数据将被永久删除。**
-
 ### 除了升级会员，还有其他方式可以恢复云服务吗
 
-可以等待资源点自动刷新。
+可以等待资源点自动刷新，具体时间请查看云服务页面。
 
-如果资源点将在会员到期和数据保留期结束前刷新，云服务可在资源点刷新后自动恢复。
-
-**如果会员即将到期，或数据保留期将在刷新前结束，建议提前续费或升级会员，避免数据丢失。**
-
-具体数据保留期限，请以页面最新提示为准。
+同档续费不会补充当前周期已消耗的资源点。如果当前版本的额度已经用尽，续费后仍需等待刷新，或升级至额度更高的版本。
 
 ### 在资源点周期中途升级会员，资源点会重新发放吗
 
-不会。升级会员后，应用当前周期的资源点额度将提高，但已消耗的资源点不会清零，资源点刷新时间也不会改变。
+不会。升级只提高当前周期的资源点上限，已消耗的资源点不会清零，刷新时间也不会改变。
 
 例如，标准版每月有 25,000 资源点，本周期已全部用完。升级至高级版后，额度提高至 50,000 点，当前剩余可用资源点为 25,000 点，而不是重新获得完整的 50,000 点。
 
 ### 会员到期或降级，会对云服务产生什么影响
 
-会员到期或降级后，云服务的资源点额度、应用名额和数据保留时间将按照新的会员版本调整。
+会员到期或降级后，云服务权益将按照新的会员版本调整。
 
-**资源点额度**
+**单应用云服务资源点**
 
 每个应用当前周期的资源点额度将按新会员版本调整，已消耗的资源点不会清零，刷新周期也不会改变。
 
 如果调整后的额度不足，云服务可能暂停。
 
-**数据保留时间**
-
-如果云服务已暂停，数据保留时间将按照新的会员版本调整，仍从最初暂停的时间开始计算。例如：
-
-> 标准版的数据保留时间为 30 天。如果云服务暂停 20 天后会员到期，数据保留时间将缩短至体验版的 15 天。由于此时已超过新的保留期限，相关数据可能立即进入删除流程，删除后无法恢复。
-
-**云服务应用名额**
+**可开启云服务的应用数**
 
 如果已开启云服务的应用数量超过新会员版本的限制，已有应用不会因为名额超出而停止使用，但无法再为新的应用开启云服务。
 
-例如，标准版最多可为 30 个应用开启云服务，降为体验版后名额变为 10 个。如果当前已有 12 个应用开启了云服务，原有应用仍可继续使用，但无法再开启新的云服务应用。
+例如，标准版降为体验版后，应用名额从 30 个调整为 10 个。如果已有 12 个应用开启云服务，这些应用不会仅因名额超出而停用，但不能继续为新应用开启云服务。
 
 ### 如何导出云服务数据？暂停期间还能导出吗
 
@@ -215,9 +194,9 @@
 - **导出数据库**：进入「数据库 \> 数据」页面，切换到需要导出的数据表，点击「导出 CSV」。
 - **下载文件**：进入「文件存储」页面，选择需要的文件，点击「下载」。
 
-![在数据库数据页点击导出 CSV](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-export-csv.BNV33PIL.png)
+![在数据库数据页点击导出 CSV](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-export-csv.BNV33PIL.png)
 
-![在文件存储页选择文件并下载](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/cloud-export-file.DXalapAH.png)
+![在文件存储页选择文件并下载](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/cloud-export-file.DXalapAH.png)
 
 云服务暂停期间，数据仍会暂时保留，但目前无法访问或导出。建议在云服务正常运行时，及时备份重要数据。
 

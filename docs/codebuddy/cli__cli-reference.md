@@ -25,9 +25,8 @@
 | `codebuddy daemon restart` | 重启 Daemon | `codebuddy daemon restart` |
 | `codebuddy daemon install` | 注册为系统服务（登录自启） | `codebuddy daemon install --port 8080` |
 | `codebuddy daemon uninstall` | 移除系统服务注册 | `codebuddy daemon uninstall` |
-| `codebuddy auto-mode defaults` | 打印 `auto` 模式的内置分类规则 | `codebuddy auto-mode defaults` |
-| `codebuddy auto-mode config` | 打印当前生效的 `auto` 模式配置 | `codebuddy auto-mode config` |
-| `codebuddy auto-mode critique` | 用 lite 模型审视你的自定义 `auto` 规则 | `codebuddy auto-mode critique` |
+| `codebuddy auto-mode defaults` | 打印 `auto` 模式的内置安全策略 | `codebuddy auto-mode defaults` |
+| `codebuddy auto-mode config` | 打印当前生效的策略来源与附加策略 | `codebuddy auto-mode config` |
 | `codebuddy ps` | 列出所有活跃 Worker 进程 | `codebuddy ps` |
 | `codebuddy logs <pid|name>` | 查看 Worker 日志 | `codebuddy logs feature-x` |
 | `codebuddy attach <pid|name>` | 附加到后台 Worker | `codebuddy attach feature-x` |

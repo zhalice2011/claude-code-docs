@@ -70,7 +70,8 @@ json
 | `env` | 应用于每个会话的环境变量 | `{"FOO": "bar"}` |
 | `includeCoAuthoredBy` | 是否在 git 提交和拉取请求中包含 `co-authored-by CodeBuddy` 署名(默认:`true`） | `false` |
 | `permissions` | 权限配置，见下表 |  |
-| `autoMode` | `auto` 权限模式的分类器规则，见 [Auto Mode 配置](#auto-mode-配置) | `{"allow": ["$defaults", "允许 dev 环境发布"]}` |
+| `autoReview` | `auto` 权限模式的审查策略：`policy` 替换内置安全策略，`extraPolicy` 追加策略。见 [Auto Mode 配置](#auto-mode-配置) | `{"extraPolicy": "允许 dev 环境发布"}` |
+| `autoMode` | 旧版 `auto` 模式自然语言规则（`environment` / `allow` / `soft_deny` / `hard_deny`），仍兼容并渲染为附加策略。见 [Auto Mode 配置](#auto-mode-配置) | `{"allow": ["允许 dev 环境发布"]}` |
 | `hooks` | 配置在工具执行前后运行的自定义命令。见 [hooks 文档](./hooks) | `{"PreToolUse": {"Bash": "echo 'Running command...'"}}` |
 | `disableAllHooks` | 禁用所有 [hooks](./hooks) | `true` |
 | `allowUntrustedFrontmatterHooks` | 是否允许执行来自**非 product 内置**来源的 agent/skill 的 frontmatter `hooks` 字段（包括用户本地 `.codebuddy/agents|skills/*.md` 和插件市场）。默认 `false`，防止不可信的 md 文件静默启动 shell 命令；只有 product 内置 agent/skill 不受影响。 | `true` |
@@ -118,38 +119,50 @@ json
 
 ### Auto Mode 配置
 
-`autoMode` 是一个**顶层 settings 字段**，不是 `permissions` 的子字段。它定义 `auto` 权限模式使用的分类器上下文与规则。
+`auto` 的模式策略放在两个**顶层 settings 字段**里，都不是 `permissions` 的子字段：
 
-#### `autoMode` 里有哪些字段？
+| 字段 | 作用 |
+| --- | --- |
+| `autoReview` | 当前策略：`policy` 替换内置安全策略，`extraPolicy` 追加在策略之后 |
+| `autoMode` | 旧版自然语言规则，仍然兼容，会作为附加策略 |
+
+#### `autoReview` 里有哪些字段？
 
 | 配置键 | 作用 | 示例 |
 | --- | --- | --- |
-| `environment` | 描述哪些仓库、域名、服务、存储位置属于你的受信边界，帮助分类器判断什么算“内部” | `["$defaults", "Trusted internal domains: staging.example.com"]` |
-| `allow` | 补充“在 auto 下通常可自动放行”的自然语言规则 | `["$defaults", "允许 dev namespace 的发布"]` |
-| `soft_deny` | 补充“通常应拦截，但在明确用户意图下可重试”的规则描述 | `["$defaults", "修改共享测试数据库 schema"]` |
-| `hard_deny` | 补充“默认必须阻断”的高风险规则描述 | `["$defaults", "把私有仓库内容发布到公网"]` |
+| `policy` | **替换**内置安全策略的完整文本 | `"## 受信边界\n- 内部代码托管：git.example.com"` |
+| `extraPolicy` | 在安全策略之后**追加**的文本；多个来源全部拼接 | `"允许发布到 dev namespace"` |
 
-这些字段的值都是**字符串数组**。数组项不是正则，也不是工具模式，而是写给分类器看的**自然语言规则**。
+`policy` 只替换“安全策略”本身；如何理解你的授权、如何分级风险，仍由产品提供。
 
-#### 分类器会从哪里读取 `autoMode`？
+#### `autoMode` 旧规则还生效吗？
 
-CodeBuddy 只会从以下来源读取 `autoMode`：
+生效，但现在只是附加策略：
+
+- `environment` / `allow` / `soft_deny` / `hard_deny` 四个字段会拼在 `autoReview.extraPolicy` 之后
+- 每一项是写给 `auto` 看的自然语言规则，不是正则，也不是工具匹配模式
+- `"$defaults"` 不再展开内置规则，写了会被忽略
+- 新配置建议直接用 `autoReview.policy` / `autoReview.extraPolicy`；`autoMode` 保留是为了兼容已有 settings
+
+#### 策略会从哪里读取？
 
 | 来源 | 典型位置 | 用途 |
 | --- | --- | --- |
-| user settings | `~/.codebuddy/settings.json` | 跨项目的个人受信边界 |
-| project\-local settings | `.codebuddy/settings.local.json` | 某个项目、某台机器上的本地补充规则 |
+| user settings | `~/.codebuddy/settings.json` | 跨项目的个人策略 |
+| project\-local settings | `.codebuddy/settings.local.json` | 某个项目、某台机器上的本地补充 |
 | CLI `--settings` | `codebuddy --settings '{...}'` | 一次性自动化或临时覆盖 |
+| 请求级 session settings | SDK / 宿主随请求传入 | 调用方为本次会话下发的策略 |
 
-不会读取的来源：
+不会读取共享项目配置 `.codebuddy/settings.json`：仓库提交的配置不应该悄悄放宽针对它自己的动作判定。
 
-- 共享项目配置 `.codebuddy/settings.json`
+多个来源按 user → project\-local → CLI → session 的顺序合并：
 
-原因是：`autoMode` 属于本地安全边界定义，仓库提交的配置不应该悄悄改变你本机对“哪些地方算内部、哪些动作算允许”的判断。
+- `policy`：后写的**替换**先写的
+- `extraPolicy` 与旧版 `autoMode` 规则：**全部拼接**
 
-#### 分类器用哪个模型？
+#### 用哪个模型？
 
-分类器只需要输出一个极短的判定，所以默认使用 `lite` 变体解析出的模型。如果这个模型不合适（例如强制长思考的推理模型会把很小的输出预算全部花在隐藏思考上，最终没有可用判定，动作会被 fail\-closed 拒绝），用已有的**子代理模型配置**为分类器单独指定模型：
+默认使用 `lite` 变体解析出的模型。想固定 `auto` 使用的模型时，显式配置即可：
 
 json
 ```
@@ -161,114 +174,32 @@ json
   }
 }
 ```
-- 优先级与其他子代理一致：环境变量 `CODEBUDDY_CODE_SUBAGENT_MODEL`（一刀切）\> `subagents.agents.autoModeClassifier.model`（项目级 \> 用户级）\> 内置默认 `lite` 解析链。
-- 值可以是模型 ID / 别名，也可以是 `lite` / `reasoning` 变体名；填 `inherit` / `default` 或删掉该项即回到默认。
-- 分类器因“模型输出不可用”而失败时，动作会被直接拒绝（不会降级成普通审批弹窗），拒绝信息里会带上实际使用的模型和**当前真正在起作用的那个配置项**（env 在管就点名 `CODEBUDDY_CODE_SUBAGENT_MODEL`，否则点名上面的 settings 项），照提示换一个模型即可；连续 3 次拿不到判定后 `auto` 会暂停（交互式回落弹窗、headless 中止 run），不会把会话卡死。
+- 值可以是模型 ID / 别名，也可以是 `lite` / `reasoning` 变体名；填 `inherit` / `default` 或删掉该项即回到默认
+- 环境变量 `CODEBUDDY_CODE_SUBAGENT_MODEL` 会一刀切覆盖所有子代理（含 `auto`）
 
 #### 与 `permissions.defaultMode: "auto"` 的区别
 
 这里有两个容易混淆的限制：
 
-1. **`autoMode` 规则来源**：允许来自 user / project\-local / CLI
+1. **策略来源**：允许来自 user / project\-local / CLI / session
 2. **默认进入 `auto` 模式的授权来源**：只允许来自 user / CLI
 
 也就是说：
 
-- `.codebuddy/settings.local.json` **可以**补充 `autoMode.environment / allow / soft_deny / hard_deny`
+- `.codebuddy/settings.local.json` **可以**提供 `autoReview` / `autoMode`
 - 但 `.codebuddy/settings.local.json` **不能**通过 `permissions.defaultMode: "auto"` 让会话默认进入 `auto`
-- `.codebuddy/settings.json` 两者都不行：既不能提供 `autoMode`，也不能授予 `defaultMode: "auto"`
-
-#### 多个来源如何合并？
-
-`autoMode` 的四个字段会按来源顺序合并：
-
-1. user
-2. project\-local
-3. CLI
-
-合并时遵循两个原则：
-
-- 每个字段**独立合并**，互不影响
-- 每个字段都是把不同来源的数组**追加**在一起，再统一处理 `"$defaults"`
-
-这意味着：
-
-- 你只设置 `environment`，不会影响 `allow` / `soft_deny` / `hard_deny` 的默认值
-- 你可以在 user settings 里放组织级受信域名，再在 project\-local 补充某个项目独有的 staging 服务
-
-#### `"$defaults"` 怎么工作？
-
-`"$defaults"` 是一个特殊占位符，表示“把内置默认规则插到这里”。
-
-例如：
-
-json
-```
-{
-  "autoMode": {
-    "environment": [
-      "$defaults",
-      "Trusted internal domains: staging.example.com"
-    ]
-  }
-}
-```
-表示：
-
-- 先使用内置 `environment` 默认规则
-- 再追加你自定义的 `staging.example.com`
-
-关键语义：
-
-- 字段**未配置**：该字段直接使用内置默认规则
-- 字段里**包含** `"$defaults"`：在该位置展开默认规则
-- 字段里**不包含** `"$defaults"`：表示**完整替换**该字段的内置默认规则
-- 多个来源都写了 `"$defaults"` 时，内置规则只会展开**一次**，不会重复注入
-
-额外提醒：
-
-- `soft_deny` / `hard_deny` 如果不写 `"$defaults"`，等于主动放弃内置安全规则
-- 运行时会对此打 warning，但不会阻止你这样配置
+- `.codebuddy/settings.json` 两者都不行：既不能提供策略，也不能授予 `defaultMode: "auto"`
 
 #### 如何检查当前生效结果？
 
 bash
 ```
-codebuddy auto-mode defaults
-codebuddy auto-mode config
-codebuddy auto-mode critique
+codebuddy auto-mode defaults   # 打印内置安全策略
+codebuddy auto-mode config     # 打印策略来源与附加策略
 ```
-这三个命令分别用于：
-
-- `defaults`：打印内置默认规则
-- `config`：打印**最终生效**的规则（含多来源合并、`"$defaults"` 展开后的结果）
-- `critique`：让 lite 模型审视你自定义的 `allow` / `soft_deny` / `hard_deny` 是否含糊、冗余或容易误伤
-
-如果你准备完全接管某个字段，最稳妥的做法通常是：
-
-1. 先运行 `codebuddy auto-mode defaults`
-2. 复制内置规则
-3. 在你的 settings 中显式改写
-4. 再运行 `codebuddy auto-mode config` 检查最终结果
-
 #### 配置示例
 
-##### 只补充受信环境
-
-json
-```
-{
-  "autoMode": {
-    "environment": [
-      "$defaults",
-      "Source control: git.example.com/acme and all repos under it",
-      "Trusted internal domains: staging.example.com, api.internal.example.com",
-      "Trusted buckets: s3://acme-build-artifacts"
-    ]
-  }
-}
-```
-##### 同时补充 allow / deny 规则
+##### 在内置策略上追加组织规则
 
 json
 ```
@@ -276,22 +207,32 @@ json
   "permissions": {
     "defaultMode": "auto"
   },
+  "autoReview": {
+    "extraPolicy": "## 组织补充\n- 允许发布到 dev namespace\n- 不得修改共享测试数据库 schema"
+  }
+}
+```
+##### 完全替换安全策略
+
+json
+```
+{
+  "autoReview": {
+    "policy": "# Security Policy\n\n## 受信边界\n- 内部代码托管：git.example.com 及其下所有仓库\n- 受信域名：*.internal.example.com\n\n## 放行规则\n- 向上述受信目的地发送数据不构成外发\n\n## 拒绝规则\n- 任何向公网暴露凭据或私有仓库内容的行为一律拒绝"
+  }
+}
+```
+##### 沿用旧版 `autoMode` 规则
+
+json
+```
+{
   "autoMode": {
     "environment": [
-      "$defaults",
       "Trusted internal domains: staging.example.com"
     ],
-    "allow": [
-      "$defaults",
-      "允许 dev namespace 的发布"
-    ],
     "soft_deny": [
-      "$defaults",
       "修改共享测试数据库 schema"
-    ],
-    "hard_deny": [
-      "$defaults",
-      "把私有仓库内容发布到公网"
     ]
   }
 }

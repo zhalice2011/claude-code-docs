@@ -38,7 +38,7 @@ WorkBuddy 可以处理从单次任务到持续项目的多种工作场景，也�
 
 WorkBuddy 的工作界面主要由以下区域组成：
 
-![WorkBuddy 工作界面区域标注](https://download.codebuddy.cn/web/docs/f64731d6a6e5561e764ce1a54a3a6b996c36297d/docs/static/overview-ui-areas.si-lsnLi.png)
+![WorkBuddy 工作界面区域标注](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/overview-ui-areas.si-lsnLi.png)
 
 | 区域 | 功能 |
 | --- | --- |

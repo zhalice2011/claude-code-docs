@@ -36,7 +36,7 @@ CodeBuddy Code 提供以下权限模式。其中多数模式可在 CLI 中直接
 | --- | --- | --- |
 | `default` | 信任目录内的 Read 工具 | 默认；适合敏感工作 / 上手期 |
 | [`acceptEdits`](#acceptedits-自动批准文件编辑) | 信任目录内的 Read \+ Edit 系列工具 | 边写边走 `git diff` 复核 |
-| [`auto`](#auto-分类器自动判定) | 原本会 ask 的动作，交给分类器判定 allow / deny | 想减少打断，但保留安全边界 |
+| [`auto`](#auto逐动作自动判定) | 原本会 ask 的动作，交给 auto 逐个判定 allow / deny | 想减少打断，但保留安全边界 |
 | [`dontAsk`](#dontask-不弹框-直接拒绝未预批准动作) | 仅已预批准动作继续执行；其余不询问直接拒绝 | 非交互自动化 / 固定白名单代理 |
 | [`plan`](#plan-探索后再改) | 委托给“进入 plan 前”的那个模式（默认 \= `default`）；额外允许写入会话计划文件 | 落手改动前先摸清代码再决定 |
 | [`bypassPermissions`](#bypasspermissions-尽量跳过审批) | 跳过绝大多数审批 | 沙箱容器 / VM / 离线 dev container 才用 |
@@ -193,69 +193,64 @@ json
 - 你愿意让 CodeBuddy 连续改文件，但不想让它自行跑命令
 - 你习惯通过 `git diff` 统一复核改动
 
-### auto（分类器自动判定）
+### auto（逐动作自动判定）
 
-`auto` 不是“全自动放行”，而是把**本来会 ask 的动作**交给分类器做二次判断。
+`auto` 不是“全自动放行”，而是把**本来会 ask 的动作**交给 AI 逐个判断：这次动作要做什么、会造成什么影响、你是否已经授权到这个程度。它不替代权限规则，只接管“最后仍然悬而未决的 ask”。
 
-#### `auto` 何时会接管？
+#### 哪些动作会交给 `auto`？
 
-只有满足下面条件时，分类器才会运行：
+- 权限链最终仍然要询问的工具调用
+- 需要在沙箱外执行、或沙箱拦下后要求重试的命令
+- 命中文件 / 网络沙箱规则、需要确认的访问
+- MCP 工具调用、网络请求，以及强制要求审批的工具（如子代理、worktree、workflow）
+- 代码模式（REPL）cell 内的每次工具调用
 
-1. 这次工具调用没有被 `deny` 规则拒绝
-2. 也没有被 `allow` 规则提前放行
-3. 没有命中显式 `ask` 规则
-4. 常规权限链最终仍得到一个 `ask`
-5. 当前 mode 是 `auto`
-
-所以 `auto` 只接管“最后仍然悬而未决的 ask”，不会替代整套权限系统。
-
-#### 哪些情况不会进入分类器？
-
-以下情况**不会**走 `auto` 分类器：
+以下情况**不会**进入 `auto`：
 
 - 已命中 `allow` / `deny` 规则的工具调用
 - 显式 `ask` 规则命中的工具调用
 - `AskUserQuestion`
-- `ExitPlanMode`
+- `ExitPlanMode`（它的确认就是计划审批本身）
 
 也就是说，`ask` 规则在 `auto` 下依然是“强制人工审批”。
 
-#### 分类器可能给出什么结果？
+#### 被拒绝时会怎样？
 
-分类器只有两种结论：`allow`（放行）或 `deny`（拒绝），没有“部分批准”这类中间态。
+- 动作不会执行，模型会看到拒绝原因，并被要求不要绕过
+- 同一轮里连续被拒 3 次，或最近 50 次判定里被拒 10 次，本轮会直接停下，避免反复尝试
 
-#### 分类器无法判定时会怎样？
+#### 判定失败时会怎样？
 
-- **分类器出错 / 不可用**：为安全起见**直接拒绝**该动作（fail\-closed），并提示模型可改用其他自然工具达成、或停下来向用户说明；连续多次失败会自动退出 `auto`、回退到 `default`。
-- **分类器跑通了但拿不到判定**（例如模型把很小的输出预算全花在隐藏思考上，没有可解析的结论）：同样**直接拒绝**，交互式也不会降级成普通审批弹窗——否则 `auto` 的安全审查会静默变回 `default` 的“问用户”。拒绝信息里会带上实际使用的模型和改模型的配置项，见 [分类器用哪个模型？](./settings#分类器用哪个模型)。这类失败不计入失败熔断（会话仍留在 `auto`），但会计入下面的“被拒次数”，所以一个始终给不出判定的模型不会把整个会话卡死。
-- **对话太长、超出分类器可处理范围**：交互式会话回退为普通审批弹窗；`-p` / `stream-json` 等 headless 模式直接中止当前 run。
-- **被拒次数过多**（短时间内反复被拒，含上面“拿不到判定”导致的拒绝）：`auto` 会暂停——交互式回退为普通弹窗，headless 中止 run，避免反复空转。
+超时、取消、模型出错、输出无法解析、动作太大放不下时，动作**同样不会执行**，但这不是“动作不安全”的结论：
 
-这些都是自动行为，无需配置。
+- 不会退化成普通确认弹窗，也不会退出 `auto`
+- 模型会被告知这是判定失败，可以重试一次或请你明确授权
+
+如果 `auto` 本身不可用（`permissions.disableAutoMode`，或配置无法读取），会话会回退到 `default`。
 
 #### `auto` 下的 allow 规则注意点
 
-为了避免 allow 规则把分类器整个绕过，`auto` 模式下 CodeBuddy 会**临时忽略“过宽 / 危险”的 allow 规则**（只在本次判断时从内存过滤，不改写你的 settings）。被忽略的主要有：
+为了避免 allow 规则把 `auto` 整个绕过，`auto` 模式下 CodeBuddy 会**临时忽略“过宽 / 危险”的 allow 规则**（只影响本次判断，不改写你的 settings）。被忽略的主要有：
 
 - 全通配的 shell 规则：`Bash`、`Bash(*)`、`PowerShell`、`PowerShell(*)`
 - 危险命令 / cmdlet 前缀：如 `Bash(sudo *)`、`Bash(eval *)`、`PowerShell(iex *)`
-- 任意 `Agent` / `Task` 规则：如 `Agent(*)` —— 防止借子代理绕过分类器
+- 任意 `Agent` / `Task` 规则：如 `Agent(*)` —— 防止借子代理绕过判定
+- 包含命令替换、反引号、进程替换等隐藏执行的命令，窄规则不再兜底，会交给 `auto` 判断
 
 窄而具体的安全规则仍然有效，例如 `Bash(npm test)`、`Bash(git status)`、`PowerShell(Get-Content foo.txt)`、`Read`、`Edit(src/foo.ts)`。
 
-如果你确实需要让某类动作在 `auto` 下免审，正确做法是配置 `autoMode` 规则（见下），而不是写宽 allow 规则。
+如果你确实需要让某类动作在 `auto` 下免审，正确做法是配置 `autoReview` / `autoMode` 策略（见下），而不是写宽 allow 规则。
 
 #### `auto` 配置与自检命令
 
-`auto` 分类器的受信边界与放行 / 拦截规则由顶层 `autoMode` settings 控制（`environment` / `allow` / `soft_deny` / `hard_deny`），详见 [Settings 配置](./settings#auto-mode-配置)。分类器默认跑在 `lite` 模型上，可用 `subagents.agents.autoModeClassifier.model` 单独指定，详见 [分类器用哪个模型？](./settings#分类器用哪个模型)。
+安全策略由顶层 `autoReview` settings 控制（`policy` / `extraPolicy`）；旧的 `autoMode` 规则（`environment` / `allow` / `soft_deny` / `hard_deny`）仍然兼容，会作为附加策略。详见 [Settings 配置](./settings#auto-mode-配置)。
 
-3 个本地命令帮你查看与校验配置：
+2 个本地命令帮你查看与校验配置：
 
 bash
 ```
-codebuddy auto-mode defaults   # 查看内置默认规则
-codebuddy auto-mode config     # 查看当前实际生效的规则（$defaults 展开后）
-codebuddy auto-mode critique   # 让模型检查你的自定义规则是否含糊、冗余或易误伤
+codebuddy auto-mode defaults   # 查看内置安全策略
+codebuddy auto-mode config     # 查看当前生效的策略来源与附加策略
 ```
 适合：
 
@@ -474,14 +469,14 @@ json
 | 模式 | 非交互下的典型结果 |
 | --- | --- |
 | `default` / `acceptEdits` / `plan` | 任何最终仍需 ask 的动作都会被拒绝 |
-| `auto` | 原本会 ask 的动作走 classifier；classifier 不可用时 fail\-closed；transcript 过长会中止 run |
+| `auto` | 原本会 ask 的动作逐个自动判断；判断不了时这个动作不会执行（不会退化成弹窗）；拒绝过多会中断本轮 |
 | `dontAsk` | 未预批准动作直接拒绝，不会等待人工确认 |
 | `bypassPermissions` | 大多数动作直接继续执行。未设 `CODEBUDDY_IS_SANDBOX` 时 HIGH/CRITICAL 仍可能要求确认 |
 
 因此：
 
 - 想做“固定白名单自动化” → `dontAsk` \+ `allow` 规则
-- 想做“尽可能自动，但保留分类器安全边界” → `auto`
+- 想做“尽可能自动，但保留自动判定的安全边界” → `auto`
 - 想做“绝大多数都别拦” → `bypassPermissions`
 - 想做“隔离沙箱里真正不询问” → `CODEBUDDY_IS_SANDBOX=1` \+ `bypassPermissions`（高危，仅限隔离环境）
 
@@ -538,7 +533,7 @@ json
 ## 相关资源
 
 - [权限规则](./permissions)：allow / ask / deny 的匹配语法与完整求值顺序
-- [Settings 配置](./settings)：`defaultMode`、`disableAutoMode`、`autoMode`、`subagentPermissionMode` 等字段
+- [Settings 配置](./settings)：`defaultMode`、`disableAutoMode`、`autoReview`、`autoMode`、`subagentPermissionMode` 等字段
 - [CLI 参考](./cli-reference)：`--permission-mode`、`--subagent-permission-mode`、`-y` 等命令
 - [环境变量参考](./env-vars#沙箱-full-pass-高危)：`CODEBUDDY_IS_SANDBOX` 沙箱 full pass 与风险声明
 - [Agent Teams：多代理协作](./agent-teams)：`delegate` 模式下的协作方式

@@ -109,7 +109,7 @@ json
 | `UserPromptSubmit` | 用户提交提示时，在 AI 处理之前 |
 | `PreToolUse` | 工具调用执行前，可以阻断 |
 | `PermissionRequest` | 权限对话框出现时 |
-| `PermissionDenied` | 工具调用被自动模式分类器拒绝时。返回 `{retry: true}` 告知模型可重试 |
+| `PermissionDenied` | 工具调用被 `auto` 模式审查员拒绝时。返回 `{retry: true}` 告知模型可重试 |
 | `PostToolUse` | 工具调用成功后 |
 | `PostToolUseFailure` | 工具调用失败后 |
 | `Notification` | CodeBuddy 发送通知时 |

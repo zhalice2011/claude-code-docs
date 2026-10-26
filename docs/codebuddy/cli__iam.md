@@ -325,7 +325,7 @@ CodeBuddy Code 支持多种权限模式，可在 [settings](./settings) 的 `per
 | --- | --- |
 | `default` | 标准逐次审批模式 |
 | `acceptEdits` | 自动批准文件编辑，Bash 仍需审批 |
-| `auto` | 对原本会弹审批的动作使用分类器自动判定是否放行 |
+| `auto` | 对原本会弹审批的动作使用 AI 审查员逐个判定是否放行 |
 | `dontAsk` | 不弹权限框；未预批准动作直接拒绝 |
 | `plan` | 计划模式；读和探查为主，写源码前先产出计划 |
 | `bypassPermissions` | 跳过所有权限提示（需要安全环境） |

@@ -4,6 +4,14 @@ WorkBuddy SaaS 正式发布版本归档。每个版本提供 macOS (Apple 芯片
 
 **为保证最新的产品体验，建议下载 [WorkBuddy 官网](https://www.workbuddy.cn/) 最新版本使用。**
 
+## 5\.9\.x 系列
+
+| 版本 | 发布日期 | macOS · Apple 芯片 | macOS · Intel | Windows · 64 位 |
+| --- | --- | --- | --- | --- |
+| `v5.9.2` | 2026\-10\-26 | [下载 (356\.2 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-arm64/WorkBuddy-darwin-arm64-5.9.2.42136757-0b5051be.dmg) | [下载 (384\.5 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.9.2.42136757-0b5051be.dmg) | [下载 (429\.4 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/win32-x64-user/WorkBuddy-win32-x64-user-5.9.2.42136757-0b5051be.exe) |
+| `v5.9.1` | 2026\-10\-22 | [下载 (356\.1 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-arm64/WorkBuddy-darwin-arm64-5.9.1.41982132-31477875.dmg) | [下载 (384\.5 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.9.1.41982132-31477875.dmg) | [下载 (429\.4 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/win32-x64-user/WorkBuddy-win32-x64-user-5.9.1.41982132-31477875.exe) |
+| `v5.9.0` | 2026\-10\-20 | [下载 (355\.4 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-arm64/WorkBuddy-darwin-arm64-5.9.0.41809846-0f0c2199.dmg) | [下载 (383\.8 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.9.0.41809846-0f0c2199.dmg) | [下载 (428\.8 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/win32-x64-user/WorkBuddy-win32-x64-user-5.9.0.41809846-0f0c2199.exe) |
+
 ## 5\.8\.x 系列
 
 | 版本 | 发布日期 | macOS · Apple 芯片 | macOS · Intel | Windows · 64 位 |
