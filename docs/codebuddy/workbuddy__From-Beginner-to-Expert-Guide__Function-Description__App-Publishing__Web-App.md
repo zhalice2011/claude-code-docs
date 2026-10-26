@@ -21,7 +21,7 @@ WorkBuddy 可以根据需求生成网站应用，按需接入云数据库、身�
 
 1. 在 WorkBuddy 首页进入「代码开发」，选择「网站开发」或「Agent 应用」，使用推荐提示词开始创建；
 
-![首页代码开发中选择 Agent 应用](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/webapp-create-scene.C4zk7VQm.png)
+![首页代码开发中选择 Agent 应用](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/webapp-create-scene.C4zk7VQm.png)
 
 2. 直接用自然语言描述需求，并明确说明要制作网站应用。
 
@@ -56,15 +56,15 @@ WorkBuddy 可以根据需求生成网站应用，按需接入云数据库、身�
 
 你可以点击应用标题旁的「云服务」进行管理。
 
-![点击应用标题旁的云服务](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/webapp-cloud-entry.BYkfGfvj.png)
+![点击应用标题旁的云服务](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/webapp-cloud-entry.BYkfGfvj.png)
 
-![云服务管理面板](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/webapp-cloud-panel.Cccy6ONU.png)
+![云服务管理面板](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/webapp-cloud-panel.Cccy6ONU.png)
 
 ## 发布网站应用
 
-![点击预览区工具栏中的分享](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/webapp-publish-share.CYsjb0rG.png)
+![点击预览区工具栏中的分享](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/webapp-publish-share.CYsjb0rG.png)
 
-![网站应用分享面板](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/webapp-publish-panel.CigFdgNM.png)
+![网站应用分享面板](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/webapp-publish-panel.CigFdgNM.png)
 
 应用制作完成后，点击预览区工具栏中的「分享」，也可以直接在对话中说「发布」、「上线」，即可获得独立的网站链接。发布后，任何获得链接的人都可以访问应用。
 
@@ -74,13 +74,13 @@ WorkBuddy 可以根据需求生成网站应用，按需接入云数据库、身�
 
 修改应用后，线上版本不会自动变化。重新打开分享面板点击「更新」，或者直接在对话中说“更新发布”，即可同步修改。更新后访问链接保持不变，已经分享出去的链接会直接打开新版本。
 
-![已发布应用的分享面板，支持更新和下线](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/webapp-publish-update.Bjh1cc-s.png)
+![已发布应用的分享面板，支持更新和下线](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/webapp-publish-update.Bjh1cc-s.png)
 
 如果暂时不希望别人继续访问，可以在分享面板中点击「下线」，或者直接在对话中说“下线这个应用”。下线后，原链接将无法打开，但应用和云服务中的数据仍会保留。
 
 ## 管理已发布的应用
 
-![在设置的数据管理中查看已发布的应用](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/webapp-manage-apps.Db7zSTYT.png)
+![在设置的数据管理中查看已发布的应用](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/webapp-manage-apps.Db7zSTYT.png)
 
 进入「设置 \> 数据管理 \> 应用」，可以集中查看所有应用、查看发布链接，并管理云服务和发布状态。需要继续修改时，可以点击对应的任务名回到对话中提出修改要求。
 

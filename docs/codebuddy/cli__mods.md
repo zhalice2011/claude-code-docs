@@ -1,6 +1,6 @@
 # Mods
 
-> **状态**：Beta。API 与运行时约束仍在演进；默认开启，无需任何环境变量，`--plugin-dir` 装载即可使用；如需关闭，可用环境变量显式关闭。 **与传统 Hooks 的关系**：不替换。传统 shell / prompt hooks（见 [`hooks.md`](./hooks)）继续可用；Mods 是并行的、类型化的中间件层，两者可同时启用。
+> **状态**：Beta。API 与运行时约束仍在演进；默认开启，无需任何环境变量，`--plugin-dir` 装载即可使用。 **与传统 Hooks 的关系**：不替换。传统 shell / prompt hooks（见 [`hooks.md`](./hooks)）继续可用；Mods 是并行的、类型化的中间件层，两者可同时启用。
 
 ![Mods](https://iili.io/nEwXhpR.png)
 
@@ -239,7 +239,7 @@ on('tool.call', { tool: 'genui_order_place' }, async ($, e) => { /* 同一份状
 
 ## 快速开始
 
-Mods 默认开启，不需要设置任何环境变量。如需关闭，见[装载与运行](#装载与运行)。
+Mods 默认开启，不需要设置任何环境变量。
 
 ### 1\. 创建一个最小 Mod
 
@@ -367,7 +367,7 @@ type Hook<E> = ($: EngineInterface, e: E, next: Next<E>) => Result | Promise<Res
 | `return { value: ... }` | **短路替换**（op 事件专用） |
 | `return { result: ... }` | 顶替 middleware 事件结果 |
 | `next.to(e, 'append')` | 跳到指定 tier（只能往内跳） |
-| `next.origin` | **调用方**身份 `{ plugin, tier, root? }`，root 是宿主解析的包根，不能通过事件 input 伪造；不是自己的 tier |
+| `next.origin` | **调用方**身份 `{ plugin, tier }`，不是自己的 tier |
 | `next.signal` | `AbortSignal`：超时 / 短路时被 abort |
 | `next.trace` | 每层的执行轨迹（plugin / tier / outcome / ms） |
 | `next.budget` | `{ ms, remainingMs }` 剩余预算 |
@@ -450,7 +450,7 @@ codebuddy --plugin-dir <dir> [--plugin-dir <dir2> ...]
 - `--plugin-dir` 可以重复，按声明顺序装载。
 - 目录须包含 `.codebuddy-plugin/plugin.json` 或 `.claude-plugin/plugin.json`（两者同存以前者优先）。
 - 用户手动装载的 Mod 全部落到 **`user` tier**。
-- 无需额外开关或环境变量。如需关闭 Mods，设置 `CBC_ENABLE_FUNCTION_HOOKS` 或官方兼容别名 `CLAUDE_CODE_ENABLE_FUNCTION_HOOKS` 为 `0` / `false` / `no` / `off`；任一变量显式关闭即整体关闭，未设、空值或未识别值按默认开启处理。
+- 无需额外开关或环境变量。
 
 ### 运行时通道
 
@@ -599,15 +599,15 @@ declare module 'codebuddy-code' {
 | `$.fs` | `read(path)` · `write(path, text)` · `list(path?)` · `exists(path)` · `stat(path, opts?)` · `ancestors({ names, of?, below? })` |
 | `$.store` | `get(key)` · `set(key, value)` · `delete(key)` · `keys()` |
 | `$.clock` | `now()` · `sleep(ms)` · `after(ms, fn)` · `every(ms, fn)` |
-| `$.http` | `fetch(url, init?)`（当前 CLI 未开放，见下方说明） |
-| `$.process` | `run(argv, init?)`（当前 CLI 未开放，见下方说明；走 `execFile` 而非 shell） |
+| `$.http` | `fetch(url, init?)`（仅 http/https；`init` 支持 `method` / `headers` / `body` / `socketPath`；CLI 默认开启，`CBC_MODS_ALLOW_HTTP=0` 关闭） |
+| `$.process` | `run(argv, init?)`（按 argv 起子进程、不经 shell；默认超时 30 s、上限 10 min，每路输出最多 4 MiB；git 关闭仓库 hooks；CLI 默认开启，`CBC_MODS_ALLOW_PROCESS=0` 关闭） |
 | `$.env` | `get(name)` · `set(name, value)` |
 | `$.ui` | `log()` · `status()` · `toast()` · `notice()` · `ask()` · `open()` · `close()` · `panes()` · `scroll()` · `focus()` · `invalidate()` · `resolve()` · `blit()` |
 | `$.model` | `complete()` · `classify()` · `fork()` |
 | `$.mcp` | `call(server, tool, args?)` |
 | `$.audio` | `play()` · `speak()` |
 
-**暂未开放的两个能力**：`$.http.fetch` 与 `$.process.run` 让第三方 Mod 代码出网 / 起子进程，风险不对等，不应由「忘了配置」默认打开。当前版本 CodeBuddy Code 不提供开启这两项能力的配置项或环境变量，调用会以 `{ deny: '$.http.fetch is unavailable: ...' }` 的形式明确回报，不做静默 undefined。
+**`$.http.fetch` / `$.process.run` 由宿主表态**：core 层 `HostBindings.allowHttp` / `allowProcess` 默认关闭；CodeBuddy CLI 宿主与官方 Claude Code CLI 对齐默认开启，管理员可用 `CBC_MODS_ALLOW_HTTP=0` / `CBC_MODS_ALLOW_PROCESS=0` 关闭（每次调用时读取）。命令起不来、超时或请求失败时调用会 reject；`init.auth` 句柄本宿主不签发，传入会被拒绝。
 
 ---
 
@@ -682,8 +682,6 @@ Mods **不替换**传统 hooks。两者协作：
 | `HookOutput` JSON 协议（`decision:'block'` / `continue:false` / exit 2） | 老脚本继续解析 | Legacy adapter 保留完整 JSON 序列化路径；`decision:'block'` / exit 2 会被翻译成 `{ deny }` |
 | `--plugin-dir` 的老 shell hook 目录 | `hooks/hooks.json` 里没有 `modules` | 走老通道 |
 | `--plugin-dir` 的 Mod | `hooks/hooks.json.modules` 存在 | 走 Mods 通道 |
-
-`CBC_ENABLE_FUNCTION_HOOKS` 显式关闭时，整个 Mods 引擎不加载。
 
 ---
 

@@ -70,6 +70,24 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `Artifact` | `ShareLink`（更名前的旧名） |
 | `ArtifactControl` | `ShareLinkUnpublish`（更名前的旧名） |
 
+## 同一轮多个工具调用的执行顺序
+
+模型可以在一次回复中同时发起多个工具调用。CodeBuddy Code 按以下规则调度：
+
+- **只读调用可以并发**：相邻的只读调用会同时执行，例如 `Read`、`Glob`、`Grep`、`LSP`、`WebFetch`、`WebSearch`、`ToolSearch`、`TaskGet`、`TaskList`、`TaskOutput`、`Agent`，以及只读的 `Bash` / `PowerShell` 命令。同时执行的数量默认最多 10 个，超出的按顺序排队；可用环境变量 `CODEBUDDY_MAX_TOOL_USE_CONCURRENCY` 调整。
+- **其他调用按模型给出的顺序依次执行**：`Write`、`Edit`、`TaskCreate`、会修改文件或运行程序的 Shell 命令、没有声明只读的 MCP 工具等，会等前面的调用全部完成后才开始，后面的调用也会等它完成。
+
+因此，模型在同一轮里先用 `Write` 写文件、再用 `Bash` 运行它时，命令一定能看到写入后的文件。
+
+**等待审批的调用同样会挡住后面的调用**：某个调用需要你确认时，排在它后面的调用（包括本来免审批的 `Read` 等）会一直等你处理完审批框才执行。例如同一轮里 `Bash` 运行脚本生成图片、`Read` 读取这张图片，`Read` 会在你批准并执行完 `Bash` 之后才读取。
+
+- 批准后，后面的调用按顺序继续执行；如果其中还有需要确认的调用，会再弹出审批框。
+- 拒绝后，后面的调用不再执行，界面上显示为 `Skipped (an earlier tool call was rejected)`，模型也会收到"未执行"的说明，不会把它当成空结果。
+
+`Bash` 命令只有在明确只读时才会与其他调用并发，例如 `ls`、`cat`、`head`、`grep`、`rg`、`find`（不含 `-exec`、`-delete` 等动作）、`git status`、`git log`、`git diff`，以及由它们通过 `|`、`&&`、`;` 组合的命令。包含输出重定向（写到 `/dev/null` 除外）、命令替换、后台执行（`&` 或 `run_in_background`）、`cd`、环境变量前缀，或无法识别的命令，都按顺序执行。`PowerShell` 采用同样的思路，只有 `Get-*` 等只读 cmdlet 组成的命令才会并发。
+
+MCP 工具是否并发取决于服务器是否在工具注解中声明了 `readOnlyHint: true`，详见 [MCP 集成](./mcp#工具并发执行)。
+
 ## Bash 工具行为
 
 Bash 工具在独立进程中执行每条命令，具有以下持久化特性：
@@ -88,6 +106,10 @@ Bash 工具支持[沙箱隔离](./bash-sandboxing)，可限制文件系统和网
 ### 后台执行
 
 通过 `run_in_background` 参数可将命令在后台运行，使用 `TaskOutput` 工具读取输出。适用于长时间运行的构建、测试等场景。
+
+### 命令失败时的显示
+
+命令以非 0 退出码结束时，交互界面会在结果首行显示 `Exit code <N>`，并用错误颜色显示命令输出，即使输出被折叠也能看出失败。模型同样会收到退出码和 stderr，可以据此自行调整下一步。`PowerShell` 工具的失败显示方式相同。
 
 ## PowerShell 工具行为
 

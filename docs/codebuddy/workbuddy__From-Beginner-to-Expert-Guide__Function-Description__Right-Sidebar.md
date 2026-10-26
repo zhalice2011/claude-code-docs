@@ -24,7 +24,7 @@
 
 点击浮层中的任一产物，会在右侧边栏以新标签页打开。对话流中的「查看所有产物」也会打开这个浮层。
 
-![点击对话区右上角的任务概览，展开产物列表](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/right-sidebar-task-overview.BESuO9Z6.png)
+![点击对话区右上角的任务概览，展开产物列表](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-task-overview.BESuO9Z6.png)
 
 ## 标签页
 
@@ -44,7 +44,7 @@
 
 点击标签栏的「\+」，会新开一个「新标签页」：
 
-![点击标签栏的「+」新开标签页](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/right-sidebar-new-tab.Cx3dNKql.png)
+![点击标签栏的「+」新开标签页](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-new-tab.Cx3dNKql.png)
 
 新标签页中列出可选的入口，入口下方是本次对话的产物列表，点击即可打开：
 
@@ -86,19 +86,19 @@
 
 无论在哪里打开产物，标题栏都分成左右两块，常用操作的位置保持一致：
 
-![标题栏：左侧显示文件名，右侧是编辑、上传、分享等常用操作，其余收进「更多」](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/titlebar-layout-more-menu.CpEUbcM8.png)
+![标题栏：左侧显示文件名，右侧是编辑、上传、分享等常用操作，其余收进「更多」](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/titlebar-layout-more-menu.CpEUbcM8.png)
 
 - **左侧是信息区**：显示文件名，以及保存状态等辅助信息，例如编辑后显示「未保存」，保存成功后显示「已保存」；
 - **右侧是操作区**：最多直接显示 3 个常用操作，其余操作统一收进 **更多（⋯）**，不用在不同场景里重新寻找；
 - **进入或退出编辑时有即时反馈**：在 HTML 产物上点击 **编辑**，按钮会变成高亮的选中状态，提示文字变为「退出编辑」，并弹出「已进入编辑态」；退出编辑后回到预览，弹出「已进入预览态」。
 
-![点击编辑后，标题栏的编辑按钮高亮，并弹出「已进入编辑态」](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/titlebar-entered-edit-mode.B8gguw6Q.png)
+![点击编辑后，标题栏的编辑按钮高亮，并弹出「已进入编辑态」](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/titlebar-entered-edit-mode.B8gguw6Q.png)
 
 ### 复制 Markdown 源码
 
 以渲染后的样子查看 `.md` 文件时，点击标题栏的**更多（⋯）→ 复制 Markdown**，会把当前文档完整的 Markdown 源码复制到剪贴板，复制成功后提示「已复制 Markdown」，没有成功时提示「复制失败」。
 
-![Markdown 产物标题栏「更多」菜单中的「复制 Markdown」](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/copy-markdown-menu.COY5qYpU.png)
+![Markdown 产物标题栏「更多」菜单中的「复制 Markdown」](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/copy-markdown-menu.COY5qYpU.png)
 
 - 剪贴板里只有 Markdown 源码这一种格式：粘贴到会话输入框得到可读的 Markdown 文本，粘贴到代码编辑器也原样保留；
 - 与直接「全选 \+ 复制」不同，后者会按粘贴位置的不同，得到渲染后的文字或源码；
@@ -112,7 +112,7 @@
 
 在右侧栏打开**本地 Excel** 后，选中单元格区域并**右键**，菜单第一行提供**「AI 编辑」**：点击即可直接对选中区域发起 AI 修改，不必再翻到选区右下角找入口（原入口仍然保留）。
 
-![本地 Excel 的右键菜单第一行「AI 编辑」](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/right-sidebar-excel-ai-edit.Bl-lmRkH.png)
+![本地 Excel 的右键菜单第一行「AI 编辑」](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-excel-ai-edit.Bl-lmRkH.png)
 
 ## 变更
 
@@ -124,7 +124,7 @@
 
 点击标签栏的「\+」，在新标签页中选择**打开浏览器**，输入网址即可访问。支持同时打开多个浏览器标签页，网页间互不干扰。
 
-![多标签浏览](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/browser-multitab.sf_Mas5P.png)
+![多标签浏览](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/browser-multitab.sf_Mas5P.png)
 
 ### 网址栏访问与搜索
 
@@ -133,7 +133,7 @@
 - 输入的是网址（如 `example.com`、`localhost:3000`）：直接访问；
 - 输入的是其他内容：使用搜狗搜索，并打开搜索结果页。
 
-![在网址栏输入关键词后，下方出现搜索入口](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/browser-omnibox-search.qfQFlqXh.png)
+![在网址栏输入关键词后，下方出现搜索入口](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/browser-omnibox-search.qfQFlqXh.png)
 
 输入过程中，网址栏下方首行是「搜索网页」，选择后即用搜狗搜索当前输入；使用一段时间后，下方还会列出匹配的**浏览历史**和**搜索历史**。可用鼠标点选，或用 `↑` `↓` 选择后按 `Enter`：选择浏览历史会直接打开该页面，选择搜索历史会用该关键词重新搜索。
 
@@ -148,7 +148,7 @@
 
 点击浏览器右上角的**更多（⋯）**，将鼠标移到 **清除浏览数据** 上，会展开二级菜单：
 
-![清除浏览数据](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/browser-clear-data.DOAynEE1.png)
+![清除浏览数据](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/browser-clear-data.DOAynEE1.png)
 
 | 选项 | 作用 |
 | --- | --- |
@@ -165,7 +165,7 @@
 
 点击浏览器右上角的**更多（⋯）**，菜单中提供以下页面工具：
 
-![浏览器右上角「更多」菜单](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/browser-more-menu.kuwScFtl.png)
+![浏览器右上角「更多」菜单](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/browser-more-menu.kuwScFtl.png)
 
 | 菜单项 | 说明 |
 | --- | --- |
@@ -190,7 +190,7 @@
 
 点击浏览器右上角的**更多（⋯）→ 显示设备工具栏**，即可在浏览器顶部打开设备工具栏，一键切换**手机 / 平板 / 桌面**视口，或自定义宽高，方便验证页面在不同设备下的响应式表现。
 
-![设备调试工具栏](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/browser-device-toolbar.CW3QxART.png)
+![设备调试工具栏](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/browser-device-toolbar.CW3QxART.png)
 
 在设备下拉列表中，每个设备只显示名称，将鼠标悬停在某个设备上，可以查看它的视图宽高，例如 `2560×1440`。
 
@@ -209,7 +209,7 @@
 | **任务操作待您确认** | 任务有操作需要你的确认，请点击查看 | 点击直接跳转到对应任务 |
 | **任务已成功完成** | 任务执行完成，请点击查看结果 | 点击直接跳转到对应任务 |
 
-![消息中心](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/right-sidebar-notification.B0am2Q5Q.png)
+![消息中心](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-notification.B0am2Q5Q.png)
 
 ## 声明
 

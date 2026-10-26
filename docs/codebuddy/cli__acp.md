@@ -320,6 +320,57 @@ Helper：`buildUnsolicitedTurnUpdate` / `readUnsolicitedTurn`（`ACP_META_UNSOLI
 
 协调器派工后 `end_turn`、父会话 idle 是预期行为。活着的 detached worker 的 `AskUserQuestion` / `ExitPlanMode` 仍走父会话的 `requestPermission`。宿主**不要**因为父轮 `session_end` 把这些提问标成已取消。只有用户停止该 worker，或关闭父会话，才收口。
 
+## Code Mode（codeMode 配置项）
+
+会话级两态配置项，用来在**一个会话内**固定工具调用方式（PTC 评测：一个用例一个新会话）。与 `mainAgentSupport` 独立：未 opt\-in 的宿主（如 WorkBuddy）同样可发现并写入，客户端以 `configOptions` 里是否存在 `id === 'codeMode'` 为准（能力驱动，同 Multitask 口径）。
+
+| 值 | 含义 | 站立模式 |
+| --- | --- | --- |
+| `off` | 标准模式：全部工具直连（默认，无标记） | cli |
+| `all` | PTC（全部工具）：全部工具走 REPL，等价于站立模式 `ptc` | ptc |
+
+### 1\. 发现
+
+`initialize` 响应 `agentCapabilities.codeModeSupport: true`（仅辅助；以 configOptions 为准）。`session/new`、`session/load`、`session/resume` 的 `configOptions` 里按 **`id === 'codeMode'`** 查找：
+
+json
+```
+{
+  "type": "select",
+  "id": "codeMode",
+  "name": "Code Mode",
+  "description": "Tool-calling mode for this session. Locked after the first agent reply.",
+  "category": "_codebuddy.ai/codeMode",
+  "currentValue": "off",
+  "options": [
+    { "value": "off", "name": "Standard" },
+    { "value": "all", "name": "PTC (All tools)" }
+  ]
+}
+```
+`category` 只是元数据，不是主键。
+
+### 2\. 写入
+
+标准写入，`value` 是字符串 `'off' | 'all'`：
+
+json
+```
+{ "sessionId": "<id>", "configId": "codeMode", "value": "all" }
+```
+- 成功返回更新后的 `{ "configOptions": [...] }`，并广播 `config_option_update`。
+- 非法值 → JSON\-RPC `-32602`，`error.data.details` 说明原因。
+- **首轮后锁定**：会话已有主 agent 输出（非空白会话）时，写入**不同值**会被拒绝（`-32602`，`details` 含 `codeMode locked`），客户端应回滚 UI。写入**当前值**是幂等成功（宿主可在每轮 prompt 前 / 重连后重放当前值）。
+- 会话必须属于本连接（同 Multitask 的归属校验）。
+
+### 3\. 新建会话指定初始值
+
+`session/new` 的 `_meta['codebuddy.ai/codeMode']` 传 `'all'`（`'off'` 等价于不传），仅对新建空白会话生效。`mcp` 是非法新值，明确返回 `-32602`；模式切换尚未上线，不保留旧模式别名或迁移。
+
+### 4\. 持久化与 gate
+
+`all` 写入 `session.meta['codebuddy.ai/codeMode']`，同时把站立键 `session.meta['codebuddy.ai/mainAgent']` 写成 `ptc`；切回 `off` 写入显式关闭标记并将 PTC 站立键恢复为 `cli`（仅空白会话），避免历史快照恢复旧状态。带该标记的会话在**未 opt\-in** 的宿主上也会点亮站立模式 gate（总开关未关闭时）；不带标记的会话行为完全不变。该标记**不会**放开 agent picker / `session/set_agent`（仍需 `mainAgentSupport`）。
+
 ## 故障排除
 
 ### 连接失败

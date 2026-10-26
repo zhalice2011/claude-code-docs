@@ -53,6 +53,27 @@ json
 ```
 ## 配置字段说明
 
+### TUI 模型描述语言
+
+`/model` 列表下方展示当前高亮模型的完整描述，随上下键切换并按终端宽度自动换行。列表最多展示 10 项，终端较矮或较窄时减少可见项，为详情和快捷键提示保留空间；上下键可继续浏览所有模型。
+
+描述语言的检测优先级：
+
+1. 显式环境变量 `CODEBUDDY_TUI_LANGUAGE=zh` 或 `en`（也接受对应语言标签，如 `zh-TW`、`en-US`）。不设置或设置 `auto` 时自动检测。
+2. macOS 的系统首选语言列表（`AppleLanguages`），或 Windows 的用户界面语言（`Get-UICulture`）。按偏好顺序选择第一个支持的中英文语言，而不是使用日期、数字的区域格式。
+3. 终端环境：`LC_ALL` → `LC_MESSAGES` → `LANG`；非 `C` / `POSIX` 环境下，`LANGUAGE` 的冒号分隔偏好列表优先匹配中英文。`C` / `POSIX`（含 `C.UTF-8`）回退英文。
+4. Node.js `Intl` 默认 locale；仍无法识别时回退英文。
+
+中文环境依次读取 `descriptionZh`、`descriptionEn`、`description`；英文或其他语言环境依次读取 `descriptionEn`、`description`。空白描述视为缺失，无可用文案时不显示详情框。`description` 是旧配置兼容字段，不保证其内容为英文；`zh-Hans` 和 `zh-Hant` 当前共用 `descriptionZh`，不会自动进行简繁转换。
+
+模型展示文案会移除终端控制字符，描述保留正常换行并限制为 4096 个字符，超出时显示省略号。模型选择仍使用原始 ID；含控制字符、超长或非 HTTP(S) 的操作链接不可打开。
+
+bash
+```
+CODEBUDDY_TUI_LANGUAGE=en cbc
+```
+此设置仅影响 TUI 模型描述，不改变模型的回复语言（`/language`），也不翻译面板标题和快捷键提示。系统探测只在首次打开面板时执行并在进程内缓存；修改系统语言后需重启 CLI。SSH / 容器检测的是 CLI 所在环境，不是远端用户的本机界面语言，可通过上述环境变量覆盖。
+
 ### models
 
 类型： `Array<LanguageModel>`

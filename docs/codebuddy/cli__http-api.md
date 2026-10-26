@@ -39,7 +39,7 @@ curl http://127.0.0.1:8080/api/v1/health
 | --- | --- | --- | --- |
 | **公开 REST API** | `/api/v1/*` | 语义化版本，不做破坏性变更 | 本文档覆盖的内容 |
 | **公开 ACP 协议** | `/api/v1/acp` | 遵循 ACP 规范 | 完整对话能力，参见 [ACP 文档](https://agentclientprotocol.com) |
-| **内部 RPC** | `/internal/*` | 不保证兼容性 | CLI 内部使用，不对外开放 |
+| **内部 RPC** | `/internal/*` | 不保证兼容性 | CLI 内部使用，不对外开放；认证开启时**同样要求凭据**（见[认证](#认证)），仅 Hook 服务代理与 MCP OAuth 回调两条路径豁免 |
 
 ## 安全
 
@@ -109,8 +109,8 @@ X-CodeBuddy-Request: 1
 | 来源 | 取值 | 说明 |
 | --- | --- | --- |
 | 环境变量 `CODEBUDDY_GATEWAY_AUTH` | `password` / `none` | 优先级最高，适合 CI |
-| 绑定非回环地址（如 `--host 0.0.0.0`） | 强制 `password` | 对外暴露时不允许关闭 |
-| 命令行 `--auth <mode>` | `password` / `none` |  |
+| 命令行 `--auth <mode>` | `password` / `none` | 显式指定的逃生门，可覆盖下面的非回环强制 |
+| 绑定非回环地址（如 `--host 0.0.0.0`） | 强制 `password` | 不允许被配置项关掉；但显式 `--auth none` / 环境变量仍可覆盖 |
 | 配置项 `gateway.auth` | `password` / `none` |  |
 | 默认值 | `password` | `--serve` 的兜底模式 |
 
@@ -296,7 +296,7 @@ Job 是由 `/bg`、左箭头转后台或 `codebuddy agents` 派发出的智能�
 | `cwd` | string | 否 | 启动目录，默认当前工作目录 |
 | `model` | string | 否 | 指定模型，缺省按常规模型解析规则 |
 | `effort` | string | 否 | 思考强度，可选 `minimal`/`low`/`medium`/`high`/`xhigh`/`max` |
-| `permissionMode` | string | 否 | 启动权限模式，可选 `default`/`acceptEdits`/`plan`/`auto`/`dontAsk`/`bypassPermissions`。进程 `--permission-mode` 作为 Web 派发框默认，仍可被本次请求覆盖 |
+| `permissionMode` | string | 否 | 启动权限模式，可选 `default`/`acceptEdits`/`plan`/`auto`/`dontAsk`/`bypassPermissions`。`fullAccess` 仅允许本机 Web UI 发起的派发放行；远程、Tunnel、局域网或经代理转发的调用传该值返回 `400 BAD_REQUEST` |
 | `agent` | string | 否 | 主 Agent：`cli` / `ptc` / `minimal` / `create` 或自定义 agent 名。省略时：进程 `--agent` \> `lastUsed` \> `default` \> 产品 `cli`。总闸关闭时忽略 shipped 模式名。`minimal` 与 `permissionMode=plan` 同传返回 `400 BAD_REQUEST` |
 | `name` | string | 否 | 实例显示名称 |
 | `bash` | boolean | 否 | 为 `true` 时派发为一次性 shell 任务而非智能体实例 |
@@ -410,6 +410,8 @@ CBC 增强：
 | 方法 | 端点 | 说明 |
 | --- | --- | --- |
 | GET | `/api/v1/fs/search?query=...` | 文件模糊搜索（基于 ripgrep，E2B 无对应接口） |
+| GET | `/api/v1/fs/locate?path=...&cwd=...` | 定位对话里的文件引用：先按 cwd 及上级目录（止于 git 根）精确查找，再按路径后缀匹配工作区文件（E2B 无对应接口） |
+| POST | `/api/v1/fs/locate-batch` | 批量定位文件引用：请求 `{ references, cwd? }`，每个引用返回 `found` / `ambiguous` / `missing` / `unknown`；规则与 `locate` 一致，结果带 5 秒缓存，单次最多处理 100 个（E2B 无对应接口） |
 
 ### 进程管理（E2B 兼容）
 
@@ -443,7 +445,7 @@ CBC 增强：
 | POST | `/internal/file-changes/checkpoints` | 列出可回退的 checkpoint |
 | POST | `/internal/file-changes/revert` | 撤回文件变更或回退到 checkpoint |
 
-> **注意**：这些是内部端点，无稳定性保证，仅供 Web UI 消费。
+> **注意**：这些是内部端点，无稳定性保证，仅供 Web UI 消费。认证开启时同样需要携带凭据 （`x-codebuddy-request: 1` \+ `Authorization: Bearer <密码>`）；Web UI 经同源 Cookie 自动满足。 直接用脚本调用 `/internal/*` 时必须补上这两个头，否则返回 401。
 
 ### 插件管理
 
@@ -474,6 +476,14 @@ CBC 增强：
 | PUT | `/api/v1/settings/:key` | 设置配置值 |
 | POST | `/api/v1/settings/:key/items` | 向数组类配置追加值 |
 | POST | `/api/v1/settings/:key/remove` | 从数组类配置移除值 |
+
+### 场景变体模型
+
+| 方法 | 端点 | 说明 |
+| --- | --- | --- |
+| GET | `/api/v1/model-variants/lite` | 查询 Lite 模型目录、用户配置、当前有效模型和来源 |
+| PUT | `/api/v1/model-variants/lite` | 设置用户级 Lite 模型，等价于 `/model:lite <model-id>` |
+| POST | `/api/v1/model-variants/lite/reset` | 恢复 Lite 默认解析，等价于 `/model:lite default` |
 
 ### 工作目录
 
@@ -643,6 +653,14 @@ curl -X POST http://127.0.0.1:8080/api/v1/fs/mkdir \
 
 # 文件模糊搜索（CBC 增强）
 curl "http://127.0.0.1:8080/api/v1/fs/search?query=component&limit=10"
+
+# 定位文件引用（CBC 增强）：省略了 src/ 前缀的 utils/git.ts 也能找到
+curl "http://127.0.0.1:8080/api/v1/fs/locate?path=utils/git.ts&cwd=/path/to/project"
+
+# 批量定位文件引用（CBC 增强）：一条消息里的全部引用一次校验
+curl -X POST http://127.0.0.1:8080/api/v1/fs/locate-batch \
+  -H "Content-Type: application/json" \
+  -d '{"references": ["README.md", "utils/git.ts", "nope/missing.ts"], "cwd": "/path/to/project"}'
 ```
 ### 进程管理（E2B 兼容）
 
@@ -706,6 +724,8 @@ curl -X POST http://127.0.0.1:8080/api/v1/sessions/SESSION_ID/rename \
 | `/path/to/workspace` | 返回指定工作目录的会话 |
 
 ### 文件变更管理（Internal）
+
+> 以下 `/internal/*` 示例省略了认证头以保持简洁。认证开启时每个请求都需补上 `-H "x-codebuddy-request: 1" -H "Authorization: Bearer $PASSWORD"`，否则返回 401。
 
 bash
 ```
@@ -851,6 +871,29 @@ curl -X POST http://127.0.0.1:8080/api/v1/settings/permissions/items \
 curl -X POST http://127.0.0.1:8080/api/v1/settings/permissions/remove \
   -H "Content-Type: application/json" \
   -d '{"values": ["Allow: Read(**)"]}'
+```
+### 场景变体模型
+
+Lite API 读写的是 `/model:lite` 使用的同一项配置。设置只写用户级 `variantModels.lite`（值未变化时不写盘）；环境变量 `CODEBUDDY_SMALL_FAST_MODEL` 和项目级 `variantModels.lite` 仍按原优先级覆盖，此时 `source` 为 `env-variant` / `settings-project`。
+
+三个端点都可带可选的 `?sessionId=`，按该会话主模型计算动态 Default；会话必须已在本进程激活，否则返回 `404 SESSION_NOT_FOUND`。`modelId` 只接受 `models[].id`，不接受显示名称。
+
+bash
+```
+# 查询 Lite
+curl "http://127.0.0.1:8080/api/v1/model-variants/lite?sessionId=<session-id>"
+# {"data":{"configuredModelId":null,"effectiveModelId":"<lite-id>","source":"related-models",
+#          "models":[{"id":"<lite-id>","name":"<Lite Name>","disabled":false}]}}
+
+# 设置 Lite
+curl -X PUT http://127.0.0.1:8080/api/v1/model-variants/lite \
+  -H "Content-Type: application/json" \
+  -d '{"modelId": "<model-id>"}'
+
+# 恢复默认 Lite 解析
+curl -X POST http://127.0.0.1:8080/api/v1/model-variants/lite/reset \
+  -H "Content-Type: application/json" \
+  -d '{}'
 ```
 ### 工作目录
 

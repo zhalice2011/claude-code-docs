@@ -666,6 +666,8 @@ jsonc
 - `stopReason` / `reason`：传递给 CodeBuddy Agent 的消息，用于解释为什么阻止操作
 - `systemMessage`：仅显示给用户的警告信息，不会传给 Agent
 
+**上下文注入说明**：成功解析为 JSON 对象的输出按字段处理，不会将 stdout 原文整体传给 Agent。需要向模型补充上下文时，使用对应事件支持的 `hookSpecificOutput.additionalContext`。`UserPromptSubmit`、`SessionStart` 等支持 stdout 上下文注入的事件，仅将未解析为 JSON 对象的 stdout 作为纯文本兜底上下文；`suppressOutput: true` 可关闭这一兜底，但不影响 `systemMessage` 的界面提示或显式的 `additionalContext`。
+
 #### PreToolUse 决策控制
 
 PreToolUse hooks 可以控制工具调用是否继续。

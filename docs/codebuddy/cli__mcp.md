@@ -683,6 +683,24 @@ codebuddy mcp remove my-server --scope user
 - 合理配置服务器超时时间
 - 避免同时运行过多的 STDIO 服务器
 - 使用缓存机制减少重复连接
+- 为只读工具声明 `readOnlyHint`，让它们可以和其他只读调用并发执行（见下方[工具并发执行](#工具并发执行)）
+
+### 工具并发执行
+
+模型在同一轮里调用多个工具时，CodeBuddy Code 只让只读调用并发执行，其他调用按模型给出的顺序依次执行（规则见[工具参考](./tools-reference#同一轮多个工具调用的执行顺序)）。
+
+MCP 工具默认按顺序执行。如果某个工具只读取数据、不修改任何状态，服务器可以在 `tools/list` 返回的工具注解里声明 `readOnlyHint: true`，这样它就能与其他只读调用并发执行：
+
+json
+```
+{
+  "name": "search_issues",
+  "description": "Search issues by keyword",
+  "inputSchema": { "type": "object", "properties": { "query": { "type": "string" } } },
+  "annotations": { "readOnlyHint": true }
+}
+```
+通过 `ToolSearch` 延迟加载的 MCP 工具遵循同样的规则。只给确实不产生副作用的工具声明 `readOnlyHint`：声明为只读的工具可能与同一轮的其他只读调用同时运行。
 
 ### 4\. 错误处理
 

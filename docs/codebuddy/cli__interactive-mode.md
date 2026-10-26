@@ -20,7 +20,7 @@
 | `Shift+Tab` (所有平台，Windows 同时支持 `Alt+M`) | 切换权限模式 | 在 `default`、`bypassPermissions`、`acceptEdits`、`auto`（可用时）、`plan`、`delegate` 之间循环 | ✅ 支持 |
 | `Option+P` (macOS) 或 `Alt+P` (Windows/Linux) | 切换模型 | 快速打开模型选择面板 | ✅ 支持 |
 
-空白会话可用 `/agent-mode` 切换主 Agent 模式（标准 / PTC / 极简 / 创造）。空输入且仍可切换时，输入框下提示 `/agent-mode to switch`（不出现在权限提示那一行）。选择写入 `lastUsed`，下次启动沿用。这与 `Shift+Tab` 的**权限模式**循环不是一回事。对话开始后模式锁定：该提示消失，再输入 `/agent-mode` 只说明无法切换，需 `/clear` 新开。WorkBuddy 不提供该入口。
+空白会话可用 `/agent-mode` 切换主 Agent 模式（标准 / PTC / 极简 / 创造）。空输入且仍可切换时，输入框下提示 `/agent-mode to switch`（不出现在权限提示那一行）。选择写入 `lastUsed`，下次启动沿用；交互 TUI 在没有任何选择记录时默认 PTC。这与 `Shift+Tab` 的**权限模式**循环不是一回事。对话开始后模式锁定：该提示消失，再输入 `/agent-mode` 只说明无法切换，需 `/clear` 新开。WorkBuddy 不提供该入口。
 
 > **说明：**
 > 

@@ -34,6 +34,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_BIG_SLOW_MODEL` | 覆盖 `reasoning`（推理增强）场景变体的模型；优先级高于 `variantModels.reasoning` 设置项 |
 | `CODEBUDDY_CODE_SUBAGENT_MODEL` | **一刀切**覆盖所有内置子代理的模型（优先级最高，压过 `subagents` 设置项）。仅需按子代理独立配置时，改用 `/agents` 面板或 `settings.json` 的 `subagents.agents.<子代理名>.model` |
 | `MAX_THINKING_TOKENS` | 启用扩展思考并设置思考过程的 token 预算。默认禁用 |
+| `CODEBUDDY_DISABLE_PROMPT_CACHING_1H` | 设为 truthy（`1` / `true` / `yes` / `on`，大小写不敏感）关闭 1 小时 prompt cache。**默认未设置（即启用 1h 缓存）**：使用自有/官方模型时请求会带 `cache_retention: "long"`，把 Claude 系模型的 prompt cache TTL 从 5 分钟拉长到 1 小时，显著降低积分消耗。关闭后退回服务端默认档位 `short`（仍有 5 分钟缓存，不是完全禁用缓存）。自定义（第三方）模型不受影响——该字段只发给自有网关。档位在会话首次请求时锁定，会话中途改动此变量不生效（避免翻转 TTL 把已建立的服务端缓存整块作废） |
 
 > **env 与 settings 的关系**：模型相关环境变量用于运维或 CI 级覆盖。
 > 
@@ -110,6 +111,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_A2A_SEND_MAX_RETRIES` | 出站 A2A `A2ASendMessage` 在**瞬时网络失败**时的自动重试次数（默认 `2`，即最多 1\+2\=3 次尝试）。重试全部发生在同一次工具调用内，且每次都**复发同一条消息与同一个 `messageId`**——这样即使因连接问题失败，远端 Agent 看到的仍是同一个请求（对按 `messageId` 去重的远端具备幂等性），而不是模型重新发起、`messageId` 每次都变的重复请求。采用指数退避（500ms、1000ms…，带抖动）。**仅重试几乎可以确定"请求从未落地"的失败**：连接层错误（ECONNREFUSED/DNS/连接重置/socket 中断等）与网关/限流状态码 429/502/503/504；4xx、500 及其他 5xx、用户取消、整体超时预算耗尽都**不**重试。设为 `0` 关闭重试（单次尝试）；上限钳制到 `10`；空值、负数、非整数回落到默认 `2` |
 | `CODEBUDDY_REHYDRATE_IMAGE_BLOB_REFS` | 设置为 `true` 在 `-p` 模式流式输出中将图片 blob 引用还原为完整 base64 数据。适用于需要直接获取图片数据的下游集成场景 |
 | `CODEBUDDY_SKIP_READ_TOOL_IMAGE_REHYDRATION_IN_HISTORY` | 设置为 `true` 时，即使开启通用图片 blob 复水，`-p` 历史回放中的 `Read` 工具图片仍保留 blob 引用，不内联 base64。实时 `Read` 输出和模型上下文不受影响 |
+| `CODEBUDDY_HISTORY_REPLAY_MAX_CONTENT_BYTES` | 历史回放中 function call 参数、tool result 文本和 reasoning 文本的单字段 UTF\-8 字节上限；超出部分显示为 `...`。仅接受正整数，未设置或非法值时不截断；实时输出、用户消息、助手最终回复和模型上下文不受影响 |
 | `CODEBUDDY_REPL_ENABLED` | **实验功能**：REPL code mode 总闸。设置为 `1` 或 `true` 开启代码执行模式——模型可在隔离的 vm sandbox 中编写 JS 编排工具调用（内置工具直接 `Bash({...})`，MCP 工具统一挂 `mcp_<server>` 前缀全局），减少多工具任务的 LLM 往返次数。默认关闭 |
 | `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | REPL 工具目录注入细闸。默认开启，只有显式设置为 `0` 或 `false` 才关闭（工具仍预加载，只是模型不提前知情，退化为纯渐进披露） |
 | `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | REPL 内置工具注入开关。默认开启，`0` 或 `false` 关闭后内置工具不进 REPL 骨架目录与 sandbox 注入（仅保留 MCP 工具） |
@@ -151,7 +153,6 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | `CODEBUDDY_PRE_MESSAGE_COMPACT_PCT` | 设置用户发消息前预检压缩的上下文容量百分比（1\-100）。默认 10%。当上下文超过此阈值时，在处理用户新消息前自动压缩 |
 | `CODEBUDDY_DISABLE_AUTO_MEMORY` | 设置为 `1` 禁用自动内存，设置为 `0` 启用 |
 | `CODEBUDDY_DISABLE_PARENT_MEMORY` | 设置为 `1` 关闭项目指令文件（`CODEBUDDY.md`/`AGENTS.md`）越过启动目录向上递归查找，只加载启动目录本身。优先级高于 settings 项 `memory.parentDiscovery` |
-| `CODEBUDDY_SESSION_HISTORY_CLEANUP` | 控制会话历史自动清理（按 `cleanupPeriodDays` 删除过期会话、记忆与 Trace）。仅 `1`/`true` 开启，其他值或未设置均不清理。交互式启动（TUI、`--serve` Web UI、`codebuddy cleanup`）默认设为 `1`；`-p`、`--acp`、SDK 等非交互启动默认不清理。取代已移除的 `CODEBUDDY_DISABLE_SESSION_HISTORY_CLEANUP` |
 | `CODEBUDDY_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用记忆功能 |
 | `CODEBUDDY_TYPED_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用分类记忆模式 |
 | `CODEBUDDY_TEAM_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用团队记忆模式 |
@@ -177,8 +178,8 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | `CODEBUDDY_RECOVERY_FIRST_TOKEN_TIMEOUT_MS` | 自动恢复轮（网络错误 / 流超时 / 首 token 超时 / 模型 `finish_reason=error` 之后的续跑）首个请求等待首个模型输出的最大时间（毫秒）（默认：300000，即 5 分钟），同时覆盖等待响应头的阶段；永远不超过 `CODEBUDDY_FIRST_TOKEN_TIMEOUT_MS` |
 | `CODEBUDDY_EMPTY_STREAM_RETRY_MAX_ELAPSED_MS` | 空流（上游 `finish_reason=error` 且零模型输出）还允许会话层自动重试的最长已耗时（毫秒）（默认：300000，即 5 分钟）；传 `0` 关闭该闸门、回到只按重试预算判定。流已经跑了超过这个时长才收到 error，说明撞的是上游自身的硬时限而非瞬时抖动，重跑同一段 prompt 必然再次跑满，只会把静默时长成倍放大，故不再自动重试、直接把终态交给调用方 |
 | `CODEBUDDY_REASONING_KEEPALIVE_INTERVAL_MS` | 「长推理不收口」保活信号的推送间隔（毫秒）。**默认未设置\=完全关闭，行为零变化**；设为正数才启用。仅在「模型持续吐 reasoning、但迟迟不产出实质内容（text/tool\_call/refusal）、且上游仍在持续发包」这一特定场景下，按此间隔向调用方推送一个**不含推理正文**的存活/进度通知（stream\-json 复用 `keepalive` 帧并带 `reason=reasoning_in_progress`），使调用方把「长推理」与「真卡死」区分开、并喂活 sandbox\-proxy 存活水位。只观察不中断，与首 token / 流间空闲超时解耦 |
-| `CODEBUDDY_MAX_RETRIES` | 模型请求"生成开始前"失败（429 / 5xx（570\-579 除外）/ 请求超时 / 锁超时）的最大退避重试次数（默认：8，上限：15，超限自动收敛）。重试采用 1s 起步、2 倍增长、单次封顶 32s 的指数退避 \+ 抖动；服务器给出 `retry-after`（秒数或 HTTP 日期）或错误体 `retry_policy.retry_after` 时按两者中更晚的时间等待，不会截短。重试严格发生在流式内容产出之前，不会重发已产出内容；已收到 200 后在流中报的错误按会话恢复处理，不计入此次数。额度耗尽类错误不重试（转由模型 fallback 处理）。连接级传输失败（响应头之前、非 DNS）另有独立的 3 次重试，不受此变量控制。错误体带模型网关 `retry_policy` 时以网关为准：`retry` 为 `false` 或 `"false"` 不重试；否则在上述状态范围内固定最多重试 8 次，覆盖本变量 |
-| `CODEBUDDY_RETRY_WATCHDOG` | 置为 `1` / `true` / `yes` 开启无人值守 / CI 场景的无限重试模式，仅对上述"生成开始前"失败生效，单次退避封顶 5 分钟。错误体带网关 `retry_policy` 时不生效（按网关策略处理）。默认关闭 |
+| `CODEBUDDY_MAX_RETRIES` | 模型请求"生成开始前"失败（429 / 5xx（570\-579 除外）/ 请求超时 / 锁超时）的最大退避重试次数（默认：8，上限：15，超限自动收敛）。重试采用 1s 起步、2 倍增长、基准封顶 32s 的指数退避 \+ ±10% 抖动（实际等待为基准的 90%～110%）；服务器给出 `retry-after`（秒数或 HTTP 日期）或错误体 `retry_policy.retry_after` 时按两者中更晚的时间等待，不会截短。重试严格发生在流式内容产出之前，不会重发已产出内容；已收到 200 后在流中报的错误按会话恢复处理，不计入此次数。额度耗尽类错误不重试（转由模型 fallback 处理）。连接级传输失败（响应头之前、非 DNS）不受此变量控制：原生 TUI 主会话无限重连，基准按 1/2/4/8/16/32/64s 增长，之后保持 64s（±10%）；其他入口另有独立的 3 次重试。错误体带模型网关 `retry_policy` 时以网关为准：`retry` 为 `false` 或 `"false"` 不重试；否则在上述状态范围内固定最多重试 8 次，覆盖本变量 |
+| `CODEBUDDY_RETRY_WATCHDOG` | 置为 `1` / `true` / `yes` 开启无人值守 / CI 场景的无限重试模式，仅对上述"生成开始前"失败生效，退避基准封顶 5 分钟（±10% 抖动后最多 5 分 30 秒）。错误体带网关 `retry_policy` 时不生效（按网关策略处理）。默认关闭 |
 | `CODEBUDDY_MODEL_401_MAX_RETRIES` | 模型请求返回 HTTP 401 时的无脑重试次数（**默认 0 即关闭**，上限 15，超限自动收敛）。仅用于「CLI 前面挂了替它注入 `Authorization: Bearer` 的鉴权代理」的部署：这类链路里 token 由代理持有并续期，CLI 本地凭据只是占位，代理换 token 期间的 401 是可恢复抖动，不代表需要重新登录。开启后 401 会按固定间隔原样重发（重试严格发生在流式内容产出之前，不会重发已产出内容）。仅对内置/官方模型生效；自定义第三方模型的 401 说明用户自管的 API Key 失效，一律不重试。网关 `retry_policy` 的 `retry: false` 与请求取消的优先级高于本变量 |
 | `CODEBUDDY_MODEL_401_RETRY_DELAY_MS` | 上述 401 重试的固定间隔（毫秒）（默认：2000，上限：32000）。刻意是固定间隔而非指数退避——401 无 `retry-after` 语义，代理换 token 是个近似常量的窗口。仅在 `CODEBUDDY_MODEL_401_MAX_RETRIES` 大于 0 时有意义 |
 | `CODEBUDDY_SESSION_MAX_ITEMS` | `session/load` 回放时历史消息的最大条数（默认：1000）。达到阈值且遇到 user message 时停止逆序读取 JSONL。需要支持超长会话（如沙箱场景）时可调大（例如 2000 或更多）；零/负数/非数字会回退到默认值 |
@@ -205,6 +206,7 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | `CODEBUDDY_POWERSHELL_PATH` | 显式指定 PowerShell 可执行文件路径（优先于自动检测） |
 | `CODEBUDDY_USE_POWERSHELL_TOOL` | 控制 PowerShell 工具启用状态。Windows 上默认启用，设为 `0` 可禁用 |
 | `CODEBUDDY_ENV_FILE` | 在执行每个 shell 命令前自动 source 的环境文件路径 |
+| `CODEBUDDY_SHELL_PREPEND_PATH` | 放到 shell 命令 `PATH` 最前面的目录，Windows 用 `;` 分隔，其他平台用 `:`。bash/zsh 命令在加载 shell 快照之后放到最前，PowerShell 命令同样放在最前；风险审查判断命令来源时也读它，Linux 沙箱对其中的托管 Node/Python 运行时目录放行只读。hook 命令和 MCP 服务能看到这个变量，`PATH` 不变。以库方式启动时由 `start({ shellEnvironmentPolicy })` 按会话给出。更早的版本读 `WORKBUDDY_EXTRA_PATHS` |
 | `CODEBUDDY_DISABLE_SHELL_SNAPSHOT` | 设置为 `1` 全平台禁用 shell 环境快照（在 bash profile 加载慢时有效） |
 | `CODEBUDDY_ENABLE_SHELL_SNAPSHOT` | Windows 无 Git Bash 时默认跳过 snapshot；设为 `1` 可强制启用（通常不需要） |
 
@@ -280,10 +282,11 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 
 | 环境变量 | 说明 |
 | --- | --- |
-| `CODEBUDDY_CODE_MAX_TURNS` | 主 Agent 的最大执行轮次。优先级：CLI `--max-turns` \> 此环境变量 \> 默认值 (500\) |
+| `CODEBUDDY_CODE_MAX_TURNS` | 主 Agent 的最大执行轮次。优先级：CLI `--max-turns` \> 此环境变量 \> 默认值（交互式 TUI 默认不限制，其他入口为 500） |
 | `CODEBUDDY_CODE_SUBAGENT_MAX_TURNS` | 子 Agent 的最大执行轮次。优先级：CLI `--max-turns` \> 此环境变量 \> 模型动态传入的 `max_turns` \> 默认值 (500\) |
 | `CODEBUDDY_SUBAGENT_TIMEOUT_MS` | 同步前台 Agent 工具调用的墙钟超时（正整数毫秒，上限 `2147483647`）。**不设 / 留空 / 非法值 / 超过上限 \= 不启用**（无限等待），与 `CODEBUDDY_CODE_SUBAGENT_MAX_TURNS` 同类的算子护栏；上限取 Node `setTimeout` 的 32 位上限，超过会被钳成 1ms 反而立即超时。超时后终止子 Agent 并把结果交回主 Agent；后台、detached 和 Team member 不受此项影响 |
 | `CODEBUDDY_CODE_MAX_CONCURRENT_SUBAGENTS` | 每个根会话树同时执行的子 Agent 上限（正整数，默认 20，可上下调整，不可关闭）。同步、后台、Team member、Skill 和 Workflow 的 AgentTask 共享同一限制；任务完成、失败、取消或终止后释放槽位 |
+| `CODEBUDDY_MAX_TOOL_USE_CONCURRENCY` | 模型同一轮发起的可并发工具调用（只读的 `Read`、`Grep`、`Agent` 等）最多同时执行几个（正整数，默认 10；留空、`0`、负数或非数字按默认值处理）。超出的调用排队，按模型给出的顺序在有空位时启动。只影响同一轮内的并行数，不改变哪些调用能并发；子 Agent 的总并发另由 `CODEBUDDY_CODE_MAX_CONCURRENT_SUBAGENTS` 限制。对齐 Claude Code 的 `CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY` |
 | `CODEBUDDY_CODE_MAX_SUBAGENTS_PER_SESSION` | 每会话子代理 spawn 预算上限（正整数，默认 200，可上下调整，不可关闭）。嵌套 spawn 共享同一份预算；超限时 Agent 工具返回错误并提示改用自身工具完成剩余工作；`/clear` 新建会话后重置 |
 | `CODEBUDDY_CODE_DISABLE_AUTO_MEMORY` | 设为 truthy 关闭 agent 级持久记忆（frontmatter `memory` 字段不再注入记忆段落）。默认未设置（启用） |
 | `CODEBUDDY_SUBAGENT_PERMISSION_MODE` | 子 Agent/团队成员的默认权限模式（如 `bypassPermissions`、`acceptEdits`、`default`、`plan`）。优先级：Agent 工具 `mode` 参数 \> CLI `--subagent-permission-mode` \> 此环境变量 \> Settings `permissions.subagentPermissionMode` \> 映射表默认值 |
@@ -297,6 +300,11 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `CODEBUDDY_GATEWAY_BASE_PATH` | Gateway Web UI 的公共 URL path 前缀（如 `/cnb-5gg-1k09dqp5v-001`）。`--base-path` 优先。未设置或 `/` 表示挂在站点根。设置后终端打印的 Web UI 链接、登录跳转、Cookie Path 以及页面内 `/api` `/assets` 请求都会带上此前缀 |
 | `CODEBUDDY_GATEWAY_PASSWORD` | Gateway 访问密码。未设置时首次启动自动生成随机密码并写入 settings |
 | `CODEBUDDY_GATEWAY_FORCE_TUNNEL` | 设置为 `1` 强制使用 tunnel 模式 |
+| `CODEBUDDY_FRP_BUILTIN_ENABLED` | 设置为 `1` 时，无论账号类型都显示内置的 FRP 中继网关（默认只在当前登录账号属于 iOA 时显示，按账号的 `idp` / 登录 domain 判断，不看 `CODEBUDDY_INTERNET_ENVIRONMENT`） |
+| `CODEBUDDY_FRP_BUILTIN_HUB_URL` | 覆盖内置 FRP 中继网关地址（默认 `https://frp.devcloud.woa.com`） |
+| `CODEBUDDY_FRP_TLS` | 设置为 `0` 时，连接 frps 不使用 TLS（默认开启；也可在 Web UI 网关设置里按网关单独指定） |
+| `CODEBUDDY_FRP_AUTO_SHARE` | 设置为 `0` 时关闭“开通 / 导入 FRP 网关账号后自动共享本机 SSH”（默认开启：本机已有 sshd 就共享它，没有则静默启动一个仅公钥、只监听 127\.0\.0\.1 的 sshd；失败会在 Web UI 中继隧道里提示并可重试） |
+| `FRP_MANAGER_ADMIN_TOKEN` | FRP 网关管理员 token，仅用于自定义网关在 Web UI 一键开通账号；只从环境变量读取，不会写入磁盘。内置网关在 iOA 登录下改用 iOA 身份自助开通，不需要它 |
 | `CODEBUDDY_DISABLE_REQUEST_VALIDATION` | 设置为 `1` 关闭 Gateway 自定义请求头校验（`X-CodeBuddy-Request`）。详见 [HTTP API 安全](./http-api#安全) |
 | `CODEBUDDY_CODE_CORS_ORIGINS` | 额外的 CORS 允许来源（逗号分隔）。支持精确 origin、`*.domain` 子域通配和 `*` 全开。如 `https://*.example.com,https://specific.com`。未设置时，若服务绑定 `0.0.0.0`（`--host 0.0.0.0`）则自动允许所有来源 |
 | `SERVER__HOST` | `--serve` 模式监听地址（默认：`127.0.0.1`） |
@@ -493,7 +501,7 @@ Shell 输出
   ├─→ OutputSpiller（完整输出流式写入磁盘）
   └─→ TruncateBuffer（内存中保留 head + tail，约 30KB）
                           ↓
-                  检测到截断 → 生成 placeholder（~2KB preview + 文件路径）
+                  检测到截断 → 生成 placeholder（~2KB preview + 文件路径；preview 取命令输出开头，命令失败时先给 Exit Code）
                           ↓
                   模型收到 placeholder，可通过 Read 工具按需读取完整文件
 ```

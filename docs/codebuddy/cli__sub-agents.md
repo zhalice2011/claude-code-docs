@@ -144,6 +144,7 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 | `background` | 否 | 设为 `true` 时该子代理总是后台运行（等同调用方传 `run_in_background: true`）；`CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 启用时降级为同步执行（仅写日志，无用户可见告警） |
 | `initialPrompt` | 否 | 该 agent 作为主会话 agent（`--agent` 或 settings `agent`）运行时，自动作为首条用户消息的前缀，仅主会话首轮注入 |
 | `memory` | 否 | 持久记忆作用域：`user`（`~/.codebuddy/agent-memory/<name>/`）、`project`（`<cwd>/.codebuddy/agent-memory/<name>/`）、`local`（不进版本库）。启用后 spawn 时自动注入 MEMORY.md（截断 200 行 / 25KB），显式 `tools` 白名单自动补 Read/Write/Edit |
+| `disable-model-invocation` | 否 | 设为 `true` 时不出现在模型的 Agent 候选清单中（含 multitask 目录），避免被模型自动选用；注册、按名称委派（例如 skill 中写明的代理名）和执行配置不变。只控制可见性，不是调用权限。默认 `false` |
 
 #### 并发、嵌套深度与会话预算
 
@@ -197,6 +198,8 @@ mcpServers:
 ---
 ```
 inline MCP server 只在该子代理 session 内创建, 子代理结束时自动关闭。它不会进入全局 MCP 池。
+
+inline MCP server（含会话插件 `.mcp.json` 声明的 server）在会话激活时**并行**连接, 单个 server 的连接超时按以下顺序取值: 该 server 配置里的 `timeout`（毫秒）→ 环境变量 `MCP_TIMEOUT` → 默认 30 秒。连不上的 server 只会让自己的工具缺席, 不会阻塞本轮对话。
 
 #### 安全策略
 

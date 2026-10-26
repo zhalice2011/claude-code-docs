@@ -12,8 +12,6 @@
 
 ## 5\.9\.1 版本发布 🚀（2026\-10\-22）
 
-## 5\.9\.1 版本发布 🚀（2026\-10\-23）\[灰度中]
-
 - 新增从同账号其他电脑导入任务、空间和定时任务，可在设置中一键迁移
 - 新增 Buddy One 会员购买，开通后排队提示同步更新
 - 新增 Gmail 部分授权与补充授权，授权完成后自动返回客户端
@@ -43,7 +41,7 @@
 - 修复独立窗口网页失效时整个窗口变成错误页，以及 macOS 14/15 独立文件浏览器 Dock 图标偏大的问题
 - 修复手动安装和 macOS 更新后残留旧安装文件的问题
 
-## 5\.9\.0 版本发布 🚀（2026\-10\-20）\[灰度中]
+## 5\.9\.0 版本发布 🚀（2026\-10\-20）
 
 - 新增独立文件浏览器 HTML 在新窗口打开
 - 新增模型选择器配置自定义模型入口
@@ -1556,7 +1554,7 @@
 
 安装 Skill 前自动进行安全扫描，检测潜在的恶意脚本和风险行为，保障你的数据安全。
 
-![alt text](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
+![alt text](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
 
 - 🆕 产物区整体交互与展示优化
 - 🆕 新增产物回传开关，可控制是否回传产物到云端
@@ -1576,7 +1574,7 @@
 
 支持 MCP 标准 OAuth 授权认证流程，连接第三方服务更安全便捷。
 
-![alt text](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/expert-center-473.CgggC1ig.png)
+![alt text](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/expert-center-473.CgggC1ig.png)
 
 - 🆕 插件收入技能页面，连接器独立为菜单项，结构更清晰
 - 🆕 任务支持置顶/取消置顶
@@ -1612,7 +1610,7 @@
 
 专家中心新增排行榜功能，展示热门专家排行，帮助你快速发现最受欢迎的领域专家。
 
-![alt text](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/zhuanjia.BtS4ODCf.png)
+![alt text](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/zhuanjia.BtS4ODCf.png)
 
 - 🆕 对话窗口内支持通过选择器快速切换专家
 - 🆕 本地任务支持归档
@@ -1632,7 +1630,7 @@
 
 支持在设置页通过可视化界面配置自定义模型（API Key、端点、参数等），无需手动编辑 JSON 文件。
 
-![alt text](https://download.codebuddy.cn/web/docs/b1bdb4b45aa8d7c1620a6777830b2dd977252d0e/docs/static/custom-model.C4ubf5Jp.png)
+![alt text](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/custom-model.C4ubf5Jp.png)
 
 - 🆕 产物支持分享链接并提供在线预览渲染
 - 🆕 自动化支持单次执行任务
