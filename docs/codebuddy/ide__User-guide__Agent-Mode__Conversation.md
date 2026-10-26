@@ -11,7 +11,7 @@
 - 在已有任务中继续追问，让智能体接着上一次的上下文继续处理。
 - 在任务执行过程中查看回复、结果和中间步骤。
 
-![任务对话界面示例](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/conversation-panel.UmR322Cm.png)
+![任务对话界面示例](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/conversation-panel.UmR322Cm.png)
 
 ## 顶部操作
 

@@ -6,4 +6,4 @@
 2. 在左侧导航栏中，选择 **账单与发票**；
 3. 点击 **查看发票**，前往腾讯云控制台发票管理 **开发票**。
 
-![alt text](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/image-6.BAD5yHbF.png)
+![alt text](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/image-6.BAD5yHbF.png)

@@ -9,17 +9,17 @@
 - 方式一：点击左下角头像，在用户菜单中点击**意见反馈**。
 - 方式二：点击左下角头像打开**设置**，在左侧导航底部点击**获取帮助**，再点击右侧意见反馈的**填写反馈**。
 
-![意见反馈窗口](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/feedback-smart-diagnosis-3.Y9f3P89Q.png)
+![意见反馈窗口](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/feedback-smart-diagnosis-3.Y9f3P89Q.png)
 
 ## 使用智能诊断
 
 当 WorkBuddy 出现功能异常、操作失败或执行结果与预期不符时，如果希望先排查问题原因并获取解决建议，可以在**意见反馈**窗口中描述问题，再点击**智能诊断**。
 
-![意见反馈窗口中点击智能诊断](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/feedback-smart-diagnosis-1.DPFHBqf3.png)
+![意见反馈窗口中点击智能诊断](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/feedback-smart-diagnosis-1.DPFHBqf3.png)
 
 WorkBuddy 会自动跳转到智能诊断页面，根据页面提示完成问题排查后，智能诊断会分析问题原因并给出解决建议。诊断过程中填写的答复会自动同步回写到关联记录。
 
-![智能诊断分析结果](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/feedback-smart-diagnosis-2.CP0DhCfu.png)
+![智能诊断分析结果](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/feedback-smart-diagnosis-2.CP0DhCfu.png)
 
 TIP
 

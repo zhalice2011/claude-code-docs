@@ -42,13 +42,13 @@
 1. **打开文件** 在任务流中点击文件，右侧边栏展开文件预览，默认进入编辑态并出现相应顶部工具栏，可直接手动编辑内容。本地任务与云端沙箱任务（项目、助理）中产生的文件均适用。
 2. **选中内容** 选中某段文字或元素后出现「AI 编辑」入口：Word、PPT 等自带划词工具栏的文件，入口位于工具栏最左侧；Excel 等无划词工具栏的文件，入口随选区单独出现。
 
-![选区并出现工具栏](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-3.Bp5JK2jF.png)
+![选区并出现工具栏](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/right-sidebar-3.Bp5JK2jF.png)
 3. **下达指令** 点击「AI 编辑」展开评论框，输入修改要求并发送。支持批量添加需要修改的内容，最后一次性点击「发送」。
 
-![输入编辑指令](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-4.SDp2TS4K.png)
+![输入编辑指令](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/right-sidebar-4.SDp2TS4K.png)
 4. **AI 改写** 将引用内容和评论发送给 WorkBuddy ，让他针对被引用的元素精准调整，并告知用户改了哪里。
 
-![发送到AI输入框](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-5.BDC5FEq9.png)
+![发送到AI输入框](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/right-sidebar-5.BDC5FEq9.png)
 
 ## 编辑、保存与撤销
 
@@ -74,7 +74,7 @@
 
 首次展开输入框时，会自动浮出快捷键提示，稍后自动消失，此后悬停输入框右侧的按钮也可随时查看。
 
-![AI 编辑输入框快捷键](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/cowriting-shortcuts.h1t94Ik4.png)
+![AI 编辑输入框快捷键](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/cowriting-shortcuts.h1t94Ik4.png)
 
 ### 待发送的修改提示
 
@@ -82,9 +82,9 @@
 
 被引用的内容会以标签形式留在对话输入框下方，它们还没发出，所以提示条会持续计数：
 
-![引用还留在对话输入框里，尚未发送](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/cowriting-pending-chips.CxvKoPxo.png)
+![引用还留在对话输入框里，尚未发送](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/cowriting-pending-chips.CxvKoPxo.png)
 
-![文件窗口中的提示条：N 个修改想法，可取消或发送](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/cowriting-pending-edit-toast.CGwPZYY-.png)
+![文件窗口中的提示条：N 个修改想法，可取消或发送](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/cowriting-pending-edit-toast.CGwPZYY-.png)
 
 - 点击 **发送**：直接把这些修改想法发给 WorkBuddy，不用再回到对话输入框；
 - 点击 **取消**：只收起这条提示，输入框里的内容仍会保留，之后仍可自己手动发送；已添加的引用减到 0 时，提示条会自动消失；
@@ -98,7 +98,7 @@
 - WorkBuddy 改动或插入内容时，**改动区域显示加载动画**
 - 改动完成后，**所有修改位置以淡黄色高亮**标出，便于核对改了哪里（Word / Excel）；**点击文档任意位置**即可取消高亮
 
-![AI 修改淡黄色高亮](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/cowriting-highlight.B65MWp7-.png)
+![AI 修改淡黄色高亮](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/cowriting-highlight.B65MWp7-.png)
 
 ### 保存
 
@@ -119,7 +119,7 @@ WorkBuddy 的改动支持**撤销 / 重做**，右键操作逻辑与手动编辑
 - **排版美化与总结**：针对性排版并生成全文总结
 - **润色与改写**：按指令对多段文本润色，强化重点
 
-![案例-表格](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-6.p4yT4_lv.png)
+![案例-表格](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/right-sidebar-6.p4yT4_lv.png)
 
 ### 表格（Excel）
 
@@ -130,7 +130,7 @@ WorkBuddy 的改动支持**撤销 / 重做**，右键操作逻辑与手动编辑
 
 图表、超链接、图片等对象同样支持选中后进入 AI 编辑。
 
-![案例-表格](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-7.BmD8908e.png)
+![案例-表格](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/right-sidebar-7.BmD8908e.png)
 
 ### PPT
 
@@ -143,7 +143,7 @@ WorkBuddy 的改动支持**撤销 / 重做**，右键操作逻辑与手动编辑
 
 提供四种选中方式：直接点选页面元素、在画布上自由框选、点击目录缩略图左上角、在目录缩略图上右键。
 
-![案例-Markdown](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-8.Z8Xr9W_z.png)
+![案例-Markdown](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/right-sidebar-8.Z8Xr9W_z.png)
 
 ### Markdown
 
@@ -152,7 +152,7 @@ WorkBuddy 的改动支持**撤销 / 重做**，右键操作逻辑与手动编辑
 - **结构重排**：选中段落重新组织标题层级
 - **内容续写**：光标停在标题下，就地续写
 
-![案例-Markdown](https://download.codebuddy.cn/web/docs/48f12bbbab5a28a65ae8cd0903cfe249b9e10c9a/docs/static/right-sidebar-9.DLxQkT91.png)
+![案例-Markdown](https://download.codebuddy.cn/web/docs/b043a5d6b529e83c131924b676ba6273f6160f7a/docs/static/right-sidebar-9.DLxQkT91.png)
 
 ## 注意事项与重点提示
 
