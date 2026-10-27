@@ -4315,8 +4315,8 @@
     "build-with-claude__preserved-thinking.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/preserved-thinking",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/preserved-thinking.md",
-      "hash": "0329bfdeacdec6e74eabd03e5cd9bc84df57439ee505141382967cd3f9043d4f",
-      "last_updated": "2026-10-26T22:14:50.555368",
+      "hash": "b48143b09c2bc52726e054e9991c6a07399fcff0779dc4eb4dfa539905902841",
+      "last_updated": "2026-10-27T03:04:12.232870",
       "source": "platform"
     },
     "build-with-claude__prompt-caching.md": {
@@ -5225,8 +5225,8 @@
     "managed-agents__self-hosted-sandboxes.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes.md",
-      "hash": "e66354e89d1756a0f4150aa0281416a6e2974bfc62b8644b9b622b5208da896c",
-      "last_updated": "2026-10-24T02:41:35.532585",
+      "hash": "d444cfbffcb25faf633ffa30c36c9382f4ddc7845387cbca57853253443547a9",
+      "last_updated": "2026-10-27T03:05:46.046418",
       "source": "platform"
     },
     "managed-agents__self-hosted-sandboxes-custom-tools.md": {
@@ -5239,22 +5239,22 @@
     "managed-agents__self-hosted-sandboxes-memory.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-memory",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-memory.md",
-      "hash": "1e47205214947c85452bf151884d29122ca273da30a5ce1b1d1927a0cb151fed",
-      "last_updated": "2026-10-22T23:57:41.681829",
+      "hash": "e8e10e2f795a64e667149ef7f2b4c6ce83375de30de256dca5598a034b9adb81",
+      "last_updated": "2026-10-27T03:05:47.547183",
       "source": "platform"
     },
     "managed-agents__self-hosted-sandboxes-operations.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-operations",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-operations.md",
-      "hash": "3691edc9577d77ed7f18cc73d7cfec4d16476a86198ed1fa4a5153a2d0dbe256",
-      "last_updated": "2026-10-23T14:08:05.290798",
+      "hash": "8f4ad9fe7fc405464f00b0197585006e26e9700fdec842c771d3eb78b335403b",
+      "last_updated": "2026-10-27T03:05:48.214597",
       "source": "platform"
     },
     "managed-agents__self-hosted-sandboxes-reference.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-reference",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-reference.md",
-      "hash": "0fb919a9dff4224339c6ff49199a3c2b407e133771c00cad524670476f696d9e",
-      "last_updated": "2026-10-21T19:13:03.327841",
+      "hash": "5e907d8cde8dcff498e32a6e78a2333aae3751b20d497f20c73324a3adf14a53",
+      "last_updated": "2026-10-27T03:05:48.891192",
       "source": "platform"
     },
     "managed-agents__self-hosted-sandboxes-security.md": {
@@ -5729,7 +5729,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-10-26T22:17:10.580968",
+    "last_fetch_completed": "2026-10-27T03:06:36.122998",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 821,
@@ -5743,7 +5743,7 @@
     "total_files": 818,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-26T22:17:10.580994",
+  "last_updated": "2026-10-27T03:06:36.123025",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
