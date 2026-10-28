@@ -28,11 +28,11 @@
 
 先输出一张重命名对照表：
 
-![批量重命名](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/image-39.CLz1HeVH.png)
+![批量重命名](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/image-39.CLz1HeVH.png)
 
 你「确认执行」后，WorkBuddy 才会真正改名，并告知完成数量与跳过的文件。
 
-![批量重命名任务返回](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/image-40.C9A-_X7x.png)
+![批量重命名任务返回](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/image-40.C9A-_X7x.png)
 
 ### 安全提示
 
@@ -65,7 +65,7 @@
 
 输出一份结构化纪要，例如：
 
-![会议纪要](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/image-41.CPTEr9J1.png)
+![会议纪要](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/image-41.CPTEr9J1.png)
 
 ## 四、外文视频翻译
 
@@ -90,7 +90,7 @@
 
 输出一份翻译摘要，例如：
 
-![翻译视频](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/image-42.2DgIBQgG.png)
+![翻译视频](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/image-42.2DgIBQgG.png)
 
 ## 五、使用建议
 

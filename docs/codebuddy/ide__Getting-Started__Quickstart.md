@@ -6,12 +6,12 @@
 
 - 打开 CodeBuddy IDE，右上角图标分别对应终端和右侧聊天窗口打开与关闭。
 
-![打开IDE](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/open-IDE.DUDuueFq.png)
+![打开IDE](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/open-IDE.DUDuueFq.png)
 - 根据实际情况选择创建一个新的项目，或打开已存在的项目。
 
-	- 创建新项目 点击 **新建文件夹** ,支持在系统用户目录中创建一个新项目。![打开新项目](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/open-new.Ck248PNX.png)
+	- 创建新项目 点击 **新建文件夹** ,支持在系统用户目录中创建一个新项目。![打开新项目](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/open-new.Ck248PNX.png)
 
-	- 打开已存在的项目 点击 **打开文件夹**，将会在本地打开一个已存在的项目。![打开已存在的项目](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/open-exit.tqC_cv2Z.png)
+	- 打开已存在的项目 点击 **打开文件夹**，将会在本地打开一个已存在的项目。![打开已存在的项目](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/open-exit.tqC_cv2Z.png)
 
 	- 克隆远程 Git 仓库项目
 	
@@ -28,6 +28,6 @@
 		```
 		https://github.com/leaferjs/leafer-draw.git
 		```
-		3. 点击 **克隆 Git 仓库**，输入 URL，然后选择克隆项目存放的目录即可。![Git clone](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/git-clone.BON75PzO.png)
+		3. 点击 **克隆 Git 仓库**，输入 URL，然后选择克隆项目存放的目录即可。![Git clone](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/git-clone.BON75PzO.png)
 
 至此，您就可以开启编码之旅。

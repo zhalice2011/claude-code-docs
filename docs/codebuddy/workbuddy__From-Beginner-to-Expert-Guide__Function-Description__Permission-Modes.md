@@ -10,7 +10,7 @@ WorkBuddy 可以帮你读写文件、整理目录、生成文档，也可以在�
 
 权限入口位于输入框底部，为常驻的权限状态按钮，默认显示为「默认权限」。点击按钮可查看当前权限状态及说明，并通过「允许完全访问」开关在**默认权限**和**允许完全访问**之间切换。 权限状态在输入框上始终可见，你在发起任务前可以随时确认当前处于哪一档。日常建议保持默认权限；只有在可恢复、可隔离的任务里，才短时间切到完全访问权限。
 
-![权限切换入口与状态面板](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/permission-menu.D2eTfMb0.png)### 默认权限
+![权限切换入口与状态面板](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/permission-menu.D2eTfMb0.png)### 默认权限
 
 #### 默认权限会保护什么
 
@@ -71,7 +71,7 @@ WorkBuddy 可以帮你读写文件、整理目录、生成文档，也可以在�
 
 当你从下拉菜单切换到完全访问权限时，会看到「确认允许完全访问？」弹窗，其中明确列出将放开的能力（**文件操作、终端命令、访问互联网**），并提示所有任务将减少确认步骤、直接操作你的电脑。请先确认当前任务和文件都可恢复，再勾选风险确认并点击「允许完全访问」；不确定时直接取消，继续使用默认权限。
 
-![完全放开确认弹窗](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/full-access-confirm.DJ7-S_dk.png)请谨慎开启
+![完全放开确认弹窗](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/full-access-confirm.DJ7-S_dk.png)请谨慎开启
 
 允许完全访问不等于更安全，也不会自动帮你判断所有风险。它只是把确认环节交给 AI 自动通过。建议只在完全可信的任务、隔离环境或临时测试目录中使用，例如 Docker、虚拟机、一次性工作目录。
 
@@ -171,7 +171,7 @@ WorkBuddy 可以帮你读写文件、整理目录、生成文档，也可以在�
 
 为避免工作区中的配置在未经你确认时自动执行命令，WorkBuddy 在首次打开包含开发配置目录（如 `.codebuddy`）且尚未加入信任白名单的工作区时，会弹出安全信任弹窗。弹窗会提示触发信任检查的开发配置目录类型。
 
-![工作区信任弹窗](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/permission-trust-dialog.10WwIPLF.png)
+![工作区信任弹窗](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/permission-trust-dialog.10WwIPLF.png)
 
 ### 信任工作区
 
@@ -181,11 +181,11 @@ WorkBuddy 可以帮你读写文件、整理目录、生成文档，也可以在�
 
 选择**以「受限模式」打开**时，工作区仍可打开，你依然可以浏览、搜索和编辑文件，但 WorkBuddy 进入受限模式：不扫描或运行工作区配置目录下的文件，不自动加载其中的设置、规则、命令或脚本，也不自动启动依赖工作区内容的 Agent、工具、技能或插件能力。
 
-![受限模式已启用弹窗](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/permission-restricted-dialog.C6WXzKm_.png)
+![受限模式已启用弹窗](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/permission-restricted-dialog.C6WXzKm_.png)
 
 受限模式会持续显示在界面上。需要恢复完整能力时，可通过提示中的入口信任该工作区，解除限制并将该工作区加入信任白名单；信任在当前轮次会话及后台子任务执行完成后生效。
 
-![界面上的受限模式标识](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/permission-restricted-badge.CeiZ7ysN.png)
+![界面上的受限模式标识](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/permission-restricted-badge.CeiZ7ysN.png)
 
 注意
 
@@ -241,7 +241,7 @@ WorkBuddy 可以帮你读写文件、整理目录、生成文档，也可以在�
 
 除了规则类的确定性拦截，安全中心还提供基于 AI 判断的**安全防护**，位于安全中心的「AI 安全防护」分组，包含三个开关，**默认全部关闭**。开启任一开关时会有确认弹窗说明其作用。
 
-![安全中心「AI 安全防护」分组](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/permission-ai-security.B6eOQJ1R.png)
+![安全中心「AI 安全防护」分组](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/permission-ai-security.B6eOQJ1R.png)
 
 | 开关 | 作用 |
 | --- | --- |
@@ -281,7 +281,7 @@ TIP
 
 敏感保护**默认开启**，开启后使用敏感信息识别库自动识别并保护你的敏感信息（如密钥、凭证等）。点击**敏感保护**右侧的设置入口，可进入独立配置页，包含两个页签：
 
-![敏感保护设置入口](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/permission-sensitive-entry.5ibYcD1-.png)
+![敏感保护设置入口](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/permission-sensitive-entry.5ibYcD1-.png)
 
 **自动检测规则**
 
@@ -290,7 +290,7 @@ TIP
 - 支持按来源、状态筛选，及按名称 / 规则内容搜索；
 - 点击**添加检测规则**可自定义规则，保存时会自动校验规则正确性。
 
-![敏感保护自动检测规则](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/permission-sensitive.qr2AlxeJ.png)
+![敏感保护自动检测规则](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/permission-sensitive.qr2AlxeJ.png)
 
 **敏感数据管理**
 

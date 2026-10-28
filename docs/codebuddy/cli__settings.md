@@ -91,7 +91,7 @@ json
 | `autoUpdates` | 自动更新设置 | `false` |
 | `daemon.preventSleep` | 防止系统自动休眠，默认 `true`，允许屏幕正常熄灭。Web UI「全局设置 → 高级」开关运行中即时生效；关闭后按系统设置休眠，唤醒检测和自动重连仍保留。仅用户级配置；环境变量 `CODEBUDDY_DAEMON_ALLOW_SLEEP=1/true` 优先强制允许休眠 | `{"preventSleep": false}` |
 | `daemon.autoRestartOnUpdate` | daemon 自动安装新版本（或检测到磁盘上的 CLI 已被升级）后，是否在空闲时自动重启到新版本（默认 `true`）。关闭时保持待重启，可在 Web UI / Desktop 中手动重启；环境变量 `CODEBUDDY_DAEMON_AUTO_RESTART_DISABLED=1` 强制关闭。状态见 `GET /api/v1/info` 的 `autoUpdate`，立即检查用 `POST /api/v1/update/check` | `{"autoRestartOnUpdate": false}` |
-| `alwaysThinkingEnabled` | 始终启用思考模式 | `true` |
+| `alwaysThinkingEnabled` | 始终启用思考模式。显式设为 `false` 时，Chat 服务网关请求发送 `reasoning_effort: "none"`；会话思考开关优先于此设置。第三方 Chat 和 Responses 请求保持原行为，实际关闭效果取决于网关及模型支持 | `true` |
 | `showTokensCounter` | 是否在界面中显示 Tokens 计数器 | `false` |
 | `showContextUsage` | 是否始终在 TUI 输入区显示当前会话上下文窗口使用率（默认仅在达到提醒阈值后显示） | `false` |
 | `showTurnDuration` | 是否在每轮回复结束后展示本轮耗时，形如 `✔ Worked for 1m 31s`；被中断或以报错收场的回合本就不展示（默认：`true`） | `false` |

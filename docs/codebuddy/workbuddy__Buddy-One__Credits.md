@@ -107,7 +107,7 @@ Buddy One 积分根据获取方式分为套餐基础积分、套餐赠送积分�
 - **可用积分**：剩余总积分，以及基础积分、赠送积分、购买积分、平台奖励积分各自的剩余数量和到期时间。点击剩余积分旁的说明图标，可以看到当前积分能在哪些产品中使用。
 - **消耗明细**：每条积分消耗记录都会标注对应的消耗产品，并支持按产品筛选，方便核对不同产品的积分使用情况。
 
-![积分明细「消耗明细」页面，展示按产品标注的积分消耗记录与筛选条件](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/consumption-detail.BMXUXTP6.png)
+![积分明细「消耗明细」页面，展示按产品标注的积分消耗记录与筛选条件](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/consumption-detail.BMXUXTP6.png)
 
 ## 声明
 
