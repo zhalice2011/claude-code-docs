@@ -2,7 +2,7 @@
 
 ## 描述任务
 
-WorkBuddy 的核心优势是理解自然语言。您只需用一句话描述需求，它就能自主规划和执行。
+WorkBuddy 的核心优势是理解自然语言。您只需用一句话描述需求，它就能自主规划和执行。除了直接输入，也可以点击输入框的**语音输入**按钮口述需求，语音会实时转为文字填入输入框，详见新建任务栏的[语音输入](./From-Beginner-to-Expert-Guide/Function-Description/Task-Bar#语音输入)。
 
 **示例**：
 
@@ -18,19 +18,23 @@ WorkBuddy 的核心优势是理解自然语言。您只需用一句话描述需�
 
 将鼠标悬停在模板上（或用键盘聚焦模板按钮），输入框会即时显示该模板的**灰色预览文案**，方便先看清模板内容再决定是否使用：
 
-- 输入框已有文字时，预览接在已有内容末尾，黑色原文保持不变；
-- 切换悬停的模板，预览会随之更新；移开鼠标、失去焦点或切换场景后，预览自动清除；
+- 输入框已有文字时，预览接在已有内容末尾，黑色原文保持不变。
+- 切换悬停的模板，预览会随之更新；移开鼠标、失去焦点或切换场景后，预览自动清除。
 - 灰字仅供预览，不会进入草稿、撤销记录，也不会被发送；确认合适后点击模板，才会把内容真正填入输入框。
 
-![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/createtask-template-preview.tNJnCxJ-.png)
+![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/createtask-template-preview.tNJnCxJ-.png)
+
+TIP
+
+更多输入方式（如语音输入、拖拽文件、音频转文字等），请参见[任务输入与引导](./From-Beginner-to-Expert-Guide/Function-Description/Task-Bar#任务输入与引导)。
 
 ## 选择工作空间
 
 您可以为任务指定工作目录：
 
-- 点击输入框左下角的 **选择工作空间**，选择当前任务要使用的目录
-- 选择完成后，WorkBuddy 会基于该目录读取和处理文件
-- 也可以直接开始任务，WorkBuddy 会在默认目录中生成结果
+- 点击输入框左下角的**选择工作空间**，选择当前任务要使用的目录。
+- 选择完成后，WorkBuddy 会基于该目录读取和处理文件。
+- 也可以直接开始任务，WorkBuddy 会在默认目录中生成结果。
 
 ## 添加上下文
 
@@ -59,7 +63,7 @@ WorkBuddy 的核心优势是理解自然语言。您只需用一句话描述需�
 3. 右侧结果区会根据任务类型展示产物、全部文件、变更和预览等结果
 4. 您可以继续补充消息，或同时创建其他任务并行推进
 
-![任务创建成功后的界面](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/createtask-1.CJulLJlb.png)
+![任务创建成功后的界面](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/createtask-1.CJulLJlb.png)
 
 ## 声明
 

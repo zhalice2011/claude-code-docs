@@ -13,7 +13,7 @@
 
 ## 三、核心功能
 
-![](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/image-37.BIl-xrRd.png)## 四、获取并安装腾讯文档相关能力
+![](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/image-37.BIl-xrRd.png)## 四、获取并安装腾讯文档相关能力
 
 ### 在连接器中配置腾讯文档
 
@@ -29,11 +29,11 @@
 
 创建腾讯文档 PPT，如下图所示：
 
-![](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/image-28.WCt7dgd1.png)#### b）示例 2
+![](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/image-28.WCt7dgd1.png)#### b）示例 2
 
 针对文档进行修改，如下图所示：
 
-![](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/image-29.D7nQ2MZE.png)可支持的方向通常包括：
+![](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/image-29.D7nQ2MZE.png)可支持的方向通常包括：
 
 - 创建腾讯文档、在线表格、收集表等内容载体。
 - 修改文档标题、正文结构、表格字段与内容格式。

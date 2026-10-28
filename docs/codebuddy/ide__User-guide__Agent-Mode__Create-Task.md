@@ -15,7 +15,7 @@
 - **工作目录不同**：编程模式通常需要指定本地项目目录，工作模式可以直接开始。
 - **界面记忆**：系统会记住您上次选择的模式，下次创建任务时自动回填。
 
-![新建任务页面示例](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/new-task-page.BbKreyp0.png)
+![新建任务页面示例](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/new-task-page.BbKreyp0.png)
 
 ## 填写任务内容
 
@@ -62,4 +62,4 @@
 3. 右侧上下文区会根据任务类型展示产物、全部文件、变更和预览等结果。
 4. 您可以继续补充消息，或同时创建其他任务并行推进。
 
-![任务创建后的界面示例](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/agents-overview.b0p8jpkr.png)
+![任务创建后的界面示例](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/agents-overview.b0p8jpkr.png)

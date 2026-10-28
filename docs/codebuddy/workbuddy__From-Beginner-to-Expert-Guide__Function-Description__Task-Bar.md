@@ -2,7 +2,7 @@
 
 新建任务栏是 WorkBuddy 创建和执行本地任务的工作入口，支持任务创建、任务配置和多种输入方式。
 
-![新建任务栏主界面](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/task-bar-overview.D6rPI487.png)
+![新建任务栏主界面](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/task-bar-overview.D6rPI487.png)
 
 ## 新建任务
 
@@ -36,7 +36,7 @@
 
 WorkBuddy 提供三种工作模式，可根据任务复杂程度和是否需要实际执行操作进行选择。
 
-![工作模式菜单](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/task-mode-menu.C-D1U6_A.png)
+![工作模式菜单](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/task-mode-menu.C-D1U6_A.png)
 
 | 模式 | 说明 | 适用场景 |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Plan 模式的核心是「先出方案，再动手执行」。开启后，模型
 
 **使用前建议先设置工作空间。** WorkBuddy 将在该空间中读取和保存文件，未指定路径的任务也会优先在此空间内执行。
 
-![选择工作空间](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/workspace-select.BLaOUOZl.png)
+![选择工作空间](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/workspace-select.BLaOUOZl.png)
 
 什么是文件路径？
 
@@ -119,7 +119,7 @@ Plan 模式的核心是「先出方案，再动手执行」。开启后，模型
 
 ![](https://download.codebuddy.cn/web/docs/71c8722a08165ddedf566c5f1711bb0ec8ea991b/docs/static/image-7.C15-_p58.png)在对话框中选择已安装技能，WorkBuddy 执行任务时将自动调用对应能力：
 
-![选择技能](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/skill-select.PLLHy_nP.png)
+![选择技能](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/skill-select.PLLHy_nP.png)
 
 | 技能示例 | 效果 |
 | --- | --- |
@@ -135,7 +135,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 
 快捷管理连接器，连接外部服务，扩展 AI 能力。当任务需要使用外部服务中的数据或能力时，可以通过连接器将第三方应用接入任务。连接后，可直接在任务中通过自然语言调用对应服务。实际可使用的能力和数据范围取决于服务本身提供的能力及你的授权范围。
 
-![连接器列表](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/connector-select.DAbSUBAG.png)
+![连接器列表](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/connector-select.DAbSUBAG.png)
 
 ### 权限管理
 
@@ -144,17 +144,70 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - **默认权限：** 涉及敏感操作，如文件修改或工作空间外执行时，需要用户确认执行或由用户自行完成操作。
 - **完全访问权限：** 开启后**当前客户端内所有任务统一生效**：减少确认步骤，允许**WorkBuddy**直接执行更多操作，可能涉及敏感操作、文件修改或外部执行；关闭后所有任务恢复默认确认流程。仅建议在用户信任当前任务时使用。
 
-![默认权限](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/permission-select.Cx8CN6Pr.png)
+![默认权限](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/permission-select.Cx8CN6Pr.png)
 
-## 提供任务输入
+## 任务输入与引导
 
 ### 预览提示词模板
 
-新建任务时，先选择输入框上方的场景，再将鼠标悬停在提示词模板上，即可在输入框内查看灰色预览；通过键盘聚焦模板也可以预览。
+新建任务时，您可以选择**办公**、**开发**或**设计**场景，WorkBuddy 会根据所选场景提供相应的提示词模板，帮助您快速组织需求。
 
-预览不会改变已有输入，也不会作为消息发送。移开鼠标或切换模板后，预览会消失或更新；**点击模板后才会正式填入输入框**，可继续修改后发送。
+您可以先将鼠标悬停在提示词模板上，在输入框中预览提示词。预览内容以灰色文字显示，不会覆盖已有输入，也不会作为消息发送；移开鼠标或切换模板后，预览会消失或更新。
 
-![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/createtask-template-preview.tNJnCxJ-.png)
+![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/template-preview.k-ShhkZY.png)
+
+找到合适的提示词后，点击模板，即可将完整提示词填入输入框。您可以根据实际需求修改提示词，再发送任务。
+
+提示词内容会随场景和胶囊的选择而变化：
+
+- **切换场景**：**办公**、**开发**场景展示文字类任务，**设计**场景展示图片案例。
+- **选择胶囊**：未选择胶囊时，展示当前场景推荐的任务提示词；选中胶囊后，展示对应的预制任务；取消选择后，恢复当前场景推荐的任务提示词。
+
+### 语音输入
+
+新建任务时，您可以直接通过语音描述任务内容，无需手动输入，点击输入框中的语音按钮即可开始录音，也可以通过快捷键唤起语音输入。
+
+将鼠标悬停在语音按钮上，可以查看对应的快捷键提示（Mac 为「点击或长按左 ⌥ 语音输入」，Windows 为「点击或长按 ALT 语音输入」）。
+
+录音过程中，输入框会实时显示已识别的文字，语音按钮和输入框也会通过动效提示当前正在录音。录音结束后，模型会对识别出的文字进行调整，并将处理后的内容填入输入框。
+
+- **结束录音**：再次点击语音按钮，或松开长按的快捷键，即可结束录音。
+- **继续编辑**：语音输入结束后，输入框会保持聚焦，您可以直接修改识别结果、补充文字，或再次使用语音输入。
+
+![语音输入退出后，输入框保持聚焦状态，转写内容已回填](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/voice-input-exit.DWTOAxMY.png)
+
+### 音频转文字
+
+会议录音、访谈记录、课程音频等内容较长时，您可以将音频文件提供给 WorkBuddy，让它将语音转成文字，也可以进一步总结内容、提取关键信息或整理待办事项。
+
+使用时，上传本地音频文件或粘贴音频链接，并说明希望完成的任务。例如：
+
+- 将这段录音转成文字。
+- 总结这份会议录音的核心内容。
+- 从录音中提取待办事项，并整理负责人和截止时间。
+
+WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写文本，方便您查看原文或继续分析内容。
+
+**支持的音频格式与语言**
+
+- **音频格式**：wav、mp3、m4a、flv、mp4、wma、3gp、amr、aac、ogg\-opus（.opus 或 .ogg）、flac。
+- **文件限制**：单个文件不超过 1 GB，音频时长不超过 5 小时。
+- **支持语言**：中文、英语、粤语及部分方言。
+
+**转写进度与异常处理**
+
+音频转写会在后台自动进行，完成后 WorkBuddy 会直接返回结果，无需您手动查询进度。长音频的处理时间可能较长，请耐心等待。
+
+如果音频文件无效、无法上传或格式不受支持，WorkBuddy 会提示相应问题，请检查文件后重新上传。如果转写超时或失败，也会返回相应的失败说明，不会将空白或不完整的内容作为最终转写结果。
+
+计费说明
+
+音频转文字为付费能力，按实际音频时长计费，约为 0\.6 积分/分钟。免费模型会话中，调用此能力前会弹出确认提示，您可以选择**确认**、**本次会话始终允许**或**拒绝**。
+
+- **确认后**：WorkBuddy 才会上传音频并开始转写。
+- **拒绝后**：音频不会上传或处理，本次转写取消。
+
+积分的使用规则，详见[积分](./../../Credits)。
 
 ### 拖拽添加文件
 
@@ -163,7 +216,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - 最多支持上传 **50 个文件**，单个文件大小不限，格式规则与附件按钮上传一致；不合规文件会在页面顶部给出具体错误提示（如不支持的文件类型）；
 - 拖出页面或按 ESC 可取消，输入框内容不受影响。
 
-![拖拽添加文件](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/drag-upload.ZJh9WiEf.png)
+![拖拽添加文件](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/drag-upload.ZJh9WiEf.png)
 
 ### 超长粘贴自动收起
 
@@ -172,7 +225,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - 鼠标悬停在条目上可预览原文，并看到「点击胶囊可展开内容进行编辑」提示；点击后原文完整展开到输入框中，可继续编辑，条目自动移除；
 - 不超过 3000 字符的粘贴保持原样，不触发收起。
 
-![超长粘贴自动收起](https://download.codebuddy.cn/web/docs/7c02dae77100c0d10591278e49bd35f7ce5d8447/docs/static/paste-chip.BbAZO2Nv.png)
+![超长粘贴自动收起](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/paste-chip.BbAZO2Nv.png)
 
 ### 召回历史输入
 
