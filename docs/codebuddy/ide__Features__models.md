@@ -170,7 +170,7 @@ TIP
 
 删除配置中的 "availableModels" 字段后，需要同步删除上方`，`后再保存配置。
 
-项目A修改示例： ![](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/%E6%A8%A1%E5%9E%8B%E9%85%8D%E7%BD%AEtip.CCoOsK5V.png)
+项目A修改示例： ![](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/%E6%A8%A1%E5%9E%8B%E9%85%8D%E7%BD%AEtip.CCoOsK5V.png)
 
 ## 热重载
 

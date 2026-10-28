@@ -4,7 +4,7 @@
 
 点击输入栏中的模型名称（如「Auto ▾」），弹出模型选择面板。
 
-![首页输入栏中的模型入口](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/model-1.Bsa9l5Ii.png)![模型选择面板](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/model-2.5TjduTkO.png)## 二、可用模型一览
+![首页输入栏中的模型入口](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/model-1.Bsa9l5Ii.png)![模型选择面板](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/model-2.5TjduTkO.png)## 二、可用模型一览
 
 | 模型 | 能力标签 | 推荐场景 |
 | --- | --- | --- |
@@ -25,11 +25,11 @@
 
 模型选择面板里，每个模型都会显示名称、能力标签和积分倍率，据此先选模型：
 
-![模型选择面板：模型名称、能力标签与积分倍率](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/model-config-entry.jCEaunlz.png)
+![模型选择面板：模型名称、能力标签与积分倍率](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/model-config-entry.jCEaunlz.png)
 
 选好模型后，点击面板右上角的配置入口，可以进一步调整这个模型的参数：
 
-![模型配置页：上方显示当前模型，下方是可调整项](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/model-config.uSqKCxzI.png)
+![模型配置页：上方显示当前模型，下方是可调整项](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/model-config.uSqKCxzI.png)
 
 页面上方显示**当前模型**，下方列出这个模型支持的配置：
 

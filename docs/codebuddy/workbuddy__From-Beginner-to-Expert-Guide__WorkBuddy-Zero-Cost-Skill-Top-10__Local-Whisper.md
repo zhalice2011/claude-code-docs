@@ -26,7 +26,7 @@
 
 ## 五、效果示意
 
-![本地语音转写效果示意](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/image-3.B6NgWeqk.png)
+![本地语音转写效果示意](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/image-3.B6NgWeqk.png)
 
 ## 六、使用建议
 

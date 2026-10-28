@@ -6,7 +6,12 @@
 
 ## 安装与登录问题
 
-### 1） **WorkBuddy** 升级或隔天重启后，原工作空间文件夹消失
+### 1）更新时提示"检测到应用安装目录下存在用户项目目录"
+
+- **常见原因**：`WorkBuddy` 更新或重装时，安装目录会清空并重新写入文件，如有本地文件可能导致覆盖丢失。英伟达芯片用户可能会在安装路径下生成**NVIDIA Corporation**文件导致更新失败。
+- **建议处理**：前往 [WorkBuddy 官网](https://www.workbuddy.cn/#download-section)，手动下载最新版安装包并覆盖安装。
+
+### 2） **WorkBuddy** 升级或隔天重启后，原工作空间文件夹消失
 
 - **适用系统**：`Windows`。
 - **现象说明**：升级重启后，原有工作空间在界面中消失；部分用户可在 `C:\Users\<用户名>\workbuddy` 目录中找到历史文件夹，但存在文件缺失情况，也有用户整个目录都不见了。
@@ -17,7 +22,7 @@
 	2. 通过 WorkBuddy 打开以日期或用户自定义名字命名的文件夹即可找回原有历史记录。
 	3. 建议将重要文件同步保存到独立目录。
 
-### 2）点击 **WorkBuddy** 无反应，无法登陆或登录失败
+### 3）点击 **WorkBuddy** 无反应，无法登陆或登录失败
 
 - **常见原因(1\)**：未设置默认浏览器。
 - **建议处理**
@@ -31,7 +36,7 @@ Windows:
 	2. 设置默认浏览器为 Chrome 或 Safari。
 	3. 重启应用后重新登录。
 
-![](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/%E7%99%BB%E5%BD%95%E5%A2%9E%E5%BC%BAwork.DWixAFfl.png)- **常见原因(2\)**：用户没有WorkBuddy账号文件夹操作权限。
+![](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/%E7%99%BB%E5%BD%95%E5%A2%9E%E5%BC%BAwork.DWixAFfl.png)- **常见原因(2\)**：用户没有WorkBuddy账号文件夹操作权限。
 - **建议处理**
 
 	1. 确认目录权限
@@ -91,7 +96,7 @@ TIP
 
 WorkBuddy 常被误拦截，关闭安全软件后重试即可。
 
-### 3）`Windows 11 ARM 64` 架构无法安装
+### 4）`Windows 11 ARM 64` 架构无法安装
 
 - **问题说明**：当前版本暂不支持 `ARM 64` 架构的 `Windows 11`。
 - **建议处理**：建议改用受支持的设备环境，或等待后续版本支持。
@@ -123,13 +128,13 @@ TIP
 - 个人账号与海外版仅展示「网络」分组；企业账号及内网版 / 专享版展示全部检查项。
 - 报告已脱敏（IP 仅保留前两段、用户名替换为 \*\*\*），可安全提供给支持团队。
 - 检测到安全软件拦截时，会展示需要加入白名单的路径；失败项会给出方向性修复建议。
-![诊断工具](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/self-check.zbT-hAIU.png)
+![诊断工具](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/self-check.zbT-hAIU.png)
 
 ### 2）日志在哪里查看
 
 - **建议处理**：
-	- **MAC：** 打开 **WorkBuddy**，点击顶部**帮助 \-\> 打开日志文件夹**，找到对应的日志 （.zip） 包。 ![](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/logmac.C9iZYyhZ.png)
-	- **Windows：** 打开 **WorkBuddy**，在左上角**帮助**的下拉框中找到**打开日志目录**，其中的压缩包就是日志文件。 ![](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/logwin.afumbHyx.png)
+	- **MAC：** 打开 **WorkBuddy**，点击顶部**帮助 \-\> 打开日志文件夹**，找到对应的日志 （.zip） 包。 ![](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/logmac.C9iZYyhZ.png)
+	- **Windows：** 打开 **WorkBuddy**，在左上角**帮助**的下拉框中找到**打开日志目录**，其中的压缩包就是日志文件。 ![](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/logwin.afumbHyx.png)
 
 ### 3）在日志中发现产品问题或使用时出现产品功能异常在哪里反馈
 
@@ -141,7 +146,7 @@ TIP
 
 日志仅于排查问题，可能包含对话记录、设备信息等数据。详情请查阅[隐私保护声明](https://privacy.qq.com/document/preview/771d9a58551449e9a7e7445ebfe04966)
 
-![](https://download.codebuddy.cn/web/docs/c5e9babaf442778dd4901327b7e13b3a9b952f45/docs/static/%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88.B70drvin.png)## Bot 连接问题
+![](https://download.codebuddy.cn/web/docs/a2b1163fb126ec6f3bf00e80c52246a330059206/docs/static/%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88.B70drvin.png)## Bot 连接问题
 
 ### 1）已完成接入，但发送消息后没有响应
 
@@ -207,25 +212,7 @@ TIP
 - **常见原因**：未在需求中明确指定输出文件类型。
 - **建议处理**：下达任务时明确说明要生成的文件格式，例如 `Word`、`Excel`、`PDF` 或 `Markdown`。
 
-### 5）更新时提示"检测到应用安装目录下存在用户项目目录"
-
-- **常见原因**：`WorkBuddy` 更新或重装时，安装目录会清空并重新写入文件。
-- **建议处理**：
-1. 打开安装目录：在 WorkBuddy 图标上 **右键 \-\> 打开文件所在位置**。
-
-提示
-
-常见安装目录路径：
-
-- windows：`C:\Users\{用户名}\AppData\Local\Programs\WorkBuddy`
-- macOS：`/Applications/WorkBuddy.app`
-
-安装目录下通常有`bin`， `locales`， `resources`， `tools`， `_` 这些文件夹。
-
-2. **移除对话产生的文件夹，仅保留文件名为 `bin` ， `locales` ， `resources` 和 `tools` 的系统文件夹。检查是否有个人文件，如果有也请一并移走防止被安装程序覆盖。**
-3. 重新打开客户端，点击上方 **WorkBuddy \- 检查更新**，等待安装包下载完成。
-
-### 6）助理工作空间的历史会话找不到了怎么办？
+### 5）助理工作空间的历史会话找不到了怎么办？
 
 - **常见原因：** 助理工作空间中，最近产生对话的任务会在`助理`中展示，其他任务仅在工作空间列表展示。
 - **建议处理：** `助理`适用于远程控制，在电脑端新建任务时**不建议将助理作为工作空间**。
@@ -308,30 +295,35 @@ WorkBuddy 套餐定价可在[价格方案](https://www.codebuddy.cn/pricing/)查
 
 ## 数据安全说明
 
-使用 WorkBuddy 时数据安全可以得到充分保障。WorkBuddy 构建了完善的企业级安全体系，具体保障措施如下:
+使用 WorkBuddy 时数据安全可以得到充分保障。WorkBuddy 构建了完善的多层安全防护体系，具体保障措施如下:
 
 ### 三层纵深防御安全架构
 
 1. **技术防御层**：沙箱隔离与权限控制
 
 	- **Bash 命令沙箱**：AI 操作与真实系统严格隔离，防止对系统造成破坏
-	- 文件系统隔离:只能访问预先授权的工作空间目录，无法访问系统敏感文件
-	- 防沙箱逃逸:阻止对配置文件的写入，防止恶意脚本植入
-	- 默认安全设计:启动时仅拥有只读权限，编辑文件、运行命令需显式用户批准
-	- 分层权限系统:支持 allow(允许)、ask(询问)、deny(拒绝)三种权限规则
-2. **管理管控层**：企业级统一管控
+	- **文件系统隔离**：只能访问预先授权的工作空间目录，无法访问系统敏感文件
+	- **防沙箱逃逸**：阻止对配置文件的写入，防止恶意脚本植入
+	- **默认安全设计**：启动时仅拥有只读权限，编辑文件、运行命令需显式用户批准
+	- **分层权限系统**：支持 allow(允许)、ask(询问)、deny(拒绝)三种权限规则
+2. **管理管控层**：账号、授权、额度与权限管理
 
-	- **SSO 单点登录**：统一身份认证，组织架构自动同步
-	- **Credit 额度控制**：差异化 AI 使用额度，按部门/角色设置
-	- **IP 白名单**：限制特定 IP 段设备登录，杜绝外部访问
-	- **精细化工具调用权限**：严格控制 AI 对文件、命令、网络的访问能力
+	- **账号身份认证**：统一账号登录，支持客户端、移动端多端使用
+	- **第三方平台授权**：可在设置中绑定第三方平台，扩展 AI 访问代码与协作开发的能力
+	- **积分与额度控制**：通过订阅积分与加量包管理 AI 使用额度，余额不足时暂停对应 AI 能力
+	- **精细化工具调用权限**：通过 allow/ask/deny 规则，严格控制 AI 对文件、命令、网络的访问能力
 3. **合规审计层**：数据保护与合规
 
 	- **Skill 安全审计**：与安全团队联动，分级风险判别
 	- **skill\-scanner 本地安全检查**：安装前主动防御潜在风险
-	- **数据本地执行不上传**：所有数据在用户本地环境执行处理，从根本上杜绝数据泄露风险
-	- **服务端仅处理数据片段**：用后即弃，不保存，不用于模型训练
+	- **任务本地执行**：AI 任务在本地沙箱环境执行处理，文件操作与代码运行均在本地完成
+	- **数据处理方式**：使用端内默认模型时，输入与输出内容会上传云端处理；使用自定义模型时，内容仅透传给自定义模型侧，服务端不留存数据
+	- **数据收集与模型训练**：在**设置 \> 通用**中的**体验优化计划**开关控制数据是否用于模型训练，关闭后数据不用于模型训练。
 	- **完善的用户协议与隐私协议**：符合网安法/数安法/个保法
+
+进一步了解
+
+有关可配置项，可查看[默认权限与安全沙箱](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Permission-Modes)或[系统设置](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Setting)。
 
 ### 通信安全保障
 
