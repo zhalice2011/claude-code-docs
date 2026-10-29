@@ -22,7 +22,7 @@
 
 Skill 提供执行能力，专家基于能力与经验解决特定问题，专家团则组织多个专家协作完成复杂任务。
 
-![](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/expert-7.BQu7F5yM.png)具体区别如下：
+![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/expert-7.BQu7F5yM.png)具体区别如下：
 
 | 维度 | Skill | 专家（Agent 型） | 专家团（Team 型） |
 | --- | --- | --- | --- |
@@ -35,24 +35,24 @@ Skill 提供执行能力，专家基于能力与经验解决特定问题，专�
 
 1. 打开专家中心，在左侧边栏点击**专家·技能·连接器**，默认进入**专家**页签。专家中心首页提供推荐模块，基于使用热度、新上架与编辑精选等维度展示专家；也可按行业分类浏览全部专家与专家团。
 
-![](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/expert-1.CkhXHFfI.png) 2\. 选择专家/专家团：浏览卡片，查看能力介绍和任务示例。 **专家**卡片展示能力介绍、擅长领域和任务示例，同时提供使用量与开发者信息，帮助你判断专家的热度与来源，例如：
+![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/expert-1.CkhXHFfI.png) 2\. 选择专家/专家团：浏览卡片，查看能力介绍和任务示例。 **专家**卡片展示能力介绍、擅长领域和任务示例，同时提供使用量与开发者信息，帮助你判断专家的热度与来源，例如：
 
-![](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/expert-3.D-D3lWdi.png)**专家团**卡片展示能力介绍、擅长领域、团队成员和任务示例，同时提供版本和使用量信息，例如：
+![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/expert-3.D-D3lWdi.png)**专家团**卡片展示能力介绍、擅长领域、团队成员和任务示例，同时提供版本和使用量信息，例如：
 
-![](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/expert-2.Ccrh5U1L.png)3. 召唤专家/专家团：点击召唤专家/专家团，进入对话界面。由于专家详情页，提供多条引导提示词，召唤专家后，WorkBuddy 会从这些引导提示词中随机选取一条作为开场引导，帮助你快速上手——因此同一专家的开场提示可能每次不同。
+![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/expert-2.Ccrh5U1L.png)3. 召唤专家/专家团：点击召唤专家/专家团，进入对话界面。由于专家详情页，提供多条引导提示词，召唤专家后，WorkBuddy 会从这些引导提示词中随机选取一条作为开场引导，帮助你快速上手——因此同一专家的开场提示可能每次不同。
 
-![](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/expert-4.DN9aw2wX.png)4. 描述任务：在对话界面并描述您的需求。
+![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/expert-4.DN9aw2wX.png)4. 描述任务：在对话界面并描述您的需求。
 
 **专家：** 将任务告诉 WorkBuddy 将会按照该角色的专业视角和方法完成任务。
 
-![](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/expert-6.CK34ordK.png)**专家团：** 用自然语言描述任务后，专家团团长自动拆解、分配、执行并返回完整结果：
+![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/expert-6.CK34ordK.png)**专家团：** 用自然语言描述任务后，专家团团长自动拆解、分配、执行并返回完整结果：
 
-![](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/expert-5.B92oXCrK.png)快速找到专家
+![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/expert-5.B92oXCrK.png)快速找到专家
 
 - 在**专家团**会话中通过搜索召唤其他专家时，会提示「当前会话已使用专家团，切换其他专家需要开启新对话」：确认后会先回到新对话态再完成召唤，新专家不会回绑到当前专家团会话。
 - 在对话中点击专家入口，会展开**最近使用**的专家下拉列表，提供两种快捷方式：
 	- **搜索**：输入关键词快速查找专家，支持按名称、标签、描述匹配，点击即可召唤；搜索暂时不可用时会提示「搜索暂不可用，请稍后重试」；
-	- **置顶**：将常用专家置顶，置顶结果会持久保存，下次打开时排在列表前部，无需反复翻找。 ![专家置顶与搜索](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/expert-search.B2WjrOY8.png)
+	- **置顶**：将常用专家置顶，置顶结果会持久保存，下次打开时排在列表前部，无需反复翻找。 ![专家置顶与搜索](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/expert-search.B2WjrOY8.png)
 ### 专家依赖的服务未连接时
 
 部分专家执行任务时会依赖 MCP 或连接器（如腾讯文档、TAPD 等）。当任务执行过程中需要使用某个尚未连接的服务时，WorkBuddy 会在输入框上方展示连接引导卡片，并显示该服务的名称和头像。

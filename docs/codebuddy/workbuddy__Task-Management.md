@@ -8,7 +8,7 @@
 
 左侧边栏会显示您创建过的任务，方便您随时回看、继续处理和切换上下文。
 
-![任务列表](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/taskmanage-1.C0NNVJys.png)
+![任务列表](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/taskmanage-1.C0NNVJys.png)
 
 当前列表分为两个板块：
 
@@ -26,7 +26,7 @@
 
 窗口左上方提供**搜索**与**筛选**两个按钮，用于快速定位任务。
 
-![搜索与筛选按钮](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/taskmanage-search-filter.BJOCc6Nv.png)
+![搜索与筛选按钮](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/taskmanage-search-filter.BJOCc6Nv.png)
 
 - **搜索**：打开全局搜索，可检索任务、空间、产物与资料库内容，详见[使用全局搜索](#使用全局搜索)；
 - **筛选**：打开筛选面板，按任务状态或日期缩小当前任务列表范围。支持以下操作：
@@ -41,7 +41,7 @@ WorkBuddy 支持搜索**任务**、**空间**、**产物**和**资料库中**的
 
 点击窗口**左上方**的**搜索**按钮，打开全局搜索并输入关键词，默认停在「全部」页，搜索结果中的命中关键词会高亮显示。底部常驻快捷键提示条，详见[全局搜索快捷键](#全局搜索快捷键)。
 
-![全局搜索窗口：分类分组展示结果](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/taskmanage-global-search.DsqTdHJe.png)
+![全局搜索窗口：分类分组展示结果](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/taskmanage-global-search.DsqTdHJe.png)
 
 未输入关键词时，「全部」页会展示**最近浏览记录**，按浏览时间倒序排列。
 
@@ -72,7 +72,7 @@ WorkBuddy 支持搜索**任务**、**空间**、**产物**和**资料库中**的
 
 左侧任务列表中的部分任务会在任务行右侧显示状态标记，用于提示当前需要关注的任务。
 
-![侧边栏状态标记](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/taskmanage-status-badge.G43hYEFy.png)
+![侧边栏状态标记](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/taskmanage-status-badge.G43hYEFy.png)
 
 常见标记包括以下四种：
 
@@ -99,7 +99,7 @@ WorkBuddy 支持搜索**任务**、**空间**、**产物**和**资料库中**的
 
 如需整理任务，可将鼠标悬停在任务行上并单击「⋯」按钮，或直接右键单击任务行，打开任务操作菜单。 其中置顶任务、临时任务、工作空间对话、项目任务、助理任务以及搜索结果中的任务均支持右键菜单。
 
-![点击任务行的「⋯」展开菜单](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/taskmanage-context.DHrSw1ai.png)
+![点击任务行的「⋯」展开菜单](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/taskmanage-context.DHrSw1ai.png)
 
 ### 常用操作
 
@@ -134,7 +134,7 @@ WorkBuddy 支持搜索**任务**、**空间**、**产物**和**资料库中**的
 
 **批量删除**：在任务行上点击右键，选择**批量操作**。
 
-勾选要删除的任务，再点击底部**删除**并在弹窗中确认。弹窗标题与结果提示都会带上数量（如「确认删除 2 项任务？」「已删除 2 项任务」）。 ![批量操作：勾选任务后点击底部删除](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/taskmanage-batch-bar.Lrw8pn7y.png)
+勾选要删除的任务，再点击底部**删除**并在弹窗中确认。弹窗标题与结果提示都会带上数量（如「确认删除 2 项任务？」「已删除 2 项任务」）。 ![批量操作：勾选任务后点击底部删除](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/taskmanage-batch-bar.Lrw8pn7y.png)
 
 **正在运行的任务无法勾选**，需要等它结束或先停止后，再一起删除。
 
@@ -142,7 +142,7 @@ WorkBuddy 支持搜索**任务**、**空间**、**产物**和**资料库中**的
 
 在左侧列表中，将鼠标悬停在空间行上并单击「⋯」按钮，或直接右键单击空间行，打开任务操作菜单，可对工作空间进行管理。
 
-![悬停工作空间显示操作菜单](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/taskmanage-space-menu.Bac0XCZL.png)
+![悬停工作空间显示操作菜单](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/taskmanage-space-menu.Bac0XCZL.png)
 
 | 操作 | 说明 |
 | --- | --- |
@@ -153,7 +153,7 @@ WorkBuddy 支持搜索**任务**、**空间**、**产物**和**资料库中**的
 
 如需在当前工作空间中开展另一项工作，同时保留原有任务记录的场景。可在左侧列表中把鼠标悬停到空间分组上，点击右侧的**新建任务**按钮，可在该空间下快速新建任务，并自动选中该空间，不必先进入空间再新建。
 
-![悬停空间分组显示新建任务入口](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/taskmanage-space-new.byct2kNm.png)
+![悬停空间分组显示新建任务入口](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/taskmanage-space-new.byct2kNm.png)
 
 TIP
 

@@ -48,47 +48,47 @@ Buddy One VIP 权益生效后，可前往对应产品查看会员权益、积分
 
 - **会员权益与积分**：进入 WorkBuddy 客户端，选择**设置** \> **套餐与积分**，查看 Buddy One VIP 权益、到期时间及积分明细。
 
-![WorkBuddy 设置「套餐与积分」页面，展示 Buddy One VIP 权益、到期时间与积分明细](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/workbuddy-plans-credits.WQ1qp5ew.png)
+![WorkBuddy 设置「套餐与积分」页面，展示 Buddy One VIP 权益、到期时间与积分明细](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/workbuddy-plans-credits.WQ1qp5ew.png)
 
 - **存储空间**：前往[存储用量明细](https://www.workbuddy.cn/profile/plans-usage#usage-detail)查看 Buddy One 存储空间总量、已使用额度，以及腾讯文档、ima、workbuddy 资料库、腾讯网盘等各产品的占用明细。
 
-![存储用量明细页面，展示 Buddy One 存储空间总量、已使用额度及各产品占用占比](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/storage-usage.DZ9PPZR8.png)
+![存储用量明细页面，展示 Buddy One 存储空间总量、已使用额度及各产品占用占比](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/storage-usage.DZ9PPZR8.png)
 
 ### 腾讯会议
 
 进入[腾讯会议](https://meeting.tencent.com/user-center/orders-and-services/my-services)服务中心，在**订单与服务** \> **我的服务**中查看会员权益与到期时间。
 
-![腾讯会议服务中心「我的服务」页面，展示专业版权益与到期时间](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/meeting-services.DckRCEc9.png)
+![腾讯会议服务中心「我的服务」页面，展示专业版权益与到期时间](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/meeting-services.DckRCEc9.png)
 
 ### 腾讯文档
 
 - **会员权益**：前往[腾讯文档 VIP](https://docs.qq.com/vip) 页面，查看超级会员 Plus 权益及到期时间。
 
-![腾讯文档 VIP 页面，展示超级会员 Plus 权益与到期时间](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/tencent-doc-vip.CqOQo_WH.png)
+![腾讯文档 VIP 页面，展示超级会员 Plus 权益与到期时间](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/tencent-doc-vip.CqOQo_WH.png)
 
 - **存储空间**：前往腾讯文档的存储空间页面，查看 Buddy One 存储总量及各产品的存储占用明细
 
-![腾讯文档存储空间管理页面，展示 Buddy One 存储总量与各产品占用明细](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/tencent-doc-storage.Cq8QY-Nk.png)
+![腾讯文档存储空间管理页面，展示 Buddy One 存储总量与各产品占用明细](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/tencent-doc-storage.Cq8QY-Nk.png)
 
 ### 腾讯网盘
 
 - **会员权益**：前往[腾讯网盘](https://drive.tencent.com/disk/storage)页面，查看会员权益与存储容量。
 
-![腾讯网盘存储空间页面，展示会员权益与存储容量](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/drive-vip.BcQMulX7.png)
+![腾讯网盘存储空间页面，展示会员权益与存储容量](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/drive-vip.BcQMulX7.png)
 
 - **存储空间**：前往腾讯网盘的存储空间页面，查看存储用量明细。
 
-![腾讯网盘存储空间页面，展示已用容量与 Buddy One 各产品用量明细](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/drive-usage.B9bfHlbZ.png)
+![腾讯网盘存储空间页面，展示已用容量与 Buddy One 各产品用量明细](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/drive-usage.B9bfHlbZ.png)
 
 ### ima
 
 - **积分查询**：进入 ima 客户端，点击**我的copilot** \> **copilot 设置** \> **用量统计**，查询积分的用量。
 
-![ima 客户端用量统计页面，展示 Buddy One 积分与 ima 算力余额](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/ima-usage-stats.BvYjJpmf.png)
+![ima 客户端用量统计页面，展示 Buddy One 积分与 ima 算力余额](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/ima-usage-stats.BvYjJpmf.png)
 
 - **存储空间**：进入 ima 客户端，点击头像，选中**存储空间**，查看共享的存储空间。
 
-![ima 客户端存储空间页面，展示已用容量与知识库、笔记等占用明细](https://download.codebuddy.cn/web/docs/19c7044b63c472703fba6bea1c92e528aa59faa6/docs/static/ima-storage.DOoVtkA0.png)
+![ima 客户端存储空间页面，展示已用容量与知识库、笔记等占用明细](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/ima-storage.DOoVtkA0.png)
 
 ## 权益变更规则
 
