@@ -17,7 +17,7 @@
 
 ### 3）效果示意
 
-![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/image.Cx25iyoW.png)### 4）二次修改方式
+![](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/image.Cx25iyoW.png)### 4）二次修改方式
 
 文档生成后，无需手动打开文件逐项修改，可直接继续对 `WorkBuddy` 说明调整意见，例如：
 
@@ -42,9 +42,9 @@
 
 还可以调用文档生成相关的 `专家`，提升生成效率与版式质量。
 
-![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/image-1.BiGhdBwC.png)### 4）效果示意
+![](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/image-1.BiGhdBwC.png)### 4）效果示意
 
-![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/image-2.BFuqtqo6.png)## 四、使用建议
+![](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/image-2.BFuqtqo6.png)## 四、使用建议
 
 - **先说清目标读者**：不同读者决定文档语气与内容深度。
 - **一次说明清楚结构**：例如页数、章节、必须包含的模块。

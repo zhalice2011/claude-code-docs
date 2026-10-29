@@ -25,7 +25,7 @@
 
 点击**查看所有产物**，会在右侧打开新的空白标签页进行查看。
 
-![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/results-1.Dw1wzWNl.png)在标签页中，还可以切换视图或打开工具：
+![](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/results-1.Dw1wzWNl.png)在标签页中，还可以切换视图或打开工具：
 
 - **打开浏览器**：在内置浏览器中打开网页产物或网页链接。
 - **查看工作空间**：查看当前工作空间中的文件，详见[工作空间文件](#工作空间文件)。
@@ -36,7 +36,7 @@
 
 查看结果中的文件、链接等内容时，可单击产物卡片右边的「⋯」按钮进行操作；也可以直接点击链接，自动在结果区展示内容。
 
-![结果内容操作菜单](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/conversation-link-context-menu.Bi45owNT.png)
+![结果内容操作菜单](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/conversation-link-context-menu.Bi45owNT.png)
 
 菜单项包括：
 
@@ -55,7 +55,7 @@
 - **内置打开**：所有链接在 WorkBuddy 内置浏览器打开；
 - **外部打开**：所有链接在系统默认浏览器打开。
 
-![设置 → 通用 → 链接打开方式](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/settings-link-open-mode.ztWlGEym.png)
+![设置 → 通用 → 链接打开方式](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/settings-link-open-mode.ztWlGEym.png)
 
 ### 分享产物
 
@@ -69,7 +69,7 @@
 
 发送文件到微信和企业微信需要当前设备已安装并登录对应的微信和企业微信客户端。
 
-![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/results-2.nA1WpxNo.png)### 上传产物到云端
+![](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/results-2.nA1WpxNo.png)### 上传产物到云端
 
 支持上传到以下位置，上传后在其他端的应用内也可以查看：
 
@@ -82,7 +82,7 @@
 
 腾讯文档、ima 知识库与乐享知识库需完成授权后才能上传。尚未授权时，点击对应选项会引导你完成授权。
 
-![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/results-3.CQtJWsUl.png)## 网页
+![](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/results-3.CQtJWsUl.png)## 网页
 
 如果任务生成的是网页、页面原型或本地启动的 Web 应用，您可以在内置浏览器中直接查看效果。
 
@@ -94,13 +94,13 @@
 
 这适合用于确认页面结构、样式和交互结果是否符合预期。
 
-![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/results-4.CpC09pe6.png)产物栏支持同时打开**多个网页页签**：
+![](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/results-4.CpC09pe6.png)产物栏支持同时打开**多个网页页签**：
 
 - 网页产物打开时，导航栏右侧展示 **\+ 号按钮**，点击即可新建页签（默认为新标签页，可搜索或输入网址）；
 - 页签可点击切换、可单独关闭，每个页签保持**独立的浏览状态**（当前网址、前进 / 后退历史）；
 - 关闭当前页签后自动选中相邻页签；关闭全部页签后产物栏恢复默认状态。
 
-![多个网页页签](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/results-multi-browser.Csb5NPOL.png)
+![多个网页页签](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/results-multi-browser.Csb5NPOL.png)
 
 ## 工作空间文件
 
@@ -118,7 +118,7 @@
 - 对照不同文件之间的关系
 - 检查任务是否写入了正确的位置
 
-![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/results-5.Bw1wefig.png)## 变更
+![](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/results-5.Bw1wefig.png)## 变更
 
 **变更**视图用于查看当前任务带来的文件修改，方便您在接受结果前先做一轮检查。
 
@@ -130,6 +130,6 @@
 
 如果任务涉及代码开发、脚本生成或配置调整，建议优先在这里确认改动是否符合预期。
 
-![](https://download.codebuddy.cn/web/docs/bc0761351a07b7c481e146ba5968f9e9354fb26c/docs/static/results-6.DeLbcRT6.png)## 声明
+![](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/results-6.DeLbcRT6.png)## 声明
 
 本节说明，构成[服务协议](https://rule.tencent.com/rule/202603180001)和[隐私保护](https://privacy.qq.com/document/preview/771d9a58551449e9a7e7445ebfe04966)指引的组成部分，具有同等法律效力。 如有不一致之处，以前述协议原文为准。

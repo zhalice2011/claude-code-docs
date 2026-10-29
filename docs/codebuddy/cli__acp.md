@@ -314,7 +314,7 @@ json
 
 Helper：`buildUnsolicitedTurnUpdate` / `readUnsolicitedTurn`（`ACP_META_UNSOLICITED_TURN`）。未知 `_meta` 必须忽略，不能当协议错误。
 
-假模型端到端：`packages/agent-cli/src/e2e/multitask-wakeup.spec.ts`（需先 `pnpm run bundle`）。
+假模型端到端：`packages/agent-cli/src/quality/e2e/serve/prompt/multitask-worker-wakeup.spec.ts`（需先 `pnpm run package:all`）。
 
 ### 6\. 子 worker 提问跨父轮
 
