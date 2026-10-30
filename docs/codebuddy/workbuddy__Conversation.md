@@ -2,13 +2,13 @@
 
 任务创建后，您可以在对话区域与 WorkBuddy 持续交流，通过发送需求、补充要求和追问结果，逐步推进任务。您还可以上传文件、引用表格、组件为任务补充上下文，并随时查看任务的执行过程。
 
-![任务对话界面](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/conversation-1.DdhvFsEB.png)
+![任务对话界面](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/conversation-1.DdhvFsEB.png)
 
 ## 认识任务对话界面
 
 对话区顶部除了显示当前任务标题，还提供一些常用操作。
 
-![对话区顶部操作入口](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/conversation-2.SDHNv_03.png)
+![对话区顶部操作入口](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/conversation-2.SDHNv_03.png)
 
 从左到右依次是：
 
@@ -33,7 +33,7 @@
 
 模型正在执行任务时，您可以继续发送消息，无需等待上一轮回复结束。新消息会进入输入框上方的**队列**，等待当前一轮输出结束后依次处理。
 
-![执行中继续发送：消息进入输入框上方的队列](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/conversation-queue.B_XM2oXw.png)
+![执行中继续发送：消息进入输入框上方的队列](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/conversation-queue.B_XM2oXw.png)
 
 队列中的消息支持**编辑**、**删除**和拖动排序。点击发送按钮可立即发送消息，引导当前会话，但不会打断正在进行的模型输出。
 
@@ -79,11 +79,11 @@ WorkBuddy 会基于之前的对话上下文继续处理，无需重复描述背�
 
 1. 在模型回复中**选中要引用的文本**，选区上方会出现操作栏；
 
-![选中文本后，选区上方出现操作栏，提供「复制」与「添加到对话」](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/conversation-quote-actionbar.Df5p9YNH.png)
+![选中文本后，选区上方出现操作栏，提供「复制」与「添加到对话」](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/conversation-quote-actionbar.Df5p9YNH.png)
 2. 点击**添加到对话**，选中的内容会作为一条**引用**加入输入框；
 3. 此时选中内容旁会出现**批注输入框**（选填），可以写下想让 WorkBuddy 怎么改，也可以不写、直接在输入框里继续补充；
 
-![点击后可在选区旁填写批注（选填），确认即加入输入框](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/conversation-quote-annotation.tjsvmGP9.png)
+![点击后可在选区旁填写批注（选填），确认即加入输入框](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/conversation-quote-annotation.tjsvmGP9.png)
 4. 鼠标悬停在引用上，可以查看被引用的**完整原文**（有批注时一并显示）。
 
 #### 引用表格与组件
@@ -113,7 +113,7 @@ WorkBuddy 在执行任务时，会把关键步骤和结果展示在对话区中�
 
 这样做的好处是，您不需要离开当前任务，就能在同一处持续查看输入、过程和输出。
 
-![执行过程中的阶段说明与消耗展示](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/conversation-exec-progress.DHoekDQp.png)
+![执行过程中的阶段说明与消耗展示](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/conversation-exec-progress.DHoekDQp.png)
 
 ### MCP 服务加载
 
@@ -124,7 +124,7 @@ WorkBuddy 在执行任务时，会把关键步骤和结果展示在对话区中�
 - 全部连接完成后，展示「所有 MCP 服务已就绪」；
 - 这段进度只在加载阶段临时出现，加载完成后就会从对话流中消失，不作为历史消息保留。
 
-![MCP 服务连接进度，显示已连接数与服务总数](https://download.codebuddy.cn/web/docs/b74563ab442b34ab443948f11f49315deead045f/docs/static/conversation-mcp-loading.Bmrz04gS.png)
+![MCP 服务连接进度，显示已连接数与服务总数](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/conversation-mcp-loading.Bmrz04gS.png)
 
 并非所有 MCP 服务都提供交互界面，仅返回文字或文件结果的服务仍按原方式使用。
 

@@ -10,8 +10,8 @@
     "about-claude__api-credits-for-subscribers.md": {
       "original_url": "https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers",
       "original_md_url": "https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers.md",
-      "hash": "68db8a1d1d5bb8b865f3a96050fcc70cd3a58149e4abe183a64873f3932c387b",
-      "last_updated": "2026-10-27T21:38:17.974425",
+      "hash": "a55742b9ca474b9d750e6c8f95373db09deabd5549565dddb99a5e35d4ee2f75",
+      "last_updated": "2026-10-30T17:29:13.706205",
       "source": "platform"
     },
     "about-claude__glossary.md": {
@@ -122,8 +122,8 @@
     "agents-and-tools__agent-skills__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.md",
-      "hash": "47cc73a078ad819a6d912baf434ceb7bb80bce89a4323b6d9c5e482940285613",
-      "last_updated": "2026-10-28T22:03:17.519571",
+      "hash": "ac171385bde43346c7eb2bb53041ea2bad8b98ac73b99477f24c52b076488234",
+      "last_updated": "2026-10-30T17:29:25.273195",
       "source": "platform"
     },
     "agents-and-tools__agent-skills__quickstart.md": {
@@ -2789,8 +2789,8 @@
     "api__claude-code__routines-fire.md": {
       "original_url": "https://platform.claude.com/docs/en/api/claude-code/routines-fire",
       "original_md_url": "https://platform.claude.com/docs/en/api/claude-code/routines-fire.md",
-      "hash": "0acd05da33d17a27cc4966ac49c58c9021171c00291e085cca300bd7bb49e356",
-      "last_updated": "2026-10-27T21:43:04.064780",
+      "hash": "58c3973855dc629a5b28ca23506eaab46c392e68e34ca7d10cd28254a7ba8e6c",
+      "last_updated": "2026-10-30T17:34:08.591812",
       "source": "platform"
     },
     "api__claude-models-on-google-cloud-anthropic-managed-iam-permissions.md": {
@@ -4679,8 +4679,8 @@
     "manage-claude__access-transparency.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/access-transparency",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/access-transparency.md",
-      "hash": "47f2f38fd0e3accd4987239fe2a11a950410ad807f580f008535ae37a996e6ef",
-      "last_updated": "2026-10-28T22:10:53.915310",
+      "hash": "754d1adf84a75691309419be091bc5e36fdc44614ffff322f60c3ceb2f14d0ff",
+      "last_updated": "2026-10-30T17:37:25.021252",
       "source": "platform"
     },
     "manage-claude__access-transparency-log.md": {
@@ -4714,8 +4714,8 @@
     "manage-claude__api-and-data-retention.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention.md",
-      "hash": "80418cc9a1f4eec2c1322c0af8c0adbd7a7d8470aec5dc1827eed7ec2ba124b7",
-      "last_updated": "2026-10-28T22:10:57.591317",
+      "hash": "8ba5c7ddd9aaffb9f0fc67c3091491811aed307deddf47abfae8298be56b25e2",
+      "last_updated": "2026-10-30T17:37:28.565700",
       "source": "platform"
     },
     "manage-claude__app-attest.md": {
@@ -5554,8 +5554,8 @@
     "release-notes__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/overview",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/overview.md",
-      "hash": "24ae059a5725bda532ed2ae5b5c1e46602105dcb016e8e4cb330f45be65f3e5e",
-      "last_updated": "2026-10-29T18:11:19.788116",
+      "hash": "a57ef39174ada44df514982178b3bf20c89ff91891f9aedb5bbb8be8662c3b99",
+      "last_updated": "2026-10-30T17:38:56.676254",
       "source": "platform"
     },
     "release-notes__system-prompts__claude-fable-5.md": {
@@ -5764,7 +5764,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-10-30T12:03:41.608877",
+    "last_fetch_completed": "2026-10-30T17:39:15.993956",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 826,
@@ -5778,7 +5778,7 @@
     "total_files": 823,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-30T12:03:41.608902",
+  "last_updated": "2026-10-30T17:39:15.993978",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
