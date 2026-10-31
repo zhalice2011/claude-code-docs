@@ -325,8 +325,8 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "4dc4fac2bdca038171f79176f9d4da57161709bcd32e58d646591ead00fa2a07",
-      "last_updated": "2026-10-30T03:33:48.563936",
+      "hash": "7243089188665d39b05272616a62c1792baf32c13687cbd1d7a8b334d34b9148",
+      "last_updated": "2026-10-31T03:18:39.205222",
       "source": "claude-code-repository"
     },
     "channels.md": {
@@ -577,8 +577,8 @@
     "desktop.md": {
       "original_url": "https://code.claude.com/docs/en/desktop",
       "original_md_url": "https://code.claude.com/docs/en/desktop.md",
-      "hash": "9b3269d46f57b86db6b03abe652f458c9c4ab298bc3b4e5b8ddbeca0614637e3",
-      "last_updated": "2026-10-30T21:48:28.309566",
+      "hash": "0b9c66683c20346bccce5edf45162f1945d19b7db29ee115626819e17dfdfe67",
+      "last_updated": "2026-10-31T03:17:20.134454",
       "source": "claude-code"
     },
     "desktop-ios-simulator.md": {
@@ -1592,7 +1592,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-10-30T21:49:44.982449",
+    "last_fetch_completed": "2026-10-31T03:18:39.205283",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 227,
@@ -1602,7 +1602,7 @@
     "total_files": 227,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-10-30T21:49:44.982475",
+  "last_updated": "2026-10-31T03:18:39.205302",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
