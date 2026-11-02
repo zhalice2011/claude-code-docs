@@ -12,7 +12,7 @@
 
 WorkBuddy 提供三档模型模式，按任务复杂度选择：
 
-![模型三档](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-mode.9NY4y8fJ.png)
+![模型三档](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-mode.9NY4y8fJ.png)
 
 | 模式 | 适用场景 | 特点 |
 | --- | --- | --- |
@@ -26,25 +26,48 @@ WorkBuddy 提供三档模型模式，按任务复杂度选择：
 
 强度越高，模型会做更多的分析和自我检查，适合逻辑链条长、容易出错的任务；强度越低，模型倾向直接作答，响应更快。思考强度已默认选择适合绝大多数任务的强度，一般无需单独调整。
 
-![思考强度](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-thinking.B4oE7CN7.png)
+![思考强度](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-thinking.B4oE7CN7.png)
 
 ### 上下文窗口
 
-默认 200K，适用于绝大多数任务。
+每一轮对话都会把当前上下文完整发送给模型，上下文越大，单轮消耗的积分就越多。窗口并非越大越好——更大的窗口不会让模型变聪明，只会让每轮消耗成倍增加。
 
-上下文越长，token 就越多。每一轮对话都会把当前上下文完整发送给模型，上下文越大，单轮消耗的积分就越多。因此窗口并非越大越好——开到 1M 不会让模型变聪明，只会让每轮消耗成倍增加。
+不同模型支持的上下文长度不同，以界面实际显示为准。当前模型提供多个档位时，可以点击输入框中的上下文用量圆环，在弹出的「上下文用量」面板底部切换档位（如 **默认 / 适中 / 超长**）：
 
-建议保持默认 200K，绝大多数场景都够用。只有在处理超长文档、或需要模型完整记住大量历史内容时，才需要调大。
+- 悬停在某个档位上，可查看该档位的说明；档位越高，单轮积分消耗越大；
+- 切换后立即保存；对话正在进行时，新档位从下一轮对话开始生效；
+- 档位只对当前任务生效，切换模型或新建任务后恢复为该模型的默认档位。
 
-![上下文窗口](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-context.CpaBBkYf.png)
+只有一个档位的模型不提供切换入口。建议保持默认档位，绝大多数场景都够用；只有在处理超长文档、或需要模型完整记住大量历史内容时，才需要调大。
 
-### Max 模式
+![「上下文用量」面板：上方为各部分占用，底部切换上下文档位](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-context.B_hqhlU2.png)
 
-关闭 Max 模式时，系统会在合适的时机自动触发上下文压缩，减少长对话中重复传输的上下文，降低积分消耗。
+### 模型繁忙程度
 
-开启 Max 模式，则全程完整保留上下文、不做压缩，细节一点不丢，代价是长对话的积分消耗明显更快。
+模型选择器中，鼠标悬停在某个模型上，信息卡片会显示该模型的「繁忙程度」：
 
-建议保持关闭，仅在需要超长上下文时再开启。
+| 状态 | 说明 |
+| --- | --- |
+| **空闲**（绿色） | 负载正常 |
+| **轻微拥堵**（橙色） | 负载较高，响应可能变慢 |
+| **极度拥堵**（红色） | 负载很高，建议换用其他模型 |
+| **不可用** | 模型服务异常，暂不可用，并提示「当前模型服务异常，暂不可用」 |
+
+处于「极度拥堵」的模型，在模型列表中名称旁还会显示一个红色图标，不用悬停也能看出来。
+
+![模型列表中名称旁的红色拥堵图标，以及悬停卡片中的「繁忙程度：极度拥堵」](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-busy-level.BYdAKqKZ.png)
+
+繁忙程度仅供参考，不阻止你选择该模型；暂时获取不到负载信息时不显示。
+
+### 经济模式
+
+原模型选择面板中的「Max 模式」开关已移至 **设置 → 智能体 → 经济模式**（个人版默认开启）。
+
+![设置 → 智能体 → 经济模式](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/setting-economy-mode.BpxtJUky.png)
+
+开启经济模式时，系统会在合适的时机自动压缩上下文，减少长对话中重复传输的内容，降低积分消耗；关闭后全程保留完整上下文、不做压缩，细节不丢，但长对话的积分消耗会明显增加。
+
+建议保持开启，仅在需要模型完整保留全部上下文时再关闭。版本升级不会覆盖你已有的选择。
 
 ### 内置模型
 
@@ -74,12 +97,13 @@ WorkBuddy 提供三档模型模式，按任务复杂度选择：
 - **模型列表**：已配置的自定义模型以列表形式展示，每条记录显示模型名称与供应商图标。
 - **添加 / 编辑 / 删除**：支持通过弹窗操作完成全部增删改流程。
 - **对话入口联动**：对话界面的模型选择器展示自定义模型分组，并支持快捷跳转到配置界面进行编辑。
+- **配置不完整的提示**：如果自定义模型没有填写接口地址或 API Key（例如通过第三方工具写入了模型名称，但没有配置完整），它在模型选择器中会置灰、不能选中，并带有异常图标。悬停可看到「当前自定义模型未配置接口地址或 API key，请前往配置后使用」，点击 **前往配置** 会直接打开该模型的配置页。补全并保存后即可正常选择。若仍发出了请求，对话中会提示同样的内容并提供 **前往配置** 入口，错误码为 4100，详见[错误码处理说明](./../Error-Code)。指向本机的模型（如本地 Ollama）不需要 API Key，不受影响。
 
 ## 自定义模型管理
 
 在设置页**模型**中可以通过图形界面管理自定义模型，无需操作配置文件：
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-1.BuUbNA6x.png)配置在保存后自动持久化，选择标准供应商时，工具调用、图片输入等能力标记会自动写入，无需手动配置。
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-1.BuUbNA6x.png)配置在保存后自动持久化，选择标准供应商时，工具调用、图片输入等能力标记会自动写入，无需手动配置。
 
 TIP
 
@@ -97,14 +121,14 @@ TIP
 
 如果您已经购买了腾讯云 Token Plan 套餐，可将套餐支持的模型添加到自定义模型配置中。
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-2.CVISTIZP.png)第一步：在添加模型页面，根据您购买的套餐类型，选择对应的供应商，可选择如下：
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-2.CVISTIZP.png)第一步：在添加模型页面，根据您购买的套餐类型，选择对应的供应商，可选择如下：
 
 - 腾讯云 Token Plan / Token Plan 企业版专业套餐
 - 腾讯云 Token Plan / Token Plan 企业版轻享套餐
 - 腾讯云 Token Plan / 通用 Token Plan（个人版）
 - 腾讯云 Token Plan / Hy Token Plan（个人版）
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-3.BzdIKrh6.png)第二步：填入套餐对应的 API Key。不同套餐的 API Key 可查看如下指引获取：
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-3.BzdIKrh6.png)第二步：填入套餐对应的 API Key。不同套餐的 API Key 可查看如下指引获取：
 
 - [Token Plan 企业版专业套餐 API Key 获取指引](https://cloud.tencent.com/document/product/1823/130660#c517dcb2-4a6d-4fbc-9793-a6fc05467143)
 - [Token Plan 企业版轻享套餐 API Key 获取指引](https://cloud.tencent.com/document/product/1823/130660#c517dcb2-4a6d-4fbc-9793-a6fc05467143)
@@ -115,19 +139,19 @@ TIP
 
 - **请勿将 API Key 分享给他人**。API Key 关联您的账户与套餐额度，泄露可能导致他人盗用您的配额、产生额外费用或造成数据安全风险。
 - **请确认供应商可信**。接入第三方模型前，建议阅读该模型服务方的服务协议与隐私政策，确保其符合您对数据安全与合规的要求。
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-8.DcmeAm0t.png)第三步：选择套餐支持的模型，不同套餐的可用模型不一样。
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-8.DcmeAm0t.png)第三步：选择套餐支持的模型，不同套餐的可用模型不一样。
 
 以下截图以通用 Token Plan（个人版）套餐：GLM\-5 模型为例。
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-9.CdQU1hqz.png)- **Coding Plan**
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-9.CdQU1hqz.png)- **Coding Plan**
 
 Coding Plan是为 AI Coding 场景推出的专属订阅套餐，支持接入腾讯云Coding Plan、智谱Coding Plan和Kimi Coding Plan。
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-4.K2YW2_K_.png)- **自定义API**
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-4.K2YW2_K_.png)- **自定义API**
 
 内置了主流厂商的预设入口，可一键完成接入：
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-5.CPY-Gidd.png)#### 本地部署
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-5.CPY-Gidd.png)#### 本地部署
 
 **Ollama** 是一个开源的本地大模型运行工具，安装后通过一行命令即可拉取并运行开源模型。Ollama 启动后会在本地监听 HTTP 端口（默认 11434），并自动提供兼容 OpenAI 协议的接口供WorkBuddy对接。
 
@@ -137,11 +161,11 @@ Coding Plan是为 AI Coding 场景推出的专属订阅套餐，支持接入腾�
 2. 零成本试用：不用消耗 Token、不用付费 API Key，把硬件当算力。
 3. 离线可用：飞机上、内网开发机、没网的环境也能用 WorkBuddy。
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-6.B5r0YXGP.png)#### 自定义
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-6.B5r0YXGP.png)#### 自定义
 
 如果你的模型服务不在上方列表中，可选择**自定义/Custom**，手动填写 URL、API Key 与模型名接入。
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/model-7.Buzcl1Ob.png)### 自定义协议
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/model-7.Buzcl1Ob.png)### 自定义协议
 
 当模型服务使用非标准 URL 路径（如经过网关或代理层封装）时，可在高级配置中开启**自定义协议**开关。开启后 WorkBuddy将直接按填写的 URL 发起请求，跳过路径校验与自动补全。
 

@@ -12,18 +12,18 @@
 
 这意味着您不需要坐在电脑前，也能让 WorkBuddy 帮您处理工作。
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/assistant-3.Btuye0hY.png)## 二、支持的平台
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/assistant-3.Btuye0hY.png)## 二、支持的平台
 
 助理支持国内主流的即时通讯平台：
 
 | 平台 | 接入指南 |
 | --- | --- |
-| 微信助理（推荐） | [查看指南](./../../WeixinBot-Guide) |
-| 微信客服号 | [查看指南](./../../Wechat-Guide) |
-| 企微助理 | [查看指南](./../../Wecom-Guide) |
-| QQ 机器人 | [查看指南](./../../QQ-Guide) |
-| 飞书 | [查看指南](./../../Feishu-Guide) |
-| 钉钉机器人 | [查看指南](./../../Dingtalk-Guide) |
+| 微信助理（推荐） | [查看指南](./../../Assistant-Guide#微信助理接入指南) |
+| 微信客服号 | [查看指南](./../../Assistant-Guide#微信客服号接入指南) |
+| 企微助理 | [查看指南](./../../Assistant-Guide#企微助理接入指南) |
+| QQ 机器人 | [查看指南](./../../Assistant-Guide#qq-机器人接入指南) |
+| 飞书 | [查看指南](./../../Assistant-Guide#飞书接入指南) |
+| 钉钉机器人 | [查看指南](./../../Assistant-Guide#钉钉机器人接入指南) |
 
 ## 三、使用场景
 
@@ -53,7 +53,7 @@
 1. 打开 WorkBuddy，点击左下角头像，打开 **设置 → 助理设置**；
 2. 按需配置对应平台的集成接入（微信/企业微信/QQ/钉钉/飞书）。
 
-![](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/assistant-1.CelZeSps.png)
+![](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/assistant-1.CelZeSps.png)
 3. 按照提示完成配置。
 
 ## 六、平台接入指南
@@ -62,12 +62,12 @@ WorkBuddy 支持多个国内主流即时通讯平台的接入，请参考以下�
 
 | 平台 | 接入指南 |
 | --- | --- |
-| **微信助理** | [微信助理Bot 接入指南（推荐）](./../../WeixinBot-Guide) |
-| **微信客服号** | [微信服务号接入指南](./../../Wechat-Guide) |
-| **企微助理** | [WorkBuddy 接入企业微信指南](./../../Wecom-Guide) |
-| **QQ 机器人** | [WorkBuddy 接入 QQ 指南](./../../QQ-Guide) |
-| **飞书** | [WorkBuddy 接入飞书指南](./../../Feishu-Guide) |
-| **钉钉机器人** | [WorkBuddy 接入钉钉指南](./../../Dingtalk-Guide) |
+| **微信助理** | [微信助理接入指南](./../../Assistant-Guide#微信助理接入指南) |
+| **微信客服号** | [微信客服号接入指南](./../../Assistant-Guide#微信客服号接入指南) |
+| **企微助理** | [企微助理接入指南](./../../Assistant-Guide#企微助理接入指南) |
+| **QQ 机器人** | [QQ 机器人接入指南](./../../Assistant-Guide#qq-机器人接入指南) |
+| **飞书** | [飞书接入指南](./../../Assistant-Guide#飞书接入指南) |
+| **钉钉机器人** | [钉钉机器人接入指南](./../../Assistant-Guide#钉钉机器人接入指南) |
 
 每个指南都包含了从创建应用、配置权限到完成接入的完整步骤和截图说明。
 

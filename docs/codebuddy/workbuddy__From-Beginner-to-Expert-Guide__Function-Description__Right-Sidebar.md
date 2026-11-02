@@ -1,6 +1,6 @@
 # 右侧边栏
 
-> 在同一面板中预览文件、查看产物与追踪变更。
+在同一面板中预览文件、查看产物与追踪变更。
 
 ## 概述
 
@@ -24,7 +24,7 @@
 
 点击浮层中的任一产物，会在右侧边栏以新标签页打开。对话流中的「查看所有产物」也会打开这个浮层。
 
-![点击对话区右上角的任务概览，展开产物列表](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/right-sidebar-task-overview.BESuO9Z6.png)
+![点击对话区右上角的任务概览，展开产物列表](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/right-sidebar-task-overview.BESuO9Z6.png)
 
 ## 标签页
 
@@ -44,7 +44,7 @@
 
 点击标签栏的「\+」，会新开一个「新标签页」：
 
-![点击标签栏的「+」新开标签页](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/right-sidebar-new-tab.Cx3dNKql.png)
+![点击标签栏的「+」新开标签页](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/right-sidebar-new-tab.Cx3dNKql.png)
 
 新标签页中列出可选的入口，入口下方是本次对话的产物列表，点击即可打开：
 
@@ -80,25 +80,45 @@
 
 在对话流的产物卡片或任务概览中点击文件，会在右侧边栏以新标签页打开产物详情。
 
+### 对话流中的产物卡片操作
+
+不打开详情，也可以直接在对话流的产物卡片上操作。鼠标移到卡片上，右侧会出现几个操作按钮；在卡片任意位置点击右键，也能打开同一份菜单。
+
+| 位置 | 操作 | 说明 |
+| --- | --- | --- |
+| 卡片上的按钮 | **在独立窗口打开** | 在独立窗口中查看该产物，仅本地任务的部分文件类型提供，视频等类型和过大的文件不显示或无法打开 |
+| 卡片上的按钮 | **分享** | 分享该产物 |
+| **⋯** 菜单（本地产物） | **打开文件夹**、**在默认应用打开** | 在文件管理器中定位文件，或用系统默认应用打开 |
+|  | **添加到对话框**、**复制路径** | 把文件加入当前输入框作为引用，或复制文件的本地路径 |
+|  | **另存为**、**上传到云端** | 另存一份副本，或上传到云端存储 |
+| **⋯** 菜单（云端任务的文件） | **下载**、**添加到对话框** | 云端任务的文件没有本地路径，不提供打开文件夹、复制路径等本地操作 |
+|  | **上传到云端** | 同上 |
+
+菜单项之间用分隔线分为几组，依次是打开类、引用类、保存类。部分操作取决于当前的客户端环境，没有对应能力时不会显示。
+
+![对话流产物卡片的 ⋯ 菜单（本地产物）](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/right-sidebar-artifact-card-menu.FW3d9e4Y.png)
+
+**上传到云端** 会展开二级菜单，列出当前账号可以上传的位置，例如 **我的云端网盘** 或 **资料库**、**腾讯文档**、**ima**、**乐享知识库**。具体显示哪些，取决于账号类型和已开通的能力；ima、乐享不支持当前文件类型时，对应选项会置灰。各位置的使用方法见 [资料库](./Library)、[腾讯文档](./Knowledge-Base/Tencent-Doc)、[ima 知识库](./Knowledge-Base/IMA Knowledge Base/01-Workbuddy-IMA-Basic-Guide)、[乐享知识库](./Knowledge-Base/Lexiang)。
+
 标题栏显示文件名，右侧提供**下载**、**分享**、**更多**等操作；Word、HTML 等可编辑的文件类型还会多出**保存**或**编辑**按钮。
 
 ### 标题栏的布局与状态提示
 
 无论在哪里打开产物，标题栏都分成左右两块，常用操作的位置保持一致：
 
-![标题栏：左侧显示文件名，右侧是编辑、上传、分享等常用操作，其余收进「更多」](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/titlebar-layout-more-menu.CpEUbcM8.png)
+![标题栏：左侧显示文件名，右侧是编辑、上传、分享等常用操作，其余收进「更多」](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/titlebar-layout-more-menu.CpEUbcM8.png)
 
 - **左侧是信息区**：显示文件名，以及保存状态等辅助信息，例如编辑后显示「未保存」，保存成功后显示「已保存」；
 - **右侧是操作区**：最多直接显示 3 个常用操作，其余操作统一收进 **更多（⋯）**，不用在不同场景里重新寻找；
 - **进入或退出编辑时有即时反馈**：在 HTML 产物上点击 **编辑**，按钮会变成高亮的选中状态，提示文字变为「退出编辑」，并弹出「已进入编辑态」；退出编辑后回到预览，弹出「已进入预览态」。
 
-![点击编辑后，标题栏的编辑按钮高亮，并弹出「已进入编辑态」](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/titlebar-entered-edit-mode.B8gguw6Q.png)
+![点击编辑后，标题栏的编辑按钮高亮，并弹出「已进入编辑态」](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/titlebar-entered-edit-mode.B8gguw6Q.png)
 
 ### 复制 Markdown 源码
 
 以渲染后的样子查看 `.md` 文件时，点击标题栏的**更多（⋯）→ 复制 Markdown**，会把当前文档完整的 Markdown 源码复制到剪贴板，复制成功后提示「已复制 Markdown」，没有成功时提示「复制失败」。
 
-![Markdown 产物标题栏「更多」菜单中的「复制 Markdown」](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/copy-markdown-menu.COY5qYpU.png)
+![Markdown 产物标题栏「更多」菜单中的「复制 Markdown」](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/copy-markdown-menu.COY5qYpU.png)
 
 - 剪贴板里只有 Markdown 源码这一种格式：粘贴到会话输入框得到可读的 Markdown 文本，粘贴到代码编辑器也原样保留；
 - 与直接「全选 \+ 复制」不同，后者会按粘贴位置的不同，得到渲染后的文字或源码；
@@ -112,7 +132,7 @@
 
 在右侧栏打开**本地 Excel** 后，选中单元格区域并**右键**，菜单第一行提供**「AI 编辑」**：点击即可直接对选中区域发起 AI 修改，不必再翻到选区右下角找入口（原入口仍然保留）。
 
-![本地 Excel 的右键菜单第一行「AI 编辑」](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/right-sidebar-excel-ai-edit.Bl-lmRkH.png)
+![本地 Excel 的右键菜单第一行「AI 编辑」](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/right-sidebar-excel-ai-edit.Bl-lmRkH.png)
 
 ## 变更
 
@@ -120,11 +140,17 @@
 
 ## 浏览器
 
-### 多标签浏览
+WorkBuddy 的内置浏览器既支持手动操作，也支持 Agent 自动操作；Agent 还可操作你自行安装的 Chrome、Edge、QQ 浏览器等独立浏览器。
 
-点击标签栏的「\+」，在新标签页中选择**打开浏览器**，输入网址即可访问。支持同时打开多个浏览器标签页，网页间互不干扰。
+### 默认浏览器多标签浏览
 
-![多标签浏览](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/browser-multitab.sf_Mas5P.png)
+WorkBuddy 提供内置浏览器，你可以在右侧面板打开浏览器，点击标签栏的「\+」，在新标签页中选择**打开浏览器**，输入网址即可访问。支持同时打开多个浏览器标签页，方便在不同网页之间切换。
+
+![多标签浏览](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/browser-multitab.sf_Mas5P.png)
+
+首次使用前，进入**设置 \> 智能体 \> 浏览器操控**，点击**安装**，安装完成后，Agent 即可使用 WorkBuddy 内置浏览器执行网页任务。
+
+除了手动访问网页，你还可以让 Agent 自动使用内置浏览器完成网页操作。例如，让 Agent 打开指定网址、点击页面元素、输入内容、滚动页面或截取屏幕，也可以读取网页的标题、URL 和 DOM 信息。执行过程中，右侧面板会实时展示 Agent 当前操作的网页，对话流中也会显示相应的操作结果。
 
 ### 网址栏访问与搜索
 
@@ -133,9 +159,25 @@
 - 输入的是网址（如 `example.com`、`localhost:3000`）：直接访问；
 - 输入的是其他内容：使用搜狗搜索，并打开搜索结果页。
 
-![在网址栏输入关键词后，下方出现搜索入口](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/browser-omnibox-search.qfQFlqXh.png)
+![在网址栏输入关键词后，下方出现搜索入口](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/browser-omnibox-search.qfQFlqXh.png)
 
 输入过程中，网址栏下方首行是「搜索网页」，选择后即用搜狗搜索当前输入；使用一段时间后，下方还会列出匹配的**浏览历史**和**搜索历史**。可用鼠标点选，或用 `↑` `↓` 选择后按 `Enter`：选择浏览历史会直接打开该页面，选择搜索历史会用该关键词重新搜索。
+
+### 独立浏览器使用
+
+除了内置浏览器，Agent 还支持操作你电脑上安装的 Chrome、Edge、QQ 浏览器等独立浏览器。与内置浏览器不同，独立浏览器使用的是对应浏览器的 WorkBuddy 扩展程序，安装后即可让 Agent 操作你自己的浏览器。
+
+进入**设置 \> 智能体 \> 浏览器操控**，在下方的多浏览器列表中找到需要使用的浏览器，点击右侧的**前往安装**。
+
+![在设置 > 智能体 > 浏览器操控中，点击浏览器右侧的前往安装](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/browser-extension-install.GIaGVUc2.png)
+
+对应的扩展程序安装完成后，在浏览器工具栏中点击 WorkBuddy 扩展图标，确认扩展已连接。
+
+![浏览器工具栏 WorkBuddy 扩展图标弹窗，显示已连接状态与活跃会话](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/browser-extension-connected.VW9__Znr.png)
+
+随后，你只需在对话中描述需要执行的网页任务，Agent 就会在独立浏览器中新建一个受控标签页，或接管你当前已经打开的标签页。你可以在设置页面的浏览器会话列表中查看本次会话及受控标签页，点击对应条目即可切换回相应页面。
+
+受控标签页仍然可以由你手动操作，Agent 的操作不会限制你正常使用浏览器。如果希望 Agent 处理已经手动打开的网页，直接在对话中说明即可，无需重新打开。会话结束后，受控标签页会从设置页的列表中移除，不影响浏览器本身的正常使用。
 
 ### 登录态持久复用
 
@@ -148,7 +190,7 @@
 
 点击浏览器右上角的**更多（⋯）**，将鼠标移到 **清除浏览数据** 上，会展开二级菜单：
 
-![清除浏览数据](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/browser-clear-data.DOAynEE1.png)
+![清除浏览数据](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/browser-clear-data.DOAynEE1.png)
 
 | 选项 | 作用 |
 | --- | --- |
@@ -165,7 +207,7 @@
 
 点击浏览器右上角的**更多（⋯）**，菜单中提供以下页面工具：
 
-![浏览器右上角「更多」菜单](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/browser-more-menu.kuwScFtl.png)
+![浏览器右上角「更多」菜单](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/browser-more-menu.kuwScFtl.png)
 
 | 菜单项 | 说明 |
 | --- | --- |
@@ -190,7 +232,7 @@
 
 点击浏览器右上角的**更多（⋯）→ 显示设备工具栏**，即可在浏览器顶部打开设备工具栏，一键切换**手机 / 平板 / 桌面**视口，或自定义宽高，方便验证页面在不同设备下的响应式表现。
 
-![设备调试工具栏](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/browser-device-toolbar.CW3QxART.png)
+![设备调试工具栏](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/browser-device-toolbar.CW3QxART.png)
 
 在设备下拉列表中，每个设备只显示名称，将鼠标悬停在某个设备上，可以查看它的视图宽高，例如 `2560×1440`。
 
@@ -209,7 +251,7 @@
 | **任务操作待您确认** | 任务有操作需要你的确认，请点击查看 | 点击直接跳转到对应任务 |
 | **任务已成功完成** | 任务执行完成，请点击查看结果 | 点击直接跳转到对应任务 |
 
-![消息中心](https://download.codebuddy.cn/web/docs/d454fd22dca4c6533cee7077ccb55bed211bf61b/docs/static/right-sidebar-notification.B0am2Q5Q.png)
+![消息中心](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/right-sidebar-notification.B0am2Q5Q.png)
 
 ## 声明
 
