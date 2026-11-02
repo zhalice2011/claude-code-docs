@@ -28,7 +28,7 @@
 
 下面是 `WorkBuddy` 实际执行搜索后的界面示意：
 
-![网页搜索效果示意](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/image-5.DXPrbrPT.png)
+![网页搜索效果示意](https://download.codebuddy.cn/web/docs/9c08c052f44723a8064d4fea6f2238a690b8c5fb/docs/static/image-5.DXPrbrPT.png)
 
 ## 六、使用建议
 

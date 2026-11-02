@@ -4,13 +4,13 @@
 
 进入小程序主页，点击左上角菜单（≡）展开侧边栏：
 
-![侧边栏](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/sidebar-overview.DEVt6YwX.png)## 详情
+![侧边栏](https://download.codebuddy.cn/web/docs/9c08c052f44723a8064d4fea6f2238a690b8c5fb/docs/static/sidebar-overview.DEVt6YwX.png)## 详情
 
 ### 模式选择
 
 默认**云上**模式，可切换**电脑**模式：
 
-![侧边栏](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/siderbar-select.O1iIjvTQ.jpg)### 新建任务
+![侧边栏](https://download.codebuddy.cn/web/docs/9c08c052f44723a8064d4fea6f2238a690b8c5fb/docs/static/siderbar-select.O1iIjvTQ.jpg)### 新建任务
 
 跳转主页面[发起任务](./Create-Task)。
 

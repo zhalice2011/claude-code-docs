@@ -28,7 +28,7 @@
 
 `WorkBuddy` 可以成功调用该 `Skill`，并给出尚未安装但适合当前需求的推荐结果。
 
-![查找技能效果示意](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/image-11.CnExhlzX.png)
+![查找技能效果示意](https://download.codebuddy.cn/web/docs/9c08c052f44723a8064d4fea6f2238a690b8c5fb/docs/static/image-11.CnExhlzX.png)
 
 ## 六、使用建议
 

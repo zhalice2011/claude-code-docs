@@ -15,7 +15,7 @@
 
 点击将单个或全部文件添加到暂存区。然后点击消息右部的“AI COMMIT”按钮
 
-![alt text](https://download.codebuddy.cn/web/docs/d0250b819be522609975a66cece9fbb6e731ec4b/docs/static/Pasted%20image%2020260112213623.DJphmnXe.png)
+![alt text](https://download.codebuddy.cn/web/docs/9c08c052f44723a8064d4fea6f2238a690b8c5fb/docs/static/Pasted%20image%2020260112213623.DJphmnXe.png)
 
 1. 在 IDE 的 Git 面板中，查看待提交的文件变更
 2. 点击 CodeBuddy 的智能提交按钮
