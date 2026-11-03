@@ -1,5 +1,14 @@
 # WorkBuddy 更新日志
 
+## 5\.11\.0 版本发布 🚀（2026\-11\-03）\[灰度中]
+
+- 首页全新改版，下线办公/开发/设计入口，统一任务栏、菜单与顶栏
+- 定时任务全面升级，支持立即运行、编辑、重命名、删除与启动/暂停
+- 独立文件浏览器支持标签页拖出独立窗口、右侧栏预览
+- 频道 IM 新增组件化消息卡片与自定义表情包，消息可跨端同步，频道与专家支持一键分享
+- 创意设计接入图片编辑，图片视频产物统一在画布打开并默认入库
+- 优化上传、浏览器操作与对话推荐等体验，并修复云电脑、频道、资料库等若干问题
+
 ## 5\.9\.3 版本发布 🚀（2026\-10\-27）
 
 - 修复从其他设备迁移数据时仅能全量导入、无法按分类选择且超大数据无法迁移的问题，导入上限调整为 100GB
@@ -1563,7 +1572,7 @@
 
 安装 Skill 前自动进行安全扫描，检测潜在的恶意脚本和风险行为，保障你的数据安全。
 
-![alt text](https://download.codebuddy.cn/web/docs/9c08c052f44723a8064d4fea6f2238a690b8c5fb/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
+![alt text](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
 
 - 🆕 产物区整体交互与展示优化
 - 🆕 新增产物回传开关，可控制是否回传产物到云端
@@ -1583,7 +1592,7 @@
 
 支持 MCP 标准 OAuth 授权认证流程，连接第三方服务更安全便捷。
 
-![alt text](https://download.codebuddy.cn/web/docs/9c08c052f44723a8064d4fea6f2238a690b8c5fb/docs/static/expert-center-473.CgggC1ig.png)
+![alt text](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/expert-center-473.CgggC1ig.png)
 
 - 🆕 插件收入技能页面，连接器独立为菜单项，结构更清晰
 - 🆕 任务支持置顶/取消置顶
@@ -1619,7 +1628,7 @@
 
 专家中心新增排行榜功能，展示热门专家排行，帮助你快速发现最受欢迎的领域专家。
 
-![alt text](https://download.codebuddy.cn/web/docs/9c08c052f44723a8064d4fea6f2238a690b8c5fb/docs/static/zhuanjia.BtS4ODCf.png)
+![alt text](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/zhuanjia.BtS4ODCf.png)
 
 - 🆕 对话窗口内支持通过选择器快速切换专家
 - 🆕 本地任务支持归档
@@ -1639,7 +1648,7 @@
 
 支持在设置页通过可视化界面配置自定义模型（API Key、端点、参数等），无需手动编辑 JSON 文件。
 
-![alt text](https://download.codebuddy.cn/web/docs/9c08c052f44723a8064d4fea6f2238a690b8c5fb/docs/static/custom-model.C4ubf5Jp.png)
+![alt text](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/custom-model.C4ubf5Jp.png)
 
 - 🆕 产物支持分享链接并提供在线预览渲染
 - 🆕 自动化支持单次执行任务

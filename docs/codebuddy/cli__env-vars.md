@@ -94,8 +94,8 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_DISABLE_CRON` | 设置为 `1` 禁用计划任务 |
 | `CODEBUDDY_MAIN_AGENT_ENABLED` | 主 Agent 四种模式总闸。`0`/`false` 关闭（Web chip / TUI `/agent-mode` 无 picker，run 链不读 standing 主 agent）。未设置时看 `settings.json` 的 `codebuddy.mainAgent.enabled`，再缺省为开。覆盖 settings |
 | `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` | 允许未声明 `mainAgentSupport` 的 ACP 宿主（WorkBuddy Desktop / sidecar）也走模式解析。默认关：这些宿主始终原生 `cli`。`1`/`true` 打开（仍要求总闸开）。覆盖 `codebuddy.mainAgent.allowUnopted` |
-| `CODEBUDDY_REPL_ENABLED` | REPL 总闸。`1`/`true` 强开，`0`/`false` 强关，优先级最高。未设置时：`ptc` / `minimal` 默认开（REPL 是唯一直连工具，关掉等于工具面为空）；**标准 / 创造 / WorkBuddy 原生 `cli` 默认关**。WorkBuddy 将来要开：在 sidecar `managedEnv` 写死 `CODEBUDDY_REPL_ENABLED=1`（工具已在 overlay 的 `cli.tools` 里，只差这道闸）。不要翻 `codebuddy.mainAgent.allowUnopted`——那是让 WorkBuddy 走 PTC 模式解析，不是单独开 REPL |
-| `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | 是否把内置工具加载进 REPL 沙箱（成为顶层全局与 `tools.*` 成员）。`1`/`true` 强开，`0`/`false` 强关。未设置时：`ptc` / `minimal` 默认开（REPL 是唯一直连工具，沙箱必须有内置）；其余模式（含仅打开 `CODEBUDDY_REPL_ENABLED` 的标准 REPL）默认关，避免把全部内置塞进 REPL 挤占上下文、诱导模型用 REPL 调一次性原生工具。关闭后骨架目录与沙箱注入同时不含内置工具，MCP / bridge 编排不受影响 |
+| `CODEBUDDY_CODE_MODE_ENABLED` | PTC / 极简模式能力总闸。`0` / `false` 禁用并隐藏这两种模式；`1` / `true` 只放开能力，不强制切模式。未设置时 TUI / 自带 WebUI 默认许可，其他宿主默认关闭。模型还需明确下发 `toolMode=code_mode/code_mode_only`；缺字段、`direct` 或无效值不支持 PTC/极简，切换到不支持模型时本会话改为标准。用户选择在支持范围内优先，标准/创造不受此总闸影响；不能绕过未 opt\-in 宿主限制。旧 `CODEBUDDY_REPL_ENABLED` 不再读取 |
+| `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | 内置工具沙箱注入细闸，默认开启，显式 `0` / `false` 关闭。关闭后骨架目录和沙箱均不注入内置工具，不改变所选模式；实际可用工具仍受模式白名单、角色、会话和权限限制 |
 | `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | 是否把骨架工具目录注入 REPL 的 `code` 参数描述。默认开。`0` 关闭后工具仍预加载，只是模型不提前知情，退化为纯渐进披露（靠 `REPL.searchTools` / `REPL.describeTool` 发现） |
 | `CODEBUDDY_REPL_NESTED_TIMEOUT_MS` | REPL 内嵌交互的等待上限，单位为毫秒。**仅 PTC 模式中的 `AskUserQuestion` 默认不限时**：未设置、空白或 `0` 不创建超时定时器，用户稍后返回仍可回答；取消或停止会结束等待。设置 `1`–`2147483647` 范围内的有限数值可显式限时，小数向下取整；其他值回退到不限时。该预算同时覆盖等待裁决和答案。非 PTC 的 REPL 问答、`ExitPlanMode` 和安全审批保持原规则：默认 `600000`（10 分钟），有限正数覆盖默认值，`0` 等无效值回落到默认值。普通模式的直接问答不受本变量影响 |
 | `CODEBUDDY_DISABLE_FORK_SUBAGENT` | 设置为 `1` 禁用 Agent 工具的 Fork 子代理模式（`subagent_type="fork"`）。启用后 Agent 工具描述会自动隐藏 fork\-mode 段落，模型不会看到该功能；若模型仍然传 `subagent_type="fork"`，运行时会回落到名为 `fork` 的自定义代理（如用户在 `.codebuddy/agents/fork.md` 定义），否则改写为 `general-purpose` 普通子代理。适用于需要避免 fork 递归派生导致请求量放大的宿主场景 |
@@ -113,9 +113,8 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_REHYDRATE_IMAGE_BLOB_REFS` | 设置为 `true` 在 `-p` 模式流式输出中将图片 blob 引用还原为完整 base64 数据。适用于需要直接获取图片数据的下游集成场景 |
 | `CODEBUDDY_SKIP_READ_TOOL_IMAGE_REHYDRATION_IN_HISTORY` | 设置为 `true` 时，即使开启通用图片 blob 复水，`-p` 历史回放中的 `Read` 工具图片仍保留 blob 引用，不内联 base64。实时 `Read` 输出和模型上下文不受影响 |
 | `CODEBUDDY_HISTORY_REPLAY_MAX_CONTENT_BYTES` | 历史回放中 function call 参数、tool result 文本和 reasoning 文本的单字段 UTF\-8 字节上限；超出部分显示为 `...`。仅接受正整数，未设置或非法值时不截断；实时输出、用户消息、助手最终回复和模型上下文不受影响 |
-| `CODEBUDDY_REPL_ENABLED` | **实验功能**：REPL code mode 总闸。设置为 `1` 或 `true` 开启代码执行模式——模型可在隔离的 vm sandbox 中编写 JS 编排工具调用（内置工具直接 `Bash({...})`，MCP 工具统一挂 `mcp_<server>` 前缀全局），减少多工具任务的 LLM 往返次数。默认关闭 |
 | `CODEBUDDY_REPL_TOOLS_INJECT_CATALOG` | REPL 工具目录注入细闸。默认开启，只有显式设置为 `0` 或 `false` 才关闭（工具仍预加载，只是模型不提前知情，退化为纯渐进披露） |
-| `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | REPL 内置工具注入开关。默认开启，`0` 或 `false` 关闭后内置工具不进 REPL 骨架目录与 sandbox 注入（仅保留 MCP 工具） |
+| `CODEBUDDY_REPL_TOOLS_INJECT_BUILTIN` | 内置工具沙箱注入细闸，默认开启，显式 `0` / `false` 关闭。关闭后骨架目录和沙箱均不注入内置工具，不改变所选模式；实际可用工具仍受模式白名单、角色、会话和权限限制 |
 | `CODEBUDDY_SKILL_DESC_MAX_OVERRIDES` | 按 skill 名逐个覆盖 Skill 工具描述的单条字符上限（默认 `150`）。格式为 JSON 对象（skill 名 → 字符上限），例如 `{"workbuddy-office-routing":300,"tencent-pptx":300}`；覆盖值完全替换该 skill 的默认上限（既可放宽也可收紧），并且不再参与 Skill 总字符预算的二次均分截断；因此内置 skill 经市场更新从 `bundled` 变为 `plugin` 来源后，显式覆盖仍保持生效。该配置对所有来源（含内置）一视同仁。skill 名作为 JSON key，天然支持含冒号的插件 skill（形如 `plugin:skill`）。值必须是正整数（非正整数 / 小数 / 字符串数字均被跳过），并忽略 `__proto__`/`constructor`/`prototype` 等危险 key；JSON 非法或顶层非对象时整体忽略并打一条 warn。未设置时所有 skill 使用默认上限，行为不变 |
 | `CODEBUDDY_TOOL_SEARCH_MIN_SCORE_RATIO` | ToolSearch 检索的相关性下限：相对最高分的比例（0–1），得分低于 `最高分 × 该比例` 的结果被视为低相关噪音丢弃，减少返回的无关工具；默认 `0.3`，设为 `0` 关闭该过滤 |
 | `CODEBUDDY_TOOL_SEARCH_CAMEL_SPLIT` | ToolSearch 对工具名的 camelCase 拆词索引开关（如 `getWorkspaceConfig` 额外索引为 `get`/`Workspace`/`Config`），提升按单词检索的召回；默认开启，设为 `0`/`false`/`off`/`no` 关闭后回落默认分词。临时回滚开关，稳定后计划下线 |
@@ -302,7 +301,7 @@ CodeBuddy Code 支持把内部 traces 通过 OTLP 协议上报到用户自有的
 | `CODEBUDDY_GATEWAY_PASSWORD` | Gateway 访问密码。未设置时首次启动自动生成随机密码并写入 settings |
 | `CODEBUDDY_GATEWAY_FORCE_TUNNEL` | 设置为 `1` 强制使用 tunnel 模式 |
 | `CODEBUDDY_FRP_BUILTIN_ENABLED` | 设置为 `1` 时，无论账号类型都显示内置的 FRP 中继网关（默认只在当前登录账号属于 iOA 时显示，按账号的 `idp` / 登录 domain 判断，不看 `CODEBUDDY_INTERNET_ENVIRONMENT`） |
-| `CODEBUDDY_FRP_BUILTIN_HUB_URL` | 覆盖内置 FRP 中继网关地址（默认 `https://frp.devcloud.woa.com`） |
+| `CODEBUDDY_FRP_BUILTIN_HUB_URL` | 覆盖内置 FRP 中继网关地址（默认 `http://frp.devcloud.woa.com`） |
 | `CODEBUDDY_FRP_TLS` | 设置为 `0` 时，连接 frps 不使用 TLS（默认开启；也可在 Web UI 网关设置里按网关单独指定） |
 | `CODEBUDDY_FRP_AUTO_SHARE` | 设置为 `0` 时关闭“开通 / 导入 FRP 网关账号后自动共享本机 SSH”（默认开启：本机已有 sshd 就共享它，没有则静默启动一个仅公钥、只监听 127\.0\.0\.1 的 sshd；失败会在 Web UI 中继隧道里提示并可重试） |
 | `FRP_MANAGER_ADMIN_TOKEN` | FRP 网关管理员 token，仅用于自定义网关在 Web UI 一键开通账号；只从环境变量读取，不会写入磁盘。内置网关在 iOA 登录下改用 iOA 身份自助开通，不需要它 |

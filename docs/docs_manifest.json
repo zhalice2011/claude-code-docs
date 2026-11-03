@@ -766,8 +766,8 @@
     "jetbrains.md": {
       "original_url": "https://code.claude.com/docs/en/jetbrains",
       "original_md_url": "https://code.claude.com/docs/en/jetbrains.md",
-      "hash": "1af2bb66618140841118e0cff7149bcf6223d1c003a6fbc1f934ff1377f9a1da",
-      "last_updated": "2026-10-30T21:48:42.726793",
+      "hash": "488a0cba98c2e6dfcd168cbe39bff43c5e374e02b1889ec708a712ec38992a01",
+      "last_updated": "2026-11-03T13:15:37.377838",
       "source": "claude-code"
     },
     "keybindings.md": {
@@ -1592,7 +1592,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-11-03T04:37:12.172478",
+    "last_fetch_completed": "2026-11-03T13:16:40.811183",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 227,
@@ -1602,7 +1602,7 @@
     "total_files": 227,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-11-03T04:37:12.172497",
+  "last_updated": "2026-11-03T13:16:40.811216",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

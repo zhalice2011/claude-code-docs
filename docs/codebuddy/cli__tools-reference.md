@@ -32,7 +32,7 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `PowerShell` | 在 Windows 上执行 PowerShell 命令。仅 Windows 可用，参见 [PowerShell 工具行为](#powershell-工具行为) | 是 |
 | `PushNotification` | 发送终端/桌面通知，用于长任务或后台任务完成时提醒用户。延迟加载工具，参见[环境变量](./env-vars) | 否 |
 | `Read` | 读取文件内容，支持图片、PDF 和 Jupyter notebook | 否 |
-| `REPL` | 在隔离沙箱中执行 JavaScript 编排工具调用。PTC / 极简模式下这是模型面**唯一**直连工具；沙箱内 Bash 返回 `{ stdout, stderr, exitCode, signal }`，Agent 返回 `{ taskId }`，TaskOutput 返回 `{ status, taskId, content }`。受 `CODEBUDDY_REPL_ENABLED` 控制，参见[环境变量](./env-vars) | 是 |
+| `REPL` | 在隔离沙箱中执行 JavaScript 编排工具调用。PTC / 极简模式下这是模型面**唯一**直连工具；沙箱内 Bash 返回 `{ stdout, stderr, exitCode, signal }`，Agent 返回 `{ taskId }`，TaskOutput 返回 `{ status, taskId, content }`。受 `CODEBUDDY_CODE_MODE_ENABLED` 控制，参见[环境变量](./env-vars) | 是 |
 | `ReadMcpResource` | 按 server \+ URI 读取指定 MCP 资源的内容，配合 `ListMcpResources` 使用 | 是 |
 | `ReportFindings` | 将代码审查发现的问题以结构化字段（文件、摘要、失败场景、可选分类）提交，渲染为专门的列表组件而非纯文本。延迟加载工具，参见[环境变量](./env-vars) | 否 |
 | `SendMessage` | 在 [Agent 团队](./agent-teams)中向队友发送消息 | 否 |
