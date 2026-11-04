@@ -1,14 +1,14 @@
 # Workflow stdio 协议（stream\-json）
 
-本文档规定 CodeBuddy CLI（`cbc` / `codebuddy`）在 stdio `stream-json` 通道上如何暴露 **Dynamic Workflow** 的进度与生命周期，以及该协议与 Claude Code 2\.1\.220 的对齐关系。目标是让任何按 Claude Code 官方 stream\-json 协议实现的 SDK / daemon / CI 都能不改代码地消费 cbc 的 workflow 事件。
+本文档规定 CodeBuddy CLI（`cbc` / `codebuddy`）在 stdio `stream-json` 通道上如何暴露 **Dynamic Workflow** 的进度与生命周期。SDK、daemon 与 CI 按本文的消息形态实现，即可驱动并观测 cbc 的 workflow 事件。
 
 > 适用于：`cbc --input-format stream-json --output-format stream-json`（即 headless stdio）。同一线上格式也用于 `-p` / `--print` 且 `--output-format=stream-json` 的场景。
 
-## 1\. 与 Claude Code 2\.1\.220 的对齐关系
+## 1\. 消息族约定
 
-Claude Code 通过既有的 `system/task_*` 消息族承载 Dynamic Workflow 的进度，**不**新增独立的顶层 `type`。cbc 采用同样的约定：
+Workflow 进度走既有的 `system/task_*` 消息族，**不**新增独立的顶层 `type`：
 
-| 关注点 | 线上形态（Claude Code 2\.1\.220 与 cbc 一致） |
+| 关注点 | 线上形态 |
 | --- | --- |
 | Workflow run 声明 | `{"type":"system","subtype":"task_started","task_type":"local_workflow","workflow_name":"...", ...}` |
 | Phase / sub\-agent 进度 | `{"type":"system","subtype":"task_progress","workflow_progress":[{"type":"workflow_phase",...}, {"type":"workflow_agent",...}], ...}` |
@@ -16,7 +16,7 @@ Claude Code 通过既有的 `system/task_*` 消息族承载 Dynamic Workflow 的
 | 终态 | `{"type":"system","subtype":"task_notification","status":"completed|failed|stopped", ...}` |
 | 中断 / 取消 | `{"type":"control_request","request":{"subtype":"interrupt", ...}}`（会话级） |
 
-**不存在** cbc 独有的顶层 `type:"workflow"` 事件。任何说 Claude Code stream\-json 协议方言的消费者，都能无缝驱动并观测 cbc 的 workflow。
+**不存在**独立的顶层 `type:"workflow"` 事件。按本文消息形态实现的消费者，都能驱动并观测 cbc 的 workflow。
 
 ## 2\. 传输层
 
@@ -106,7 +106,7 @@ json
 ```
 {"type":"system","subtype":"task_notification","task_id":"<workflowTaskId>","status":"stopped","summary":"...","output_file":"..."}
 ```
-4. **迟到的 `system/task_progress` 事件**（cbc 相对 Claude Code 的超集）—— 每个 sub\-agent 收尾时，其在 `task_progress.workflow_progress[]` 里的 `workflow_agent` 条目会把 `state` 从 `"start"` 翻到 `"error"`，并携带 `error: "subagent aborted: ..."`。Claude Code 不保证这一步；cbc 为了可观测性额外发出。只依赖 Claude Code 保证事件的消费者应把 `task_notification.status="stopped"` 作为唯一权威终态。
+4. **迟到的 `system/task_progress` 事件** —— 每个 sub\-agent 收尾时，其在 `task_progress.workflow_progress[]` 里的 `workflow_agent` 条目会把 `state` 从 `"start"` 翻到 `"error"`，并携带 `error: "subagent aborted: ..."`。这是 cbc 为可观测性额外发出的事件。消费方应把 `task_notification.status="stopped"` 作为唯一权威终态。
 
 ### 参考实现（interrupt \+ 优雅 drain）
 
@@ -197,7 +197,7 @@ jsonc
 }
 ```
 - `task_type: "local_workflow"` 标识 workflow 任务；其它后台任务保留 `"Agent"` / `"Bash"` / `"PowerShell"` 等值。
-- `workflow_name` 对应 workflow 声明的 `meta.name`（脚本按路径起时回退为 `path:<basename>`）。Claude Code 会额外在 `prompt` 字段带上完整 workflow JS 源码；cbc 一般省略 `prompt`。
+- `workflow_name` 对应 workflow 声明的 `meta.name`（脚本按路径起时回退为 `path:<basename>`）。cbc 不在 `prompt` 字段携带完整 workflow 源码。
 
 ### 5\.2 `task_progress`（workflow 形态）
 
@@ -222,7 +222,7 @@ jsonc
   "session_id": "<sessionId>"
 }
 ```
-Timeline 条目形态（与 Claude Code 2\.1\.220 对齐）：
+Timeline 条目形态：
 
 - **`workflow_phase`**：`{ type, index, title }` —— workflow 脚本声明的 phase。
 - **`workflow_agent`**：`{ type, index, agentId, state, startedAt, endedAt?, label?, phaseIndex?, phaseTitle?, tokens?, resultPreview? }`
@@ -255,21 +255,21 @@ jsonc
 
 - `task_started` / `task_updated` / `task_notification` 是**关键事件**：一定按发生顺序到达，任务终态前不会漏。
 - Workflow 类的 `task_progress` 事件对 phase / sub\-agent 生命周期变化有**投递保证**：workflow 任务进入终态之前，每个非缓存 sub\-agent 的 `workflow_agent` 条目都会至少出现一次终态（`done` / `error` / `cached`）。
-- **中断下的顺序**（cbc 相对 Claude Code 的超集）：中断路径下 sub\-agent 异步收尾，部分 `task_progress` 事件（典型是把 `workflow_agent.state` 翻到 `"error"`）可能**晚于** `task_notification` 到达。消费方应把 `task_notification.status="stopped"` 视作终态**状态**信号，但把 `task_id` 保留一段短 grace window（推荐 5 秒），以捕获迟到的 `task_progress` 更新。
+- **中断下的顺序**：中断路径下 sub\-agent 异步收尾，部分 `task_progress` 事件（典型是把 `workflow_agent.state` 翻到 `"error"`）可能**晚于** `task_notification` 到达。消费方应把 `task_notification.status="stopped"` 视作终态**状态**信号，但把 `task_id` 保留一段短 grace window（推荐 5 秒），以捕获迟到的 `task_progress` 更新。
 - **快照替换语义**：同一 `task_id` 上后到的 `task_progress` 覆盖先前的 `workflow_progress` 快照。消费方无需累积 diff，直接以最新 payload 为准即可。
 
-## 7\. 与 Claude Code 的兼容性
+## 7\. 稳定字段与扩展
 
-**cbc 保证字节级完全等价于 Claude Code 2\.1\.220 的部分**：
+**消费方可以依赖的稳定契约**：
 
-- `system/task_started` 形态（`task_id`、`tool_use_id`、`task_type: "local_workflow"`、`workflow_name`、`description`、`uuid`、`session_id` 全部一致）。
-- `system/task_progress.workflow_progress[]` 元素形态：`workflow_phase` 与 `workflow_agent`，字段名（`agentId`、`state`、`startedAt`、`endedAt`、`phaseIndex`、`phaseTitle`、`label`、`tokens`、`resultPreview`）与 state 枚举（`start` / `done` / `error` / `cached`）一致。
+- `system/task_started` 形态：`task_id`、`tool_use_id`、`task_type: "local_workflow"`、`workflow_name`、`description`、`uuid`、`session_id`。
+- `system/task_progress.workflow_progress[]` 元素形态：`workflow_phase` 与 `workflow_agent`，字段名（`agentId`、`state`、`startedAt`、`endedAt`、`phaseIndex`、`phaseTitle`、`label`、`tokens`、`resultPreview`）与 state 枚举（`start` / `done` / `error` / `cached`）。
 - `system/task_updated.patch` 与 `system/task_notification.status` 语义。
 
-**cbc 相对 Claude Code 已声明的超集**（不违反 Claude Code schema，对 Claude Code 原生消费者安全）：
+**不改变上述字段含义、由 cbc 额外发出的事件**：
 
-- 中断路径下，cbc 会额外发 `task_progress` 消息把在飞 sub\-agent 的 `workflow_agent.state` 从 `"start"` 翻到 `"error"`；Claude Code 不保证这一步。
-- cbc 的 `workflow_name` 在脚本按路径起时用 `path:<basename>`（Claude Code 用 workflow 源码里的 `meta.name`）。
+- 中断路径下，cbc 会再发一条 `task_progress`，把在飞 sub\-agent 的 `workflow_agent.state` 从 `"start"` 翻到 `"error"`。
+- 脚本按路径启动时，`workflow_name` 为 `path:<basename>`。
 
 **消费方 MUST 忽略无法识别的字段** —— cbc 保留在不做 major 版本升级的前提下追加新 timeline 条目类型和可选字段的权利（见 §8）。
 

@@ -45,10 +45,13 @@ CodeBuddy Code 具有原生沙箱功能，为智能体执行提供更安全的�
 
 ### 操作系统级强制执行
 
-沙箱化 Bash 工具利用操作系统安全原语：
+当前本地 Bash 沙箱由 `sandbox-cli` 运行时执行，并按平台使用相应的隔离机制：
 
-- **Linux**: 使用 [bubblewrap](https://github.com/containers/bubblewrap) 进行隔离
-- **macOS**：使用 Seatbelt 进行沙箱强制执行
+- **Linux**：使用 [bubblewrap](https://github.com/containers/bubblewrap)（命令名 `bwrap`）进行隔离。它通过 Linux namespace 和挂载规则限制进程可见的资源；当前依赖检查要求 `bubblewrap`，不再要求旧后端使用的 `socat`。
+- **macOS**：通过 `sandbox-cli` 使用 Seatbelt 进行沙箱强制执行。
+- **Windows**：通过 `sandbox-cli` 的 Windows 后端执行沙箱命令。
+
+平台支持不等于沙箱已启用；是否实际隔离还取决于沙箱设置、宿主开关和运行时依赖是否可用。
 
 这些操作系统级限制确保 CodeBuddy Code 命令生成的所有子进程都继承相同的安全边界。
 
@@ -253,21 +256,11 @@ json
 5. **测试配置**：验证你的沙箱设置不会阻止合法工作流程
 6. **谨慎使用自动批准**：只在充分理解沙箱限制的情况下启用 `autoAllowBashIfSandboxed`
 
-## 开源
-
-沙箱运行时可作为开源 npm 包用于你自己的智能体项目。这使更广泛的 AI 智能体社区能够构建更安全、更可靠的自主系统。这也可以用于沙箱化你可能希望运行的其他程序。例如，要沙箱化 MCP 服务器，你可以运行：
-
-bash
-```
-npx @anthropic-ai/sandbox-runtime <command-to-sandbox>
-```
-有关实现细节和源代码,请访问 [GitHub 仓库](https://github.com/anthropic-experimental/sandbox-runtime)。
-
 ## 限制
 
 - **性能开销**：最小，但某些文件系统操作可能略慢
 - **兼容性**：一些需要特定系统访问模式的工具可能需要配置调整，甚至可能需要在沙箱外运行
-- **平台支持**：目前支持 Linux 和 macOS;计划支持 Windows
+- **平台支持**：支持 Linux、macOS 和 Windows；各平台依赖与隔离能力可能不同，应通过 `/sandbox` 检查当前环境。
 
 ## 相关文档
 

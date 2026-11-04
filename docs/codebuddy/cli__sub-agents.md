@@ -155,7 +155,7 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 
 #### 子代理输出扫描
 
-子代理最终报告回传主对话前会做非破坏性去毒（自研规则集，Claude Code 客户端无对应机制）：仿冒的 `<system-reminder>` 标签改写为 `<\system-reminder>`，行首 `Human:` / `Assistant:` 加反斜杠；命中时报告头部会附加 `[harness: subagent output matched ...]` 标记行。去毒只在命中片段插入反斜杠改写、不删除内容，报告诱导的工具调用仍走正常权限检查。
+子代理最终报告回传主对话前会做非破坏性去毒：仿冒的 `<system-reminder>` 标签改写为 `<\system-reminder>`，行首 `Human:` / `Assistant:` 加反斜杠；命中时报告头部会附加 `[harness: subagent output matched ...]` 标记行。去毒只在命中片段插入反斜杠改写、不删除内容，报告诱导的工具调用仍走正常权限检查。
 
 ### 子代理专属 MCP server
 

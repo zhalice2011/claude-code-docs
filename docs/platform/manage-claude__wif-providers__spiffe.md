@@ -87,7 +87,7 @@ acme {
 
 Each workload that calls the Claude API needs a SPIRE registration entry that maps its runtime selectors to a SPIFFE ID. If the workload is already registered, note its SPIFFE ID, which you use in the federation rule’s `subject_prefix`. If not, register it. For a Kubernetes pod, the selectors are typically the namespace and Kubernetes service account:
 
-```bash CLI
+```bash
 # Replace NODE_UID with the node's UID:
 #   kubectl get node <node-name> -o jsonpath='{.metadata.uid}'
 spire-server entry create \
@@ -197,7 +197,7 @@ The Claude SDK can read the JWT-SVID from the file that spiffe-helper maintains 
 
       curl https://api.anthropic.com/v1/messages \
         -H "authorization: Bearer $ACCESS_TOKEN" \
-        -H "anthropic-version: 2023-06-01" \
+        -H "anthropic-version: 2026-10-21" \
         -H "content-type: application/json" \
         -d '{
           "model": "claude-opus-5-5",
@@ -457,7 +457,7 @@ Before integrating the SDK, fetch a JWT-SVID directly from SPIRE Agent and confi
   The Workload API attests the calling process. For a Kubernetes registration entry, run this command inside a pod that satisfies the entry’s selectors and has the agent socket mounted (for example, by using `kubectl exec`). On VMs and bare metal, run it as the user or process that matches the entry’s `unix:` selectors. Running from an unattested host shell returns `no identity issued`, which is the most common verify-step failure.
 </Note>
 
-```bash CLI
+```bash
 spire-agent api fetch jwt \
   -audience https://api.anthropic.com \
   -socketPath /run/spire/sockets/agent.sock \

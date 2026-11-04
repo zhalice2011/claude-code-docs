@@ -47,12 +47,12 @@ WorkBuddy 移动端（App）可以在手机上通过文字、语音、图片和�
 1. 打开 WorkBuddy
 2. 在左侧 **助理** 栏点击齿轮图标，进入「助理设置」
 
-![助理栏的齿轮图标](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/1.m1V5GY4g.png)
+![助理栏的齿轮图标](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/1.m1V5GY4g.png)
 
 3. 在集成列表中找到「微信助理集成」
 4. 点击右侧的「配置」按钮
 
-![微信助理集成的配置按钮](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/2.B3o7ZTse.png)
+![微信助理集成的配置按钮](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/2.B3o7ZTse.png)
 
 #### 第二步：生成绑定二维码
 
@@ -62,7 +62,7 @@ WorkBuddy 移动端（App）可以在手机上通过文字、语音、图片和�
 
 二维码生成后会直接显示在卡片下方。打开手机微信，扫描该二维码即可完成绑定。
 
-![微信助理绑定二维码](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/3.B4pImZpI.png)
+![微信助理绑定二维码](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/3.B4pImZpI.png)
 
 注意
 
@@ -72,7 +72,7 @@ WorkBuddy 移动端（App）可以在手机上通过文字、语音、图片和�
 
 扫码完成后，卡片状态会变为「已绑定」。如果后续需要更换账号，可以点击「解绑」后重新绑定。
 
-![微信助理已绑定状态](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/4.BsCR3lH2.png)
+![微信助理已绑定状态](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/4.BsCR3lH2.png)
 
 ### 使用场景与连接方式
 
@@ -199,7 +199,7 @@ WorkBuddy 当前一对一绑定。如果您需要切换微信账号，请先在�
 3. 在集成列表中找到「微信客服号集成」
 4. 点击右侧的「配置」按钮
 
-![微信客服号集成的配置按钮](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/1.QOtyZZkt.png)
+![微信客服号集成的配置按钮](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/1.QOtyZZkt.png)
 
 #### 第二步：等待绑定初始化
 
@@ -209,7 +209,7 @@ WorkBuddy 当前一对一绑定。如果您需要切换微信账号，请先在�
 
 初始化完成后，页面会展示一个二维码。使用手机微信扫描该二维码，即可将当前微信账号与 WorkBuddy 绑定。
 
-![微信客服号绑定二维码](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/2.C4nBZYa3.png)
+![微信客服号绑定二维码](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/2.C4nBZYa3.png)
 
 注意
 
@@ -219,7 +219,7 @@ WorkBuddy 当前一对一绑定。如果您需要切换微信账号，请先在�
 
 扫码完成后，WorkBuddy 会展示当前已绑定的微信头像和昵称，右侧状态会变为「已绑定」。如果后续需要更换账号，也可以在这里点击「解绑」后重新绑定。
 
-![微信客服号已绑定状态](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/3.BXkDaLnV.png)
+![微信客服号已绑定状态](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/3.BXkDaLnV.png)
 
 ### 使用示例
 
@@ -231,7 +231,7 @@ WorkBuddy 当前一对一绑定。如果您需要切换微信账号，请先在�
 
 WorkBuddy 会在电脑上自动执行任务，并把执行过程和最终结果同步回微信聊天窗口。
 
-![在微信中与 WorkBuddy 对话](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/4.DxZSAsJc.png)
+![在微信中与 WorkBuddy 对话](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/4.DxZSAsJc.png)
 
 ### 跨设备接续工作
 
@@ -333,17 +333,17 @@ WorkBuddy 当前支持一对一绑定。如果您需要切换微信账号，请�
 
 打开浏览器，访问 [企业微信管理后台](https://work.weixin.qq.com/wework_admin/frame)，使用管理员账号登录后，依次点击「安全与管理」→「管理工具」→「智能机器人」→「创建机器人」。
 
-![企业微信管理后台：智能机器人入口](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/wecom-guide-1.BEQ8dvDd.png)
+![企业微信管理后台：智能机器人入口](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/wecom-guide-1.BEQ8dvDd.png)
 
-![企业微信管理后台：创建机器人](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/wecom-guide-2.DlrX2Hk3.png)
+![企业微信管理后台：创建机器人](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/wecom-guide-2.DlrX2Hk3.png)
 
 如果先进入 AI 自动生成页面，请点击左下角的「手动创建」：
 
-![AI 自动生成页面的手动创建入口](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/2.D9E3GsWy.png)
+![AI 自动生成页面的手动创建入口](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/2.D9E3GsWy.png)
 
 在创建页面直接选择「API 模式创建」：
 
-![选择 API 模式创建](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/wecom-guide-3.oOi_9rH6.png)
+![选择 API 模式创建](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/wecom-guide-3.oOi_9rH6.png)
 
 ##### 第二步：填写基本信息
 
@@ -356,7 +356,7 @@ WorkBuddy 当前支持一对一绑定。如果您需要切换微信账号，请�
 
 点击「可见范围」后的「添加」，选择需要使用机器人的成员、部门或标签。
 
-![设置机器人可见范围](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/visible-range.DG0MoWc3.png)
+![设置机器人可见范围](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/visible-range.DG0MoWc3.png)
 
 完成以上配置后，请先点击页面底部的「保存」，再在右侧「API 配置」区域选择「使用长连接」。
 
@@ -370,13 +370,13 @@ WorkBuddy 当前支持一对一绑定。如果您需要切换微信账号，请�
 
 打开企业微信客户端，进入「工作台」→「智能机器人应用」→「创建机器人」。
 
-![企业微信客户端：创建机器人入口](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/1.DdHM-fev.png)
+![企业微信客户端：创建机器人入口](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/1.DdHM-fev.png)
 
 如果先进入 AI 自动生成页面，请点击左下角的「手动创建」，再选择「API 模式创建」：
 
-![AI 自动生成页面的手动创建入口](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/2.D9E3GsWy.png)
+![AI 自动生成页面的手动创建入口](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/2.D9E3GsWy.png)
 
-![选择 API 模式创建](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/3.Ck217sUl.png)
+![选择 API 模式创建](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/3.Ck217sUl.png)
 
 ##### 第二步：填写基本信息
 
@@ -389,7 +389,7 @@ WorkBuddy 当前支持一对一绑定。如果您需要切换微信账号，请�
 
 点击「可使用成员」后的「修改」，选择需要使用机器人的成员、部门或标签。
 
-![设置机器人可使用成员](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/4.BuvAHCYe.png)
+![设置机器人可使用成员](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/4.BuvAHCYe.png)
 
 完成以上配置后，再在下方「API 配置」区域选择「使用长连接」。
 
@@ -407,7 +407,7 @@ WorkBuddy 当前支持一对一绑定。如果您需要切换微信账号，请�
 2. 复制 `Bot ID`
 3. 点击 `点击获取` 获取 `Secret`，并妥善保存
 
-![获取长连接 Bot ID 和 Secret](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/longlink-bot-credentials.CEJjnqsO.png)
+![获取长连接 Bot ID 和 Secret](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/longlink-bot-credentials.CEJjnqsO.png)
 
 提示
 
@@ -422,9 +422,9 @@ WorkBuddy 当前支持一对一绑定。如果您需要切换微信账号，请�
 	- 点击快捷绑定接入，使用企微扫码完成绑定
 	- 填入刚才复制的 `Bot ID` 和 `Secret`后点击「注册」完成绑定
 
-![企微助理集成的配置入口](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/5.qWDtiT-D.png)
+![企微助理集成的配置入口](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/5.qWDtiT-D.png)
 
-![WebSocket 长连接注册弹窗](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/6.BZ55K463.png)
+![WebSocket 长连接注册弹窗](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/6.BZ55K463.png)
 
 ##### 私有化部署企业微信：填写自定义 WebSocket 地址
 
@@ -458,7 +458,7 @@ URL 回调模式配置指引见本节末尾「使用 URL 回调接入（备选�
 
 在企业微信通讯录的「企业创建的」分组下找到刚刚创建的机器人，点击「发消息」即可开始下发任务。
 
-![在企业微信通讯录中找到机器人](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/wecom-guide-10.DGuEDc4B.png)
+![在企业微信通讯录中找到机器人](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/wecom-guide-10.DGuEDc4B.png)
 
 #### 联通后对话效果
 
@@ -509,7 +509,7 @@ URL 回调模式配置指引见本节末尾「使用 URL 回调接入（备选�
 2. 点击 `Token` 和 `Encoding-AESKey` 输入框右侧的「随机获取」
 3. 保存这两个参数，后续需要在 WorkBuddy 中使用
 
-![随机获取 Token 和 Encoding-AESKey](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/wecom-guide-4.lB4uC-vS.png)
+![随机获取 Token 和 Encoding-AESKey](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/wecom-guide-4.lB4uC-vS.png)
 
 重要
 
@@ -522,9 +522,9 @@ URL 回调模式配置指引见本节末尾「使用 URL 回调接入（备选�
 3. 填入刚才获取的 `Token` 和 `Encoding-AESKey`，点击「注册」
 4. 注册成功后，复制生成的 Webhook URL
 
-![切换到 URL 回调并填入凭据](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/7.BaLtfLWf.png)
+![切换到 URL 回调并填入凭据](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/7.BaLtfLWf.png)
 
-![复制生成的 Webhook URL](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/8.BRAyJKVS.png)
+![复制生成的 Webhook URL](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/8.BRAyJKVS.png)
 
 #### 回填 URL 并保存
 
@@ -533,7 +533,7 @@ URL 回调模式配置指引见本节末尾「使用 URL 回调接入（备选�
 1. 将刚才复制的 Webhook 地址粘贴到 `URL` 输入框
 2. 点击「保存」完成配置
 
-![回填 Webhook URL 并保存](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/wecom-guide-9.Jzv4lt7W.png)
+![回填 Webhook URL 并保存](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/wecom-guide-9.Jzv4lt7W.png)
 
 ### 企微助理常见问题
 
@@ -598,7 +598,7 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 
 点击创建机器人：
 
-![创建机器人](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/qq-guide-2.DdeZxWeY.png)
+![创建机器人](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/qq-guide-2.DdeZxWeY.png)
 
 点击后会立刻成功，此时机器人会给你的QQ发一条成功消息，头像昵称可按喜好自定义编辑。
 
@@ -606,7 +606,7 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 
 复制并保存机器人的 AppID 和 AppSecret 。
 
-![复制AppID和AppSecret](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/qq-guide-3.B1fiLS6i.png)
+![复制AppID和AppSecret](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/qq-guide-3.B1fiLS6i.png)
 
 重要提示
 
@@ -617,20 +617,20 @@ QQ 开放平台要求账号完成实名认证。如未认证，请先在 QQ 中�
 1. 打开 WorkBuddy，点击助理的**设置**⚙️图标后进入**助理设置**页面。
 2. 点击QQ机器人卡片右边的**连接**按钮。
 
-![QQ机器人集成配置](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/qq-guide-5.CppvIKbu.png)
+![QQ机器人集成配置](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/qq-guide-5.CppvIKbu.png)
 
 3. 选择一种方式连接已创建的 QQ 机器人
 - **QQ 扫码**：扫码连接已创建的机器人。
 
-![QQ 扫码连接](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/qq-guide-6.BqAWhxq9.png)
+![QQ 扫码连接](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/qq-guide-6.BqAWhxq9.png)
 
 - **更多连接方式**：选择 WebSocket 长连接或使用 URL 回调，填入上方复制保存的 AppID 和 AppSecret ，点击**连接**按钮。
 
-![更多连接方式](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/qq-guide-7.CsjQmu3T.png)
+![更多连接方式](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/qq-guide-7.CsjQmu3T.png)
 
 4. 连接成功后，在**助理**页面上方会显示 QQ 图标。
 
-![助理QQ图标](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/qq-guide-9.2UbTr9Lp.png)
+![助理QQ图标](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/qq-guide-9.2UbTr9Lp.png)
 
 ### QQ 机器人开始使用
 
@@ -683,7 +683,7 @@ QQ 机器人依赖电脑端的 WorkBuddy 运行。请保持电脑开机且 WorkB
 
 打开浏览器，访问 [飞书开放平台](https://open.feishu.cn/app)，使用企业账号登录后，点击「创建企业自建应用」。
 
-![登录飞书开放平台](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-1.DVtlT-_d.png)
+![登录飞书开放平台](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-1.DVtlT-_d.png)
 
 #### 填写应用信息
 
@@ -695,7 +695,7 @@ QQ 机器人依赖电脑端的 WorkBuddy 运行。请保持电脑开机且 WorkB
 | **应用描述** | 简单描述应用的功能 |
 | **应用图标** | 上传一个应用图标 |
 
-![填写应用信息](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-2.Bq35BkzN.png)
+![填写应用信息](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-2.Bq35BkzN.png)
 
 填写完成后，点击「创建」按钮。
 
@@ -703,13 +703,13 @@ QQ 机器人依赖电脑端的 WorkBuddy 运行。请保持电脑开机且 WorkB
 
 应用创建成功后，会自动跳转到应用详情页面。
 
-![应用详情页](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-3.CquowSwv.png)
+![应用详情页](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-3.CquowSwv.png)
 
 ### 添加机器人能力
 
 在应用详情页的「添加应用能力」区域，找到「机器人」卡片，点击「添加」按钮。
 
-![添加机器人能力](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-4.Bvf_VP1c.png)
+![添加机器人能力](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-4.Bvf_VP1c.png)
 
 ### 配置应用权限
 
@@ -719,7 +719,7 @@ QQ 机器人依赖电脑端的 WorkBuddy 运行。请保持电脑开机且 WorkB
 
 在应用详情页左侧菜单中，点击「权限管理」，然后选择「批量导入 / 导出权限」。
 
-![复制权限列表](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-5.BMDln-1L.png)
+![复制权限列表](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-5.BMDln-1L.png)
 
 #### 批量导入权限
 
@@ -831,11 +831,11 @@ json
   }
 }
 ```
-![粘贴权限列表](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-6.CKT55pRC.png)
+![粘贴权限列表](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-6.CKT55pRC.png)
 
 等待几秒钟，页面会显示权限已成功添加。
 
-![权限添加成功](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-7.DvbUEU9F.png)
+![权限添加成功](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-7.DvbUEU9F.png)
 
 ### 获取应用凭证
 
@@ -852,7 +852,7 @@ json
 
 请务必妥善保管 App Secret，不要泄露给他人！
 
-![凭证与基础信息](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-8.CpdvKWGY.png)
+![凭证与基础信息](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-8.CpdvKWGY.png)
 
 #### 获取 Encrypt Key 和 Verification Token
 
@@ -860,7 +860,7 @@ json
 
 您可以点击刷新按钮自动生成，或点击编辑按钮自定义您的 Encrypt Key 和 Verification Token。
 
-![Encrypt Key 和 Verification Token](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-8-1.DJzG3LOk.png)
+![Encrypt Key 和 Verification Token](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-8-1.DJzG3LOk.png)
 
 重要
 
@@ -874,27 +874,27 @@ json
 
 在 WorkBuddy 中，点击助理的**设置⚙️**图标后进入**助理设置**，找到**飞书集成**开始配置。
 
-![飞书集成入口](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-9.CN779x5z.png)
+![飞书集成入口](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-9.CN779x5z.png)
 
 将刚才获取的 App ID、App Secret 以及 Encrypt Key 填入对应的输入框:
 
 - **WebSocket 长连接**模式 适用于个人/家庭/办公室用户（没有公网 IP）。配置更简单，不需要公网地址，开箱即用。
 
-![WebSocket长连接模式](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-10.Crk-ilq8.png)
+![WebSocket长连接模式](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-10.Crk-ilq8.png)
 
 - **使用 URL 回调**模式 适用于有服务器、有公网 IP 的用户，需要额外在飞书开放平台填写生成的 Webhook 地址。
 
-![URL回调模式](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-11.DosshPS5.png)
+![URL回调模式](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-11.DosshPS5.png)
 
 #### 注册
 
 - WebSocket 长连接：点击「注册」按钮完成配置，配置成功显示**已连接**：
 
-![WebSocket已连接](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-12.R_60TxIN.png)
+![WebSocket已连接](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-12.R_60TxIN.png)
 
 - 使用 URL 回调：点击「注册」按钮系统会生成一个 Webhook 地址，点击复制保存：
 
-![URL回调已注册](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-13.Doll6xpa.png)
+![URL回调已注册](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-13.Doll6xpa.png)
 
 ### 配置飞书事件回调
 
@@ -906,21 +906,21 @@ json
 
 - WebSocket 长连接：在「订阅方式」中选择「使用长连接接收事件」，点击「验证」：
 
-![使用长连接接收事件](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-14.B_poTA-h.png)
+![使用长连接接收事件](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-14.B_poTA-h.png)
 
 配置成功显示「连接成功」：
 
-![连接成功](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-15.FMhd1iEo.png)
+![连接成功](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-15.FMhd1iEo.png)
 
 - 使用 URL 回调：在「订阅方式」中选择「将事件发送至开发者服务器」，将刚才复制的 Webhook 地址粘贴到输入框中并点击「保存」：
 
-![将事件发送至开发者服务器](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-16.BeXmFzec.png)
+![将事件发送至开发者服务器](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-16.BeXmFzec.png)
 
 #### 添加消息接收事件
 
 在「事件配置」区域，点击「添加事件」，搜索并添加「接收消息」事件。
 
-![添加接收消息事件](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-17.PEN-b6c0.png)
+![添加接收消息事件](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-17.PEN-b6c0.png)
 
 #### 配置卡片回调
 
@@ -928,9 +928,9 @@ json
 2. 搜索「卡片回传交互」
 3. 点击「确认添加」
 
-![卡片回传交互配置](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-18.D7Us2LUf.png)
+![卡片回传交互配置](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-18.D7Us2LUf.png)
 
-![确认添加卡片回调](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-19.CBUtnaq6.png)
+![确认添加卡片回调](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-19.CBUtnaq6.png)
 
 ### 发布应用
 
@@ -940,7 +940,7 @@ json
 
 点击页面上方的「创建版本」按钮。
 
-![创建版本](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-create-release.DkAkt14R.png)
+![创建版本](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-create-release.DkAkt14R.png)
 
 在弹出的窗口中填写：
 
@@ -951,7 +951,7 @@ json
 
 点击「确定」创建版本。
 
-![发布版本](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-release.C_dxs14W.png)
+![发布版本](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-release.C_dxs14W.png)
 
 #### 发布版本
 
@@ -971,13 +971,13 @@ json
 
 点击机器人进入对话窗口，或者点击「打开应用」开始使用。
 
-![打开应用](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-20.CBJCZq9g.png)
+![打开应用](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-20.CBJCZq9g.png)
 
 #### 发送任务
 
 直接发送您的需求，比如「帮我写一个待办事项应用」。WorkBuddy 会在电脑上自动执行任务，并将结果返回给您。
 
-![发送任务](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/feishu-guide-21.DB5sVp5U.png)
+![发送任务](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/feishu-guide-21.DB5sVp5U.png)
 
 恭喜
 
@@ -1021,19 +1021,19 @@ json
 
 打开浏览器，访问 [钉钉开发者后台](https://open.dingtalk.com/)，使用管理员账号登录。
 
-![登录开发者后台](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/login-developer-console.CLo2owy8.png)
+![登录开发者后台](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/login-developer-console.CLo2owy8.png)
 
 首次使用
 
 如果系统提示「该账号还未加入组织」，您可以创建一个个人企业，按需填写信息即可。
 
-![创建个人企业](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/create-personal-org.CCdsgAJ_.png)
+![创建个人企业](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/create-personal-org.CCdsgAJ_.png)
 
 #### 创建应用
 
 1. 在开发者后台首页，点击「应用开发」，并点击「创建应用」
 
-![创建应用](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/create-app.BYp0m06K.png)
+![创建应用](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/create-app.BYp0m06K.png)
 
 2. 在弹出的创建窗口中，填写以下信息：
 
@@ -1043,7 +1043,7 @@ json
 | 应用描述 | （内容随便写） | 简单描述用途 |
 | 应用类型 | 可以暂时不传 |  |
 
-![填写应用信息](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/fill-app-info.BYBmvoBC.png)
+![填写应用信息](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/fill-app-info.BYBmvoBC.png)
 
 3. 填写完成后，点击「保存」
 
@@ -1053,18 +1053,18 @@ json
 
 1. 找到「机器人」选项，点击「添加机器人」
 
-![添加机器人能力](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/add-robot-capability.CZkfvmyl.png)
+![添加机器人能力](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/add-robot-capability.CZkfvmyl.png)
 
 2. 填写机器人的基本信息：
 	- **机器人名称**：给机器人起一个名字
 	- **机器人描述**：简单描述功能
 	- **预览图**：上传一张机器人头像
 
-![配置机器人信息](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/config-robot-info.DY4EBXm0.png)
+![配置机器人信息](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/config-robot-info.DY4EBXm0.png)
 
 3. 点击「确认发布」
 
-![确认发布机器人](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/confirm-publish-robot.gisNfn0e.png)
+![确认发布机器人](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/confirm-publish-robot.gisNfn0e.png)
 
 ### 配置钉钉应用权限
 
@@ -1076,7 +1076,7 @@ json
 	- `Card.Instance.Write`
 	- `qyapi_robot_sendmsg`
 
-![添加权限](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/add-permissions.DF98JOdW.png)
+![添加权限](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/add-permissions.DF98JOdW.png)
 
 ### 获取钉钉应用凭证
 
@@ -1091,7 +1091,7 @@ json
 
 这两个凭证非常重要，请务必妥善保存，不要泄露给他人！
 
-![获取凭证](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/get-credentials.GWm559Bt.png)
+![获取凭证](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/get-credentials.GWm559Bt.png)
 
 #### 获取 AES Key 和 Token
 
@@ -1099,7 +1099,7 @@ json
 
 您可以点击刷新按钮自动生成您的 AES Key 和 Token。
 
-![AES Key 和 Token](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/dingtalk-aes-token.C5mRmrgS.png)
+![AES Key 和 Token](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/dingtalk-aes-token.C5mRmrgS.png)
 
 重要
 
@@ -1111,27 +1111,27 @@ json
 
 打开 WorkBuddy，点击助理的**设置⚙️**图标后进入**助理设置**，选择**钉钉集成**：
 
-![钉钉集成入口](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/dingtalk-1.HLe1RdDx.png)
+![钉钉集成入口](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/dingtalk-1.HLe1RdDx.png)
 
 将刚才获取的 Client ID 和 Client Secret 填入对应输入框：
 
 - **WebSocket 长连接**模式 适用于个人/家庭/办公室用户（没有公网 IP）。配置更简单，不需要公网地址，开箱即用。
 
-![WebSocket长连接模式](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/dingtalk-2.BlZP-Yfa.png)
+![WebSocket长连接模式](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/dingtalk-2.BlZP-Yfa.png)
 
 - **使用 URL 回调**模式 适用于有服务器、有公网 IP 的用户，需要额外在钉钉开发者后台填写生成的 Webhook 地址。
 
-![URL回调模式](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/dingtalk-3.BWbUQV9Z.png)
+![URL回调模式](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/dingtalk-3.BWbUQV9Z.png)
 
 #### 注册钉钉机器人
 
 - WebSocket 长连接：点击「注册」配置成功后显示「已连接」：
 
-![WebSocket已连接](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/dingtalk-4.B5dZu0o2.png)
+![WebSocket已连接](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/dingtalk-4.B5dZu0o2.png)
 
 - 使用 URL 回调：点击注册后显示「已注册」，系统会生成一个 Webhook 地址，点击复制保存：
 
-![URL回调已注册](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/dingtalk-5.CfyUyl-J.png)
+![URL回调已注册](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/dingtalk-5.CfyUyl-J.png)
 
 选择「使用 URL 回调」，还需要返回钉钉开发者后台，配置钉钉消息接收地址：
 
@@ -1139,13 +1139,13 @@ json
 2. 下滑到页面底部，找到消息接收配置
 3. 将「Stream 模式」切换为「**HTTP 模式**」
 
-![切换HTTP模式](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/switch-http-mode.BA2uojja.png)
+![切换HTTP模式](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/switch-http-mode.BA2uojja.png)
 
 4. 在「消息接收地址」中粘贴 Webhook 地址
 5. **重要**：将地址中的 `http` 改为 `https`
 6. 点击「发布」保存配置
 
-![配置Webhook地址](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/config-webhook.UDh3FyeJ.png)
+![配置Webhook地址](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/config-webhook.UDh3FyeJ.png)
 
 ### 发布钉钉应用
 
@@ -1155,21 +1155,21 @@ json
 
 1. 点击页面上方的「查看版本详情」
 
-![查看版本详情](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/view-version-details.0yAIXXq8.png)
+![查看版本详情](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/view-version-details.0yAIXXq8.png)
 
 2. 填写版本描述信息
 
-![填写版本描述](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/fill-version-desc._FOw3HqW.png)
+![填写版本描述](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/fill-version-desc._FOw3HqW.png)
 
 #### 提交发布
 
 1. 点击「确认发布」提交审核
 
-![确认发布版本](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/confirm-publish-version.nHnfEK4L.png)
+![确认发布版本](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/confirm-publish-version.nHnfEK4L.png)
 
 2. 等待审核通过（通常会很快自动审批）
 
-![审批通过](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/approval-passed.Cg9e4SLR.png)
+![审批通过](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/approval-passed.Cg9e4SLR.png)
 
 ### 钉钉开始使用
 
@@ -1187,29 +1187,29 @@ json
 
 1. 点击群右上角的设置按钮
 
-![群聊设置](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/group-settings.Dnq0n7SX.png)
+![群聊设置](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/group-settings.Dnq0n7SX.png)
 
 2. 选择「机器人」
 
-![机器人设置](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/robot-settings.DLLx4rNs.png)
+![机器人设置](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/robot-settings.DLLx4rNs.png)
 
 3. 点击「添加机器人」
 
-![添加机器人到群聊](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/add-robot-to-group.hm8ha6Sf.png)
+![添加机器人到群聊](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/add-robot-to-group.hm8ha6Sf.png)
 
 4. 搜索并选择您创建的机器人
 
-![搜索机器人](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/search-robot-group.LpBU0LAt.png)
+![搜索机器人](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/search-robot-group.LpBU0LAt.png)
 
 5. 确认添加
 
-![确认添加机器人](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/confirm-add-robot.C3aLkqs-.png)
+![确认添加机器人](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/confirm-add-robot.C3aLkqs-.png)
 
 **第三步**：开始使用
 
 在群里 @机器人 并发送您的需求，WorkBuddy 会自动执行任务并回复结果。
 
-![群聊使用效果](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/chat-usage.BdwPRh3l.png)
+![群聊使用效果](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/chat-usage.BdwPRh3l.png)
 
 #### 单聊使用
 
@@ -1217,11 +1217,11 @@ json
 
 1. 在钉钉顶部搜索框中，搜索机器人的名称
 
-![搜索机器人私聊](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/search-robot-private.DzOR9AIx.png)
+![搜索机器人私聊](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/search-robot-private.DzOR9AIx.png)
 
 2. 点击机器人进入对话窗口，直接发送消息即可
 
-![单聊使用效果](https://download.codebuddy.cn/web/docs/688347ea6a808d65a655fde345b5bc3170647b7c/docs/static/chat-usage.BdwPRh3l.png)
+![单聊使用效果](https://download.codebuddy.cn/web/docs/628663e40814bab775419a2ce2bc23d0c4fd67be/docs/static/chat-usage.BdwPRh3l.png)
 
 恭喜
 
