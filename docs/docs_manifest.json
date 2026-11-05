@@ -577,15 +577,15 @@
     "desktop.md": {
       "original_url": "https://code.claude.com/docs/en/desktop",
       "original_md_url": "https://code.claude.com/docs/en/desktop.md",
-      "hash": "cd95f89d0832246a5bc177b682e015d1065fedc2f0334eaadfd5f35fbe414868",
-      "last_updated": "2026-11-05T01:09:48.222872",
+      "hash": "35b7c1ee8b3512849a8652bddb08a049d15682dfe6ca06dc99ef1d7447a54b9f",
+      "last_updated": "2026-11-05T10:02:50.953053",
       "source": "claude-code"
     },
     "desktop-ios-simulator.md": {
       "original_url": "https://code.claude.com/docs/en/desktop-ios-simulator",
       "original_md_url": "https://code.claude.com/docs/en/desktop-ios-simulator.md",
-      "hash": "4b675510b80fa45c90764c58c2b26fab5ceb9c41f9fd61558d2a11c6e9f462e7",
-      "last_updated": "2026-10-30T21:48:28.848616",
+      "hash": "bc4092ebda67b85f6f4cbd642e243464a383bb948310a2109fd021999801351b",
+      "last_updated": "2026-11-05T10:02:51.486851",
       "source": "claude-code"
     },
     "desktop-linux.md": {
@@ -1592,7 +1592,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-11-05T01:11:07.008004",
+    "last_fetch_completed": "2026-11-05T10:04:07.950180",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 227,
@@ -1602,7 +1602,7 @@
     "total_files": 227,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-11-05T01:11:07.008030",
+  "last_updated": "2026-11-05T10:04:07.950210",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
