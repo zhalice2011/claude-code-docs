@@ -2,13 +2,13 @@
 
 任务创建后，您可以在对话区域与 WorkBuddy 持续交流，通过发送需求、补充要求和追问结果，逐步推进任务。您还可以上传文件、引用表格、组件为任务补充上下文，并随时查看任务的执行过程。
 
-![任务对话界面](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-1.DdhvFsEB.png)
+![任务对话界面](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-1.DdhvFsEB.png)
 
 ## 认识任务对话界面
 
 对话区顶部除了显示当前任务标题，还提供一些常用操作。
 
-![对话区顶部操作入口](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-2.SDHNv_03.png)
+![对话区顶部操作入口](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-2.SDHNv_03.png)
 
 从左到右依次是：
 
@@ -21,7 +21,7 @@
 
 对话较长时，对话区右侧会出现一条竖向的刻度导航，每一条刻度对应你发出的一条提问，当前所在的提问刻度更长、颜色更深。它和顶部的 **历史提问** 作用相同，但不用点按钮，更容易在长对话中定位：
 
-![鼠标移到对话右侧的刻度导航上，展开提问列表](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-question-nav.Bx46-ugK.png)
+![鼠标移到对话右侧的刻度导航上，展开提问列表](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-question-nav.Bx46-ugK.png)
 
 - 鼠标移到刻度条上，会展开你发过的所有提问列表，只显示你的提问，不显示 WorkBuddy 的回复，过长的提问会被截断；
 - 点击列表中的任意一条提问（或直接点击刻度），对话区会定位到这一条；
@@ -48,7 +48,7 @@
 
 模型正在执行任务时，您可以继续发送消息，无需等待上一轮回复结束。新消息会进入输入框上方的**队列**，等待当前一轮输出结束后依次处理。
 
-![执行中继续发送：消息进入输入框上方的队列](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-queue.B_XM2oXw.png)
+![执行中继续发送：消息进入输入框上方的队列](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-queue.B_XM2oXw.png)
 
 队列中的消息支持**编辑**、**删除**和拖动排序。点击发送按钮可立即发送消息，引导当前会话，但不会打断正在进行的模型输出。
 
@@ -76,7 +76,7 @@
 
 鼠标悬停在你发送的某条消息上，消息下方会出现 **复制**、**回退**、**编辑** 三个按钮。点击 **回退**（悬停提示「将对话及产物回退到此消息前」），对话内容和产物会一起回到这条消息之前的状态，这条消息及之后的内容都会从对话中移除。
 
-![悬停在你发送的消息上，出现复制、回退、编辑按钮](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-rewind-entry.DqdLV2UA.png)
+![悬停在你发送的消息上，出现复制、回退、编辑按钮](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-rewind-entry.DqdLV2UA.png)
 
 回退不会让 WorkBuddy 重新生成内容，只是退回去。如果需要在退回后改写这条消息，请使用下面的「编辑」。
 
@@ -92,7 +92,7 @@
 | 整个对话没有产物版本 | 当前对话无产物版本，回退将仅回退对话内容 | 只回退对话内容，产物保持不变 |
 | 其他情况 | 将对话回退到此消息前？ | 回退对话内容 |
 
-![回退确认框：将对话回退到此消息前](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-rewind-confirm.BsbFF0eD.png)
+![回退确认框：将对话回退到此消息前](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-rewind-confirm.BsbFF0eD.png)
 
 确认框列出产物时，每个产物后面会标明处理方式：
 
@@ -116,9 +116,9 @@
 
 点击消息下方的 **编辑**，消息会变成可编辑状态，输入框下方提示「编辑后将从此处重新开始对话，产物也将回退至此信息前版本」。修改内容后点击 **发送**，WorkBuddy 会从这条消息开始重新处理；点击 **取消** 则放弃修改。
 
-![悬停在消息上，点击编辑按钮](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-edit-entry.QhPkjapU.png)
+![悬停在消息上，点击编辑按钮](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-edit-entry.QhPkjapU.png)
 
-![编辑状态：输入框下方提示，修改后点击发送](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-edit-box.DAgv-Qih.png)
+![编辑状态：输入框下方提示，修改后点击发送](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-edit-box.DAgv-Qih.png)
 
 编辑框下方的提示是通用说明，点击 **发送** 之前不会弹出任何确认框。点击发送后，WorkBuddy 会先检查这条消息之后是否改动过产物：只有改动过，才会弹出「是否回退产物历史版本？」，说明为「选择回退产物，将基于本条消息前的版本进行修改；不选择回退，则从最新版开始编辑」。确认框里会列出受影响的产物及状态，状态含义同上表。你可以选择：
 
@@ -136,7 +136,7 @@
 
 对最后一条回复不满意时，可以让 WorkBuddy 重新生成。鼠标悬停在最后一条回复下方，点击 **刷新**（悬停提示「点击将重新生成会话和产物，请谨慎操作」）。
 
-![最后一条回复下方的刷新按钮](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-regenerate.CakXph0P.png)
+![最后一条回复下方的刷新按钮](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-regenerate.CakXph0P.png)
 
 - 只有**最后一条**回复有这个按钮，之前的回复和执行过程中的内容没有；
 - 刷新会重新生成这条回复及其产物；如果这一轮改动过产物，同样会弹出「是否回退产物历史版本？」，可选择 **取消**、**不回退** 或 **回退**，含义同「编辑」；没有改动过产物时直接重新生成；
@@ -172,11 +172,11 @@ WorkBuddy 会基于之前的对话上下文继续处理，无需重复描述背�
 
 1. 在模型回复中**选中要引用的文本**，选区上方会出现操作栏；
 
-![选中文本后，选区上方出现操作栏，提供「复制」与「添加到对话」](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-quote-actionbar.Df5p9YNH.png)
+![选中文本后，选区上方出现操作栏，提供「复制」与「添加到对话」](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-quote-actionbar.Df5p9YNH.png)
 2. 点击**添加到对话**，选中的内容会作为一条**引用**加入输入框；
 3. 此时选中内容旁会出现**批注输入框**（选填），可以写下想让 WorkBuddy 怎么改，也可以不写、直接在输入框里继续补充；
 
-![点击后可在选区旁填写批注（选填），确认即加入输入框](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-quote-annotation.tjsvmGP9.png)
+![点击后可在选区旁填写批注（选填），确认即加入输入框](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-quote-annotation.tjsvmGP9.png)
 4. 鼠标悬停在引用上，可以查看被引用的**完整原文**（有批注时一并显示）。
 
 #### 引用表格与组件
@@ -195,7 +195,7 @@ TIP
 
 对话中生成的组件（Widget，如图表、可视化页面）右上角有三个入口：
 
-![组件右上角的操作：添加到对话、下载到本地和更多操作菜单](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-widget-actions.CCSwh8da.png)
+![组件右上角的操作：添加到对话、下载到本地和更多操作菜单](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-widget-actions.CCSwh8da.png)
 
 - **添加到对话**：把组件加入输入框作为引用，详见上文「引用表格与组件」；
 - **下载到本地**：直接保存组件文件；
@@ -225,7 +225,7 @@ WorkBuddy 在执行任务时，会把关键步骤和结果展示在对话区中�
 
 这样做的好处是，您不需要离开当前任务，就能在同一处持续查看输入、过程和输出。
 
-![执行过程中的阶段说明与消耗展示](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-exec-progress.DHoekDQp.png)
+![执行过程中的阶段说明与消耗展示](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-exec-progress.DHoekDQp.png)
 
 ### MCP 服务加载
 
@@ -236,7 +236,7 @@ WorkBuddy 在执行任务时，会把关键步骤和结果展示在对话区中�
 - 全部连接完成后，展示「所有 MCP 服务已就绪」；
 - 这段进度只在加载阶段临时出现，加载完成后就会从对话流中消失，不作为历史消息保留。
 
-![MCP 服务连接进度，显示已连接数与服务总数](https://download.codebuddy.cn/web/docs/a9b427733224b4984f6d4bbd59a08800ef6c29cc/docs/static/conversation-mcp-loading.Bmrz04gS.png)
+![MCP 服务连接进度，显示已连接数与服务总数](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/conversation-mcp-loading.Bmrz04gS.png)
 
 并非所有 MCP 服务都提供交互界面，仅返回文字或文件结果的服务仍按原方式使用。
 
