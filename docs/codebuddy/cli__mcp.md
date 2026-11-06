@@ -91,7 +91,9 @@ mcp__*
 
 - 规则不区分大小写；连字符、点号等符号按下划线处理，`mcp__web-search` 与 `mcp__web_search` 等价
 - `*` 只能整段替换最后一节。`mcp__git*`、`mcp__github__get_*` 匹配不到任何工具，而且不会报错
+- 末尾的 `(*)` 或 `()` 与不带括号的写法等价，`mcp__github(*)` 即 `mcp__github`；括号里写其他内容（包括 `( * )`、`(**)`）的规则匹配不到任何工具
 - MCP 工具只认 `mcp__` 开头的规则，裸 `*` 对它无效；要全部禁用请写 `"deny": ["mcp__*"]`
+- 这些规则与 Claude Code 的差异见[插件参考](./plugins-reference#mcp-规则差异)
 
 #### 配置示例
 
@@ -835,6 +837,10 @@ codebuddy mcp add --scope user iwiki -- npx -y mcp-remote@latest https://prod.mc
 	- 设置了环境变量 `CODEBUDDY_DISABLE_MCP_LARGE_OUTPUT_FILES=1`
 
 截断时会在内容尾部追加 `[OUTPUT TRUNCATED - exceeded N token limit]` 标记，并告知模型哪些类型的块被丢弃（例如 `[Dropped 2 audio blocks due to size limit]`），方便模型改用分页或过滤参数重试。
+
+## 插件提供的 MCP 服务
+
+插件声明采用独立服务键 `plugin:<插件名>:<服务名>`，例如 `plugin:builtin-calendar:calendar`。工具名示例为 `mcp__plugin_builtin_calendar_calendar__list_events`，连接状态、禁用列表和 OAuth 使用原始注册键。调用 MCP 时仍使用服务器声明的原始工具名。命名、去重和配置更新说明见 [插件参考](./plugins-reference#服务键与工具名)。
 
 ## 相关链接
 

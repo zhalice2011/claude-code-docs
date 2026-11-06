@@ -4,7 +4,7 @@
 
 点击左上角菜单（≡）打开侧边栏 → 点击用户名称旁的 **⚙ 齿轮图标**
 
-![设置入口](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/settings-1.XA08hPjm.png)
+![设置入口](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/settings-1.XA08hPjm.png)
 
 ## 账号设置
 
@@ -20,13 +20,13 @@
 
 **我的记忆**每晚重新生成，点击可查看、编辑记忆内容。通过对话的方式告诉 WorkBuddy 要记住或忘记什么。
 
-![记忆库](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/settings-6.DZ0ICu5L.png)
+![记忆库](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/settings-6.DZ0ICu5L.png)
 
 ## 隐私政策、服务协议及各项清单
 
 在这一部分中，包含**隐私**、**服务协议**、**隐私政策**、**个人信息收集清单**和**第三方信息共享清单**，点击各自卡片，可以查看对应的协议内容
 
-![隐私政策与服务协议](https://download.codebuddy.cn/web/docs/6f169d1a1f2150927a141c30fbd4b517ad6d1a54/docs/static/settings-7.CZFXwyFI.png)
+![隐私政策与服务协议](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/settings-7.CZFXwyFI.png)
 
 ## 主题和语言
 

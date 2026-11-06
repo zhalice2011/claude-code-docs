@@ -333,7 +333,11 @@ export function register(on: On, options: PluginOptions): void {
   // 用 on(...) 挂 hooks
 }
 ```
-`options` 由宿主注入，来源是 `plugin.json` 或用户配置里的键值对，只能是 `string | number | boolean | readonly string[]`。
+`options` 由宿主根据 `plugin.json` 的 `userConfig` 声明和用户设置解析后注入。每项必须声明 `type`、`title` 和 `description`，可用 `default` 提供默认值。用户设置读取 `pluginConfigs[插件身份].options`，命令行 `--settings` 覆盖用户设置，不读取项目设置。内联插件还支持裸名称设置，完整身份优先。
+
+可选项没有默认值时为 `''`；枚举外的已存值按未设置处理，类型或必填校验失败会阻止模块导入。传入 `register` 的对象及其数组、嵌套对象被冻结。修改声明的非敏感配置会重载模块。
+
+旧的顶层 `options` 不再读取。请迁移为 `userConfig.<key>.default`；已有 bundle 或导出包需重新构建、安装或导出以恢复默认值。
 
 ### Tier 与 `next`
 
@@ -433,7 +437,6 @@ ts
 on('tool.call', { tool: 'Read' }, ($, e, next) => next(e));                 // 值相等
 on('tool.call', { tool: ['Read', 'Grep'] }, ...);                            // 数组任一
 on('tool.call', { tool: /^Web/, input: { headers: {...} } }, ...);           // RegExp / 深嵌套
-on('tool.call', { tool: v => v.startsWith('mcp__') }, ...);                  // 谓词
 on('agent.spawn', { fork: true }, ...);                                      // 布尔
 ```
 
@@ -512,6 +515,8 @@ ts
 ```
 import type { On, Register, PluginOptions } from 'codebuddy-code';
 ```
+类型一律写 `import type` 或 `{ type X }`。Mod 的模块与 Claude Code 一样按 ES module 原样链接、求值：转译只去掉这两种类型导入（以及 `export type … from`、`export { type X } from`），其余导入即使没用到、或只当类型用，也会加载对应模块（顶层代码照常执行），并按名字核对导出。`import { Register } from 'codebuddy-code'`、从本地文件导入一个 interface 而不写 `type`，都会让模块加载失败（`Export named 'Register' not found in module 'codebuddy-code'.`）。
+
 `codebuddy-code` 的类型声明**随 CLI 的 npm 包一起发布**，一个自包含的 `codebuddy-code.d.ts` 文件躺在 CLI tarball 的 `types/` 里，文件本身自带 `declare module 'codebuddy-code' { … }` 包裹。你不需要额外装第二个 npm 包、不用配 `paths`、也不会有 `.d.ts` 被写到你的项目下。
 
 Mod 作者自己写 `tsconfig.json`，把这份声明挂到 `types` 字段（TS 会通过 node\_modules 子路径解析到自带 namespace 的那份 .d.ts）：
@@ -647,7 +652,12 @@ describe('guard-rm', () => {
 
 - `tier(t)` 声明被测 Mod **所在层**；`test(name, ($, on) => ...)` 里的 `on` 是**世界那一层**（在被测 Mod 更外面），用它桩接任何 `$` 调用。
 - 未桩接的 `$` 调用**抛错并命名事件** —— 逼你在测试里显式把边界画出来，避免「测试看着过、真实环境挂」。
-- `mock.clock(on)` / `mock.env(on, {...})` / `mock.store(on, {...})` 是常用桩。
+- `mock.clock(on)` / `mock.env(on, {...})` / `mock.store(on, {...})` / `mock.session(on)` 是常用桩。
+
+运行：在 Mod 目录下执行 `codebuddy plugin test [dir]`（`dir` 缺省为当前目录）。它找出 `dir` 下所有 `*.test.ts` / `*.test.tsx`，每个文件在本二进制的一个子进程里、与 Mod 钩子相同的隔离环境中运行；任一测试失败时退出码为 1。`plugin test` 必须紧跟在命令名之后，前面不能有其它选项。测试文件里的 `console.*` 输出到 stderr。
+
+- 套件只在 `plugin test` 下可用：在别处 import `codebuddy-code/testing`（或兼容别名 `claude-code/testing`）得到的五个导出一调用就报错。
+- function hooks 在本进程关闭时（`CBC_ENABLE_FUNCTION_HOOKS=0`，或宿主不加载 Mod），或 settings 里 `disableAllHooks` 为 `true` 时，测试不会运行，命令会说明原因。
 
 ---
 

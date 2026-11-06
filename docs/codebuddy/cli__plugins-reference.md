@@ -186,6 +186,18 @@ json
 - 服务器功能与现有工具无缝集成
 - 插件服务器可独立于用户 MCP 服务器进行配置
 
+#### 服务键与工具名
+
+在独立 CLI 和 Harness 的插件通道中，插件声明的服务注册为 `plugin:<插件名>:<服务名>`。工具名为 `mcp__<服务键片段>__<工具名片段>`：每个片段中，除 ASCII 字母、数字和下划线之外的字符都替换为 `_`，保留大小写和重复下划线。
+
+例如，插件 `builtin-calendar` 的 `calendar` 服务提供 `list.events`，模型、权限规则和工具 hook 使用的名字都是 `mcp__plugin_builtin_calendar_calendar__list_events`。MCP 请求仍发送原始工具名 `list.events`；提示命令的服务片段使用同样的转换，提示名保留原始值。
+
+同一条命令或同一 URL 的插件服务会去重：已启用且获准的手动配置优先，其后保留加载顺序中的首个插件。插件之间比较 stdio 声明时会计入环境变量，插件根目录和数据目录等自动注入项除外；与手动配置比较时不计入环境变量。禁用或尚未获准的服务不参与重复判断。手动配置使用完整 `plugin:<插件名>:<服务名>` 键时仍可覆盖该条声明。守护进程托管的动态服务保留其原有服务名。不同服务的模型工具名称相同时，按加载顺序保留首个工具；通过服务片段寻址仍会拒绝多个已连接服务的歧义。
+
+插件 MCP 工具和服务器改用上述新名字，已有配置不会自动改写。按旧服务名编写的权限规则、`disabledMcpServers` 和 hook matcher 不再匹配插件工具或服务器，需要按新名字重写。例如，旧服务规则 `mcp__calendar` 只匹配用户自行配置的同名非插件服务器；插件服务应使用 `mcp__plugin_builtin_calendar_calendar`，禁用列表应使用完整服务器键 `plugin:builtin-calendar:calendar`，工具 hook 应使用对应的新工具名。
+
+`disabledMcpServers` 按服务器键精确比较，不提供旧名别名。插件 MCP 的 OAuth 凭据按新服务器键保存，需要重新登录。卸载插件或移除市场不会删除 MCP OAuth 凭据。
+
 ### 5\. LSP Servers（LSP 服务器）
 
 > **提示**: 需要使用 LSP 插件? 可从官方市场安装——在 `/plugin` Discover 标签中搜索 "lsp"。本节介绍如何为官方市场未涵盖的语言创建 LSP 插件。
@@ -362,7 +374,7 @@ json
 | `experimental.themes` | string \| array | Claude experimental 字段；CodeBuddy 当前仅识别，不加载到运行时 | `"./themes/"` |
 | `experimental.monitors` | string \| array | Claude experimental 字段；CodeBuddy 当前仅识别，不启动后台 monitor | `"./monitors/monitors.json"` |
 | `lspServers` | string \| array \| object | LSP 配置路径或内联配置 | `"./.lsp.json"` |
-| `userConfig` | object | 启用时提示用户配置的值。详见[用户配置](#用户配置) | 见下方 |
+| `userConfig` | object | 插件可配置的值。详见[用户配置](#用户配置) | 见下方 |
 | `channels` | array | 消息注入的频道声明。详见[频道](#频道) | 见下方 |
 
 ### 默认启用
@@ -399,26 +411,30 @@ json
 
 ### 用户配置
 
-`userConfig` 字段声明在插件启用时 CodeBuddy 提示用户输入的值。用此替代要求用户手动编辑 `settings.json`。
+`userConfig` 字段声明插件可配置的值。用此替代要求用户手动编辑 `settings.json`。
 
 json
 ```
 {
   "userConfig": {
     "api_endpoint": {
+      "type": "string",
+      "title": "API endpoint",
       "description": "您团队的 API 端点",
       "sensitive": false
     },
     "api_token": {
+      "type": "string",
+      "title": "API token",
       "description": "API 认证令牌",
       "sensitive": true
     }
   }
 }
 ```
-键必须是有效标识符。每个值可作为 `${user_config.KEY}` 在 MCP 和 LSP 服务器配置、钩子命令中替换，以及（仅非敏感值）在技能、命令和代理内容中替换。值也作为 `CLAUDE_PLUGIN_OPTION_<KEY>` 与 `CODEBUDDY_PLUGIN_OPTION_<KEY>` 环境变量导出到插件子进程。环境变量名中的非字母、数字或下划线字符会替换为 `_`，然后转为大写。
+键必须匹配 `^[A-Za-z_]\w*$`，每项必须提供 `type`、`title` 和 `description`，且不接受额外字段。每个值可作为 `${user_config.KEY}` 在 MCP 和 LSP 服务器配置、钩子命令中替换，以及（仅非敏感值）在技能、命令和代理内容中替换。仅钩子进程会收到 `CLAUDE_PLUGIN_OPTION_<KEY>` 选项环境变量。MCP 和 LSP 服务器需要配置值时，在自己的 env 声明中使用 `${user_config.KEY}`。环境变量名中的非字母、数字或下划线字符会替换为 `_`，然后转为大写。
 
-非敏感值存储在 `settings.json` 的 `pluginConfigs[<plugin-id>].options` 中。敏感值存储到系统密钥链（或在密钥链不可用时存储到 `~/.codebuddy/.credentials.json`）。密钥链存储与 OAuth 令牌共享，总限制约 2 KB，因此敏感值应保持较小。
+非敏感值存储在 `settings.json` 的 `pluginConfigs[<plugin-id>].options` 中。敏感值以明文 JSON 存储在当前配置目录的 `credentials.json` 中，新建文件权限为 `0600`；配置目录遵循产品配置或 `CODEBUDDY_CONFIG_DIR`，默认使用用户目录下的产品配置目录。插件选项存储不使用系统密钥链。
 
 ### 频道
 
@@ -480,11 +496,9 @@ CodeBuddy 提供三个 Claude Code 兼容路径变量。它们会在技能、命
 
 **兼容性**：同时支持 `${CLAUDE_PROJECT_DIR}` 变量名。
 
-插件子进程还会收到以下选项环境变量：
+插件钩子进程还会收到以下选项环境变量：
 
 - `CLAUDE_PLUGIN_OPTION_<KEY>`：Claude Code 标准名称
-- `CODEBUDDY_PLUGIN_OPTION_<KEY>`：CodeBuddy 别名
-- `PLUGIN_OPT_<KEY>`：为已有 CodeBuddy 插件保留的兼容名称
 
 json
 ```
@@ -974,6 +988,18 @@ CodeBuddy 插件系统在设计上兼容 Claude Code 插件规范，但存在以
 | 元数据目录 | `.claude-plugin/` | `.codebuddy-plugin/`（优先）、`.workbuddy-plugin/` 或 `.claude-plugin/`（兼容） |
 | 环境变量 | `${CLAUDE_PLUGIN_ROOT}` | `${CODEBUDDY_PLUGIN_ROOT}`（优先）或 `${CLAUDE_PLUGIN_ROOT}`（兼容） |
 | 数据目录变量 | `${CLAUDE_PLUGIN_DATA}` | `${CODEBUDDY_PLUGIN_DATA}`（优先）或 `${CLAUDE_PLUGIN_DATA}`（兼容） |
+
+### MCP 规则差异
+
+| 概念 | Claude Code | CodeBuddy |
+| --- | --- | --- |
+| MCP 权限规则中的 `*` | deny / ask 规则中任意位置的 `*` 都按通配匹配完整工具名；allow 规则可在工具名部分使用 `*` | 只识别 `mcp__*`（仅 deny / ask）和以 `__*` 结尾的服务级规则，其他位置的 `*` 不生效；例如 `mcp__github__get_*`、`mcp__*__get_issue`、`mcp__plugin_*` 既不授权，也不拒绝或询问 |
+| MCP 规则的大小写与符号 | 权限规则和 agent 的 `tools` 条目都区分大小写，按写出的字符比较 | 权限规则不区分大小写，agent 的 `tools` 条目区分大小写；两者都将规则和工具名中的 `-`、`.` 等符号按 `_` 处理。例如 `mcp__web_search__*` 匹配 `mcp__web-search__x`，`mcp__plugin_foo__bar__*` 也匹配插件服务 `plugin:foo-:bar` 的工具 `mcp__plugin_foo__bar__run` |
+| MCP 工具名中的连字符 | 模型看到的工具名保留连字符，例如 `mcp__web-search__x` | 连字符与其他符号都转为下划线，例如 `mcp__web_search__x`；权限规则、agent 的 `tools`、mods 的字符串 `tool` matcher 和 eval 用例写哪一种都能命中；hooks 的 `matcher` 和 `if` 不做等价处理，写法见 [Hooks](./hooks) |
+| 转为下划线后重名的 MCP 工具 | 保留先加载的工具，后面的不再出现 | 模型工具列表报错 `Duplicate tool names found across MCP servers`，本轮对话失败；删除或改名其中一个服务后恢复 |
+| 名称含 `__` 的非插件服务 | 按注册的服务名匹配。以服务 `a__b` 为例：allow 规则和 agent 的 `tools` 条目只认 `mcp__a__b__*` 和完整工具名；deny / ask 规则另认 `mcp__a__b`、`mcp__a` 和 `mcp__a__*` | 按工具名中的 `__` 切分。`mcp__a`、`mcp__a__*`（服务名更长时还有在其他 `__` 处截出的前缀加 `__*`）作为 allow 规则或 agent 的 `tools` 条目也会授权该服务的工具；`mcp__a__b` 不匹配任何工具。插件服务按注册服务键匹配，不受影响 |
+| `disabledMcpServers` 与动态服务 | 列表中的名称不分来源一律禁用：`--mcp-config` 或 SDK 传入的同名服务不会连接，同端点的插件服务也不会因它被去重 | 只作用于用户、本地、项目和插件服务；`--mcp-config` 或 SDK 传入的同名服务照常连接，并按去重规则隐藏同端点的插件服务 |
+| Agent `tools` 中带括号的 MCP 条目 | 忽略括号内的内容，`mcp__github(*)`、`mcp__github(arg)` 都按 `mcp__github` 处理 | 带括号的 MCP 条目不生效 |
 
 ### 迁移指南
 
