@@ -778,6 +778,8 @@ MCP 工具遵循 `mcp__<server>__<tool>` 模式，例如：
 - `mcp__filesystem__read_file` \- Filesystem 服务器的读取文件工具
 - `mcp__github__search_repositories` \- GitHub 服务器的搜索工具
 
+普通 MCP 服务器的 `matcher` 和 `if` 按配置里的服务器名匹配，`my-server` 写作 `mcp__my-server__x`；插件 MCP 服务的连字符已转为下划线，写作 `mcp__plugin_my_plugin_srv__x`。这里不做连字符与下划线的等价处理。
+
 ### 为 MCP 工具配置 Hooks
 
 你可以针对特定的 MCP 工具或整个 MCP 服务器：
