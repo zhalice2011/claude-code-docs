@@ -4609,22 +4609,22 @@
     "build-with-claude__compaction-background.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/compaction-background",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/compaction-background.md",
-      "hash": "03357ad4452b0f6aad5982019b7a6fc7eb1bf686676f1b621b88a4fab53b6687",
-      "last_updated": "2026-10-28T22:10:07.313947",
+      "hash": "6b6a842ef516625f5de89e9fa057ab397e690c3c338abafd61cd1b8b06785235",
+      "last_updated": "2026-11-07T00:39:16.298383",
       "source": "platform"
     },
     "build-with-claude__compaction-keep-recent-turns.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/compaction-keep-recent-turns",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/compaction-keep-recent-turns.md",
-      "hash": "baa97161aaf5341fe6c97e7678f21bb6cc8e41f3c5d2c20dd249ccd934539f86",
-      "last_updated": "2026-10-28T22:10:07.954728",
+      "hash": "5ea10feca62646c9555b2e8f8b26b74be12a89092cc4d0dfc6ae1c36ca0b155b",
+      "last_updated": "2026-11-07T00:39:16.953839",
       "source": "platform"
     },
     "build-with-claude__compaction-on-demand.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/compaction-on-demand",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/compaction-on-demand.md",
-      "hash": "2109b26ac323fb643f98ffda0e9585ee998b00e32a79f91257b85396c58333a1",
-      "last_updated": "2026-11-04T19:13:45.987610",
+      "hash": "a498b905f758b93dbd2fb98e40268ebf565b4779451acb3e8faf299450aabcc6",
+      "last_updated": "2026-11-07T00:39:17.670267",
       "source": "platform"
     },
     "build-with-claude__compaction-thinking-blocks.md": {
@@ -6184,7 +6184,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-11-06T18:52:41.884036",
+    "last_fetch_completed": "2026-11-07T00:41:51.485068",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 886,
@@ -6198,7 +6198,7 @@
     "total_files": 883,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-11-06T18:52:41.884060",
+  "last_updated": "2026-11-07T00:41:51.485088",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
