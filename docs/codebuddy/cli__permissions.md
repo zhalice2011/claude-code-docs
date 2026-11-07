@@ -198,7 +198,15 @@ MCP 工具命名格式：`mcp__<server>__<tool>`，用双下划线 `__` 分段�
 
 - 规则不区分大小写；连字符、点号等符号按下划线处理，`mcp__web-search` 与 `mcp__web_search` 等价
 - `*` 只能整段替换最后一节。`mcp__pup*`、`mcp__puppeteer__nav*` 匹配不到任何工具，而且不会报错
+- 末尾的 `(*)` 或 `()` 与不带括号的写法等价，`mcp__puppeteer(*)` 即 `mcp__puppeteer`；括号里写其他内容（包括 `( * )`、`(**)`）的规则匹配不到任何工具
 - MCP 工具只认 `mcp__` 开头的规则，裸 `*` 对它无效；要全部禁用请写 `"deny": ["mcp__*"]`
+- 这些规则与 Claude Code 的差异见[插件参考](./plugins-reference#mcp-规则差异)
+
+#### 插件 MCP 服务
+
+插件 `builtin-calendar` 的 `calendar` 服务可使用整台服务规则 `mcp__plugin_builtin_calendar_calendar` 或 `mcp__plugin_builtin_calendar_calendar__*`，也可使用单工具规则 `mcp__plugin_builtin_calendar_calendar__list_events`。模型看到的工具名里，连字符等符号都转为下划线；权限规则写连字符或下划线都能命中。
+
+当服务片段包含 `__` 时，例如 `plugin:foo_:bar` 的片段为 `plugin_foo__bar`，allow 规则和 agent 的 `tools` 列表只能使用 `mcp__plugin_foo__bar__*` 或完整工具名；`mcp__plugin_foo__bar` 和 `mcp__plugin_foo` 都不会授权。deny 和 ask 规则还可以使用 `mcp__plugin_foo__bar`、`mcp__plugin_foo` 和 `mcp__plugin_foo__*`。片段含多个 `__` 时，例如 `plugin:foo_:bar__baz` 的片段为 `plugin_foo__bar__baz`，deny 和 ask 规则可使用完整片段、第一个 `__` 前的前缀（`mcp__plugin_foo`），以及在任一 `__` 处截出的前缀加 `__*`（`mcp__plugin_foo__*`、`mcp__plugin_foo__bar__*`）。连字符转换后形成的 `__` 同样算数：`plugin:foo-:bar` 的片段也是 `plugin_foo__bar`，规则与 `plugin:foo_:bar` 相同。旧服务名规则不再匹配插件服务；禁用列表和 hook matcher 也需要按新名字重写。配置更新说明见 [插件参考](./plugins-reference#服务键与工具名)。
 
 ### Agent（子代理）
 
