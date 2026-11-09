@@ -17,7 +17,7 @@ Skill 可能根据其能力与指令使用**信息收集与使用**中提到的�
 | 技能市场 | 按推荐、SkillHub、套件分类展示技能，可按需一键安装 |
 | 已安装 | 已安装的本地技能，可直接在对话中调用 |
 
-![技能板块界面，包含技能市场与已安装列表](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/skill-1.BVo7oQ4w.png)
+![技能板块界面，包含技能市场与已安装列表](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/skill-1.BVo7oQ4w.png)
 
 技能市场卡片会展示每个技能的**使用量**与**安装量**，帮助你快速判断技能的热度。右上角支持按**综合、使用量、安装量、更新**四个维度排序，默认按**综合**降序展示；切换排序后列表实时刷新。
 
@@ -29,7 +29,7 @@ Skill 可能根据其能力与指令使用**信息收集与使用**中提到的�
 
 - **通过技能页面添加**：在技能板块中，点击想要添加的技能卡片右上方的 \+ 号，技能安装成功后，窗口上方提示安装成功。
 
-![通过技能卡片右上方的 + 号安装技能](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/skill-install-plus.Cwc-dxdr.png)
+![通过技能卡片右上方的 + 号安装技能](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/skill-install-plus.Cwc-dxdr.png)
 
 - **对话安装**：直接在对话中描述需求（如“帮我找一个能把网页转成 PDF 的技能”），WorkBuddy 会自动搜索技能市场并展示候选技能，确认后即可完成安装。此方式仅支持安装技能市场中的技能。自行上传的技能包需通过「上传技能」导入。
 
@@ -37,19 +37,19 @@ Skill 可能根据其能力与指令使用**信息收集与使用**中提到的�
 
 在技能板块中，点击**添加技能** \> **上传技能**，拖拽或点击**选择文件**，选中本地技能包即可完成导入。导入后系统将自动完成配置，无需额外操作。
 
-![上传技能，选择本地技能包](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/image-17-1.CL2d5GKX.png)
+![上传技能，选择本地技能包](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/image-17-1.CL2d5GKX.png)
 
 ### 创建技能
 
 在技能板块中，点击**添加技能** \> **创建技能**，输入任务描述，WorkBuddy将自动创建相关技能。
 
-![创建技能，输入任务描述](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/skill-4.Ce9uwHkT.png)
+![创建技能，输入任务描述](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/skill-4.Ce9uwHkT.png)
 
 ### 查找并安装技能
 
 在技能板块中，点击**添加技能** \> **查找技能**，输入任务描述，WorkBuddy将自动查找相关技能并完成安装。
 
-![查找并安装技能，输入任务描述](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/skill-3.PTyavE2s.png)
+![查找并安装技能，输入任务描述](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/skill-3.PTyavE2s.png)
 
 ## 管理技能
 
@@ -69,17 +69,17 @@ Skill 可能根据其能力与指令使用**信息收集与使用**中提到的�
 
 技能较多时，通过搜索框输入关键词可快速定位目标技能。
 
-![搜索技能，输入关键词快速定位](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/skill-6.CooXdGGr.png)
+![搜索技能，输入关键词快速定位](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/skill-6.CooXdGGr.png)
 
 ### 卸载技能
 
 需要在本机完全卸载技能时，在技能板块中，点击**已安装**，选择需要卸载的技能，点击「...」\> **卸载**，确认卸载已选技能后，即可完成技能卸载。
 
-![卸载技能，选择技能后点击卸载](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/skilluninstall-20.C5wF-vEj.png)
+![卸载技能，选择技能后点击卸载](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/skilluninstall-20.C5wF-vEj.png)
 
 也支持批量操作卸载，在已安装的技能列表页面，点击**批量管理**，选中多个需要卸载的技能，点击右上角的**卸载**，确认卸载已选技能后，即可完成批量技能卸载。
 
-![批量卸载技能，批量管理后选择多个技能卸载](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/skilluninstall-21.BmujGp47.png)
+![批量卸载技能，批量管理后选择多个技能卸载](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/skilluninstall-21.BmujGp47.png)
 
 ## 注意事项与重点提示
 

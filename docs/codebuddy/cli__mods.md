@@ -515,7 +515,7 @@ ts
 ```
 import type { On, Register, PluginOptions } from 'codebuddy-code';
 ```
-类型一律写 `import type` 或 `{ type X }`。Mod 的模块与 Claude Code 一样按 ES module 原样链接、求值：转译只去掉这两种类型导入（以及 `export type … from`、`export { type X } from`），其余导入即使没用到、或只当类型用，也会加载对应模块（顶层代码照常执行），并按名字核对导出。`import { Register } from 'codebuddy-code'`、从本地文件导入一个 interface 而不写 `type`，都会让模块加载失败（`Export named 'Register' not found in module 'codebuddy-code'.`）。
+类型一律写 `import type` 或 `{ type X }`。Mod 的模块与 Claude Code 一样按 ES module 原样链接、求值：转译只去掉这两种类型导入（以及 `export type … from`、`export { type X } from`），其余导入即使没用到、或只当类型用，也会加载对应模块（顶层代码照常执行），并按名字核对导出。`import { Register } from 'codebuddy-code'`、从本地文件导入一个 interface 而不写 `type`，都会让模块加载失败（`Export named 'Register' not found in module 'codebuddy-code'.`）。只有类型成员的 `namespace`、`export default` 一个 interface 或 type 也不算导出，按值导入它们同样失败；`import x = require(…)` 与 `export = …` 是 CommonJS 写法，ES module 里没有 `require` / `module`，不要在 Mod 里用（Claude Code 执行到即报 `require is not defined` / `module is not defined`）。
 
 `codebuddy-code` 的类型声明**随 CLI 的 npm 包一起发布**，一个自包含的 `codebuddy-code.d.ts` 文件躺在 CLI tarball 的 `types/` 里，文件本身自带 `declare module 'codebuddy-code' { … }` 包裹。你不需要额外装第二个 npm 包、不用配 `paths`、也不会有 `.d.ts` 被写到你的项目下。
 

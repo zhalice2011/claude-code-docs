@@ -80,7 +80,8 @@ json
 | `subagents` | 按内置子代理名称指定模型。格式为 `{"agents": {"<子代理名>": {"model": "..."}}}`；`model` 支持模型 ID、名称、别名、`lite` / `reasoning` 或 `inherit` / `default`。各子代理互不影响，支持用户全局和项目两种范围，可在 `/agents` 中编辑。优先级：`CODEBUDDY_CODE_SUBAGENT_MODEL` \> 本次 Agent 工具调用的 `model` 入参 \> 项目设置 \> 用户全局设置 \> 内置声明 \> 主模型。详见 [子代理文档](./sub-agents) | `{"agents": {"Explore": {"model": "lite"}, "Plan": {"model": "reasoning"}}}` |
 | `variantModels` | 将通用场景变体映射到模型，键为 `lite` 或 `reasoning`，值为模型 ID 或别名。该映射影响所有使用相应变体的逻辑，可通过 `/model:lite` / `/model:reasoning` 编辑。优先级：对应的变体环境变量 \> 项目设置 \> 用户全局设置 \> 主模型的 `relatedModels` \> 适用的产品内置默认 \> 主模型 | `{"lite": "<fast-model-id>", "reasoning": "<reasoning-model-id>"}` |
 | `agent` | 覆盖主线程使用的 agent 名称（内置或自定义 agent），应用该 agent 的 system prompt、工具限制和模型配置。优先级：`product.json default` → `plugin agent` → `settings.json agent` → `CLI --agent` | `"my-reviewer"` |
-| `codebuddy.mainAgent` | 四种主 Agent 模式（`cli` / `ptc` / `minimal` / `create`）与自定义智能体。子键：`enabled` 总闸（缺省开）；`allowUnopted` 未声明 `mainAgentSupport` 的 ACP 宿主（WorkBuddy）是否走模式解析（缺省关，始终原生 `cli`）；`default` 仅「设为默认」写入，作为新会话默认；`lastUsed` 为 Web chip / TUI `/agent-mode` / 新建智能体上次选择，**不覆盖** `default`。进程 `--agent` 压过 `lastUsed`，且不写 `default`。交互 TUI 在 `default` 与 `lastUsed` 都未设置时，新会话默认 PTC，其余入口（含 Agent View / `--bg` 后台会话）默认 `cli`。环境变量 `CODEBUDDY_MAIN_AGENT_ENABLED` / `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` 优先。CLI：`codebuddy config set codebuddy '{"mainAgent":{"enabled":true,"allowUnopted":false}}'` | `{"enabled": true, "allowUnopted": false, "default": "cli"}` |
+| `codebuddy.mainAgent` | 真实主 Agent/角色偏好，与工具模式独立。`enabled` 总闸缺省开启；`allowUnopted` 缺省关闭；`default` 为新会话的明确默认角色，优先于上次选择 `lastUsed`。进程 `--agent` 优先，环境变量 `CODEBUDDY_MAIN_AGENT_ENABLED` / `CODEBUDDY_MAIN_AGENT_ALLOW_UNOPTED` 覆盖对应门控。完整角色目录就绪后自动清理用户层 `default/lastUsed` 中已退休的 `ptc/minimal/create/multitask` 模式名；同名真实角色、产品默认角色、其他设置均保留。不将旧值复制到工具模式偏好 | `{"enabled": true, "allowUnopted": false, "default": "my-reviewer"}` |
+| `codebuddy.toolMode` | 独立工具模式偏好，`default` 优先于 `lastUsed`，值域为 `cli/ptc/minimal/create`；`/agent-mode` 更新此偏好；Harness 的会话 `toolMode` 配置不写此用户偏好；显式切换到不支持模型导致自动回退时，只改当前会话，不修改用户层 `lastUsed/default`。模型未下发支持声明或 Code Mode 总闸关闭时，PTC/极简不可选，运行时回退标准；实际模式应以当前会话选项为准，不能用全局 `lastUsed` 推断 | `{"lastUsed": "cli"}` |
 | `codebuddy.agentHome` | Agent Home（AI 同事 / 频道 / 任务板）的两个开关。Web UI 只有通讯录一个工作台，不再有「单干 / 组队」模式切换：`orchestration` 是用户侧的**自治开关**（设置页「AI 同事 → 允许 Agent 自主组队」），只控制 Agent 能否自主建同事、建频道、写任务板、发言、私信，以及频道提醒注入、互相唤醒与轮次看门狗；缺省为关，关闭时通讯录和已有同事、频道、Job 照常显示。CLI Web UI 首次在浏览器打开（非内嵌 iframe）且从未配置过时会自动写一次 `true`；旧版本里选过「单干」的浏览器会一次性迁移为 `false`，设置里已显式配置过的值不会被覆盖。`enabled` 是运维回滚键，显式 `false` 时 Web UI 回落到普通会话 / Job 列表（已存在的房间数据不动）。两个键只作用于 Web UI 拉起的会话和 AI 同事的 Job；TUI、WorkBuddy、IDE ACP、`-p` 与 SDK stream\-json 会话不受影响。自治关闭时不唤醒同事、不消费唤醒票、不注入组队上下文、不暴露组队工具；唤醒循环、收件箱与看门狗只在自治开启后才启动，同一进程里再关闭自治后它们只空转、不再执行动作，重启进程后完全停止。首次建立通讯录时，只有自治开启才会把仍在运行、名字由用户起的后台 Job 收编为同事，自治关闭时这些 Job 作为无主 Job 显示、行为不变。优先级：`CODEBUDDY_AGENT_HOME_ENABLED`（`=0` 整体关闭、`=1` 整体强开）\> `enabled=false` \> `CODEBUDDY_AGENT_HOME_ORCHESTRATION_ENABLED`（只锁定自治）\> `orchestration`。被环境变量锁定时设置页开关置灰并说明原因 | `{"orchestration": true}` |
 | `statusLine` | 配置自定义状态行以显示上下文。见 \[statusLine 文档](\#状态行配置） | `{"type": "command", "command": "~/.codebuddy/statusline.sh"}` |
 | `enableAllProjectMcpServers` | 自动批准项目 `.mcp.json` 文件中定义的所有 MCP 服务器 | `false` |
@@ -164,7 +165,7 @@ json
 
 #### 用哪个模型？
 
-默认使用 `lite` 变体解析出的模型。想固定 `auto` 使用的模型时，显式配置即可：
+默认优先使用内置模型目录中的 DeepSeek Flash，没有时使用 `lite` 变体解析出的模型；你配置了 `lite` 模型，或会话使用自定义 / 企业模型时，直接使用 `lite` 解析出的模型。判定失败时还会换到 `lite` 模型和当前对话的主模型重试，见[权限模式](./permission-modes)的「判定失败时会怎样？」。想固定 `auto` 使用的模型时，显式配置即可：
 
 json
 ```

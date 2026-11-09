@@ -93,6 +93,8 @@ codebuddy -p "构建一个应用程序" --output-format stream-json
 ```
 每个对话都以初始 `init` 系统消息开始,然后是用户和助手消息列表,最后是包含统计信息的最终 `result` 系统消息。每条消息都作为单独的 JSON 对象发出。
 
+模型调用或生成类工具完成后，还会输出 `system` / `subtype: "usage_update"` 事件，报告本轮已发生的 token 与积分消耗，详见[流式 JSON 每轮用量事件](./stream-json-turn-usage)。阶段事件与终态快照不能 重复累加；`result.usage` 仍为会话累计 token，积分不会写入 `total_cost_usd`。
+
 ### 后台任务事件（异步）
 
 当模型用 `run_in_background: true` 启动后台命令（Bash / PowerShell）、后台工作流或**后台 Agent 子任务**时，CLI 会在 `stream-json` 输出流上为**每个任务**发出独立的 `system` 事件，携带唯一的 `task_id`（多任务并发时据此区分），`tool_use_id` 关联回发起该任务的 tool\_use：
