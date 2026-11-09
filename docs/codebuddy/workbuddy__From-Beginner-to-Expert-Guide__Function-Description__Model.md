@@ -12,7 +12,7 @@
 
 WorkBuddy 提供三档模型模式，按任务复杂度选择：
 
-![模型三档](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-mode.9NY4y8fJ.png)
+![模型三档](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-mode.9NY4y8fJ.png)
 
 | 模式 | 适用场景 | 特点 |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ WorkBuddy 提供三档模型模式，按任务复杂度选择：
 
 强度越高，模型会做更多的分析和自我检查，适合逻辑链条长、容易出错的任务；强度越低，模型倾向直接作答，响应更快。思考强度已默认选择适合绝大多数任务的强度，一般无需单独调整。
 
-![思考强度](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-thinking.B4oE7CN7.png)
+![思考强度](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-thinking.B4oE7CN7.png)
 
 ### 上下文窗口
 
@@ -40,7 +40,7 @@ WorkBuddy 提供三档模型模式，按任务复杂度选择：
 
 只有一个档位的模型不提供切换入口。建议保持默认档位，绝大多数场景都够用；只有在处理超长文档、或需要模型完整记住大量历史内容时，才需要调大。
 
-![「上下文用量」面板：上方为各部分占用，底部切换上下文档位](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-context.B_hqhlU2.png)
+![「上下文用量」面板：上方为各部分占用，底部切换上下文档位](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-context.B_hqhlU2.png)
 
 ### 模型繁忙程度
 
@@ -55,7 +55,7 @@ WorkBuddy 提供三档模型模式，按任务复杂度选择：
 
 处于「极度拥堵」的模型，在模型列表中名称旁还会显示一个红色图标，不用悬停也能看出来。
 
-![模型列表中名称旁的红色拥堵图标，以及悬停卡片中的「繁忙程度：极度拥堵」](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-busy-level.BYdAKqKZ.png)
+![模型列表中名称旁的红色拥堵图标，以及悬停卡片中的「繁忙程度：极度拥堵」](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-busy-level.BYdAKqKZ.png)
 
 繁忙程度仅供参考，不阻止你选择该模型；暂时获取不到负载信息时不显示。
 
@@ -63,7 +63,7 @@ WorkBuddy 提供三档模型模式，按任务复杂度选择：
 
 原模型选择面板中的「Max 模式」开关已移至 **设置 → 智能体 → 经济模式**（个人版默认开启）。
 
-![设置 → 智能体 → 经济模式](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/setting-economy-mode.BpxtJUky.png)
+![设置 → 智能体 → 经济模式](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/setting-economy-mode.BpxtJUky.png)
 
 开启经济模式时，系统会在合适的时机自动压缩上下文，减少长对话中重复传输的内容，降低积分消耗；关闭后全程保留完整上下文、不做压缩，细节不丢，但长对话的积分消耗会明显增加。
 
@@ -103,7 +103,7 @@ WorkBuddy 提供三档模型模式，按任务复杂度选择：
 
 在设置页**模型**中可以通过图形界面管理自定义模型，无需操作配置文件：
 
-![](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-1.BuUbNA6x.png)配置在保存后自动持久化，选择标准供应商时，工具调用、图片输入等能力标记会自动写入，无需手动配置。
+![](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-1.BuUbNA6x.png)配置在保存后自动持久化，选择标准供应商时，工具调用、图片输入等能力标记会自动写入，无需手动配置。
 
 TIP
 
@@ -121,14 +121,14 @@ TIP
 
 如果您已经购买了腾讯云 Token Plan 套餐，可将套餐支持的模型添加到自定义模型配置中。
 
-![](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-2.CVISTIZP.png)第一步：在添加模型页面，根据您购买的套餐类型，选择对应的供应商，可选择如下：
+![](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-2.CVISTIZP.png)第一步：在添加模型页面，根据您购买的套餐类型，选择对应的供应商，可选择如下：
 
 - 腾讯云 Token Plan / Token Plan 企业版专业套餐
 - 腾讯云 Token Plan / Token Plan 企业版轻享套餐
 - 腾讯云 Token Plan / 通用 Token Plan（个人版）
 - 腾讯云 Token Plan / Hy Token Plan（个人版）
 
-![](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-3.BzdIKrh6.png)第二步：填入套餐对应的 API Key。不同套餐的 API Key 可查看如下指引获取：
+![](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-3.BzdIKrh6.png)第二步：填入套餐对应的 API Key。不同套餐的 API Key 可查看如下指引获取：
 
 - [Token Plan 企业版专业套餐 API Key 获取指引](https://cloud.tencent.com/document/product/1823/130660#c517dcb2-4a6d-4fbc-9793-a6fc05467143)
 - [Token Plan 企业版轻享套餐 API Key 获取指引](https://cloud.tencent.com/document/product/1823/130660#c517dcb2-4a6d-4fbc-9793-a6fc05467143)
@@ -139,19 +139,19 @@ TIP
 
 - **请勿将 API Key 分享给他人**。API Key 关联您的账户与套餐额度，泄露可能导致他人盗用您的配额、产生额外费用或造成数据安全风险。
 - **请确认供应商可信**。接入第三方模型前，建议阅读该模型服务方的服务协议与隐私政策，确保其符合您对数据安全与合规的要求。
-![](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-8.DcmeAm0t.png)第三步：选择套餐支持的模型，不同套餐的可用模型不一样。
+![](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-8.DcmeAm0t.png)第三步：选择套餐支持的模型，不同套餐的可用模型不一样。
 
 以下截图以通用 Token Plan（个人版）套餐：GLM\-5 模型为例。
 
-![](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-9.CdQU1hqz.png)- **Coding Plan**
+![](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-9.CdQU1hqz.png)- **Coding Plan**
 
 Coding Plan是为 AI Coding 场景推出的专属订阅套餐，支持接入腾讯云Coding Plan、智谱Coding Plan和Kimi Coding Plan。
 
-![](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-4.K2YW2_K_.png)- **自定义API**
+![](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-4.K2YW2_K_.png)- **自定义API**
 
 内置了主流厂商的预设入口，可一键完成接入：
 
-![](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-5.CPY-Gidd.png)#### 本地部署
+![](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-5.CPY-Gidd.png)#### 本地部署
 
 **Ollama** 是一个开源的本地大模型运行工具，安装后通过一行命令即可拉取并运行开源模型。Ollama 启动后会在本地监听 HTTP 端口（默认 11434），并自动提供兼容 OpenAI 协议的接口供WorkBuddy对接。
 
@@ -161,11 +161,11 @@ Coding Plan是为 AI Coding 场景推出的专属订阅套餐，支持接入腾�
 2. 零成本试用：不用消耗 Token、不用付费 API Key，把硬件当算力。
 3. 离线可用：飞机上、内网开发机、没网的环境也能用 WorkBuddy。
 
-![](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-6.B5r0YXGP.png)#### 自定义
+![](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-6.B5r0YXGP.png)#### 自定义
 
 如果你的模型服务不在上方列表中，可选择**自定义/Custom**，手动填写 URL、API Key 与模型名接入。
 
-![](https://download.codebuddy.cn/web/docs/cbbd45d435c3ba0f103bcc13975579774a5424f6/docs/static/model-7.Buzcl1Ob.png)### 自定义协议
+![](https://download.codebuddy.cn/web/docs/abedd0d496eea798fea3768cebfd87b0d8662f52/docs/static/model-7.Buzcl1Ob.png)### 自定义协议
 
 当模型服务使用非标准 URL 路径（如经过网关或代理层封装）时，可在高级配置中开启**自定义协议**开关。开启后 WorkBuddy将直接按填写的 URL 发起请求，跳过路径校验与自动补全。
 
