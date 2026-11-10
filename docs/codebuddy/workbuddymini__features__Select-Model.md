@@ -4,7 +4,7 @@
 
 点击输入栏中的模型名称（如「Kimi\-K3 ▾」），弹出模型选择面板。
 
-![模型选择面板](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/image21.DzeIrZOL.png)**注：**
+![模型选择面板](https://download.codebuddy.cn/web/docs/cf303e59e43ba95b1f695aa8122791bd2ca2eec6/docs/static/image21.DzeIrZOL.png)**注：**
 
 **当目前任务的第一句话发送后，模型选择才可显现出来。**
 

@@ -43,7 +43,7 @@ CodeBuddy IDE 支持多层级的规则系统，让你能够在不同范围内定
 4. 选择「项目规则」
 5. 填写规则名称、类型和内容
 
-![alt text](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/project.DTEcLCtv.png)
+![alt text](https://download.codebuddy.cn/web/docs/cf303e59e43ba95b1f695aa8122791bd2ca2eec6/docs/static/project.DTEcLCtv.png)
 
 ### 规则文件格式
 
@@ -73,7 +73,7 @@ provider:
 4. 选择「用户规则」
 5. 填写规则名称、类型和内容
 
-![alt text](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/user.vHBnz6DQ.png)
+![alt text](https://download.codebuddy.cn/web/docs/cf303e59e43ba95b1f695aa8122791bd2ca2eec6/docs/static/user.vHBnz6DQ.png)
 
 用户规则存储在用户目录中，不会被版本控制系统跟踪。
 

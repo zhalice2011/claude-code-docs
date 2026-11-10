@@ -28,11 +28,11 @@
 
 可以看到，`WorkBuddy` 会模拟真实浏览行为，按步骤读取页面内容。
 
-![浏览器自动化效果示意](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/image.B5Jk5J9x.png)
+![浏览器自动化效果示意](https://download.codebuddy.cn/web/docs/cf303e59e43ba95b1f695aa8122791bd2ca2eec6/docs/static/image.B5Jk5J9x.png)
 
 最终可输出结构化总结或整理后的文档结果。
 
-![浏览器自动化效果示意](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/image-1.P1Bj-DqB.png)
+![浏览器自动化效果示意](https://download.codebuddy.cn/web/docs/cf303e59e43ba95b1f695aa8122791bd2ca2eec6/docs/static/image-1.P1Bj-DqB.png)
 
 ## 六、使用建议
 

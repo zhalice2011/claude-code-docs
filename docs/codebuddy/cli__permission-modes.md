@@ -76,13 +76,13 @@ default → bypassPermissions → acceptEdits → auto（可用时）→ plan �
 | 模式 | 文案 | 说明 |
 | --- | --- | --- |
 | `default` | 不显示 | 默认模式不额外占位 |
-| `bypassPermissions` | `⏵⏵ bypass permissions on (shift+tab to cycle)` | 可循环切回其他模式；`CODEBUDDY_IS_SANDBOX=1` \+ `-y` 文案相同，颜色改为红色 |
-| `acceptEdits` | `⏵⏵ accept edits on (shift+tab to cycle)` | 可循环切回其他模式 |
-| `auto` | `⏵⏵ auto mode on (shift+tab to cycle)` | 仅在可用时出现 |
+| `bypassPermissions` | `⏵⏵ bypass permissions on (⇧tab to cycle)` | 可循环切回其他模式；`CODEBUDDY_IS_SANDBOX=1` \+ `-y` 文案相同，颜色改为红色 |
+| `acceptEdits` | `⏵⏵ accept edits on (⇧tab to cycle)` | 可循环切回其他模式 |
+| `auto` | `⏵⏵ auto mode on (⇧tab to cycle)` | 仅在可用时出现 |
 | `dontAsk` | `⏵⏵ don't ask on` | 不在循环链里，所以无 cycle hint |
-| `plan` | `⏸ plan mode on (shift+tab to cycle)` | 表示当前在计划模式 |
-| `plan` \+ 前置模式 | `⏸ plan + accept edits (shift+tab to cycle)` 等 | 显示 plan 前继承的基线模式 |
-| `delegate` | `⇢ delegate mode on (shift+tab to cycle)` | 主代理只做协调 |
+| `plan` | `⏸ plan mode on (⇧tab to cycle)` | 表示当前在计划模式 |
+| `plan` \+ 前置模式 | `⏸ plan + accept edits (⇧tab to cycle)` 等 | 显示 plan 前继承的基线模式 |
+| `delegate` | `⇢ delegate mode on (⇧tab to cycle)` | 主代理只做协调 |
 
 ### 启动时指定：`--permission-mode`
 

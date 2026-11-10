@@ -16,7 +16,7 @@ CodeBuddy IDE 支持您进行MCP Server 配置，扩展您的应用程序的功
 1. 在侧栏对话面板右上方，点击 **CodeBuddy Settings** 按钮。
 2. 切换到 MCP 标签页。目前支持自定义配置 MCP Server，同时支持在 MCPMarket 中一键安装 MCP Server。
 
-![alt text](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/mcp1.DCte2S2B.png)
+![alt text](https://download.codebuddy.cn/web/docs/cf303e59e43ba95b1f695aa8122791bd2ca2eec6/docs/static/mcp1.DCte2S2B.png)
 
 ### 一键安装 MCP Server
 
