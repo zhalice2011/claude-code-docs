@@ -20,12 +20,12 @@
 1. 打开 CodeBuddy Agent 工作台
 2. 在左侧 Claw 栏点击齿轮图标，进入「Claw 设置」
 
-![进入Claw设置](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/weixinbot-1.DuavmJmQ.png)
+![进入Claw设置](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/weixinbot-1.DuavmJmQ.png)
 
 3. 在集成列表中找到「微信 ClawBot 集成」
 4. 点击右侧的「配置」按钮
 
-![微信ClawBot集成](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/weixinbot-2.CqhB6i9d.png)
+![微信ClawBot集成](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/weixinbot-2.CqhB6i9d.png)
 
 ### 2\. 等待二维码生成
 
@@ -35,7 +35,7 @@
 
 二维码生成后会直接显示在卡片下方。打开手机微信，扫描该二维码即可完成绑定。
 
-![扫描二维码](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/weixinbot-3.RmrV4-bm.png)
+![扫描二维码](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/weixinbot-3.RmrV4-bm.png)
 
 注意
 
@@ -45,7 +45,7 @@
 
 扫码完成后，卡片状态会变为「已连接」。如果后续需要更换账号，可以点击「解绑」后重新绑定。
 
-![已连接](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/weixinbot-4.C5G6YcJX.png)
+![已连接](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/weixinbot-4.C5G6YcJX.png)
 
 ## 开始使用
 

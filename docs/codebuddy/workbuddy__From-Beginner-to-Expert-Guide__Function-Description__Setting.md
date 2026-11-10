@@ -8,16 +8,16 @@ WorkBuddy 的设置面板集中管理账号、外观、模型、数据等配置�
 
 设置面板在**登录前后均可打开**。点击顶部工具栏的**帮助** \> **设置**是登录前后均可使用的通用入口。
 
-![顶部工具栏帮助菜单中的设置入口](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/help-menu-setting.DD15JgED.png)
+![顶部工具栏帮助菜单中的设置入口](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/help-menu-setting.DD15JgED.png)
 
 此外，登录前后还有各自的专属入口：
 
 - **已登录**：点击左侧边栏底部的**头像**，弹出用户菜单，点击**设置**打开设置面板。
 
-![用户菜单](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/user-menu.Bc8d0fWL.png)
+![用户菜单](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/user-menu.Bc8d0fWL.png)
 - **未登录状态**：在登录界面点击底部的**网络代理**，可进入设置面板。默认定位到**通用** \> **网络代理**，便于登录前排查网络与代理问题，调整完成后可返回登录界面重试。未登录时，设置导航仅提供**通用**、**快捷键**和**获取帮助**，依赖登录的设置项需登录后才能使用。
 
-![登录界面点击底部网络代理进入设置](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/login-network-proxy.BsX8zQIk.png)
+![登录界面点击底部网络代理进入设置](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/login-network-proxy.BsX8zQIk.png)
 
 TIP
 
@@ -36,7 +36,7 @@ TIP
 | Buddy 加油站 | 参与当前活动并获取积分 |
 | 去邀约 | 邀请好友参与活动并获取积分 |
 | 成长计划 | 完成成长任务，获取能量并解锁专属 Buddy |
-| 外观 | 切换浅色或深色主题 |
+| 外观 | 切换浅色、深色，或跟随系统自动切换，详见[外观](#外观) |
 | 记忆与进化 | 查看与管理记忆，详见[记忆](./Memory) |
 | 意见反馈 | 查看帮助文档或提交反馈 |
 | 检查更新 | 检查当前版本并按提示更新，也可在关于页面[检查与安装更新](#检查与安装更新) |
@@ -46,7 +46,7 @@ TIP
 
 设置面板采用**左侧导航 \+ 右侧内容区**结构，左侧为设置项导航，右侧为对应配置内容，**修改即时生效、无需重启**。
 
-![设置面板](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/setting-panel.DMOGw4qt.png)
+![设置面板](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/setting-panel.DMOGw4qt.png)
 
 左侧导航按照功能分为设置、功能、数据与安全三组，选择对应设置项后，可在右侧查看和修改相关配置。
 
@@ -55,7 +55,7 @@ TIP
 | **设置** | 通用 | 语言、字体大小、锁屏运行、运行时防止系统休眠、开机自启、网络代理、通知等基础设置 |
 | 个人主页 | 管理账号资料与个人信息 |
 | 套餐与积分 | 查看套餐、用量及积分信息 |
-| 外观 | 切换软件主题 |
+| 外观 | 切换软件主题：浅色、深色或跟随系统，详见[外观](#外观) |
 | 快捷键 | 查看和配置键盘快捷键 |
 | **功能** | 个性化 | 配置 AI 对话风格和个性化选项 |
 | 记忆与进化 | 记忆的管理与清除，详见[记忆](./Memory) |
@@ -75,7 +75,7 @@ TIP
 
 不记得某个设置项在哪时，可以使用左侧导航顶部的 **搜索设置项**。
 
-![设置面板左上角的「搜索设置项」](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/setting-search.BzaE9-zm.png)
+![设置面板左上角的「搜索设置项」](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/setting-search.BzaE9-zm.png)
 
 使用方法：
 
@@ -87,11 +87,49 @@ TIP
 
 搜索只查找设置项，不搜索已填写的代理地址、文件路径等内容；未登录时只搜索当前可用的设置。
 
+## 外观
+
+在**设置** \> **外观**中切换界面主题。除此之外，也可以点击左下角头像，在菜单里点击**外观**直接进入。
+
+![头像菜单中的「外观」入口，右侧的「外观上新」表示有新上线的主题](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/setting-appearance-menu.DyoFxzc9.png)
+
+上方的**效果预览**会显示当前主题，下方的**全部主题**以卡片形式列出可选主题，点击卡片即可切换，选择会自动保存。
+
+![设置 > 外观：上方是效果预览，下方是全部主题卡片，包含浅色、深色、跟随系统和多个个性主题](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/setting-appearance-themes.UM9bYpor.png)
+
+主题卡片从前到后依次为：
+
+| 主题 | 说明 |
+| --- | --- |
+| **浅色** | 始终使用浅色界面 |
+| **深色** | 始终使用深色界面 |
+| **跟随系统** | 界面的明暗跟随电脑系统的亮色 / 暗色模式 |
+| 其他主题 | 带有图案的个性主题，如有风、经典 QQ 等 |
+| **敬请期待** | 占位卡，表示后续会上线更多主题，不能点击 |
+
+效果预览的右上角会显示当前主题的有效期：长期提供的主题显示「永久有效」，限时上线的主题显示「有效期至 …」。限时主题到期后会下架，WorkBuddy 会提示「限时主题已到期」，并自动切换为默认的浅色主题。
+
+个性主题的卡片右上角会标注所需的套餐版本（标准、高级、旗舰；体验版可用的主题不显示标注）。当前套餐不满足要求的个性主题，可以点击后临时预览效果，但不会保存为当前使用的主题；离开外观页后会自动还原为之前保存的主题，页面底部会出现升级引导。浅色、深色、跟随系统不受套餐限制。
+
+### 跟随系统
+
+选择**跟随系统**后：
+
+- 系统为亮色模式时，WorkBuddy 显示浅色界面；系统为暗色模式时，显示深色界面；
+- 使用期间系统的亮色 / 暗色模式发生切换（例如 macOS 设置为随日夜自动切换），WorkBuddy 会立即同步切换，无需重启；
+- 该选择会自动保存，重启 WorkBuddy 后仍为跟随系统；
+- 在效果预览中，跟随系统会按当前生效的明暗显示对应的浅色或深色预览；
+- 之后再选择其他主题（浅色、深色或个性主题），就不再跟随系统。
+
+提示
+
+- **外观**设置页只对个人版账号显示；企业版账号以及网页版中没有这个设置页，头像菜单里的**外观**只提供浅色和深色两个选项，没有「跟随系统」；
+- 外观设置页是否出现，还取决于当前版本是否已开放该功能。
 ## 运行时防止系统休眠
 
 桌面端在 **设置 → 通用 → 权限** 中提供 **运行时防止系统休眠** 开关，默认开启。
 
-![设置 → 通用 → 权限 中的「运行时防止系统休眠」开关](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/setting-prevent-sleep.D85vPeaf.png)
+![设置 → 通用 → 权限 中的「运行时防止系统休眠」开关](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/setting-prevent-sleep.D85vPeaf.png)
 
 开启后，本地任务执行期间电脑会保持唤醒，避免因空闲自动休眠导致任务中断，屏幕仍可正常熄灭。任务结束后，该功能不再阻止系统休眠；关闭开关则不提供这项任务运行期间的保护。开关修改立即生效，重启 WorkBuddy 后保留你的选择。
 
@@ -105,7 +143,7 @@ TIP
 
 任务完成、需要你确认或中断时，WorkBuddy 会通过系统通知提醒你，不必一直盯着窗口。在**设置** \> **通用** \> **通知**中管理。
 
-![设置 → 通用 → 通知](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/setting-notification.CJINdn9N.png)
+![设置 → 通用 → 通知](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/setting-notification.CJINdn9N.png)
 
 | 设置项 | 说明 |
 | --- | --- |
@@ -139,7 +177,7 @@ TIP
 
 查看当前版本、访问官网，也可扫码关注公众号、视频号与腾讯频道，获取实用技巧与产品动态。
 
-![关于](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/setting-about.BqzUZcOa.png)
+![关于](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/setting-about.BqzUZcOa.png)
 
 ### 检查与安装更新
 

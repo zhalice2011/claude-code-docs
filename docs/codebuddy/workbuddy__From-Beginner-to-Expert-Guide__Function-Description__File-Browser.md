@@ -29,7 +29,7 @@
 
 独立文件浏览器有自己的程序图标。
 
-![程序坞里并排的两个图标：左边是 WorkBuddy 主程序，右边是 WorkBuddy 文件浏览器](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/file-browser-dock-icons.B8XTJP-y.png)
+![程序坞里并排的两个图标：左边是 WorkBuddy 主程序，右边是 WorkBuddy 文件浏览器](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/file-browser-dock-icons.B8XTJP-y.png)
 
 - 只看文件、不回到主窗口时，可以只操作独立文件浏览器，和WorkBuddy主程序互不影响；
 - 关闭文件窗口不会退出 WorkBuddy 主程序，反之亦然。
@@ -41,10 +41,45 @@
 - 标签上显示**文件类型图标 \+ 文件名**（过长会省略）；
 - 点击标签切换文件，按住标签拖动可以调整顺序；
 - 在标签上右键：**复制路径**、**打开文件位置**、**关闭**、**关闭右侧标签页**、**关闭其他标签页**，或把该文件**在新窗口打开**；
-- 快捷键 `Ctrl / Cmd + W` 关闭当前标签；
+- 快捷键 `Ctrl / Cmd + W` 关闭当前标签，其他快捷键见[快捷键](#快捷键)；
 - 点击标签右侧的 **\+**：可以新建文件、打开文件，也会展示**最近打开**的文件列表。
 
-![同一个窗口打开多个文件，标签可切换、拖动排序](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/file-browser-tabs.C2jOva1C.png)
+![同一个窗口打开多个文件，标签可切换、拖动排序](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/file-browser-tabs.C2jOva1C.png)
+
+## 快捷键
+
+独立文件浏览器支持以下快捷键。焦点在文件内容、右侧对话栏或标签栏时都可以使用，且只在独立文件浏览器窗口内生效，不影响 WorkBuddy 主窗口。macOS 上的长按 `⌘ + Q` 退出是全局快捷键，不在此列，见[长按 ⌘Q 退出](#长按-⌘q-退出-macos)。
+
+| 操作 | macOS | Windows |
+| --- | --- | --- |
+| 关闭当前标签 | `⌘ + W` | `Ctrl + W` 或 `Ctrl + F4` |
+| 保存（Word / Excel / PPT） | `⌘ + S` | `Ctrl + S` |
+| 新建文件（展开标签栏的 **\+** 菜单） | `⌘ + N` | `Ctrl + N` |
+| 打开本地文件 | `⌘ + O` | `Ctrl + O` |
+| 关闭全部独立文件浏览器窗口 | `⌘ + ⌥ + W` | `Alt + F4` |
+
+在标签上右键，以及把鼠标悬停在保存按钮上时，也会显示对应的快捷键。
+
+**关闭标签与关闭全部窗口：**
+
+- 关闭当前标签时，如果该窗口只剩最后一个标签，会关闭整个窗口；文件有未保存的改动时，会先弹出保存提示；
+- 关闭全部窗口只会关闭独立文件浏览器窗口，WorkBuddy 主窗口不受影响；每个窗口各自弹出保存提示，在某个窗口选择取消，只会保留这一个窗口。
+
+**新建与打开：** `⌘ / Ctrl + N` 不会直接创建文件，而是展开 **\+** 菜单，再选择要新建的文件类型；`⌘ / Ctrl + O` 与 **\+** 菜单里的**打开文件**相同。
+
+### 长按 ⌘Q 退出（macOS）
+
+在 macOS 上，用键盘按 `⌘ + Q` 需要**长按**才会退出 WorkBuddy。这是**全局快捷键**，不限于独立文件浏览器：在 WorkBuddy 的任何窗口（包括主窗口）里按都会生效，退出的是整个 WorkBuddy，而不只是当前窗口。操作方式：
+
+1. 按住 `⌘ + Q`，屏幕上出现「长按 ⌘Q 退出 WorkBuddy」的进度提示；
+2. 持续按住约 1 秒，进度走满后退出；
+3. 中途松开 `Q` 或 `⌘`，或只是短按一下，都会取消，不会退出。
+
+提示
+
+长按退出与在菜单栏点击**退出**的确认流程相同：如果有任务正在运行，会先请求确认；独立文件浏览器里有未保存的改动时，也会弹出保存提示，可选择是否保存。
+
+为避免丢失改动，建议先保存文件，再退出。
 
 ## AI 人机双写
 
@@ -54,11 +89,11 @@
 
 窗口右侧的 AI 对话栏**默认收起**——打开文件时先保证你安静看文档；点右上角的「**和 WorkBuddy 对话**」按钮即可展开。在对话框收起状态下使用「**AI 编辑**」，也会自动展开侧边栏。AI 对话面板与正文之间的分隔条可拖拽，自由调整宽度。
 
-![默认收起状态，点右上角「和 WorkBuddy 对话」按钮展开](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/file-browser-ai-collapsed.CuOnjPrT.png)
+![默认收起状态，点右上角「和 WorkBuddy 对话」按钮展开](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/file-browser-ai-collapsed.CuOnjPrT.png)
 
 **AI 能帮你做什么：**围绕当前打开的这个文件工作——总结要点、改写润色、续写补充、按要求调整内容等。你可以选中正文内容**引用后再提问**，AI 会精准修改对应位置，并把结果落到文档里，详见[人机双写](./Knowledge-Base/Cowriting)。
 
-![展开 AI 对话栏，围绕当前文件提问和修改](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/file-browser-ai-expanded.CqOD3CAx.png)
+![展开 AI 对话栏，围绕当前文件提问和修改](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/file-browser-ai-expanded.CqOD3CAx.png)
 
 **对话与文件的关系：**
 
@@ -80,7 +115,7 @@
 
 各入口的功能说明见[系统设置 → 打开设置面板](./Setting#一、打开设置面板)。
 
-![账号面板：入口与主窗口内一致](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/file-browser-account.DxlmhTAN.png)
+![账号面板：入口与主窗口内一致](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/file-browser-account.DxlmhTAN.png)
 
 ### 不登录能用吗
 
@@ -88,13 +123,13 @@
 - **Office 文档（Word / Excel / PPT）编辑需要登录**；
 - **Markdown 不登录也能看、能编辑**。
 
-![未登录：只读预览提示，不展示编辑工具栏](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/file-browser-not-logged-in.WZ0uRyqO.png)
+![未登录：只读预览提示，不展示编辑工具栏](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/file-browser-not-logged-in.WZ0uRyqO.png)
 
 ## 编辑与保存
 
 文件打开后可直接查看和编辑，顶部工具栏会**按文件类型**提供不同功能。
 
-![工具栏按文件类型提供不同功能，底部显示当前页码与字数](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/file-browser-editor.sC_13NR4.png)
+![工具栏按文件类型提供不同功能，底部显示当前页码与字数](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/file-browser-editor.sC_13NR4.png)
 
 **各文件类型的保存方式：**
 
@@ -122,7 +157,7 @@
 - **上传**：点上传可选择上传渠道（资料库、腾讯文档、ima 知识库、乐享知识库等）；
 - **更多（…）**：提供**打开文件夹**与**另存为**等功能，后续还会支持更多。
 
-![分享：文件会自动上传到资料库，并提供在线版本与访问权限设置](https://download.codebuddy.cn/web/docs/fbbc3b0633bb70170caba241900305e6b2622b06/docs/static/file-browser-share.WgtvHc8Q.png)
+![分享：文件会自动上传到资料库，并提供在线版本与访问权限设置](https://download.codebuddy.cn/web/docs/69e48f54c2c1c6ad74104d4fbf1c6d0d40139e81/docs/static/file-browser-share.WgtvHc8Q.png)
 
 ## 注意事项与重点提示
 
