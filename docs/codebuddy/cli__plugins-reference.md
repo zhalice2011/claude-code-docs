@@ -869,8 +869,8 @@ codebuddy plugin marketplace add https://example.com/marketplace.json
 **清单验证错误**:
 
 - `Invalid JSON syntax: Unexpected token } in JSON at position 142`: 检查缺少的逗号、多余的逗号或未引用的字符串
-- `Plugin has an invalid manifest file at .codebuddy-plugin/plugin.json. Validation errors: name: Required`: 缺少必需字段
-- `Plugin has a corrupt manifest file at .codebuddy-plugin/plugin.json. JSON parse error: ...`: JSON 语法错误
+- `The manifest file of plugin <name> at .codebuddy-plugin/plugin.json is invalid. Validation errors: name: Required`: 缺少必需字段
+- `The manifest file of plugin <name> at .codebuddy-plugin/plugin.json is not valid JSON. JSON parse error: ...`: JSON 语法错误
 
 **插件加载错误**:
 

@@ -6,7 +6,7 @@
 
 进入 App 主页，点击左上角菜单（≡）展开侧边栏：
 
-![](https://download.codebuddy.cn/web/docs/573430028fc745ac4394bcf8220c42e646d04d31/docs/static/sidebar-1.CIU5h9q-.png)## 侧边栏结构
+![](https://download.codebuddy.cn/web/docs/1b8b6f90edeac6626b90f066dd38dc995dd0d803/docs/static/sidebar-1.CIU5h9q-.png)## 侧边栏结构
 
 侧边栏从上到下包含以下功能模块：
 
@@ -19,7 +19,7 @@
 
 > 点击模式标签即可切换。使用连接电脑时，请确保电脑端 WorkBuddy 处于运行状态且使用同一微信账号登录。
 
-![](https://download.codebuddy.cn/web/docs/573430028fc745ac4394bcf8220c42e646d04d31/docs/static/sidebar-2.BNpZdRES.png)### 新建任务
+![](https://download.codebuddy.cn/web/docs/1b8b6f90edeac6626b90f066dd38dc995dd0d803/docs/static/sidebar-2.BNpZdRES.png)### 新建任务
 
 点击「\+ 新建任务」可直接跳转到对话页面，开始全新的空白对话。
 
