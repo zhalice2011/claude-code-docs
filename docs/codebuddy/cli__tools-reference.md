@@ -12,7 +12,7 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `AskUserQuestion` | 向用户提出多选问题，收集需求或澄清歧义 | 是 |
 | `AskUserForStructuredInput` | 让客户端把一段受限 JSON Schema 渲染成表单，收集结构化答复（多字段、每字段独立控件）。适合"多个 MCP 授权 / 多字段表单"等超出单/多选表达能力的场景。需 env `CODEBUDDY_ENABLE_ASK_USER_FOR_STRUCTURED_INPUT=1` 且客户端声明 `elicitation.form` capability，否则模型看不到该工具 | 是 |
 | `Bash` | 在你的环境中执行 Shell 命令。参见 [Bash 工具行为](#bash-工具行为) | 是 |
-| `CronCreate` | 调度定时或一次性任务。默认留在当前会话（退出后失效）。`durable: true` 只是写盘，重启后仍在创建它的会话里执行，不会改投到别的会话；只有显式传入 `agentId` 才进入专属任务会话。持久化需要一次授权。参见[定时任务](./scheduled-tasks) | durable 任务需要 |
+| `CronCreate` | 调度定时或一次性任务。默认仅当前会话有效（退出后失效）；传 `durable: true` 会写盘并在专属任务会话中持续执行，此时需要一次授权。参见[定时任务](./scheduled-tasks) | durable 任务需要 |
 | `CronDelete` | 按 ID 取消定时任务 | 否 |
 | `CronList` | 列出当前会话中所有定时任务 | 否 |
 | `DeferExecuteTool` | 执行通过 `ToolSearch` 发现的延迟加载工具 | 否 |
