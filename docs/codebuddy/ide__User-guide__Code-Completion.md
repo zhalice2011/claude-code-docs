@@ -149,7 +149,7 @@ json
 2. 打开设置
 3. 导航到 **Tab** 部分
 
-![alt text](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/ide-settings-tab.DIExMfnu.png)
+![alt text](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/ide-settings-tab.DIExMfnu.png)
 
 Tab 设置页面提供：
 

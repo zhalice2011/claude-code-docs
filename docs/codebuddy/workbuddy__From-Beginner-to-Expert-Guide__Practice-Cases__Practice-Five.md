@@ -20,7 +20,7 @@
 
 执行过程中，`WorkBuddy` 通常会完成搜索、整理、生成和发送等步骤，整体耗时约 `2` 到 `3` 分钟。
 
-![](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/image-7.DB88Cppa.png)![](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/image-8.Cwga7sex.jpeg)## 四、设置每日定时发送
+![](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/image-7.DB88Cppa.png)![](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/image-8.Cwga7sex.jpeg)## 四、设置每日定时发送
 
 手动跑通后，可继续创建定时任务，让简报按固定时间自动发送。
 
@@ -30,7 +30,7 @@
 
 创建成功后，可在左侧导航栏的**定时任务**中统一管理所有定时任务。
 
-![](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/image-9.27UIKvuI.png)![](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/image-10.1KKJP4Aa.png)## 五、个性化调整
+![](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/image-9.27UIKvuI.png)![](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/image-10.1KKJP4Aa.png)## 五、个性化调整
 
 简报内容可以通过自然语言持续调整，常见方向包括：
 
