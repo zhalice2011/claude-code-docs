@@ -2,7 +2,7 @@
 
 新建任务栏是 WorkBuddy 创建和执行本地任务的工作入口，支持任务创建、任务配置和多种输入方式。
 
-![新建任务栏主界面](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/task-bar-overview.D6rPI487.png)
+![新建任务栏主界面](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/task-bar-overview.D6rPI487.png)
 
 ## 新建任务
 
@@ -36,7 +36,7 @@
 
 WorkBuddy 提供三种工作模式，可根据任务复杂程度和是否需要实际执行操作进行选择。
 
-![工作模式菜单](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/task-mode-menu.C-D1U6_A.png)
+![工作模式菜单](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/task-mode-menu.C-D1U6_A.png)
 
 | 模式 | 说明 | 适用场景 |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Plan 模式的核心是「先出方案，再动手执行」。开启后，模型
 
 **使用前建议先设置工作空间。** WorkBuddy 将在该空间中读取和保存文件，未指定路径的任务也会优先在此空间内执行。
 
-![选择工作空间](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/workspace-select.BLaOUOZl.png)
+![选择工作空间](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/workspace-select.BLaOUOZl.png)
 
 什么是文件路径？
 
@@ -119,7 +119,7 @@ Plan 模式的核心是「先出方案，再动手执行」。开启后，模型
 
 ![](https://download.codebuddy.cn/web/docs/71c8722a08165ddedf566c5f1711bb0ec8ea991b/docs/static/image-7.C15-_p58.png)在对话框中选择已安装技能，WorkBuddy 执行任务时将自动调用对应能力：
 
-![选择技能](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/skill-select.PLLHy_nP.png)
+![选择技能](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/skill-select.PLLHy_nP.png)
 
 | 技能示例 | 效果 |
 | --- | --- |
@@ -135,7 +135,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 
 快捷管理连接器，连接外部服务，扩展 AI 能力。当任务需要使用外部服务中的数据或能力时，可以通过连接器将第三方应用接入任务。连接后，可直接在任务中通过自然语言调用对应服务。实际可使用的能力和数据范围取决于服务本身提供的能力及你的授权范围。
 
-![连接器列表](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/connector-select.DAbSUBAG.png)
+![连接器列表](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/connector-select.DAbSUBAG.png)
 
 ### 权限管理
 
@@ -144,7 +144,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - **默认权限：** 涉及敏感操作，如文件修改或工作空间外执行时，需要用户确认执行或由用户自行完成操作。
 - **完全访问权限：** 开启后**当前客户端内所有任务统一生效**：减少确认步骤，允许**WorkBuddy**直接执行更多操作，可能涉及敏感操作、文件修改或外部执行；关闭后所有任务恢复默认确认流程。仅建议在用户信任当前任务时使用。
 
-![默认权限](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/permission-select.Cx8CN6Pr.png)
+![默认权限](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/permission-select.Cx8CN6Pr.png)
 
 ## 任务输入与引导
 
@@ -154,7 +154,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 
 您可以先将鼠标悬停在提示词模板上，在输入框中预览提示词。预览内容以灰色文字显示，不会覆盖已有输入，也不会作为消息发送；移开鼠标或切换模板后，预览会消失或更新。
 
-![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/template-preview.k-ShhkZY.png)
+![悬停模板时输入框显示灰色预览文案](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/template-preview.k-ShhkZY.png)
 
 找到合适的提示词后，点击模板，即可将完整提示词填入输入框。您可以根据实际需求修改提示词，再发送任务。
 
@@ -174,7 +174,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - **结束录音**：再次点击语音按钮，或松开长按的快捷键，即可结束录音。
 - **继续编辑**：语音输入结束后，输入框会保持聚焦，您可以直接修改识别结果、补充文字，或再次使用语音输入。
 
-![语音输入退出后，输入框保持聚焦状态，转写内容已回填](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/voice-input-exit.DWTOAxMY.png)
+![语音输入退出后，输入框保持聚焦状态，转写内容已回填](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/voice-input-exit.DWTOAxMY.png)
 
 ### 音频转文字
 
@@ -216,7 +216,7 @@ WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写�
 - 最多支持上传 **50 个文件**，单个文件大小不限，格式规则与附件按钮上传一致；不合规文件会在页面顶部给出具体错误提示（如不支持的文件类型）；
 - 拖出页面或按 ESC 可取消，输入框内容不受影响。
 
-![拖拽添加文件](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/drag-upload.ZJh9WiEf.png)
+![拖拽添加文件](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/drag-upload.ZJh9WiEf.png)
 
 ### 超长粘贴自动收起
 
@@ -225,7 +225,7 @@ WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写�
 - 鼠标悬停在条目上可预览原文，并看到「点击胶囊可展开内容进行编辑」提示；点击后原文完整展开到输入框中，可继续编辑，条目自动移除；
 - 不超过 3000 字符的粘贴保持原样，不触发收起。
 
-![超长粘贴自动收起](https://download.codebuddy.cn/web/docs/7c40dbaf171f1b60727b36d5e5dfeb405ad55bb6/docs/static/paste-chip.BbAZO2Nv.png)
+![超长粘贴自动收起](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/paste-chip.BbAZO2Nv.png)
 
 ### 召回历史输入
 
@@ -233,13 +233,38 @@ WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写�
 
 ### 添加微信聊天记录
 
-在微信或企业微信中把聊天记录**转发到 WorkBuddy**，客户端会被唤起，并在输入框中生成一条**微信聊天记录附件**，随任务一起交给 Agent 处理。
+在微信或企业微信中把聊天记录**转发到 WorkBuddy**，客户端会被唤起，并在输入框中生成一张**转发内容卡片**，随任务一起交给 Agent 处理。
 
-- 附件会标明来源为微信 / 企业微信聊天记录，并显示文件名、文件大小或消息条数等信息；
-- 聊天记录以压缩包形式投递，解析中、解析失败等状态会在附件上体现，失败时可将其删除后重新转发；
-- 附件添加后同样**不会自动发送**，可继续补充文字说明再提交；
+**转发入口：** 在微信的转发窗口中点击**转发到其他应用**，在弹出的列表中选择**腾讯WorkBuddy**。
+
+![在微信的「转发到其他应用」列表中选择「腾讯WorkBuddy」](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/wechat-forward-entry.BBdlLbSl.png)
+
+转发成功后，输入框里会出现下面这样的卡片：
+
+![输入框中的「转发内容」卡片，显示消息预览和「2 条消息」](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/wechat-forward-card.DW7Fysbx.png)
+
+- 卡片标题为「转发内容」，下方显示前几条消息的预览（格式为「发送者：内容」，图片、视频等显示为 \[图片]、\[视频]），底部显示「N 条消息」；
+- 卡片单独占一行，位于输入框内文字的上方，继续输入的文字从卡片下方的下一行开始；点击卡片上的移除按钮可以删除；
+- 聊天记录以压缩包形式投递，准备期间卡片显示「正在准备聊天记录…」，准备失败时卡片会给出提示（如「附件准备失败」），失败时可将其移除后重新转发；还在准备时点发送，会提示「微信聊天记录附件仍在准备，请稍后重试」；
+- 一次最多可以添加 **3 段**聊天记录，超过时会提示「仅支持最多 3 段聊天记录」；每一段里有多少条消息，不影响这个数量；
+- 卡片添加后同样**不会自动发送**，可继续补充文字说明再提交；发送后，卡片同样单独占一行显示在消息文字上方，多段记录各占一行；
 - 无论 WorkBuddy 当时未启动、已启动还是在后台运行，从微信侧转发都能正常唤起并接收。
 
+#### 查看聊天记录详情
+
+点击卡片（输入框中和已发送的消息里都可以），会在桌面客户端打开一个独立的「转发内容」窗口，按原有顺序逐条显示聊天记录：
+
+![「转发内容」窗口：逐条显示发送者、时间和内容，图片以缩略图展示](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/wechat-forward-detail.CM7fdA9C.png)
+
+- 每条消息显示发送者、时间和内容；
+- 图片显示为缩略图，点击可放大查看；视频可以直接播放；文件显示为文件名，点击即可下载；
+- 记录里包含嵌套的转发聊天记录时，会显示为一个「\[聊天记录]」入口，并标注包含的消息条数，点击会在**新窗口**中打开更深一层；关闭新窗口不会关闭上一级窗口；
+- 关闭窗口后回到原来的界面，输入框里已有的文字和卡片不受影响。macOS 使用窗口左上角的关闭按钮，Windows 点击窗口右上角的 ×。
+
+提示
+
+- 聊天记录详情按账号保存在本机，切换到其他账号后，看不到原账号转发的记录；
+- 长时间没有查看的记录，或本机占用空间过大时，较早的记录会被自动清理。已被清理的记录再点开，窗口会提示「暂无法读取完整聊天记录。」
 ### 斜杠命令（Slash Command）补全
 
 在项目会话的输入框中输入 `/`，即可看到当前项目的斜杠命令补全（与 CodeBuddy Code 一致）：
@@ -249,6 +274,16 @@ WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写�
 - **优先级合并**：项目级、用户级与内置命令按统一优先级合并，同名命令的覆盖行为与 CodeBuddy Code 一致；
 - **不串项目**：切换项目或新建会话后，补全列表只包含当前项目可用的命令；
 - 命令文件新增、修改或删除后，补全列表会自动刷新。
+
+### @ 浏览器操作
+
+进入**设置** \> **智能体** \> **浏览器操控**，点击**安装**，开启状态开关。
+
+![设置 > 智能体 > 浏览器操控中开启 Browser Use](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/browser-use-setting.BZDp4qDu.png)
+
+在输入框中输入 `@`，候选列表会显示**浏览器操作**。选择该选项即可自动启用浏览器操作能力，在当前任务中使用浏览器执行网页操作，无需手动描述具体的浏览步骤。
+
+![输入 @ 后候选列表中显示「浏览器操作」](https://download.codebuddy.cn/web/docs/aa0df7eb4d46a82b854eb7ca91ac6e187927af76/docs/static/browser-use-at-mention.BGMwIQW5.png)
 
 ## 声明
 

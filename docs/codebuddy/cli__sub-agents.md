@@ -163,6 +163,35 @@ skills: skill1, skill2  # 可选 - 自动加载的技能
 
 支持两种写法。
 
+#### `tools` 与 `mcpServers` 如何配合
+
+`tools` 中的内置工具清单限制内置工具；`mcpServers` 为该子代理补充通过安全校验的 MCP 服务。 如果 `tools` 明确列出 MCP 工具，则这份更具体的清单限制所有 MCP 工具，`mcpServers` 不会扩大它。
+
+| 子代理配置 | 内置工具 | MCP 工具 |
+| --- | --- | --- |
+| 不写 `tools`，不写 `mcpServers` | 继承默认工具 | 继承可用 MCP |
+| `tools: [Read]` | 仅列出的内置工具 | 不自动继承 MCP |
+| `tools: [Read]` \+ `mcpServers: [docs]` | 仅 Read | 可用 docs 服务的工具 |
+| `tools: []` | 不继承内置工具 | 不自动继承 MCP |
+| `tools: []` \+ `mcpServers: [docs]` | 不继承内置工具 | 可用 docs 服务的工具 |
+| `tools: [mcp__docs__search]` \+ `mcpServers: [docs]` | 不继承内置工具 | 仅 docs 的 search；不能使用该服务的其他工具 |
+| `tools: [mcp__docs]` 或 `tools: [mcp__docs__*]` | 不继承内置工具 | docs 服务的全部工具，不含其他服务 |
+
+例如，保留只读内置工具，同时使用配置中心 MCP：
+
+yaml
+```
+tools:
+  - Read
+  - ToolSearch
+  - DeferExecuteTool
+mcpServers:
+  - 配置中心
+```
+同时提供 `ToolSearch` 和 `DeferExecuteTool` 时，MCP 延迟工具仍通过搜索和延迟执行使用。 标准子代理模式下没有这对入口时，授权的 MCP 工具直接出现在模型工具列表中；无需添加 Read、Write、Bash 等无关工具。宿主的工具模式与显式延迟策略仍然有效。 `mcp__*` 不支持作为允许清单的全局通配；需要默认继承时省略 `tools`。
+
+服务声明不是免审批授权：项目本地批准、strict MCP、工具 deny、调用审批与会话隔离仍然生效。 未继承 MCP 的子代理只获得自己的已接纳声明，不会因此获得父代理或兄弟代理的其他私有服务。 平台可能提供独立的协作工具；`tools: []` 不会把 Read、Write、Bash 等默认工具重新注入。
+
 **引用已有全局 MCP server**:
 
 yaml
