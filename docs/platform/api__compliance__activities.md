@@ -798,11 +798,11 @@ compliance activities that can be filtered by various criteria.
 
   - `"claude_skill_auto_disabled"`
 
-    A skill that had been turned on for a member automatically was turned off for them automatically, not by the member; reason says why. A member turning a skill off themselves is recorded as claude_skill_disabled.
+    A skill that had been turned on for a member automatically was turned off for them automatically, not by the member; reason says why.
 
   - `"claude_skill_auto_enabled"`
 
-    A skill was turned on for a member automatically, not by the member; trigger gives the cause, such as another member sharing an eligible skill with them. A member turning a skill on themselves is recorded as claude_skill_enabled.
+    A skill was turned on for a member automatically, not by the member; trigger gives the cause, such as another member sharing an eligible skill with them.
 
   - `"claude_skill_created"`
 
@@ -3228,11 +3228,11 @@ compliance activities that can be filtered by various criteria.
 
   - `"claude_skill_auto_disabled"`
 
-    A skill that had been turned on for a member automatically was turned off for them automatically, not by the member; reason says why. A member turning a skill off themselves is recorded as claude_skill_disabled.
+    A skill that had been turned on for a member automatically was turned off for them automatically, not by the member; reason says why.
 
   - `"claude_skill_auto_enabled"`
 
-    A skill was turned on for a member automatically, not by the member; trigger gives the cause, such as another member sharing an eligible skill with them. A member turning a skill on themselves is recorded as claude_skill_enabled.
+    A skill was turned on for a member automatically, not by the member; trigger gives the cause, such as another member sharing an eligible skill with them.
 
   - `"claude_skill_created"`
 
@@ -4867,7 +4867,7 @@ compliance activities that can be filtered by various criteria.
 
 - `"anthropic-version": string`
 
-  The version of the Claude API to use. Send an available version on every request. Some other Compliance API endpoints return a 400 error for a request that omits this header, or sends a value that is not an available version. This endpoint treats such a request as version `2023-06-01`.
+  The version of the Claude API to use. Send an available version on every request. A request that sends any other value, including an empty one, returns a 400 error. This endpoint treats a request that omits this header as version `2023-06-01`; some other Compliance API endpoints return a 400 error instead.
 
   See [API versions](https://platform.claude.com/docs/en/api/versioning?sdk_languages=http) for the available versions.
 
@@ -44140,7 +44140,7 @@ compliance activities that can be filtered by various criteria.
 
   - `ClaudeSkillAutoDisabled object`
 
-    A skill that had been turned on for a member automatically was turned off for them automatically, not by the member; reason says why. A member turning a skill off themselves is recorded as claude_skill_disabled.
+    A skill that had been turned on for a member automatically was turned off for them automatically, not by the member; reason says why.
 
     - `type: optional "claude_skill_auto_disabled"`
 
@@ -44402,7 +44402,7 @@ compliance activities that can be filtered by various criteria.
 
   - `ClaudeSkillAutoEnabled object`
 
-    A skill was turned on for a member automatically, not by the member; trigger gives the cause, such as another member sharing an eligible skill with them. A member turning a skill on themselves is recorded as claude_skill_enabled.
+    A skill was turned on for a member automatically, not by the member; trigger gives the cause, such as another member sharing an eligible skill with them.
 
     - `type: optional "claude_skill_auto_enabled"`
 
@@ -192554,7 +192554,7 @@ curl https://api.anthropic.com/v1/compliance/activities \
 
   - `ClaudeSkillAutoDisabled object`
 
-    A skill that had been turned on for a member automatically was turned off for them automatically, not by the member; reason says why. A member turning a skill off themselves is recorded as claude_skill_disabled.
+    A skill that had been turned on for a member automatically was turned off for them automatically, not by the member; reason says why.
 
     - `type: optional "claude_skill_auto_disabled"`
 
@@ -192816,7 +192816,7 @@ curl https://api.anthropic.com/v1/compliance/activities \
 
   - `ClaudeSkillAutoEnabled object`
 
-    A skill was turned on for a member automatically, not by the member; trigger gives the cause, such as another member sharing an eligible skill with them. A member turning a skill on themselves is recorded as claude_skill_enabled.
+    A skill was turned on for a member automatically, not by the member; trigger gives the cause, such as another member sharing an eligible skill with them.
 
     - `type: optional "claude_skill_auto_enabled"`
 

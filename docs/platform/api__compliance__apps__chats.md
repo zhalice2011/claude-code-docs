@@ -123,7 +123,7 @@ no time filter) with the default `order_by`. `user_ids[]` with
 
 - `"anthropic-version": string`
 
-  The version of the Claude API to use. Send an available version on every request. Some other Compliance API endpoints return a 400 error for a request that omits this header, or sends a value that is not an available version. This endpoint treats such a request as version `2023-06-01`.
+  The version of the Claude API to use. Send an available version on every request. A request that sends any other value, including an empty one, returns a 400 error. This endpoint treats a request that omits this header as version `2023-06-01`; some other Compliance API endpoints return a 400 error instead.
 
   See [API versions](https://platform.claude.com/docs/en/api/versioning?sdk_languages=http) for the available versions.
 
@@ -264,7 +264,7 @@ You can retry the request.
 
 - `"anthropic-version": string`
 
-  The version of the Claude API to use. Send an available version on every request. Some other Compliance API endpoints return a 400 error for a request that omits this header, or sends a value that is not an available version. This endpoint treats such a request as version `2023-06-01`.
+  The version of the Claude API to use. Send an available version on every request. A request that sends any other value, including an empty one, returns a 400 error. This endpoint treats a request that omits this header as version `2023-06-01`; some other Compliance API endpoints return a 400 error instead.
 
   See [API versions](https://platform.claude.com/docs/en/api/versioning?sdk_languages=http) for the available versions.
 
@@ -492,7 +492,7 @@ Retrieves message history and file metadata for a specific chat.
 
 - `"anthropic-version": string`
 
-  The version of the Claude API to use. Send an available version on every request. Some other Compliance API endpoints return a 400 error for a request that omits this header, or sends a value that is not an available version. This endpoint treats such a request as version `2023-06-01`.
+  The version of the Claude API to use. Send an available version on every request. A request that sends any other value, including an empty one, returns a 400 error. This endpoint treats a request that omits this header as version `2023-06-01`; some other Compliance API endpoints return a 400 error instead.
 
   See [API versions](https://platform.claude.com/docs/en/api/versioning?sdk_languages=http) for the available versions.
 
@@ -935,7 +935,7 @@ download the bytes.
 
 - `"anthropic-version": string`
 
-  The version of the Claude API to use. Send an available version on every request. Some other Compliance API endpoints return a 400 error for a request that omits this header, or sends a value that is not an available version. This endpoint treats such a request as version `2023-06-01`.
+  The version of the Claude API to use. Send an available version on every request. A request that sends any other value, including an empty one, returns a 400 error. This endpoint treats a request that omits this header as version `2023-06-01`; some other Compliance API endpoints return a 400 error instead.
 
   See [API versions](https://platform.claude.com/docs/en/api/versioning?sdk_languages=http) for the available versions.
 
@@ -1021,7 +1021,7 @@ operation that cannot be undone.
 
 - `"anthropic-version": string`
 
-  The version of the Claude API to use. Send an available version on every request. Some other Compliance API endpoints return a 400 error for a request that omits this header, or sends a value that is not an available version. This endpoint treats such a request as version `2023-06-01`.
+  The version of the Claude API to use. Send an available version on every request. A request that sends any other value, including an empty one, returns a 400 error. This endpoint treats a request that omits this header as version `2023-06-01`; some other Compliance API endpoints return a 400 error instead.
 
   See [API versions](https://platform.claude.com/docs/en/api/versioning?sdk_languages=http) for the available versions.
 
@@ -1073,7 +1073,7 @@ Downloads the binary content of a file referenced in chat messages.
 
 - `"anthropic-version": string`
 
-  The version of the Claude API to use. Send an available version on every request. Some other Compliance API endpoints return a 400 error for a request that omits this header, or sends a value that is not an available version. This endpoint treats such a request as version `2023-06-01`.
+  The version of the Claude API to use. Send an available version on every request. A request that sends any other value, including an empty one, returns a 400 error. This endpoint treats a request that omits this header as version `2023-06-01`; some other Compliance API endpoints return a 400 error instead.
 
   See [API versions](https://platform.claude.com/docs/en/api/versioning?sdk_languages=http) for the available versions.
 
@@ -1107,7 +1107,7 @@ Use the sibling `/content` endpoint to download the bytes.
 
 - `"anthropic-version": string`
 
-  The version of the Claude API to use. Send an available version on every request. Some other Compliance API endpoints return a 400 error for a request that omits this header, or sends a value that is not an available version. This endpoint treats such a request as version `2023-06-01`.
+  The version of the Claude API to use. Send an available version on every request. A request that sends any other value, including an empty one, returns a 400 error. This endpoint treats a request that omits this header as version `2023-06-01`; some other Compliance API endpoints return a 400 error instead.
 
   See [API versions](https://platform.claude.com/docs/en/api/versioning?sdk_languages=http) for the available versions.
 
@@ -1183,7 +1183,7 @@ Downloads the binary content of a file the assistant created via tool use.
 
 - `"anthropic-version": string`
 
-  The version of the Claude API to use. Send an available version on every request. Some other Compliance API endpoints return a 400 error for a request that omits this header, or sends a value that is not an available version. This endpoint treats such a request as version `2023-06-01`.
+  The version of the Claude API to use. Send an available version on every request. A request that sends any other value, including an empty one, returns a 400 error. This endpoint treats a request that omits this header as version `2023-06-01`; some other Compliance API endpoints return a 400 error instead.
 
   See [API versions](https://platform.claude.com/docs/en/api/versioning?sdk_languages=http) for the available versions.
 
