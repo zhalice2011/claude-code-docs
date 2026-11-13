@@ -17,7 +17,7 @@
 
 界面和设置里把右侧边栏称为**右侧面板**，两者是同一个面板，本文统一称作右侧边栏。
 
-![对话页右上角圈出的是「打开右侧面板」图标](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/right-sidebar-open-panel.8jkNa56p.png)
+![对话页右上角圈出的是「打开右侧面板」图标](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/right-sidebar-open-panel.8jkNa56p.png)
 
 - **打开**：点击窗口右上角的**打开右侧面板**图标。首页和对话页都有这个入口；
 - **快捷键**：按 `⌘ + Shift + B`（macOS）或 `Ctrl + Shift + B`（Windows）打开或收起。把鼠标悬停在右上角的图标上，提示里会显示当前的快捷键。快捷键可以在**设置** \> **快捷键**中修改，对应的操作名称是「切换右侧面板」；
@@ -41,7 +41,7 @@
 
 点击浮层中的任一产物，会在右侧边栏以新标签页打开。对话流中的「查看所有产物」也会打开这个浮层。
 
-![点击对话区右上角的任务概览，展开产物列表](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/right-sidebar-task-overview.BESuO9Z6.png)
+![点击对话区右上角的任务概览，展开产物列表](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/right-sidebar-task-overview.BESuO9Z6.png)
 
 ## 标签页
 
@@ -61,7 +61,7 @@
 
 点击标签栏的「\+」，会新开一个「新标签页」：
 
-![点击标签栏的「+」新开标签页](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/right-sidebar-new-tab.Cx3dNKql.png)
+![点击标签栏的「+」新开标签页](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/right-sidebar-new-tab.Cx3dNKql.png)
 
 新标签页中列出可选的入口，入口下方是本次对话的产物列表，点击即可打开：
 
@@ -113,7 +113,7 @@
 
 菜单项之间用分隔线分为几组，依次是打开类、引用类、保存类。部分操作取决于当前的客户端环境，没有对应能力时不会显示。
 
-![对话流产物卡片的 ⋯ 菜单（本地产物）](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/right-sidebar-artifact-card-menu.FW3d9e4Y.png)
+![对话流产物卡片的 ⋯ 菜单（本地产物）](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/right-sidebar-artifact-card-menu.FW3d9e4Y.png)
 
 **上传到云端** 会展开二级菜单，列出当前账号可以上传的位置，例如 **我的云端网盘** 或 **资料库**、**腾讯文档**、**ima**、**乐享知识库**。具体显示哪些，取决于账号类型和已开通的能力；ima、乐享不支持当前文件类型时，对应选项会置灰。各位置的使用方法见 [资料库](./Library)、[腾讯文档](./Knowledge-Base/Tencent-Doc)、[ima 知识库](./Knowledge-Base/IMA Knowledge Base/01-Workbuddy-IMA-Basic-Guide)、[乐享知识库](./Knowledge-Base/Lexiang)。
 
@@ -123,19 +123,19 @@
 
 无论在哪里打开产物，标题栏都分成左右两块，常用操作的位置保持一致：
 
-![标题栏：左侧显示文件名，右侧是编辑、上传、分享等常用操作，其余收进「更多」](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/titlebar-layout-more-menu.CpEUbcM8.png)
+![标题栏：左侧显示文件名，右侧是编辑、上传、分享等常用操作，其余收进「更多」](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/titlebar-layout-more-menu.CpEUbcM8.png)
 
 - **左侧是信息区**：显示文件名，以及保存状态等辅助信息，例如编辑后显示「未保存」，保存成功后显示「已保存」；
 - **右侧是操作区**：最多直接显示 3 个常用操作，其余操作统一收进 **更多（⋯）**，不用在不同场景里重新寻找；
 - **进入或退出编辑时有即时反馈**：在 HTML 产物上点击 **编辑**，按钮会变成高亮的选中状态，提示文字变为「退出编辑」，并弹出「已进入编辑态」；退出编辑后回到预览，弹出「已进入预览态」。
 
-![点击编辑后，标题栏的编辑按钮高亮，并弹出「已进入编辑态」](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/titlebar-entered-edit-mode.B8gguw6Q.png)
+![点击编辑后，标题栏的编辑按钮高亮，并弹出「已进入编辑态」](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/titlebar-entered-edit-mode.B8gguw6Q.png)
 
 ### 重命名产物
 
 双击标题栏里的文件名，文件名会变成输入框，原名称自动全选，直接输入新名称即可。
 
-![双击标题栏中的文件名后变为输入框，原名称自动全选，扩展名 .pdf 显示在输入框右侧](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/right-sidebar-rename-artifact.C_rjyh-t.png)
+![双击标题栏中的文件名后变为输入框，原名称自动全选，扩展名 .pdf 显示在输入框右侧](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/right-sidebar-rename-artifact.C_rjyh-t.png)
 
 - **只改文件名，扩展名不变**：扩展名（如 `.md`）显示在输入框右侧，不能修改；
 - **确认与取消**：按 `Enter` 或点击输入框以外的位置确认，按 `Esc` 取消并恢复原名称；使用中文输入法时，输入过程中的第一次 `Enter` 只用于确认候选词，不会提交；
@@ -154,7 +154,7 @@
 
 以渲染后的样子查看 `.md` 文件时，点击标题栏的**更多（⋯）→ 复制 Markdown**，会把当前文档完整的 Markdown 源码复制到剪贴板，复制成功后提示「已复制 Markdown」，没有成功时提示「复制失败」。
 
-![Markdown 产物标题栏「更多」菜单中的「复制 Markdown」](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/copy-markdown-menu.COY5qYpU.png)
+![Markdown 产物标题栏「更多」菜单中的「复制 Markdown」](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/copy-markdown-menu.COY5qYpU.png)
 
 - 剪贴板里只有 Markdown 源码这一种格式：粘贴到会话输入框得到可读的 Markdown 文本，粘贴到代码编辑器也原样保留；
 - 与直接「全选 \+ 复制」不同，后者会按粘贴位置的不同，得到渲染后的文字或源码；
@@ -168,7 +168,7 @@
 
 在右侧栏打开**本地 Excel** 后，选中单元格区域并**右键**，菜单第一行提供**「AI 编辑」**：点击即可直接对选中区域发起 AI 修改，不必再翻到选区右下角找入口（原入口仍然保留）。
 
-![本地 Excel 的右键菜单第一行「AI 编辑」](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/right-sidebar-excel-ai-edit.Bl-lmRkH.png)
+![本地 Excel 的右键菜单第一行「AI 编辑」](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/right-sidebar-excel-ai-edit.Bl-lmRkH.png)
 
 ## 变更
 
@@ -182,7 +182,7 @@ WorkBuddy 的内置浏览器既支持手动操作，也支持 Agent 自动操作
 
 WorkBuddy 提供内置浏览器，你可以在右侧面板打开浏览器，点击标签栏的「\+」，在新标签页中选择**打开浏览器**，输入网址即可访问。支持同时打开多个浏览器标签页，方便在不同网页之间切换。
 
-![多标签浏览](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/browser-multitab.sf_Mas5P.png)
+![多标签浏览](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/browser-multitab.sf_Mas5P.png)
 
 首次使用前，进入**设置 \> 智能体 \> 浏览器操控**，点击**安装**，安装完成后，Agent 即可使用 WorkBuddy 内置浏览器执行网页任务。
 
@@ -195,7 +195,7 @@ WorkBuddy 提供内置浏览器，你可以在右侧面板打开浏览器，点�
 - 输入的是网址（如 `example.com`、`localhost:3000`）：直接访问；
 - 输入的是其他内容：使用搜狗搜索，并打开搜索结果页。
 
-![在网址栏输入关键词后，下方出现搜索入口](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/browser-omnibox-search.qfQFlqXh.png)
+![在网址栏输入关键词后，下方出现搜索入口](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/browser-omnibox-search.qfQFlqXh.png)
 
 输入过程中，网址栏下方首行是「搜索网页」，选择后即用搜狗搜索当前输入；使用一段时间后，下方还会列出匹配的**浏览历史**和**搜索历史**。可用鼠标点选，或用 `↑` `↓` 选择后按 `Enter`：选择浏览历史会直接打开该页面，选择搜索历史会用该关键词重新搜索。
 
@@ -205,11 +205,11 @@ WorkBuddy 提供内置浏览器，你可以在右侧面板打开浏览器，点�
 
 进入**设置 \> 智能体 \> 浏览器操控**，在下方的多浏览器列表中找到需要使用的浏览器，点击右侧的**前往安装**。
 
-![在设置 > 智能体 > 浏览器操控中，点击浏览器右侧的前往安装](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/browser-extension-install.GIaGVUc2.png)
+![在设置 > 智能体 > 浏览器操控中，点击浏览器右侧的前往安装](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/browser-extension-install.GIaGVUc2.png)
 
 对应的扩展程序安装完成后，在浏览器工具栏中点击 WorkBuddy 扩展图标，确认扩展已连接。
 
-![浏览器工具栏 WorkBuddy 扩展图标弹窗，显示已连接状态与活跃会话](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/browser-extension-connected.VW9__Znr.png)
+![浏览器工具栏 WorkBuddy 扩展图标弹窗，显示已连接状态与活跃会话](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/browser-extension-connected.VW9__Znr.png)
 
 随后，你只需在对话中描述需要执行的网页任务，Agent 就会在独立浏览器中新建一个受控标签页，或接管你当前已经打开的标签页。你可以在设置页面的浏览器会话列表中查看本次会话及受控标签页，点击对应条目即可切换回相应页面。
 
@@ -226,7 +226,7 @@ WorkBuddy 提供内置浏览器，你可以在右侧面板打开浏览器，点�
 
 点击浏览器右上角的**更多（⋯）**，将鼠标移到 **清除浏览数据** 上，会展开二级菜单：
 
-![清除浏览数据](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/browser-clear-data.DOAynEE1.png)
+![清除浏览数据](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/browser-clear-data.DOAynEE1.png)
 
 | 选项 | 作用 |
 | --- | --- |
@@ -243,7 +243,7 @@ WorkBuddy 提供内置浏览器，你可以在右侧面板打开浏览器，点�
 
 点击浏览器右上角的**更多（⋯）**，菜单中提供以下页面工具：
 
-![浏览器右上角「更多」菜单](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/browser-more-menu.kuwScFtl.png)
+![浏览器右上角「更多」菜单](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/browser-more-menu.kuwScFtl.png)
 
 | 菜单项 | 说明 |
 | --- | --- |
@@ -268,7 +268,7 @@ WorkBuddy 提供内置浏览器，你可以在右侧面板打开浏览器，点�
 
 点击浏览器右上角的**更多（⋯）→ 显示设备工具栏**，即可在浏览器顶部打开设备工具栏，一键切换**手机 / 平板 / 桌面**视口，或自定义宽高，方便验证页面在不同设备下的响应式表现。
 
-![设备调试工具栏](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/browser-device-toolbar.CW3QxART.png)
+![设备调试工具栏](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/browser-device-toolbar.CW3QxART.png)
 
 在设备下拉列表中，每个设备只显示名称，将鼠标悬停在某个设备上，可以查看它的视图宽高，例如 `2560×1440`。
 
@@ -287,7 +287,7 @@ WorkBuddy 提供内置浏览器，你可以在右侧面板打开浏览器，点�
 | **任务操作待您确认** | 任务有操作需要你的确认，请点击查看 | 点击直接跳转到对应任务 |
 | **任务已成功完成** | 任务执行完成，请点击查看结果 | 点击直接跳转到对应任务 |
 
-![消息中心](https://download.codebuddy.cn/web/docs/f35a54ab268600af7acf84d08301d5e697984514/docs/static/right-sidebar-notification.B0am2Q5Q.png)
+![消息中心](https://download.codebuddy.cn/web/docs/2601b23c320920af423a274fc63da540f3e7bf6a/docs/static/right-sidebar-notification.B0am2Q5Q.png)
 
 ## 声明
 

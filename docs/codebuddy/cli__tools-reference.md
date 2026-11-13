@@ -31,7 +31,7 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `NotebookRead` | 读取 Jupyter notebook 单元格内容，可指定 `cell_id` 读单个 cell | 否 |
 | `PowerShell` | 在 Windows 上执行 PowerShell 命令。仅 Windows 可用，参见 [PowerShell 工具行为](#powershell-工具行为) | 是 |
 | `PushNotification` | 发送终端/桌面通知，用于长任务或后台任务完成时提醒用户。延迟加载工具，参见[环境变量](./env-vars) | 否 |
-| `Read` | 读取文件内容，支持图片、PDF 和 Jupyter notebook | 否 |
+| `Read` | 读取文件内容，支持图片、PDF 和 Jupyter notebook。每次成功读取都会返回本次行区间与文件总行数，截断语义见 [Read 工具行为](#read-工具行为) | 否 |
 | `REPL` | 在隔离沙箱中执行 JavaScript 编排工具调用。PTC / 极简模式下这是模型面**唯一**直连工具；沙箱内 Bash 返回 `{ stdout, stderr, exitCode, signal }`，Agent 返回 `{ taskId }`，TaskOutput 返回 `{ status, taskId, content }`。受 `CODEBUDDY_CODE_MODE_ENABLED` 控制，参见[环境变量](./env-vars) | 是 |
 | `ReadMcpResource` | 按 server \+ URI 读取指定 MCP 资源的内容，配合 `ListMcpResources` 使用 | 是 |
 | `ReportFindings` | 将代码审查发现的问题以结构化字段（文件、摘要、失败场景、可选分类）提交，渲染为专门的列表组件而非纯文本。延迟加载工具，参见[环境变量](./env-vars) | 否 |
@@ -110,6 +110,23 @@ Bash 工具支持[沙箱隔离](./bash-sandboxing)，可限制文件系统和网
 ### 命令失败时的显示
 
 命令以非 0 退出码结束时，交互界面会在结果首行显示 `Exit code <N>`，并用错误颜色显示命令输出，即使输出被折叠也能看出失败。模型同样会收到退出码和 stderr，可以据此自行调整下一步。`PowerShell` 工具的失败显示方式相同。
+
+## Read 工具行为
+
+每次成功读取文本文件，结果里都会带一条模型可见的范围提示，不需要靠「返回行数是否等于 limit」去猜文件有多大：
+
+text
+```
+Read lines 201-400 of 1702 (69394 bytes).
+```
+- **完整读取**：给出 `Read lines <start>-<end> of <total>`；读完整个文件时说明是全文。
+- **还有未读行**：以 `[Truncated: PARTIAL view — <文件>: showing lines <start>-<end> of <total> ...]` 开头，并直接给出下一页参数（`offset=<end+1> limit=<本次行数>`）。
+- **单行超长**：超过 2000 字符的单行会被原地截断，提示会明确说明「这一行的剩余部分用 `offset`/`limit` 拿不到」，建议改用 `Grep` 或缩小读取范围。
+- **超大文件**：沙箱之外、超过 5MB 的文件走流式读取，命中行数上限后不再扫完整个文件，因此无法统计总量，提示里会明确写 `(total unknown)`，而不是静默省略；沙箱内是整读后切窗口，总行数照常给出。
+- **token 上限**：默认上限 20000 token，可用 `CODEBUDDY_CODE_FILE_READ_MAX_OUTPUT_TOKENS` 调整。整文件读取超限时会自动降级为第一页并附上 `PARTIAL view` 提示；显式指定了 `offset`/`limit` 仍超限时才会报错，错误里带本次区间、总行数和建议的 `limit`，照建议值重试即可成功。
+- **`offset` 超出文件末尾**：所有读取路径行为一致——报错并给出总行数，不再返回空内容。
+- **沙箱（REPL/PTC）与 ACP（IDE 侧 fs）**：部分读取时同样带上述提示；ACP 协议不返回文件总量，会标注 `(total unknown)`。
+- **路径展示**：提示里的文件路径在工作目录内用相对路径，工作目录外用绝对路径——避免 `/tmp/x` 退化成 `../../../../../tmp/x` 的长 `../` 链，让模型判断错文件位置。
 
 ## PowerShell 工具行为
 

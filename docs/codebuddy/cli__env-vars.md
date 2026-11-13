@@ -163,6 +163,7 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 
 | 环境变量 | 说明 |
 | --- | --- |
+| `CODEBUDDY_MCP_TRACE_SERVERS` | 启用 `[McpCatalog]` 请求与目录诊断的服务器名，用逗号分隔并精确匹配。CLI 默认不启用。WorkBuddy 启动 CLI 时显式启用 `connector-proxy`，用于排查工具缺失和超时（\#177774、\#177650）；需关闭时由宿主移除该环境变量。 |
 | `MCP_TIMEOUT` | MCP 服务器连接的超时时间（毫秒） |
 | `MCP_TOOL_TIMEOUT` | MCP 工具执行的超时时间（毫秒） |
 | `MAX_MCP_OUTPUT_TOKENS` | MCP 工具响应中允许的最大 token 数（默认：20000） |
