@@ -152,6 +152,7 @@ export CODEBUDDY_IS_SANDBOX=1 && cbc -y
 | `CODEBUDDY_AUTO_COMPACT_WINDOW` | 自动压缩计算的上下文窗口基准值（token）。触发点 \= `min(该值, 模型有效预算) × 阈值`，clamp 到 \[100k, 1M] 且不超过模型实际窗口。优先级高于 settings 项 `autoCompactWindow`（env \> settings）。留空跟随模型窗口 |
 | `CODEBUDDY_PRE_MESSAGE_COMPACT` | 强制控制 pre\-message 压缩开关。`true`/`1` 启用，`false`/`0` 禁用。优先级高于产品配置的 `enablePreMessageCompact` 和 `ContextSummaryAgent` 开关 |
 | `CODEBUDDY_PRE_MESSAGE_COMPACT_PCT` | 设置用户发消息前预检压缩的上下文容量百分比（1\-100）。默认 10%。当上下文超过此阈值时，在处理用户新消息前自动压缩 |
+| `CODEBUDDY_CONTEXT_STATUS_PCT` | 设置 `<context_status>` 开始下发的上下文容量百分比（1\-100）。系统提示词里的主动压缩阈值与它保持一致。默认 50。未设置或超出 1\-100 时用 50。例如 `40` 表示用量达到 40% 后开始提示模型寻找安全压缩边界。与自动压缩、发消息前预压缩的阈值相互独立 |
 | `CODEBUDDY_DISABLE_AUTO_MEMORY` | 设置为 `1` 禁用自动内存，设置为 `0` 启用 |
 | `CODEBUDDY_DISABLE_PARENT_MEMORY` | 设置为 `1` 关闭项目指令文件（`CODEBUDDY.md`/`AGENTS.md`）越过启动目录向上递归查找，只加载启动目录本身。优先级高于 settings 项 `memory.parentDiscovery` |
 | `CODEBUDDY_MEMORY_ENABLED` | 设置为 `true` 或 `1` 启用记忆功能 |
