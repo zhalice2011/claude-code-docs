@@ -4,6 +4,15 @@ WorkBuddy SaaS 正式发布版本归档。每个版本提供 macOS (Apple 芯片
 
 **为保证最新的产品体验，建议下载 [WorkBuddy 官网](https://www.workbuddy.cn/) 最新版本使用。**
 
+## 5\.11\.x 系列
+
+| 版本 | 发布日期 | macOS · Apple 芯片 | macOS · Intel | Windows · 64 位 |
+| --- | --- | --- | --- | --- |
+| `v5.11.3` | 2026\-11\-15 | [下载 (358\.0 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-arm64/WorkBuddy-darwin-arm64-5.11.3.43806934-ecace0f7.dmg) | [下载 (389\.6 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.11.3.43806934-ecace0f7.dmg) | [下载 (438\.5 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/win32-x64-user/WorkBuddy-win32-x64-user-5.11.3.43806934-ecace0f7.exe) |
+| `v5.11.2` | 2026\-11\-10 | [下载 (360\.9 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-arm64/WorkBuddy-darwin-arm64-5.11.2.43614525-fe9da600.dmg) | [下载 (389\.6 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.11.2.43614525-fe9da600.dmg) | [下载 (438\.5 MB)](https://acc-1258344699.cos.ap-guangzhou.myqcloud.com/workbuddy/saas/win32-x64-user/WorkBuddy-win32-x64-user-5.11.2.43614525-fe9da600.exe) |
+| `v5.11.1` | 2026\-11\-03 | [下载 (361\.0 MB)](https://download.codebuddy.cn/workbuddy/saas/darwin-arm64/WorkBuddy-darwin-arm64-5.11.1.42981686-212b937c.dmg) | [下载 (389\.7 MB)](https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.11.1.42981686-212b937c.dmg) | [下载 (438\.6 MB)](https://download.codebuddy.cn/workbuddy/saas/win32-x64-user/WorkBuddy-win32-x64-user-5.11.1.42981686-212b937c.exe) |
+| `v5.11.0` | 2026\-11\-01 | [下载 (361\.0 MB)](https://download.codebuddy.cn/workbuddy/saas/darwin-arm64/WorkBuddy-darwin-arm64-5.11.0.42821195-c07f4023.dmg) | [下载 (389\.5 MB)](https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.11.0.42821195-c07f4023.dmg) | [下载 (438\.6 MB)](https://download.codebuddy.cn/workbuddy/saas/win32-x64-user/WorkBuddy-win32-x64-user-5.11.0.42821195-c07f4023.exe) |
+
 ## 5\.9\.x 系列
 
 | 版本 | 发布日期 | macOS · Apple 芯片 | macOS · Intel | Windows · 64 位 |

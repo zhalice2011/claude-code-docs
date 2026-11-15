@@ -28,7 +28,7 @@
 
 如果你在某次对话中说明自己来自湖北、但不爱吃辣，后续新的对话中，`WorkBuddy` 仍可能延续这类偏好信息。
 
-![自我改进效果示意](https://download.codebuddy.cn/web/docs/f58305403d8c7536977e2b230dd415d9d197e141/docs/static/image-10.DxNkQgz0.png)
+![自我改进效果示意](https://download.codebuddy.cn/web/docs/0dac6a52efc8f0ff38fbaadc81a771177042ff33/docs/static/image-10.DxNkQgz0.png)
 
 ## 五、使用建议
 

@@ -14,7 +14,7 @@ CodeBuddy 提供免费**体验版**及付费订阅套餐，付费套餐支持**�
 
 登录 [CodeBuddy 官网](https://www.codebuddy.cn/home/) ，单击右上角头像，选择**个人主页**，在左侧导航栏选择**套餐与积分**，在订阅计划中点击**升级套餐**按钮。
 
-![升级套餐入口](https://download.codebuddy.cn/web/docs/f58305403d8c7536977e2b230dd415d9d197e141/docs/static/plan-1.Bl9YvyU0.png)
+![升级套餐入口](https://download.codebuddy.cn/web/docs/0dac6a52efc8f0ff38fbaadc81a771177042ff33/docs/static/plan-1.Bl9YvyU0.png)
 
 ## 升级后的计费方式
 
