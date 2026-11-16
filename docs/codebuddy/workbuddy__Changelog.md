@@ -2,16 +2,13 @@
 
 ## 5\.11\.3 版本发布 🚀（2026\-11\-15）
 
-- 新增会话流快速问答入口，可在对话中快速发起推荐问答或切回 Agent 模式
-- 修复定时任务云端任务混入「这台电脑」本地列表的问题
 - 修复任务运行会话顶栏编辑时，分组下拉缺少新建分组与选择本地文件夹选项的问题
 - 修复置顶任务通过右键菜单移入分组时与拖拽行为不一致，取消置顶后未直接落到目标分组的问题
-- 偶现修复拖拽任务时侧栏出现空白置顶区的问题
+- 修复拖拽任务时侧栏偶现空白置顶区的问题
 - 修复定时任务侧栏入口与聚合页未读红点点击后未及时消失的问题
 - 修复本地历史会话在特定情况下从侧栏任务列表中丢失的问题
 - 修复设置独立窗口在浅色模式下错误显示为深色的问题，以及无外观权限账号被云端外观配置强制切换至深色的问题
 - 修复运行期间切换至新上架皮肤后主窗口回退为浅色的问题
-- 修复企业版账号未折叠限频付费线路的问题
 - 修复 CE 会话缺少项目资源注册导致项目相关 MCP 工具和技能目录不可用的问题
 - 修复 Buddy 应用请求未走正确域名端点的问题
 
@@ -1626,7 +1623,7 @@
 
 安装 Skill 前自动进行安全扫描，检测潜在的恶意脚本和风险行为，保障你的数据安全。
 
-![alt text](https://download.codebuddy.cn/web/docs/0dac6a52efc8f0ff38fbaadc81a771177042ff33/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
+![alt text](https://download.codebuddy.cn/web/docs/8ccb0acba229233dd0e442aab078345837225dc0/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
 
 - 🆕 产物区整体交互与展示优化
 - 🆕 新增产物回传开关，可控制是否回传产物到云端
@@ -1646,7 +1643,7 @@
 
 支持 MCP 标准 OAuth 授权认证流程，连接第三方服务更安全便捷。
 
-![alt text](https://download.codebuddy.cn/web/docs/0dac6a52efc8f0ff38fbaadc81a771177042ff33/docs/static/expert-center-473.CgggC1ig.png)
+![alt text](https://download.codebuddy.cn/web/docs/8ccb0acba229233dd0e442aab078345837225dc0/docs/static/expert-center-473.CgggC1ig.png)
 
 - 🆕 插件收入技能页面，连接器独立为菜单项，结构更清晰
 - 🆕 任务支持置顶/取消置顶
@@ -1682,7 +1679,7 @@
 
 专家中心新增排行榜功能，展示热门专家排行，帮助你快速发现最受欢迎的领域专家。
 
-![alt text](https://download.codebuddy.cn/web/docs/0dac6a52efc8f0ff38fbaadc81a771177042ff33/docs/static/zhuanjia.BtS4ODCf.png)
+![alt text](https://download.codebuddy.cn/web/docs/8ccb0acba229233dd0e442aab078345837225dc0/docs/static/zhuanjia.BtS4ODCf.png)
 
 - 🆕 对话窗口内支持通过选择器快速切换专家
 - 🆕 本地任务支持归档
@@ -1702,7 +1699,7 @@
 
 支持在设置页通过可视化界面配置自定义模型（API Key、端点、参数等），无需手动编辑 JSON 文件。
 
-![alt text](https://download.codebuddy.cn/web/docs/0dac6a52efc8f0ff38fbaadc81a771177042ff33/docs/static/custom-model.C4ubf5Jp.png)
+![alt text](https://download.codebuddy.cn/web/docs/8ccb0acba229233dd0e442aab078345837225dc0/docs/static/custom-model.C4ubf5Jp.png)
 
 - 🆕 产物支持分享链接并提供在线预览渲染
 - 🆕 自动化支持单次执行任务
