@@ -18,12 +18,11 @@ WorkBuddy 可以根据需求生成微信原生小程序，按需接入云数据�
 
 可以通过以下三种方式创建：
 
-1. 在 WorkBuddy 首页进入「代码开发」，选择「小程序」，使用推荐场景开始创建；
-
-![首页代码开发中选择小程序](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-create-entry.ftQdg-f8.png)
-
+1. 在创建任务页选择「代码开发」开始创建；
 2. 直接描述需求，建议在需求中明确写出「微信小程序」。
 3. 如果已经有网页，直接告诉 WorkBuddy 将它改成微信小程序。
+
+小程序并不限定在某个固定入口创建：在任何场景下把需求说清楚（明确说明要做微信小程序），都可以生成小程序。
 
 如果需要云服务，不必写具体的技术方案，直接说明数据长期保存、用户登录、图片上传或多人参与等实际需求即可。例如：
 
@@ -44,11 +43,12 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 ### 预览区工具栏
 
-预览区上方的工具栏右侧依次是**分享**、**刷新**和**更多操作（…）**：
+预览区上方的工具栏左侧是**云服务**入口，右侧依次是**分享**、**刷新**和**更多操作（…）**：
 
-![预览区右上角的分享、刷新和更多操作，更多操作中可打开文件夹](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-preview-toolbar.C1GGNvEA.png)
+![预览区右上角的分享、刷新和更多操作，更多操作中可打开文件夹](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-preview-toolbar.C1GGNvEA.png)
 
-- 小程序不支持可视化编辑，所以工具栏上没有**编辑**按钮；
+- **云服务**用于进入云服务设置页，管理数据库、文件存储、登录认证和数据统计，从云服务页返回后回到预览；
+- 小程序不支持可视化编辑，所以工具栏上没有**编辑**按钮，也没有在浏览器中打开的入口；
 - **分享**用于进入发布流程，见[发布微信小程序](#发布微信小程序)；
 - **刷新**直接放在工具栏上，用于重新编译并刷新预览，更多操作菜单里不再重复；
 - **更多操作**菜单里可以**打开文件夹**，定位到小程序工程所在的本地目录。
@@ -57,7 +57,7 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 预览画面下方常驻一行提示：「预览仅供参考，真机效果请**打开微信开发者工具**或**发布后扫码**查看」。
 
-![预览画面下方的提示，两个可点击的部分为蓝色](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-preview-notice.B75h5RLU.png)
+![预览画面下方的提示，两个可点击的部分为蓝色](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-preview-notice.B75h5RLU.png)
 
 - 文字默认为灰色，鼠标移到预览区上时，两个可点击的部分变为蓝色；
 - 点击**打开微信开发者工具**，会用本机已安装的微信开发者工具打开当前小程序工程，打开过程中会提示「正在打开微信开发者工具…」，成功后提示「已在微信开发者工具中打开」；
@@ -68,7 +68,7 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 预览加载失败时，预览区会显示「预览加载失败」，并提供两个入口：
 
-![预览加载失败：显示「AI 修复」按钮，屏幕底部为「查看错误详情」](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-preview-failed.DcBqwbjz.png)
+![预览加载失败：显示「AI 修复」按钮，屏幕底部为「查看错误详情」](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-preview-failed.DcBqwbjz.png)
 
 - **AI 修复**：位于「预览加载失败」提示下方。点击后，WorkBuddy 会在当前对话里自动发送一条「修复预览问题」的消息，并附带编译错误信息，Agent 修改工程后，预览会自动重新编译。修复期间按钮显示加载状态；如果 AI 没有修好，按钮会恢复可点，可以再次点击；
 - **查看错误详情**：位于预览屏幕底部。点击后展开编译失败的具体原因，可用于手动排查，或补充给 Agent。
@@ -79,20 +79,22 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 ## 开启云服务
 
-当应用需要保存数据、用户登录或上传文件时，WorkBuddy 会在生成过程中提示是否开启对应云服务。确认开启后，WorkBuddy 会继续完成相关配置，无需你手动填写技术参数。具体的功能介绍和使用方式请参见[云服务](./Cloud-Services)。
+当应用需要保存数据、用户登录或上传文件时，WorkBuddy 会在生成过程中提示是否开启云服务。你也可以在首次进入云服务页时，点击「启用云服务」开通。
+
+开启后，WorkBuddy 会自动完成相关配置，无需手动填写技术参数。随后，你可以在云服务页面使用云数据库、文件存储、身份认证和数据统计等能力。具体功能和使用方式请参见[云服务](./Cloud-Services)。
 
 | 对应能力 | 使用场景 |
 | --- | --- |
 | 云数据库 | 保存和管理用户提交的信息 |
-| 身份认证 | 支持手机号、微信或邮箱登录，并区分不同用户的数据或权限 |
+| 身份认证 | 支持 **WorkBuddy 统一登录**、**手机验证码**和**微信授权登录**，用于区分不同用户的数据或权限 |
 | 文件存储 | 上传并保存图片或附件 |
-| 数据统计 | 查看用户数量和注册趋势 |
+| 数据统计 | 查看用户数量和注册趋势；发布正式版后会同步微信小程序的数据分析 |
 
 ## 发布微信小程序
 
 小程序制作完成后，点击预览区右上角的「分享」按钮，进入发布流程。
 
-![点击预览区右上角的分享按钮进入发布流程](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-publish-share.CSd2_-yA.png)
+![点击预览区右上角的分享按钮进入发布流程](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-publish-share.CSd2_-yA.png)
 
 发布时，WorkBuddy 会以微信第三方服务商身份接入你授权的小程序账号，协助完成代码上传、试用版生成、提交审核和版本发布。账号注册、认证、备案、审核及后续运营规则以微信官方要求为准。
 
@@ -108,21 +110,25 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 创建试用版后仍可解绑并重新选择发布方式，但试用版不能直接转为正式版。如需长期运营，建议绑定自己的小程序账号。
 
+三个版本不是彼此独立的，发布时会相互影响：
+
+- 发布正式版时会连带发布体验版；体验版也可以单独发布或单独更新；
+- 试用版单独发布，到期后自动失效。
 ### 发布试用版
 
 试用版不需要提前注册微信小程序账号，适合快速验证效果。
 
-![在分享面板中选择创建试用版小程序](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-trial-create.-KpT-eyD.png)
+![在分享面板中选择创建试用版小程序](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-trial-create.-KpT-eyD.png)
 
 1. 在分享面板中选择「创建试用版小程序」；
 2. 使用微信扫码并关注 WorkBuddy 服务号；
 3. 在服务号中点击「创建试用小程序」，按页面提示完成授权；
 
-![微信扫码关注 WorkBuddy 服务号](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-trial-follow.7hAMTUlx.png)![在服务号中创建试用小程序](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-trial-create-mobile.3jNuUJBw.png)![按页面提示完成授权](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-trial-auth.CsqGuD4Y.png)4. 收到授权成功通知后，返回 WorkBuddy，点击「发布」。发布成功后，可以点击小程序码图标查看并分享。
+![微信扫码关注 WorkBuddy 服务号](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-trial-follow.7hAMTUlx.png)![在服务号中创建试用小程序](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-trial-create-mobile.3jNuUJBw.png)![按页面提示完成授权](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-trial-auth.CsqGuD4Y.png)4. 收到授权成功通知后，返回 WorkBuddy，点击「发布」。发布成功后，可以点击小程序码图标查看并分享。
 
-![返回 WorkBuddy 点击发布试用版](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-trial-publish.BKn7UDIM.png)
+![返回 WorkBuddy 点击发布试用版](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-trial-publish.BKn7UDIM.png)
 
-![试用版发布成功后的小程序码入口](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-trial-qrcode.Br3v_wlw.png)
+![试用版发布成功后的小程序码入口](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-trial-qrcode.Br3v_wlw.png)
 
 试用版存在以下限制：
 
@@ -133,22 +139,22 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 如需更换发布方式，在分享面板中点击「解绑」，即可重新选择发布方式，原试用小程序在注销前仍可访问。
 
-![在分享面板中点击解绑](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-trial-unbind.mpuWNRpd.png)
+![在分享面板中点击解绑](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-trial-unbind.mpuWNRpd.png)
 
 ### 绑定已有小程序
 
 已有微信小程序账号时，可以绑定账号并发布体验版或正式版。如果还没有账号，可先前往[微信公众平台](https://mp.weixin.qq.com/)注册。完成一次账号绑定后，即可使用同一账号发布体验版或正式版，无需分别绑定。
 
-![在分享面板中选择绑定已有小程序账号](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-bind-entry.fIBl-F7d.png)
+![在分享面板中选择绑定已有小程序账号](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-bind-entry.fIBl-F7d.png)
 
 1. 在分享面板中选择「绑定已有小程序账号」；
 2. 使用小程序管理员的微信扫描二维码，选择要发布的小程序账号，根据页面提示完成授权；
 
-![使用小程序管理员微信扫描二维码](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-bind-scan.DUBGUFmW.png)![选择要发布的小程序账号](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-bind-select.BZo0OBqo.png)![根据页面提示完成授权](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-bind-auth.QQMRVAht.png)3. 返回 WorkBuddy，勾选需要发布的版本并点击「发布」，成功后即可获得小程序码。
+![使用小程序管理员微信扫描二维码](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-bind-scan.DUBGUFmW.png)![选择要发布的小程序账号](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-bind-select.BZo0OBqo.png)![根据页面提示完成授权](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-bind-auth.QQMRVAht.png)3. 返回 WorkBuddy，勾选需要发布的版本并点击「发布」，成功后即可获得小程序码。
 
-![勾选需要发布的版本并点击发布](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-bind-publish.O1E0XeHW.png)
+![勾选需要发布的版本并点击发布](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-bind-publish.O1E0XeHW.png)
 
-![发布体验版后点击小程序码图标查看](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-bind-success.BSZYa-Yx.png)
+![发布体验版后点击小程序码图标查看](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-bind-success.BSZYa-Yx.png)
 
 ### 发布体验版
 
@@ -156,7 +162,7 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 管理员可以前往[微信公众平台](https://mp.weixin.qq.com/)，进入「管理 \> 成员设置 \> 体验成员」，管理体验权限。
 
-![在微信公众平台管理体验成员](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-exp-member.DGrSwT-t.png)
+![在微信公众平台管理体验成员](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-exp-member.DGrSwT-t.png)
 
 ### 发布正式版
 
@@ -164,13 +170,13 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 完成设置后，在分享面板中勾选「正式版」并点击「发布」。提交后可在分享面板中查看审核进度；审核通过并完成发布后，即可通过正式版小程序码访问和分享。
 
-![在分享面板中勾选正式版并发布](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-release-publish.m_iD0xdH.png)
+![在分享面板中勾选正式版并发布](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-release-publish.m_iD0xdH.png)
 
 发布前，请在分享面板中点击「小程序设置」，依次检查以下三项：
 
-![点击分享面板中的小程序设置](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-release-settings-entry.Ce_5jm6L.png)
+![点击分享面板中的小程序设置](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-release-settings-entry.Ce_5jm6L.png)
 
-![小程序设置中的备案、隐私保护指引与 UGC 声明](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-release-settings.DP4FowCE.png)
+![小程序设置中的备案、隐私保护指引与 UGC 声明](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-release-settings.DP4FowCE.png)
 
 | 设置项 | 处理说明 |
 | --- | --- |
@@ -221,17 +227,19 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 修改应用后，线上版本不会自动同步。可以在分享面板中点击「更新」。更新正式版需要重新提交微信审核。新版本审核通过并完成发布前，用户会继续使用当前已上线的版本。
 
-目前只有正式版支持下线。如需停止正式版对外提供服务，可以在分享面板中点击「下线」。下线后，正式版小程序将无法继续访问。
+目前只有正式版支持下线。如需停止正式版对外提供服务，可以在分享面板中点击「下线」，下线后小程序将无法继续访问。
+
+已发布的试用版，分享面板中提供的是「解绑」：解绑后回到选择发布方式的步骤，原试用小程序在注销前仍可访问。
 
 ### 管理已创建的应用
 
-![在设置的数据管理中查看已创建的应用](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-manage-apps.DP6FTZrK.png)
+![在设置的数据管理中查看已创建的应用](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-manage-apps.DP6FTZrK.png)
 
 若要统一查看已创建的全部应用，可进入「设置 \> 数据管理 \> 应用」。在这里可以：
 
 - 查看各应用的发布状态；
 - 管理各应用的云服务；
-- 找到已发布的小程序码；
+- 查看已发布应用的小程序码缩略图：鼠标悬停即可查看并下载。同一应用有多个版本时只展示一个，优先正式版，其次是体验版或试用版；
 - 返回对应的任务继续修改。
 
 ## 常见问题
@@ -247,7 +255,7 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 1. 发布时提示「授权异常，请尝试重新授权小程序」；
 2. 小程序此前已授权给其他第三方代开发平台，需要换绑到 WorkBuddy。
 
-![在微信公众平台检查第三方平台授权状态](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-auth-exception.DONJCfzJ.png)
+![在微信公众平台检查第三方平台授权状态](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-auth-exception.DONJCfzJ.png)
 
 操作方式：
 
@@ -259,7 +267,7 @@ WorkBuddy 中的预览主要用于检查页面样式和基础交互，与微信�
 
 小程序提交发布并通过微信代码审核后，扫描小程序码提示「小程序已暂停」。可以在[微信公众平台](https://mp.weixin.qq.com/)进入「管理 \> 账号设置 \> 账号信息」，在「暂停服务」一栏点击「恢复服务」。恢复后，再次扫描小程序码确认是否可以正常访问。
 
-![在微信公众平台恢复小程序服务](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/miniprogram-resume-service.CgePYLEi.png)
+![在微信公众平台恢复小程序服务](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/miniprogram-resume-service.CgePYLEi.png)
 
 ### 正式版审核未通过
 

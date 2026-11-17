@@ -8,10 +8,10 @@
 
 ### Ask 模式
 
-![](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/model-ask.CTwKoVm-.png)### Craft 模式
+![](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/model-ask.CTwKoVm-.png)### Craft 模式
 
-![](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/model-craft.CILLp5LJ.png)## 模型切换
+![](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/model-craft.CILLp5LJ.png)## 模型切换
 
 点击腾讯云代码助手对话框底部的模型选择，下拉框中包含了内置的官方大模型，支持对话模型的自由切换，帮助提升您的编码体验。
 
-![](https://download.codebuddy.cn/web/docs/49363b7a8a1bbc2764d7b26af04b5ff6d202bd22/docs/static/model-1.BkIJsEYm.png)
+![](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/model-1.BkIJsEYm.png)
