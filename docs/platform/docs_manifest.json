@@ -5253,8 +5253,8 @@
     "manage-claude__cmek-claude-platform-on-aws.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/cmek-claude-platform-on-aws",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/cmek-claude-platform-on-aws.md",
-      "hash": "141cdb0a99f8929618f4ea4bec7a5b57bf18347f26e1a7613be1b130493c448e",
-      "last_updated": "2026-10-27T21:46:32.526211",
+      "hash": "73742c7e8f08e0f46d4bc2d20b973f4e7159fae40f672c9df5401b13655b0042",
+      "last_updated": "2026-11-17T05:53:35.195379",
       "source": "platform"
     },
     "manage-claude__cmek-coverage-claude-enterprise.md": {
@@ -5302,8 +5302,8 @@
     "manage-claude__cmek-troubleshooting.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/cmek-troubleshooting",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/cmek-troubleshooting.md",
-      "hash": "36b97cfe8f10be48ff27876fa5312f170ad27f14ee3462ba25c64d93ab8e3f08",
-      "last_updated": "2026-10-27T21:46:37.238632",
+      "hash": "39393ea10a28e644ae0b32c5e365e31080ce520aad256921ac3452c5ba5481d8",
+      "last_updated": "2026-11-17T05:53:39.834507",
       "source": "platform"
     },
     "manage-claude__compliance-activity-feed.md": {
@@ -5484,8 +5484,8 @@
     "manage-claude__plugins-api.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/plugins-api",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/plugins-api.md",
-      "hash": "5a49823d4cf35aa284028150714a0ba06db4222f91262cd35b050e3a3ef209fc",
-      "last_updated": "2026-11-04T19:15:06.734430",
+      "hash": "dbe6ca640abc789172807d0ac850bd55caad2063f8dd6d159f6381d4a0459873",
+      "last_updated": "2026-11-17T05:53:57.607319",
       "source": "platform"
     },
     "manage-claude__rate-limits-api.md": {
@@ -6394,7 +6394,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-11-16T21:37:11.435260",
+    "last_fetch_completed": "2026-11-17T05:55:26.903335",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 916,
@@ -6408,7 +6408,7 @@
     "total_files": 913,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-11-16T21:37:11.435279",
+  "last_updated": "2026-11-17T05:55:26.903355",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
