@@ -24,7 +24,7 @@
 
 执行完成后，打开技能栏，在已安装目录下即可查看新创建的 `Skill`。
 
-![](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/image-13.IwhnXu0R.png)## 五、使用效果
+![](https://download.codebuddy.cn/web/docs/a72dfd75544341ccba23774dccaf1053256b00af/docs/static/image-13.IwhnXu0R.png)## 五、使用效果
 
 创建完成后，可在任意对话中直接使用自然语言触发该能力。
 
@@ -38,7 +38,7 @@
 2. 将内容整理为结构化记录。
 3. 保存到指定位置，并反馈记录结果。
 
-![](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/image-14.BImWZjO6.png)![](https://download.codebuddy.cn/web/docs/ad0810e78d876c382cf7f0afbd9113c7bef87f7e/docs/static/image-15.BIdQL4Qa.png)## 六、使用建议
+![](https://download.codebuddy.cn/web/docs/a72dfd75544341ccba23774dccaf1053256b00af/docs/static/image-14.BImWZjO6.png)![](https://download.codebuddy.cn/web/docs/a72dfd75544341ccba23774dccaf1053256b00af/docs/static/image-15.BIdQL4Qa.png)## 六、使用建议
 
 - **先定义单一能力**：首个自定义 `Skill` 建议只解决一个明确问题。
 - **把触发条件说清楚**：例如何时触发、写入哪里、输出什么结果。
