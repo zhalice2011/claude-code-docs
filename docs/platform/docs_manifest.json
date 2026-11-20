@@ -129,8 +129,8 @@
     "agents-and-tools__agent-skills__quickstart.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart.md",
-      "hash": "b2cb4460ddfcc83c44fc31bba50183c0398e5860363ea1622b205dca425d5808",
-      "last_updated": "2026-11-18T00:14:51.135857",
+      "hash": "e081dddab878adb4ed49707b48545ae0b51a4f4d74979543357742f0c2c8ff27",
+      "last_updated": "2026-11-20T01:59:03.934397",
       "source": "platform"
     },
     "agents-and-tools__mcp-connector.md": {
@@ -6429,8 +6429,8 @@
     "test-and-evaluate__strengthen-guardrails__reduce-latency.md": {
       "original_url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency",
       "original_md_url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency.md",
-      "hash": "ff59b344dc7a2b5c6d0a9dca1bad838508b57163ba469882217acee24736acbd",
-      "last_updated": "2026-11-11T22:01:02.261790",
+      "hash": "05881ed07d41fdd829476a9dae5259d6ba848028f8013a1747c199fd5e4c613f",
+      "last_updated": "2026-11-20T02:08:03.019435",
       "source": "platform"
     },
     "test-and-evaluate__strengthen-guardrails__reduce-prompt-leak.md": {
@@ -6443,7 +6443,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-11-19T19:56:23.146194",
+    "last_fetch_completed": "2026-11-20T02:08:03.589013",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 923,
@@ -6457,7 +6457,7 @@
     "total_files": 920,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-11-19T19:56:23.146209",
+  "last_updated": "2026-11-20T02:08:03.589036",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
