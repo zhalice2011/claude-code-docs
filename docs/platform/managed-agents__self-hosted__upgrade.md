@@ -10,11 +10,11 @@ description: Upgrade a self-hosted Claude Managed Agents deployment on Kubernete
 
 This page shows how to upgrade a deployment on Kubernetes or Docker Compose, and how to roll back. On Kubernetes, the downtime depends on how far the upgrade goes:
 
-| Upgrade                                                                        | Back up the database first              | Downtime on Kubernetes                                                |
-| ------------------------------------------------------------------------------ | --------------------------------------- | --------------------------------------------------------------------- |
-| Patch: only the third number changes                                           | No. The database schema stays the same. | None                                                                  |
-| Minor: the second number goes up by one, such as `1.2.0` to `1.3.0`            | Yes. The schema changes.                | None, unless a `CHANGELOG.md` section says that the servers must stop |
-| Skips a minor release, such as `1.1.0` to `1.3.0`, or changes the first number | Yes. The schema changes.                | From when you stop the old servers until the new ones are ready       |
+| Upgrade | Back up the database first | Downtime on Kubernetes |
+| ----- | ----- | ----- |
+| Patch: only the third number changes | No. The database schema stays the same. | None |
+| Minor: the second number goes up by one, such as `1.2.0` to `1.3.0` | Yes. The schema changes. | None, unless a `CHANGELOG.md` section says that the servers must stop |
+| Skips a minor release, such as `1.1.0` to `1.3.0`, or changes the first number | Yes. The schema changes. | From when you stop the old servers until the new ones are ready |
 
 A Docker Compose stack is down while it restarts, for every kind of upgrade.
 
@@ -166,11 +166,11 @@ Before you roll back, find the cause in the log:
 * **Kubernetes:** If the migration Job fails, `helm upgrade` waits a few minutes while the Job retries, and then it fails. During that wait, run `kubectl -n cma-server logs job/$server-migrate` in a second terminal, with `$server` set as in [Upgrade on Kubernetes](https://platform.claude.com/docs/en/managed-agents/self-hosted/upgrade#upgrade-on-kubernetes). Kubernetes deletes the log when the Job stops retrying. If you missed it, run `helm upgrade` again, which starts the Job again.
 * **Docker Compose:** The output of `docker compose up --build -d` might not show the reason. Run `docker compose logs` to find it.
 
-| What the log shows                                                                                             | What it means                                                                                                                   | What to do                                                                                                                                                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| What the log shows | What it means | What to do |
+| ----- | ----- | ----- |
 | A line that contains `refusing to migrate: servers of another release are still running against this database` | Some upgrades need every server stopped first, and a server of the old release is still running. The migration changed nothing. | Stop every server, as in [Upgrade on Kubernetes](https://platform.claude.com/docs/en/managed-agents/self-hosted/upgrade#upgrade-on-kubernetes), and run `helm upgrade` again. If a server didn’t shut down cleanly, wait 20 seconds first: until then, the migration still counts that server as running. |
-| A line that contains `cannot downgrade`, when you deploy the old release again                                 | The old release can’t run on the changed schema.                                                                                | Restore the backup, as in [Roll back](https://platform.claude.com/docs/en/managed-agents/self-hosted/upgrade#roll-back).                                                                                                                                                                                  |
-| Another error from the migration                                                                               | You don’t need to roll back. On Kubernetes, the servers stay as they were until the migration succeeds.                         | Fix the cause, and run `helm upgrade` or `docker compose up --build -d` again.                                                                                                                                                                                                                            |
+| A line that contains `cannot downgrade`, when you deploy the old release again | The old release can’t run on the changed schema. | Restore the backup, as in [Roll back](https://platform.claude.com/docs/en/managed-agents/self-hosted/upgrade#roll-back). |
+| Another error from the migration | You don’t need to roll back. On Kubernetes, the servers stay as they were until the migration succeeds. | Fix the cause, and run `helm upgrade` or `docker compose up --build -d` again. |
 
 The migration can succeed while the new servers don’t become ready. To find the cause, read the servers’ log:
 
@@ -354,22 +354,22 @@ When the Claude API is your inference provider, each model call carries the IDs 
 `cma-server-values.yaml` has to say which names your install has, in its `earlierNames` setting. To find the name of the server’s Deployment, run `kubectl -n cma-server get deployment -l anthropic.com/role=server`.
 
 | The Deployment’s name | The line in `cma-server-values.yaml` |
-| --------------------- | ------------------------------------ |
-| `cma-onprem`          | `earlierNames: true`                 |
-| `cma-server`          | `earlierNames: false`                |
+| ----- | ----- |
+| `cma-onprem` | `earlierNames: true` |
+| `cma-server` | `earlierNames: false` |
 
 If the file doesn’t have the line, add it before you upgrade, and keep it there for every later upgrade. Without it, the server chart’s `helm upgrade` command stops with an error that names `earlierNames`, and changes nothing.
 
 With `earlierNames: true`, the chart’s objects keep their `cma-onprem` names, and the servers still find the Secrets that you created under those names. These pages use the names in the middle column. With `earlierNames: true`, use the names in the last column instead:
 
-| Object                                                    | Name on these pages             | Name with `earlierNames: true`  |
-| --------------------------------------------------------- | ------------------------------- | ------------------------------- |
-| The server’s Deployment and Service                       | `cma-server`                    | `cma-onprem`                    |
-| The migration Job                                         | `cma-server-migrate`            | `cma-onprem-migrate`            |
-| The Job of each environment                               | `cma-server-environment-<name>` | `cma-onprem-environment-<name>` |
-| The Secret with the database password                     | `cma-server-db`                 | `cma-onprem-db`                 |
-| The Secret with the inference provider’s credential       | `cma-server-upstream`           | `cma-onprem-upstream`           |
-| The Secret with the server API key and the encryption key | `cma-server-keys`               | `cma-onprem-server`             |
+| Object | Name on these pages | Name with `earlierNames: true` |
+| ----- | ----- | ----- |
+| The server’s Deployment and Service | `cma-server` | `cma-onprem` |
+| The migration Job | `cma-server-migrate` | `cma-onprem-migrate` |
+| The Job of each environment | `cma-server-environment-<name>` | `cma-onprem-environment-<name>` |
+| The Secret with the database password | `cma-server-db` | `cma-onprem-db` |
+| The Secret with the inference provider’s credential | `cma-server-upstream` | `cma-onprem-upstream` |
+| The Secret with the server API key and the encryption key | `cma-server-keys` | `cma-onprem-server` |
 
 Whatever `earlierNames` says, the namespace is named `cma-server`, and the server’s image is named `cma-server-image`.
 

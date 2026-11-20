@@ -230,11 +230,11 @@ In `cma-values.yaml`, `egress.mode: publicInternet` lets sandboxes reach the pub
 
 This table compares it with the two other modes:
 
-| `egress.mode`         | What sandboxes can reach                                                                                                                                                                                                                          |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `closed`, the default | Your servers and the dispatcher, and no DNS server                                                                                                                                                                                                |
-| `publicInternet`      | Your servers, the dispatcher, a DNS server, and the public internet                                                                                                                                                                               |
-| `gateway`             | Your servers, the dispatcher, and, through the egress gateway, the hosts that you list. See [Turn on the gateway on Kubernetes](https://platform.claude.com/docs/en/managed-agents/self-hosted/agent-identity#turn-on-the-gateway-on-kubernetes). |
+| `egress.mode` | What sandboxes can reach |
+| ----- | ----- |
+| `closed`, the default | Your servers and the dispatcher, and no DNS server |
+| `publicInternet` | Your servers, the dispatcher, a DNS server, and the public internet |
+| `gateway` | Your servers, the dispatcher, and, through the egress gateway, the hosts that you list. See [Turn on the gateway on Kubernetes](https://platform.claude.com/docs/en/managed-agents/self-hosted/agent-identity#turn-on-the-gateway-on-kubernetes). |
 
 ## Other clusters
 
@@ -250,9 +250,9 @@ The folder `kubernetes/chart/examples/` in the archive has a complete values fil
 
 By the chart’s defaults, each session has a 10 GiB volume for `/workspace`. The volume stays after the session’s pod goes away, so the session’s next message finds its files.
 
-| To free                                      | Do this                                                                                                                                                                                                                                                      |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| One session’s volume                         | Archive the session after its turn ends. The dispatcher usually deletes the volume within about 5 minutes.                                                                                                                                                   |
+| To free | Do this |
+| ----- | ----- |
+| One session’s volume | Archive the session after its turn ends. The dispatcher usually deletes the volume within about 5 minutes. |
 | The volumes of sessions that nobody archives | Set `dispatcher.retentionDays` in `cma-values.yaml`. The dispatcher then deletes a volume once its session has been idle for that many days, and the session’s next message starts with an empty `/workspace`. The chart’s default, `0`, keeps every volume. |
 
 The commands in this section are for GKE. On another cluster, use `sandboxclaims` in place of `sandboxes`.

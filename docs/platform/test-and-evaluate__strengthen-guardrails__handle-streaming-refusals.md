@@ -328,11 +328,11 @@ Here’s how to detect and handle streaming refusals in your application:
 
 The API currently handles refusals in three different ways:
 
-| Refusal type                       | Response format              | When it occurs                                  |
-| ---------------------------------- | ---------------------------- | ----------------------------------------------- |
-| Streaming classifier refusals      | **`stop_reason`: `refusal`** | During streaming when content violates policies |
-| API input and copyright validation | 400 error codes              | When input fails validation checks              |
-| Model-generated refusals           | Standard text responses      | When the model itself refuses                   |
+| Refusal type | Response format | When it occurs |
+| ----- | ----- | ----- |
+| Streaming classifier refusals | **`stop_reason`: `refusal`** | During streaming when content violates policies |
+| API input and copyright validation | 400 error codes | When input fails validation checks |
+| Model-generated refusals | Standard text responses | When the model itself refuses |
 
 ## Best practices
 
@@ -384,8 +384,8 @@ Streaming refusals are available or in beta, depending on the API.
 * Availability: Always on
 * Usage: The stream ends with `stop_reason` `"refusal"`, and `stop_details` (`category` and `explanation`) arrives on the `message_delta` event.
 
-| Status    | Cloud platforms         |
-| --------- | ----------------------- |
+| Status | Cloud platforms |
+| ----- | ----- |
 | Available | All supported platforms |
 
 #### [Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview)
@@ -393,6 +393,6 @@ Streaming refusals are available or in beta, depending on the API.
 * Availability: Always on
 * Usage: A refused turn ends, and the session goes idle. Treat a turn as refused if `stop_details.type` or `stop_reason.type` on the `session.status_idle` event is `"refusal"`. On a refused turn, `stop_reason.type` can be `"end_turn"`. `stop_details` is `null` on any other turn, and can be `null` on a refused turn too.
 
-| Status | Cloud platforms                                                                                                    |
-| ------ | ------------------------------------------------------------------------------------------------------------------ |
-| Beta   | Claude API, [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws) |
+| Status | Cloud platforms |
+| ----- | ----- |
+| Beta | Claude API, [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws) |
