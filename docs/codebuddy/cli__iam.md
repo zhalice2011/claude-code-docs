@@ -13,7 +13,7 @@
 | 个人开发者 | `CODEBUDDY_API_KEY` | [从平台获取 API Key](#个人用户-获取-api-key) |
 | 企业/团队（OAuth 集成） | `apiKeyHelper` | [创建应用获取 Client ID/Secret](#企业用户-oauth-认证) |
 | CI/CD 已有 OAuth token | `CODEBUDDY_AUTH_TOKEN` | 直接使用已有 token |
-| 第三方模型服务 | `CODEBUDDY_API_KEY` \+ `BASE_URL` | 从第三方服务商获取 |
+| 第三方模型服务 | [`models.json`](./models) 的 `url` 和 `apiKey` | 从第三方服务商获取，写入 `models.json` |
 
 > 当多个认证方式同时配置时，按以下优先级生效：**CODEBUDDY\_AUTH\_TOKEN \> apiKeyHelper \> CODEBUDDY\_API\_KEY**
 
@@ -158,16 +158,29 @@ json
 
 ### 第三方模型服务
 
-适用于使用 OpenRouter 等第三方模型服务。
+适用于 DeepSeek、OpenRouter 等第三方模型。在 `~/.codebuddy/models.json` 里写模型 id、完整的 Chat Completions 地址和密钥。不要用 `CODEBUDDY_BASE_URL` 指向厂商：那个变量只覆盖产品自己的 Chat 协议接入地址，Anthropic 等其他协议不兼容。
 
-> **注意：** 使用第三方模型服务时，无需设置 `CODEBUDDY_INTERNET_ENVIRONMENT` 环境变量，因为请求直接发送到第三方服务端点。
-
+json
+```
+{
+  "models": [
+    {
+      "id": "openai/gpt-4o",
+      "name": "OpenRouter GPT-4o",
+      "url": "https://openrouter.ai/api/v1/chat/completions",
+      "apiKey": "${OPENROUTER_API_KEY}",
+      "supportsToolCall": true
+    }
+  ]
+}
+```
 bash
 ```
-export CODEBUDDY_API_KEY="sk-or-v1-xxx"
-export CODEBUDDY_BASE_URL="https://openrouter.ai/api/v1"
-codebuddy --model openai/gpt-4
+export OPENROUTER_API_KEY="sk-or-v1-xxx"
+codebuddy --model openai/gpt-4o
 ```
+
+> **注意：** 请求发往 `models.json` 里的地址，不经过产品网关，因此不必设置 `CODEBUDDY_INTERNET_ENVIRONMENT`。字段说明见 [models.json 配置指南](./models)。
 
 ---
 
@@ -181,7 +194,7 @@ codebuddy --model openai/gpt-4
 | --- | --- |
 | 环境变量 | `CODEBUDDY_API_KEY` |
 | 认证类型 | API Key（X\-Api\-Key 请求头） |
-| 适用场景 | 个人开发、第三方模型服务 |
+| 适用场景 | 个人开发、访问产品自有模型。第三方模型的密钥写在 `models.json` 的 `apiKey` |
 
 > **⚠️ 注意：使用 API Key 时，必须同时配置 `CODEBUDDY_INTERNET_ENVIRONMENT` 环境变量！**
 > 

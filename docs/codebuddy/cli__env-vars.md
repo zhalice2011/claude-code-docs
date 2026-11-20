@@ -19,7 +19,7 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 
 | 环境变量 | 说明 |
 | --- | --- |
-| `CODEBUDDY_BASE_URL` | 覆盖 API 端点地址，通常与 `CODEBUDDY_API_KEY` 配合使用 |
+| `CODEBUDDY_BASE_URL` | 覆盖产品 Chat 协议（Chat Completions）的接入地址，通常与 `CODEBUDDY_API_KEY` 配合，指向企业网关或代理。接入第三方模型不要用它，改在 [`models.json`](./models) 配置。Anthropic 等其他协议不兼容，只改这个变量会把 Chat 请求发到对不上的接口 |
 | `CODEBUDDY_INTERNET_ENVIRONMENT` | 网络环境配置（`internal` 用于中国版，`ioa` 用于 iOA 企业版） |
 | `HTTP_PROXY` / `http_proxy` | HTTP 代理服务器地址 |
 | `HTTPS_PROXY` / `https_proxy` | HTTPS 代理服务器地址 |
@@ -400,41 +400,56 @@ codebuddy
 ```
 ### 使用第三方模型服务
 
-bash
-```
-# 使用自定义 API 端点
-export CODEBUDDY_API_KEY="your-api-key"
-export CODEBUDDY_BASE_URL="https://api.example.com/v1"
-codebuddy --model your-model-name
-```
+第三方模型写在 [`models.json`](./models)，不要用 `CODEBUDDY_BASE_URL` 指向厂商地址。
+
+`CODEBUDDY_BASE_URL` 只覆盖产品自己的 Chat 协议接入地址，请求仍按 Chat Completions 发出。厂商差异（思考开关、历史思考字段、温度是否可用）是按 `models.json` 里的地址和模型 id 适配的。把它指到 Anthropic 或其他协议的服务上，字段对不上，看起来像“配了地址就能用”，实际请求不兼容。
+
+模型写好之后，再用 `CODEBUDDY_MODEL`、`--model` 或下面的场景变量选择 `models.json` 里的模型 id。这些变量只选模型，不改接入地址。
+
 #### 对接 DeepSeek 示例
 
-对接任意兼容 Anthropic 协议的第三方模型服务（如 DeepSeek），只需配置 Base URL、API Key 和模型变量，无需额外修改 `models.json`：
+在 `~/.codebuddy/models.json` 写入模型，`url` 用完整的 Chat Completions 路径。密钥用环境变量引用，不要明文写进文件：
 
+json
+```
+{
+  "models": [
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "url": "https://api.deepseek.com/v1/chat/completions",
+      "apiKey": "${DEEPSEEK_API_KEY}",
+      "supportsToolCall": true
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "name": "DeepSeek V4 Flash",
+      "url": "https://api.deepseek.com/v1/chat/completions",
+      "apiKey": "${DEEPSEEK_API_KEY}",
+      "supportsToolCall": true
+    }
+  ]
+}
+```
 bash
 ```
-# 端点与密钥
-export CODEBUDDY_BASE_URL="https://api.deepseek.com"
-export CODEBUDDY_API_KEY="<your-deepseek-api-key>"
+export DEEPSEEK_API_KEY="<your-deepseek-api-key>"
 
-# 主 Agent 默认模型
+# 主 Agent 默认模型，id 必须已经写在 models.json
 export CODEBUDDY_MODEL="deepseek-v4-pro"
 
-# 复杂推理使用的大模型
+# 复杂推理、轻量任务、子代理同样只填 models.json 里的模型 id
 export CODEBUDDY_BIG_SLOW_MODEL="deepseek-v4-pro"
-
-# 后台/轻量任务使用的小模型
 export CODEBUDDY_SMALL_FAST_MODEL="deepseek-v4-flash"
-
-# 运维级统一覆盖所有子代理。
 # 不设置时会继续使用单次调用、按子代理设置和产品内置编排。
 export CODEBUDDY_CODE_SUBAGENT_MODEL="deepseek-v4-flash"
 
-# 启动时可通过 --model 显式指定主模型
 codebuddy --model deepseek-v4-pro
 ```
 
-> **提示**：以上变量也可以写入 `settings.json` 的 `env` 字段，每个会话自动应用，便于团队统一配置。
+> **提示**：上面的模型选择变量可以写入 `settings.json` 的 `env` 字段，每个会话自动应用。接入地址和密钥仍以 `models.json` 为准。完整字段见 [DeepSeek 平台配置示例](./models#deepseek-平台配置示例)。
+> 
+> `CODEBUDDY_BASE_URL` 仍可用于把产品 Chat 协议改到企业网关或代理，地址需要能接 Chat Completions。产品网关会自己做厂商翻译，CLI 不再改写思考和温度。第三方模型的地址写在 `models.json`，不要靠这个变量指向厂商。
 
 ### 中国版配置
 

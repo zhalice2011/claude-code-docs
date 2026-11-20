@@ -62,7 +62,7 @@ CodeBuddy Code 支持强大的 CI/CD 工作流，改变您与代码的协作方�
 	- 网络环境配置（中国版用户需要设置为 `internal`,iOA 用户设置为 `iOA`)
 - **CODEBUDDY\_BASE\_URL**
 
-	- 自定义模型服务的基础 URL（需兼容 OpenAI 接口协议）
+	- 覆盖产品 Chat 协议的接入地址（企业网关或代理，需兼容 Chat Completions）。第三方模型不要用这个变量，写到 `models.json`
 - **GITLAB\_ACCESS\_TOKEN**
 
 	- GitLab 项目访问令牌（需具有 api 范围）
@@ -272,7 +272,7 @@ markdown
 
 **API 连接失败：**
 
-- 检查 `CODEBUDDY_BASE_URL` 是否配置正确（如使用自定义端点）
+- 如果改过产品 Chat 接入地址，检查 `CODEBUDDY_BASE_URL` 是否指向兼容 Chat Completions 的网关
 - 验证 GitLab Runner 能否访问 CodeBuddy API 服务器
 - 确认 URL 格式正确，包含协议（如 `https://api.example.com`）
 
@@ -309,7 +309,7 @@ CodeBuddy Code 在 CI/CD 环境中使用以下环境变量：
 
 **可选配置：**
 
-- `CODEBUDDY_BASE_URL`：自定义模型服务的基础 URL
+- `CODEBUDDY_BASE_URL`：覆盖产品 Chat 协议的接入地址。第三方模型写在 `models.json`
 - `GITLAB_ACCESS_TOKEN`: GitLab API 访问令牌（用于 MR 操作）
 - `CI_JOB_TOKEN`: GitLab CI 自动提供的作业令牌
 

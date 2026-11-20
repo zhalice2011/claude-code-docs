@@ -357,7 +357,7 @@ export DEEPSEEK_API_KEY="<your-deepseek-api-key>"
 codebuddy --model deepseek-v4-pro
 ```
 
-> **提示**：如果不希望维护 `models.json`，也可以完全通过环境变量对接 DeepSeek，见 [env\-vars.md 对接 DeepSeek 示例](./env-vars#对接-deepseek-示例)。
+> **提示**：第三方模型用这份 `models.json` 配置。`CODEBUDDY_BASE_URL` 只覆盖产品 Chat 协议的接入地址，不会按厂商做协议兼容。模型 id 配好后，再用 `CODEBUDDY_MODEL` 或 `--model` 选择，见 [对接 DeepSeek 示例](./env-vars#对接-deepseek-示例)。
 
 ### OpenAI Responses API 配置示例
 
