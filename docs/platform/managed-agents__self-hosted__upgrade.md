@@ -24,6 +24,10 @@ Read the new release’s section of `CHANGELOG.md`, at the top of the extracted 
 
 Then go through [Settings and paths to check](https://platform.claude.com/docs/en/managed-agents/self-hosted/upgrade#settings-and-paths-to-check).
 
+<Warning>
+  On Kubernetes, an upgrade can delete the files of some sessions, and nothing reports an error. Before you upgrade, see [Kubernetes: the volumes of deleted sessions](https://platform.claude.com/docs/en/managed-agents/self-hosted/upgrade#deleted-sessions-volumes).
+</Warning>
+
 A minor or major upgrade includes a database backup. The dump holds every conversation in plain text, so the commands on this page encrypt it with the [age encryption tool](https://age-encryption.org). Create a key pair once, and keep the private key, `cma-backup.agekey`, away from the backups:
 
 ```bash
@@ -171,6 +175,14 @@ Before you roll back, find the cause in the log:
 | A line that contains `refusing to migrate: servers of another release are still running against this database` | Some upgrades need every server stopped first, and a server of the old release is still running. The migration changed nothing. | Stop every server, as in [Upgrade on Kubernetes](https://platform.claude.com/docs/en/managed-agents/self-hosted/upgrade#upgrade-on-kubernetes), and run `helm upgrade` again. If a server didn’t shut down cleanly, wait 20 seconds first: until then, the migration still counts that server as running. |
 | A line that contains `cannot downgrade`, when you deploy the old release again | The old release can’t run on the changed schema. | Restore the backup, as in [Roll back](https://platform.claude.com/docs/en/managed-agents/self-hosted/upgrade#roll-back). |
 | Another error from the migration | You don’t need to roll back. On Kubernetes, the servers stay as they were until the migration succeeds. | Fix the cause, and run `helm upgrade` or `docker compose up --build -d` again. |
+
+On Docker Compose, `docker compose up` in the new release’s directory can stop with `required variable CMA_PG_USER is missing a value`. The new release’s `.env` then lacks the names that your stack’s data is kept under: its Compose project, its volumes, and its database role and name. The new stack hasn’t started, the old one might be stopped, and your data is untouched. Don’t add a `CMA_PG_USER` line to `.env` by hand. With that line alone, the stack starts empty under the release’s own names. Your data then stays in the old volumes. Instead, run `docker compose up -d` in the old release’s Compose directory. Then run this line there, in the terminal that has the `$releases` variable. In place of `<archive>`, write the archive’s name from the “Extract the new archive” step:
+
+```bash
+sh "$releases/<archive>/compose/keep-names.sh" && cp .env "$releases/<archive>/compose/"
+```
+
+Make again any change that you made to the new release’s `.env`. Then go on with the “Stop the old stack and start the new one” step.
 
 The migration can succeed while the new servers don’t become ready. To find the cause, read the servers’ log:
 
@@ -348,6 +360,12 @@ Check `sandbox.idleTimeout` in the same files. If a file doesn’t set it, a ses
 Check the settings file for `inference.attribution`, and the server’s environment for `CMA_INFERENCE__ATTRIBUTION`. Delete the line if you find one. The release that you’re upgrading to doesn’t have the setting, and its server doesn’t start if either is set.
 
 When the Claude API is your inference provider, each model call carries the IDs of its session and of that session’s agent and environment after the upgrade. See [What the server sends to its inference provider](https://platform.claude.com/docs/en/managed-agents/self-hosted-data-and-access#what-the-server-sends-to-its-inference-provider).
+
+### Kubernetes: the volumes of deleted sessions
+
+An upgrade can delete the `/workspace` volume of each session that you deleted, and of each session that isn’t in the server’s database, such as one lost to a restore. You can lose those sessions’ files, and nothing reports an error. The deletion can start as soon as the first server of the new release answers. With the server chart, that’s during its `helm upgrade`.
+
+Find those sessions while the old servers are running, before you stop any of them: run the command in step 1 of [Free a session’s volume](https://platform.claude.com/docs/en/managed-agents/self-hosted/kubernetes#free-a-sessions-volume). If you run more than one environment, run it in each sandbox release’s namespace. Don’t do that section’s other steps for a session whose files you need. To keep the files, copy them out with your own Kubernetes tools. No API call, admin command, or page of the console on your server reaches these volumes.
 
 ### Kubernetes: the names of your objects
 

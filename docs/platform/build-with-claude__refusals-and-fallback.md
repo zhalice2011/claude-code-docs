@@ -220,7 +220,14 @@ A `reasoning_extraction` refusal usually comes from a prompt that asks the model
 
 The wording can sit in a system prompt, a skill, or a tool description, so check those too.
 
-You can still ask Claude to explain its answer. Ask for a short explanation, the evidence behind a result, or a summary of the actions it took. To see how the model reasoned, set `display: "summarized"` and read the [`thinking` blocks](https://platform.claude.com/docs/en/build-with-claude/thinking#summarized-thinking). This category has no recommended fallback model, so change the prompt rather than retry the request. If a reworded request is still declined, [contact support](https://support.claude.com/en/articles/9015913-how-to-get-support) and include the [request ID](https://platform.claude.com/docs/en/api/errors#request-id).
+Models that might return this category include the following:
+
+* Claude Fable 5.2, Claude Fable 5.1, and Claude Fable 5
+* Claude Opus 5.5 and Claude Opus 5
+* Claude Sonnet 5.5
+* Claude Haiku 5.5
+
+You can still ask Claude to explain its answer. Ask for a short explanation, the evidence behind a result, or a summary of the actions it took. To see a summary of the model’s reasoning, set `thinking: {"type": "adaptive", "display": "summarized"}` and read the [`thinking` blocks](https://platform.claude.com/docs/en/build-with-claude/thinking#summarized-thinking). This category has no recommended fallback model, so change the prompt rather than retry the request. If a reworded request is still declined, [contact support](https://support.claude.com/en/articles/9015913-how-to-get-support) and include the [request ID](https://platform.claude.com/docs/en/api/errors#request-id).
 
 ## How refusals are billed
 

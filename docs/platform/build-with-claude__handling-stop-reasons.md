@@ -1930,6 +1930,8 @@ On a refusal, the [`stop_details`](https://platform.claude.com/docs/en/api/messa
 
 You can usually get a response to a refused request by retrying it on another Claude model. This works for Claude Fable 5.2, Claude Fable 5.1, Claude Fable 5, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, and Claude Haiku 5.5. [Refusals and fallback](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback) shows how to set up that retry, server-side or in your client. Claude Haiku 5.5 has no server-side fallback, so set up its retry with [client-side fallback](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback#client-side-fallback). If you build the retry yourself from any of these models except Claude Haiku 5.5, [Fallback credit](https://platform.claude.com/docs/en/build-with-claude/fallback-credit) covers how to avoid paying the prompt-cache cost twice.
 
+A `reasoning_extraction` refusal is an exception: change the prompt instead of retrying on another model, as [Keep reasoning in thinking blocks](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback#keep-reasoning-in-thinking-blocks) says.
+
 ### model\_context\_window\_exceeded
 
 Claude stopped because it reached the model’s context window limit. This lets you request the maximum possible tokens without knowing the exact input size.
