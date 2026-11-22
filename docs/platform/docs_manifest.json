@@ -6534,7 +6534,7 @@
   },
   "fetch_metadata": {
     "source_name": "platform",
-    "last_fetch_completed": "2026-11-22T10:41:48.882125",
+    "last_fetch_completed": "2026-11-22T19:02:05.960037",
     "sitemap_url": "https://platform.claude.com/sitemap.xml",
     "base_url": "https://platform.claude.com",
     "pages_discovered": 936,
@@ -6548,7 +6548,7 @@
     "total_files": 933,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-11-22T10:41:48.882149",
+  "last_updated": "2026-11-22T19:02:05.960052",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/platform/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",
