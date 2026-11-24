@@ -79,9 +79,10 @@ CodeBuddy Code 支持通过环境变量来控制其行为。这些变量可以�
 | `CODEBUDDY_PLUGIN_STATUS_REPORT_ENABLED` | 设置为 `true` 或 `1` 开启 `plugin_status` 状态上报。默认关闭，仅 CLI UI 版本在未显式配置时默认开启；开启时同一账号在同一台机器上每个自然日最多成功上报一次 |
 | `CODEBUDDY_SHOW_CONTEXT_USAGE` | 设置为 `1`、`true`、`yes` 或 `on`，常驻显示当前会话上下文窗口使用率（覆盖默认的阈值显示行为） |
 | `CODEBUDDY_IMAGE_GEN_ENABLED` | 设置为 `false` 或 `0` 禁用图片生成功能 |
+| `CODEBUDDY_MIORA_MEDIA_ENDPOINT` | 多模态生成服务 miora\-media 的完整地址（如 `https://staging.example.com/miora/v1`），ImageGen / VideoGen 与 `/model:image-gen`、`/model:video-gen` 共用。未设置时取产品配置 `mioraMediaEndpoint`（完整 URL 或相对 `endpoint` 的路径），再缺省为 `{endpoint}/miora/v1` |
 | `CODEBUDDY_BRIEF` | 设置为 `1` / `true` / `yes` 启用 `SendUserMessage` 工具（等同 `--brief`），让 Agent 通过该工具向用户发送消息；未设置时该工具不可见 |
 | `CODEBUDDY_IS_SANDBOX` | **仅进程环境变量**。设为 `1` / `true` / `yes` / `on` 时，配合 `-y` 跳过 HIGH/CRITICAL 审批。单独设置不会改默认模式。详见[沙箱 full pass（高危）](#沙箱-full-pass-高危)。默认未设置 |
-| `CODEBUDDY_IMAGE_EDIT_ENABLED` | 设置为 `false` 或 `0` 禁用图片编辑功能 |
+| `CODEBUDDY_IMAGE_EDIT_ENABLED` | 设置为 `false` 或 `0` 禁用 ImageGen 的编辑模式（`mode=edit`） |
 | `CODEBUDDY_ARTIFACT_ENABLED` | 设置为 `false` 或 `0` 禁用 Artifact / ArtifactControl 工具（将本地单个 HTML 或 Markdown 文件发布为可分享的公网链接，Markdown 由服务端渲染为样式化页面；ArtifactControl 当前仅支持取消发布）。默认开启。判定顺序：国际 endpoint（`codebuddy.ai` / `workbuddy.ai` / `staging-codebuddy.tencent.com`）下该能力恒关闭、本变量无法覆盖；其余场景下本变量优先级最高，未设置（含空值）时回落到旧变量 `CODEBUDDY_SHARE_LINK_ENABLED`，再回落到云端 `productFeatures`（`Artifact` 与 `ShareLink` 任一显式为 `false` 即关闭，均未下发时缺省 `true`） |
 | `CODEBUDDY_SHARE_LINK_ENABLED` | **已废弃（兼容保留）**：`CODEBUDDY_ARTIFACT_ENABLED` 的旧名，ShareLink 工具更名为 Artifact 前的开关。语义与新变量完全一致，新变量优先；仅在新变量未设置时生效 |
 | `CODEBUDDY_COMPUTER_USE_ENABLED` | **实验功能**：设置为 `true` 或 `1` 启用 macOS 桌面控制工具（截图、鼠标、键盘）。仅 macOS 可用，默认关闭。首次调用键盘/鼠标动作需在系统设置 → 隐私与安全 → 辅助功能、屏幕录制中为终端授权 |

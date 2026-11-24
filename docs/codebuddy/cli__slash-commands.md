@@ -31,8 +31,8 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/model:lite` | `[list | model-id]` | ✅ 支持 | 切换或查看 `lite` 场景变体（Explore 等轻量子任务使用）的生效模型、来源。不带参数时打开交互式选择界面（含 Global / Project 设置），`list` 列出可用模型，带模型 ID 参数时直接切换。 |
 | `/model:reasoning` | `[list | model-id]` | ✅ 支持 | 切换或查看 `reasoning` 场景变体（复杂分析任务使用）的生效模型、来源。不带参数时打开交互式选择界面（含 Global / Project 设置），`list` 列出可用模型，带模型 ID 参数时直接切换。 |
 | `/agent-mode` | `[list | cli | ptc | minimal | create]` | ✅ 支持 | 仅空白会话可切换主 Agent 模式（标准 / PTC / 极简 / 创造，或带 `mainAgent: true` 的自定义智能体）。无参数打开选择面板，`list` 列出选项，带模式名直接切换。选择写入 `lastUsed`，下次启动沿用；交互 TUI 在没有任何选择记录时默认 PTC。对话一旦开始即锁定：再执行 `/agent-mode` 只说明无法切换，需 `/clear` 新开会话。WorkBuddy 不受影响。 |
-| `/model:text-to-image` | `[list | model-id]` | ✅ 支持 | 切换或查看当前使用的文生图模型。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
-| `/model:image-to-image` | `[list | model-id]` | ✅ 支持 | 切换或查看当前使用的图生图模型。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
+| `/model:image-gen` | `[list | model-id]` | ✅ 支持 | 切换或查看生图模型（文生图与改图共用）。可选模型来自 miora\-media 当前账号可用列表。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
+| `/model:video-gen` | `[list | model-id]` | ✅ 支持 | 切换或查看视频生成模型（文生视频与图生视频共用）。可选模型来自 miora\-media 当前账号可用列表。不带参数时打开交互式选择界面，`list` 列出可用模型，带模型 ID 参数时直接切换到指定模型。 |
 | `/permissions` |  | ✅ 支持 | 管理工具权限和工作区目录访问权限。 |
 | `/plan` |  | ✅ 支持 | 预览当前计划模式下的计划文件内容。 |
 | `/goal` | `<condition> | clear` | ✅ 支持 | 持续工作直到达成条件。`/goal <condition>` 设定一个目标条件（例：`/goal all tests pass`），会话级注册一个 prompt 类型的 Stop hook，模型每次想停下来时由小模型评估器判断条件是否满足；不满足则把 reason 注入 history 让模型继续工作。`/goal` 不带参数打开 recap 面板，`/goal clear`（别名：`stop` / `off` / `reset` / `none` / `cancel`）提前结束目标。详见 [goal 文档](./goal)。 |
