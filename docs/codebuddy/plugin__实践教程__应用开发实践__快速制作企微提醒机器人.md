@@ -78,7 +78,7 @@ $webhook_url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_WEBHOO
 
 php
 ```
-$webhook_url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=86c70996-fa50-406c-9227-72c21d9ef1c9"; // 替换为您的 webhook 地址
+$webhook_url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_WEBHOOK_KEY"; // 替换为您的 webhook 地址
 ```
 4. 然后进行运行代码（此步骤是已经安装了 php 运行环境，如果没有安装的可以前往百度搜索 php 环境安装，下载宝塔或 PHP study 工具）。
 

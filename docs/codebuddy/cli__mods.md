@@ -734,6 +734,47 @@ on('tool.call', async ($, e, next) => {
 
 ---
 
+## 接管会话压缩
+
+`session.compact` 包住压缩的计算阶段，完整 Hook 链返回之后，宿主才一次性提交最终 `messages`：
+
+text
+```
+手动 / 自动 / $.session.compact()
+  → session.compact Hooks
+      → next({ ...event, messages, instructions }) → 内置计算（不落盘）
+      ← { messages, tokensBefore?, tokensAfter? }
+  ← 最外层 Hook 返回的最终结果
+  → 原有历史校验与安全准入 → 一次提交
+```
+- 不调用 `next`，直接返回 `{ messages }`：使用 Mod 消息，不调用内置摘要。
+- 改写 `next` 入参的 `messages` / `instructions`：内置摘要使用改写后的历史和指令。
+- `await next` 之后替换 `messages`：只提交最终结果，中间候选不写入会话。
+- 在成功的 `next` 之前返回 `{ skip: '原因' }`：保留原历史；成功 `next` 之后不能再返回 `skip`。
+- 非法结果按现有 Hook `.catch` / 未干预容错处理，不会直接落盘；`messages` 必须非空，工具调用与结果必须完整配对。
+
+事件及 `next` 返回的消息带有本次压缩专用的 `handle`。保留 `handle` 时使用原始完整消息，包含附件、工具结果、ID 和元数据；即使修改公开字段，也不会改动原消息。编辑消息应删除 `handle`，新消息由宿主分配 ID，不继承原消息的内部权限标记。
+
+ts
+```
+on('session.compact', async ($, event, next) => {
+  const result = await next({ ...event, instructions: '保留关键决策与未完成事项' });
+  if (result.skip !== undefined) return result;
+  return {
+    ...result,
+    messages: result.messages.map(({ handle, ...message }) => ({
+      ...message,
+      text: message.text + '\n后续继续完成未完成事项。',
+    })),
+  };
+});
+```
+句柄仅在当前压缩期间有效，不能跨压缩复用；普通 `$.session.messages()` 不新增句柄。插件主动调用仍遵循原有调用方跳过、持有回合限制和取消规则。
+
+`$.session.compact()` 只在回合之间执行；会话正在运行或准备新回合时拒绝调用。Server/Harness 通过标准 `compaction_update` 通知宿主，并在 `_meta['codebuddy.ai/trigger']` 保留 `plugin` 来源。通知按自身 `compactionId` 更新，不占用用户手动压缩请求，也不关联随后开始的 prompt；压缩完成后原连接可继续对话。
+
+本接线适用于已进入统一压缩流程的入口及 CLI、Server/Harness 宿主，不新增 `precompute`，也不修改 ACP 文本 `/compact` 的路由。
+
 ## 参考
 
 - 传统 shell / prompt hooks：[`hooks.md`](./hooks)

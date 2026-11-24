@@ -81,6 +81,7 @@ json
 | `app:toggleTodos` | Ctrl\+T | 切换待办事项列表 |
 | `app:toggleTranscript` | Ctrl\+O | 切换详细转录 |
 | `app:toggleSidebar` | Cmd\+B | 切换侧边栏（Web UI） |
+| `app:toggleDock` | Cmd\+Alt\+B / Ctrl\+Alt\+B | 切换右侧工作台（Web UI） |
 | `app:toggleTerminal` | Cmd\+J | 切换终端（Web UI） |
 | `app:commandPalette` | Cmd\+Shift\+P / Ctrl\+Shift\+P | 打开命令面板（Web UI） |
 | `app:newChat` | Cmd\+N | 新建对话（Web UI） |

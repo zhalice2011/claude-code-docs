@@ -20,7 +20,7 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/multitask` |  | ✅ 支持 | 开关 Multitask overlay（少动手、派 worker）。不改当前 Standard / PTC / Create。**极简模式不能开**，输入 `/multitask` 会提示先切到标准、PTC 或创造。再敲一次关掉 overlay。非空白会话可进；worker / 子会话 / `CODEBUDDY_CODE_DISABLE_BACKGROUND_TASKS` 拒绝。不写 `lastUsed`。ACP 宿主用 [`session/set_config_option`](./acp#multitask-协调器)（`configId=multitask`），不要给 `codebuddy --acp` 加 `--agent multitask`。 |
 | `/branch` | `[name]` | ✅ 支持 | 在当前对话位置创建分支，沿用主 Agent 模式、模型、输出风格和附加目录，并自动切换。关联的已结束子代理转录会独立复制；可选指定分支名称。 |
 | `/btw` | `[question]` | ✅ 支持 | 打开独立侧问浮层；每次 `/btw <question>` 都从主会话 fork，侧问记录单独保留并支持连续追问（浮层内按 `i` 进入输入，`Tab` 返回浏览）、最近 5 条浏览、`c` 复制、`x` 清空、`f` 升级为带工具的后台任务，主会话不被写入或打断。 |
-| `/compact` |  | ✅ 支持 | 压缩上下文。 |
+| `/compact` | `[摘要指令]` | ✅ 支持 | 压缩当前上下文，默认先做工程压缩；摘要指令仅在需要模型生成摘要时生效。 |
 | `/config` | `[list | get | set]` | ✅ 支持 | 查看或修改本地配置。不带参数时打开交互式面板，`list` 列出当前设置，`get <key>` 读取设置，`set <key> <value>` 修改设置。 |
 | `/context` | `[all]` | ✅ 支持 | 计算当前会话的上下文 token 分布。默认折叠 Memory / Skills / Agents 明细，`/context all` 展开。 |
 | `/cost` |  | ✅ 支持 | 显示会话的成本和 Token 使用情况。 |
@@ -63,6 +63,16 @@ CodeBuddy Code 支持斜杠命令，允许您在聊天中执行特殊操作、�
 | `/debug` | `[issue description]` | ✅ 支持 | 启用调试日志并帮助诊断会话问题。自动读取当前会话的调试日志尾部（最后 20 行），如果调试日志未启用则自动开启，分析日志中的错误和警告并给出修复建议。 |
 
 ---
+
+### 手动压缩的默认行为
+
+单独执行 `/compact` 时，默认先通过工程压缩整理已有历史。如果压缩后空间已经足够，就直接保存整理后的历史，不额外请求模型生成摘要；空间仍不足时才调用模型生成摘要。结构化手动压缩请求采用相同规则。
+
+`/compact 重点保留文件名和未完成事项` 这类附带的摘要指令，以及 `PreCompact` Hook 返回的摘要指令，只在需要模型生成摘要时生效。如果工程压缩后空间已经足够，就不会调用模型，这些指令也不会被使用。
+
+文本压缩命令使用 `UserPromptExpansion` 和压缩钩子，不触发普通提问的 `UserPromptSubmit`；如需审计压缩请求，请配置 `PreCompact` 或 `PostCompact`。
+
+用户发起的手动压缩成功后会触发一次 `SessionStart`，来源为 `compact`；空历史不触发。`/btw` 的内部分叉压缩保持工程优先，并且不触发该事件。待工具授权时，先完成授权再执行压缩；忙时的文本命令会等待当前执行结束。
 
 ## 自定义斜杠命令 （Custom Slash Commands)
 

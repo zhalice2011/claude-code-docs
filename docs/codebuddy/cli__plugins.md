@@ -167,7 +167,7 @@ CodeBuddy 会按名字问候你。更多关于向技能传递参数的信息，�
 | `agents/` | 插件根目录 | 自定义代理定义 |
 | `skills/` | 插件根目录 | 包含 `SKILL.md` 文件的代理技能 |
 | `hooks/` | 插件根目录 | `hooks.json` 事件处理器 |
-| `.mcp.json` | 插件根目录 | MCP 服务器配置 |
+| `mcp.json`（优先）/ `.mcp.json` | 插件根目录 | MCP 服务器配置；两者同时存在时只读取 `mcp.json` |
 | `.lsp.json` | 插件根目录 | LSP 服务器配置（代码智能） |
 | `bin/` | 插件根目录 | 插件启用时添加到 Bash 工具 `PATH` 的可执行文件 |
 | `settings.json` | 插件根目录 | 插件启用时应用的默认[设置](./settings) |
@@ -189,7 +189,7 @@ my-plugin/
 │   └── hooks.json
 ├── bin/                       # 可执行文件目录（可选）
 │   └── my-tool
-├── .mcp.json                  # MCP 配置文件（可选）
+├── mcp.json                   # MCP 配置文件（可选，也可使用 .mcp.json，mcp.json 优先）
 ├── .lsp.json                  # LSP 配置文件（可选）
 └── settings.json              # 默认设置文件（可选）
 ```

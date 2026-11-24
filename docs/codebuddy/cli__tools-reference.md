@@ -52,7 +52,7 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 | `ToolSearch` | 搜索并加载延迟加载的工具，支持内置工具和 [MCP 工具](./mcp#延迟加载-defer-loading)；可结合 [`Defer(...)`/`NoDefer(...)` 修饰符](./tool-defer-overlay) 按需调整工具的延迟加载状态 | 否 |
 | `WaitForMcpServers` | 等待指定的 MCP 服务器完成连接（默认等所有 pending 的服务器），最长 5 秒 | 否 |
 | `WebFetch` | 获取指定 URL 的内容并进行 AI 分析 | 是 |
-| `WebSearch` | 执行网络搜索 | 是 |
+| `WebSearch` | 执行网络搜索；默认 `lite` 单次检索，`deep` 用于多来源研究与综合 | 是 |
 | `Workflow` | 启动 [Dynamic Workflow](./workflows) 异步运行，立刻返回 runId 并在后台执行；通过 `TaskOutput` 拉取结果 | 是 |
 | `Write` | 创建或覆盖文件 | 是 |
 
@@ -74,7 +74,7 @@ CodeBuddy Code 内置一系列工具来帮助理解和修改代码库。下表�
 
 模型可以在一次回复中同时发起多个工具调用。CodeBuddy Code 按以下规则调度：
 
-- **只读调用可以并发**：相邻的只读调用会同时执行，例如 `Read`、`Glob`、`Grep`、`LSP`、`WebFetch`、`WebSearch`、`ToolSearch`、`TaskGet`、`TaskList`、`TaskOutput`、`Agent`，以及只读的 `Bash` / `PowerShell` 命令。同时执行的数量默认最多 10 个，超出的按顺序排队；可用环境变量 `CODEBUDDY_MAX_TOOL_USE_CONCURRENCY` 调整。
+- **只读调用可以并发**：相邻的只读调用会同时执行，例如 `Read`、`Glob`、`Grep`、`LSP`、`WebFetch`、`WebSearch`（deep 模式除外）、`ToolSearch`、`TaskGet`、`TaskList`、`TaskOutput`、`Agent`，以及只读的 `Bash` / `PowerShell` 命令。同时执行的数量默认最多 10 个，超出的按顺序排队；可用环境变量 `CODEBUDDY_MAX_TOOL_USE_CONCURRENCY` 调整。
 - **其他调用按模型给出的顺序依次执行**：`Write`、`Edit`、`TaskCreate`、会修改文件或运行程序的 Shell 命令、没有声明只读的 MCP 工具等，会等前面的调用全部完成后才开始，后面的调用也会等它完成。
 
 因此，模型在同一轮里先用 `Write` 写文件、再用 `Bash` 运行它时，命令一定能看到写入后的文件。

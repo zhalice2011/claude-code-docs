@@ -154,7 +154,9 @@ json
 
 插件可以捆绑 Model Context Protocol (MCP) 服务器，将 CodeBuddy 与外部工具和服务连接。
 
-**位置**：插件根目录的 `.mcp.json`，或在 `plugin.json` 中内联配置
+**位置**：插件根目录的 `mcp.json`（优先）或 `.mcp.json`（兼容），或在 `plugin.json` 中内联配置。两个文件同时存在时只读取 `mcp.json`，不会合并。
+
+`mcp.json` 可以按 [Agent Plugins 规范](https://agent-plugins.org/specification) 编写：顶层的 `$schema` 不影响加载；`type` 写 `streamable-http` 与写 `http` 相同；stdio 服务的 `args`、`env` 值和 `cwd` 中的 `${PLUGIN_ROOT}`、`${PLUGIN_DATA}` 分别与 `${CODEBUDDY_PLUGIN_ROOT}`、`${CODEBUDDY_PLUGIN_DATA}` 相同。`command` 里的这两个占位符不会换成插件的路径；它们和 `command` 里其他的 `${名字}` 一样只按进程的环境变量展开，所以不要写在 `command` 里。
 
 **格式**: 标准 MCP 服务器配置
 
@@ -629,7 +631,7 @@ enterprise-plugin/
 ├── bin/                      # 插件可执行文件，添加到 PATH
 │   └── my-tool               # 可在 Bash 工具中作为裸命令调用
 ├── settings.json             # 插件默认设置
-├── .mcp.json                 # MCP 服务器定义
+├── mcp.json                  # MCP 服务器定义（也可使用 .mcp.json，mcp.json 优先）
 ├── .lsp.json                 # LSP 服务器配置
 ├── scripts/                  # 钩子和实用脚本
 │   ├── security-scan.sh
@@ -653,7 +655,7 @@ enterprise-plugin/
 | **Themes** | `themes/` | Claude 标准字段；CodeBuddy 当前仅识别，不加载到运行时 |
 | **Monitors** | `monitors/monitors.json` | Claude 标准字段；CodeBuddy 当前仅识别，不启动后台 monitor |
 | **Hooks** | `hooks/hooks.json` | 钩子配置 |
-| **MCP servers** | `.mcp.json` | MCP 服务器定义 |
+| **MCP servers** | `mcp.json`（优先）/ `.mcp.json` | MCP 服务器定义 |
 | **LSP servers** | `.lsp.json` | 语言服务器配置 |
 | **Executables** | `bin/` | 添加到 Bash 工具 PATH 的可执行文件。启用插件时此目录中的文件可在任何 Bash 工具调用中作为裸命令调用 |
 | **Settings** | `settings.json` | 插件默认配置。当前运行时应用 `agent`；`subagentStatusLine` 仅识别并保留 |
@@ -904,7 +906,7 @@ codebuddy plugin marketplace add https://example.com/marketplace.json
 
 **服务器工具未出现**:
 
-1. 确保服务器在 `.mcp.json` 或 `plugin.json` 中正确配置
+1. 确保服务器在 `mcp.json`（或 `.mcp.json`）或 `plugin.json` 中正确配置
 2. 验证服务器正确实现了 MCP 协议
 3. 检查调试输出中的连接超时
 
