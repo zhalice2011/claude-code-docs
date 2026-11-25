@@ -7,9 +7,9 @@
 
 两项能力都建立在 **Git 原生语义**之上——不引入额外概念，熟悉 Git 的你能够直接推断系统的真实行为。
 
-![并行任务](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/worktree-1.CGByyFvu.png)
+![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-task-1.CuzsnlHS.png)
 
-## 一、Git 分支显示与切换
+## Git 分支显示与切换
 
 ### 创建任务时选择分支
 
@@ -25,8 +25,6 @@
 | --- | --- |
 | 普通文件夹（非 Git 仓库） | 不可操作（置灰） |
 | 正常 Git 仓库 | 可操作 |
-
-![创建任务时选择分支](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/worktree-2.Cd-yjlrs.png)
 
 ### 切换分支时的变更处理
 
@@ -47,9 +45,9 @@
 
 在已有任务的对话界面中，工作区状态栏会实时显示当前检出的分支名，分支发生变化后自动刷新。
 
-![任务执行中的分支显示](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/worktree-6.BlaZZH6c.png)
+![任务执行中的分支显示](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-6.BlaZZH6c.png)
 
-## 二、Worktree 并行任务
+## Worktree 并行任务
 
 ### 什么是 Worktree Task
 
@@ -59,13 +57,13 @@
 
 ### 创建 Worktree Task
 
-1. 在新建任务页面输入任务指令（Prompt）；
-2. 当工作空间包含 `.git` 目录时，输入框下方会展示 **Worktree** 开关（默认关闭）；
-3. 开启后展开 **Base Branch（基础分支）** 选择器，默认选中本地主分支（如 main），可切换为其他本地或远程分支，支持搜索与 fetch 刷新；
-4. 发送任务指令，系统开始创建 Worktree Task，界面会实时展示创建进度（大型项目可能需要数十秒到一分钟）；
+1. 在新建任务页面输入任务指令（Prompt）。
+2. 当工作空间包含 `.git` 目录时，可在选择分支的菜单中开启 **本次使用 Worktree**开关，默认关闭。
+3. 开启后展开 **Base Branch（基础分支）** 选择器，默认选中本地主分支（如 main），可切换为其他本地或远程分支，支持搜索与 fetch 刷新。
+4. 发送任务指令，系统开始创建 Worktree Task，界面会实时展示创建进度（大型项目可能需要数十秒到一分钟）。
 5. 创建完成后，Agent 自动启动并执行任务指令。
 
-![创建 Worktree Task](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/worktree-3.CtWRq8NY.png)
+![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-task-2.DnmKDCpl.png)
 
 创建时系统会自动完成以下动作：
 
@@ -84,28 +82,42 @@ Worktree Task 在任务列表和详情页中有明确标识：
 
 - **类型标识**：任务列表标题前展示独特的 fork 类型图标，与普通任务明确区分；任务在列表中仍按原项目分组。
 
-![类型标识 fork 图标](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/worktree-7.Bv3Sacix.png)
+![类型标识 fork 图标](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-7.Bv3Sacix.png)
 
 - **分支标识**：任务卡片与任务标题旁展示当前分支 Badge（如 `workbuddy/main-a3f8c2b1`），为只读展示，hover 可查看详情，点击可复制分支名。
 
-![Worktree 任务标识](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/worktree-4.D8OLge1o.png)
+![Worktree 任务标识](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-4.D8OLge1o.png)
 
-### 自动清理机制
+### 清理 Worktree
 
-为避免 Worktree Task 持续累积占用磁盘空间，系统提供自动清理策略（仅针对 Worktree Task，创建普通任务不受任何限制）：
+Worktree Task 会持续占用磁盘空间，你可以随时点击「...」按钮，选择**清理 Worktree**，打开批量清理弹窗。另外当仓库的 Worktree Task 数量达到 25 个时，创建新的 Worktree Task 也会提示你进行批量清理。
 
-- **达到 25 个**：在首页创建新 Worktree Task 时展示数量较多的提示，建议清理；
-- **达到 50 个**：勾选 Worktree 后弹出「任务工作区已达上限」清理确认弹窗，需选择清理范围（清理超过 7 / 15 / 30 天前的任务工作区分支和文件），确认清理后才能继续创建；取消则阻塞创建。
+![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-task-3.SuuikiYt.png)
 
-![自动清理](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/worktree-5.UusY3L3Z.png)
+清理弹窗提供以下选项：
 
-## 三、使用建议与注意事项
+- **按时间清理**：选择 3 / 7 / 14 / 30 / 60 天，清理创建时间超过所选天数的任务对应的工作区、分支和文件。
+- **清理所有 Worktree**：选中后，将当前仓库下所有可清理的 Worktree 纳入清理范围，不影响其他仓库。
+
+选择清理范围后，点击**查看清理详情**，可查看待清理的内容并手动调整勾选。确认后，执行清理。若存在未提交或未推送的变更，以及无法确认当前状态的 Worktree，默认跳过清理，不会自动删除，避免误删未保存的工作内容。
+
+注意事项
+
+清理后无法恢复，请谨慎操作。
+
+## 使用建议与注意事项
 
 使用建议
 
-- 轻量改动、单点查询使用**普通任务**即可；需要并行推进多个任务或隔离试验性方案时，再开启 **Worktree**。
+轻量改动、单点查询使用**普通任务**即可；需要并行推进多个任务或隔离试验性方案时，再开启 **Worktree**。
+
 当前版本（V1）暂不支持以下能力：
 
 - 在云端 WorkBuddy 与 CodeBuddy 中使用 Worktree Task；
 - 非 Git 项目、跨多个仓库的 Worktree Task；
 - 从已有 Worktree Task fork 新任务，以及在任务内切换分支。
+
+## 声明
+
+- 使用 Ardot 服务需遵守[用户协议](https://ardot.tencent.com/drive/policy)和[隐私协议](https://ardot.tencent.com/drive/privacy)。
+- 本节说明，构成[服务协议](https://rule.tencent.com/rule/202603180001)和[隐私保护](https://privacy.qq.com/document/preview/771d9a58551449e9a7e7445ebfe04966)指引的组成部分，具有同等法律效力。如有不一致之处，以前述协议原文为准。
