@@ -39,7 +39,7 @@
 
 内置多种大模型，详情请参考 [模型配置](./模型配置)。
 
-![](https://download.codebuddy.cn/web/docs/652f7a100432886c806038f93461d64783c0b774/docs/static/%E6%A8%A1%E5%9E%8B%E5%88%97%E8%A1%A8.sUqIwgkb.png)
+![](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/%E6%A8%A1%E5%9E%8B%E5%88%97%E8%A1%A8.sUqIwgkb.png)
 
 ### 对话管理
 
@@ -87,7 +87,7 @@ JetBrains IDE 的技术对话使用方式，与 VS Code 基本一致。
 
 内置多种大模型，详情请参考 [模型配置](./模型配置)。
 
-![](https://download.codebuddy.cn/web/docs/652f7a100432886c806038f93461d64783c0b774/docs/static/%E6%A8%A1%E5%9E%8B%E5%88%97%E8%A1%A8.sUqIwgkb.png)
+![](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/%E6%A8%A1%E5%9E%8B%E5%88%97%E8%A1%A8.sUqIwgkb.png)
 
 ### 对话管理
 
@@ -134,7 +134,7 @@ JetBrains IDE 的技术对话使用方式，与 VS Code 基本一致。
 
 内置多种模型，您可以根据实际需要自由切换。关于如何切换模型请参考 [模型配置](./模型配置)。
 
-![](https://download.codebuddy.cn/web/docs/652f7a100432886c806038f93461d64783c0b774/docs/static/%E6%A8%A1%E5%9E%8B%E5%88%97%E8%A1%A8.sUqIwgkb.png)
+![](https://download.codebuddy.cn/web/docs/7528e70f8211165fad04fc914379024b8a9dc2fd/docs/static/%E6%A8%A1%E5%9E%8B%E5%88%97%E8%A1%A8.sUqIwgkb.png)
 
 ### 对话管理
 
