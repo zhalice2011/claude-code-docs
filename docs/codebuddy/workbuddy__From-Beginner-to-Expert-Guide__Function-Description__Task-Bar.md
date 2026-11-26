@@ -2,7 +2,7 @@
 
 新建任务栏是 WorkBuddy 创建和执行本地任务的工作入口，支持任务创建、任务配置和多种输入方式。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-bar-3.hMpA-QqV.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-bar-3.hMpA-QqV.png)
 
 ## 新建任务
 
@@ -36,7 +36,7 @@
 
 WorkBuddy 提供三种工作模式，可根据任务复杂程度和是否需要实际执行操作进行选择。
 
-![工作模式菜单](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-mode-menu.C-D1U6_A.png)
+![工作模式菜单](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-mode-menu.C-D1U6_A.png)
 
 | 模式 | 说明 | 适用场景 |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Plan 模式的核心是「先出方案，再动手执行」。开启后，模型
 
 **使用前建议先设置分组。** WorkBuddy 将在同组中读取和保存文件。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-bar-4.CJ-QsUSW.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-bar-4.CJ-QsUSW.png)
 
 什么是文件路径？
 
@@ -119,7 +119,7 @@ Plan 模式的核心是「先出方案，再动手执行」。开启后，模型
 
 ![](https://download.codebuddy.cn/web/docs/71c8722a08165ddedf566c5f1711bb0ec8ea991b/docs/static/image-7.C15-_p58.png)在对话框中选择已安装技能，WorkBuddy 执行任务时将自动调用对应能力：
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-bar-5.TZSG76dK.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-bar-5.TZSG76dK.png)
 
 | 技能示例 | 效果 |
 | --- | --- |
@@ -135,7 +135,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 
 快捷管理连接器，连接外部服务，扩展 AI 能力。当任务需要使用外部服务中的数据或能力时，可以通过连接器将第三方应用接入任务。连接后，可直接在任务中通过自然语言调用对应服务。实际可使用的能力和数据范围取决于服务本身提供的能力及你的授权范围。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-bar-6.D_XsOLl1.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-bar-6.D_XsOLl1.png)
 
 ### 权限管理
 
@@ -144,7 +144,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - **默认权限：** 涉及敏感操作，如文件修改或工作空间外执行时，需要用户确认执行或由用户自行完成操作。
 - **完全访问权限：** 开启后**当前客户端内所有任务统一生效**：减少确认步骤，允许**WorkBuddy**直接执行更多操作，可能涉及敏感操作、文件修改或外部执行；关闭后所有任务恢复默认确认流程。仅建议在用户信任当前任务时使用。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-bar-7.CC_wpPro.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-bar-7.CC_wpPro.png)
 
 ## 任务输入与引导
 
@@ -152,7 +152,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 
 新建任务时，将鼠标悬停在提示词模板上，在输入框中预览提示词。提示词内容会胶囊的选择而变化，未选择胶囊时，展示当前场景推荐的任务提示词。预览内容以灰色文字显示，不会覆盖已有输入，也不会作为消息发送；移开鼠标或切换模板后，预览会消失或更新。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-bar-9.DYAy1pe2.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-bar-9.DYAy1pe2.png)
 
 找到合适的提示词后，点击模板，即可将完整提示词填入输入框。您可以根据实际需求修改提示词，再发送任务。
 
@@ -167,7 +167,7 @@ WorkBuddy 内置 **20\+** 技能包，覆盖文档处理、数据报表、海报
 - **结束录音**：再次点击语音按钮，或松开长按的快捷键，即可结束录音。
 - **继续编辑**：语音输入结束后，输入框会保持聚焦，您可以直接修改识别结果、补充文字，或再次使用语音输入。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-bar-10.DZJBL2tt.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-bar-10.DZJBL2tt.png)
 
 ### 音频转文字
 
@@ -209,7 +209,7 @@ WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写�
 - 最多支持上传 **50 个文件**，单个文件大小不限，格式规则与附件按钮上传一致；不合规文件会在页面顶部给出具体错误提示（如不支持的文件类型）；
 - 拖出页面或按 ESC 可取消，输入框内容不受影响。
 
-![拖拽添加文件](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/drag-upload.ZJh9WiEf.png)
+![拖拽添加文件](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/drag-upload.ZJh9WiEf.png)
 
 ### 超长粘贴自动收起
 
@@ -218,7 +218,7 @@ WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写�
 - 鼠标悬停在条目上可预览原文，并看到「点击胶囊可展开内容进行编辑」提示；点击后原文完整展开到输入框中，可继续编辑，条目自动移除；
 - 不超过 3000 字符的粘贴保持原样，不触发收起。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-bar-11.BCaIgb5J.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-bar-11.BCaIgb5J.png)
 
 ### 召回历史输入
 
@@ -230,11 +230,11 @@ WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写�
 
 **转发入口：** 在微信的转发窗口中点击**转发到其他应用**，在弹出的列表中选择**腾讯WorkBuddy**。
 
-![在微信的「转发到其他应用」列表中选择「腾讯WorkBuddy」](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/wechat-forward-entry.BBdlLbSl.png)
+![在微信的「转发到其他应用」列表中选择「腾讯WorkBuddy」](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/wechat-forward-entry.BBdlLbSl.png)
 
 转发成功后，输入框里会出现下面这样的卡片：
 
-![输入框中的「转发内容」卡片，显示消息预览和「2 条消息」](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/wechat-forward-card.DW7Fysbx.png)
+![输入框中的「转发内容」卡片，显示消息预览和「2 条消息」](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/wechat-forward-card.DW7Fysbx.png)
 
 - 卡片标题为「转发内容」，下方显示前几条消息的预览（格式为「发送者：内容」，图片、视频等显示为 \[图片]、\[视频]），底部显示「N 条消息」；
 - 卡片单独占一行，位于输入框内文字的上方，继续输入的文字从卡片下方的下一行开始；点击卡片上的移除按钮可以删除；
@@ -247,7 +247,7 @@ WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写�
 
 点击卡片（输入框中和已发送的消息里都可以），会在桌面客户端打开一个独立的「转发内容」窗口，按原有顺序逐条显示聊天记录：
 
-![「转发内容」窗口：逐条显示发送者、时间和内容，图片以缩略图展示](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/wechat-forward-detail.CM7fdA9C.png)
+![「转发内容」窗口：逐条显示发送者、时间和内容，图片以缩略图展示](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/wechat-forward-detail.CM7fdA9C.png)
 
 - 每条消息显示发送者、时间和内容；
 - 图片显示为缩略图，点击可放大查看；视频可以直接播放；文件显示为文件名，点击即可下载；
@@ -272,11 +272,11 @@ WorkBuddy 会根据您的需求处理音频，并返回带时间范围的转写�
 
 进入**设置** \> **智能体** \> **浏览器操控**，点击**安装**，开启状态开关。
 
-![设置 > 智能体 > 浏览器操控中开启 Browser Use](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/browser-use-setting.BZDp4qDu.png)
+![设置 > 智能体 > 浏览器操控中开启 Browser Use](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/browser-use-setting.BZDp4qDu.png)
 
 在输入框中输入 `@`，候选列表会显示**浏览器操作**。选择该选项即可自动启用浏览器操作能力，在当前任务中使用浏览器执行网页操作，无需手动描述具体的浏览步骤。
 
-![输入 @ 后候选列表中显示「浏览器操作」](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/browser-use-at-mention.BGMwIQW5.png)
+![输入 @ 后候选列表中显示「浏览器操作」](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/browser-use-at-mention.BGMwIQW5.png)
 
 ## 声明
 

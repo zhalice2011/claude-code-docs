@@ -27,26 +27,19 @@ Skill 和专家是 WorkBuddy 的能力配置，灵感则是利用这些能力完
 
 灵感卡片会展示**灵感名称、作者头像与昵称**，方便你在进入详情前了解案例来源。
 
-![](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/inspiration-community-home.BH90tWvZ.png)## 查看灵感详情
+![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/inspiration-community-home.BH90tWvZ.png)## 查看灵感详情
 
-点击灵感卡片进入详情页，页面默认采用双栏布局：
+点击灵感卡片进入详情页，页面默认采用左侧关联产物预览和右侧案例信息的双栏布局：
 
-- **左侧产物区**：展示灵感关联的产物，支持预览 Miora 画布等类型。默认按可预览产物 \> 对话详情 \> 封面 \> 缺省图优先级展示内容。
-- **右侧信息区**：展示灵感案例的点赞数、收藏数等基础信息，以及场景、关联的专家和提示词（Prompt）。
-- **右上方工具栏**：提供喜欢、收藏、复制口令、最大化预览、我要反馈等操作。
+- **左侧产物预览区**：顶部通过产物标签展示产物名称与类型标识；关联多个产物时，可在同一预览区切换查看。
+- **右侧案例信息区**：自上而下展示作者与操作、标题与描述、日期及收藏/做同款统计、提示词/参考、场景、专家、技能；底部固定**收藏**与**做同款**操作。
+- **右上方操作区**：提供分享灵感、更多（我要反馈等）操作。
 
-![](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/inspiration-detail-page.BH4qETST.png)### 基础信息说明
-
-- **点赞数**：统计当前有效的点赞数量。
-- **收藏数**：统计当前有效的收藏数量。
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/ispiration-1.dWE41_OM.webp)
 
 ### 预览产物
 
-如果需要更清楚地查看产物的页面布局或内容细节，可点击右上方工具栏中的**最大化预览**，放大产物进行查看；再次点击即可还原。
-
-### 切换语言
-
-如需切换界面语言，可点击**切换语言**按钮，选择所需的界面语言。
+如果需要更清楚地查看产物的页面布局或内容细节，可点击上方工具栏中的**进入全屏**，放大产物进行查看；再次点击即可还原。
 
 ## 复用灵感
 
@@ -60,7 +53,7 @@ WorkBuddy 会自动填入相关 Prompt，并加载关联的 Skill 和专家配�
 
 做同款会沿用原案例的版式结构，减少从零生成时的自由发挥，有助于降低生成偏差、节省积分并提升结果的稳定性。
 
-![](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/explore-3.B-b95Qd6.png)TIP
+![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/explore-3.B-b95Qd6.png)TIP
 
 这种方式复用的是案例的生成方案，而不是直接使用原案例的产物。即使修改了部分指令，仍然属于复用生成方案。
 
@@ -69,26 +62,35 @@ WorkBuddy 会自动填入相关 Prompt，并加载关联的 Skill 和专家配�
 如果不需要重新生成案例，只希望将其中的文件或链接用于其他工作，可以直接将产物添加到任务。
 
 1. 在灵感详情页点击**相关产物**右侧的「...」按钮。
+
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/ispiration-2.DderO16y.png)
+
 2. 选择添加**全部添加到任务**或**单个产物**，文件类产物将作为附件添加，链接类产物将作为链接挂载到任务中。
 3. 添加成功后进入对应任务，继续补充指令或开展后续处理。
 
-如果发送失败，WorkBuddy 会停留在详情页并保留失败原因，方便你查看原因后重试。
+### 复制提示词
+
+当你只想参考提示词写法、复用其中的参考文件，或把这些内容带到自己的对话中自由调整、继续创作时，可使用复制提示词。
+
+在灵感详情页「提示词/参考」标题右侧，点击**复制图标**，即可一键复制该案例的完整提示词与全部关联参考文件，并保留文字与文件的原始混排顺序。
+
+复制后，将内容粘贴到 WorkBuddy 对话区，系统会自动识别并还原提示词、参考文件及其相对位置；包含多个参考文件时，不会缺失、重复或错位。
 
 ## 查看生成成果
 
 生成完成后，可在右侧的**产物**页面查看生成结果。若生成的是网页文件，WorkBuddy 会自动打开内置浏览器，方便预览页面效果。
 
-![](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/explore-4.COhbkeGJ.png)## 收藏灵感
+![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/explore-4.COhbkeGJ.png)## 收藏灵感
 
-看到喜欢的案例，在灵感卡片详情页右上方工具栏点击**收藏**按钮，即可将案例加入个人收藏，方便后续查找和复用。
+看到喜欢的案例，在灵感卡片详情页点击右下方的**收藏**按钮，即可将案例加入个人收藏，方便后续查找和复用。
 
 收藏后，可在**灵感社区**首页，点击右上角的**个人收藏**查看已收藏的灵感。
 
-![](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/inspiration-personal-favorites.Wotttw_c.png)## 分享灵感
+![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/inspiration-personal-favorites.Wotttw_c.png)## 分享灵感
 
 如果希望将某个案例分享给同事或其他用户，可以使用**复制口令**功能。
 
-1. 在灵感卡片详情页右上方工具栏找到「...」按钮，点击**复制口令**。
+1. 在灵感卡片详情页右上方工具栏找到分享灵感按钮。
 2. 将复制的口令发送给需要查看的人。
 3. 对方使用该口令后，即可直达对应的灵感详情页。
 
@@ -102,7 +104,7 @@ WorkBuddy 会自动填入相关 Prompt，并加载关联的 Skill 和专家配�
 	- **反馈内容**：描述遇到的问题或改进建议，最多 2000 字。粘贴的内容包含图片时，系统会自动上传图片，并将其作为反馈图片。
 	- **相关截图**：支持点击上传图片，最多上传 5 张。
 
-![](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/inspiration-feedback-dialog.DSXmQq25.png)3. **提交反馈**：确认填写的信息后，点击**提交反馈**。
+![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/inspiration-feedback-dialog.DSXmQq25.png)3. **提交反馈**：确认填写的信息后，点击**提交反馈**。
 
 ## 注意事项与重点提示
 

@@ -21,7 +21,7 @@
 - **定时任务**：查看和管理全部任务，首次进入时会推荐常用任务模板。
 - **运行记录**：查看所有任务的历次运行情况。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-guide-2.BpxP6Odd.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-guide-2.BpxP6Odd.png)
 
 定时任务可通过如下三种方式创建：
 
@@ -37,7 +37,7 @@
 
 点击页面右上角的**新建**，可直接手动创建。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-guide-5.Coc5v0uZ.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-guide-5.Coc5v0uZ.png)
 
 在弹出的编辑窗口中填写以下配置，填写完成后点击**确定**即可创建定时任务。
 
@@ -63,7 +63,7 @@
 
 点击新建旁边的下拉箭头，选择**从对话新建**，WorkBuddy 会回到首页，并在输入框中预填「帮我创建一个定时任务：」。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-guide-8.mSnGb8tb.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-guide-8.mSnGb8tb.png)
 
 可在输入框补充具体需求后创建定时任务，例如：帮我创建一个定时任务：每个工作日早上 9 点，整理昨天的销售数据，发到产品群。
 
@@ -77,11 +77,11 @@
 
 点击新建旁边的下拉箭头，选择**从模板新建**，出现模板选择页面。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-guide-9.DMyc2QmM.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-guide-9.DMyc2QmM.png)
 
 点击推荐的任务模板（如每日 AI 新闻推送、每周工作周报、会议前准备等），编辑窗口会自动填好名称、提示词和执行时间，按需修改后点击**确定**即可创建。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-guide-10.BPXQGlwP.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-guide-10.BPXQGlwP.png)
 
 ## 管理定时任务
 
@@ -148,7 +148,7 @@
 
 点击任务卡片或左侧**任务**列表中执行过的定时任务，进入该任务的运行页面。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-guide-11.BqTkIm8s.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-guide-11.BqTkIm8s.png)
 
 **运行记录**：右侧边栏的**运行记录**按时间倒序展示该任务的历次运行，默认选中最近一次，底部显示下一次运行时间。
 
@@ -178,25 +178,25 @@
 
 1. 在新建或编辑窗口左下角，打开 **消息推送到企业微信** 开关。
 
-![新建定时任务窗口中的「消息推送到企业微信」开关](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-wecom-switch.CcFKNX4c.png)
+![新建定时任务窗口中的「消息推送到企业微信」开关](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-wecom-switch.CcFKNX4c.png)
 2. 如果助理已通过 **WebSocket 长连接** 绑定企业微信机器人，开关会直接开启，无需其他操作。
 3. 如果尚未绑定，开关旁会弹出「尚未连接企业微信机器人，请先完成连接」的提示：
 
-![尚未连接企业微信机器人的提示](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-wecom-not-connected.DfGzUihU.png)
+![尚未连接企业微信机器人的提示](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-wecom-not-connected.DfGzUihU.png)
 
 	- 点击 **取消**：开关恢复为关闭；
 	- 点击 **连接**：打开「连接企业微信机器人」窗口。
 4. 在「连接企业微信机器人」窗口中点击 **获取企业微信二维码**。
 
-![连接企业微信机器人窗口](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-wecom-connect-dialog.DyJCLuyq.png)
+![连接企业微信机器人窗口](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-wecom-connect-dialog.DyJCLuyq.png)
 5. 使用企业微信扫描二维码，完成机器人接入。没有企业微信账号时，可点击二维码下方的 **去注册**。
 
-![企业微信扫码接入智能机器人](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-wecom-qrcode.D85jFTpZ.png)
+![企业微信扫码接入智能机器人](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-wecom-qrcode.D85jFTpZ.png)
 6. 绑定成功后会提示「绑定成功，还差一步」。请打开企业微信，向这个机器人发送任意一条消息，完成最终确认，然后点击 **已发送**。
 
-![绑定成功，还差一步](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-wecom-last-step.CYZYD0N_.png)
+![绑定成功，还差一步](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-wecom-last-step.CYZYD0N_.png)
 
-![在企业微信中向机器人发送任意消息](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/automation-wecom-bot-chat.CU_YwKLj.png)
+![在企业微信中向机器人发送任意消息](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/automation-wecom-bot-chat.CU_YwKLj.png)
 7. 点击 **已发送** 或 **下次再说** 后会自动回到定时任务，推送开关自动打开，已填写的任务内容不会丢失。
 
 注意

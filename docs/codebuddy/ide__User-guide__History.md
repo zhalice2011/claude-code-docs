@@ -2,6 +2,6 @@
 
 本文将介绍如何对历史聊天记录进行管理，例如查找历史聊天记录，基于历史聊天记录继续之前的对话，以及对历史聊天记录进行删除。
 
-- 在 CodeBuddy IDE 的侧栏对话面板右上方，单击 **History** 按钮，即可查看历史对话列表。 ![](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/history1.DJjq17ZR.png)
-- 在历史对话列表中，您可以根据需要，选择单击历史聊天记录，例如选择单击第一个历史聊天记录时，就会回到之前的对话，您可以基于之前的对话，继续完成您的任务。 ![](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/history2.Bwjr9JU2.png)
-- 在历史对话列表中，支持对历史聊天对话进行**导出**、**编辑**和**删除**的操作。 ![](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/history3.DCxnp6J3.png)
+- 在 CodeBuddy IDE 的侧栏对话面板右上方，单击 **History** 按钮，即可查看历史对话列表。 ![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/history1.DJjq17ZR.png)
+- 在历史对话列表中，您可以根据需要，选择单击历史聊天记录，例如选择单击第一个历史聊天记录时，就会回到之前的对话，您可以基于之前的对话，继续完成您的任务。 ![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/history2.Bwjr9JU2.png)
+- 在历史对话列表中，支持对历史聊天对话进行**导出**、**编辑**和**删除**的操作。 ![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/history3.DCxnp6J3.png)

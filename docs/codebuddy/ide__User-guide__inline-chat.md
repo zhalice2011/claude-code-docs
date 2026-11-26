@@ -23,7 +23,7 @@
        |
 
 ```
-![alt text](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/Pasted%20image%2020260112191232.CC9ZVWx1.png)
+![alt text](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/Pasted%20image%2020260112191232.CC9ZVWx1.png)
 
 #### 使用流程
 

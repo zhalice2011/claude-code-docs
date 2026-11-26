@@ -486,8 +486,8 @@
     "claude-security.md": {
       "original_url": "https://code.claude.com/docs/en/claude-security",
       "original_md_url": "https://code.claude.com/docs/en/claude-security.md",
-      "hash": "5b7324657a5045492c3be3097a95f55262051e1e53356c1cc09882258e1e8757",
-      "last_updated": "2026-11-25T03:52:46.332045",
+      "hash": "8cc2ed048d551f7f3e3e12e8b13e0c17562ff43b6e20da6d8d8c92023d03cbce",
+      "last_updated": "2026-11-26T11:42:13.262961",
       "source": "claude-code"
     },
     "claude-ship.md": {
@@ -1543,7 +1543,7 @@
   },
   "fetch_metadata": {
     "source_name": "claude-code",
-    "last_fetch_completed": "2026-11-26T01:20:43.935000",
+    "last_fetch_completed": "2026-11-26T11:43:33.647607",
     "sitemap_url": "https://code.claude.com/docs/sitemap.xml",
     "base_url": "https://code.claude.com",
     "pages_discovered": 220,
@@ -1553,7 +1553,7 @@
     "total_files": 220,
     "fetch_tool_version": "4.0"
   },
-  "last_updated": "2026-11-26T01:20:43.935028",
+  "last_updated": "2026-11-26T11:43:33.647633",
   "base_url": "https://raw.githubusercontent.com/zhalice2011/claude-code-docs/main/docs/",
   "github_repository": "zhalice2011/claude-code-docs",
   "github_ref": "main",

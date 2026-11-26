@@ -7,7 +7,7 @@
 
 两项能力都建立在 **Git 原生语义**之上——不引入额外概念，熟悉 Git 的你能够直接推断系统的真实行为。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-task-1.CuzsnlHS.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/worktree-task-1.CuzsnlHS.png)
 
 ## Git 分支显示与切换
 
@@ -45,7 +45,7 @@
 
 在已有任务的对话界面中，工作区状态栏会实时显示当前检出的分支名，分支发生变化后自动刷新。
 
-![任务执行中的分支显示](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-6.BlaZZH6c.png)
+![任务执行中的分支显示](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/worktree-6.BlaZZH6c.png)
 
 ## Worktree 并行任务
 
@@ -63,7 +63,7 @@
 4. 发送任务指令，系统开始创建 Worktree Task，界面会实时展示创建进度（大型项目可能需要数十秒到一分钟）。
 5. 创建完成后，Agent 自动启动并执行任务指令。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-task-2.DnmKDCpl.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/worktree-task-2.DnmKDCpl.png)
 
 创建时系统会自动完成以下动作：
 
@@ -82,17 +82,17 @@ Worktree Task 在任务列表和详情页中有明确标识：
 
 - **类型标识**：任务列表标题前展示独特的 fork 类型图标，与普通任务明确区分；任务在列表中仍按原项目分组。
 
-![类型标识 fork 图标](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-7.Bv3Sacix.png)
+![类型标识 fork 图标](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/worktree-7.Bv3Sacix.png)
 
 - **分支标识**：任务卡片与任务标题旁展示当前分支 Badge（如 `workbuddy/main-a3f8c2b1`），为只读展示，hover 可查看详情，点击可复制分支名。
 
-![Worktree 任务标识](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-4.D8OLge1o.png)
+![Worktree 任务标识](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/worktree-4.D8OLge1o.png)
 
 ### 清理 Worktree
 
 Worktree Task 会持续占用磁盘空间，你可以随时点击「...」按钮，选择**清理 Worktree**，打开批量清理弹窗。另外当仓库的 Worktree Task 数量达到 25 个时，创建新的 Worktree Task 也会提示你进行批量清理。
 
-![图片说明](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/worktree-task-3.SuuikiYt.png)
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/worktree-task-3.SuuikiYt.png)
 
 清理弹窗提供以下选项：
 

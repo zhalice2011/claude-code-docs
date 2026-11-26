@@ -26,9 +26,9 @@
 
 ## 五、效果示意
 
-![前端设计效果示意](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/image-12.CFhnZ18k.png)
+![前端设计效果示意](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/image-12.CFhnZ18k.png)
 
-![前端设计效果示意](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/image-13.Chze5PQR.png)
+![前端设计效果示意](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/image-13.Chze5PQR.png)
 
 ## 六、使用建议
 

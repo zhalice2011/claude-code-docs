@@ -1,16 +1,14 @@
 # 内容管理
 
-> 团队中人和 Agent 的产物一起管理，共享上下文。
-
 内容管理解决的是"资料放在哪、谁能找到、Agent 能不能用"的问题。个人产出与团队资料分区存放，各种格式的文件汇入同一棵目录树，任务中还能随时把资料库内容读进来继续加工。
 
 ## 个人文档与团队资料，分开整理
 
-打开左侧边栏的**资料库**，界面分为「我的文档」与「团队空间」两块，每一种资料都有明确归属。
+打开左侧边栏的**资料库**，界面分为「我的资料」与「团队空间」两块，每一种资料都有明确归属。
 
-### 我的文档
+### 我的资料
 
-「我的文档」是你的个人空间，也是你和 Agent 共同产物的默认落脚点：
+「我的资料」是你的个人空间，也是你和 Agent 共同产物的默认落脚点：
 
 - **自己的地盘** — 可以主动新建目录、手动创建和整理内容，按自己的方式经营
 - **接住产物** — 你和 Agent 在会话里一起写的 MD 文档、做的网页，存入资料库后默认先落到这里
@@ -18,27 +16,40 @@
 
 ### 团队空间
 
-项目背景、过程资料和关键结论，统一整理到团队空间。需要更多人一起推进时，把内容从「我的文档」挪进团队空间即可。空间内可以像文件夹一样嵌套整理文档树。
+项目背景、过程资料和关键结论，统一整理到团队空间。需要更多人一起推进时，把内容从「我的资料」挪进团队空间即可。空间内可以像文件夹一样嵌套整理文档树。团队空间的创建、成员邀请与权限档位详见[多人多Agent 协作](./Collaboration)。
 
-> 团队空间的创建、成员邀请与权限档位详见[多人多Agent 协作](./Collaboration)。
+## 把内容添加到资料库
 
-## 把内容存进资料库的两条路径
+无论是本地文件、网页资料，还是 WorkBuddy 生成的内容，都可以保存到资料库。你可以根据内容来源，选择手动添加、让 Agent 直接保存，或通过分享发布入库。添加到资料库的内容可以随时通过拖拽移动到其他目录，也可以将文件夹嵌套在其他文件夹中，按项目、主题或用途灵活归 类。
 
-根据手上产物的形态，有两种方式：
+### 手动添加内容
 
-### 在会话中让 Agent 保存
+适合整理已有资料或直接在资料库中创建内容。进入资料库后，点击我的资料右侧「\+」。
 
-适合和 Agent 一起写的 MD 文档、HTML 网页。在生成该产物的会话中要求 Agent 把内容存入资料库，Agent 会通过资料库能力完成上传，并告知存放位置。会话里有多个产物时，可以指定要保存哪一个。
+![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/content-management-2.ixrJZ1WT.png)
 
-> 这条路径的好处：不用手动导出再上传，产物直接从"会话里的内容"变成"资料库里可管理的文档"。
+可选择以下操作:
+
+- **通过灵感创建**：从灵感社区挑选案例作为起点，按分类浏览、搜索或从收藏中选取，点击**做同款**即可基于案例生成自己的内容。详情见[灵感](./../Ispiration)。
+- **新建内容**：可以选择新建文档、新建表格或生成网页等，直接在资料库中创建和保存内容。
+- **上传文件或文件夹**：点击**上传文件**，可以将本地文件或文件夹直接拖入上传弹窗，也可以手动选择文件或文件夹。
+- **添加链接**：将网页链接剪藏到资料库，方便集中保存和后续查找。
+- **新建文件夹**：创建文件夹，用于整理和分类资料，也可以在已有文件夹中继续创建子文件夹，建立多层级目录。
+
+### 让 Agent 直接保存到指定位置
+
+适合在使用 Agent 完成任务时，将生成的内容直接归档到资料库。创建任务时，可以在需求中指定产物的保存位置，让 Agent 直接将生成的内容保存到资料库中的指定目录或团队空间，无需生成后再手动搬运。
+
+对于已经在会话中生成的 MD 文档、HTML 网页等产物，也可以直接要求 Agent 将其保存到资料库。Agent 完成保存后会告知具体存放位置。会话中有多个产物时，还可以指定需要保存的内容。
 
 ### 分享即存入
 
-适合已经生成、准备发给别人看的内容（尤其是网页、报告这类）。在产物上点击**分享**，在**发布**页签中开启**发布为网站**，系统会把它发布为在线链接：对方打开链接就能查看，你自己也能在资料库中找到这份内容。
+适合将已经完成、需要分享给他人查看的内容发布为在线链接，并同步保存到资料库，分享和归档一步完成。发布、分享和管理的操作详情见[轻量发布](./Lightweight-Publish)。
 
-> 这条路径的好处：发布的动作本身就完成了存入，发出去和存下来一步到位。操作详情见[轻量发布](./Lightweight-Publish)。
-> 
-> **企业版**的发布范围由企业管理员配置：允许全网发布时，发布的网站无需登录即可访问；仅允许组织内发布时，发布的网站必须登录并以组织内身份校验后才能查看。
+- **分享已生成的产物**；在产物上点击**分享**，在**发布**页签中开启**发布为网站**，系统会将内容发布为在线链接。对方打开链接即可查看，你也可以在资料库中找到这份内容。
+- **分享本地产物**；将本地产物上传到资料库，再发布为在线链接。
+
+企业版的发布范围由企业管理员配置:允许全网发布时，发布的网站无需登录即可访问;仅允许组织内发布时，发布的网站必须登录并通过组织身份校验后才能查看。
 
 ## 零散在各处的资料，都能进入同一棵目录树
 
@@ -61,14 +72,14 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 
 **转为在线网页**：如果压缩包里包含网页内容（如 `index.html` 及配套的静态资源），详情页会在「该文件类型暂不支持预览」下方提示「检测到内容包含HTML网页，可转为在线网页后预览、协作」，并提供 **转为在线网页** 按钮；只想下载查看时，点下方的 **下载文件查看** 即可。
 
-![压缩包包含网页内容时，详情页提供「转为在线网页」](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/library-zip-convert-guide.p6EjOeYj.png)
+![压缩包包含网页内容时，详情页提供「转为在线网页」](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/library-zip-convert-guide.p6EjOeYj.png)
 
 是否转换由你决定：
 
 1. 点击 **转为在线网页**，在确认弹窗中确认：转换会生成一个独立的在线网页，原压缩包仍然保留；
 2. 转换完成后，压缩包节点下会出现一个同名的 `.html` 网页，点击即可在线预览、协作；原压缩包仍保留在目录中，可继续下载或删除。
 
-![转换完成后，压缩包下新增可预览的 .html 网页](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/library-zip-converted-tree.PL2E9j2Z.png)
+![转换完成后，压缩包下新增可预览的 .html 网页](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/library-zip-converted-tree.PL2E9j2Z.png)
 
 说明
 
@@ -83,7 +94,7 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 2. 名称变成输入框并自动全选，输入新名称；
 3. 按 `Enter` 或点击输入框以外的位置确认，按 `Esc` 取消。
 
-![双击页面顶部路径中的当前名称，名称变为输入框并自动全选](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/library-rename-file.Dc4lD-Y2.png)
+![双击页面顶部路径中的当前名称，名称变为输入框并自动全选](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/library-rename-file.Dc4lD-Y2.png)
 
 使用中文输入法时，输入过程中的第一次 `Enter` 只用于确认候选词，不会提交。名称不能为空，也不能包含文件名中不允许的符号；同一目录下已有同名文件时会提示重名，需要换一个名称。也可以像以前一样，在目录里点击 **···** 打开菜单，选择**重命名**。
 
@@ -99,23 +110,23 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 
 - **文件详情页：** 点击所需文档查看详情，在详情页右上方点击 **···** 打开更多菜单，选择**添加到任务**。同一菜单中还可以选择用浏览器打开、投屏展示和查看文档信息。评论的显示与隐藏在评论面板中设置，详见[查看与管理评论](./Collaboration#查看与管理评论)。
 
-![在详情页菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/add-to-task.Cm81svAS.png)
+![在详情页菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/add-to-task.Cm81svAS.png)
 
 - **资料库侧边栏：** 在资料库目录中选中空间或文档，点击 **···** 打开菜单，选择**添加到任务**。同一菜单中还可以重命名、复制链接、邀请和管理成员。
 
-![在资料库目录菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-add-to-task.ZmtLAs8j.png)
+![在资料库目录菜单中选择「添加到任务」](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-add-to-task.ZmtLAs8j.png)
 
 ### 基于资料提问，让 Agent 执行
 
 所选空间进入任务上下文后，直接基于其中的资料提问，让 Agent 执行。因为背景已在上下文中，不必反复解释项目情况。
 
-![所选空间进入任务上下文后直接提问](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-run-with-space.DJ9ZA9AU.png)
+![所选空间进入任务上下文后直接提问](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-run-with-space.DJ9ZA9AU.png)
 
 ### 把成果保存回资料库
 
 任务完成后，把新的分析成果直接保存回资料库，后续可以继续查找和调用。
 
-![把任务成果保存回资料库](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/task-save-to-library.DTsNhJKl.png)
+![把任务成果保存回资料库](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/task-save-to-library.DTsNhJKl.png)
 
 > 这个闭环让历史成果可以被后续任务反复利用：下一次分析时 Agent 直接读取已沉淀的资料，沿着已有结论继续，而不必从零开始，也不需要翻找历史会话。
 
@@ -131,13 +142,13 @@ AI 产物、本地文件和多媒体文件都能放进资料库，不需要在�
 
 在资料库中打开在线 HTML 产物，在该产物的工具栏中点击**更多（…）**，选择**刷新**。
 
-![在线 HTML 产物的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/html-refresh-online.A4PW1LM5.png)
+![在线 HTML 产物的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/html-refresh-online.A4PW1LM5.png)
 
 #### 本地 HTML 文件
 
 预览本地 HTML 文件时，在预览界面的工具栏中点击**更多（…）**，选择**刷新**。
 
-![本地 HTML 预览的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/html-refresh-local.DDCmIQrk.png)
+![本地 HTML 预览的更多菜单中选择刷新](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/html-refresh-local.DDCmIQrk.png)
 
 刷新后页面会回到该 HTML 的入口页顶部，已进入的子页面及打开的弹层等会一并重置。刷新只作用于当前 HTML，不会返回 WorkBuddy 首页，也不会切换到其他标签页。
 
@@ -174,7 +185,7 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 
 **撤销与重做**：连续编辑操作可逐步撤销、重做，放心试改。
 
-![本地 HTML 可视化编辑](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/html-visual-editor.co2vInlt.png)
+![本地 HTML 可视化编辑](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/html-visual-editor.co2vInlt.png)
 
 ## 本地 Markdown 编辑器
 
@@ -187,7 +198,7 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 - 菜单按钮：**AI 编辑**｜**加粗** / **斜体** / **下划线** / **删除线** / **链接** / **行内代码**
 - 点击即时生效；复杂的内容调整仍可交给 AI 编辑
 
-![划词菜单](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/md-editor-selection-menu.CPvzmiPs.png)
+![划词菜单](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/md-editor-selection-menu.CPvzmiPs.png)
 
 ### 悬浮快捷菜单
 
@@ -203,7 +214,7 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 | 视频 / 文件 | AI 编辑、预览 / 全屏、下载、删除 |
 | 链接 | 打开、复制、编辑、取消链接 |
 
-![链接悬浮菜单示例](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/md-editor-hover-menu.Gf63krE9.png)
+![链接悬浮菜单示例](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/md-editor-hover-menu.Gf63krE9.png)
 
 说明
 
@@ -218,7 +229,7 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 - 滚动正文时，目录会**自动高亮**当前所在章节；
 - 文档没有标题时不显示目录入口。
 
-![文档目录导航](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/md-editor-toc.C0a_I6xz.png)
+![文档目录导航](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/md-editor-toc.C0a_I6xz.png)
 
 ### 查找与替换
 
@@ -229,7 +240,7 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 - 文档处于只读状态时只能查找，不能替换；
 - 按 `Esc` 或点击关闭按钮收起面板。
 
-![本地 Markdown 的查找与替换面板](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/md-editor-find-replace.DMuhlFTj.png)
+![本地 Markdown 的查找与替换面板](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/md-editor-find-replace.DMuhlFTj.png)
 
 提示
 
@@ -239,7 +250,7 @@ HTML 产物的**更多（…）**菜单中，还提供以下页面工具，用�
 
 点击预览区的**更多**菜单，在「缩放」一行用 **−** / **\+** 缩小或放大文档内容，点击重置按钮恢复原始大小。缩放只作用于文档内容，不会改变客户端界面和字号。
 
-![本地 Markdown 预览「更多」菜单中的缩放](https://download.codebuddy.cn/web/docs/cbce3551e9421eb2b19bd85d060f297fe256e3bb/docs/static/md-editor-zoom-menu.B5M5yXGo.png)
+![本地 Markdown 预览「更多」菜单中的缩放](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/md-editor-zoom-menu.B5M5yXGo.png)
 
 也可以在光标位于文档内时，用 `Cmd` / `Ctrl` 加 `+`、`-`、`0` 缩放，或按住 `Cmd` / `Ctrl` 滚动鼠标滚轮。使用快捷键或滚轮缩放时，预览区顶部会短暂浮出缩放提示，可直接点击其中的按钮继续调整。
 
