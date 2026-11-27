@@ -1,5 +1,30 @@
 # WorkBuddy 更新日志
 
+## 5\.12\.0 版本发布 🚀（2026\-11\-23）\[灰度中]
+
+- 新增插件市场，将连接器、技能、专家统一整合为「插件」概念，支持在会话「\+」号中统一管理插件的安装、开关与授权
+- 新增快速问答模式，支持在项目与会话中独立切换，快速问答与自主工作模式的模型设置相互隔离不干扰
+- 新增资料库外观皮肤切换，可在设置中自由切换主题并即时生效
+- 新增支持查询冷归档中的云端任务和历史会话
+- 新增海外版 PC 端支持通过邮箱验证注销个人账号
+- 优化搜索页企业专家 Tab，切换 Tab 时关键词保持不变无需重新输入
+- 优化插件安装与授权流程，旧版本已连接的连接器升级后自动同步安装对应插件，安装后即时刷新状态
+- 优化插件开关逻辑，关闭插件后对话中不再显示已关闭的插件选项
+- 优化定时任务企微推送，开启后可正确推送给指定处理人，连接企微后任务执行记录不再误报中断
+- 修复侧边栏升级后置顶区与本地任务分组消失的问题
+- 修复快速问答模式重启后模型短暂闪现快速模型随后才恢复的问题
+- 修复对话中同一技能可被重复添加出现多个相同胶囊的问题
+- 修复资料库按表格类型筛选未筛出表格文件、部分 PPT 文件被误分类为文档的问题
+- 修复对话产生的临时文件短时间内大量塞入废纸篓的问题
+- 修复任务完成后偶现仍显示「用户已取消」的问题
+- 修复云端任务待确认时左侧列表状态显示为加载中而非「待确认」的问题
+- 修复断网后会话失败侧边栏进行中状态不恢复的问题
+- 修复偶现 @ 识别不到本次会话新生成文件、历史消息可正常识别的问题
+- 修复 Windows 执行命令时反复弹出黑色终端窗口的问题
+- 修复解绑邮箱后客户端邮箱页面报错无法加载的问题
+- 修复切换英文界面后导航栏宽度调整提示仍显示中文的问题
+- 修复海外版生态专家、技能、资料库多处文案翻译缺失或不准确的问题
+
 ## 5\.11\.3 版本发布 🚀（2026\-11\-15）
 
 - 修复任务运行会话顶栏编辑时，分组下拉缺少新建分组与选择本地文件夹选项的问题
@@ -1623,7 +1648,7 @@
 
 安装 Skill 前自动进行安全扫描，检测潜在的恶意脚本和风险行为，保障你的数据安全。
 
-![alt text](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
+![alt text](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
 
 - 🆕 产物区整体交互与展示优化
 - 🆕 新增产物回传开关，可控制是否回传产物到云端
@@ -1643,7 +1668,7 @@
 
 支持 MCP 标准 OAuth 授权认证流程，连接第三方服务更安全便捷。
 
-![alt text](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/expert-center-473.CgggC1ig.png)
+![alt text](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/expert-center-473.CgggC1ig.png)
 
 - 🆕 插件收入技能页面，连接器独立为菜单项，结构更清晰
 - 🆕 任务支持置顶/取消置顶
@@ -1679,7 +1704,7 @@
 
 专家中心新增排行榜功能，展示热门专家排行，帮助你快速发现最受欢迎的领域专家。
 
-![alt text](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/zhuanjia.BtS4ODCf.png)
+![alt text](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/zhuanjia.BtS4ODCf.png)
 
 - 🆕 对话窗口内支持通过选择器快速切换专家
 - 🆕 本地任务支持归档
@@ -1699,7 +1724,7 @@
 
 支持在设置页通过可视化界面配置自定义模型（API Key、端点、参数等），无需手动编辑 JSON 文件。
 
-![alt text](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/custom-model.C4ubf5Jp.png)
+![alt text](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/custom-model.C4ubf5Jp.png)
 
 - 🆕 产物支持分享链接并提供在线预览渲染
 - 🆕 自动化支持单次执行任务

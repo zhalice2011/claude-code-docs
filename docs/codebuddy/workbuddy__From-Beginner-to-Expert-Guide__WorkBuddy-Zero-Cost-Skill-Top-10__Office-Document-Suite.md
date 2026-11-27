@@ -34,8 +34,8 @@
 
 ### PPT
 
-![办公文档套件效果示意](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/pptskill-1.Df_mo19q.png)
+![办公文档套件效果示意](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/pptskill-1.Df_mo19q.png)
 
 ### 图表
 
-![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/office-document-suite-2.BtJvC-n3.png)
+![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/office-document-suite-2.BtJvC-n3.png)

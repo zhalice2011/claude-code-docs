@@ -27,7 +27,7 @@ Skill 和专家是 WorkBuddy 的能力配置，灵感则是利用这些能力完
 
 灵感卡片会展示**灵感名称、作者头像与昵称**，方便你在进入详情前了解案例来源。
 
-![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/inspiration-community-home.BH90tWvZ.png)## 查看灵感详情
+![](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/inspiration-community-home.BH90tWvZ.png)## 查看灵感详情
 
 点击灵感卡片进入详情页，页面默认采用左侧关联产物预览和右侧案例信息的双栏布局：
 
@@ -35,7 +35,7 @@ Skill 和专家是 WorkBuddy 的能力配置，灵感则是利用这些能力完
 - **右侧案例信息区**：自上而下展示作者与操作、标题与描述、日期及收藏/做同款统计、提示词/参考、场景、专家、技能；底部固定**收藏**与**做同款**操作。
 - **右上方操作区**：提供分享灵感、更多（我要反馈等）操作。
 
-![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/ispiration-1.dWE41_OM.webp)
+![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/ispiration-1.dWE41_OM.webp)
 
 ### 预览产物
 
@@ -53,7 +53,7 @@ WorkBuddy 会自动填入相关 Prompt，并加载关联的 Skill 和专家配�
 
 做同款会沿用原案例的版式结构，减少从零生成时的自由发挥，有助于降低生成偏差、节省积分并提升结果的稳定性。
 
-![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/explore-3.B-b95Qd6.png)TIP
+![](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/explore-3.B-b95Qd6.png)TIP
 
 这种方式复用的是案例的生成方案，而不是直接使用原案例的产物。即使修改了部分指令，仍然属于复用生成方案。
 
@@ -63,7 +63,7 @@ WorkBuddy 会自动填入相关 Prompt，并加载关联的 Skill 和专家配�
 
 1. 在灵感详情页点击**相关产物**右侧的「...」按钮。
 
-![图片说明](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/ispiration-2.DderO16y.png)
+![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/ispiration-2.DderO16y.png)
 
 2. 选择添加**全部添加到任务**或**单个产物**，文件类产物将作为附件添加，链接类产物将作为链接挂载到任务中。
 3. 添加成功后进入对应任务，继续补充指令或开展后续处理。
@@ -80,13 +80,13 @@ WorkBuddy 会自动填入相关 Prompt，并加载关联的 Skill 和专家配�
 
 生成完成后，可在右侧的**产物**页面查看生成结果。若生成的是网页文件，WorkBuddy 会自动打开内置浏览器，方便预览页面效果。
 
-![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/explore-4.COhbkeGJ.png)## 收藏灵感
+![](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/explore-4.COhbkeGJ.png)## 收藏灵感
 
 看到喜欢的案例，在灵感卡片详情页点击右下方的**收藏**按钮，即可将案例加入个人收藏，方便后续查找和复用。
 
 收藏后，可在**灵感社区**首页，点击右上角的**个人收藏**查看已收藏的灵感。
 
-![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/inspiration-personal-favorites.Wotttw_c.png)## 分享灵感
+![](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/inspiration-personal-favorites.Wotttw_c.png)## 分享灵感
 
 如果希望将某个案例分享给同事或其他用户，可以使用**复制口令**功能。
 
@@ -104,7 +104,7 @@ WorkBuddy 会自动填入相关 Prompt，并加载关联的 Skill 和专家配�
 	- **反馈内容**：描述遇到的问题或改进建议，最多 2000 字。粘贴的内容包含图片时，系统会自动上传图片，并将其作为反馈图片。
 	- **相关截图**：支持点击上传图片，最多上传 5 张。
 
-![](https://download.codebuddy.cn/web/docs/780bcc7902f40eb77e319ad843240147fe5c1d54/docs/static/inspiration-feedback-dialog.DSXmQq25.png)3. **提交反馈**：确认填写的信息后，点击**提交反馈**。
+![](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/inspiration-feedback-dialog.DSXmQq25.png)3. **提交反馈**：确认填写的信息后，点击**提交反馈**。
 
 ## 注意事项与重点提示
 
