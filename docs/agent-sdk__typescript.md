@@ -113,7 +113,7 @@ The extra time requires TypeScript Agent SDK v0.3.304 or later.
 
 #### Returns
 
-Returns a `Promise<`[`WarmQuery`](#warmquery)`>` that resolves once the subprocess has spawned and completed its initialize handshake.
+Returns a `Promise<`[`WarmQuery`](#warmquery)`>` that resolves once the subprocess has spawned and completed its initialize handshake. If the promise rejects, check the error for an untyped `startupFailureReason` property holding a [`startup_failure_reason`](#startup_failure_reason) value. `startupFailureReason` requires Agent SDK v0.3.312 or later.
 
 Of the [`hook_progress`](#sdkhookprogressmessage) messages a `SessionStart` or `Setup` hook emits before the handshake completes, you get only the newest, which carries all of the hook's output so far. `startup()` holds that message, the hook's [`hook_started`](#sdkhookstartedmessage) message, and anything else the subprocess emits before the handshake completes. The held messages reach you once you call `.query()` on the `WarmQuery` and iterate the result.
 
@@ -1129,10 +1129,13 @@ type SDKControlReadFileResponse = {
   absPath: string;
   truncated?: boolean;
   encoding?: 'base64';
+  lossy?: boolean;
 };
 ```
 
 `contents` holds the file text, or base64 data when you requested `encoding: 'base64'`; the response's `encoding` field is set to `'base64'` in that case. `absPath` is the resolved absolute path. `truncated` is set when the file was longer than the `maxBytes` cap and the contents were cut at that limit.
+
+When `lossy` is `true`, the bytes read weren't all valid UTF-8, so read the file again with `encoding: 'base64'`. `lossy` requires Claude Code v2.1.317 or later.
 
 #### What `readFile()` can read
 
@@ -1704,6 +1707,7 @@ type SDKMessage =
   | SDKModelRefusalNoFallbackMessage
   | SDKMirrorErrorMessage
   | SDKInformationalMessage
+  | SDKSessionWritesLostMessage
   | SDKConversationResetMessage;
 ```
 
@@ -2085,6 +2089,7 @@ type SDKStartupFailureReason =
   | "worktree_unverified"
   | "cli_version_too_old"
   | "bypass_root"
+  | "initialize_not_first"
   | "org_config_required_unavailable"
   | "org_config_refused"
   | "sandbox_required_unavailable"
@@ -2113,6 +2118,7 @@ Each value names one refusal:
 | `worktree_unverified` | The session's worktree couldn't be verified right now, and retrying may succeed |
 | `cli_version_too_old` | This Claude Code version is below the minimum Anthropic requires |
 | `bypass_root` | Bypass permissions mode was requested while running as root |
+| `initialize_not_first` | The first line on Claude Code's stdin wasn't the expected [`initialize`](#sdkcontrolinitializeresponse) control request. In a wrapper script that starts Claude Code, pass stdin through unchanged. Requires Claude Code v2.1.317 or later |
 | `org_config_required_unavailable` | The session needs the organization's policies and managed settings before it can start, and they couldn't be loaded, for example because of a network failure or an Anthropic server error. Requires Agent SDK v0.3.293 or later |
 | `org_config_refused` | Anthropic refused to provide the organization's policies and managed settings for this sign-in, for example because the sign-in expired or was revoked, or the organization doesn't allow Claude Code for this account. Requires Agent SDK v0.3.293 or later |
 | `sandbox_required_unavailable` | [`failIfUnavailable`](#sandboxsettings) is on and the sandbox can't start. The text in `errors` ends with `Set sandbox.failIfUnavailable=false to allow unsandboxed execution.` Requires Agent SDK v0.3.314 or later |
@@ -2173,6 +2179,7 @@ The `capabilities` array names the protocol behaviors this CLI implements, so yo
 | - | - |
 | `interrupt_receipt_v1` | [`interrupt()`](#query-object) resolves with an [`SDKControlInterruptResponse`](#sdkcontrolinterruptresponse) receipt listing the messages that were pending when the interrupt arrived |
 | `interrupt_cancel_queued_v1` | The `interrupt` control request honors `cancel_queued: true`, cancelling the messages the receipt would otherwise list under `still_queued` and listing them under `cancelled` instead. See [`SDKControlInterruptResponse`](#sdkcontrolinterruptresponse). Requires Claude Code v2.1.219 or later |
+| `ask_user_question_unanswered_v1` | Your application can mark a skipped [`AskUserQuestion`](#askuserquestion) question with `unanswered`. Claude Code advertises this capability in v2.1.312 or later |
 | `sdk_mcp_manifests` | The `initialize` control request accepts `sdkMcpServerManifests`, MCP handshake results captured from your in-process [SDK MCP servers](https://code.claude.com/docs/en/agent-sdk/custom-tools.md). Claude Code advertises this capability in v2.1.286 or later |
 | `sdk_mcp_tools_list_changed` | A `tools/list_changed` notification from an [SDK MCP server](https://code.claude.com/docs/en/agent-sdk/custom-tools.md) makes Claude Code list that server's tools again, so a tool the server adds mid-session reaches Claude. Claude Code advertises this capability in v2.1.286 or later |
 
@@ -2261,6 +2268,22 @@ type SDKWorkerShuttingDownMessage = {
   type: "system";
   subtype: "worker_shutting_down";
   reason: string;
+  uuid: UUID;
+  session_id: string;
+};
+```
+
+### `SDKSessionWritesLostMessage`
+
+Claude Code couldn't save changes to `~/.claude.json` or part of a session transcript because the disk or disk quota was full. Check `lost` for what wasn't saved. The value `global_config` means `~/.claude.json`. [Free up space](https://code.claude.com/docs/en/errors.md#could-not-save-because-the-disk-is-full) before the next run. Requires Claude Code v2.1.317 or later.
+
+```typescript theme={null}
+type SDKSessionWritesLostMessage = {
+  type: "system";
+  subtype: "session_writes_lost";
+  error_code: "ENOSPC" | "EDQUOT";
+  lost: ("transcript" | "global_config")[];
+  transcript_session_ids?: string[]; // the sessions whose transcripts lost lines
   uuid: UUID;
   session_id: string;
 };
@@ -3408,6 +3431,21 @@ type AskUserQuestionInput = {
 
 Asks the user clarifying questions during execution. See [Handle approvals and user input](https://code.claude.com/docs/en/agent-sdk/user-input.md#handle-clarifying-questions) for usage details.
 
+When a user skips a question, describe the skip in `answers`, which Claude reads. To tell a skip from an answer in [`tool_use_result`](#sdkusermessage), also set [`unanswered`](#askuserquestion-2) on that question's entry in `updatedInput.annotations`. Set `unanswered` only when [`SDKSystemMessage.capabilities`](#sdksystemmessage) lists `ask_user_question_unanswered_v1`.
+
+This `canUseTool` return value sets `answers` and `unanswered`:
+
+```typescript theme={null}
+return {
+  behavior: "allow",
+  updatedInput: {
+    questions: input.questions,
+    answers: { "Which database should I use?": "The user skipped this question" },
+    annotations: { "Which database should I use?": { unanswered: "skipped" } }
+  }
+};
+```
+
 ### Bash
 
 **Tool name:** `Bash`
@@ -4203,12 +4241,14 @@ type AskUserQuestionOutput = {
   }>;
   answers: Record<string, string>;
   response?: string;
-  annotations?: Record<string, { preview?: string; notes?: string }>;
+  annotations?: Record<string, { preview?: string; notes?: string; unanswered?: "skipped" | "replied_in_chat" | "dismissed" }>;
   afkTimeoutMs?: number;
 };
 ```
 
 Returns the questions asked and the user's answers. `response` is set when the user typed a freeform reply instead of answering the structured questions; when present, Claude receives "The user responded: …" instead of the per-question answer list.
+
+When your app sets `unanswered`, use `skipped` if the user skipped the question, `replied_in_chat` if they sent a chat message instead, or `dismissed` if they closed the question.
 
 ### Bash
 
@@ -4372,18 +4412,32 @@ type FileReadOutput =
         mediaType: "image/jpeg" | "image/png" | "image/gif" | "image/webp";
         error?: string;
       }[];
-    }
-  | {
-      type: "file_unchanged";
-      file: {
-        filePath: string;
-      };
-      /** Set when the dedup matched a startup-seeded entry (CLAUDE.md / nested memory) rather than a prior Read tool_result. */
-      source?: "seeded";
     };
 ```
 
 Returns file contents in a format appropriate to the file type. Discriminated on the `type` field.
+
+Agent SDK v0.3.317 removes `"file_unchanged"` from `FileReadOutput`, so code that checks for it stops compiling. Match your fix to the [Claude Code version](#installation) that produced your Read results:
+
+* **Only v2.1.317 or later**: delete the check.
+* **An earlier version, saved results included**: declare the removed type and cast the Read call's [`tool_use_result`](#sdkusermessage).
+
+For an earlier version, pass this function the user message that carries the Read result, then check the `type` of what it returns:
+
+```typescript theme={null}
+import type { SDKUserMessage } from "@anthropic-ai/claude-agent-sdk";
+import type { FileReadOutput } from "@anthropic-ai/claude-agent-sdk/sdk-tools";
+
+type FileUnchanged = {
+  type: "file_unchanged";
+  file: { filePath: string };
+  source?: "seeded";
+};
+
+function readResult(message: SDKUserMessage) {
+  return message.tool_use_result as FileReadOutput | FileUnchanged;
+}
+```
 
 ### Write
 
@@ -5364,6 +5418,8 @@ type ModelUsage = {
   thinkingTokens?: number;
   cacheReadInputTokens: number;
   cacheCreationInputTokens: number;
+  cacheCreationEphemeral5mInputTokens?: number;
+  cacheCreationEphemeral1hInputTokens?: number;
   webSearchRequests: number;
   costUSD: number;
   contextWindow: number;
@@ -5381,6 +5437,10 @@ The `canonicalModel` and `provider` fields require Claude Code v2.1.218 or later
 `provider` names the API backend that served the model, such as `firstParty`, `bedrock`, `vertex`, `foundry`, `anthropicAws`, `mantle`, or `gateway`.
 
 `costBasis` names the price table that priced the model's latest request: `list` for list price, `managed` for a [`modelPricing`](https://code.claude.com/docs/en/settings-reference#modelpricing) table, or `unknown` when neither matched the model ID. The field requires Claude Code v2.1.246 or later.
+
+#### Cache-write token fields
+
+`cacheCreationEphemeral5mInputTokens` and `cacheCreationEphemeral1hInputTokens` count cache-write tokens with 5-minute and 1-hour lifetimes. For the cache-write total, use `cacheCreationInputTokens`, which already includes the 5-minute and 1-hour counts and can exceed their sum. The 5-minute and 1-hour fields require Agent SDK v0.3.311 or later.
 
 ### `ConfigScope`
 

@@ -286,11 +286,23 @@ on('prompt.submit', async ($, e, next) => {
 
 When you send a prompt such as `open a PR for this change`, your message looks the same in the transcript, and Claude also reads a line such as `Current branch: feature/auth` after it. A prompt that doesn't mention a pull request goes through unchanged, and `git` doesn't run.
 
-To stop a prompt, return `{ drop: 'the reason' }` without calling `next`. The text goes back into the user's prompt input, and they see `Prompt dropped by a hook:` followed by your reason, so address the reason to them. Don't rely on `drop` to stop every prompt. For example, a prompt goes through in these cases:
+#### Stop a prompt
 
-* **Your hook returns a `drop` after its `next(e)` call let the prompt through**: the turn still runs, and the hook [fails](#handle-a-hook-that-fails) with a message that includes `a drop after its next() was answered`
-* **Your hook throws or times out**: Claude Code skips it and sends the prompt. [Add a `.catch` handler](#handle-a-hook-that-fails) so that a failure doesn't send a prompt the hook would have stopped.
-* **The prompt is the `/command` for a [skill with `context: fork`](https://code.claude.com/docs/en/skills#run-skills-in-a-subagent)**: your hook doesn't run. To stop the command, return `{ text: 'the reason' }` from a [`command.run`](https://code.claude.com/docs/en/plugins/mods/api#add-a-command) hook without calling `next`.
+To stop a prompt, return `{ drop: 'the reason' }` from your `prompt.submit` hook without calling `next`. The user gets the text back in the prompt input and sees `Prompt dropped by a hook:` followed by your reason.
+
+Some prompts still go through, for example:
+
+* **Late drop**: if you return `drop` after `next(e)` has let the prompt through, the hook [fails](#handle-a-hook-that-fails) with a message that includes `a drop after its next() was answered`. Decide whether to drop before you call `next`.
+* **Failed hook**: if your hook throws or times out before it calls `next`, Claude Code skips the hook. To stop the prompt instead, [add a `.catch` handler](#handle-a-hook-that-fails).
+* **Forked skill**: your hook doesn't run for the `/command` of a [skill with `context: fork`](https://code.claude.com/docs/en/skills#run-skills-in-a-subagent). To stop the command, return `{ text: 'the reason' }` from a [`command.run`](https://code.claude.com/docs/en/plugins/mods/api#add-a-command) hook without calling `next`.
+
+#### Change command arguments
+
+To change a `/command`'s arguments, return `next({ ...e, args: newArgs })` from a [`command.run`](https://code.claude.com/docs/en/plugins/mods/api#add-a-command) hook.
+
+Then, in any `prompt.submit` hook that rewrites `text`, skip the rewrite for commands, when `e.command` is set. `e.command` requires Claude Code v2.1.299 or later.
+
+#### Change system prompt, context, or skill text
 
 [Other events](https://code.claude.com/docs/en/plugins/mods/reference.md#prompts-and-what-claude-reads) cover the rest of what Claude reads: `prompt.section` for each section of the system prompt, `prompt.context` for the context sent with the first message, and `skill.prompt` for a skill's text. To change a section after a conversation has started, see [Send a changed system prompt section or tool description](https://code.claude.com/docs/en/plugins/mods/reference.md#break-prompt-cache). In a `skill.prompt` hook, you can also read [which plugin or file the skill came from](https://code.claude.com/docs/en/plugins/mods/reference.md#skill-prompt-fields).
 

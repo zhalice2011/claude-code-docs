@@ -524,7 +524,7 @@ A side chat lets you ask Claude a question about your session. Claude's answers 
 
 Press **Cmd+;** on macOS or **Ctrl+;** on Windows to open a side chat, or type `/btw` in the prompt box. The side chat can read everything in the main thread up to that point. When you're done, close the side chat and return to the main session.
 
-Side chats are available in local, SSH, and WSL sessions.
+Side chats work in local, SSH, WSL, and cloud sessions.
 
 ### Watch background tasks
 
@@ -576,10 +576,10 @@ See [Use Claude Code in the cloud](https://code.claude.com/docs/en/claude-code-o
 
 ### Continue in another surface
 
-To continue a session somewhere else, open the session menu from the caret beside the session title or from the session's row in the sidebar, then select **Open in**:
+To continue a session somewhere else, open the session menu from the caret beside the session title or from the session's row in the sidebar:
 
-* Select **Cloud** to continue the session as a [cloud session](https://code.claude.com/docs/en/claude-code-on-the-web.md), with your conversation carried over as a summary. Before you confirm, the dialog states whether your files move too and whether this session is archived once the cloud one is ready. You can't move a session that runs over [SSH](#ssh-sessions) or in [WSL](https://code.claude.com/docs/en/desktop-wsl.md) this way.
-* Select an installed editor or your file manager to open the session's folder on disk there.
+* Select **Continue in cloud** to start a [cloud session](https://code.claude.com/docs/en/claude-code-on-the-web.md) with your conversation carried over as a summary. Before you confirm, the dialog states whether your files move too and whether this session is archived once the cloud one is ready. You can't move a session that runs over [SSH](#ssh-sessions) or in [WSL](https://code.claude.com/docs/en/desktop-wsl.md) this way.
+* Select **Open in**, then an installed editor or your file manager, to open the session's folder in that app
 
 ### Control which sessions appear on your other devices
 

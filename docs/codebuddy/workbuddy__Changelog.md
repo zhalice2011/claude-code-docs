@@ -1,5 +1,28 @@
 # WorkBuddy 更新日志
 
+## 5\.12\.1 版本发布 🚀（2026\-11\-27）\[灰度中]
+
+- 新增「发现」入口插件引导气泡，「\+」菜单以更新标识提示插件能力
+- 优化命令执行授权，选择「单次允许」后不再重复弹出相同确认
+- 优化 Windows 安装完成页，不再展示开机自启动选项，首次启动仍默认开启
+- 修复大体积 Markdown 文件预览不渲染并导致主窗口无响应的问题
+- 修复连接器授权后任务被误判为已取消、无法继续执行的问题
+- 修复会话中引用腾讯文档、资料库或 ima 文档时列表为空或无法读取正文的问题
+- 修复偶现任务已完成但回复内容为空的问题
+- 修复图片、视频生成工具偶发不可用及部分网络环境下图片生成失败的问题
+- 修复连接器名称含特殊字符或不同服务工具重名导致对话失败的问题
+- 修复超长历史会话无法继续对话的问题
+- 修复长对话部分历史消息无法滚动查看、中间任务结果丢失的问题
+- 修复首轮切换快速问答模式时提问重复或丢失的问题
+- 修复 Windows 本地会话重新发送失败或历史记录重复的问题
+- 修复专家团消息滞留、停止后队列气泡残留，以及云助理续跑后消息顺序错乱的问题
+- 修复换机或数据迁移后本地分组丢失、选择同名文件夹失败的问题
+- 修复登录后已绑定连接器的插件未自动安装，以及授权确认后误报网络失败的问题
+- 修复命令执行时意外安装连接器或为未启用连接器发起授权的问题
+- 修复浏览器操作截图失败及大页面截图受限的问题
+- 修复定时任务提示重复堆叠及企业微信推送被自动开启的问题
+- 修复企业智能体首条图片消息无法发送、企微会话偶发卡住，以及微信机器人重启后首条消息发送失败的问题
+
 ## 5\.12\.0 版本发布 🚀（2026\-11\-23）\[灰度中]
 
 - 新增插件市场，将连接器、技能、专家统一整合为「插件」概念，支持在会话「\+」号中统一管理插件的安装、开关与授权
@@ -1648,7 +1671,7 @@
 
 安装 Skill 前自动进行安全扫描，检测潜在的恶意脚本和风险行为，保障你的数据安全。
 
-![alt text](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
+![alt text](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/Clipboard_Screenshot_1774893494.Dz_C4lR-.png)
 
 - 🆕 产物区整体交互与展示优化
 - 🆕 新增产物回传开关，可控制是否回传产物到云端
@@ -1668,7 +1691,7 @@
 
 支持 MCP 标准 OAuth 授权认证流程，连接第三方服务更安全便捷。
 
-![alt text](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/expert-center-473.CgggC1ig.png)
+![alt text](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/expert-center-473.CgggC1ig.png)
 
 - 🆕 插件收入技能页面，连接器独立为菜单项，结构更清晰
 - 🆕 任务支持置顶/取消置顶
@@ -1704,7 +1727,7 @@
 
 专家中心新增排行榜功能，展示热门专家排行，帮助你快速发现最受欢迎的领域专家。
 
-![alt text](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/zhuanjia.BtS4ODCf.png)
+![alt text](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/zhuanjia.BtS4ODCf.png)
 
 - 🆕 对话窗口内支持通过选择器快速切换专家
 - 🆕 本地任务支持归档
@@ -1724,7 +1747,7 @@
 
 支持在设置页通过可视化界面配置自定义模型（API Key、端点、参数等），无需手动编辑 JSON 文件。
 
-![alt text](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/custom-model.C4ubf5Jp.png)
+![alt text](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/custom-model.C4ubf5Jp.png)
 
 - 🆕 产物支持分享链接并提供在线预览渲染
 - 🆕 自动化支持单次执行任务

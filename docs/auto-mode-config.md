@@ -419,6 +419,7 @@ The text in square brackets names what the classifier matched. If it's a rule bu
 If a denial shows one of these names, the [server-side classifier](https://code.claude.com/docs/en/permission-modes.md#server-side-classifier-review) blocked the call and gave a broad policy as its reason:
 
 * `[Destructive or Unwanted Actions]`
+* `[Sensitive Information Leakage]`
 * `[Unauthorized Access]`
 * `[Undermining Oversight]`
 * `[Unsanctioned Communication]`

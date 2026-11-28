@@ -8,7 +8,7 @@
 
 左侧边栏会显示您创建过的任务，方便您随时回看、继续处理和切换上下文。
 
-![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/task-management-1.CFj05PCS.png)
+![图片说明](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/task-management-1.CFj05PCS.png)
 
 列表自上而下分为**置顶**、**最近**和**分组**三个区域：
 
@@ -27,7 +27,7 @@
 
 窗口左上方提供**搜索**与**筛选**两个按钮，用于快速定位任务。
 
-![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/task-management-2.Cr4_Ux0p.png)
+![图片说明](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/task-management-2.Cr4_Ux0p.png)
 
 - **搜索**：打开全局搜索，可检索任务、分组、产物与资料库内容，详见[使用全局搜索](#使用全局搜索)；
 - **筛选**：打开筛选面板，按任务状态或日期缩小当前任务列表范围。支持以下操作：
@@ -42,7 +42,7 @@ WorkBuddy 支持搜索**任务**、**分组**、**产物**和**资料库中**的
 
 点击窗口**左上方**的**搜索**按钮，打开全局搜索并输入关键词，默认停在「全部」页，搜索结果中的命中关键词会高亮显示。底部常驻快捷键提示条，详见[全局搜索快捷键](#全局搜索快捷键)。
 
-![全局搜索窗口：分类分组展示结果](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/taskmanage-global-search.DsqTdHJe.png)
+![全局搜索窗口：分类分组展示结果](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/taskmanage-global-search.DsqTdHJe.png)
 
 未输入关键词时，「全部」页会展示**最近浏览记录**，按浏览时间倒序排列。
 
@@ -77,7 +77,7 @@ TIP
 
 左侧任务列表中的部分任务会在任务行右侧显示状态标记，用于提示当前需要关注的任务。
 
-![侧边栏状态标记](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/taskmanage-status-badge.G43hYEFy.png)
+![侧边栏状态标记](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/taskmanage-status-badge.G43hYEFy.png)
 
 常见标记包括以下四种：
 
@@ -104,7 +104,7 @@ TIP
 
 如需整理任务，可将鼠标悬停在任务行上并单击「⋯」按钮，或直接右键单击任务行，打开任务操作菜单。 其中置顶任务、临时任务、分组对话、项目任务、助理任务以及搜索结果中的任务均支持右键菜单。
 
-![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/task-management-3.Uhzv4c2z.png)
+![图片说明](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/task-management-3.Uhzv4c2z.png)
 
 ### 常用操作
 
@@ -138,7 +138,7 @@ TIP
 
 **批量删除**：在任务行上点击右键，选择**批量操作**。
 
-勾选要删除的任务，再点击底部**删除**并在弹窗中确认。弹窗标题与结果提示都会带上数量（如「确认删除 2 项任务？」「已删除 2 项任务」）。 ![批量操作：勾选任务后点击底部删除](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/taskmanage-batch-bar.Lrw8pn7y.png)
+勾选要删除的任务，再点击底部**删除**并在弹窗中确认。弹窗标题与结果提示都会带上数量（如「确认删除 2 项任务？」「已删除 2 项任务」）。 ![批量操作：勾选任务后点击底部删除](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/taskmanage-batch-bar.Lrw8pn7y.png)
 
 **正在运行的任务无法勾选**，需要等它结束或先停止后，再一起删除。
 
@@ -150,7 +150,7 @@ TIP
 
 在左侧列表中，将鼠标悬停在分组行上并单击「⋯」按钮，或直接右键单击分组行，打开操作菜单，可对分组进行管理。
 
-![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/task-management-4.Dqx_Vw6u.png)
+![图片说明](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/task-management-4.Dqx_Vw6u.png)
 
 | 操作 | 说明 |
 | --- | --- |
@@ -172,17 +172,17 @@ TIP
 
 - **输入框下方**：新建任务时，在输入框下方的分组选择器中点击「新建分组」。
 
-![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/task-management-5.BV4WnIp2.png)
+![图片说明](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/task-management-5.BV4WnIp2.png)
 
 - **左侧栏**：将鼠标悬停在左侧栏「分组」标题右侧，点击「新建分组」按钮。
 
-![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/task-management-6.zF5Fhkqv.png)
+![图片说明](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/task-management-6.zF5Fhkqv.png)
 
 创建时填写分组名称即可保存；如需让 WorkBuddy 参考已有资料或将生成的文件保存到指定位置，可以点击「关联电脑上的文件夹」按需添加。
 
 如果已经在某个分组中开展工作，但需要开始另一项独立任务并保留原有任务记录，可以直接在左侧列表中将鼠标悬停在该分组上，点击右侧的**新建任务**按钮。新任务会自动归入并选中该分组，无需先进入分组再创建。
 
-![悬停空间分组显示新建任务入口](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/taskmanage-space-new.byct2kNm.png)
+![悬停空间分组显示新建任务入口](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/taskmanage-space-new.byct2kNm.png)
 
 ### 关联电脑上的文件夹
 
@@ -190,7 +190,7 @@ TIP
 
 新建或编辑分组时，点击「关联电脑上的文件夹」选择文件夹，一个分组最多可关联 16 个本地文件夹。
 
-![图片说明](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/task-management-7.BWp0M5v1.png)
+![图片说明](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/task-management-7.BWp0M5v1.png)
 
 关联多个文件夹时，会显示「主要」标记。主要文件夹会被 WorkBuddy 优先参考，生成的产物也会优先保存到该文件夹。你可以随时将其他文件夹「设为主要」，也可以移除不再需要的文件夹。
 

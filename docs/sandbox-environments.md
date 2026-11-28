@@ -144,7 +144,7 @@ Review the paths you kept writable. On Linux and WSL2, also review anything the 
 
 A dev container runs Claude Code inside a Docker container that VS Code or a compatible editor manages, with your project mounted in. You can define your own with a `.devcontainer/` directory in your repository.
 
-The claude-code repository publishes an [example dev container](https://code.claude.com/docs/en/devcontainer.md) with a default-deny iptables firewall as a starting point. Copy it into your repository and adjust the firewall allowlist, base image, and pinned Claude Code version to fit your environment. Because the firewall blocks unapproved egress, a configuration like this supports running Claude Code with `--dangerously-skip-permissions` for unattended work.
+The claude-code repository publishes an [example dev container](https://code.claude.com/docs/en/devcontainer.md) with a default-deny iptables firewall as a starting point. Copy it into your repository and adjust the firewall allowlist, base image, and pinned Claude Code version to fit your environment.
 
 ## Custom container
 

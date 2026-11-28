@@ -29,7 +29,7 @@ TIP
 1. 在 WorkBuddy 中打开需要发布的 HTML 页面。
 2. 点击页面右上角的**分享**图标，在弹窗中切换到**发布**页签，打开**发布为网站**开关，页面即被发布为在线链接，任何获得链接的人都可以访问。
 
-![在分享弹窗的「发布」页签中开启「发布为网站」](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/publish-as-website.wn29MtFZ.png)
+![在分享弹窗的「发布」页签中开启「发布为网站」](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/publish-as-website.wn29MtFZ.png)
 
 3. 开关下方会显示生成的链接，点击右侧按钮即可复制。
 4. 弹窗底部还可以直接分享到微信等渠道，或生成二维码。发布后的链接使用 `workbuddy.link` 域名，形如 `https://workbuddy.link/p/{页面 ID}`。分享发布后的页面时，分享消息的封面为页面首页截图（分享会话的发布态除外）。
@@ -72,11 +72,11 @@ HTML 与 CSV 配合使用，可以将页面展示与业务数据分开管理。H
 
 例如，构建一个经营工作台时，可以使用 HTML 页面集中展示经营指标、业务待办和操作入口。
 
-![用 HTML 搭建的经营工作台页面](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/app-html-dashboard.eeMbubAk.png)
+![用 HTML 搭建的经营工作台页面](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/app-html-dashboard.eeMbubAk.png)
 
 再用目录和多张 CSV 表持续管理商品、订单与库存数据。
 
-![用多张 CSV 表管理业务数据](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/app-csv-library.DXpZTSNj.png)
+![用多张 CSV 表管理业务数据](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/app-csv-library.DXpZTSNj.png)
 
 准备页面和数据时，建议先明确：
 

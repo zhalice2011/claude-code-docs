@@ -21,7 +21,7 @@ WorkBuddy 提供两种任务运行位置：
 
 点击左上角 WorkBuddy 版本号下方的运行位置入口，在下拉菜单中选择**云电脑**或**这台电脑**，当前选中的位置会显示勾选标记。
 
-![点击左上角版本号下方的入口，选择云电脑或这台电脑](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/left-sidebar-cloud-computer-switch.CgbvWS29.png)
+![点击左上角版本号下方的入口，选择云电脑或这台电脑](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/left-sidebar-cloud-computer-switch.CgbvWS29.png)
 
 从云电脑切回这台电脑后，会恢复最近一次有效的本地工作空间和本地开发上下文。
 
@@ -31,7 +31,7 @@ WorkBuddy 提供两种任务运行位置：
 
 切换到云电脑后，在新建任务页发起的任务即为云端任务。
 
-![切换到云电脑后的新建任务页，输入框中没有工作空间选择](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/cloud-computer-new-task.BcqU6134.png)
+![切换到云电脑后的新建任务页，输入框中没有工作空间选择](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/cloud-computer-new-task.BcqU6134.png)
 
 ### 任务发起到默认空间
 
@@ -45,7 +45,7 @@ WorkBuddy 提供两种任务运行位置：
 
 将鼠标悬停在任务列表中的任务上，会弹出信息浮窗，本地任务和云端任务使用同一套浮窗：
 
-![悬停在云端任务上弹出的信息浮窗](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/cloud-computer-task-hover.DHZHL1Xs.png)
+![悬停在云端任务上弹出的信息浮窗](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/cloud-computer-task-hover.DHZHL1Xs.png)
 
 浮窗中包含：
 
@@ -59,7 +59,7 @@ WorkBuddy 提供两种任务运行位置：
 
 将鼠标悬停在云端任务上并点击「⋯」，或直接右键点击任务，即可打开任务操作菜单：
 
-![云端任务的操作菜单：置顶、重命名、分享任务、批量操作、归档、删除任务](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/cloud-computer-task-menu.DeKxkrUA.png)
+![云端任务的操作菜单：置顶、重命名、分享任务、批量操作、归档、删除任务](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/cloud-computer-task-menu.DeKxkrUA.png)
 
 | 操作 | 说明 |
 | --- | --- |
@@ -78,7 +78,7 @@ WorkBuddy 提供两种任务运行位置：
 
 专家为 WorkBuddy 配置专业角色，让它在特定领域以更明确的方法和视角完成任务。在「\+」菜单中选择**专家**，即可召唤专家来处理当前任务。
 
-![云电脑下「+」菜单中的专家列表](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/cloud-computer-plus-expert.adey-F8T.png)
+![云电脑下「+」菜单中的专家列表](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/cloud-computer-plus-expert.adey-F8T.png)
 
 - 云电脑暂不支持专家团；
 - 本地专家在云端任务中使用前，会自动上传到云端。
@@ -87,7 +87,7 @@ WorkBuddy 提供两种任务运行位置：
 
 技能用于扩展 WorkBuddy 的任务能力，选择技能后，WorkBuddy 会在执行任务时调用对应能力。在「\+」菜单中选择**技能**，即可选用已安装的技能。
 
-![云电脑下「+」菜单中的技能列表，底部提供「从本地添加技能」](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/cloud-computer-plus-skill.4D861csY.png)
+![云电脑下「+」菜单中的技能列表，底部提供「从本地添加技能」](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/cloud-computer-plus-skill.4D861csY.png)
 
 - 列表底部的**从本地添加技能**，可以把本地技能添加到云端任务中使用；
 - 本地技能在云端任务中使用前，会自动上传到云端。上传前会提示「请确认其中不包含敏感信息」；如果检测到技能中可能含有 Token、API Key 等敏感凭据，需要确认风险后才能继续上传；
@@ -97,7 +97,7 @@ WorkBuddy 提供两种任务运行位置：
 
 连接器用于将 WorkBuddy 与外部服务对接，在获得授权后访问和操作第三方服务。在「\+」菜单中选择**连接器**，即可开启已授权的连接器，或连接新的连接器。
 
-![云电脑下「+」菜单中的连接器列表](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/cloud-computer-plus-connector.CPw1Uba1.png)
+![云电脑下「+」菜单中的连接器列表](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/cloud-computer-plus-connector.CPw1Uba1.png)
 
 在云电脑下浏览和搜索市场中的连接器时，只显示支持云端使用的连接器，仅在本地可用的连接器不会出现。切回这台电脑后，仍显示全部连接器。
 
@@ -111,7 +111,7 @@ WorkBuddy 提供两种任务运行位置：
 
 以预览 Markdown 产物为例，标题栏右侧为「上传」「分享」，展开「更多（⋯）」后，「打开文件夹」呈灰色不可用：
 
-![云端任务中预览 Markdown 产物：标题栏提供上传、分享，更多菜单中的「打开文件夹」置灰](https://download.codebuddy.cn/web/docs/23821aedeffb50e9160c38a367f676ed26f5e1ed/docs/static/right-sidebar-cloud-md-actions.CMm18Ha8.jpg)
+![云端任务中预览 Markdown 产物：标题栏提供上传、分享，更多菜单中的「打开文件夹」置灰](https://download.codebuddy.cn/web/docs/af0e54f92708bef8d26b3d66b4310b3fe33a1bd1/docs/static/right-sidebar-cloud-md-actions.CMm18Ha8.jpg)
 
 HTML 产物在云电脑下以内置浏览器打开，顶部操作与之前保持一致。
 
